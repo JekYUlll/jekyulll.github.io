@@ -1,0 +1,29 @@
+name: Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - master # 或者你使用的其他分支，如 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.140.0" # 使用你当前 Hugo 的版本
+
+      - name: Build the site
+        run: hugo --minify # 生成静态文件到 public 文件夹
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # 用于推送文件的 GitHub Token
+          publish_dir: ./public # Hugo 生成的静态文件目录
+          publish_branch: gh-pages # 将生成的文件推送到 gh-pages 分支
