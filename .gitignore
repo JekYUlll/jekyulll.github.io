@@ -1,11 +1,2 @@
 *.log
-.hugo_build.lock
 
-static/
-resources/
-layouts/
-data/
-assets/
-archetypes/
-i18n/
-themes/
