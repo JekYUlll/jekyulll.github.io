@@ -6,14 +6,7 @@ author = 'JekYUlll'
 lastmod = '2024-12-22T21:05:47+08:00'
 +++
 
-![../images/](../images/ayanami_header.jpg)
-
-![/images/](/images/ayanami_header.jpg)
-
-![images/](images/ayanami_header.jpg)
-
-![static/images/](static/images/ayanami_header.jpg)
-
+![hearder](/images/ayanami_header.jpg)
 
 这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。  
 在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。
