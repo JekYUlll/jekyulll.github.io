@@ -1,23 +1,19 @@
 +++
 date = '2024-12-22T19:46:34+08:00'
 draft = false
-title = 'C++/游戏开发/TA 学习路线汇总'
+title = 'C++ / 游戏开发 / TA 学习路线汇总'
 +++
-
--- 2024年6月2日23:56:19
-收藏的路线越来越多，有点乱。单列一个文件，想到的时候汇总一下。
 
 # TA
 
 [转行技术美术（TA）的分享](https://zhuanlan.zhihu.com/p/436920189)。
 
-[MIT 6.033 Spring 2021: Computer System 计算机系统](https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。好像是好课。
+[MIT 6.033 Spring 2021: Computer System 计算机系统](https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。
 
 [一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days](https://zhuanlan.zhihu.com/p/673578424)。  
 [Python-100-Days](https://github.com/jackfrued/Python-100-Days)。
 
-我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎
-https://www.zhihu.com/question/640467378/answer/3382207520 -- 图程路线
+[我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎](https://www.zhihu.com/question/640467378/answer/3382207520)。图程路线。
 
 [光线追踪无痛入门](https://zhuanlan.zhihu.com/p/711481617)。
 
@@ -29,26 +25,25 @@ https://www.zhihu.com/question/640467378/answer/3382207520 -- 图程路线
 
 [在shader中实现五种描边方法](https://zhuanlan.zhihu.com/p/410710318)。
 
-图形学：
+#### 图形学：
 入门：GAMES-101&nbsp;
-实时渲染：GAMES-202、GAMES-104、RTR4(https://github.com/Morakito/Real-Time-Rendering-4th-CN)
+实时渲染：GAMES-202、GAMES-104、RTR4(https://github.com/Morakito/Real-Time-Rendering-4th-CN)  
 离线渲染：
-简单的软光追：Ray&nbsp;Tracing&nbsp;in&nbsp;One&nbsp;Weekend三部曲(https://raytracing.github.io)
-进阶：PBRT-V4&nbsp;(https://pbr-book.org/4ed/contents)
+简单的软光追：Ray&nbsp;Tracing&nbsp;in&nbsp;One&nbsp;Weekend三部曲(https://raytracing.github.io)  
+进阶：PBRT-V4&nbsp;(https://pbr-book.org/4ed/contents)  
 图形API：
 OpenGL：https://learnopengl-cn.github.io
-Vulkan：渐进式教程：https://vulkan-tutorial.com
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example：https://github.com/SaschaWillems/Vulkan
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将Vulkan封装成RHI，写出小引擎：https://github.com/BoomingTech/Piccolo
+Vulkan：渐进式教程：https://vulkan-tutorial.com  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example：https://github.com/SaschaWillems/Vulkan  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将Vulkan封装成RHI，写出小引擎：https://github.com/BoomingTech/Piccolo  
 引擎原理:
-GAMES-104,&nbsp;课程附带的&nbsp;Piccolo源码值得一读&nbsp;(https://github.com/BoomingTech/Piccolo)
-Godot&nbsp;(https://github.com/godotengine/godot)
+GAMES-104,&nbsp;课程附带的&nbsp;Piccolo源码值得一读&nbsp;(https://github.com/BoomingTech/Piccolo)  
+Godot&nbsp;(https://github.com/godotengine/godot)  
 以及虚幻5源码
 
 引擎使用:
 Unity：https://catlikecoding.com/unity/tutorials/
 
-编程:
 C#：《C#图解教程》
 Shader：《Unity Shader 入门精要》
 C++：《C++ Primer》《Effective Modern C++》《深度探索C++对象模型》《C++并发编程实战》
@@ -66,7 +61,7 @@ SIGGRAPH
 Unity开发，手机sdk接入  
 [搞懂Unity在Android上C#，Java，C++的互通](https://zhuanlan.zhihu.com/p/720705077)。
 
-# 数学/算法
+## 数学/算法
 
 [【官方双语/合集】线性代数的本质 - 系列合集](https://www.bilibili.com/video/BV1ys411472E/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。
 
@@ -152,12 +147,9 @@ C++项目：[如何找合适的C++项目给自己的简历加分？ - 大糖的�
 
 ---
 
-一些要补的东西：设计模式、互联网各种架构、分布式、云计算。
 
 [B站最全智能优化算法课程，模拟退火算法，粒子群算法，遗传算法等16种优化算法*机器学习*深度学习\_人工智能](https://www.bilibili.com/video/BV1R1xWeSEUR?spm_id_from=333.788.recommend_more_video.0&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。
 
 [【大数据】什么是数据融合（Data Fusion)?](https://blog.csdn.net/oOBubbleX/article/details/140127181)
 
 ### 训练营、证书、、GameJam、实习
-
-PAT考试
