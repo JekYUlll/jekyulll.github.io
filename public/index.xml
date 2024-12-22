@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Even - A super concise theme for Hugo</title>
+    <title>EVAN JEKYULLL HOREB BLOG</title>
     <link>https://jekyulll.github.io/</link>
-    <description>Recent content on Even - A super concise theme for Hugo</description>
+    <description>Recent content on EVAN JEKYULLL HOREB BLOG</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Dec 2024 00:59:16 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2024 19:46:34 +0800</lastBuildDate>
     <atom:link href="https://jekyulll.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;/游戏开发/TA 学习路线汇总</title>
+      <link>https://jekyulll.github.io/posts/means/</link>
+      <pubDate>Sun, 22 Dec 2024 19:46:34 +0800</pubDate>
+      <guid>https://jekyulll.github.io/posts/means/</guid>
+      <description>&lt;p&gt;&amp;ndash; 2024年6月2日23:56:19&#xA;收藏的路线越来越多，有点乱。单列一个文件，想到的时候汇总一下。&lt;/p&gt;&#xA;&lt;h1 id=&#34;ta&#34;&gt;TA&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/436920189&#34;&gt;转行技术美术（TA）的分享&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a&#34;&gt;MIT 6.033 Spring 2021: Computer System 计算机系统&lt;/a&gt;。好像是好课。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/673578424&#34;&gt;一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days&lt;/a&gt;。&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/jackfrued/Python-100-Days&#34;&gt;Python-100-Days&lt;/a&gt;。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Foobar</title>
       <link>https://jekyulll.github.io/posts/foobar/</link>
