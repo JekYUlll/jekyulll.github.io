@@ -1,9 +1,11 @@
 +++
 date = '2024-07-29T21:05:47+08:00'
 draft = false
-title = '[opengl] 菜 · OpenGL 初学笔记 -- Cherno + LearnOpenGL'
+title = 'OpenGL 初学笔记 -- Cherno + LearnOpenGL'
 author = 'JekYUlll'
 lastmod = '2024-12-22T21:05:47+08:00'
+tags = ['opengl', 'graphics', 'game']
+categories = ['game']
 +++
 
 ![hearder](/images/ayanami_header.jpg)

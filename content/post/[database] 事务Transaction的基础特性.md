@@ -1,10 +1,11 @@
 +++
 date = '2024-11-04T18:05:47+08:00'
 draft = false
-title = '[database] 事务Transaction的基础特性'
+title = '事务 Transaction 的基础特性'
 author = 'JekYUlll'
 lastmod = '2024-11-04T18:05:47+08:00'
 tags = ['database']
+categories = ['database']
 +++
 
 **事务**（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。  

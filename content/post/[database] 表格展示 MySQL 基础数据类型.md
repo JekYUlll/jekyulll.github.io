@@ -1,10 +1,11 @@
 +++
 date = '2024-11-21T18:05:47+08:00'
 draft = false
-title = '[database] 表格展示 MySQL 基础数据类型.md'
+title = '表格展示 MySQL 基础数据类型'
 author = 'JekYUlll'
 lastmod = '2024-11-21T18:05:47+08:00'
-tags = ['database']
+tags = ['database', 'mysql']
+categories = ['database']
 +++
 
 |数据类型|描述|存储范围/格式|示例|

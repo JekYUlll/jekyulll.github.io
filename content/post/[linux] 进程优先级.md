@@ -1,10 +1,11 @@
 +++
 date = '2024-11-04T21:05:47+08:00'
 draft = false
-title = '[linux] 进程优先级'
+title = 'Linux 进程优先级'
 author = 'JekYUlll'
 lastmod = '2024-11-04T21:05:47+08:00'
 tags = ['linux']
+categories = ['linux']
 +++
 
 ##### [图解Linux进程优先级](https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&mid=2247484435&idx=1&sn=b6f30489cf388f1024d6883abb8237c8&chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd)
