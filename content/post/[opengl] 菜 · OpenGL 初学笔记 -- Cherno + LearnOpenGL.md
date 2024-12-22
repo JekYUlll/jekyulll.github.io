@@ -2,6 +2,8 @@
 date = '2024-07-29T21:05:47+08:00'
 draft = false
 title = '[opengl] 菜 · OpenGL 初学笔记 -- Cherno + LearnOpenGL'
+author = 'JekYUlll'
+lastmod = '2024-12-22T21:05:47+08:00'
 +++
 
 ![.](images/ayanami_header.jpg)
@@ -11,14 +13,22 @@ title = '[opengl] 菜 · OpenGL 初学笔记 -- Cherno + LearnOpenGL'
 [Cherno主页](https://www.youtube.com/@TheCherno)
 [LearnOpenGL](https://learnopengl.com/)
 
-1. 直接选择 64 位
-    Cherno视频是2017及之前的，为了兼容性，教程里32位。而LearnOpenGL写到后面是64位，还要用Assimp库，默认是编译成64位。建议直接x64，像我这样闷头跟着写的话要把 GLEW 和 GLFW 的静态库全换一遍，或者去折腾CMake。
+## **1.** 直接选择 64 位
 
-2. GLEW, GLAD, GLFW
-    这三个比较常用。两个教程的选择都是 GLEW + GLFW，其中 GLEW 和 GLAD 定位相似，都是用于访问OpenGL函数。可以先看看自己喜欢哪一个，免得后面想换再费功夫。
+Cherno视频是2017及之前的，为了兼容性，教程里32位。而LearnOpenGL写到后面是64位，还要用Assimp库，默认是编译成64位。建议直接x64，像我这样闷头跟着写的话要把 GLEW 和 GLFW 的静态库全换一遍，或者去折腾CMake。
 
-3. `Texture` 的实现 -- 小心析构函数
-    LearnOpenGL中的`Texture`只是一个存储数据的结构体：
+---
+
+## **2.** GLEW, GLAD, GLFW
+
+这三个比较常用。两个教程的选择都是 GLEW + GLFW，其中 GLEW 和 GLAD 定位相似，都是用于访问OpenGL函数。可以先看看自己喜欢哪一个，免得后面想换再费功夫。
+
+---
+
+## **3.** `Texture` 的实现 -- 小心析构函数
+
+LearnOpenGL中的`Texture`只是一个存储数据的结构体：
+
 ```cpp
 struct Texture {
     GLuint id;
@@ -26,7 +36,9 @@ struct Texture {
     aiString path;
 };
 ```
-而Cherno将`Texture`创建为类，构造函数中直接完成加载图片的操作，并且在析构函数里调用`glDeleteTextures`。如果无脑缝代码就完蛋了，因为LearnOpenGL在`Model::loadMaterialTextures`函数中创建了`Texture`的临时对象并返回，会调用析构函数：
+而Cherno将`Texture`创建为类，构造函数中直接完成加载图片的操作，并且在析构函数里调用`glDeleteTextures`。  
+如果无脑缝代码就完蛋了，因为LearnOpenGL在`Model::loadMaterialTextures`函数中创建了`Texture`的临时对象并返回，会调用析构函数：
+
 ```cpp
 vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
 {
@@ -39,6 +51,7 @@ vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string
 1. 修改Texture类的实现（比如把）glDeleteTextures单独调用；
 2. 修改Model类中加载纹理的实现，例如传入Texture的引用；
 3. 使用指针。我选择了使用智能指针（相对应的地方全要改）：
+
 ```cpp
 // 顺便把参数改成 `aiTextureType`(Assimp定义的用于表示Texture不同类型的枚举)
 // 优化掉LearnOpenGL里那个丑陋的字符串处理
