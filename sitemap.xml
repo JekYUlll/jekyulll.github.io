@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jekyulll.github.io/</loc>
-    <lastmod>2024-12-22T00:59:16+08:00</lastmod>
+    <loc>https://jekyulll.github.io/posts/means/</loc>
+    <lastmod>2024-12-22T19:46:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://jekyulll.github.io/posts/foobar/</loc>
-    <lastmod>2024-12-22T00:59:16+08:00</lastmod>
+    <loc>https://jekyulll.github.io/</loc>
+    <lastmod>2024-12-22T19:46:34+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://jekyulll.github.io/posts/</loc>
+    <lastmod>2024-12-22T19:46:34+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://jekyulll.github.io/posts/foobar/</loc>
     <lastmod>2024-12-22T00:59:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
