@@ -1,7 +1,7 @@
 +++
 date = '2024-08-10T18:05:47+08:00'
 draft = false
-title = 'C++ 17 编译器 if'
+title = 'C++ 17 编译期 if'
 author = 'JekYUlll'
 lastmod = '2024-08-10T18:05:47+08:00'
 tags = ['cpp', 'morden cpp']
