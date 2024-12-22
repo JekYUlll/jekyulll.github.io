@@ -3,15 +3,23 @@ name: Deploy Hugo Site
 on:
   push:
     branches:
-      - master # 或者你使用的其他分支，如 master
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v2
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
@@ -22,7 +30,7 @@ jobs:
         run: hugo --minify # 生成静态文件到 public 文件夹
 
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # 用于推送文件的 GitHub Token
           publish_dir: ./public # Hugo 生成的静态文件目录
