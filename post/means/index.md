@@ -12,13 +12,22 @@
 
 [光线追踪无痛入门](https://zhuanlan.zhihu.com/p/711481617)。
 
-[一篇文章学完 Effective Modern C++：条款 & 实践](https://zhuanlan.zhihu.com/p/649667647)。
+[Ray Tracing: The Next Week V3.0中文翻译（上）](https://zhuanlan.zhihu.com/p/129372723)。  
+[Ray Tracing: The Next Week V3.0中文翻译（下）](https://zhuanlan.zhihu.com/p/129745508)。
 
 [游戏研发秋招 经验信息分享帖](https://www.nowcoder.com/discuss/590687392735014912)。
 
 [audiokinetic](https://www.audiokinetic.com/zh/)。音频开发。
 
 [在shader中实现五种描边方法](https://zhuanlan.zhihu.com/p/410710318)。
+
+[unreal engine Mesh Drawing Pipeline](https://dev.epicgames.com/documentation/en-us/unreal-engine/mesh-drawing-pipeline-in-unreal-engine)。
+
+[游戏制作的窄门：构建mini游戏引擎 - 1 - Third Party Libs](https://zhuanlan.zhihu.com/p/711437664)。  
+音频库[FMOD](https://codyclaborn.me/tutorials/setting-up-xcode-and-visual-studio-for-fmod-development/)。  
+[FMOD](https://www.fmod.com/download#fmodengine)。
+
+[花了一年半时间写的玩具离线渲染器，用来学习并实现各种渲染算法](https://zhuanlan.zhihu.com/p/637308167)。
 
 #### 图形学：
 入门：GAMES-101&nbsp;
@@ -69,7 +78,8 @@ Unity开发，手机sdk接入
 # C++
 
 [合集·现代 C++ 语言核心特性解析](https://space.bilibili.com/28615855/channel/collectiondetail?sid=43297)。  
-[现代 C++ 教程：高速上手 C++ 11/14/17/20](https://changkun.de/modern-cpp/zh-cn/01-intro/)。
+[现代 C++ 教程：高速上手 C++ 11/14/17/20](https://changkun.de/modern-cpp/zh-cn/01-intro/)。  
+[一篇文章学完 Effective Modern C++：条款 & 实践](https://zhuanlan.zhihu.com/p/649667647)。
 
 小鹏的教程：[合集·现代C++项目实战](https://space.bilibili.com/263032155/channel/collectiondetail?sid=599074)。
 

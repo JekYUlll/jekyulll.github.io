@@ -1,0 +1,146 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>C++ 模板类型推导 - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="一篇文章学完 Effective Modern C++：条款 & 实践：
+条款1： 模板参数类型推导，引用折叠 1 2 3 4 5 6 7 8 9 10 11 12 13 14 template<typename T> void f(T&& param); int x = 27; const int cx = x; const int& rx = x; // 左值的情况 f(x); // T 的类型为 int&, paramType 为 int& f(cx); // T 的类型为 const int&, paramType 为 const int& f(rx); // T 的类型为 const int&, paramType 为 const int& // 右值的情况 f(27) // T 的类型为 int, paramType 为 int&& 对于指向 const 对象的 const 指针的传递，仅有指针本身的常量性会被忽略：
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="C++ 模板类型推导"><meta property="og:description" content="一篇文章学完 Effective Modern C++：条款 & 实践：
+条款1： 模板参数类型推导，引用折叠 1 2 3 4 5 6 7 8 9 10 11 12 13 14 template<typename T> void f(T&& param); int x = 27; const int cx = x; const int& rx = x; // 左值的情况 f(x); // T 的类型为 int&, paramType 为 int& f(cx); // T 的类型为 const int&, paramType 为 const int& f(rx); // T 的类型为 const int&, paramType 为 const int& // 右值的情况 f(27) // T 的类型为 int, paramType 为 int&& 对于指向 const 对象的 const 指针的传递，仅有指针本身的常量性会被忽略："><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2024-09-01T18:05:47+08:00"><meta property="article:modified_time" content="2024-09-01T18:05:47+08:00"><meta property="article:tag" content="Cpp"><meta property="article:tag" content="Morden Cpp"><meta itemprop=name content="C++ 模板类型推导"><meta itemprop=description content="一篇文章学完 Effective Modern C++：条款 & 实践：
+条款1： 模板参数类型推导，引用折叠 1 2 3 4 5 6 7 8 9 10 11 12 13 14 template<typename T> void f(T&& param); int x = 27; const int cx = x; const int& rx = x; // 左值的情况 f(x); // T 的类型为 int&, paramType 为 int& f(cx); // T 的类型为 const int&, paramType 为 const int& f(rx); // T 的类型为 const int&, paramType 为 const int& // 右值的情况 f(27) // T 的类型为 int, paramType 为 int&& 对于指向 const 对象的 const 指针的传递，仅有指针本身的常量性会被忽略："><meta itemprop=datePublished content="2024-09-01T18:05:47+08:00"><meta itemprop=dateModified content="2024-09-01T18:05:47+08:00"><meta itemprop=wordCount content="933"><meta itemprop=keywords content="Cpp,Morden Cpp"><meta name=twitter:card content="summary"><meta name=twitter:title content="C++ 模板类型推导"><meta name=twitter:description content="一篇文章学完 Effective Modern C++：条款 & 实践：
+条款1： 模板参数类型推导，引用折叠 1 2 3 4 5 6 7 8 9 10 11 12 13 14 template<typename T> void f(T&& param); int x = 27; const int cx = x; const int& rx = x; // 左值的情况 f(x); // T 的类型为 int&, paramType 为 int& f(cx); // T 的类型为 const int&, paramType 为 const int& f(rx); // T 的类型为 const int&, paramType 为 const int& // 右值的情况 f(27) // T 的类型为 int, paramType 为 int&& 对于指向 const 对象的 const 指针的传递，仅有指针本身的常量性会被忽略："><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>HOREB</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>HOREB</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>C++ 模板类型推导</h1><div class=post-meta><span class=post-time>2024-09-01</span><div class=post-category><a href=/categories/cpp/>cpp</a></div><span class=more-meta>933 words </span><span class=more-meta>2 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#条款1-模板参数类型推导引用折叠>条款1： 模板参数类型推导，引用折叠</a></li><li><a href=#条款2-auto类型推导>条款2： auto类型推导</a></li><li><a href=#条款3理解-decltype>条款3：理解 decltype</a></li></ul></li></ul></nav></div></div><div class=post-content><p><a href=https://zhuanlan.zhihu.com/p/649667647>一篇文章学完 Effective Modern C++：条款 & 实践</a>：</p><h2 id=条款1-模板参数类型推导引用折叠>条款1： 模板参数类型推导，引用折叠</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=n>f</span><span class=p>(</span><span class=n>T</span><span class=o>&amp;&amp;</span> <span class=n>param</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>x</span> <span class=o>=</span> <span class=mi>27</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span> <span class=n>cx</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>int</span><span class=o>&amp;</span> <span class=n>rx</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 左值的情况
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>f</span><span class=p>(</span><span class=n>x</span><span class=p>);</span>    <span class=c1>// T 的类型为 int&amp;, paramType 为 int&amp;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>f</span><span class=p>(</span><span class=n>cx</span><span class=p>);</span>   <span class=c1>// T 的类型为 const int&amp;, paramType 为 const int&amp;
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>f</span><span class=p>(</span><span class=n>rx</span><span class=p>);</span>   <span class=c1>// T 的类型为 const int&amp;, paramType 为 const int&amp;
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=c1>// 右值的情况
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>f</span><span class=p>(</span><span class=mi>27</span><span class=p>)</span>    <span class=c1>// T 的类型为 int, paramType 为 int&amp;&amp;
+</span></span></span></code></pre></td></tr></table></div></div><p>对于指向 <code>const</code> 对象的 <code>const</code> 指针的传递，仅有指针本身的常量性会被忽略：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=n>f</span><span class=p>(</span><span class=n>T</span> <span class=n>param</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=k>const</span> <span class=n>ptr</span> <span class=o>=</span> <span class=s>&#34;Fun with pointers&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>f</span><span class=p>(</span><span class=n>ptr</span><span class=p>);</span>    <span class=c1>// T 和 param 的类型均为 const char*
+</span></span></span></code></pre></td></tr></table></div></div><p>按值传递给函数模板的数组类型将退化为指针类型，但按引用传递却能推导出真正的数组类型：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=n>f</span><span class=p>(</span><span class=n>T</span><span class=o>&amp;</span> <span class=n>param</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=kt>char</span> <span class=n>name</span><span class=p>[]</span> <span class=o>=</span> <span class=s>&#34;J. P. Briggs&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>f</span><span class=p>(</span><span class=n>name</span><span class=p>);</span>   <span class=c1>// T 的类型为 const char[13], paramType 为 const char (&amp;)[13]
+</span></span></span></code></pre></td></tr></table></div></div><p>利用声明数组引用这一能力可以创造出一个模板，用来推导出数组含有的元素个数：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>size_t</span> <span class=n>N</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>constexpr</span> <span class=n>std</span><span class=o>::</span><span class=n>size_t</span> <span class=n>arraySize</span><span class=p>(</span><span class=n>T</span> <span class=p>(</span><span class=o>&amp;</span><span class=p>)[</span><span class=n>N</span><span class=p>])</span> <span class=k>noexcept</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>N</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span> <span class=c1>// constexpr 函数，表示这个函数可以在编译时计算结果
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=n>arr</span><span class=p>[</span><span class=mi>10</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>size_t</span> <span class=n>size</span> <span class=o>=</span> <span class=n>arraySize</span><span class=p>(</span><span class=n>arr</span><span class=p>);</span> <span class=c1>// size 的值是 10
+</span></span></span></code></pre></td></tr></table></div></div><p>函数类型同样也会退化成函数指针，并且和数组类型的规则类似：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=kt>void</span> <span class=nf>someFunc</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>double</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=n>f1</span><span class=p>(</span><span class=n>T</span> <span class=n>param</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=n>f2</span><span class=p>(</span><span class=n>T</span><span class=o>&amp;</span> <span class=n>param</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>f1</span><span class=p>(</span><span class=n>someFunc</span><span class=p>);</span>   <span class=c1>// param 被推导为函数指针，具体类型为 void (*)(int, double)
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>f2</span><span class=p>(</span><span class=n>someFunc</span><span class=p>);</span>   <span class=c1>// param 被推导为函数引用，具体类型为 void (&amp;)(int, double)
+</span></span></span></code></pre></td></tr></table></div></div><h2 id=条款2-auto类型推导>条款2： auto类型推导</h2><h2 id=条款3理解-decltype>条款3：理解 decltype</h2><p>在 C++11 中，<code>decltype</code>的主要用途是声明返回值类型依赖于形参类型的函数模板，这需要用到返回值类型尾置语法(trailing return type syntax)：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>Container</span><span class=p>,</span> <span class=k>typename</span> <span class=n>Index</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>auto</span> <span class=n>authAndAccess</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n>Index</span> <span class=n>i</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=k>decltype</span><span class=p>(</span><span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>])</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>authenticateUser</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>C++11 允许对单表达式的 lambda 的返回值实施类型推导，而 C++14 将这个允许范围扩张到了一切函数和一切 lambda，包括那些多表达式的。这就意味着在 C++14 中可以去掉返回值类型尾置语法，仅保留前导<code>auto</code>。<br>但编译器会为<code>auto</code>指定为返回值类型的函数实施模板类型推导，这样就会留下隐患（例如忽略初始化表达的引用性），使用<code>decltype(auto)</code>来说明我们采用的是<code>decltype</code>的规则，就可以解决这个问题：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>Container</span><span class=p>,</span> <span class=k>typename</span> <span class=n>Index</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>decltype</span><span class=p>(</span><span class=k>auto</span><span class=p>)</span> <span class=n>authAndAccess</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n>Index</span> <span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>authenticateUser</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>c</span><span class=p>[</span><span class=n>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>在初始化表达式处也可以应用<code>decltype</code>类型推导规则：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=n>Widget</span> <span class=n>w</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>const</span> <span class=n>Widget</span><span class=o>&amp;</span> <span class=n>cw</span> <span class=o>=</span> <span class=n>w</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>auto</span> <span class=n>myWidget1</span> <span class=o>=</span> <span class=n>cw</span><span class=p>;</span>            <span class=c1>// auto 推导出类型为 Widget
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>decltype</span><span class=p>(</span><span class=k>auto</span><span class=p>)</span> <span class=n>myWidget2</span> <span class=o>=</span> <span class=n>cw</span><span class=p>;</span>  <span class=c1>// decltype 推导出类型为 const Widget&amp;
+</span></span></span></code></pre></td></tr></table></div></div><p>在上述情形中，我们无法向函数传递右值容器，若想要采用一种既能绑定到左值也能绑定到右值的引用形参，就需要借助万能引用，并应用<code>std::forward</code>（参考条款 25）：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>Container</span><span class=p>,</span> <span class=k>typename</span> <span class=n>Index</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>decltype</span><span class=p>(</span><span class=k>auto</span><span class=p>)</span> <span class=n>authAndAccess</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n>Index</span> <span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>authenticateUser</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>std</span><span class=o>::</span><span class=n>forward</span><span class=o>&lt;</span><span class=n>Container</span><span class=o>&gt;</span><span class=p>(</span><span class=n>c</span><span class=p>)[</span><span class=n>i</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2024-09-01</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpp/>cpp</a>
+<a href=/tags/morden-cpp/>morden cpp</a></div><nav class=post-nav><a class=prev href=/post/cpp-%E5%AF%B9-c++-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">对 C++ 左值、右值、智能指针的思考</span>
+<span class="prev-text nav-mobile">Prev</span>
+</a><a class=next href=/post/cpp-c++-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/><span class="next-text nav-default">C++ 的三五法则是什么？</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script><script>var languageCode="en".replace(/-/g,"_").replace(/_(.*)/,function(e,t){return e.replace(t,t.toUpperCase())});timeago().render(document.querySelectorAll(".timeago"),languageCode),timeago.cancel()</script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>

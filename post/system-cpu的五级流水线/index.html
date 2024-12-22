@@ -1,0 +1,108 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>[system] CPU的五级流水线 - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="现代C++的内存模型。&ndash;神文
+自底向上理解memory_order。
+大白话C++之：一文搞懂C++多线程内存模型(Memory Order)。
+时钟周期也称为振荡周期，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了SDRAM所能运行的最高频率。
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/system-cpu%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/system-cpu%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="[system] CPU的五级流水线"><meta property="og:description" content="现代C++的内存模型。–神文
+自底向上理解memory_order。
+大白话C++之：一文搞懂C++多线程内存模型(Memory Order)。
+时钟周期也称为振荡周期，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了SDRAM所能运行的最高频率。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2024-10-09T21:05:47+08:00"><meta property="article:modified_time" content="2024-10-09T21:05:47+08:00"><meta property="article:tag" content="Cpu"><meta property="article:tag" content="System"><meta itemprop=name content="[system] CPU的五级流水线"><meta itemprop=description content="现代C++的内存模型。–神文
+自底向上理解memory_order。
+大白话C++之：一文搞懂C++多线程内存模型(Memory Order)。
+时钟周期也称为振荡周期，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了SDRAM所能运行的最高频率。"><meta itemprop=datePublished content="2024-10-09T21:05:47+08:00"><meta itemprop=dateModified content="2024-10-09T21:05:47+08:00"><meta itemprop=wordCount content="1495"><meta itemprop=keywords content="Cpu,System"><meta name=twitter:card content="summary"><meta name=twitter:title content="[system] CPU的五级流水线"><meta name=twitter:description content="现代C++的内存模型。–神文
+自底向上理解memory_order。
+大白话C++之：一文搞懂C++多线程内存模型(Memory Order)。
+时钟周期也称为振荡周期，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了SDRAM所能运行的最高频率。"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>HOREB</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>HOREB</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>[system] CPU的五级流水线</h1><div class=post-meta><span class=post-time>2024-10-09</span><div class=post-category><a href=/categories/system/>system</a></div><span class=more-meta>1495 words </span><span class=more-meta>3 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><a href=#cpu-的五级流水线>CPU 的五级流水线</a></li></ul></nav></div></div><div class=post-content><p><a href=https://zhuanlan.zhihu.com/p/382372072>现代C++的内存模型</a>。&ndash;神文<br><a href=https://zhuanlan.zhihu.com/p/682286231>自底向上理解memory_order</a>。<br><a href=https://blog.csdn.net/sinat_38293503/article/details/134612152>大白话C++之：一文搞懂C++多线程内存模型(Memory Order)</a>。</p><blockquote><p><em>时钟周期</em>也称为<em>振荡周期</em>，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了<em>SDRAM</em>所能运行的最高频率。</p></blockquote><blockquote><p>如果没有Cache，CPU每执行一条指令，都要去内存取下一条，而执行一条指令也就几个时钟周期（几ns），而取指令却要上百个时钟周期，这将导致CPU大部分时间都在等待状态，进而导致执行效率低下。</p></blockquote><blockquote><p>C++ 内存模型（Memory Model）定义了程序在多线程环境中如何访问和共享内存，它为程序的正确性、并发性和可移植性提供了保证。C++ 内存模型主要通过原子操作、内存序列（Memory Ordering）、同步和锁等机制来规范线程之间的内存访问行为。</p></blockquote><hr><h1 id=cpu-的五级流水线>CPU 的五级流水线</h1><blockquote><p>CPU 将指令执行分解成5个部分，分别是：IF 取指令，ID 译码，EX 执行，MEM 访问内存，WB 写回。</p></blockquote><table><thead><tr><th>内存顺序模型</th><th>描述</th></tr></thead><tbody><tr><td>memory_order_seq_cst</td><td>顺序一致(sequentially consistent ordering)，只有该值满足sC顺序一致性，原子操作默认使用该值。</td></tr><tr><td>memory_order_relaxed</td><td>松散(relaxed ordering)</td></tr><tr><td>memory_order_consume</td><td>获取发布(acquire-release ordering)</td></tr><tr><td>memory_order_acquire</td><td>获取发布(acquire-release ordering)</td></tr><tr><td>memory_order_release</td><td>获取发布(acquire-release ordering)</td></tr><tr><td>memory_order_acq_rel</td><td>获取发布(acquire-release ordering)</td></tr></tbody></table><p>与编译器优化有关：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>//reordering 重排示例代码
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=kt>int</span> <span class=n>A</span> <span class=o>=</span> <span class=mi>0</span><span class=p>,</span> <span class=n>B</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>foo</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>A</span> <span class=o>=</span> <span class=n>B</span> <span class=o>+</span> <span class=mi>1</span><span class=p>;</span>  <span class=c1>//(1)
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>B</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>      <span class=c1>//(2)
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>// g++ -std=c++11 -O2 -S test.cpp
+</span></span><span class=line><span class=cl>// 编译器重排后的代码
+</span></span><span class=line><span class=cl>// 注意第一句汇编，已经将B最初的值存到了
+</span></span><span class=line><span class=cl>// 寄存器eax，而后将该eax的值加1，再赋给A
+</span></span><span class=line><span class=cl>movl  B(%rip), %eax
+</span></span><span class=line><span class=cl>movl  $1, B(%rip)          // B = 1
+</span></span><span class=line><span class=cl>addl  $1, %eax             // A = B + 1
+</span></span><span class=line><span class=cl>movl  %eax, A(%rip)
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// Invention示例代码
+</span></span></span><span class=line><span class=cl><span class=c1>// 原始代码
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span> <span class=n>cond</span> <span class=p>)</span> <span class=n>x</span> <span class=o>=</span> <span class=mi>42</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 优化后代码
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>r1</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span><span class=c1>// read what&#39;s there
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>x</span> <span class=o>=</span> <span class=mi>42</span><span class=p>;</span><span class=c1>// oops: optimistic write is not conditional
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>if</span><span class=p>(</span> <span class=o>!</span><span class=n>cond</span><span class=p>)</span><span class=c1>// check if we guessed wrong
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>x</span> <span class=o>=</span> <span class=n>r1</span><span class=p>;</span><span class=c1>// oops: back-out write is not SC
+</span></span></span></code></pre></td></tr></table></div></div><p>对于内存读写来说，读写顺序需要严格按照代码顺序，即要求如下（符号<code>&lt;p</code>表示程序代码顺序，符号<code>&lt;m</code>表示内存的读写顺序）：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// 顺序一致的要求
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cm>/* Load→Load */</span>
+</span></span><span class=line><span class=cl><span class=cm>/*若按代码顺序，a变量的读取先于b变量，
+</span></span></span><span class=line><span class=cl><span class=cm>则内存顺序也需要先读a再读b
+</span></span></span><span class=line><span class=cl><span class=cm>后面的规则同理。*/</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>L</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>p</span> <span class=n>L</span><span class=p>(</span><span class=n>b</span><span class=p>)</span> <span class=err>⇒</span> <span class=n>L</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>m</span> <span class=n>L</span><span class=p>(</span><span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* Load→Store */</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>L</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>p</span> <span class=n>S</span><span class=p>(</span><span class=n>b</span><span class=p>)</span> <span class=err>⇒</span> <span class=n>L</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>m</span> <span class=n>S</span><span class=p>(</span><span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=cm>/* Store→Store */</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>S</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>p</span> <span class=n>S</span><span class=p>(</span><span class=n>b</span><span class=p>)</span> <span class=err>⇒</span> <span class=n>S</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>m</span> <span class=n>S</span><span class=p>(</span><span class=n>b</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> <span class=cm>/* Store→Load */</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>S</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>p</span> <span class=n>L</span><span class=p>(</span><span class=n>b</span><span class=p>)</span> <span class=err>⇒</span> <span class=n>S</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>&lt;</span><span class=n>m</span> <span class=n>L</span><span class=p>(</span><span class=n>b</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><p>顺序一致这么严格，其显然会限制编译器和CPU的优化，所以业界提出了很多宽松的模型，例如在X86中使用的TSO（Total Store Order）便允许某些条件下的重排。</p><p><code>memory_order_acquire</code>：对于使用该枚举值的load操作，不允许该load之后的操作重排到load之前。<br><code>memory_order_release</code>：使用该枚举值的store操作，不允许store之前的操作重排到store之后。</p><blockquote><p>现代C++（包括Java）都是使用了SC-DRF(Sequential consistency for data race free)。在SC-DRF模型下，程序员只要不写出Race Condition的代码，编译器和CPU便能保证程序的执行结果与顺序一致相同。因而，内存模型就如同程序员与编译器/CPU之间的契约，需要彼此遵守承诺。C++的内存模型默认为SC-DRF，此外还支持更宽松的非SC-DRF的模型。</p></blockquote><blockquote><p>C++内存模型借鉴lock/unlock，引入了两个等效的概念，Acquire（类似lock）和Release（类似unlock），这两个都是单方向的屏障（One-way Barriers: acquire barrier, release barrier）。</p></blockquote></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2024-10-09</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpu/>cpu</a>
+<a href=/tags/system/>system</a></div><nav class=post-nav><a class=prev href=/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">事务 Transaction 的基础特性</span>
+<span class="prev-text nav-mobile">Prev</span>
+</a><a class=next href=/post/cpp-c++-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/><span class="next-text nav-default">C++ 中 tuple 是如何实现的？</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin=anonymous></script><script>var languageCode="en".replace(/-/g,"_").replace(/_(.*)/,function(e,t){return e.replace(t,t.toUpperCase())});timeago().render(document.querySelectorAll(".timeago"),languageCode),timeago.cancel()</script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>
