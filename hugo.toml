@@ -1,7 +1,7 @@
 baseURL = "https://jekyulll.github.io/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
-title = "EVAN JEKYULLL HOREB BLOG" 
+title = "HOREB EVAN JEKYULLL BLOG" 
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
