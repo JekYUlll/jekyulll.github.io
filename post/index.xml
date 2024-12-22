@@ -1,7 +1,91 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/post/</link><description>Recent content in Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 22 Dec 2024 23:01:25 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>[opengl] 菜 · OpenGL 初学笔记 -- Cherno + LearnOpenGL</title><link>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</link><pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</guid><description>&lt;p>&lt;img src="../images/ayanami_header.jpg" alt="../images/">&lt;/p>
-&lt;p>&lt;img src="https://jekyulll.github.io/images/ayanami_header.jpg" alt="/images/">&lt;/p>
-&lt;p>&lt;img src="images/ayanami_header.jpg" alt="images/">&lt;/p>
-&lt;p>&lt;img src="static/images/ayanami_header.jpg" alt="static/images/">&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/post/</link><description>Recent content in Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 22 Dec 2024 23:01:25 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>[database] 表格展示 MySQL 基础数据类型.md</title><link>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>数据类型&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;th>存储范围/格式&lt;/th>
+ &lt;th>示例&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>INT（整数型）&lt;/td>
+ &lt;td>存储整数，有不同的字节大小来适应不同范围的整数&lt;/td>
+ &lt;td>有TINYINT（1字节，范围 - 128到127）、SMALLINT（2字节，范围 - 32768到32767）、MEDIUMINT（3字节）、INT（4字节，范围 - 2147483648到2147483647）、BIGINT（8字节）&lt;/td>
+ &lt;td>&lt;code>age INT;&lt;/code>，可以存储像25这样的年龄值&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>FLOAT和DOUBLE（浮点型）&lt;/td>
+ &lt;td>用于存储带有小数部分的数值，FLOAT精度较低，DOUBLE精度较高&lt;/td>
+ &lt;td>FLOAT单精度浮点数，大约7位有效数字；DOUBLE双精度浮点数，大约15位有效数字&lt;/td>
+ &lt;td>&lt;code>price FLOAT;&lt;/code>可以存储像9.99这样的价格值，对于更高精度的科学计算可能使用&lt;code>measurement DOUBLE;&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DECIMAL&lt;/td>
+ &lt;td>精确的小数值存储，常用于金融等对精度要求极高的领域&lt;/td>
+ &lt;td>格式为DECIMAL(M,D)，M是数字总位数，D是小数点后的位数&lt;/td>
+ &lt;td>&lt;code>amount DECIMAL(10,2);&lt;/code>可以精确存储像12345.67这样的金额，其中总共可以存储10位数字，小数点后2位&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>CHAR&lt;/td>
+ &lt;td>定长字符串，存储固定长度的字符序列&lt;/td>
+ &lt;td>定义时指定长度，如CHAR(10)，最多存储10个字符，不足部分用空格填充&lt;/td>
+ &lt;td>&lt;code>code CHAR(5);&lt;/code>可以存储像&amp;rsquo;ABCD &amp;lsquo;（注意后面有空格）这样的字符串&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>VARCHAR&lt;/td>
+ &lt;td>可变长字符串，根据实际存储的字符长度占用空间&lt;/td>
+ &lt;td>定义最大长度，如VARCHAR(255)，实际存储多长就占用多少空间加上1 - 2字节用于记录长度&lt;/td>
+ &lt;td>&lt;code>name VARCHAR(50);&lt;/code>可以存储像&amp;rsquo;John Doe&amp;rsquo;这样的名字，长度小于等于50个字符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TEXT&lt;/td>
+ &lt;td>用于存储大量文本内容&lt;/td>
+ &lt;td>有TINYTEXT、TEXT、MEDIUMTEXT和LONGTEXT，存储大小逐渐增大&lt;/td>
+ &lt;td>&lt;code>description TEXT;&lt;/code>可以存储一篇短文或者产品描述&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>BLOB&lt;/td>
+ &lt;td>存储二进制大型对象，如图像、音频等&lt;/td>
+ &lt;td>有TINYBLOB、BLOB、MEDIUMBLOB和LONGBLOB，存储大小逐渐增大&lt;/td>
+ &lt;td>&lt;code>image BLOB;&lt;/code>可以存储一张照片的二进制数据&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DATE&lt;/td>
+ &lt;td>存储日期，格式为YYYY - MM - DD&lt;/td>
+ &lt;td>从1000 - 01 - 01到9999 - 12 - 31&lt;/td>
+ &lt;td>&lt;code>birth_date DATE;&lt;/code>可以存储像'2000 - 01 - 01&amp;rsquo;这样的出生日期&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TIME&lt;/td>
+ &lt;td>存储时间，格式为HH:MM:SS&lt;/td>
+ &lt;td>-&lt;/td>
+ &lt;td>&lt;code>start_time TIME;&lt;/code>可以存储像'09:00:00&amp;rsquo;这样的开始时间&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DATETIME&lt;/td>
+ &lt;td>存储日期和时间，格式为YYYY - MM - DD HH:MM:SS&lt;/td>
+ &lt;td>从1000 - 01 - 01 00:00:00到9999 - 12 - 31 23:59:59&lt;/td>
+ &lt;td>&lt;code>order_time DATETIME;&lt;/code>可以存储像'2024 - 01 - 01 10:30:00&amp;rsquo;这样的订单时间&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TIMESTAMP&lt;/td>
+ &lt;td>存储日期和时间戳，会受到时区影响&lt;/td>
+ &lt;td>从1970 - 01 - 01 00:00:00 UTC到2038 - 01 - 19 03:14:07 UTC&lt;/td>
+ &lt;td>&lt;code>update_time TIMESTAMP;&lt;/code>用于记录更新时间，在不同时区设置下可能会有变化&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>[linux] 进程优先级</title><link>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link><pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid><description>&lt;h5 id="图解linux进程优先级httpsmpweixinqqcoms__bizmzkyndiynzu4mgmid2247484435idx1snb6f30489cf388f1024d6883abb8237c8chksmc1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13frd">&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd">图解Linux进程优先级&lt;/a>&lt;/h5>
+&lt;p>&lt;em>实时优先级&lt;/em>用于实时应用程序，如硬实时任务和实时控制系统，而&lt;em>普通优先级&lt;/em>用于非实时应用程序。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>实时进程&lt;/strong>：动态优先级为0-99的进程，采用&lt;em>实时调度算法&lt;/em>调度。&lt;/li>
+&lt;li>&lt;strong>普通进程&lt;/strong>：动态优先级为100-139的进程，采用&lt;em>完全公平调度算法&lt;/em>调度。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484458&amp;amp;idx=1&amp;amp;sn=e4e64c006d4d822c6e7c184ab50540c1&amp;amp;chksm=c1d846bbf6afcfad20af0a7132eca1e3fd3c765ea5d4ee4134985b2b03f2461c207239fcc208#rd">Linux进程调度之完全公平调度（压箱底的干货分享）&lt;/a>。完全公平调度，CFS (Completely Fair Scheduler) 。&lt;/p></description></item><item><title>[linux] 文件系统与虚拟文件系统</title><link>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="linux-文件系统">Linux 文件系统&lt;/h1>
+&lt;p>&lt;strong>文件描述符&lt;/strong>(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br>
+当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
+是一个进程级别的概念。&lt;/p></description></item><item><title>[database] 事务Transaction的基础特性</title><link>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p>&lt;strong>事务&lt;/strong>（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br>
+&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p></description></item><item><title>[opengl] 菜 · OpenGL 初学笔记 -- Cherno + LearnOpenGL</title><link>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</link><pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</guid><description>&lt;p>&lt;img src="https://jekyulll.github.io/images/ayanami_header.jpg" alt="hearder">&lt;/p>
 &lt;p>这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。&lt;br>
 在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。&lt;/p></description></item><item><title>C++ / 游戏开发 / TA 学习路线汇总</title><link>https://jekyulll.github.io/post/means/</link><pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate><guid>https://jekyulll.github.io/post/means/</guid><description>&lt;h1 id="ta">TA&lt;/h1>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/436920189">转行技术美术（TA）的分享&lt;/a>。&lt;/p>
