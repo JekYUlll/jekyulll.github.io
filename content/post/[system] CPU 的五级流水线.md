@@ -1,7 +1,7 @@
 +++
 date = '2024-10-09T21:05:47+08:00'
 draft = false
-title = 'CPU的五级流水线'
+title = 'CPU 的五级流水线'
 author = 'JekYUlll'
 lastmod = '2024-10-09T21:05:47+08:00'
 tags = ['cpu', 'system']
