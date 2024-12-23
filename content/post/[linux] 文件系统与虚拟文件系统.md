@@ -1,7 +1,7 @@
 +++
 date = '2024-11-04T20:05:47+08:00'
 draft = false
-title = 'linux 文件系统与虚拟文件系统'
+title = 'Linux 文件系统与虚拟文件系统'
 author = 'JekYUlll'
 lastmod = '2024-11-04T20:05:47+08:00'
 tags = ['linux']

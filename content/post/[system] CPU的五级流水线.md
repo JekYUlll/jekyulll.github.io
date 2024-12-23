@@ -1,7 +1,7 @@
 +++
 date = '2024-10-09T21:05:47+08:00'
 draft = false
-title = '[system] CPU的五级流水线'
+title = 'CPU的五级流水线'
 author = 'JekYUlll'
 lastmod = '2024-10-09T21:05:47+08:00'
 tags = ['cpu', 'system']
@@ -11,7 +11,6 @@ categories = ['system']
 [现代C++的内存模型](https://zhuanlan.zhihu.com/p/382372072)。--神文  
 [自底向上理解memory_order](https://zhuanlan.zhihu.com/p/682286231)。  
 [大白话C++之：一文搞懂C++多线程内存模型(Memory Order)](https://blog.csdn.net/sinat_38293503/article/details/134612152)。
-
 
 > *时钟周期*也称为*振荡周期*，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了*SDRAM*所能运行的最高频率。
 
@@ -45,7 +44,7 @@ void foo()
     B = 1;      //(2)
 }
 ```
-```
+```asm
 // g++ -std=c++11 -O2 -S test.cpp
 // 编译器重排后的代码
 // 注意第一句汇编，已经将B最初的值存到了
