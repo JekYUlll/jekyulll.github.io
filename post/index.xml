@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/post/</link><description>Recent content in Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 23 Dec 2024 00:45:46 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/post/</link><description>Recent content in Welcome to My Blog on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 23 Dec 2024 08:42:29 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 编译器返回值优化</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid><description>&lt;h3 id="背景">背景&lt;/h3>
+&lt;p>在 C++ 中，当函数返回一个对象时，编译器通常需要进行对象的拷贝或移动操作。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="n">SomeClass&lt;/span> &lt;span class="nf">createObject&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SomeClass&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置 obj 的一些成员
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 返回一个对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在没有优化的情况下，&lt;code>obj&lt;/code> 被返回时，编译器可能会执行一次拷贝构造或移动构造操作，甚至可能是两次（先拷贝到临时对象，再从临时对象拷贝到目标变量）。这些额外的拷贝或移动操作会导致性能下降。&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
 &lt;li>数据结构&lt;/li>
 &lt;/ol>
 &lt;ul>
@@ -116,7 +134,7 @@
 &lt;p>&lt;strong>文件描述符&lt;/strong>(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br>
 当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
 是一个进程级别的概念。&lt;/p></description></item><item><title>事务 Transaction 的基础特性</title><link>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p>&lt;strong>事务&lt;/strong>（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br>
-&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p></description></item><item><title>CPU的五级流水线</title><link>https://jekyulll.github.io/post/system-cpu%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link><pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/system-cpu%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/382372072">现代C++的内存模型&lt;/a>。&amp;ndash;神文&lt;br>
+&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p></description></item><item><title>CPU 的五级流水线</title><link>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link><pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/382372072">现代C++的内存模型&lt;/a>。&amp;ndash;神文&lt;br>
 &lt;a href="https://zhuanlan.zhihu.com/p/682286231">自底向上理解memory_order&lt;/a>。&lt;br>
 &lt;a href="https://blog.csdn.net/sinat_38293503/article/details/134612152">大白话C++之：一文搞懂C++多线程内存模型(Memory Order)&lt;/a>。&lt;/p>
 &lt;blockquote>

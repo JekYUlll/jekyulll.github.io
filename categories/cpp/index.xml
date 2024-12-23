@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/categories/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 21 Dec 2024 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/categories/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 23 Dec 2024 08:42:29 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 编译器返回值优化</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid><description>&lt;h3 id="背景">背景&lt;/h3>
+&lt;p>在 C++ 中，当函数返回一个对象时，编译器通常需要进行对象的拷贝或移动操作。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="n">SomeClass&lt;/span> &lt;span class="nf">createObject&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SomeClass&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置 obj 的一些成员
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 返回一个对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在没有优化的情况下，&lt;code>obj&lt;/code> 被返回时，编译器可能会执行一次拷贝构造或移动构造操作，甚至可能是两次（先拷贝到临时对象，再从临时对象拷贝到目标变量）。这些额外的拷贝或移动操作会导致性能下降。&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
 &lt;li>数据结构&lt;/li>
 &lt;/ol>
 &lt;ul>
