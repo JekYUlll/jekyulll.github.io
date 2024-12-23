@@ -1,6 +1,6 @@
 baseURL = "https://jekyulll.github.io/"
 languageCode = "en"
-defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
+defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "HOREB EVAN JEKYULLL BLOG" 
 preserveTaxonomyNames = true
 enableRobotsTXT = true
@@ -60,7 +60,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   gitRepo = "git@github.com:JekYUlll/jekyulll.github.io.git"
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "HOREB"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = "Horeb"        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["JekYUlll", "theme","even"]
   description = "食有肉乎"
 
@@ -92,7 +92,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   mathjaxUseLocalFiles = false  # You should install mathjax in `your-site/static/lib/mathjax`
 
   postMetaInFooter = true   # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
-  linkToMarkDown = false    # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
+  linkToMarkDown = true    # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
   contentCopyright = ''     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
   changyanAppid = ""        # Changyan app id             # 畅言
@@ -113,7 +113,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   uglyURLs = false          # please keep same with uglyurls setting
 
   # Show language selector for multilingual site.
-  showLanguageSelector = false
+  showLanguageSelector = true
 
   [params.publicCDN]        # load these files from public cdn                          # 启用公共CDN，需自行定义
     enable = true
@@ -130,7 +130,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   # Display a message at the beginning of an article to warn the readers that it's content may be outdated.
   # 在文章开头显示提示信息，提醒读者文章内容可能过时。
   [params.outdatedInfoWarning]
-    enable = true
+    enable = false
     hint = 730               # Display hint if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示提醒
     warn = 2000              # Display warning if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示警告
 
