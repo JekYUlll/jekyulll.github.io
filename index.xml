@@ -1,1 +1,234 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/</link><description>Recent content on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 23 Dec 2024 09:30:41 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to My Blog</title><link>https://jekyulll.github.io/post/</link><pubDate>Sun, 22 Dec 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/</guid><description>&lt;p>欢迎来到我的博客！&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/</link><description>Recent content on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 23 Dec 2024 08:42:29 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 编译器返回值优化</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid><description>&lt;p>在 C++ 中，当函数返回一个对象时，编译器通常需要进行对象的拷贝或移动操作。例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="n">SomeClass&lt;/span> &lt;span class="nf">createObject&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SomeClass&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置 obj 的一些成员
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 返回一个对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在没有优化的情况下，&lt;code>obj&lt;/code> 被返回时，编译器可能会执行一次拷贝构造或移动构造操作，甚至可能是两次（先拷贝到临时对象，再从临时对象拷贝到目标变量）。这些额外的拷贝或移动操作会导致性能下降。&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
+&lt;li>数据结构&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;code>std::unordered_map&lt;/code>：用于快速查找键值对。&lt;/li>
+&lt;li>双向链表：与哈希表结合实现 LRU 缓存。&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>淘汰策略&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>LRU&lt;/strong> (Least Recently Used)：删除最近最少使用的元素。&lt;/li>
+&lt;li>&lt;strong>LFU&lt;/strong> (Least Frequently Used)：删除使用频率最低的元素。&lt;/li>
+&lt;li>&lt;strong>FIFO&lt;/strong> (First In First Out)：删除最早进入缓存的元素。&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>并发处理&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>读写锁&lt;/strong>（如std::shared_mutex）：允许多个读者或一个写者。&lt;/li>
+&lt;li>&lt;strong>线程安全容器&lt;/strong>：可以使用库（如 TBB 或 Folly）提供的线程安全容器。&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>高级优化&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>分片缓存&lt;/strong>：使用分片（sharding）将缓存划分成多个独立的部分，以减少锁争用。例如，使用键的哈希值对分片数量取模。&lt;/li>
+&lt;li>&lt;strong>持久化&lt;/strong>：将缓存数据保存到磁盘（如使用 RocksDB 或 Redis），以便服务重启后恢复。&lt;/li>
+&lt;li>&lt;strong>预加载&lt;/strong>：在服务启动时，预加载常用的数据到缓存中，减少冷启动时间。&lt;/li>
+&lt;li>&lt;strong>分布式缓存&lt;/strong>：如果单机缓存不足，可以使用分布式缓存（如 Memcached 或 Redis）来扩展容量。&lt;/li>
+&lt;li>&lt;strong>监控和调试&lt;/strong>：添加缓存命中率统计、日志记录和监控接口，以便分析性能和优化缓存策略。&lt;/li>
+&lt;/ul></description></item><item><title>表格展示 MySQL 基础数据类型</title><link>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>数据类型&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;th>存储范围/格式&lt;/th>
+ &lt;th>示例&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>INT（整数型）&lt;/td>
+ &lt;td>存储整数，有不同的字节大小来适应不同范围的整数&lt;/td>
+ &lt;td>有TINYINT（1字节，范围 - 128到127）、SMALLINT（2字节，范围 - 32768到32767）、MEDIUMINT（3字节）、INT（4字节，范围 - 2147483648到2147483647）、BIGINT（8字节）&lt;/td>
+ &lt;td>&lt;code>age INT;&lt;/code>，可以存储像25这样的年龄值&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>FLOAT和DOUBLE（浮点型）&lt;/td>
+ &lt;td>用于存储带有小数部分的数值，FLOAT精度较低，DOUBLE精度较高&lt;/td>
+ &lt;td>FLOAT单精度浮点数，大约7位有效数字；DOUBLE双精度浮点数，大约15位有效数字&lt;/td>
+ &lt;td>&lt;code>price FLOAT;&lt;/code>可以存储像9.99这样的价格值，对于更高精度的科学计算可能使用&lt;code>measurement DOUBLE;&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DECIMAL&lt;/td>
+ &lt;td>精确的小数值存储，常用于金融等对精度要求极高的领域&lt;/td>
+ &lt;td>格式为DECIMAL(M,D)，M是数字总位数，D是小数点后的位数&lt;/td>
+ &lt;td>&lt;code>amount DECIMAL(10,2);&lt;/code>可以精确存储像12345.67这样的金额，其中总共可以存储10位数字，小数点后2位&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>CHAR&lt;/td>
+ &lt;td>定长字符串，存储固定长度的字符序列&lt;/td>
+ &lt;td>定义时指定长度，如CHAR(10)，最多存储10个字符，不足部分用空格填充&lt;/td>
+ &lt;td>&lt;code>code CHAR(5);&lt;/code>可以存储像&amp;rsquo;ABCD &amp;lsquo;（注意后面有空格）这样的字符串&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>VARCHAR&lt;/td>
+ &lt;td>可变长字符串，根据实际存储的字符长度占用空间&lt;/td>
+ &lt;td>定义最大长度，如VARCHAR(255)，实际存储多长就占用多少空间加上1 - 2字节用于记录长度&lt;/td>
+ &lt;td>&lt;code>name VARCHAR(50);&lt;/code>可以存储像&amp;rsquo;John Doe&amp;rsquo;这样的名字，长度小于等于50个字符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TEXT&lt;/td>
+ &lt;td>用于存储大量文本内容&lt;/td>
+ &lt;td>有TINYTEXT、TEXT、MEDIUMTEXT和LONGTEXT，存储大小逐渐增大&lt;/td>
+ &lt;td>&lt;code>description TEXT;&lt;/code>可以存储一篇短文或者产品描述&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>BLOB&lt;/td>
+ &lt;td>存储二进制大型对象，如图像、音频等&lt;/td>
+ &lt;td>有TINYBLOB、BLOB、MEDIUMBLOB和LONGBLOB，存储大小逐渐增大&lt;/td>
+ &lt;td>&lt;code>image BLOB;&lt;/code>可以存储一张照片的二进制数据&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DATE&lt;/td>
+ &lt;td>存储日期，格式为YYYY - MM - DD&lt;/td>
+ &lt;td>从1000 - 01 - 01到9999 - 12 - 31&lt;/td>
+ &lt;td>&lt;code>birth_date DATE;&lt;/code>可以存储像'2000 - 01 - 01&amp;rsquo;这样的出生日期&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TIME&lt;/td>
+ &lt;td>存储时间，格式为HH:MM:SS&lt;/td>
+ &lt;td>-&lt;/td>
+ &lt;td>&lt;code>start_time TIME;&lt;/code>可以存储像'09:00:00&amp;rsquo;这样的开始时间&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DATETIME&lt;/td>
+ &lt;td>存储日期和时间，格式为YYYY - MM - DD HH:MM:SS&lt;/td>
+ &lt;td>从1000 - 01 - 01 00:00:00到9999 - 12 - 31 23:59:59&lt;/td>
+ &lt;td>&lt;code>order_time DATETIME;&lt;/code>可以存储像'2024 - 01 - 01 10:30:00&amp;rsquo;这样的订单时间&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TIMESTAMP&lt;/td>
+ &lt;td>存储日期和时间戳，会受到时区影响&lt;/td>
+ &lt;td>从1970 - 01 - 01 00:00:00 UTC到2038 - 01 - 19 03:14:07 UTC&lt;/td>
+ &lt;td>&lt;code>update_time TIMESTAMP;&lt;/code>用于记录更新时间，在不同时区设置下可能会有变化&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>Linux 进程优先级</title><link>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link><pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid><description>&lt;h5 id="图解linux进程优先级httpsmpweixinqqcoms__bizmzkyndiynzu4mgmid2247484435idx1snb6f30489cf388f1024d6883abb8237c8chksmc1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13frd">&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd">图解Linux进程优先级&lt;/a>&lt;/h5>
+&lt;p>&lt;em>实时优先级&lt;/em>用于实时应用程序，如硬实时任务和实时控制系统，而&lt;em>普通优先级&lt;/em>用于非实时应用程序。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>实时进程&lt;/strong>：动态优先级为0-99的进程，采用&lt;em>实时调度算法&lt;/em>调度。&lt;/li>
+&lt;li>&lt;strong>普通进程&lt;/strong>：动态优先级为100-139的进程，采用&lt;em>完全公平调度算法&lt;/em>调度。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484458&amp;amp;idx=1&amp;amp;sn=e4e64c006d4d822c6e7c184ab50540c1&amp;amp;chksm=c1d846bbf6afcfad20af0a7132eca1e3fd3c765ea5d4ee4134985b2b03f2461c207239fcc208#rd">Linux进程调度之完全公平调度（压箱底的干货分享）&lt;/a>。完全公平调度，CFS (Completely Fair Scheduler) 。&lt;/p></description></item><item><title>Linux 文件系统与虚拟文件系统</title><link>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="linux-文件系统">Linux 文件系统&lt;/h1>
+&lt;p>&lt;strong>文件描述符&lt;/strong>(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br>
+当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
+是一个进程级别的概念。&lt;/p></description></item><item><title>事务 Transaction 的基础特性</title><link>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p>&lt;strong>事务&lt;/strong>（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br>
+&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p></description></item><item><title>CPU 的五级流水线</title><link>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link><pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/382372072">现代C++的内存模型&lt;/a>。&amp;ndash;神文&lt;br>
+&lt;a href="https://zhuanlan.zhihu.com/p/682286231">自底向上理解memory_order&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/sinat_38293503/article/details/134612152">大白话C++之：一文搞懂C++多线程内存模型(Memory Order)&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>时钟周期&lt;/em>也称为&lt;em>振荡周期&lt;/em>，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了&lt;em>SDRAM&lt;/em>所能运行的最高频率。&lt;/p></description></item><item><title>C++ 中 tuple 是如何实现的？</title><link>https://jekyulll.github.io/post/cpp-c++-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</link><pubDate>Sat, 28 Sep 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</guid><description>&lt;p>&lt;code>tuple&lt;/code>本身就是一种结构体，但是是一个模板类。利用&lt;code>形参包&lt;/code>(Parameter pack)。&lt;a href="https://zhuanlan.zhihu.com/p/715025973">C++ std::tuple的原理及简易实现&lt;/a>，靠着模板元的递归实现的，相当抽象。&lt;/p></description></item><item><title>C++ 的四种类型转换</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link><pubDate>Sat, 28 Sep 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid><description>&lt;p>思考了一下&lt;code>reinterpret_cast&lt;/code>和强转的区别？这段非常易懂：&lt;br>
+C 语言的类型转换实际上包含各种转换方式，是 &lt;code>static_cast&lt;/code> 跟 &lt;code>reinterpret_cast&lt;/code> 等的父操作。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>一类是从逻辑意义上读取原有的值，然后到新的变量类型生成一个新值。（可以称为&lt;strong>显式类型转换&lt;/strong>，简称显转）&lt;/p></description></item><item><title>对 C++ 左值、右值、智能指针的思考</title><link>https://jekyulll.github.io/post/cpp-%E5%AF%B9-c++-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</link><pubDate>Thu, 19 Sep 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%AF%B9-c++-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</guid><description>&lt;h5 id="左值右值函数传参">左值右值、函数传参：&lt;/h5>
+&lt;ol>
+&lt;li>&lt;strong>传值（按值传递）&lt;/strong>
+如果函数的参数是通过按值传递的，传入一个右值时，编译器会生成一个临时对象，并将该临时对象复制或移动到函数内部的局部变量中。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>复制：对于不可移动的类型（例如基础类型 int），右值会被复制。&lt;/li>
+&lt;li>移动：对于可以移动的类型（例如拥有移动构造函数的类），右值将会被移动，从而避免复制的开销。移动操作是一个高效的浅拷贝操作，将资源的所有权从右值转移到函数内部的局部变量中。&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>&lt;strong>传引用（按引用传递）&lt;/strong>&lt;br>
+2.1 传左值引用
+&lt;code>void foo(const std::string&amp;amp; s);&lt;/code> 当函数接受一个const 左值引用时，如果传入一个右值，编译器会生成一个临时对象并将它绑定到左值引用上。这时不会发生复制或移动，函数内部会直接使用右值的临时对象。这个临时对象的生命周期会被延长到函数结束。
+2.2 传右值引用
+&lt;code>void foo(std::string&amp;amp;&amp;amp; s);&lt;/code> 当函数接受一个右值引用时，右值引用参数可以直接绑定到右值，因此不会发生复制。通常情况下，右值引用用于转移资源的所有权，函数内部可以自由地操作该右值引用的内存内容。&lt;/li>
+&lt;/ol>
+&lt;h6 id="stdmove-与-智能指针">std::move 与 智能指针&lt;/h6>
+&lt;p>&lt;code>std::move()&lt;/code> 本身并不会移动数据，它只是将对象的左值强制转换为右值引用，从而允许对象使用移动构造函数或移动赋值运算符。实际的“移动”行为是在这些函数中实现的。&lt;/p></description></item><item><title>C++ 模板类型推导</title><link>https://jekyulll.github.io/post/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link><pubDate>Sun, 01 Sep 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/649667647">一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a>：&lt;/p>
+&lt;h2 id="条款1-模板参数类型推导引用折叠">条款1： 模板参数类型推导，引用折叠&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">param&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">27&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">cx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">rx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 左值的情况
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// T 的类型为 int&amp;amp;, paramType 为 int&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cx&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// T 的类型为 const int&amp;amp;, paramType 为 const int&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rx&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// T 的类型为 const int&amp;amp;, paramType 为 const int&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 右值的情况
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">27&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">// T 的类型为 int, paramType 为 int&amp;amp;&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>对于指向 &lt;code>const&lt;/code> 对象的 &lt;code>const&lt;/code> 指针的传递，仅有指针本身的常量性会被忽略：&lt;/p></description></item><item><title>C++ 的三五法则是什么？</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</link><pubDate>Mon, 26 Aug 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</guid><description>&lt;p>三五法则（Rule of Three/Five/Zero）。&lt;/p>
+&lt;p>“三法则”主要适用于 C++98/03 标准下的资源管理。在使用动态内存或其他资源时，如果类需要显式地管理资源，通常需要实现以下三个特殊成员函数：&lt;/p></description></item><item><title>C++ 17 编译期 if</title><link>https://jekyulll.github.io/post/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link><pubDate>Sat, 10 Aug 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid><description>&lt;p>&lt;a href="https://www.bilibili.com/video/BV1Eb42177a8/?spm_id_from=333.1007.tianma.1-1-1.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">C++17编译期if&lt;/a>：&lt;code>constexpr&lt;/code>。&lt;/p>
+&lt;p>用例：不加&lt;code>constexpr&lt;/code>会编译出错，因为必有一种情况是语法错误的。如果&lt;code>T&lt;/code>为&lt;code>X&lt;/code>类型，则内部没有&lt;code>y_func()&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">T&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="c1">// 判断类型
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>	&lt;span class="k">if&lt;/span> &lt;span class="nf">constexpr&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">is_same_v&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">		&lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">x_func&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">// 此处若为 &amp;#34;舍弃语句&amp;#34;，不会参加编译。但会检查语法错误(但不会检查模板的实例化)。而预处理器if(#if)如果舍弃，完全不检查。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>		&lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">y_func&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>返回类型推导：C++14后可以用&lt;code>auto&lt;/code>作为函数返回值，但所有表达式必须推导出相同的返回类型(不能在不同情况下返回不同的类型，例如&lt;code>int&lt;/code>和&lt;code>float&lt;/code>)。但如果在判断的地方使用&lt;code>constexpr&lt;/code>，能通过编译(因为是在编译期判断的)。&lt;/p></description></item><item><title>OpenGL 初学笔记 -- Cherno + LearnOpenGL</title><link>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</link><pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</guid><description>&lt;p>&lt;img src="https://jekyulll.github.io/images/ayanami_header.jpg" alt="hearder">&lt;/p>
+&lt;p>这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。&lt;br>
+在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。&lt;/p></description></item><item><title>C++ / 游戏开发 / TA 学习路线汇总</title><link>https://jekyulll.github.io/post/means/</link><pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate><guid>https://jekyulll.github.io/post/means/</guid><description>&lt;h1 id="ta">TA&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/436920189">转行技术美术（TA）的分享&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">MIT 6.033 Spring 2021: Computer System 计算机系统&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/673578424">一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days&lt;/a>。&lt;br>
+&lt;a href="https://github.com/jackfrued/Python-100-Days">Python-100-Days&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.zhihu.com/question/640467378/answer/3382207520">我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎&lt;/a>。图程路线。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/711481617">光线追踪无痛入门&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/129372723">Ray Tracing: The Next Week V3.0中文翻译（上）&lt;/a>。&lt;br>
+&lt;a href="https://zhuanlan.zhihu.com/p/129745508">Ray Tracing: The Next Week V3.0中文翻译（下）&lt;/a>。&lt;/p></description></item></channel></rss>

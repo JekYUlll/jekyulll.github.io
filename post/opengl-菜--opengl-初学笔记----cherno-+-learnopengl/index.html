@@ -1,0 +1,111 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>OpenGL 初学笔记 -- Cherno + LearnOpenGL - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="
+这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。
+在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="OpenGL 初学笔记 -- Cherno + LearnOpenGL"><meta property="og:description" content="这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。
+在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2024-07-29T21:05:47+08:00"><meta property="article:modified_time" content="2024-12-22T21:05:47+08:00"><meta property="article:tag" content="Opengl"><meta property="article:tag" content="Graphics"><meta property="article:tag" content="Game"><meta itemprop=name content="OpenGL 初学笔记 -- Cherno + LearnOpenGL"><meta itemprop=description content="这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。
+在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。"><meta itemprop=datePublished content="2024-07-29T21:05:47+08:00"><meta itemprop=dateModified content="2024-12-22T21:05:47+08:00"><meta itemprop=wordCount content="944"><meta itemprop=keywords content="Opengl,Graphics,Game"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenGL 初学笔记 -- Cherno + LearnOpenGL"><meta name=twitter:description content="这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。
+在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>OpenGL 初学笔记 -- Cherno + LearnOpenGL</h1><div class=post-meta><span class=post-time>2024-07-29</span><div class=post-category><a href=/categories/game/>game</a></div><span class=more-meta>944 words </span><span class=more-meta>2 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#1-直接选择-64-位><strong>1.</strong> 直接选择 64 位</a></li><li><a href=#2-glew-glad-glfw><strong>2.</strong> GLEW, GLAD, GLFW</a></li><li><a href=#3-texture-的实现----小心析构函数><strong>3.</strong> <code>Texture</code> 的实现 &ndash; 小心析构函数</a></li></ul></li></ul></nav></div></div><div class=post-content><p><img src=/images/ayanami_header.jpg alt=hearder></p><p>这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。<br>在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。</p><p><a href=https://www.youtube.com/@TheCherno>Cherno主页</a> | <a href=https://learnopengl.com/>LearnOpenGL</a></p><hr><h2 id=1-直接选择-64-位><strong>1.</strong> 直接选择 64 位</h2><p>Cherno视频是2017及之前的，为了兼容性，教程里32位。而LearnOpenGL写到后面是64位，还要用Assimp库，默认是编译成64位。建议直接x64，像我这样闷头跟着写的话要把 GLEW 和 GLFW 的静态库全换一遍，或者去折腾CMake。</p><hr><h2 id=2-glew-glad-glfw><strong>2.</strong> GLEW, GLAD, GLFW</h2><p>这三个比较常用。两个教程的选择都是 GLEW + GLFW，其中 GLEW 和 GLAD 定位相似，都是用于访问OpenGL函数。可以先看看自己喜欢哪一个，免得后面想换再费功夫。</p><hr><h2 id=3-texture-的实现----小心析构函数><strong>3.</strong> <code>Texture</code> 的实现 &ndash; 小心析构函数</h2><p>LearnOpenGL中的<code>Texture</code>只是一个存储数据的结构体：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>struct</span> <span class=nc>Texture</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>GLuint</span> <span class=n>id</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>string</span> <span class=n>type</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>aiString</span> <span class=n>path</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>而Cherno将<code>Texture</code>创建为类，构造函数中直接完成加载图片的操作，并且在析构函数里调用<code>glDeleteTextures</code>。<br>如果无脑缝代码就完蛋了，因为LearnOpenGL在<code>Model::loadMaterialTextures</code>函数中创建了<code>Texture</code>的临时对象并返回，会调用析构函数：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=n>vector</span><span class=o>&lt;</span><span class=n>Texture</span><span class=o>&gt;</span> <span class=n>loadMaterialTextures</span><span class=p>(</span><span class=n>aiMaterial</span><span class=o>*</span> <span class=n>mat</span><span class=p>,</span> <span class=n>aiTextureType</span> <span class=n>type</span><span class=p>,</span> <span class=n>string</span> <span class=n>typeName</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=n>Texture</span><span class=o>&gt;</span> <span class=n>textures</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// ...
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>return</span> <span class=n>textures</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>可以选择：</p><ol><li>修改Texture类的实现（比如把）glDeleteTextures单独调用；</li><li>修改Model类中加载纹理的实现，例如传入Texture的引用；</li><li>使用指针。我选择了使用智能指针（相对应的地方全要改）：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// 顺便把参数改成 `aiTextureType`(Assimp定义的用于表示Texture不同类型的枚举)
+</span></span></span><span class=line><span class=cl><span class=c1>// 优化掉LearnOpenGL里那个丑陋的字符串处理
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Texture</span><span class=o>&gt;&gt;</span> <span class=n>Model</span><span class=o>::</span><span class=n>loadMaterialTextures</span><span class=p>(</span><span class=n>aiMaterial</span><span class=o>*</span> <span class=n>mat</span><span class=p>,</span> <span class=n>aiTextureType</span> <span class=n>type</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Texture</span><span class=o>&gt;&gt;</span> <span class=n>textures</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=n>GLuint</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>mat</span><span class=o>-&gt;</span><span class=n>GetTextureCount</span><span class=p>(</span><span class=n>type</span><span class=p>);</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>aiString</span> <span class=n>str</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>mat</span><span class=o>-&gt;</span><span class=n>GetTexture</span><span class=p>(</span><span class=n>type</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>str</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=kt>bool</span> <span class=n>canSkip</span> <span class=o>=</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=k>this</span><span class=o>-&gt;</span><span class=n>textures_loaded</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=n>textures_loaded</span><span class=p>[</span><span class=n>j</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>path</span> <span class=o>==</span> <span class=n>str</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>textures</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>textures_loaded</span><span class=p>[</span><span class=n>j</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>                <span class=n>canSkip</span> <span class=o>=</span> <span class=nb>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>canSkip</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>filename</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=p>(</span><span class=n>str</span><span class=p>.</span><span class=n>C_Str</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>            <span class=n>filename</span> <span class=o>=</span> <span class=n>directory</span> <span class=o>+</span> <span class=sc>&#39;/&#39;</span> <span class=o>+</span> <span class=n>filename</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Texture</span><span class=o>&gt;</span> <span class=n>texture</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>make_shared</span><span class=o>&lt;</span><span class=n>Texture</span><span class=o>&gt;</span><span class=p>(</span><span class=n>filename</span><span class=p>);</span> <span class=c1>// 教程里此处调用了TextureFromFile()来初始化texture，但可以用Texture的构造函数
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=n>texture</span><span class=o>-&gt;</span><span class=n>type</span> <span class=o>=</span> <span class=n>type</span><span class=p>;</span>   
+</span></span><span class=line><span class=cl>            <span class=n>texture</span><span class=o>-&gt;</span><span class=n>path</span> <span class=o>=</span> <span class=n>str</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=n>textures</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>texture</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=k>this</span><span class=o>-&gt;</span><span class=n>textures_loaded</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>texture</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>textures</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>同理，小心其他类里的析构函数（例如Shader类可能会在析构里调用glDeleteProgram）。</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2024-12-22</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/opengl/>opengl</a>
+<a href=/tags/graphics/>graphics</a>
+<a href=/tags/game/>game</a></div><nav class=post-nav><a class=prev href=/post/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">C++ 17 编译期 if</span>
+<span class="prev-text nav-mobile">Prev</span>
+</a><a class=next href=/post/means/><span class="next-text nav-default">C++ / 游戏开发 / TA 学习路线汇总</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>

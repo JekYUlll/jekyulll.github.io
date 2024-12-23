@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Morden Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/morden-cpp/</link><description>Recent content in Morden Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 01 Sep 2024 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/morden-cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 模板类型推导</title><link>https://jekyulll.github.io/post/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link><pubDate>Sun, 01 Sep 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/649667647">一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a>：&lt;/p>
+&lt;h2 id="条款1-模板参数类型推导引用折叠">条款1： 模板参数类型推导，引用折叠&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">param&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">27&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">cx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">int&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">rx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">x&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 左值的情况
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// T 的类型为 int&amp;amp;, paramType 为 int&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cx&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// T 的类型为 const int&amp;amp;, paramType 为 const int&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rx&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// T 的类型为 const int&amp;amp;, paramType 为 const int&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 右值的情况
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">27&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">// T 的类型为 int, paramType 为 int&amp;amp;&amp;amp;
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>对于指向 &lt;code>const&lt;/code> 对象的 &lt;code>const&lt;/code> 指针的传递，仅有指针本身的常量性会被忽略：&lt;/p></description></item><item><title>C++ 17 编译期 if</title><link>https://jekyulll.github.io/post/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link><pubDate>Sat, 10 Aug 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid><description>&lt;p>&lt;a href="https://www.bilibili.com/video/BV1Eb42177a8/?spm_id_from=333.1007.tianma.1-1-1.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">C++17编译期if&lt;/a>：&lt;code>constexpr&lt;/code>。&lt;/p>
+&lt;p>用例：不加&lt;code>constexpr&lt;/code>会编译出错，因为必有一种情况是语法错误的。如果&lt;code>T&lt;/code>为&lt;code>X&lt;/code>类型，则内部没有&lt;code>y_func()&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">template&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">T&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="n">f&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">T&lt;/span> &lt;span class="n">t&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="c1">// 判断类型
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>	&lt;span class="k">if&lt;/span> &lt;span class="nf">constexpr&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">is_same_v&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">T&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">		&lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">x_func&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">// 此处若为 &amp;#34;舍弃语句&amp;#34;，不会参加编译。但会检查语法错误(但不会检查模板的实例化)。而预处理器if(#if)如果舍弃，完全不检查。
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>		&lt;span class="n">t&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">y_func&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>返回类型推导：C++14后可以用&lt;code>auto&lt;/code>作为函数返回值，但所有表达式必须推导出相同的返回类型(不能在不同情况下返回不同的类型，例如&lt;code>int&lt;/code>和&lt;code>float&lt;/code>)。但如果在判断的地方使用&lt;code>constexpr&lt;/code>，能通过编译(因为是在编译期判断的)。&lt;/p></description></item></channel></rss>
