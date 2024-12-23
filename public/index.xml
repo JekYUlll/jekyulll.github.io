@@ -6,21 +6,14 @@
     <description>Recent content on HOREB EVAN JEKYULLL BLOG</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 22 Dec 2024 22:46:06 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Dec 2024 09:30:41 +0800</lastBuildDate>
     <atom:link href="https://jekyulll.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[opengl] 菜 · OpenGL 初学笔记 -- Cherno &#43; LearnOpenGL</title>
-      <link>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-&#43;-learnopengl/</link>
-      <pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate>
-      <guid>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-&#43;-learnopengl/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;images/ayanami_header.jpg&#34; alt=&#34;.&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>C&#43;&#43; / 游戏开发 / TA 学习路线汇总</title>
-      <link>https://jekyulll.github.io/post/means/</link>
-      <pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate>
-      <guid>https://jekyulll.github.io/post/means/</guid>
-      <description>&lt;h1 id=&#34;ta&#34;&gt;TA&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/436920189&#34;&gt;转行技术美术（TA）的分享&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a&#34;&gt;MIT 6.033 Spring 2021: Computer System 计算机系统&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/673578424&#34;&gt;一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days&lt;/a&gt;。&lt;br&gt;&#xA;&lt;a href=&#34;https://github.com/jackfrued/Python-100-Days&#34;&gt;Python-100-Days&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/640467378/answer/3382207520&#34;&gt;我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎&lt;/a&gt;。图程路线。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/711481617&#34;&gt;光线追踪无痛入门&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/649667647&#34;&gt;一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a&gt;。&lt;/p&gt;</description>
+      <title>Welcome to My Blog</title>
+      <link>https://jekyulll.github.io/post/</link>
+      <pubDate>Sun, 22 Dec 2024 21:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/post/</guid>
+      <description>&lt;p&gt;欢迎来到我的博客！&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
