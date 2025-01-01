@@ -4,6 +4,8 @@ draft = false
 title = 'C++ / 游戏开发 / TA 学习路线汇总'
 author = 'JekYUlll'
 lastmod = '2024-12-22T21:05:47+08:00'
+tags = ['path']
+categories = ['path']
 +++
 
 # TA
@@ -11,9 +13,6 @@ lastmod = '2024-12-22T21:05:47+08:00'
 [转行技术美术（TA）的分享](https://zhuanlan.zhihu.com/p/436920189)。
 
 [MIT 6.033 Spring 2021: Computer System 计算机系统](https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。
-
-[一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days](https://zhuanlan.zhihu.com/p/673578424)。  
-[Python-100-Days](https://github.com/jackfrued/Python-100-Days)。
 
 [我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎](https://www.zhihu.com/question/640467378/answer/3382207520)。图程路线。
 
@@ -35,6 +34,8 @@ lastmod = '2024-12-22T21:05:47+08:00'
 [FMOD](https://www.fmod.com/download#fmodengine)。
 
 [花了一年半时间写的玩具离线渲染器，用来学习并实现各种渲染算法](https://zhuanlan.zhihu.com/p/637308167)。
+
+[【搬运】Hazel 3D游戏引擎开发教程#001](https://www.bilibili.com/video/BV1ys4y167Cb?spm_id_from=333.788.videopod.sections&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。
 
 #### 图形学：
 入门：GAMES-101&nbsp;
@@ -159,9 +160,11 @@ C++项目：[如何找合适的C++项目给自己的简历加分？ - 大糖的�
 
 ---
 
-
 [B站最全智能优化算法课程，模拟退火算法，粒子群算法，遗传算法等16种优化算法*机器学习*深度学习\_人工智能](https://www.bilibili.com/video/BV1R1xWeSEUR?spm_id_from=333.788.recommend_more_video.0&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。
 
 [【大数据】什么是数据融合（Data Fusion)?](https://blog.csdn.net/oOBubbleX/article/details/140127181)
+
+[一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days](https://zhuanlan.zhihu.com/p/673578424)。  
+[Python-100-Days](https://github.com/jackfrued/Python-100-Days)。
 
 ### 训练营、证书、、GameJam、实习
