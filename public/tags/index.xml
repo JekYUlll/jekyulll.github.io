@@ -9,17 +9,24 @@
     <lastBuildDate>Thu, 02 Jan 2025 07:57:01 +0800</lastBuildDate>
     <atom:link href="https://jekyulll.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Compiler</title>
-      <link>https://jekyulll.github.io/tags/compiler/</link>
-      <pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate>
-      <guid>https://jekyulll.github.io/tags/compiler/</guid>
+      <title>Algorithm</title>
+      <link>https://jekyulll.github.io/tags/algorithm/</link>
+      <pubDate>Wed, 01 Jan 2025 14:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/algorithm/</guid>
       <description></description>
     </item>
     <item>
       <title>Cpp</title>
       <link>https://jekyulll.github.io/tags/cpp/</link>
-      <pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate>
+      <pubDate>Wed, 01 Jan 2025 14:05:47 +0800</pubDate>
       <guid>https://jekyulll.github.io/tags/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Compiler</title>
+      <link>https://jekyulll.github.io/tags/compiler/</link>
+      <pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/compiler/</guid>
       <description></description>
     </item>
     <item>

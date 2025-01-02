@@ -35,7 +35,6 @@ categories = ['cpp']
 
 注：**负载不均风险**：如果映射规则不合理，可能导致某些段成为热点(eg. 热点桶)，影响性能。
 
-
 ---
 
 下面通过一个线程安全的哈希表（`ThreadSafeHashMap`）来展示分段锁的实现(用`std::vector`简单模拟)。
@@ -134,7 +133,10 @@ int main() {
     return 0;
 }
 ```
-像 [Intel TBB](https://github.com/uxlfoundation/oneTBB) 等并发库提供了更加高效的线程安全容器。
+像 [Intel TBB](https://github.com/uxlfoundation/oneTBB) 等并发库提供了更加高效的线程安全容器。  
+
+> TBB(Thread Building Blocks)是英特尔发布的一个库，全称为 Threading Building Blocks。TBB 获得过 17 届 Jolt Productivity Awards，是一套 C++ 模板库。
+
 ```bash
 sudo apt-get install libtbb-dev  # Ubuntu/Debian
 sudo yum install tbb-devel       # CentOS/Red Hat

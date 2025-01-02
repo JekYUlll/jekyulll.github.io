@@ -50,8 +50,8 @@
 
   <meta itemprop="name" content="HOREB EVAN JEKYULLL BLOG">
   <meta itemprop="description" content="食有肉乎">
-  <meta itemprop="datePublished" content="2024-12-23T08:42:29+08:00">
-  <meta itemprop="dateModified" content="2025-01-02T18:05:47+08:00">
+  <meta itemprop="datePublished" content="2025-01-01T14:05:47+08:00">
+  <meta itemprop="dateModified" content="2025-01-02T07:57:01+08:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="HOREB EVAN JEKYULLL BLOG">
   <meta name="twitter:description" content="食有肉乎">
@@ -125,6 +125,53 @@
       <div class="content-wrapper">
         <div id="content" class="content">
           <section id="posts" class="posts">
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/">分段锁技术详解及 C&#43;&#43; 实现</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2025-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/cpp/"> cpp </a>
+          </div>
+        <span class="more-meta"> 1125 words </span>
+        <span class="more-meta"> 3 mins read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/">简述如何解决哈希冲突？</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2025-01-01 </span>
+      <div class="post-category">
+          <a href="/categories/cpp/"> cpp </a>
+          </div>
+        <span class="more-meta"> 1277 words </span>
+        <span class="more-meta"> 3 mins read </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <blockquote>
+<p>哈希冲突是指 <strong>不同的输入</strong>（通常是不同的键）通过哈希函数计算后，得到相同的哈希值并被映射到相同的桶或位置。这是哈希算法的一个固有问题，通常发生在哈希表中。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
     <article class="post">
   <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/">C&#43;&#43; 编译器返回值优化</a></h1>
@@ -444,73 +491,6 @@
     </div>
     <div class="read-more">
       <a href="/post/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">C&#43;&#43; 的四种类型转换</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2024-09-28 </span>
-      <div class="post-category">
-          <a href="/categories/cpp/"> cpp </a>
-          </div>
-        <span class="more-meta"> 1144 words </span>
-        <span class="more-meta"> 3 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>思考了一下<code>reinterpret_cast</code>和强转的区别？这段非常易懂：<br>
-C 语言的类型转换实际上包含各种转换方式，是 <code>static_cast</code> 跟 <code>reinterpret_cast</code> 等的父操作。</p>
-<ul>
-<li>
-<p>一类是从逻辑意义上读取原有的值，然后到新的变量类型生成一个新值。（可以称为<strong>显式类型转换</strong>，简称显转）</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/">对 C&#43;&#43; 左值、右值、智能指针的思考</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2024-09-19 </span>
-      <div class="post-category">
-          <a href="/categories/cpp/"> cpp </a>
-          </div>
-        <span class="more-meta"> 1037 words </span>
-        <span class="more-meta"> 3 mins read </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <h5 id="左值右值函数传参">左值右值、函数传参：</h5>
-<ol>
-<li><strong>传值（按值传递）</strong>
-如果函数的参数是通过按值传递的，传入一个右值时，编译器会生成一个临时对象，并将该临时对象复制或移动到函数内部的局部变量中。</li>
-</ol>
-<ul>
-<li>复制：对于不可移动的类型（例如基础类型 int），右值会被复制。</li>
-<li>移动：对于可以移动的类型（例如拥有移动构造函数的类），右值将会被移动，从而避免复制的开销。移动操作是一个高效的浅拷贝操作，将资源的所有权从右值转移到函数内部的局部变量中。</li>
-</ul>
-<ol start="2">
-<li><strong>传引用（按引用传递）</strong><br>
-2.1 传左值引用
-<code>void foo(const std::string&amp; s);</code> 当函数接受一个const 左值引用时，如果传入一个右值，编译器会生成一个临时对象并将它绑定到左值引用上。这时不会发生复制或移动，函数内部会直接使用右值的临时对象。这个临时对象的生命周期会被延长到函数结束。
-2.2 传右值引用
-<code>void foo(std::string&amp;&amp; s);</code> 当函数接受一个右值引用时，右值引用参数可以直接绑定到右值，因此不会发生复制。通常情况下，右值引用用于转移资源的所有权，函数内部可以自由地操作该右值引用的内存内容。</li>
-</ol>
-<h6 id="stdmove-与-智能指针">std::move 与 智能指针</h6>
-<p><code>std::move()</code> 本身并不会移动数据，它只是将对象的左值强制转换为右值引用，从而允许对象使用移动构造函数或移动赋值运算符。实际的“移动”行为是在这些函数中实现的。</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>

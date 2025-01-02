@@ -8,7 +8,6 @@ tags = ['cpp']
 categories = ['cpp']
 +++
 
-
 思考了一下`reinterpret_cast`和强转的区别？这段非常易懂：  
 C 语言的类型转换实际上包含各种转换方式，是 `static_cast` 跟 `reinterpret_cast` 等的父操作。  
 -  一类是从逻辑意义上读取原有的值，然后到新的变量类型生成一个新值。（可以称为**显式类型转换**，简称显转）  
