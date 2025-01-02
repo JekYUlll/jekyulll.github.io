@@ -4,7 +4,7 @@ draft = false
 title = '简述如何解决哈希冲突？'
 author = 'JekYUlll'
 lastmod = '2025-01-02T18:05:47+08:00'
-tags = ['cpp']
+tags = ['cpp','algorithm']
 categories = ['cpp']
 +++
 
