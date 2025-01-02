@@ -3,7 +3,7 @@ date = '2025-01-01T18:05:47+08:00'
 draft = false
 title = '分段锁技术详解及 C++ 实现'
 author = 'JekYUlll'
-lastmod = '2025-01-02T18:05:47+08:00'
+lastmod = '2025-01-01T18:05:47+08:00'
 tags = ['cpp','algorithm']
 categories = ['cpp']
 +++
