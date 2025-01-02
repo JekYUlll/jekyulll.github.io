@@ -1,0 +1,204 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>分段锁技术详解及 C++ 实现 - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="分段锁技术详解及 C++ 实现"><meta property="og:description" content="分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-01-01T14:05:47+08:00"><meta property="article:modified_time" content="2025-01-01T14:05:47+08:00"><meta property="article:tag" content="Cpp"><meta property="article:tag" content="Algorithm"><meta itemprop=name content="分段锁技术详解及 C++ 实现"><meta itemprop=description content="分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。"><meta itemprop=datePublished content="2025-01-01T14:05:47+08:00"><meta itemprop=dateModified content="2025-01-01T14:05:47+08:00"><meta itemprop=wordCount content="1125"><meta itemprop=keywords content="Cpp,Algorithm"><meta name=twitter:card content="summary"><meta name=twitter:title content="分段锁技术详解及 C++ 实现"><meta name=twitter:description content="分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>分段锁技术详解及 C++ 实现</h1><div class=post-meta><span class=post-time>2025-01-01</span><div class=post-category><a href=/categories/cpp/>cpp</a></div><span class=more-meta>1125 words </span><span class=more-meta>3 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><p>分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。</p><p>分段锁通过减少锁粒度，让多个线程可以同时访问不同的段，从而显著提高性能。这种方法常见于 <strong>哈希表</strong>、<strong>数据库索引</strong> 和其他高并发系统中。</p><hr><h4 id=基本原理><strong>基本原理</strong></h4><ol><li><p><strong>划分资源</strong>：
+将容器划分为多个独立的段（<code>segment</code>），每段可以包含一部分数据。例如，一个哈希表可以按哈希值将数据分配到多个桶（<code>bucket</code>），每个桶代表一个段。</p></li><li><p><strong>独立加锁</strong>：
+每个段都有一个独立的锁（如 <code>std::mutex</code> 或 <code>std::shared_mutex</code>），对该段的数据操作时，只需要锁定对应的段即可，其他段不受影响。</p></li><li><p><strong>映射规则</strong>：
+通过某种映射规则（如哈希函数）将操作定位到特定的段。这种映射规则应尽可能均匀，以避免<em>热点问题</em>（即某些段过于频繁被访问，导致锁竞争）。</p></li></ol><hr><h4 id=适用场景><strong>适用场景</strong></h4><ul><li><strong>高并发读写</strong>：如多线程访问的大型哈希表、数据库索引。</li><li><strong>热点数据分散</strong>：通过分段减少单点锁的争用，提升性能。</li><li><strong>读多写少</strong>：可以结合 <code>std::shared_mutex</code> 提供共享锁和独占锁，进一步优化读性能。</li></ul><p>注：<strong>负载不均风险</strong>：如果映射规则不合理，可能导致某些段成为热点(eg. 热点桶)，影响性能。</p><hr><p>下面通过一个线程安全的哈希表（<code>ThreadSafeHashMap</code>）来展示分段锁的实现(用<code>std::vector</code>简单模拟)。</p><ol><li>将哈希表分为多个桶（<code>bucket</code>），每个桶独立管理其数据。</li><li>使用哈希函数将键映射到对应的桶。</li><li>为每个桶分配一个 <code>std::mutex</code> 来保护数据。</li><li>对于读操作，只锁定对应的桶，支持并行读取。</li><li>对于写操作，也只锁定对应的桶，减少锁的范围。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span><span class=lnt>81
+</span><span class=lnt>82
+</span><span class=lnt>83
+</span><span class=lnt>84
+</span><span class=lnt>85
+</span><span class=lnt>86
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;vector&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;mutex&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;shared_mutex&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;thread&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;functional&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>Key</span><span class=p>,</span> <span class=k>typename</span> <span class=n>Value</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ThreadSafeHashMap</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>struct</span> <span class=nc>Bucket</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>shared_mutex</span> <span class=n>mtx</span><span class=p>;</span> <span class=c1>// 每个桶的独立锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=n>Key</span><span class=p>,</span> <span class=n>Value</span><span class=o>&gt;&gt;</span> <span class=n>data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Bucket</span><span class=o>&gt;</span> <span class=n>buckets</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>size_t</span> <span class=n>num_buckets</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 哈希函数，将键映射到对应的桶
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>size_t</span> <span class=nf>hash</span><span class=p>(</span><span class=k>const</span> <span class=n>Key</span><span class=o>&amp;</span> <span class=n>key</span><span class=p>)</span> <span class=k>const</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>std</span><span class=o>::</span><span class=n>hash</span><span class=o>&lt;</span><span class=n>Key</span><span class=o>&gt;</span><span class=p>{}(</span><span class=n>key</span><span class=p>)</span> <span class=o>%</span> <span class=n>num_buckets</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>ThreadSafeHashMap</span><span class=p>(</span><span class=n>size_t</span> <span class=n>num_buckets</span> <span class=o>=</span> <span class=mi>16</span><span class=p>)</span> <span class=o>:</span> <span class=n>num_buckets</span><span class=p>(</span><span class=n>num_buckets</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>buckets</span><span class=p>.</span><span class=n>resize</span><span class=p>(</span><span class=n>num_buckets</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 插入操作，按桶分段加锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=k>const</span> <span class=n>Key</span><span class=o>&amp;</span> <span class=n>key</span><span class=p>,</span> <span class=k>const</span> <span class=n>Value</span><span class=o>&amp;</span> <span class=n>value</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>size_t</span> <span class=n>index</span> <span class=o>=</span> <span class=n>hash</span><span class=p>(</span><span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>buckets</span><span class=p>[</span><span class=n>index</span><span class=p>].</span><span class=n>mtx</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>buckets</span><span class=p>[</span><span class=n>index</span><span class=p>].</span><span class=n>data</span><span class=p>.</span><span class=n>push_back</span><span class=p>({</span><span class=n>key</span><span class=p>,</span> <span class=n>value</span><span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 查找操作，按桶分段加锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kt>bool</span> <span class=nf>find</span><span class=p>(</span><span class=k>const</span> <span class=n>Key</span><span class=o>&amp;</span> <span class=n>key</span><span class=p>,</span> <span class=n>Value</span><span class=o>&amp;</span> <span class=n>value</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>size_t</span> <span class=n>index</span> <span class=o>=</span> <span class=n>hash</span><span class=p>(</span><span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>shared_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>buckets</span><span class=p>[</span><span class=n>index</span><span class=p>].</span><span class=n>mtx</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=k>auto</span><span class=o>&amp;</span> <span class=nl>pair</span> <span class=p>:</span> <span class=n>buckets</span><span class=p>[</span><span class=n>index</span><span class=p>].</span><span class=n>data</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=n>pair</span><span class=p>.</span><span class=n>first</span> <span class=o>==</span> <span class=n>key</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>value</span> <span class=o>=</span> <span class=n>pair</span><span class=p>.</span><span class=n>second</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 删除操作，按桶分段加锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=kt>bool</span> <span class=nf>erase</span><span class=p>(</span><span class=k>const</span> <span class=n>Key</span><span class=o>&amp;</span> <span class=n>key</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>size_t</span> <span class=n>index</span> <span class=o>=</span> <span class=n>hash</span><span class=p>(</span><span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>buckets</span><span class=p>[</span><span class=n>index</span><span class=p>].</span><span class=n>mtx</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>auto</span><span class=o>&amp;</span> <span class=n>bucket</span> <span class=o>=</span> <span class=n>buckets</span><span class=p>[</span><span class=n>index</span><span class=p>].</span><span class=n>data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=k>auto</span> <span class=n>it</span> <span class=o>=</span> <span class=n>bucket</span><span class=p>.</span><span class=n>begin</span><span class=p>();</span> <span class=n>it</span> <span class=o>!=</span> <span class=n>bucket</span><span class=p>.</span><span class=n>end</span><span class=p>();</span> <span class=o>++</span><span class=n>it</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=n>it</span><span class=o>-&gt;</span><span class=n>first</span> <span class=o>==</span> <span class=n>key</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>bucket</span><span class=p>.</span><span class=n>erase</span><span class=p>(</span><span class=n>it</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>ThreadSafeHashMap</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>map</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 多线程插入数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t1</span><span class=p>([</span><span class=o>&amp;</span><span class=p>]()</span> <span class=p>{</span> <span class=n>map</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=s>&#34;one&#34;</span><span class=p>);</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t2</span><span class=p>([</span><span class=o>&amp;</span><span class=p>]()</span> <span class=p>{</span> <span class=n>map</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=s>&#34;two&#34;</span><span class=p>);</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=kr>thread</span> <span class=n>t3</span><span class=p>([</span><span class=o>&amp;</span><span class=p>]()</span> <span class=p>{</span> <span class=n>map</span><span class=p>.</span><span class=n>insert</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=s>&#34;three&#34;</span><span class=p>);</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>t1</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>t2</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>t3</span><span class=p>.</span><span class=n>join</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 查找数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>map</span><span class=p>.</span><span class=n>find</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>value</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Found: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>value</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 删除数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>map</span><span class=p>.</span><span class=n>erase</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>像 <a href=https://github.com/uxlfoundation/oneTBB>Intel TBB</a> 等并发库提供了更加高效的线程安全容器。</p><blockquote><p>TBB(Thread Building Blocks)是英特尔发布的一个库，全称为 Threading Building Blocks。TBB 获得过 17 届 Jolt Productivity Awards，是一套 C++ 模板库。</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>sudo apt-get install libtbb-dev  <span class=c1># Ubuntu/Debian</span>
+</span></span><span class=line><span class=cl>sudo yum install tbb-devel       <span class=c1># CentOS/Red Hat</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>./vcpkg install tbb
+</span></span><span class=line><span class=cl>conan install tbb
+</span></span><span class=line><span class=cl>brew install tbb
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2025-01-01</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpp/>cpp</a>
+<a href=/tags/algorithm/>algorithm</a></div><nav class=post-nav><a class=next href=/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/><span class="next-text nav-default">简述如何解决哈希冲突？</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024 -
+2025<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>

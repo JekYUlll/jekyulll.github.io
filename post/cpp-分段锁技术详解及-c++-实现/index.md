@@ -1,12 +1,3 @@
-+++
-date = '2025-01-01T14:05:47+08:00'
-draft = false
-title = '分段锁技术详解及 C++ 实现'
-author = 'JekYUlll'
-lastmod = '2025-01-01T14:05:47+08:00'
-tags = ['cpp','algorithm']
-categories = ['cpp']
-+++
 
 分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。
 
@@ -34,7 +25,6 @@ categories = ['cpp']
 - **读多写少**：可以结合 `std::shared_mutex` 提供共享锁和独占锁，进一步优化读性能。
 
 注：**负载不均风险**：如果映射规则不合理，可能导致某些段成为热点(eg. 热点桶)，影响性能。
-
 
 ---
 
@@ -134,7 +124,10 @@ int main() {
     return 0;
 }
 ```
-像 [Intel TBB](https://github.com/uxlfoundation/oneTBB) 等并发库提供了更加高效的线程安全容器。
+像 [Intel TBB](https://github.com/uxlfoundation/oneTBB) 等并发库提供了更加高效的线程安全容器。  
+
+> TBB(Thread Building Blocks)是英特尔发布的一个库，全称为 Threading Building Blocks。TBB 获得过 17 届 Jolt Productivity Awards，是一套 C++ 模板库。
+
 ```bash
 sudo apt-get install libtbb-dev  # Ubuntu/Debian
 sudo yum install tbb-devel       # CentOS/Red Hat
