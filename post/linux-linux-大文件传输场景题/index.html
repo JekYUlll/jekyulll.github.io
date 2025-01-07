@@ -1,0 +1,502 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>linux 大文件传输场景题 - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)
+问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="linux 大文件传输场景题"><meta property="og:description" content="(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)
+问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-01-07T20:05:47+08:00"><meta property="article:modified_time" content="2025-01-07T20:05:47+08:00"><meta property="article:tag" content="Linux"><meta property="article:tag" content="Cpp"><meta property="article:tag" content="Network"><meta itemprop=name content="linux 大文件传输场景题"><meta itemprop=description content="(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)
+问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？"><meta itemprop=datePublished content="2025-01-07T20:05:47+08:00"><meta itemprop=dateModified content="2025-01-07T20:05:47+08:00"><meta itemprop=wordCount content="2104"><meta itemprop=keywords content="Linux,Cpp,Network"><meta name=twitter:card content="summary"><meta name=twitter:title content="linux 大文件传输场景题"><meta name=twitter:description content="(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)
+问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>linux 大文件传输场景题</h1><div class=post-meta><span class=post-time>2025-01-07</span><div class=post-category><a href=/categories/linux/>linux</a></div><span class=more-meta>2104 words </span><span class=more-meta>5 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#1-使用局域网广播发现b的ip地址>1. 使用局域网广播发现B的IP地址</a></li><li><a href=#2-使用tcp协议进行文件传输>2. 使用TCP协议进行文件传输</a></li><li><a href=#具体步骤和代码实现>具体步骤和代码实现</a></li><li><a href=#2-使用tcp协议传输文件>2. 使用TCP协议传输文件</a></li><li><a href=#拓展>拓展：</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><p>(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)</p><blockquote><p>问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？</p></blockquote><hr><p>大文件传输的优化：</p><ul><li>分块传输：将大文件分成多个小块（如4KB、8KB等），每次传输一块，避免占用过多内存。</li><li>校验和（Checksum）：在每一块传输后进行数据校验，确保数据的完整性。</li><li>带宽控制：通过控制每次发送的数据量来避免一次性传输过多数据，控制网络负载。</li></ul><p>断点续传的实现：</p><ul><li>记录传输进度：客户端和服务器都需要记录已经成功传输的数据块或字节的位置。</li><li>支持断点请求：客户端在恢复传输时，应该告知服务器从哪个位置开始传输。</li><li>校验和和确认机制：每次传输数据块后，都应该进行确认，确保数据正确传送。</li></ul><p><strong>步骤</strong>：</p><h3 id=1-使用局域网广播发现b的ip地址>1. 使用局域网广播发现B的IP地址</h3><p>由于A和B的IP地址不直接已知，A可以通过<strong>局域网广播</strong>来找到B的IP地址。A可以向网络中的所有主机发送一个<em>UDP广播消息</em>，所有主机都会接收到这个消息，B在接收到这个广播后，可以回复A，告知自己的IP地址。</p><ul><li><strong>UDP广播</strong>：A可以通过发送一个UDP广播包到特定的端口，让局域网中的所有主机收到该消息。B可以通过监听这个端口，收到消息后回应自己的IP地址。</li></ul><h3 id=2-使用tcp协议进行文件传输>2. 使用TCP协议进行文件传输</h3><p>一旦A得到了B的IP地址，就可以使用TCP协议进行文件传输。A通过TCP连接到B，建立数据通道，开始发送1GB的文件。</p><h3 id=具体步骤和代码实现>具体步骤和代码实现</h3><h4 id=1-udp广播发现b的ip地址>1. UDP广播发现B的IP地址</h4><p>A使用UDP广播向局域网中的所有主机发送请求，B收到请求后会通过UDP回应自己的IP地址。</p><p><strong>A端：发送UDP广播请求</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;arpa/inet.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;unistd.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#define BROADCAST_PORT 12345
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>send_broadcast_message</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>sockfd</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>struct</span> <span class=nc>sockaddr_in</span> <span class=n>broadcast_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>broadcast_enable</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>message</span> <span class=o>=</span> <span class=s>&#34;Are you there, B? Please reply with your IP address.&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 创建UDP套接字
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>sockfd</span> <span class=o>=</span> <span class=n>socket</span><span class=p>(</span><span class=n>AF_INET</span><span class=p>,</span> <span class=n>SOCK_DGRAM</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>sockfd</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Socket creation failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 允许广播
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>setsockopt</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=n>SOL_SOCKET</span><span class=p>,</span> <span class=n>SO_BROADCAST</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>broadcast_enable</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>broadcast_enable</span><span class=p>))</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Setting broadcast option failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>memset</span><span class=p>(</span><span class=o>&amp;</span><span class=n>broadcast_addr</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>broadcast_addr</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>broadcast_addr</span><span class=p>.</span><span class=n>sin_family</span> <span class=o>=</span> <span class=n>AF_INET</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>broadcast_addr</span><span class=p>.</span><span class=n>sin_port</span> <span class=o>=</span> <span class=n>htons</span><span class=p>(</span><span class=n>BROADCAST_PORT</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>broadcast_addr</span><span class=p>.</span><span class=n>sin_addr</span><span class=p>.</span><span class=n>s_addr</span> <span class=o>=</span> <span class=n>htonl</span><span class=p>(</span><span class=n>INADDR_BROADCAST</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 发送广播消息
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>sendto</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=n>message</span><span class=p>,</span> <span class=n>strlen</span><span class=p>(</span><span class=n>message</span><span class=p>),</span> <span class=mi>0</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>broadcast_addr</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>broadcast_addr</span><span class=p>))</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Broadcast failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Broadcast message sent!&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>send_broadcast_message</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>B端：接收UDP广播并回应自己的IP</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;arpa/inet.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;unistd.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#define BROADCAST_PORT 12345
+</span></span></span><span class=line><span class=cl><span class=cp>#define RESPONSE_PORT 12346
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>listen_for_broadcasts</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>sockfd</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>struct</span> <span class=nc>sockaddr_in</span> <span class=n>server_addr</span><span class=p>,</span> <span class=n>client_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>socklen_t</span> <span class=n>client_len</span> <span class=o>=</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>client_addr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>buffer</span><span class=p>[</span><span class=mi>1024</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 创建UDP套接字
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>sockfd</span> <span class=o>=</span> <span class=n>socket</span><span class=p>(</span><span class=n>AF_INET</span><span class=p>,</span> <span class=n>SOCK_DGRAM</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>sockfd</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Socket creation failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>memset</span><span class=p>(</span><span class=o>&amp;</span><span class=n>server_addr</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>server_addr</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_family</span> <span class=o>=</span> <span class=n>AF_INET</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_port</span> <span class=o>=</span> <span class=n>htons</span><span class=p>(</span><span class=n>BROADCAST_PORT</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_addr</span><span class=p>.</span><span class=n>s_addr</span> <span class=o>=</span> <span class=n>htonl</span><span class=p>(</span><span class=n>INADDR_ANY</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 绑定UDP套接字
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>bind</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>server_addr</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>server_addr</span><span class=p>))</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Bind failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 接收广播消息
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>while</span> <span class=p>(</span><span class=nb>true</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>recv_len</span> <span class=o>=</span> <span class=n>recvfrom</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=n>buffer</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>buffer</span><span class=p>),</span> <span class=mi>0</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>client_addr</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>client_len</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>recv_len</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Failed to receive message&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=k>continue</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>buffer</span><span class=p>[</span><span class=n>recv_len</span><span class=p>]</span> <span class=o>=</span> <span class=sc>&#39;\0&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Received message: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>buffer</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// 如果消息包含特定请求，可以回复自己的IP地址
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>response</span> <span class=o>=</span> <span class=s>&#34;IP Address of B: &#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>response</span> <span class=o>+=</span> <span class=n>inet_ntoa</span><span class=p>(</span><span class=n>client_addr</span><span class=p>.</span><span class=n>sin_addr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>sendto</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=n>response</span><span class=p>.</span><span class=n>c_str</span><span class=p>(),</span> <span class=n>response</span><span class=p>.</span><span class=n>length</span><span class=p>(),</span> <span class=mi>0</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>client_addr</span><span class=p>,</span> <span class=n>client_len</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Sent response with IP address: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>inet_ntoa</span><span class=p>(</span><span class=n>client_addr</span><span class=p>.</span><span class=n>sin_addr</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>listen_for_broadcasts</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=2-使用tcp协议传输文件>2. 使用TCP协议传输文件</h3><p>一旦A得到了B的IP地址，A就可以通过TCP连接与B进行文件传输。</p><h4 id=a端通过tcp向b发送文件>A端：通过TCP向B发送文件</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;fstream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;arpa/inet.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;unistd.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#define SERVER_PORT 8080
+</span></span></span><span class=line><span class=cl><span class=cp>#define CHUNK_SIZE 4096 </span><span class=c1>// 4KB per chunk
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>send_file</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=o>&amp;</span><span class=n>filename</span><span class=p>,</span> <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=o>&amp;</span><span class=n>ip_address</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>sockfd</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>struct</span> <span class=nc>sockaddr_in</span> <span class=n>server_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>buffer</span><span class=p>[</span><span class=n>CHUNK_SIZE</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>ifstream</span> <span class=n>file</span><span class=p>(</span><span class=n>filename</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>binary</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>off_t</span> <span class=n>offset</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>  <span class=c1>// 记录已经发送的文件偏移量
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 创建TCP套接字
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>sockfd</span> <span class=o>=</span> <span class=n>socket</span><span class=p>(</span><span class=n>AF_INET</span><span class=p>,</span> <span class=n>SOCK_STREAM</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>sockfd</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Socket creation failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>memset</span><span class=p>(</span><span class=o>&amp;</span><span class=n>server_addr</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>server_addr</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_family</span> <span class=o>=</span> <span class=n>AF_INET</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_port</span> <span class=o>=</span> <span class=n>htons</span><span class=p>(</span><span class=n>SERVER_PORT</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_addr</span><span class=p>.</span><span class=n>s_addr</span> <span class=o>=</span> <span class=n>inet_addr</span><span class=p>(</span><span class=n>ip_address</span><span class=p>.</span><span class=n>c_str</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 连接到B
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>connect</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>server_addr</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>server_addr</span><span class=p>))</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Connection failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 发送文件的分块数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>while</span> <span class=p>(</span><span class=n>file</span><span class=p>.</span><span class=n>read</span><span class=p>(</span><span class=n>buffer</span><span class=p>,</span> <span class=n>CHUNK_SIZE</span><span class=p>))</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 发送文件块数据
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>ssize_t</span> <span class=n>bytes_sent</span> <span class=o>=</span> <span class=n>send</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=n>buffer</span><span class=p>,</span> <span class=n>file</span><span class=p>.</span><span class=n>gcount</span><span class=p>(),</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>bytes_sent</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Send failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=n>offset</span> <span class=o>+=</span> <span class=n>bytes_sent</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// 发送每个块后，需要确认接收进度
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=c1>// 可以通过协议的方式要求B确认
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Sent chunk, current offset: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>offset</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 发送文件剩余的数据（如果有）
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>file</span><span class=p>.</span><span class=n>gcount</span><span class=p>()</span> <span class=o>&gt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>send</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=n>buffer</span><span class=p>,</span> <span class=n>file</span><span class=p>.</span><span class=n>gcount</span><span class=p>(),</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>offset</span> <span class=o>+=</span> <span class=n>file</span><span class=p>.</span><span class=n>gcount</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;File sent successfully! Total bytes sent: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>offset</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>send_file</span><span class=p>(</span><span class=s>&#34;large_file.bin&#34;</span><span class=p>,</span> <span class=s>&#34;192.168.1.2&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=b端接收文件并保存>B端：接收文件并保存</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;fstream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;cstring&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;arpa/inet.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;unistd.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=cp>#define SERVER_PORT 8080
+</span></span></span><span class=line><span class=cl><span class=cp>#define CHUNK_SIZE 4096 </span><span class=c1>// 4KB per chunk
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>receive_file</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=o>&amp;</span><span class=n>filename</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>sockfd</span><span class=p>,</span> <span class=n>newsockfd</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>struct</span> <span class=nc>sockaddr_in</span> <span class=n>server_addr</span><span class=p>,</span> <span class=n>client_addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>socklen_t</span> <span class=n>client_len</span> <span class=o>=</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>client_addr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>buffer</span><span class=p>[</span><span class=n>CHUNK_SIZE</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>file</span><span class=p>(</span><span class=n>filename</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>binary</span> <span class=o>|</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>app</span><span class=p>);</span>  <span class=c1>// 以追加方式打开文件
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>off_t</span> <span class=n>offset</span> <span class=o>=</span> <span class=n>file</span><span class=p>.</span><span class=n>tellp</span><span class=p>();</span>  <span class=c1>// 获取文件当前的偏移量（即已经接收的字节数）
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 创建TCP套接字
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>sockfd</span> <span class=o>=</span> <span class=n>socket</span><span class=p>(</span><span class=n>AF_INET</span><span class=p>,</span> <span class=n>SOCK_STREAM</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>sockfd</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Socket creation failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>memset</span><span class=p>(</span><span class=o>&amp;</span><span class=n>server_addr</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>server_addr</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_family</span> <span class=o>=</span> <span class=n>AF_INET</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_port</span> <span class=o>=</span> <span class=n>htons</span><span class=p>(</span><span class=n>SERVER_PORT</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>server_addr</span><span class=p>.</span><span class=n>sin_addr</span><span class=p>.</span><span class=n>s_addr</span> <span class=o>=</span> <span class=n>INADDR_ANY</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 绑定套接字
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=n>bind</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>server_addr</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=n>server_addr</span><span class=p>))</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Bind failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 监听
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>listen</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=mi>1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Waiting for connection...&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 接受连接
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>newsockfd</span> <span class=o>=</span> <span class=n>accept</span><span class=p>(</span><span class=n>sockfd</span><span class=p>,</span> <span class=p>(</span><span class=k>struct</span> <span class=nc>sockaddr</span><span class=o>*</span><span class=p>)</span><span class=o>&amp;</span><span class=n>client_addr</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>client_len</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>newsockfd</span> <span class=o>&lt;</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>perror</span><span class=p>(</span><span class=s>&#34;Accept failed&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 接收文件
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>while</span> <span class=p>(</span><span class=nb>true</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>recv_len</span> <span class=o>=</span> <span class=n>recv</span><span class=p>(</span><span class=n>newsockfd</span><span class=p>,</span> <span class=n>buffer</span><span class=p>,</span> <span class=n>CHUNK_SIZE</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>recv_len</span> <span class=o>&lt;=</span> <span class=mi>0</span><span class=p>)</span> <span class=k>break</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// 写入文件（追加模式）
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>file</span><span class=p>.</span><span class=n>write</span><span class=p>(</span><span class=n>buffer</span><span class=p>,</span> <span class=n>recv_len</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>offset</span> <span class=o>+=</span> <span class=n>recv_len</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Received chunk, current offset: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>offset</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;File received successfully! Total bytes received: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>offset</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>close</span><span class=p>(</span><span class=n>newsockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>close</span><span class=p>(</span><span class=n>sockfd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>receive_file</span><span class=p>(</span><span class=s>&#34;received_large_file.bin&#34;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>断点续传实现说明：</p><ul><li>A端：每发送完一个块，A会更新文件的偏移量（即<code>offset</code>），并传递该偏移量的信息。如果传输过程中发生中断，A可以记录上次发送的偏移量，从该位置开始重新传输。</li><li>B端：B端会在接收每个块时，记录接收到的字节数（即<code>offset</code>）。B端可以通过检查文件的大小来判断是否需要继续接收文件。如果B端关闭了连接，下次启动时会从文件尾部继续接收。</li></ul><h3 id=拓展>拓展：</h3><p><strong>MD5</strong>（Message Digest Algorithm 5）是一种广泛使用的加密哈希函数，它产生一个128位（16字节）的哈希值，通常用32个十六进制字符表示。MD5被设计用来接收任意长度的数据（通常是文件或消息）并生成一个固定长度的“摘要”或“指纹”，这个摘要用于验证数据的完整性。</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2025-01-07</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/linux/>linux</a>
+<a href=/tags/cpp/>cpp</a>
+<a href=/tags/network/>network</a></div><nav class=post-nav><a class=next href=/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/><span class="next-text nav-default">分段锁技术详解及 C++ 实现</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024 -
+2025<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>
