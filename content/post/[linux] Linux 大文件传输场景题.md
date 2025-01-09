@@ -1,7 +1,7 @@
 +++
 date = '2025-01-07T20:05:47+08:00'
 draft = false
-title = 'linux 大文件传输场景题'
+title = 'Linux 大文件传输场景题'
 author = 'JekYUlll'
 lastmod = '2025-01-07T20:05:47+08:00'
 tags = ['linux', 'cpp', 'network']
