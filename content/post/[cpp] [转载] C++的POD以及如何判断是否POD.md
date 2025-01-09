@@ -121,3 +121,25 @@ template <typename T> struct is_pod {
  std::is_trivially_default_constructible<T>::value;
 };
 ```
+
+---
+
+### 拓展
+
+对于平凡类型的 `class` 和 `struct`，它们在内存布局、对象拷贝、传递给 C 函数等操作中，几乎没有区别。因此，可以像使用 C 语言中的结构体一样使用它们。
+```cpp
+struct Point {
+    int x, y;
+};
+
+int main() {
+    Point p = {1, 2};
+    // 使用 reinterpret_cast 强制转换
+    void* ptr = &p;  // void* 指针指向结构体
+    // 使用 reinterpret_cast 强制转换为 Point* 类型
+    Point* p2 = reinterpret_cast<Point*>(ptr);
+    // 访问成员
+    std::cout << "x: " << p2->x << ", y: " << p2->y << std::endl;
+    return 0;
+}
+```
