@@ -1,0 +1,220 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>从场景解析 C++ shared_from_this - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content=" 智能指针之shared_ptr易错点05。
+掌握C++ 智能指针的自我引用：深入解析 shared_from_this 和 weak_from_this。
+C++之shared_from_this用法以及类自引用this指针陷阱。
+思考：
+设计一个树的节点的时候，如果使用智能指针：用一个std::vector<shared_ptr<TreeNode>>来存储子节点，为避免循环引用，用weak_ptr<TreeNode>来存储自身的父节点指针。
+那添加子节点的时候，怎么把自身的shared_ptr赋值给子节点存储的父节点指针呢？
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/cpp-c++-shared_from_this-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/cpp-c++-shared_from_this-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="从场景解析 C++ shared_from_this"><meta property="og:description" content="智能指针之shared_ptr易错点05。
+掌握C++ 智能指针的自我引用：深入解析 shared_from_this 和 weak_from_this。
+C++之shared_from_this用法以及类自引用this指针陷阱。
+思考：
+设计一个树的节点的时候，如果使用智能指针：用一个std::vector<shared_ptr<TreeNode>>来存储子节点，为避免循环引用，用weak_ptr<TreeNode>来存储自身的父节点指针。
+那添加子节点的时候，怎么把自身的shared_ptr赋值给子节点存储的父节点指针呢？"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-01-09T20:05:47+08:00"><meta property="article:modified_time" content="2025-01-09T20:05:47+08:00"><meta property="article:tag" content="Cpp"><meta itemprop=name content="从场景解析 C++ shared_from_this"><meta itemprop=description content="智能指针之shared_ptr易错点05。
+掌握C++ 智能指针的自我引用：深入解析 shared_from_this 和 weak_from_this。
+C++之shared_from_this用法以及类自引用this指针陷阱。
+思考：
+设计一个树的节点的时候，如果使用智能指针：用一个std::vector<shared_ptr<TreeNode>>来存储子节点，为避免循环引用，用weak_ptr<TreeNode>来存储自身的父节点指针。
+那添加子节点的时候，怎么把自身的shared_ptr赋值给子节点存储的父节点指针呢？"><meta itemprop=datePublished content="2025-01-09T20:05:47+08:00"><meta itemprop=dateModified content="2025-01-09T20:05:47+08:00"><meta itemprop=wordCount content="1885"><meta itemprop=keywords content="Cpp"><meta name=twitter:card content="summary"><meta name=twitter:title content="从场景解析 C++ shared_from_this"><meta name=twitter:description content="智能指针之shared_ptr易错点05。
+掌握C++ 智能指针的自我引用：深入解析 shared_from_this 和 weak_from_this。
+C++之shared_from_this用法以及类自引用this指针陷阱。
+思考：
+设计一个树的节点的时候，如果使用智能指针：用一个std::vector<shared_ptr<TreeNode>>来存储子节点，为避免循环引用，用weak_ptr<TreeNode>来存储自身的父节点指针。
+那添加子节点的时候，怎么把自身的shared_ptr赋值给子节点存储的父节点指针呢？"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>从场景解析 C++ shared_from_this</h1><div class=post-meta><span class=post-time>2025-01-09</span><div class=post-category><a href=/categories/cpp/>cpp</a></div><span class=more-meta>1885 words </span><span class=more-meta>4 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#shared_ptr实现原理><code>shared_ptr</code>实现原理：</a></li><li><a href=#从-this-构造智能指针的正确做法>从 <code>this</code> 构造智能指针的正确做法</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><hr><p><a href=https://blog.csdn.net/weixin_44517656/article/details/114208041>智能指针之shared_ptr易错点05</a>。<br><a href=https://zhuanlan.zhihu.com/p/701343248>掌握C++ 智能指针的自我引用：深入解析 <code>shared_from_this</code> 和 <code>weak_from_this</code></a>。<br><a href=https://blog.csdn.net/weixin_44834554/article/details/131589849>C++之shared_from_this用法以及类自引用this指针陷阱</a>。</p><hr><p><strong>思考</strong>：</p><blockquote><p>设计一个树的节点的时候，如果使用智能指针：用一个<code>std::vector&lt;shared_ptr&lt;TreeNode>></code>来存储子节点，为避免循环引用，用<code>weak_ptr&lt;TreeNode></code>来存储自身的父节点指针。<br>那添加子节点的时候，怎么把自身的<code>shared_ptr</code>赋值给子节点存储的父节点指针呢？</p></blockquote><p>两个错误做法：</p><ol><li>使用<code>std::make_shared&lt;TreeNode&lt;T>>(*this)</code>来创建一个新的<code>shared_ptr</code>，然后赋值给子节点存储的父节点指针。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=kt>void</span> <span class=nf>addChild</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span> <span class=n>child</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 使用 make_shared 来创建子节点并设置父节点
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>child</span><span class=o>-&gt;</span><span class=n>setParent</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>make_shared</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span><span class=p>(</span><span class=o>*</span><span class=k>this</span><span class=p>));</span>  <span class=c1>// 错误的做法
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>children</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>child</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>使用 <code>std::make_shared&lt;TreeNode&lt;T>>(*this)</code> 时，实际上是对当前对象的 拷贝构造（调用拷贝构造函数）来创建一个新的 TreeNode<t> 对象。这意味着你将当前节点的状态（但不是智能指针）拷贝到一个新的对象中，而新对象的生命周期由 std::shared_ptr 管理。</p><ol><li>使用 <code>std::shared_ptr&lt;TreeNode&lt;T>> ptr(this)</code> 把裸指针 <code>this</code> 包装为 <code>shared_ptr</code>。</li></ol><p>将 <code>this</code> 传递给 <code>std::shared_ptr&lt;TreeNode&lt;T>></code> 会导致新创建的 <code>shared_ptr</code> 管理一个裸指针，而裸指针的生命周期没有由智能指针控制。</p><p>引出一个常规问题，从裸指针创建 <code>shared_ptr</code> 的隐患：</p><ul><li>当 <code>shared_ptr</code> 的引用计数归零时，它会释放它所管理的对象。如果裸指针在此时继续存在，它仍然会指向原来的内存地址。但这时该内存已被释放，裸指针成为了<em>悬空指针</em>，也就是所谓的<em>野指针</em>。</li><li>如果裸指针指向的内存已经被释放（例如，该指针原本由 <code>delete</code> 或 <code>delete[]</code> 释放），然后你用这个裸指针创建 <code>shared_ptr</code>，那么 <code>shared_ptr</code> 仍然会管理这个已经释放的内存区域。这会导致访问已释放内存（悬空指针）或<em>双重释放内存</em>的问题（如果 <code>shared_ptr</code> 销毁时再次释放内存）。</li><li>裸指针可能指向一个栈上的对象：如果裸指针指向一个栈上分配的对象，并且你用它创建 <code>shared_ptr</code>，那么 <code>shared_ptr</code> 会试图在引用计数归零时释放这个栈上对象的内存。然而，栈上对象的生命周期由栈帧的销毁来管理，而 <code>shared_ptr</code> 并不清楚这一点。这将导致程序的未定义行为。</li></ul><p><strong>案例</strong>：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>class</span> <span class=nc>TestB</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	<span class=n>TestB</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;TestB create&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=o>~</span><span class=n>TestB</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;TestB destory&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TestB</span><span class=o>&gt;</span> <span class=n>getSharedFromThis</span><span class=p>()</span> <span class=p>{</span> 
+</span></span><span class=line><span class=cl>		<span class=k>return</span>  <span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TestB</span><span class=o>&gt;</span> <span class=p>(</span><span class=k>this</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl>	<span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TestB</span><span class=o>&gt;</span> <span class=n>ptr3</span><span class=p>(</span><span class=k>new</span> <span class=n>TestB</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>		<span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TestB</span><span class=o>&gt;</span> <span class=n>ptr4</span> <span class=o>=</span> <span class=n>ptr3</span><span class=o>-&gt;</span><span class=n>getSharedFromThis</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>		<span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;ptr2 count: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>ptr3</span><span class=p>.</span><span class=n>use_count</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=s>&#34; ptr4 count: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>ptr4</span><span class=p>.</span><span class=n>use_count</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>		<span class=c1>//输出：ptr2 count: 1 ptr4 count: 1 然后会崩溃因为重复释放
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=n>cin</span><span class=p>.</span><span class=n>get</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>如何会导致<code>shared_ptr</code>指向同一个对象，但是不共享引用计数器？<br>是因为裸指针与<code>shared_ptr</code>混用，如果我们用一个裸指针初始化或者赋值给<code>shared_ptr</code>指针时，在<code>shared_ptr</code>内部生成一个计数器，当另外一个<code>shared_ptr</code>不用<code>share_ptr</code>赋值或者初始化的话，再次将一个裸指针赋值给另外一个<code>shared_ptr</code>时，又一次生成一个计数器，两个计数器不共享。</p><hr><h3 id=shared_ptr实现原理><code>shared_ptr</code>实现原理：</h3><p><code>shared_ptr</code> 从 <code>_Ptr_base</code> 继承了 <code>element_type</code> 和 <code>_Ref_count_base</code> 类型的两个成员变量。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span><span class=o>&lt;</span><span class=k>class</span> <span class=nc>_Ty</span><span class=o>&gt;</span><span class=k>class</span> <span class=nc>_Ptr_base</span>
+</span></span><span class=line><span class=cl><span class=p>{</span> 
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span> 
+</span></span><span class=line><span class=cl>        <span class=n>element_type</span> <span class=o>*</span> <span class=n>_Ptr</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>ptr</span>
+</span></span><span class=line><span class=cl>        <span class=p>};</span> <span class=c1>// 指向资源的指针 
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>_Ref_count_base</span> <span class=o>*</span> <span class=n>_Rep</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>ptr</span>
+</span></span><span class=line><span class=cl>        <span class=p>};</span> <span class=c1>// 指向资源引用计数的指针
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><code>_Ref_count_base</code> 中定义了原子类型的变量 <code>_Uses</code> 和 <code>_Weaks</code>，它们分别记录资源的引用个数和资源观察者的个数。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>class</span> <span class=nf>__declspec</span><span class=p>(</span><span class=n>novtable</span><span class=p>)</span> <span class=n>_Ref_count_base</span>
+</span></span><span class=line><span class=cl><span class=p>{</span> 
+</span></span><span class=line><span class=cl>    <span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>         <span class=n>_Atomic_counter_t</span> <span class=n>_Uses</span><span class=p>;</span><span class=c1>//记录资源引用个数 
+</span></span></span><span class=line><span class=cl><span class=c1></span>         <span class=n>_Atomic_counter_t</span> <span class=n>_Weaks</span><span class=p>;</span><span class=c1>//记录观察者个数
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=从-this-构造智能指针的正确做法>从 <code>this</code> 构造智能指针的正确做法</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>class</span> <span class=nc>MyClass</span><span class=o>:</span> <span class=n>enable_shared_from_this</span><span class=o>&lt;</span><span class=n>MyClass</span><span class=o>&gt;</span><span class=c1>//必须继承enable_shared_from_this
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>MyClass</span><span class=o>&gt;</span> <span class=n>getself</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nf>shared_from_this</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>   <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><code>shared_from_this</code> 是 C++11 中引入的功能，允许对象在继承了 <code>std::enable_shared_from_this</code> 的情况下，安全地生成自身的 <code>std::shared_ptr</code> 实例，而不会创建新的控制块（reference counting block）。这样可以避免悬垂指针的问题，特别是在对象的成员函数中使用时，可以确保对象在使用期间不被销毁。</p><p><code>std::enable_shared_from_this&lt;T></code> 内部维护了一个 <code>std::weak_ptr&lt;T></code>。当第一个 <code>std::shared_ptr&lt;T></code> 开始管理该对象时，这个 <code>weak_ptr</code> 被初始化。之后，当 <code>shared_from_this()</code> 被调用时，它将基于这个已经存在的 <code>weak_ptr</code> 返回一个新的 <code>std::shared_ptr&lt;T></code>，这个新的 <code>shared_ptr</code> 与原有的 <code>shared_ptr</code> 共享对对象的所有权。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl>    <span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>_Tp</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=n>shared_from_this</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span> <span class=k>return</span> <span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>_Tp</span><span class=o>&gt;</span><span class=p>(</span><span class=k>this</span><span class=o>-&gt;</span><span class=n>_M_weak_this</span><span class=p>);</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=n>shared_ptr</span><span class=o>&lt;</span><span class=k>const</span> <span class=n>_Tp</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=n>shared_from_this</span><span class=p>()</span> <span class=k>const</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span> <span class=k>return</span> <span class=n>shared_ptr</span><span class=o>&lt;</span><span class=k>const</span> <span class=n>_Tp</span><span class=o>&gt;</span><span class=p>(</span><span class=k>this</span><span class=o>-&gt;</span><span class=n>_M_weak_this</span><span class=p>);</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>      <span class=k>mutable</span> <span class=n>weak_ptr</span><span class=o>&lt;</span><span class=n>_Tp</span><span class=o>&gt;</span>  <span class=n>_M_weak_this</span><span class=p>;</span>
+</span></span></code></pre></td></tr></table></div></div><hr><p><strong>实践</strong>：</p><p>实现这个 <code>TreeNode</code> 类的时候，<code>shared_from_this</code> 解析不出来(似乎是因为模板导致的 clangd 语法解析失败)。</p><p><img src=/images/ERRORshared_from_this.png alt=语法></p><p>改为 <code>this->shared_from_this()</code> 后报错消失，因为 <code>shared_from_this</code> 实际上是当前父类 <code>enable_shared_from_this</code> 的成员函数。</p><p>最终实现：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>TreeNode</span> <span class=o>:</span> <span class=k>public</span> <span class=n>std</span><span class=o>::</span><span class=n>enable_shared_from_this</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>TreeNode</span><span class=p>(</span><span class=n>T</span> <span class=n>value</span><span class=p>)</span> <span class=o>:</span> <span class=n>value</span><span class=p>(</span><span class=n>value</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>setParent</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>weak_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span> <span class=n>parent</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=o>-&gt;</span><span class=n>parent</span> <span class=o>=</span> <span class=n>parent</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>addChild</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span> <span class=n>child</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>child</span><span class=o>-&gt;</span><span class=n>setParent</span><span class=p>(</span><span class=k>this</span><span class=o>-&gt;</span><span class=n>shared_from_this</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>        <span class=n>children</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>child</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>T</span> <span class=nf>getValue</span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span> <span class=n>getParent</span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>parent</span><span class=p>.</span><span class=n>lock</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;&gt;&amp;</span> <span class=n>getChildren</span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>children</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>T</span> <span class=n>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;&gt;</span> <span class=n>children</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>weak_ptr</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;&gt;</span> <span class=n>parent</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2025-01-09</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/cpp-c++-shared_from_this-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpp/>cpp</a></div><nav class=post-nav><a class=next href=/post/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/><span class="next-text nav-default">Redis 数据结构之超日志 HyperLogLog</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024 -
+2025<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>
