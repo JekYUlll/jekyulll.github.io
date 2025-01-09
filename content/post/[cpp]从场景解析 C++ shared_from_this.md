@@ -30,7 +30,7 @@ void addChild(std::shared_ptr<TreeNode<T>> child) {
     children.push_back(child);
 }
 ```
-使用 `std::make_shared<TreeNode<T>>(*this)` 时，实际上是对当前对象的 拷贝构造（调用拷贝构造函数）来创建一个新的 TreeNode<T> 对象。这意味着你将当前节点的状态（但不是智能指针）拷贝到一个新的对象中，而新对象的生命周期由 std::shared_ptr 管理。
+使用 `std::make_shared<TreeNode<T>>(*this)` 时，实际上是对当前对象的 拷贝构造（调用拷贝构造函数）来创建一个新的 `TreeNode<T>` 对象。这意味着你将当前节点的状态（但不是智能指针）拷贝到一个新的对象中，而新对象的生命周期由 `std::shared_ptr` 管理。
 
 2. 使用 `std::shared_ptr<TreeNode<T>> ptr(this)` 把裸指针 `this` 包装为 `shared_ptr`。
 
