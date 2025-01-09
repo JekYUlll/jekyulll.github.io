@@ -11,7 +11,7 @@
 > 设计一个树的节点的时候，如果使用智能指针：用一个`std::vector<shared_ptr<TreeNode>>`来存储子节点，为避免循环引用，用`weak_ptr<TreeNode>`来存储自身的父节点指针。  
 > 那添加子节点的时候，怎么把自身的`shared_ptr`赋值给子节点存储的父节点指针呢？
 
-两个错误做法：
+### 两个错误做法：
 
 1. 使用`std::make_shared<TreeNode<T>>(*this)`来创建一个新的`shared_ptr`，然后赋值给子节点存储的父节点指针。
 ```cpp
