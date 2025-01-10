@@ -100,6 +100,8 @@ class __declspec(novtable) _Ref_count_base
 }
 ```
 
+---
+
 ### 从 `this` 构造智能指针的正确做法
 ```cpp
 class MyClass: enable_shared_from_this<MyClass>//必须继承enable_shared_from_this
