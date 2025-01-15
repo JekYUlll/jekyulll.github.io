@@ -138,6 +138,6 @@ int main() {
 
 All in all: 
 
-![确实](images/stdfunction.png)
+![确实](/images/stdfunction.png)
 
 
