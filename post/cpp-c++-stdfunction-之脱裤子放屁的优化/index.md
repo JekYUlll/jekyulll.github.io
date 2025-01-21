@@ -32,7 +32,7 @@ private:
 
 - 一个指向实际存储区域的指针：存储实际的可调用对象（函数对象、lambda、函数指针等）。
 - 一个*接口表*（vtable 等效机制）：存储操作函数（如调用函数、复制、销毁等）的地址。
-- 
+
 其类型擦除通过接口表的方式实现，类似于虚函数机制，但它通常采用静态接口表和手动的动态分配来支持多种类型的可调用对象。
 
 ---
@@ -46,9 +46,10 @@ private:
 > 1. When calling a `std::function`, it does a virtual function call.
 > 2. When assigning a lambda with significant captures to a `std::function`, it will do a dynamic memory allocation!
 
-一是`std::function` 会使用虚函数调用，有开销。二是将lambda 赋给`std::function`的时候，如果捕获内容较，会需要额外的动态内存分配。
+- 一是`std::function` 会使用虚函数调用，有开销。  
+- 二是将 lambda 赋给`std::function`的时候，如果捕获内容较多，会需要额外的动态内存分配。
 
-第二点也就是：  
+第二点其实说的就是：  
 `std::function` 对小型的可调用对象会使用“**小对象优化**（Small Object Optimization, SOO）”，避免动态分配堆内存。但如果对象超过了实现中的小对象优化阈值，则会触发堆分配（`new` 操作）。  
 
 ---
