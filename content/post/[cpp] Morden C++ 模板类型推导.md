@@ -4,7 +4,7 @@ draft = false
 title = 'C++ 模板类型推导'
 author = 'JekYUlll'
 lastmod = '2024-09-01T18:05:47+08:00'
-tags = ['cpp', 'morden cpp']
+tags = ['cpp', 'morden cpp', 'template']
 categories = ['cpp']
 +++
 

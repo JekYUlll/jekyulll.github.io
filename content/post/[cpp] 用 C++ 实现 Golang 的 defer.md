@@ -4,7 +4,7 @@ draft = false
 title = '在 C++ 里实现 Golang 的 defer'
 author = 'JekYUlll'
 lastmod = '2025-01-15T12:05:47+08:00'
-tags = ['cpp','macro']
+tags = ['cpp', 'macro']
 categories = ['cpp']
 +++
 
