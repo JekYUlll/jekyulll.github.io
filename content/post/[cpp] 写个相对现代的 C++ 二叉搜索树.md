@@ -38,7 +38,10 @@ class PairBSTree {
         TreeNode* _right;
 
         TreeNode() = default;
-        TreeNode(Pair pair) : _pair(pair), _left(nullptr), _right(nullptr) {}
+        TreeNode(const Pair& pair)
+            : _pair(pair), _left(nullptr), _right(nullptr) {}
+        TreeNode(Pair&& pair)
+            : _pair(std::move(pair)), _left(nullptr), _right(nullptr) {}
         ~TreeNode() = default;
     };
 
@@ -47,6 +50,12 @@ class PairBSTree {
     void build_(const std::vector<Pair>& nodes) {
         for (const auto& pair : nodes) {
             Insert(pair);
+        }
+    }
+
+    void build_(std::vector<Pair>&& nodes) {
+        for (Pair& pair : nodes) {
+            Insert(std::move(pair));
         }
     }
 
@@ -69,7 +78,7 @@ class PairBSTree {
         return search_(node->_right, key);
     }
 
-    void insert_(TreeNode*& node, Pair pair) {
+    void insert_(TreeNode*& node, const Pair& pair) {
         if (!node) {
             node = new TreeNode(pair);
             return;
@@ -138,11 +147,11 @@ class PairBSTree {
         // 但我当时忘了保留 max_in_left 的左子树（如果存在）
     }
 
-    static void normal_print_func_(Pair pair) {
+    static void normal_print_func_(const Pair& pair) {
         std::cout << pair.second << " | ";
     }
 
-    void in_order_(TreeNode* node, std::function<void(Pair)> func) {
+    void in_order_(TreeNode* node, std::function<void(const Pair&)> func) {
         if (!node) {
             return;
         }
@@ -158,9 +167,13 @@ class PairBSTree {
         build_(pairs);
     }
 
+    PairBSTree(std::vector<Pair>&& pairs) : _root(nullptr) {
+        build_(std::move(pairs));
+    }
+
     ~PairBSTree() { destroy_(_root); }
 
-    std::optional<V> Search(Pair::first_type key) {
+    std::optional<V> Search(K key) {
         auto node = search_(_root, key);
         if (!node) {
             return std::nullopt;
@@ -168,7 +181,7 @@ class PairBSTree {
         return node->_pair.second;
     }
 
-    void Insert(Pair pair) { insert_(_root, pair); }
+    void Insert(const Pair& pair) { insert_(_root, pair); }
 
     void Delete(K key) { delete_(_root, key); }
 
