@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 21 Jan 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>写个相对现代的 C++ 二叉搜索树</title><link>https://jekyulll.github.io/post/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link><pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 29 Jan 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>检查字符串是否是另一个的子串</title><link>https://jekyulll.github.io/post/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link><pubDate>Wed, 29 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid><description>&lt;h2 id="常见-cc-api">常见 C/C++ API&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>&lt;code>std::string&lt;/code>的 &lt;code>string::find&lt;/code> 成员函数&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;string&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="k">using&lt;/span> &lt;span class="k">namespace&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">bool&lt;/span> &lt;span class="nf">isSubstring&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">mainStr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">subStr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">mainStr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">find&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">subStr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">npos&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>大多数标准库的 &lt;code>strstr&lt;/code>（如Glibc）和 &lt;code>string::find&lt;/code>（如MSVC、libc++）已针对子串搜索优化。&lt;br>
+实现中可能直接调用 &lt;code>memmem&lt;/code> 或 &lt;code>strstr&lt;/code>，性能与 &lt;code>strstr&lt;/code> 相当。&lt;/p></description></item><item><title>写个相对现代的 C++ 二叉搜索树</title><link>https://jekyulll.github.io/post/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link><pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
