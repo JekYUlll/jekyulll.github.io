@@ -1,9 +1,9 @@
 +++
-date = '2025-02-09T18:05:47+08:00'
+date = '2025-02-08T18:05:47+08:00'
 draft = false
 title = '运行时是把整个动态库都加载到内存中吗？'
 author = 'JekYUlll'
-lastmod = '2024-02-09T18:05:47+08:00'
+lastmod = '2025-02-08T18:05:47+08:00'
 tags = ['cpp', 'os', '面经']
 categories = ['cpp']
 +++

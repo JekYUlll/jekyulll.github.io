@@ -1,9 +1,9 @@
 +++
-date = '2025-02-09T18:05:47+08:00'
+date = '2025-02-08T18:05:47+08:00'
 draft = false
 title = 'C++ 同一进程的线程之间共享哪些资源？'
 author = 'JekYUlll'
-lastmod = '2024-02-09T18:05:47+08:00'
+lastmod = '2025-02-08T18:05:47+08:00'
 tags = ['cpp', 'os', '面经']
 categories = ['cpp']
 +++
