@@ -12,7 +12,7 @@ void *dlopen(const char *filename, int flag);
 ```
 
 `flag`：指定加载选项：
-    - `RTLD_LAZY`：延迟解析符号，即在实际使用时才解析。
-    - `RTLD_NOW`：立即解析所有未定义的符号。如果无法解析，`dlopen` 将返回 `NULL`。
-    - `RTLD_GLOBAL`：使加载的库中的符号在后续加载的其他库中可见。
-    - `RTLD_LOCAL`：与 `RTLD_GLOBAL` 相反，加载的库中的符号对后续加载的库不可见（这是默认行为）。
+    - `RTLD_LAZY`：延迟解析符号，即在实际使用时才解析。  
+    - `RTLD_NOW`：立即解析所有未定义的符号。如果无法解析，`dlopen` 将返回 `NULL`。  
+    - `RTLD_GLOBAL`：使加载的库中的符号在后续加载的其他库中可见。  
+    - `RTLD_LOCAL`：与 `RTLD_GLOBAL` 相反，加载的库中的符号对后续加载的库不可见（这是默认行为）。  
