@@ -99,7 +99,7 @@ int solution(vector<int>& nums, int k) {
 
 ---
 
-含模板：
+完整代码：
 ```cpp
 #include <iostream>
 #include <vector>
