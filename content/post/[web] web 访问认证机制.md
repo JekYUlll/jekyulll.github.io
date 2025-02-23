@@ -62,3 +62,5 @@ cookie中比较好，可由服务端保存，localstorage在纯前端，中很�
 服务器可以将 cookie 设置为 HTTP - Only，无法被 JavaScript 脚本访问。  
 localStorage 完全处于前端控制之下，可以被同源的 JavaScript 代码访问和修改。
 
+(Basic 认证用在前端登陆的场景，Bearer 认证用在调用后端 API 服务的场景下。)
+
