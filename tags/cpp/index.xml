@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 15 Feb 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>扫描线算法计算区间重叠</title><link>https://jekyulll.github.io/post/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link><pubDate>Sat, 15 Feb 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid><description>&lt;p>题目来源：&lt;a href="https://www.marscode.cn/practice/jn1075jrp7j47d?problem_id=7424418560930611244">Marscode&lt;/a>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 21 Feb 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux 内核中 C 语言的面向对象</title><link>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link><pubDate>Fri, 21 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid><description>&lt;p>Linux 内核使用 &lt;strong>结构体&lt;/strong> 和 &lt;strong>函数指针&lt;/strong> 的组合模拟面向对象（OO）编程范式。&lt;/p>
+&lt;hr>
+&lt;h3 id="1-结构体封装数据与行为">1. &lt;strong>结构体封装数据与行为&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>数据抽象&lt;/strong>：将相关属性和状态封装在一个 &lt;code>struct&lt;/code> 中。&lt;/li>
+&lt;li>&lt;strong>行为绑定&lt;/strong>：通过函数指针将操作绑定到结构体上，实现动态调用。&lt;/li>
+&lt;/ul>
+&lt;h4 id="示例struct-file_operations">示例：&lt;code>struct file_operations&lt;/code>&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 定义文件操作的函数指针表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">file_operations&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">ssize_t&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">file&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="n">__user&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">size_t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">loff_t&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">ssize_t&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">file&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="n">__user&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">size_t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">loff_t&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... 其他方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 具体文件系统的实现（如 ext4）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">file_operations&lt;/span> &lt;span class="n">ext4_fops&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">read&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ext4_read&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">write&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ext4_write&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... 初始化其他方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 注册到 VFS 层时关联 fops
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">inode&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">inode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">...;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">inode&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">i_fop&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">ext4_fops&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 绑定特定方法集
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="2-多态与继承">2. &lt;strong>多态与继承&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>父子结构体&lt;/strong>：子结构体嵌入父结构体以继承接口。&lt;/li>
+&lt;li>&lt;strong>类型安全转换&lt;/strong>：通过 &lt;code>container_of&lt;/code> 宏从父指针获取子结构体。&lt;/li>
+&lt;/ul>
+&lt;h4 id="示例struct-kobject-与自定义对象">示例：&lt;code>struct kobject&lt;/code> 与自定义对象&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 父结构体（类似抽象基类）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">kset&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">kset&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 公共方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">release&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 子结构体（具体实现）
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="n">kobj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 继承 kobject
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 实现父类的方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">my_device_release&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">container_of&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">kobj&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 清理资源
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 初始化时绑定方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">kzalloc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">sizeof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">GFP_KERNEL&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dev&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">release&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">my_device_release&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">kobject_init&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">my_device_ktype&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 注册类型
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="3-组合与接口分离">3. &lt;strong>组合与接口分离&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>模块化设计&lt;/strong>：通过组合而非继承复用代码。&lt;/li>
+&lt;li>&lt;strong>统一接口&lt;/strong>：顶层结构体定义标准接口，底层实现差异化逻辑。&lt;/li>
+&lt;/ul>
+&lt;h4 id="示例struct-block_device">示例：&lt;code>struct block_device&lt;/code>&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 通用块设备接口
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">gendisk&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">disk&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 通用方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ioctl&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">int&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">long&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 桌面硬盘驱动实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">my_disk&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="n">bdev&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 私有数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 实现接口方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">my_disk_ioctl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">bdev&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">cmd&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">...)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_disk&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">disk&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">container_of&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bdev&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_disk&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bdev&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nf">custom_ioctl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">disk&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cmd&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="4-运行时多态">4. &lt;strong>运行时多态&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>函数指针作为虚函数表（vtable），根据对象类型动态调用不同实现。&lt;/li>
+&lt;/ul>
+&lt;h4 id="示例struct-net_device_ops">示例：&lt;code>struct net_device_ops&lt;/code>&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 网络设备操作接口
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device_ops&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ndo_open&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ndo_stop&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 以太网驱动实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">net_device_ops&lt;/span> &lt;span class="n">eth_ops&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">ndo_open&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">eth_open&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">ndo_stop&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">eth_stop&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 注册网络设备时绑定 ops
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">netdev&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">alloc_etherdev&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">sizeof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">priv_data&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">netdev&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">netdev_ops&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">eth_ops&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h3 id="5-关键技巧">5. &lt;strong>关键技巧&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>自引用结构体&lt;/strong>：通过指针成员隐式关联自身。&lt;/li>
+&lt;li>&lt;strong>宏简化代码&lt;/strong>：如 &lt;code>container_of&lt;/code> 用于反向查找结构体。&lt;/li>
+&lt;li>&lt;strong>模块化加载&lt;/strong>：通过 &lt;code>struct module&lt;/code> 动态注册/卸载驱动。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="总结">总结&lt;/h3>
+&lt;p>Linux 内核通过 &lt;strong>结构体+函数指针&lt;/strong> 实现了以下 OO 特性：&lt;/p></description></item><item><title>扫描线算法计算区间重叠</title><link>https://jekyulll.github.io/post/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link><pubDate>Sat, 15 Feb 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid><description>&lt;p>题目来源：&lt;a href="https://www.marscode.cn/practice/jn1075jrp7j47d?problem_id=7424418560930611244">Marscode&lt;/a>。&lt;/p>
 &lt;blockquote>
 &lt;p>小C和小U有一个从&lt;code>0&lt;/code>开始的数组&lt;code>nums&lt;/code>，以及一个非负整数&lt;code>k&lt;/code>。每次操作中，小C可以选择一个尚未选择的下标&lt;code>i&lt;/code>（范围在 &lt;code>[0, nums.length - 1]&lt;/code>），然后将&lt;code>nums[i]&lt;/code>替换为&lt;code>[nums[i] - k, nums[i] + k]&lt;/code>之间的任意整数（包含边界）。&lt;br>
 在应用任意次数的操作后，返回数组&lt;code>nums&lt;/code>可能达到的最大分数。数组的分数被定义为数组中最多重复的元素个数。注意，每个下标只能被操作一次。&lt;/p></description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://jekyulll.github.io/post/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p>同一进程内的线程共享的资源：&lt;/p>
