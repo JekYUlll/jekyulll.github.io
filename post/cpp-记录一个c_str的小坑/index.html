@@ -1,0 +1,114 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>如何让函数安全返回 std::string 的 c_str - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content='观察以下这段明显错误的代码：
+1 2 3 4 5 6 7 8 9 const char* get_c() { std::string s = "hello world"; return s.c_str(); } int main() { printf("danger : %s\n", get_c()); return 0; } 字符串s是一个函数内部的临时对象，返回的const char*实际上是一个指针。函数结束后s会析构，而指针理论上会变成悬空的。
+实际上正确打印出了：
+'><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="如何让函数安全返回 std::string 的 c_str"><meta property="og:description" content='观察以下这段明显错误的代码：
+1 2 3 4 5 6 7 8 9 const char* get_c() { std::string s = "hello world"; return s.c_str(); } int main() { printf("danger : %s\n", get_c()); return 0; } 字符串s是一个函数内部的临时对象，返回的const char*实际上是一个指针。函数结束后s会析构，而指针理论上会变成悬空的。
+实际上正确打印出了：'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-02-23T12:05:47+08:00"><meta property="article:modified_time" content="2025-02-23T12:05:47+08:00"><meta property="article:tag" content="Cpp"><meta itemprop=name content="如何让函数安全返回 std::string 的 c_str"><meta itemprop=description content='观察以下这段明显错误的代码：
+1 2 3 4 5 6 7 8 9 const char* get_c() { std::string s = "hello world"; return s.c_str(); } int main() { printf("danger : %s\n", get_c()); return 0; } 字符串s是一个函数内部的临时对象，返回的const char*实际上是一个指针。函数结束后s会析构，而指针理论上会变成悬空的。
+实际上正确打印出了：'><meta itemprop=datePublished content="2025-02-23T12:05:47+08:00"><meta itemprop=dateModified content="2025-02-23T12:05:47+08:00"><meta itemprop=wordCount content="647"><meta itemprop=keywords content="Cpp"><meta name=twitter:card content="summary"><meta name=twitter:title content="如何让函数安全返回 std::string 的 c_str"><meta name=twitter:description content='观察以下这段明显错误的代码：
+1 2 3 4 5 6 7 8 9 const char* get_c() { std::string s = "hello world"; return s.c_str(); } int main() { printf("danger : %s\n", get_c()); return 0; } 字符串s是一个函数内部的临时对象，返回的const char*实际上是一个指针。函数结束后s会析构，而指针理论上会变成悬空的。
+实际上正确打印出了：'><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>如何让函数安全返回 std::string 的 c_str</h1><div class=post-meta><span class=post-time>2025-02-23</span><div class=post-category><a href=/categories/cpp/>cpp</a></div><span class=more-meta>647 words </span><span class=more-meta>2 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#前情提要>前情提要</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><p>观察以下这段明显错误的代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=nf>get_c</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>s</span> <span class=o>=</span> <span class=s>&#34;hello world&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>s</span><span class=p>.</span><span class=n>c_str</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>printf</span><span class=p>(</span><span class=s>&#34;danger : %s</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>get_c</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>字符串<code>s</code>是一个函数内部的临时对象，返回的<code>const char*</code>实际上是一个指针。函数结束后<code>s</code>会析构，而指针理论上会变成悬空的。<br>实际上正确打印出了：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>danger : hello world
+</span></span></code></pre></td></tr></table></div></div><p>(实际上只是因为该段内存没有被立刻覆盖，理论上是不安全的)</p><p>查看一下汇编：</p><ol><li>构造 <code>s</code>：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>leaq    .LC0(%rip), %rcx         ; 加载 &#34;hello world&#34; 地址到 %rcx
+</span></span><span class=line><span class=cl>leaq    -64(%rbp), %rax          ; 栈上分配 s 的内存
+</span></span><span class=line><span class=cl>call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_ ; 调用构造函数
+</span></span></code></pre></td></tr></table></div></div><ul><li>字符串 <code>"hello world"</code> 存储在 <code>.rodata</code> 只读数据段（.LC0）。</li><li>s 在栈上构造，通过 SSO 直接存储字符串内容。</li></ul><ol start=2><li>获取 <code>c_str()</code>：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>leaq    -64(%rbp), %rax
+</span></span><span class=line><span class=cl>call    _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE5c_strEv@PLT
+</span></span><span class=line><span class=cl>movq    %rax, %rbx               ; 将 c_str() 指针保存到 %rbx
+</span></span></code></pre></td></tr></table></div></div><ol start=3><li>析构 <code>s</code>：</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>leaq    -64(%rbp), %rax
+</span></span><span class=line><span class=cl>movq    %rax, %rdi
+</span></span><span class=line><span class=cl>call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev@PLT ; 调用析构函数
+</span></span></code></pre></td></tr></table></div></div><p>对于较短的字符串（如 &ldquo;<code>hello world</code>"），<code>std::string</code> 可能使用 短字符串优化（SSO），将数据直接存储在对象内部的栈空间中，而非堆内存。<br>在<code>get_c</code>中，<code>s</code>是在栈上分配的，当函数返回时，栈空间可能未被其他数据覆盖，所以字符串内容仍然保留。此时调用printf，可能仍然能读取到原来的数据，但这只是巧合，属于未定义行为的表现。</p><hr><h3 id=前情提要>前情提要</h3><p>写 webserver 的时候，设计了一个配置加载类用于加载配置文件。<br><em>eg</em>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-toml data-lang=toml><span class=line><span class=cl><span class=p>[</span><span class=nx>redis</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=nx>host</span> <span class=p>=</span> <span class=s2>&#34;127.0.0.1&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>port</span> <span class=p>=</span> <span class=mi>6379</span>
+</span></span><span class=line><span class=cl><span class=nx>password</span> <span class=p>=</span> <span class=s2>&#34;donotpanic&#34;</span>
+</span></span><span class=line><span class=cl><span class=nx>db</span> <span class=p>=</span> <span class=mi>0</span>
+</span></span></code></pre></td></tr></table></div></div><p>逻辑差不多长这样：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=n>Config</span> <span class=n>Config</span><span class=o>::</span><span class=n>_instance</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>unordered_map</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>Config</span><span class=o>::</span><span class=n>_configMap</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>Config</span><span class=o>::</span><span class=n>GetConfig</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>key</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>auto</span> <span class=n>it</span> <span class=o>=</span> <span class=n>_configMap</span><span class=p>.</span><span class=n>find</span><span class=p>(</span><span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>it</span> <span class=o>!=</span> <span class=n>_configMap</span><span class=p>.</span><span class=n>end</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>it</span><span class=o>-&gt;</span><span class=n>second</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>LOG_W</span><span class=p>(</span><span class=s>&#34;Config &#39;{}&#39; not found&#34;</span><span class=p>,</span> <span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=s>&#34;&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>我想让其返回<code>c_str</code>，直接返回是不行的。添加一个<code>static</code>的<code>string</code>作为cache即可。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>Config</span><span class=o>::</span><span class=n>GetConfig</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>key</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>static</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>cache</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>auto</span> <span class=n>it</span> <span class=o>=</span> <span class=n>_configMap</span><span class=p>.</span><span class=n>find</span><span class=p>(</span><span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>it</span> <span class=o>!=</span> <span class=n>_configMap</span><span class=p>.</span><span class=n>end</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>cache</span> <span class=o>=</span> <span class=n>it</span><span class=o>-&gt;</span><span class=n>second</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>cache</span><span class=p>.</span><span class=n>c_str</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>LOG_W</span><span class=p>(</span><span class=s>&#34;Config &#39;{}&#39; not found&#34;</span><span class=p>,</span> <span class=n>key</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=k>nullptr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2025-02-23</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpp/>cpp</a></div><nav class=post-nav><a class=next href=/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/><span class="next-text nav-default">Linux 内核中 C 语言的面向对象</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024 -
+2025<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>

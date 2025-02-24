@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 21 Feb 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux 内核中 C 语言的面向对象</title><link>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link><pubDate>Fri, 21 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid><description>&lt;p>Linux 内核使用 &lt;strong>结构体&lt;/strong> 和 &lt;strong>函数指针&lt;/strong> 的组合模拟面向对象（OO）编程范式。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 23 Feb 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>如何让函数安全返回 std::string 的 c_str</title><link>https://jekyulll.github.io/post/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</link><pubDate>Sun, 23 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</guid><description>&lt;p>观察以下这段明显错误的代码：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="nf">get_c&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">s&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;hello world&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">s&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">c_str&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;danger : %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">get_c&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>字符串&lt;code>s&lt;/code>是一个函数内部的临时对象，返回的&lt;code>const char*&lt;/code>实际上是一个指针。函数结束后&lt;code>s&lt;/code>会析构，而指针理论上会变成悬空的。&lt;br>
+实际上正确打印出了：&lt;/p></description></item><item><title>Linux 内核中 C 语言的面向对象</title><link>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link><pubDate>Fri, 21 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid><description>&lt;p>Linux 内核使用 &lt;strong>结构体&lt;/strong> 和 &lt;strong>函数指针&lt;/strong> 的组合模拟面向对象（OO）编程范式。&lt;/p>
 &lt;hr>
 &lt;h3 id="1-结构体封装数据与行为">1. &lt;strong>结构体封装数据与行为&lt;/strong>&lt;/h3>
 &lt;ul>
