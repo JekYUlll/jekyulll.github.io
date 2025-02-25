@@ -249,6 +249,8 @@ void tick() {
 }
 ```
 
+[c语言-手撕多级时间轮定时器(纯手写)](https://blog.csdn.net/weixin_45203607/article/details/127095268)。
+
 ---
 
 **拓展**：  
