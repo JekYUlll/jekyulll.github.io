@@ -4,8 +4,8 @@ draft = false
 title = '在运行的时候，修改并且覆盖该二进制文件会如何？'
 author = 'JekYUlll'
 lastmod = '2025-03-06T18:05:47+08:00'
-tags = ['cpp', 'os', '面经']
-categories = ['cpp']
+tags = ['linux', 'os', '面经']
+categories = ['linux']
 +++
 
 > Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
