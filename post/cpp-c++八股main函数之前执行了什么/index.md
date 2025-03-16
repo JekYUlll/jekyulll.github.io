@@ -1,7 +1,8 @@
 
 ### 一、`_start`与`__libc_start_call_main`的作用
 1. **`_start`：程序的入口点**  
-   `_start`是Linux环境下C/C++程序的**实际入口函数**，由链接器自动添加到可执行文件中，负责初始化运行时环境并调用`__libc_start_main`。它的核心任务包括：  
+   <u>`_start`是Linux环境下C/C++程序的**实际入口函数**，由链接器自动添加到可执行文件中，负责初始化运行时环境并调用`__libc_start_main`。</u>  
+   它的核心任务包括：  
    • 设置栈指针（`%ebp`清零）、传递参数（如`argc`和`argv`）到寄存器。  
    • 加载全局初始化函数（如`__libc_csu_init`）和清理函数（如`__libc_csu_fini`）。  
    • 调用`__libc_start_main`，并将`main`函数地址作为参数传递。  
