@@ -1,0 +1,202 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>流计算中的反向压力模型与 Reactive Streams --C++实现 - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="一、反向压力（Backpressure）的核心意义 在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致内存溢出或系统崩溃。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的速率适配，从而保证系统的稳定性与资源可控性。
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="流计算中的反向压力模型与 Reactive Streams --C++实现"><meta property="og:description" content="一、反向压力（Backpressure）的核心意义 在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致内存溢出或系统崩溃。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的速率适配，从而保证系统的稳定性与资源可控性。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-03-21T12:05:47+08:00"><meta property="article:modified_time" content="2025-03-21T12:05:47+08:00"><meta property="article:tag" content="Cpp"><meta property="article:tag" content="Web"><meta property="article:tag" content="Backend"><meta itemprop=name content="流计算中的反向压力模型与 Reactive Streams --C++实现"><meta itemprop=description content="一、反向压力（Backpressure）的核心意义 在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致内存溢出或系统崩溃。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的速率适配，从而保证系统的稳定性与资源可控性。"><meta itemprop=datePublished content="2025-03-21T12:05:47+08:00"><meta itemprop=dateModified content="2025-03-21T12:05:47+08:00"><meta itemprop=wordCount content="1302"><meta itemprop=keywords content="Cpp,Web,Backend"><meta name=twitter:card content="summary"><meta name=twitter:title content="流计算中的反向压力模型与 Reactive Streams --C++实现"><meta name=twitter:description content="一、反向压力（Backpressure）的核心意义 在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致内存溢出或系统崩溃。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的速率适配，从而保证系统的稳定性与资源可控性。"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>流计算中的反向压力模型与 Reactive Streams --C++实现</h1><div class=post-meta><span class=post-time>2025-03-21</span><div class=post-category><a href=/categories/web/>web</a></div><span class=more-meta>1302 words </span><span class=more-meta>3 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#一反向压力backpressure的核心意义>一、反向压力（Backpressure）的核心意义</a><ul><li><a href=#11-背压的两种实现模式>1.1 背压的两种实现模式</a></li></ul></li><li><a href=#二reactive-streams规范与c映射>二、Reactive Streams规范与C++映射</a><ul><li><a href=#21-c实现的核心逻辑>2.1 C++实现的核心逻辑</a></li></ul></li><li><a href=#三完整流处理管道的c实现>三、完整流处理管道的C++实现</a><ul><li><a href=#31-流处理节点设计>3.1 流处理节点设计</a></li><li><a href=#32-线程池与异步调度>3.2 线程池与异步调度</a></li></ul></li><li><a href=#四性能调优与扩展>四、性能调优与扩展</a><ul><li><a href=#41-动态队列扩容策略>4.1 动态队列扩容策略</a></li><li><a href=#42-背压指标监控>4.2 背压指标监控</a></li></ul></li><li><a href=#五应用场景与总结>五、应用场景与总结</a><ul><li><a href=#51-典型场景>5.1 典型场景</a></li><li><a href=#52-总结>5.2 总结</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=一反向压力backpressure的核心意义>一、反向压力（Backpressure）的核心意义</h2><p>在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致<strong>内存溢出</strong>或<strong>系统崩溃</strong>。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的<strong>速率适配</strong>，从而保证系统的稳定性与资源可控性。</p><h3 id=11-背压的两种实现模式>1.1 背压的两种实现模式</h3><ol><li><strong>阻塞式反馈</strong>：通过队列容量限制直接阻塞生产者（如线程等待）。</li><li><strong>非阻塞式协商</strong>：通过异步信号（如请求量协商）动态调整生产者速率（Reactive Streams的核心机制）。</li></ol><hr><h2 id=二reactive-streams规范与c映射>二、Reactive Streams规范与C++映射</h2><p>Reactive Streams是异步流处理的<strong>标准化规范</strong>，定义了四个核心组件：</p><table><thead><tr><th>组件</th><th>职责</th><th>C++类设计示例（伪代码）</th></tr></thead><tbody><tr><td><strong>Publisher</strong></td><td>数据生产者（如传感器、文件读取）</td><td><code>class Publisher&lt;T> { virtual void subscribe(Subscriber&lt;T>&) = 0; };</code></td></tr><tr><td><strong>Subscriber</strong></td><td>数据消费者（如数据库写入、网络发送）</td><td><code>class Subscriber&lt;T> { virtual void onNext(const T&) = 0; };</code></td></tr><tr><td><strong>Subscription</strong></td><td>订阅上下文（背压协商）</td><td><code>class Subscription { virtual void request(int n) = 0; };</code></td></tr><tr><td><strong>Processor</strong></td><td>中间处理节点（如数据过滤、转换）</td><td><code>class Processor&lt;T, R> : public Subscriber&lt;T>, Publisher&lt;R> {};</code></td></tr></tbody></table><h3 id=21-c实现的核心逻辑>2.1 C++实现的核心逻辑</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// 基于条件变量的背压队列（简化版）  
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>template</span><span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>  
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>BoundedQueue</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>queue</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span> <span class=n>buffer</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>mtx</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>condition_variable</span> <span class=n>not_full</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>condition_variable</span> <span class=n>not_empty</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>    <span class=n>size_t</span> <span class=n>capacity</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>push</span><span class=p>(</span><span class=k>const</span> <span class=n>T</span><span class=o>&amp;</span> <span class=n>item</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>mtx</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>        <span class=n>not_full</span><span class=p>.</span><span class=n>wait</span><span class=p>(</span><span class=n>lock</span><span class=p>,</span> <span class=p>[</span><span class=k>this</span><span class=p>]</span> <span class=p>{</span> <span class=k>return</span> <span class=n>buffer</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&lt;</span> <span class=n>capacity</span><span class=p>;</span> <span class=p>});</span>  
+</span></span><span class=line><span class=cl>        <span class=n>buffer</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>item</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>        <span class=n>not_empty</span><span class=p>.</span><span class=n>notify_one</span><span class=p>();</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>T</span> <span class=nf>pop</span><span class=p>()</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>mtx</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>        <span class=n>not_empty</span><span class=p>.</span><span class=n>wait</span><span class=p>(</span><span class=n>lock</span><span class=p>,</span> <span class=p>[</span><span class=k>this</span><span class=p>]</span> <span class=p>{</span> <span class=k>return</span> <span class=o>!</span><span class=n>buffer</span><span class=p>.</span><span class=n>empty</span><span class=p>();</span> <span class=p>});</span>  
+</span></span><span class=line><span class=cl>        <span class=n>T</span> <span class=n>val</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>buffer</span><span class=p>.</span><span class=n>front</span><span class=p>());</span>  
+</span></span><span class=line><span class=cl>        <span class=n>buffer</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>  
+</span></span><span class=line><span class=cl>        <span class=n>not_full</span><span class=p>.</span><span class=n>notify_one</span><span class=p>();</span>  
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>val</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl><span class=p>};</span>  
+</span></span></code></pre></td></tr></table></div></div><p><strong>说明</strong>：队列满时阻塞<code>push</code>，空时阻塞<code>pop</code>，通过条件变量实现生产者-消费者的速率同步。</p><hr><h2 id=三完整流处理管道的c实现>三、完整流处理管道的C++实现</h2><h3 id=31-流处理节点设计>3.1 流处理节点设计</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// 数据源（Publisher实现）  
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>class</span> <span class=nc>DataSource</span> <span class=o>:</span> <span class=k>public</span> <span class=n>Publisher</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>subscribe</span><span class=p>(</span><span class=n>Subscriber</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&amp;</span> <span class=n>sub</span><span class=p>)</span> <span class=k>override</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>auto</span><span class=o>*</span> <span class=n>subscription</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DataSubscription</span><span class=p>(</span><span class=n>sub</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>        <span class=n>sub</span><span class=p>.</span><span class=n>onSubscribe</span><span class=p>(</span><span class=o>*</span><span class=n>subscription</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl><span class=p>};</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 订阅契约（实现背压请求）  
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>class</span> <span class=nc>DataSubscription</span> <span class=o>:</span> <span class=k>public</span> <span class=n>Subscription</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=n>Subscriber</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&amp;</span> <span class=n>subscriber</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>atomic</span><span class=o>&lt;</span><span class=kt>bool</span><span class=o>&gt;</span> <span class=n>canceled</span><span class=p>{</span><span class=nb>false</span><span class=p>};</span>  
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>request</span><span class=p>(</span><span class=kt>int</span> <span class=n>n</span><span class=p>)</span> <span class=k>override</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>n</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>canceled</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>data</span> <span class=o>=</span> <span class=n>generateData</span><span class=p>();</span> <span class=c1>// 模拟数据生成  
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=n>subscriber</span><span class=p>.</span><span class=n>onNext</span><span class=p>(</span><span class=n>data</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>        <span class=p>}</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl><span class=p>};</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 数据处理节点（Processor实现）  
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>class</span> <span class=nc>TransformProcessor</span> <span class=o>:</span> <span class=k>public</span> <span class=n>Processor</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>onNext</span><span class=p>(</span><span class=k>const</span> <span class=kt>int</span><span class=o>&amp;</span> <span class=n>data</span><span class=p>)</span> <span class=k>override</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>transformed</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>to_string</span><span class=p>(</span><span class=n>data</span> <span class=o>*</span> <span class=mi>2</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>        <span class=n>outputQueue</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>transformed</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl><span class=p>};</span>  
+</span></span></code></pre></td></tr></table></div></div><h3 id=32-线程池与异步调度>3.2 线程池与异步调度</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// 基于线程池的任务执行器  
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>class</span> <span class=nc>ReactiveExecutor</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=n>BoundedQueue</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;&gt;</span> <span class=n>taskQueue</span><span class=p>{</span><span class=mi>1024</span><span class=p>};</span>  
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span><span class=o>&gt;</span> <span class=n>workers</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=n>ReactiveExecutor</span><span class=p>(</span><span class=n>size_t</span> <span class=n>threads</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=n>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>threads</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>            <span class=n>workers</span><span class=p>.</span><span class=n>emplace_back</span><span class=p>([</span><span class=k>this</span><span class=p>]</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>                <span class=k>while</span> <span class=p>(</span><span class=nb>true</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=k>auto</span> <span class=n>task</span> <span class=o>=</span> <span class=n>taskQueue</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>task</span><span class=p>();</span>  
+</span></span><span class=line><span class=cl>                <span class=p>}</span>  
+</span></span><span class=line><span class=cl>            <span class=p>});</span>  
+</span></span><span class=line><span class=cl>        <span class=p>}</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>submit</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>task</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=n>taskQueue</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>move</span><span class=p>(</span><span class=n>task</span><span class=p>));</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl><span class=p>};</span>  
+</span></span></code></pre></td></tr></table></div></div><p><strong>优化点</strong>：通过有界队列实现任务提交的背压控制，防止线程池过载。</p><hr><h2 id=四性能调优与扩展>四、性能调优与扩展</h2><h3 id=41-动态队列扩容策略>4.1 动态队列扩容策略</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>class</span> <span class=nc>DynamicBoundedQueue</span> <span class=o>:</span> <span class=k>public</span> <span class=n>BoundedQueue</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>push</span><span class=p>(</span><span class=k>const</span> <span class=kt>int</span><span class=o>&amp;</span> <span class=n>item</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>buffer</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&gt;=</span> <span class=n>capacity</span> <span class=o>*</span> <span class=mf>0.8</span><span class=p>)</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>            <span class=n>capacity</span> <span class=o>*=</span> <span class=mi>2</span><span class=p>;</span> <span class=c1>// 动态扩容  
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>}</span>  
+</span></span><span class=line><span class=cl>        <span class=n>BoundedQueue</span><span class=o>::</span><span class=n>push</span><span class=p>(</span><span class=n>item</span><span class=p>);</span>  
+</span></span><span class=line><span class=cl>    <span class=p>}</span>  
+</span></span><span class=line><span class=cl><span class=p>};</span>  
+</span></span></code></pre></td></tr></table></div></div><h3 id=42-背压指标监控>4.2 背压指标监控</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=n>size_t</span> <span class=nf>getBackpressureLevel</span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span>  
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>buffer</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>*</span> <span class=mi>100</span> <span class=o>/</span> <span class=n>capacity</span><span class=p>;</span> <span class=c1>// 返回队列占用百分比  
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>  
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=五应用场景与总结>五、应用场景与总结</h2><h3 id=51-典型场景>5.1 典型场景</h3><p>• <strong>实时风控系统</strong>：防止数据洪峰导致内存溢出<br>• <strong>物联网设备</strong>：处理海量传感器数据流<br>• <strong>视频流处理</strong>：动态调整视频帧解码速率</p><h3 id=52-总结>5.2 总结</h3><p>反向压力是流式计算中<strong>资源管理</strong>的核心机制，结合Reactive Streams的标准化接口，可在C++中实现高效、可控的异步流处理系统。通过队列阻塞、动态协商和线程池调度，开发者能够构建适应高吞吐场景的健壮架构。</p><hr><dl><dt><strong>参考实现源码</strong>：<a href=https://github.com/example/backpressure-cpp>GitHub示例项目</a></dt><dt><strong>扩展阅读</strong>：Reactor框架设计思想 | 微服务背压实践</dt><dd><p>流计算中的反向压力模型与生产者-消费者模式</p></dd><dd>Reactive Streams背压机制解析</dd><dd>Reactive Streams规范与组件定义</dd><dd>背压的应用场景与实现策略</dd><dd>物联网中的流处理实践</dd><dd>Spring WebFlux与Reactor模型</dd><dd>微服务架构中的背压设计</dd><dd>C++线程池与异步任务调度</dd></dl></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2025-03-21</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpp/>cpp</a>
+<a href=/tags/web/>web</a>
+<a href=/tags/backend/>backend</a></div><nav class=post-nav><a class=next href=/post/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/><span class="next-text nav-default">【01】Flet 学习笔记 --Flutter原理</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024 -
+2025<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>
