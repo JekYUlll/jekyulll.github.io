@@ -1,0 +1,205 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><title>文件锁（FileLock）的本质与价值 - HOREB EVAN JEKYULLL BLOG</title>
+<meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=Cache-Control content="no-transform"><meta http-equiv=Cache-Control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="JekYUlll"><meta name=description content="文件锁（FileLock）的本质与价值 在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。
+"><meta name=keywords content="JekYUlll,theme,even"><meta name=generator content="Hugo 0.140.0 with theme even"><link rel=canonical href=https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:url" content="https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/"><meta property="og:site_name" content="HOREB EVAN JEKYULLL BLOG"><meta property="og:title" content="文件锁（FileLock）的本质与价值"><meta property="og:description" content="文件锁（FileLock）的本质与价值 在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2025-03-26T04:05:47+08:00"><meta property="article:modified_time" content="2025-03-26T04:05:47+08:00"><meta property="article:tag" content="Cpp"><meta property="article:tag" content="Linux"><meta itemprop=name content="文件锁（FileLock）的本质与价值"><meta itemprop=description content="文件锁（FileLock）的本质与价值 在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。"><meta itemprop=datePublished content="2025-03-26T04:05:47+08:00"><meta itemprop=dateModified content="2025-03-26T04:05:47+08:00"><meta itemprop=wordCount content="1212"><meta itemprop=keywords content="Cpp,Linux"><meta name=twitter:card content="summary"><meta name=twitter:title content="文件锁（FileLock）的本质与价值"><meta name=twitter:description content="文件锁（FileLock）的本质与价值 在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script><script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Horeb</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>Home</li></a><a href=/post/><li class=mobile-menu-item>Archives</li></a><a href=/tags/><li class=mobile-menu-item>Tags</li></a><a href=/categories/><li class=mobile-menu-item>Categories</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Horeb</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>Home</a></li><li class=menu-item><a class=menu-item-link href=/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=/categories/>Categories</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>文件锁（FileLock）的本质与价值</h1><div class=post-meta><span class=post-time>2025-03-26</span><div class=post-category><a href=/categories/cpp/>cpp</a></div><span class=more-meta>1212 words </span><span class=more-meta>3 mins read</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>Contents</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><ul><li><a href=#文件锁filelock的本质与价值>文件锁（FileLock）的本质与价值</a></li><li><a href=#c实现文件锁的三种范式>C++实现文件锁的三种范式</a></li><li><a href=#实现选择指南>实现选择指南</a></li></ul></li></ul></li></ul></nav></div></div><div class=post-content><h3 id=文件锁filelock的本质与价值>文件锁（FileLock）的本质与价值</h3><p>在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。</p><p>文件锁的核心逻辑是通过独占标记协调资源访问。</p><p><strong>典型应用场景</strong>：</p><ol><li><strong>配置文件的原子性更新</strong><br>多个服务实例同时修改同一配置文件时，未加锁会导致最后的写入覆盖先前内容（例如Nginx配置热更新）</li><li><strong>日志文件的顺序写入</strong><br>多线程日志系统中，不加锁可能引发日志行交错（如Apache日志滚动的并发问题）</li><li><strong>分布式系统的资源协调</strong><br>在无中心化锁服务时，通过共享存储（如NFS）的文件锁实现分布式锁（类似ZooKeeper的临时节点机制）</li></ol><hr><h3 id=c实现文件锁的三种范式>C++实现文件锁的三种范式</h3><h4 id=方案一操作系统原生api工业级方案><strong>方案一：操作系统原生API（工业级方案）</strong></h4><p><strong>适用场景</strong>：需要高可靠性、跨平台兼容的生产环境</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;string&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;fcntl.h&gt;</span><span class=cp>    </span><span class=c1>// Linux
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cp>#include</span> <span class=cpf>&lt;windows.h&gt;</span><span class=cp>  </span><span class=c1>// Windows
+</span></span></span><span class=line><span class=cl><span class=c1></span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>NativeFileLock</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>explicit</span> <span class=n>NativeFileLock</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>path</span><span class=p>)</span> <span class=o>:</span> <span class=n>lock_path</span><span class=p>(</span><span class=n>path</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>acquire</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=cp>#ifdef _WIN32
+</span></span></span><span class=line><span class=cl><span class=cp></span>        <span class=c1>// Windows通过独占模式创建文件实现锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>h_file</span> <span class=o>=</span> <span class=n>CreateFileA</span><span class=p>(</span><span class=n>lock_path</span><span class=p>.</span><span class=n>c_str</span><span class=p>(),</span> <span class=n>GENERIC_WRITE</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl>                           <span class=k>nullptr</span><span class=p>,</span> <span class=n>CREATE_ALWAYS</span><span class=p>,</span> <span class=n>FILE_ATTRIBUTE_HIDDEN</span><span class=p>,</span> <span class=k>nullptr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>h_file</span> <span class=o>!=</span> <span class=n>INVALID_HANDLE_VALUE</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=cp>#else
+</span></span></span><span class=line><span class=cl><span class=cp></span>        <span class=c1>// Linux使用fcntl记录锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>fd</span> <span class=o>=</span> <span class=n>open</span><span class=p>(</span><span class=n>lock_path</span><span class=p>.</span><span class=n>c_str</span><span class=p>(),</span> <span class=n>O_RDWR</span> <span class=o>|</span> <span class=n>O_CREAT</span><span class=p>,</span> <span class=mo>0644</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>fd</span> <span class=o>==</span> <span class=o>-</span><span class=mi>1</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>flock</span> <span class=n>lock_struct</span><span class=p>{};</span>
+</span></span><span class=line><span class=cl>        <span class=n>lock_struct</span><span class=p>.</span><span class=n>l_type</span> <span class=o>=</span> <span class=n>F_WRLCK</span><span class=p>;</span>  <span class=c1>// 排他锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>lock_struct</span><span class=p>.</span><span class=n>l_whence</span> <span class=o>=</span> <span class=n>SEEK_SET</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>fcntl</span><span class=p>(</span><span class=n>fd</span><span class=p>,</span> <span class=n>F_SETLK</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>lock_struct</span><span class=p>)</span> <span class=o>!=</span> <span class=o>-</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=cp>#endif
+</span></span></span><span class=line><span class=cl><span class=cp></span>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>release</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=cp>#ifdef _WIN32
+</span></span></span><span class=line><span class=cl><span class=cp></span>        <span class=n>CloseHandle</span><span class=p>(</span><span class=n>h_file</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>DeleteFileA</span><span class=p>(</span><span class=n>lock_path</span><span class=p>.</span><span class=n>c_str</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=cp>#else
+</span></span></span><span class=line><span class=cl><span class=cp></span>        <span class=n>close</span><span class=p>(</span><span class=n>fd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>unlink</span><span class=p>(</span><span class=n>lock_path</span><span class=p>.</span><span class=n>c_str</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=cp>#endif
+</span></span></span><span class=line><span class=cl><span class=cp></span>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl><span class=cp>#ifdef _WIN32
+</span></span></span><span class=line><span class=cl><span class=cp></span>    <span class=n>HANDLE</span> <span class=n>h_file</span> <span class=o>=</span> <span class=n>INVALID_HANDLE_VALUE</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=cp>#else
+</span></span></span><span class=line><span class=cl><span class=cp></span>    <span class=kt>int</span> <span class=n>fd</span> <span class=o>=</span> <span class=o>-</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=cp>#endif
+</span></span></span><span class=line><span class=cl><span class=cp></span>    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>lock_path</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>技术要点</strong>：<br>• Windows通过<code>CREATE_ALWAYS</code>+隐藏属性实现原子创建<br>• Linux使用<code>fcntl</code>的记录锁，支持对文件部分区域加锁<br>• 必须处理进程崩溃后的锁残留（通过<code>unlink/DeleteFile</code>物理删除锁文件）</p><hr><h4 id=方案二基于文件系统标记轻量级方案><strong>方案二：基于文件系统标记（轻量级方案）</strong></h4><p><strong>适用场景</strong>：快速实现、非高并发场景</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;fstream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;filesystem&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>MarkerFileLock</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>explicit</span> <span class=n>MarkerFileLock</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>path</span><span class=p>)</span> <span class=o>:</span> <span class=n>lock_path</span><span class=p>(</span><span class=n>path</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>try_lock</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>filesystem</span><span class=o>::</span><span class=n>exists</span><span class=p>(</span><span class=n>lock_path</span><span class=p>))</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>temp</span><span class=p>(</span><span class=n>lock_path</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>temp</span><span class=p>.</span><span class=n>is_open</span><span class=p>();</span>  <span class=c1>// 文件创建成功即视为获得锁
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>unlock</span><span class=p>()</span> <span class=p>{</span> 
+</span></span><span class=line><span class=cl>        <span class=n>std</span><span class=o>::</span><span class=n>filesystem</span><span class=o>::</span><span class=n>remove</span><span class=p>(</span><span class=n>lock_path</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>lock_path</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>局限性</strong>：<br>• 无法检测锁文件被手动删除的意外情况<br>• 进程崩溃可能导致死锁（需额外守护进程清理）</p><hr><h4 id=方案三内存映射原子操作高性能方案><strong>方案三：内存映射+原子操作（高性能方案）</strong></h4><p><strong>适用场景</strong>：需要微秒级响应的关键系统</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;sys/mman.h&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;atomic&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>MMapLock</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>MMapLock</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>path</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>fd</span> <span class=o>=</span> <span class=n>open</span><span class=p>(</span><span class=n>path</span><span class=p>,</span> <span class=n>O_RDWR</span> <span class=o>|</span> <span class=n>O_CREAT</span><span class=p>,</span> <span class=mo>0644</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>ftruncate</span><span class=p>(</span><span class=n>fd</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=kt>int</span><span class=p>));</span>  <span class=c1>// 扩展文件大小
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>addr</span> <span class=o>=</span> <span class=n>mmap</span><span class=p>(</span><span class=k>nullptr</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=kt>int</span><span class=p>),</span> <span class=n>PROT_READ</span> <span class=o>|</span> <span class=n>PROT_WRITE</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl>                   <span class=n>MAP_SHARED</span><span class=p>,</span> <span class=n>fd</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>counter</span> <span class=o>=</span> <span class=k>reinterpret_cast</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>atomic</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;*&gt;</span><span class=p>(</span><span class=n>addr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>lock</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>expected</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>counter</span><span class=o>-&gt;</span><span class=n>compare_exchange_strong</span><span class=p>(</span><span class=n>expected</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> 
+</span></span><span class=line><span class=cl>               <span class=n>std</span><span class=o>::</span><span class=n>memory_order_acquire</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>unlock</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>counter</span><span class=o>-&gt;</span><span class=n>store</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>memory_order_release</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>munmap</span><span class=p>(</span><span class=n>addr</span><span class=p>,</span> <span class=k>sizeof</span><span class=p>(</span><span class=kt>int</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=n>close</span><span class=p>(</span><span class=n>fd</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>fd</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span><span class=o>*</span> <span class=n>addr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>atomic</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;*</span> <span class=n>counter</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>优势</strong>：<br>• 通过CPU原子指令实现无阻塞锁，性能比传统文件锁高10倍<br>• 依赖内存映射文件实现跨进程同步</p><hr><h3 id=实现选择指南>实现选择指南</h3><table><thead><tr><th>方案</th><th>可靠性</th><th>性能</th><th>适用场景</th></tr></thead><tbody><tr><td>原生API</td><td>★★★</td><td>★★☆</td><td>生产环境、跨平台要求高</td></tr><tr><td>文件标记</td><td>★☆☆</td><td>★★★</td><td>快速原型、低并发需求</td></tr><tr><td>内存映射+原子</td><td>★★☆</td><td>★★★</td><td>高频访问、延迟敏感型系统（如交易系统）</td></tr></tbody></table><p><strong>避坑建议</strong>：</p><ol><li><strong>避免网络文件系统</strong>（如NFS）——锁机制可能因网络延迟失效</li><li><strong>设置超时退避</strong>——防止死锁（参考Java的<code>tryLock(timeout)</code>）</li><li><strong>锁文件路径规范化</strong>——建议使用<code>/var/lock/</code>等专用目录</li></ol></div><div class=post-copyright><p class=copyright-item><span class=item-title>Author</span>
+<span class=item-content>JekYUlll</span></p><p class=copyright-item><span class=item-title>LastMod</span>
+<span class=item-content>2025-03-26</span></p><p class=copyright-item><span class=item-title>Markdown</span>
+<span class=item-content><a class=link-to-markdown href=https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/index.md target=_blank>The Markdown version »</a></span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/cpp/>cpp</a>
+<a href=/tags/linux/>linux</a></div><nav class=post-nav><a class=next href=/post/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/><span class="next-text nav-default">更新的二进制差异算法</span>
+<span class="next-text nav-mobile">Next</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=mailto:jekyulll@gmail.com class="iconfont icon-email" title=email></a><a href=https://github.com/JekYUlll class="iconfont icon-github" title=github></a><a href=https://www.zhihu.com/people/yu-bei-28-33 class="iconfont icon-zhihu" title=zhihu></a><a href=https://space.bilibili.com/11060371 class="iconfont icon-bilibili" title=bilibili></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span><span class=division>|</span>
+<span class=theme-info>Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span><span class=copyright-year>&copy;
+2024 -
+2025<span class=heart><i class="iconfont icon-heart"></i></span><span></span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script><script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></body></html>
