@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/go/</link><description>Recent content in Go on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 23 Apr 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/go/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础">一、HTTP协议基础&lt;/h3>
+&lt;p>HTTP协议通过&lt;strong>Range请求&lt;/strong>实现断点续传：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>客户端请求指定范围&lt;/strong>&lt;br>
+客户端在请求头中携带&lt;code>Range&lt;/code>字段，例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-http" data-lang="http">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">GET&lt;/span> &lt;span class="nn">/file.zip&lt;/span> &lt;span class="kr">HTTP&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="m">1.1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Range&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="l">bytes=500-1000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>服务端响应部分内容&lt;/strong>&lt;br>
+若支持范围请求，服务端返回状态码&lt;code>206 Partial Content&lt;/code>及对应数据片段：&lt;/p></description></item></channel></rss>
