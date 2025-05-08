@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on Hello Friend NG</title><link>https://jekyulll.github.io/tags/backend/</link><description>Recent content in Backend on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 23 Apr 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础">一、HTTP协议基础&lt;/h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on 青年大学习</title><link>https://jekyulll.github.io/tags/backend/</link><description>Recent content in Backend on 青年大学习</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 23 Apr 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://jekyulll.github.io/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础">一、HTTP协议基础&lt;/h3>
 &lt;p>HTTP协议通过&lt;strong>Range请求&lt;/strong>实现断点续传：&lt;/p>
 &lt;ol>
 &lt;li>
@@ -92,7 +92,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>• 解析&lt;code>Range&lt;/code>请求头并验证范围有效性
 • 使用&lt;code>Seek&lt;/code>定位文件指针，返回部分内容
-• 通过&lt;code>ETag&lt;/code>实现文件一致性校验&lt;/p></description></item><item><title>Nginx 的多进程模型</title><link>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong>多进程模型&lt;/strong>。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p>
+• 通过&lt;code>ETag&lt;/code>实现文件一致性校验&lt;/p></description></item><item><title>Nginx 的多进程模型</title><link>https://jekyulll.github.io/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong>多进程模型&lt;/strong>。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p>
 &lt;hr>
 &lt;h4 id="一多进程模型的核心架构">一、多进程模型的核心架构&lt;/h4>
 &lt;p>Nginx采用经典的&lt;strong>Master-Worker多进程架构&lt;/strong>：&lt;/p>
@@ -171,7 +171,7 @@
 [1] 其其网《Nginx为何偏爱多进程模型》&lt;br>
 [4][6] CSDN博客《nginx为什么是多进程单线程》&lt;br>
 [2][3] CSDN博客《Nginx工作原理》&lt;/p>
-&lt;/blockquote></description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义">一、反向压力（Backpressure）的核心意义&lt;/h2>
+&lt;/blockquote></description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://jekyulll.github.io/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义">一、反向压力（Backpressure）的核心意义&lt;/h2>
 &lt;p>在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong>内存溢出&lt;/strong>或&lt;strong>系统崩溃&lt;/strong>。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong>速率适配&lt;/strong>，从而保证系统的稳定性与资源可控性。&lt;/p>
 &lt;h3 id="11-背压的两种实现模式">1.1 背压的两种实现模式&lt;/h3>
 &lt;ol>
@@ -240,7 +240,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> val; 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}; 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>说明&lt;/strong>：队列满时阻塞&lt;code>push&lt;/code>，空时阻塞&lt;code>pop&lt;/code>，通过条件变量实现生产者-消费者的速率同步。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>说明&lt;/strong>：队列满时阻塞&lt;code>push&lt;/code>，空时阻塞&lt;code>pop&lt;/code>，通过条件变量实现生产者-消费者的速率同步。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p>
 &lt;ul>
 &lt;li>​LRU（Least Recently Used）​
 &lt;ul>
@@ -327,7 +327,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>关键点&lt;/strong>：&lt;br>
 • 使用&lt;strong>哈希表+双向链表&lt;/strong>实现O(1)操作复杂度&lt;br>
-• 头节点存放最新访问数据，尾节点为待淘汰数据&lt;/p></description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p>
+• 头节点存放最新访问数据，尾节点为待淘汰数据&lt;/p></description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://jekyulll.github.io/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p>
 &lt;h3 id="一算法原理与公式">一、算法原理与公式&lt;/h3>
 &lt;p>半衰期算法基于放射性衰变公式：&lt;strong>M * (1/2)^(t/T)&lt;/strong>，其中：
 • &lt;strong>M&lt;/strong>：初始值（如点击量）
@@ -378,7 +378,7 @@
 • &lt;strong>动态调整半衰期&lt;/strong>：通过机器学习根据历史数据自动优化T值。&lt;/p>
 &lt;blockquote>
 &lt;p>该算法已在实际工程中验证可行性，例如某博客示例中，电影类内容在7天内权重从1000衰减至约400，而汽车类内容30天后仍保留约300权重。开发者可根据业务需求调整公式参数，平衡时效性与长尾效应。&lt;/p>
-&lt;/blockquote></description></item><item><title>web 访问认证机制</title><link>https://jekyulll.github.io/post/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid><description>&lt;p>&lt;a href="https://time.geekbang.org/column/article/398410">25 | 认证机制：应用程序如何进行访问认证？&lt;/a>讲得非常好，图文结合。&lt;/p>
+&lt;/blockquote></description></item><item><title>web 访问认证机制</title><link>https://jekyulll.github.io/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid><description>&lt;p>&lt;a href="https://time.geekbang.org/column/article/398410">25 | 认证机制：应用程序如何进行访问认证？&lt;/a>讲得非常好，图文结合。&lt;/p>
 &lt;p>&lt;strong>IAM&lt;/strong>：身份识别与访问管理（Identity and Access Management）。&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>认证&lt;/strong>（Authentication，英文缩写 &lt;strong>authn&lt;/strong>）：用来验证某个用户是否具有访问系统的权限。如果认证通过，该用户就可以访问系统，从而创建、修改、删除、查询平台支持的资源。&lt;/li>

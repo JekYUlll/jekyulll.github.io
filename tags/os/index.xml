@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Hello Friend NG</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 29 Apr 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/post/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on 青年大学习</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on 青年大学习</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 29 Apr 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
 &lt;p>&lt;a href="https://blog.csdn.net/liaowenxiong/article/details/116401524">Linux 命令之 &lt;code>locale&lt;/code> &amp;ndash; 设置和显示程序运行的语言环境&lt;/a>。&lt;/p>
 &lt;blockquote>
 &lt;p>使用 &lt;code>locale&lt;/code> 命令来设置和显示程序运行的语言环境，&lt;code>locale&lt;/code> 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br>
@@ -10,7 +10,7 @@
 &lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
 &lt;/blockquote>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $UID
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/post/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
 &lt;p>编写守护进程的一般步骤步骤：&lt;/p>
 &lt;ol>
 &lt;li>在父进程中执行&lt;code>fork&lt;/code>并&lt;code>exit&lt;/code>退出；&lt;/li>
@@ -24,7 +24,7 @@
 &lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423">Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a>。&lt;/p>
 &lt;blockquote>
 &lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
-&lt;/blockquote></description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://jekyulll.github.io/post/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p>Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong>保护环&lt;/strong>（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p>
+&lt;/blockquote></description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://jekyulll.github.io/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p>Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong>保护环&lt;/strong>（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p>
 &lt;p>x86保护环的完整结构为四层，但实际仅Ring 0和Ring 3被广泛使用：&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>零环&lt;/strong>（Ring 0）：
@@ -44,7 +44,7 @@
 &lt;a href="https://blog.csdn.net/farmwang/article/details/50094959">原文 ——CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
 &lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574">Linux内核开发之hook系统调用&lt;/a>。&lt;br>
 &lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html">三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;u>完整副本&lt;/u>。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
+&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;u>完整副本&lt;/u>。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
 父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p>
 &lt;ul>
 &lt;li>修改文件描述符表本身（如关闭 &lt;code>fd&lt;/code>）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li>
@@ -60,7 +60,7 @@
 &lt;li>&lt;strong>文件描述符表&lt;/strong>：用户区的一部分，除非通过使用文件描述符的函数，否则程序无法对其进行访问。对进程中每个打开的文件，文件描述符表都包含一个条目。&lt;/li>
 &lt;li>&lt;strong>系统文件表&lt;/strong>：为系统中所有的进程共享。对每个活动的open, 它都包含一个条目。每个系统文件表的条目都包含文件偏移量、访问模式（读、写、or 读-写）以及指向它的文件描述符表的条目计数。&lt;/li>
 &lt;li>&lt;strong>内存索引节点表&lt;/strong>: 对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目。几个系统文件表条目可能对应于同一个内存索引节点表（不同进程打开同一个文件）。&lt;/li>
-&lt;/ul></description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://jekyulll.github.io/post/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容">&lt;strong>一、共享的内容&lt;/strong>&lt;/h3>
+&lt;/ul></description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://jekyulll.github.io/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容">&lt;strong>一、共享的内容&lt;/strong>&lt;/h3>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>文件描述符与文件状态&lt;/strong>&lt;br>
@@ -115,7 +115,7 @@
 &lt;li>&lt;strong>文件操作同步&lt;/strong>：父子进程对同一文件描述符的并发写入需通过锁（如&lt;code>flock()&lt;/code>）或原子操作避免竞争。&lt;/li>
 &lt;li>&lt;strong>内存共享限制&lt;/strong>：若需主动共享内存，需使用&lt;code>mmap()&lt;/code>或共享内存API（如&lt;code>shmget()&lt;/code>）。&lt;/li>
 &lt;li>&lt;strong>僵尸进程处理&lt;/strong>：父进程需通过&lt;code>wait()&lt;/code>回收子进程资源，或注册&lt;code>SIGCHLD&lt;/code>信号处理函数。&lt;/li>
-&lt;/ol></description></item><item><title>【AI】mmap 和零拷贝</title><link>https://jekyulll.github.io/post/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p>mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p>
+&lt;/ol></description></item><item><title>【AI】mmap 和零拷贝</title><link>https://jekyulll.github.io/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p>mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p>
 &lt;hr>
 &lt;h3 id="一mmap的核心机制">一、mmap的核心机制&lt;/h3>
 &lt;ol>
@@ -170,7 +170,7 @@
 &lt;li>
 &lt;p>&lt;strong>匿名映射的应用&lt;/strong>：
 • &lt;strong>进程间共享内存&lt;/strong>：通过&lt;code>MAP_SHARED&lt;/code>标志，多个进程可共享同一物理内存，高效通信。
-• &lt;strong>自定义内存管理&lt;/strong>：替代&lt;code>malloc&lt;/code>，用于需要精细控制的大内存分配（如内存池）。&lt;/p></description></item><item><title>内核的用户态和内核态</title><link>https://jekyulll.github.io/post/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p>线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p>
+• &lt;strong>自定义内存管理&lt;/strong>：替代&lt;code>malloc&lt;/code>，用于需要精细控制的大内存分配（如内存池）。&lt;/p></description></item><item><title>内核的用户态和内核态</title><link>https://jekyulll.github.io/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p>线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p>
 &lt;hr>
 &lt;h3 id="一线程概念的双重性用户态与内核态的交织">一、线程概念的双重性：用户态与内核态的交织&lt;/h3>
 &lt;ol>
@@ -222,7 +222,7 @@
 &lt;p>Java线程在JDK1.2之后采用&lt;em>1:1模型&lt;/em>，每个Java线程对应一个内核线程。
 支持多核并行、避免单线程阻塞影响整体进程；线程创建和切换需要内核介入。&lt;/p>
 &lt;p>C++11及之后的标准库（如&lt;code>&amp;lt;thread&amp;gt;&lt;/code>）通过&lt;code>std::thread&lt;/code>直接调用操作系统线程（如Linux的POSIX线程或Windows线程），采用&lt;em>1:1线程模型&lt;/em>。&lt;/p>
-&lt;p>Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p></description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p>&lt;strong>一、线程切换 vs 进程切换&lt;/strong>&lt;/p>
+&lt;p>Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p></description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://jekyulll.github.io/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p>&lt;strong>一、线程切换 vs 进程切换&lt;/strong>&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>地址空间与页表&lt;/strong>&lt;br>
@@ -298,7 +298,7 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;u>线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u>&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
+&lt;p>&lt;u>线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u>&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
 &lt;p>Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
 该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a>。此处尝试进行回答。&lt;/p>
 &lt;/blockquote>
@@ -327,7 +327,7 @@
 • 部分库可能仅在特定条件下被使用，从而减少初始内存占用。&lt;/p>
 &lt;h3 id="4-大文件的实际内存占用">4. &lt;strong>大文件的实际内存占用&lt;/strong>&lt;/h3>
 &lt;p>• &lt;strong>物理内存限制&lt;/strong>：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
-• &lt;strong>交换空间（Swap）&lt;/strong>：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p></description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://jekyulll.github.io/post/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p>同一进程内的线程共享的资源：&lt;/p>
+• &lt;strong>交换空间（Swap）&lt;/strong>：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p></description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://jekyulll.github.io/posts/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p>同一进程内的线程共享的资源：&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;strong>代码段&lt;/strong>：存放程序的可执行指令，所有线程共享相同的代码段，因此任何线程都可以执行程序中的函数。&lt;/p>
@@ -354,7 +354,7 @@
 &lt;p>&lt;strong>线程局部存储（Thread Local Storage）&lt;/strong>：存放线程私有的全局变量，即使变量名相同，不同线程访问的也是各自独立的副本。&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
+&lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
 &lt;u>具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u>
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p>
 &lt;p>另外：&lt;br>

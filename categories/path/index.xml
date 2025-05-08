@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Path on 青年大学习</title><link>https://jekyulll.github.io/categories/path/</link><description>Recent content in Path on 青年大学习</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 22 Dec 2024 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/path/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ / Golang / 游戏开发 / TA 学习路线汇总</title><link>https://jekyulll.github.io/posts/means/</link><pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate><guid>https://jekyulll.github.io/posts/means/</guid><description>&lt;!-- -- 2024年6月2日23:56:19
+收藏的路线越来越多，有点乱。单列一个文件，想到的时候汇总一下。 -->
+&lt;h1 id="c">C++&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/649667647">一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/14264391441">深入理解C++内存管理：指针、引用和内存分配&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.zhihu.com/question/274189552/answer/3578048970">CPU的核心数和线程数量是什么关系？ - texttime vage的回答 - 知乎&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://space.bilibili.com/28615855/channel/collectiondetail?sid=43297">合集·现代 C++ 语言核心特性解析&lt;/a>。&lt;br>
+&lt;a href="https://changkun.de/modern-cpp/zh-cn/01-intro/">现代 C++ 教程：高速上手 C++ 11/14/17/20&lt;/a>。&lt;/p>
+&lt;p>小鹏的教程：&lt;a href="https://space.bilibili.com/263032155/channel/collectiondetail?sid=599074">合集·现代C++项目实战&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.zhihu.com/question/290102232/answer/2094675219">校招C++大概学习到什么程度？ - 程序员内功修炼的回答 - 知乎&lt;/a>。八股文组合拳。&lt;/p>
+&lt;p>陈皓（左耳朵耗子）的一些博客：&lt;br>
+&lt;a href="https://blog.csdn.net/haoel/article/details/1948051">C++ 虚函数表解析&lt;/a>。&lt;br>
+&lt;a href="https://haoel.blog.csdn.net/article/details/3081328">C++ 对象的内存布局（上）&lt;/a>。&lt;br>
+&lt;a href="https://haoel.blog.csdn.net/article/details/2886">跟我一起写 Makefile（一）&lt;/a>。&lt;br>
+&lt;a href="https://coolshell.cn/articles/11564.html">TCP 的那些事儿（上）&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://github.com/Light-City/CPlusPlusThings">C++那些事 CPlusPlusThings&lt;/a>。&lt;br>
+&lt;a href="https://light-city.github.io/stories_things/">C++那些事 中文&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.bilibili.com/video/BV1D84y1t76J/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">现代C++教程 2023&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html">CUDA C++ Programming Guide&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.zhihu.com/question/394704611/answer/1245846184">如何成为linux服务端C++开发专家? - 不谙世事的吴同学的回答 - 知乎&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/527327054">c++17 多态内存资源(PMR)&lt;/a>。&lt;br>
+&lt;a href="https://zhuanlan.zhihu.com/p/452697297">内存管理：设计Arena&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.bilibili.com/video/BV1Se411D7y4/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">这本书加深了我对C++的理解 | C++ Core Guidelines解析&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://blog.csdn.net/weixin_42136255/article/details/133815129">深入理解Asan:内存错误检测工具与实践&lt;/a>。&lt;/p>
+&lt;!-- [C++翻译阶段中的编码转换-执行字符集与源字符集](https://www.bilibili.com/video/BV1yof2Y4EPF/?spm_id_from=333.1007.tianma.2-1-4.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。 -->
+&lt;p>&lt;a href="https://www.zhihu.com/question/428340896/answer/2913419725">为什么C/C++等少数编程语言要区分左右值？ - 腾讯技术工程的回答 - 知乎&lt;/a>。非常牛逼。讲得很深，从C语言的发展、寄存器讲起。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/670821214">13.纤程（Fiber）与协程（Coroutine）&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://baijiahao.baidu.com/s?id=1719486804831856788&amp;amp;wfr=spider&amp;amp;for=pc">深入并发之线程、进程、纤程、协程、管程与死锁、活锁｜详解&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.zhihu.com/question/33979489/answer/1854635802">从操作系统内存管理来说，malloc申请一块内存的背后原理是什么？ - 编程指北的回答 - 知乎&lt;/a>。&lt;/p></description></item></channel></rss>

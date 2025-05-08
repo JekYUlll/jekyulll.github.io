@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Redis on 青年大学习</title><link>https://jekyulll.github.io/categories/redis/</link><description>Recent content in Redis on 青年大学习</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 05 May 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/redis/index.xml" rel="self" type="application/rss+xml"/><item><title>Redis Stream和MQ</title><link>https://jekyulll.github.io/posts/redis-redis-stream%E5%92%8Cmq/</link><pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/redis-redis-stream%E5%92%8Cmq/</guid><description>&lt;p>常见MQ的功能，有哪些是用Redis实现不了的？&lt;/p>
+&lt;p>消息队列（MQ）用于解耦系统、异步处理、削峰填谷等，常见的 MQ 有 RabbitMQ、Kafka、RocketMQ、ActiveMQ 等。而 Redis 也提供了发布/订阅（pub/sub）、List 队列、Stream（流）等机制，看似也能实现部分消息队列的功能。&lt;/p>
+&lt;hr>
+&lt;h3 id="-redis-能做的-mq-功能">✅ Redis 能做的 MQ 功能：&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>功能&lt;/th>
+ &lt;th>Redis 支持方式&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>简单队列&lt;/td>
+ &lt;td>使用 &lt;code>List&lt;/code> 的 &lt;code>LPUSH + BRPOP&lt;/code> 实现&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>发布订阅&lt;/td>
+ &lt;td>使用 &lt;code>Pub/Sub&lt;/code> 功能&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>消息流&lt;/td>
+ &lt;td>使用 &lt;code>Stream&lt;/code> 类型（自 Redis 5.0 起）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>消息持久化（有限）&lt;/td>
+ &lt;td>Redis 有持久化机制（RDB、AOF）&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-redis-实现不了或不擅长的-mq-功能">❌ Redis 实现不了或不擅长的 MQ 功能：&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>功能&lt;/th>
+ &lt;th>原因&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>消息可靠投递（ACK 确认机制）&lt;/strong>&lt;/td>
+ &lt;td>Redis 的 Pub/Sub 没有消费确认机制，Stream 有但比较弱（如无消费失败自动重试机制）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>高吞吐量/分布式日志系统（如 Kafka）&lt;/strong>&lt;/td>
+ &lt;td>Redis 不适合大规模日志或百万 TPS 场景，且不具备分区（partition）机制&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消费失败后的重试机制、死信队列（DLQ）&lt;/strong>&lt;/td>
+ &lt;td>Redis 不原生支持，需要手动构建（逻辑复杂且不够健壮）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消费顺序保障（partition+offset）&lt;/strong>&lt;/td>
+ &lt;td>Redis Stream 提供 ID 顺序，但无法如 Kafka 那样做严格的有序分区消费&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>持久性保证和磁盘容量优化&lt;/strong>&lt;/td>
+ &lt;td>Redis 为内存数据库，持久性和存储成本远不如 Kafka 等磁盘级 MQ&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消息积压处理能力强&lt;/strong>&lt;/td>
+ &lt;td>Redis 基于内存，积压消息多了容易 OOM，Kafka 之类基于磁盘无此问题&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>事务性消息支持（如 RocketMQ）&lt;/strong>&lt;/td>
+ &lt;td>Redis 不支持事务性消息逻辑&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消费者分组与负载均衡（Consumer Group）&lt;/strong>&lt;/td>
+ &lt;td>Redis Stream 有些类似功能，但不如 Kafka 灵活和成熟&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>流控和限速、幂等机制支持&lt;/strong>&lt;/td>
+ &lt;td>Redis 需要自己实现，Kafka 等 MQ 内建支持&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="总结">总结&lt;/h3>
+&lt;ul>
+&lt;li>Redis 可以用来实现轻量级、简单或低吞吐的消息队列系统；&lt;/li>
+&lt;li>Kafka、RabbitMQ、RocketMQ 等更适合需要&lt;strong>高可靠性、分布式、高吞吐、复杂消息模式&lt;/strong>的场景；&lt;/li>
+&lt;li>Redis 适合“玩具级”或轻量任务队列，&lt;strong>不推荐在企业级复杂系统中用作核心 MQ&lt;/strong>。&lt;/li>
+&lt;/ul></description></item><item><title>Redis 数据结构之超日志 HyperLogLog</title><link>https://jekyulll.github.io/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</link><pubDate>Wed, 08 Jan 2025 10:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</guid><description>&lt;p>Redis 在 2.8.9 版本添加了 HyperLogLog （HLL）。&lt;br>
+HyperLogLog 是一种高效的基数估算工具，通过概率算法和哈希化技术，在常数空间内提供了基数的估算。&lt;/p>
+&lt;p>&lt;em>eg&lt;/em>.&lt;/p>
+&lt;ul>
+&lt;li>统计一个网站的独立用户数。&lt;/li>
+&lt;li>统计一个日志中的独立 IP 数量。&lt;/li>
+&lt;li>计算一个流中的独立事件数。&lt;/li>
+&lt;/ul>
+&lt;p>传统的做法是将所有元素存储在集合中，然后进行去重、计数。但当集合的元素数量非常大时，这种方法会占用大量内存，甚至无法存储所有数据。&lt;br>
+HyperLogLog 有一定误差，但对于海量数据来说，它的内存开销极低且精度足够高，非常适合用于大数据处理、流量统计、去重计数等场景。&lt;/p>
+&lt;p>Redis 中的 HyperLogLog 支持以下操作：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;code>PFADD&lt;/code>&lt;/strong>：将元素添加到 HyperLogLog 中，Redis 会对元素进行哈希处理，并更新相应的桶。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PFCOUNT&lt;/code>&lt;/strong>：返回一个或多个 HyperLogLog 键的基数估算。&lt;/li>
+&lt;li>&lt;strong>&lt;code>PFMERGE&lt;/code>&lt;/strong>：合并多个 HyperLogLog 键的基数估算。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="核心思想">核心思想&lt;/h3>
+&lt;p>HyperLogLog 使用概率算法，通过哈希化数据并记录哈希值的前导零数量来估算基数。&lt;/p>
+&lt;h5 id="1-哈希函数与二进制表示">&lt;strong>1. 哈希函数与二进制表示&lt;/strong>&lt;/h5>
+&lt;p>为了将集合中的元素映射为哈希值，HyperLogLog 使用了 &lt;strong>哈希函数&lt;/strong>。假设我们使用一个 &lt;strong>m-bit&lt;/strong> 的哈希函数，它会把输入数据映射到一个包含 m 位二进制数字的哈希值。&lt;/p>
+&lt;p>例如：&lt;/p>
+&lt;ul>
+&lt;li>假设我们将一个元素哈希成 &lt;code>10111001101100010101010101101010&lt;/code> 这样的 32 位二进制数字。&lt;/li>
+&lt;li>这个哈希值的前导零数量就是我们关心的指标。对于这个例子，假设前导零的数量为 3。&lt;/li>
+&lt;/ul>
+&lt;h5 id="2-关键点记录前导零的数量">&lt;strong>2. 关键点：记录前导零的数量&lt;/strong>&lt;/h5>
+&lt;p>HyperLogLog 并不直接存储每个哈希值，而是计算每个哈希值的前导零的数量，把这个值保存在一个桶（通过哈希值的某些位进行映射）中。&lt;/p>
+&lt;h5 id="3-桶与桶编号">&lt;strong>3. 桶与桶编号&lt;/strong>&lt;/h5>
+&lt;p>为了优化空间，HyperLogLog 使用多个桶来存储不同的哈希值。每个桶的索引是由哈希值的某些位生成的。假设我们有一个桶数量为 &lt;code>b&lt;/code> 的 HyperLogLog。我们将哈希值的前 &lt;code>log2(b)&lt;/code> 位作为桶的索引，其余的位用于计算前导零数量。&lt;/p>
+&lt;ul>
+&lt;li>例如，如果我们有 16 个桶（&lt;code>b = 16&lt;/code>），则桶的索引由哈希值的前 4 位决定（因为 &lt;code>log2(16) = 4&lt;/code>）。如果哈希值的前 4 位为 &lt;code>1100&lt;/code>，那么该哈希值将被映射到第 12 号桶（因为 &lt;code>1100&lt;/code> 二进制对应 12）。&lt;/li>
+&lt;/ul>
+&lt;h5 id="4-计算基数估算">&lt;strong>4. 计算基数估算&lt;/strong>&lt;/h5>
+&lt;p>HyperLogLog 会计算所有桶中记录的前导零最大值的平均值。然后根据这个平均值来估算整个数据集的基数。&lt;br>
+其数学公式如下：&lt;/p></description></item></channel></rss>

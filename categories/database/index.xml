@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Database on 青年大学习</title><link>https://jekyulll.github.io/categories/database/</link><description>Recent content in Database on 青年大学习</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 21 Nov 2024 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/database/index.xml" rel="self" type="application/rss+xml"/><item><title>表格展示 MySQL 基础数据类型</title><link>https://jekyulll.github.io/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>数据类型&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;th>存储范围/格式&lt;/th>
+ &lt;th>示例&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>INT（整数型）&lt;/td>
+ &lt;td>存储整数，有不同的字节大小来适应不同范围的整数&lt;/td>
+ &lt;td>有TINYINT（1字节，范围 - 128到127）、SMALLINT（2字节，范围 - 32768到32767）、MEDIUMINT（3字节）、INT（4字节，范围 - 2147483648到2147483647）、BIGINT（8字节）&lt;/td>
+ &lt;td>&lt;code>age INT;&lt;/code>，可以存储像25这样的年龄值&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>FLOAT和DOUBLE（浮点型）&lt;/td>
+ &lt;td>用于存储带有小数部分的数值，FLOAT精度较低，DOUBLE精度较高&lt;/td>
+ &lt;td>FLOAT单精度浮点数，大约7位有效数字；DOUBLE双精度浮点数，大约15位有效数字&lt;/td>
+ &lt;td>&lt;code>price FLOAT;&lt;/code>可以存储像9.99这样的价格值，对于更高精度的科学计算可能使用&lt;code>measurement DOUBLE;&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DECIMAL&lt;/td>
+ &lt;td>精确的小数值存储，常用于金融等对精度要求极高的领域&lt;/td>
+ &lt;td>格式为DECIMAL(M,D)，M是数字总位数，D是小数点后的位数&lt;/td>
+ &lt;td>&lt;code>amount DECIMAL(10,2);&lt;/code>可以精确存储像12345.67这样的金额，其中总共可以存储10位数字，小数点后2位&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>CHAR&lt;/td>
+ &lt;td>定长字符串，存储固定长度的字符序列&lt;/td>
+ &lt;td>定义时指定长度，如CHAR(10)，最多存储10个字符，不足部分用空格填充&lt;/td>
+ &lt;td>&lt;code>code CHAR(5);&lt;/code>可以存储像&amp;rsquo;ABCD &amp;lsquo;（注意后面有空格）这样的字符串&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>VARCHAR&lt;/td>
+ &lt;td>可变长字符串，根据实际存储的字符长度占用空间&lt;/td>
+ &lt;td>定义最大长度，如VARCHAR(255)，实际存储多长就占用多少空间加上1 - 2字节用于记录长度&lt;/td>
+ &lt;td>&lt;code>name VARCHAR(50);&lt;/code>可以存储像&amp;rsquo;John Doe&amp;rsquo;这样的名字，长度小于等于50个字符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TEXT&lt;/td>
+ &lt;td>用于存储大量文本内容&lt;/td>
+ &lt;td>有TINYTEXT、TEXT、MEDIUMTEXT和LONGTEXT，存储大小逐渐增大&lt;/td>
+ &lt;td>&lt;code>description TEXT;&lt;/code>可以存储一篇短文或者产品描述&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>BLOB&lt;/td>
+ &lt;td>存储二进制大型对象，如图像、音频等&lt;/td>
+ &lt;td>有TINYBLOB、BLOB、MEDIUMBLOB和LONGBLOB，存储大小逐渐增大&lt;/td>
+ &lt;td>&lt;code>image BLOB;&lt;/code>可以存储一张照片的二进制数据&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DATE&lt;/td>
+ &lt;td>存储日期，格式为YYYY - MM - DD&lt;/td>
+ &lt;td>从1000 - 01 - 01到9999 - 12 - 31&lt;/td>
+ &lt;td>&lt;code>birth_date DATE;&lt;/code>可以存储像'2000 - 01 - 01&amp;rsquo;这样的出生日期&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TIME&lt;/td>
+ &lt;td>存储时间，格式为HH:MM:SS&lt;/td>
+ &lt;td>-&lt;/td>
+ &lt;td>&lt;code>start_time TIME;&lt;/code>可以存储像'09:00:00&amp;rsquo;这样的开始时间&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DATETIME&lt;/td>
+ &lt;td>存储日期和时间，格式为YYYY - MM - DD HH:MM:SS&lt;/td>
+ &lt;td>从1000 - 01 - 01 00:00:00到9999 - 12 - 31 23:59:59&lt;/td>
+ &lt;td>&lt;code>order_time DATETIME;&lt;/code>可以存储像'2024 - 01 - 01 10:30:00&amp;rsquo;这样的订单时间&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>TIMESTAMP&lt;/td>
+ &lt;td>存储日期和时间戳，会受到时区影响&lt;/td>
+ &lt;td>从1970 - 01 - 01 00:00:00 UTC到2038 - 01 - 19 03:14:07 UTC&lt;/td>
+ &lt;td>&lt;code>update_time TIMESTAMP;&lt;/code>用于记录更新时间，在不同时区设置下可能会有变化&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table></description></item><item><title>事务 Transaction 的基础特性</title><link>https://jekyulll.github.io/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p>&lt;strong>事务&lt;/strong>（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br>
+&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>原子性&lt;/strong>（Atomicity）;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>一致性&lt;/strong>（Consistency）;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>隔离性&lt;/strong>（Isolation）；不同的隔离级别：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>读未提交&lt;/strong>（Read Uncommitted）：最低的隔离级别。一个事务可以读取另一个未提交事务的数据。
+&lt;ul>
+&lt;li>可能会出现&lt;strong>脏读&lt;/strong>（Dirty Read）的情况。
+&lt;blockquote>
+&lt;p>脏读是指一个事务读取了另一个尚未提交的事务修改的数据。eg.事务 T1 修改了一条记录但尚未提交，事务 T2 在这个时候读取了这条被修改的记录。如果 T1 后来回滚了，那么 T2 读取的数据就是无效的、“脏” 的数据。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>读已提交&lt;/strong>（Read Committed）：
+&lt;ul>
+&lt;li>可能会出现&lt;strong>不可重复读&lt;/strong>（Non - Repeatable Read）的问题。
+&lt;blockquote>
+&lt;p>不可重复读是指在一个事务内，多次读取同一数据，由于其他事务的修改操作，导致每次读取的结果不同。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>可重复读&lt;/strong>（Repeatable Read）：
+&lt;ul>
+&lt;li>可能会出现幻读（Phantom Read）的情况。
+&lt;blockquote>
+&lt;p>当一个事务（T1）按照一定的条件进行数据读取操作时，第一次读取没有发现满足条件的某些行（记录）。但是在这个事务还没有结束的时候，另一个事务（T2）插入（或删除）了一些满足（或原本满足）T1 查询条件的行。当 T1 再次按照相同的条件进行读取时，就会发现比第一次读取时更多（或更少）的符合条件的行，这些 “凭空出现” 或 “突然消失” 的行就像 “幻觉” 一样，所以被称为幻读。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>串行化&lt;/strong>（Serializable）：最高的隔离级别。牺牲了数据库的并发性能。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>持久性&lt;/strong>（Durability）。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>
