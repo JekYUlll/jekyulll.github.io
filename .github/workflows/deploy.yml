@@ -25,6 +25,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: "0.140.0" # 使用你当前 Hugo 的版本
+          extended: true
 
       - name: Build the site
         run: hugo --minify # 生成静态文件到 public 文件夹
