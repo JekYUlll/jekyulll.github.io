@@ -370,7 +370,7 @@
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>&lt;code>_start&lt;/code>：程序的入口点&lt;/strong>&lt;br>
-&lt;!-- raw HTML omitted -->&lt;code>_start&lt;/code>是Linux环境下C/C++程序的&lt;strong>实际入口函数&lt;/strong>，由链接器自动添加到可执行文件中，负责初始化运行时环境并调用&lt;code>__libc_start_main&lt;/code>。&lt;!-- raw HTML omitted -->&lt;br>
+&lt;u>&lt;code>_start&lt;/code>是Linux环境下C/C++程序的&lt;strong>实际入口函数&lt;/strong>，由链接器自动添加到可执行文件中，负责初始化运行时环境并调用&lt;code>__libc_start_main&lt;/code>。&lt;/u>&lt;br>
 它的核心任务包括：&lt;br>
 • 设置栈指针（&lt;code>%ebp&lt;/code>清零）、传递参数（如&lt;code>argc&lt;/code>和&lt;code>argv&lt;/code>）到寄存器。&lt;br>
 • 加载全局初始化函数（如&lt;code>__libc_csu_init&lt;/code>）和清理函数（如&lt;code>__libc_csu_fini&lt;/code>）。&lt;br>
@@ -915,7 +915,7 @@ call _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev@PLT ; 调用析�
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
-&lt;!-- raw HTML omitted -->具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;!-- raw HTML omitted -->
+&lt;u>具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u>
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p>
 &lt;p>另外：&lt;br>
 C++ 提供了&lt;strong>显式运行时链接&lt;/strong>的机制，程序可以在运行时根据需要动态加载库的特定部分。(&lt;code>dlopen&lt;/code>、&lt;code>dlsym&lt;/code> 等函数)程序可以在运行时按需加载特定的符号（函数或变量）。&lt;/p>
@@ -1803,11 +1803,16 @@ C++ 提供了&lt;strong>显式运行时链接&lt;/strong>的机制，程序可�
 &lt;li>将 &lt;code>obj&lt;/code> 拷贝或移动到一个临时对象中。&lt;/li>
 &lt;li>将临时对象拷贝或移动到调用者的目标变量。&lt;/li>
 &lt;/ol>
-&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;!-- raw HTML omitted -->直接将返回值构造到调用者的接收变量中&lt;!-- raw HTML omitted -->，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
+&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;u>直接将返回值构造到调用者的接收变量中&lt;/u>，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj &lt;span style="color:#f92672">=&lt;/span> createObject(); &lt;span style="color:#75715e">// RVO 优化将直接构造在 obj 中
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>SomeClass &lt;span style="color:#a6e22e">createObject&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj; &lt;span style="color:#75715e">// 具名局部变量
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> obj; &lt;span style="color:#75715e">// 这里不能使用 RVO
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译器行为：&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
 &lt;li>数据结构&lt;/li>
 &lt;/ol>
 &lt;ul>

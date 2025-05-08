@@ -44,7 +44,7 @@
 &lt;a href="https://blog.csdn.net/farmwang/article/details/50094959">原文 ——CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
 &lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574">Linux内核开发之hook系统调用&lt;/a>。&lt;br>
 &lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html">三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;!-- raw HTML omitted -->完整副本&lt;!-- raw HTML omitted -->。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
+&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;u>完整副本&lt;/u>。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
 父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p>
 &lt;ul>
 &lt;li>修改文件描述符表本身（如关闭 &lt;code>fd&lt;/code>）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li>
@@ -298,7 +298,7 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;!-- raw HTML omitted -->线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;!-- raw HTML omitted -->&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
+&lt;p>&lt;u>线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u>&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
 &lt;p>Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
 该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a>。此处尝试进行回答。&lt;/p>
 &lt;/blockquote>
@@ -355,7 +355,7 @@
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
-&lt;!-- raw HTML omitted -->具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;!-- raw HTML omitted -->
+&lt;u>具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u>
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p>
 &lt;p>另外：&lt;br>
 C++ 提供了&lt;strong>显式运行时链接&lt;/strong>的机制，程序可以在运行时根据需要动态加载库的特定部分。(&lt;code>dlopen&lt;/code>、&lt;code>dlsym&lt;/code> 等函数)程序可以在运行时按需加载特定的符号（函数或变量）。&lt;/p>

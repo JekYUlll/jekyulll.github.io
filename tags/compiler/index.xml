@@ -17,8 +17,13 @@
 &lt;li>将 &lt;code>obj&lt;/code> 拷贝或移动到一个临时对象中。&lt;/li>
 &lt;li>将临时对象拷贝或移动到调用者的目标变量。&lt;/li>
 &lt;/ol>
-&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;!-- raw HTML omitted -->直接将返回值构造到调用者的接收变量中&lt;!-- raw HTML omitted -->，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
+&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;u>直接将返回值构造到调用者的接收变量中&lt;/u>，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj &lt;span style="color:#f92672">=&lt;/span> createObject(); &lt;span style="color:#75715e">// RVO 优化将直接构造在 obj 中
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>SomeClass &lt;span style="color:#a6e22e">createObject&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj; &lt;span style="color:#75715e">// 具名局部变量
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> obj; &lt;span style="color:#75715e">// 这里不能使用 RVO
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译器行为：&lt;/p></description></item></channel></rss>

@@ -55,7 +55,7 @@
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
-&lt;!-- raw HTML omitted -->具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;!-- raw HTML omitted -->
+&lt;u>具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u>
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p>
 &lt;p>另外：&lt;br>
 C++ 提供了&lt;strong>显式运行时链接&lt;/strong>的机制，程序可以在运行时根据需要动态加载库的特定部分。(&lt;code>dlopen&lt;/code>、&lt;code>dlsym&lt;/code> 等函数)程序可以在运行时按需加载特定的符号（函数或变量）。&lt;/p>

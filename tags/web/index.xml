@@ -472,7 +472,7 @@
 &lt;blockquote>
 &lt;p>认证证明了你是谁，授权决定了你能做什么。&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;!-- raw HTML omitted -->四种基本的认证方式：&lt;em>Basic&lt;/em>、&lt;em>Digest&lt;/em>、&lt;em>OAuth&lt;/em>、&lt;em>Bearer&lt;/em>&lt;!-- raw HTML omitted -->。&lt;/p>
+&lt;p>&lt;u>四种基本的认证方式：&lt;em>Basic&lt;/em>、&lt;em>Digest&lt;/em>、&lt;em>OAuth&lt;/em>、&lt;em>Bearer&lt;/em>&lt;/u>。&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>Basic&lt;/strong> 基础认证&lt;br>

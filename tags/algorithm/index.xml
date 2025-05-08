@@ -26,7 +26,7 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
 这两次文件更新的行为都使用差分二进制来完成，因此这就是正向/逆向二进制差分技术。&lt;/p>
 &lt;p>核心逻辑在于通过固定基线版本（RTM）作为唯一中间状态，规避多版本组合带来的差分数爆炸问题。&lt;br>
 这样只需要存储一个当前版本到基线版本的二进制差分，然后统一从基线版本升级到新版本。&lt;br>
-（&lt;em>eg&lt;/em>. 例如有0、1、2、3、4版本。如果用老办法，需要存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4，1-&amp;gt;2，1-&amp;gt;3，1-&amp;gt;4，2-&amp;gt;3，2-&amp;gt;4，3-&amp;gt;4的差分包，多了之后数量爆炸，因为&lt;!-- raw HTML omitted -->增加新版本的时候需要存储之前所有版本到新版本的差分包&lt;!-- raw HTML omitted -->。&lt;br>
+（&lt;em>eg&lt;/em>. 例如有0、1、2、3、4版本。如果用老办法，需要存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4，1-&amp;gt;2，1-&amp;gt;3，1-&amp;gt;4，2-&amp;gt;3，2-&amp;gt;4，3-&amp;gt;4的差分包，多了之后数量爆炸，因为&lt;u>增加新版本的时候需要存储之前所有版本到新版本的差分包&lt;/u>。&lt;br>
 如果采用正向/逆向差分，要存储1-&amp;gt;0，2-&amp;gt;0，3-&amp;gt;0，4-&amp;gt;0，然后存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4。增加新版本的时候，只需要增加5-&amp;gt;0和0-&amp;gt;5，从n的累加优化到了n的线性关系的差分包数量。&lt;br>
 ）&lt;/p>
 &lt;p>基于正向/逆向二进制差分的Windows累积更新内部包含以下内容：&lt;/p>
@@ -40,7 +40,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
 &lt;hr>
 &lt;h3 id="source--reference">Source &amp;amp;&amp;amp; Reference&lt;/h3>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/13382743061">二进制差异文件算法&lt;/a>。&lt;/p>
-&lt;p>&lt;a href="https://github.com/Squirrel/Squirrel.Windows">Squirrel.Windows: An installation and update framework for Windows desktop apps&lt;/a>。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p>
+&lt;p>&lt;a href="https://github.com/Squirrel/Squirrel.Windows">Squirrel.Windows: An installation and update framework for Windows desktop apps&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://zhuyie.github.io/posts/bsdiff-annotated/">bsdiff源码解析&lt;/a>。&lt;/p>
+&lt;p>这段时间看到的最牛逼的文章：&lt;a href="https://jishuzhan.net/article/1874273746852777985#google_vignette">Windows 客户端软件自动更新服务的开发有哪些需求？&lt;/a>。&lt;/p>
+&lt;p>微软官方对正向/逆向二进制差分Updates的介绍：&lt;a href="https://learn.microsoft.com/en-us/windows/deployment/update/forward-reverse-differentials">Windows Updates using forward and reverse differentials&lt;/a>。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p>
 &lt;ul>
 &lt;li>​LRU（Least Recently Used）​
 &lt;ul>

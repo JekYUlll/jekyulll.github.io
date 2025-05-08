@@ -162,7 +162,7 @@
 &lt;blockquote>
 &lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
 &lt;/blockquote></description></item><item><title>【1】Blender学习日记-入门</title><link>https://jekyulll.github.io/post/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</link><pubDate>Fri, 25 Apr 2025 06:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</guid><description>&lt;p>半夜学一下blender。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;!-- 在Mint上也装了一下。 -->
 &lt;p>&lt;a href="https://www.bilibili.com/video/BV14u41147YH">【Kurt】Blender零基础入门教程 | Blender中文区新手必刷教程(已完结)&lt;/a>。第四课著名的珍珠耳环少女，感觉一节课就差不多学会基础操作了，不错。&lt;/p>
 &lt;p>&lt;code>N&lt;/code>是变换，&lt;code>S&lt;/code>是size（也可以结合方向轴，在轴向伸缩），&lt;code>R&lt;/code>是旋转（可以输数字，例如&lt;code>R&lt;/code> &lt;code>Z&lt;/code> &lt;code>90&lt;/code>就是在Z轴旋转90度），&lt;code>G&lt;/code>是移动。&lt;br>
 新建内容是&lt;code>SHIFT&lt;/code>+&lt;code>A&lt;/code>，&lt;code>F9&lt;/code>可以改段数。&lt;code>SHIFT&lt;/code>+&lt;code>D&lt;/code>复制，移动的时候可以例如按&lt;code>Z&lt;/code>锁定在Z轴上移动。按两下方向轴（例如移动的时候），可以从世界坐标系切换到局部坐标系。&lt;br>
@@ -376,7 +376,7 @@
 &lt;a href="https://blog.csdn.net/farmwang/article/details/50094959">原文 ——CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
 &lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574">Linux内核开发之hook系统调用&lt;/a>。&lt;br>
 &lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html">三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;!-- raw HTML omitted -->完整副本&lt;!-- raw HTML omitted -->。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
+&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;u>完整副本&lt;/u>。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
 父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p>
 &lt;ul>
 &lt;li>修改文件描述符表本身（如关闭 &lt;code>fd&lt;/code>）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li>
@@ -537,7 +537,7 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
 这两次文件更新的行为都使用差分二进制来完成，因此这就是正向/逆向二进制差分技术。&lt;/p>
 &lt;p>核心逻辑在于通过固定基线版本（RTM）作为唯一中间状态，规避多版本组合带来的差分数爆炸问题。&lt;br>
 这样只需要存储一个当前版本到基线版本的二进制差分，然后统一从基线版本升级到新版本。&lt;br>
-（&lt;em>eg&lt;/em>. 例如有0、1、2、3、4版本。如果用老办法，需要存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4，1-&amp;gt;2，1-&amp;gt;3，1-&amp;gt;4，2-&amp;gt;3，2-&amp;gt;4，3-&amp;gt;4的差分包，多了之后数量爆炸，因为&lt;!-- raw HTML omitted -->增加新版本的时候需要存储之前所有版本到新版本的差分包&lt;!-- raw HTML omitted -->。&lt;br>
+（&lt;em>eg&lt;/em>. 例如有0、1、2、3、4版本。如果用老办法，需要存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4，1-&amp;gt;2，1-&amp;gt;3，1-&amp;gt;4，2-&amp;gt;3，2-&amp;gt;4，3-&amp;gt;4的差分包，多了之后数量爆炸，因为&lt;u>增加新版本的时候需要存储之前所有版本到新版本的差分包&lt;/u>。&lt;br>
 如果采用正向/逆向差分，要存储1-&amp;gt;0，2-&amp;gt;0，3-&amp;gt;0，4-&amp;gt;0，然后存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4。增加新版本的时候，只需要增加5-&amp;gt;0和0-&amp;gt;5，从n的累加优化到了n的线性关系的差分包数量。&lt;br>
 ）&lt;/p>
 &lt;p>基于正向/逆向二进制差分的Windows累积更新内部包含以下内容：&lt;/p>
@@ -551,7 +551,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
 &lt;hr>
 &lt;h3 id="source--reference">Source &amp;amp;&amp;amp; Reference&lt;/h3>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/13382743061">二进制差异文件算法&lt;/a>。&lt;/p>
-&lt;p>&lt;a href="https://github.com/Squirrel/Squirrel.Windows">Squirrel.Windows: An installation and update framework for Windows desktop apps&lt;/a>。&lt;/p></description></item><item><title>Nginx 的多进程模型</title><link>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong>多进程模型&lt;/strong>。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p>
+&lt;p>&lt;a href="https://github.com/Squirrel/Squirrel.Windows">Squirrel.Windows: An installation and update framework for Windows desktop apps&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://zhuyie.github.io/posts/bsdiff-annotated/">bsdiff源码解析&lt;/a>。&lt;/p>
+&lt;p>这段时间看到的最牛逼的文章：&lt;a href="https://jishuzhan.net/article/1874273746852777985#google_vignette">Windows 客户端软件自动更新服务的开发有哪些需求？&lt;/a>。&lt;/p>
+&lt;p>微软官方对正向/逆向二进制差分Updates的介绍：&lt;a href="https://learn.microsoft.com/en-us/windows/deployment/update/forward-reverse-differentials">Windows Updates using forward and reverse differentials&lt;/a>。&lt;/p></description></item><item><title>Nginx 的多进程模型</title><link>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong>多进程模型&lt;/strong>。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p>
 &lt;hr>
 &lt;h4 id="一多进程模型的核心架构">一、多进程模型的核心架构&lt;/h4>
 &lt;p>Nginx采用经典的&lt;strong>Master-Worker多进程架构&lt;/strong>：&lt;/p>
@@ -949,7 +952,7 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>&lt;code>_start&lt;/code>：程序的入口点&lt;/strong>&lt;br>
-&lt;!-- raw HTML omitted -->&lt;code>_start&lt;/code>是Linux环境下C/C++程序的&lt;strong>实际入口函数&lt;/strong>，由链接器自动添加到可执行文件中，负责初始化运行时环境并调用&lt;code>__libc_start_main&lt;/code>。&lt;!-- raw HTML omitted -->&lt;br>
+&lt;u>&lt;code>_start&lt;/code>是Linux环境下C/C++程序的&lt;strong>实际入口函数&lt;/strong>，由链接器自动添加到可执行文件中，负责初始化运行时环境并调用&lt;code>__libc_start_main&lt;/code>。&lt;/u>&lt;br>
 它的核心任务包括：&lt;br>
 • 设置栈指针（&lt;code>%ebp&lt;/code>清零）、传递参数（如&lt;code>argc&lt;/code>和&lt;code>argv&lt;/code>）到寄存器。&lt;br>
 • 加载全局初始化函数（如&lt;code>__libc_csu_init&lt;/code>）和清理函数（如&lt;code>__libc_csu_fini&lt;/code>）。&lt;br>
@@ -1221,7 +1224,7 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;!-- raw HTML omitted -->线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;!-- raw HTML omitted -->&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
+&lt;p>&lt;u>线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u>&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
 &lt;p>Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
 该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a>。此处尝试进行回答。&lt;/p>
 &lt;/blockquote>
@@ -1639,7 +1642,7 @@ call _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev@PLT ; 调用析�
 &lt;blockquote>
 &lt;p>认证证明了你是谁，授权决定了你能做什么。&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;!-- raw HTML omitted -->四种基本的认证方式：&lt;em>Basic&lt;/em>、&lt;em>Digest&lt;/em>、&lt;em>OAuth&lt;/em>、&lt;em>Bearer&lt;/em>&lt;!-- raw HTML omitted -->。&lt;/p>
+&lt;p>&lt;u>四种基本的认证方式：&lt;em>Basic&lt;/em>、&lt;em>Digest&lt;/em>、&lt;em>OAuth&lt;/em>、&lt;em>Bearer&lt;/em>&lt;/u>。&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>Basic&lt;/strong> 基础认证&lt;br>
@@ -1751,7 +1754,7 @@ Bearer 认证是一种 HTTP 身份验证方法。Bearer 认证的核心是 &lt;c
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
-&lt;!-- raw HTML omitted -->具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;!-- raw HTML omitted -->
+&lt;u>具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u>
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p>
 &lt;p>另外：&lt;br>
 C++ 提供了&lt;strong>显式运行时链接&lt;/strong>的机制，程序可以在运行时根据需要动态加载库的特定部分。(&lt;code>dlopen&lt;/code>、&lt;code>dlsym&lt;/code> 等函数)程序可以在运行时按需加载特定的符号（函数或变量）。&lt;/p>
@@ -2674,11 +2677,16 @@ HyperLogLog 有一定误差，但对于海量数据来说，它的内存开销�
 &lt;li>将 &lt;code>obj&lt;/code> 拷贝或移动到一个临时对象中。&lt;/li>
 &lt;li>将临时对象拷贝或移动到调用者的目标变量。&lt;/li>
 &lt;/ol>
-&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;!-- raw HTML omitted -->直接将返回值构造到调用者的接收变量中&lt;!-- raw HTML omitted -->，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
+&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;u>直接将返回值构造到调用者的接收变量中&lt;/u>，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj &lt;span style="color:#f92672">=&lt;/span> createObject(); &lt;span style="color:#75715e">// RVO 优化将直接构造在 obj 中
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>SomeClass &lt;span style="color:#a6e22e">createObject&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj; &lt;span style="color:#75715e">// 具名局部变量
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> obj; &lt;span style="color:#75715e">// 这里不能使用 RVO
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>编译器行为：&lt;/p></description></item><item><title>缓存的设计</title><link>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;ol>
 &lt;li>数据结构&lt;/li>
 &lt;/ol>
 &lt;ul>
@@ -3212,8 +3220,8 @@ process(std::move(p1)); // 使用 std::move 将所有权转移给 process 函数
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> textures;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同理，小心其他类里的析构函数（例如Shader类可能会在析构里调用glDeleteProgram）。&lt;/p></description></item><item><title>C++ / Golang / 游戏开发 / TA 学习路线汇总</title><link>https://jekyulll.github.io/post/means/</link><pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate><guid>https://jekyulll.github.io/post/means/</guid><description>&lt;!-- raw HTML omitted -->
-&lt;!-- raw HTML omitted -->
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同理，小心其他类里的析构函数（例如Shader类可能会在析构里调用glDeleteProgram）。&lt;/p></description></item><item><title>C++ / Golang / 游戏开发 / TA 学习路线汇总</title><link>https://jekyulll.github.io/post/means/</link><pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate><guid>https://jekyulll.github.io/post/means/</guid><description>&lt;!-- -- 2024年6月2日23:56:19
+收藏的路线越来越多，有点乱。单列一个文件，想到的时候汇总一下。 -->
 &lt;h1 id="c">C++&lt;/h1>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/649667647">一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a>。&lt;/p>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/14264391441">深入理解C++内存管理：指针、引用和内存分配&lt;/a>。&lt;/p>
@@ -3236,5 +3244,8 @@ process(std::move(p1)); // 使用 std::move 将所有权转移给 process 函数
 &lt;a href="https://zhuanlan.zhihu.com/p/452697297">内存管理：设计Arena&lt;/a>。&lt;/p>
 &lt;p>&lt;a href="https://www.bilibili.com/video/BV1Se411D7y4/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">这本书加深了我对C++的理解 | C++ Core Guidelines解析&lt;/a>。&lt;/p>
 &lt;p>&lt;a href="https://blog.csdn.net/weixin_42136255/article/details/133815129">深入理解Asan:内存错误检测工具与实践&lt;/a>。&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>&lt;a href="https://www.zhihu.com/question/428340896/answer/2913419725">为什么C/C++等少数编程语言要区分左右值？ - 腾讯技术工程的回答 - 知乎&lt;/a>。非常牛逼。讲得很深，从C语言的发展、寄存器讲起。&lt;/p></description></item></channel></rss>
+&lt;!-- [C++翻译阶段中的编码转换-执行字符集与源字符集](https://www.bilibili.com/video/BV1yof2Y4EPF/?spm_id_from=333.1007.tianma.2-1-4.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。 -->
+&lt;p>&lt;a href="https://www.zhihu.com/question/428340896/answer/2913419725">为什么C/C++等少数编程语言要区分左右值？ - 腾讯技术工程的回答 - 知乎&lt;/a>。非常牛逼。讲得很深，从C语言的发展、寄存器讲起。&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/670821214">13.纤程（Fiber）与协程（Coroutine）&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://baijiahao.baidu.com/s?id=1719486804831856788&amp;amp;wfr=spider&amp;amp;for=pc">深入并发之线程、进程、纤程、协程、管程与死锁、活锁｜详解&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://www.zhihu.com/question/33979489/answer/1854635802">从操作系统内存管理来说，malloc申请一块内存的背后原理是什么？ - 编程指北的回答 - 知乎&lt;/a>。&lt;/p></description></item></channel></rss>
