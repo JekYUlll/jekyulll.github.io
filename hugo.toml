@@ -2,7 +2,12 @@ baseurl      = "https://jekyulll.github.io/"
 title        = "Horeb"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
-paginate     = 10
+pagerSize     = 10
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [params]
   dateform        = "Jan 2, 2006"
