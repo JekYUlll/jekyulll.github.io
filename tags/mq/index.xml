@@ -1,2 +1,85 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mq on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/mq/</link><description>Recent content in Mq on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 05 May 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/mq/index.xml" rel="self" type="application/rss+xml"/><item><title>Redis Stream和MQ</title><link>https://jekyulll.github.io/post/redis-redis-stream%E5%92%8Cmq/</link><pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/redis-redis-stream%E5%92%8Cmq/</guid><description>&lt;p>常见MQ的功能，有哪些是用Redis实现不了的？&lt;/p>
-&lt;p>消息队列（MQ）用于解耦系统、异步处理、削峰填谷等，常见的 MQ 有 RabbitMQ、Kafka、RocketMQ、ActiveMQ 等。而 Redis 也提供了发布/订阅（pub/sub）、List 队列、Stream（流）等机制，看似也能实现部分消息队列的功能。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mq on Hello Friend NG</title><link>https://jekyulll.github.io/tags/mq/</link><description>Recent content in Mq on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 05 May 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/mq/index.xml" rel="self" type="application/rss+xml"/><item><title>Redis Stream和MQ</title><link>https://jekyulll.github.io/post/redis-redis-stream%E5%92%8Cmq/</link><pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/redis-redis-stream%E5%92%8Cmq/</guid><description>&lt;p>常见MQ的功能，有哪些是用Redis实现不了的？&lt;/p>
+&lt;p>消息队列（MQ）用于解耦系统、异步处理、削峰填谷等，常见的 MQ 有 RabbitMQ、Kafka、RocketMQ、ActiveMQ 等。而 Redis 也提供了发布/订阅（pub/sub）、List 队列、Stream（流）等机制，看似也能实现部分消息队列的功能。&lt;/p>
+&lt;hr>
+&lt;h3 id="-redis-能做的-mq-功能">✅ Redis 能做的 MQ 功能：&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>功能&lt;/th>
+ &lt;th>Redis 支持方式&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>简单队列&lt;/td>
+ &lt;td>使用 &lt;code>List&lt;/code> 的 &lt;code>LPUSH + BRPOP&lt;/code> 实现&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>发布订阅&lt;/td>
+ &lt;td>使用 &lt;code>Pub/Sub&lt;/code> 功能&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>消息流&lt;/td>
+ &lt;td>使用 &lt;code>Stream&lt;/code> 类型（自 Redis 5.0 起）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>消息持久化（有限）&lt;/td>
+ &lt;td>Redis 有持久化机制（RDB、AOF）&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-redis-实现不了或不擅长的-mq-功能">❌ Redis 实现不了或不擅长的 MQ 功能：&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>功能&lt;/th>
+ &lt;th>原因&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>消息可靠投递（ACK 确认机制）&lt;/strong>&lt;/td>
+ &lt;td>Redis 的 Pub/Sub 没有消费确认机制，Stream 有但比较弱（如无消费失败自动重试机制）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>高吞吐量/分布式日志系统（如 Kafka）&lt;/strong>&lt;/td>
+ &lt;td>Redis 不适合大规模日志或百万 TPS 场景，且不具备分区（partition）机制&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消费失败后的重试机制、死信队列（DLQ）&lt;/strong>&lt;/td>
+ &lt;td>Redis 不原生支持，需要手动构建（逻辑复杂且不够健壮）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消费顺序保障（partition+offset）&lt;/strong>&lt;/td>
+ &lt;td>Redis Stream 提供 ID 顺序，但无法如 Kafka 那样做严格的有序分区消费&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>持久性保证和磁盘容量优化&lt;/strong>&lt;/td>
+ &lt;td>Redis 为内存数据库，持久性和存储成本远不如 Kafka 等磁盘级 MQ&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消息积压处理能力强&lt;/strong>&lt;/td>
+ &lt;td>Redis 基于内存，积压消息多了容易 OOM，Kafka 之类基于磁盘无此问题&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>事务性消息支持（如 RocketMQ）&lt;/strong>&lt;/td>
+ &lt;td>Redis 不支持事务性消息逻辑&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>消费者分组与负载均衡（Consumer Group）&lt;/strong>&lt;/td>
+ &lt;td>Redis Stream 有些类似功能，但不如 Kafka 灵活和成熟&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>流控和限速、幂等机制支持&lt;/strong>&lt;/td>
+ &lt;td>Redis 需要自己实现，Kafka 等 MQ 内建支持&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="总结">总结&lt;/h3>
+&lt;ul>
+&lt;li>Redis 可以用来实现轻量级、简单或低吞吐的消息队列系统；&lt;/li>
+&lt;li>Kafka、RabbitMQ、RocketMQ 等更适合需要&lt;strong>高可靠性、分布式、高吞吐、复杂消息模式&lt;/strong>的场景；&lt;/li>
+&lt;li>Redis 适合“玩具级”或轻量任务队列，&lt;strong>不推荐在企业级复杂系统中用作核心 MQ&lt;/strong>。&lt;/li>
+&lt;/ul></description></item></channel></rss>

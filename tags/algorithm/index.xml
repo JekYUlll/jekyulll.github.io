@@ -1,13 +1,184 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Algorithm on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/algorithm/</link><description>Recent content in Algorithm on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 26 Mar 2025 04:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml"/><item><title>更新的二进制差异算法</title><link>https://jekyulll.github.io/post/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</link><pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</guid><description>&lt;p>替换一个二进制文件有以下两个思路：&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Algorithm on Hello Friend NG</title><link>https://jekyulll.github.io/tags/algorithm/</link><description>Recent content in Algorithm on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 26 Mar 2025 04:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml"/><item><title>更新的二进制差异算法</title><link>https://jekyulll.github.io/post/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</link><pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</guid><description>&lt;p>替换一个二进制文件有以下两个思路：&lt;/p>
 &lt;p>使用完整的一个新文件直接覆盖旧的文件。
 只替换新旧文件之间的差异。通过算法去计算新旧文件之间的差异，然后将差异部分移动到目标机器上。
-其中方法一制作的更新就叫做全量更新（Full Update）。而方法二就是二进制差分方式，即增量更新（Delta Update）。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p></description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p>
+其中方法一制作的更新就叫做全量更新（Full Update）。而方法二就是二进制差分方式，即增量更新（Delta Update）。&lt;/p>
+&lt;hr>
+&lt;h2 id="增量更新">增量更新&lt;/h2>
+&lt;p>增量更新有两个方式：&lt;strong>文件差量更新&lt;/strong>、&lt;strong>二进制差量更新&lt;/strong>。&lt;br>
+大部分的大软件，如 QQ 等，都会在自动更新的时候都会使用文件差量更新和二进制差量更新一起使用的策略。&lt;/p>
+&lt;p>二进制差分更新对于就文件的状态有严格的要求，这是因为不同版本之间的二进制差异不同。&lt;br>
+举个例子：某个新的文件A的版本是3，需要更新到用户的机器上。但是部分用户机器上安装的文件A版本是1，部分用户的文件A是版本2。这种情况下，就需要分别计算版本3和版本1的差异，以及版本3和版本2的差异。然后根据不同用户的情况分别发送不同的二进制差异文件。&lt;br>
+想要进行增量更新，需要构建模块支持才能实现。确定性构建就是在代码没有变更的时候，构建输出的 DLL 或 Exe 一定是不变的。对应的，还应加入确定性混淆的支持，有一些代码接入了混淆过程，要求在代码没有变更的时候，最后混淆输出的文件也没有变更。&lt;/p>
+&lt;p>增量更新不能热更新，需要重启才能生效。&lt;/p>
+&lt;p>用到的算法主要有&lt;a href="https://www.daemonology.net/bsdiff/">bsdiff&lt;/a>，&lt;a href="https://github.com/OctopusDeploy/Octodiff">octodiff&lt;/a>，xdelta。&lt;/p>
+&lt;p>bsdiff 算法的时间复杂度和空间复杂度都很高。但优点是更新文件大小比较小。&lt;/p>
+&lt;blockquote>
+&lt;p>处理大文件选择Octodiff，处理小文件选择bsdiff.&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="正向逆向差分技术">正向/逆向差分技术&lt;/h2>
+&lt;p>在此之前，为了解决Windows累积更新体积过大的问题，微软使用的是Express Update技术。Express技术确实减小了累积更新的体积，但是却极大的增加了Window更新服务器的计算压力与存储压力。Express更新文件在更新服务器上通常会有大于10GB的体积。Express Update正是使用的增量更新方式，并且把所有文件的所有版本差异都存储到了更新服务器上（海量的文件）。&lt;/p>
+&lt;p>Windows 10 1809版本之后引入了基于二进制的正向/逆向差分技术。&lt;/p>
+&lt;p>二进制差分是需要严格比对文件的版本信息的。如果被替换文件的版本不确定，那么就无法应用二进制差分。如果本替换文件的版本非常多，那么就需要针对每一个版本分别计算二进制差分，这样一来，不同版本的二进制差分的总和体积也必然不会小，因此就抵消掉差分带来的体积优势。&lt;/p>
+&lt;p>正向/逆向差分技术的核心思路是：将被替换文件的版本固定，这样就能唯一确定一个二进制差分了。那么，将被替换的文件版本固定成什么版本呢？&lt;br>
+Windows更新用的方法是，将所有需要被更新的文件版本回到Windows 10 基线版本 。然后，从基线版本安装二进制差分，完成文件的更新。&lt;br>
+这里，从当前的文件版本回退到基线版本的过程被称为&lt;strong>逆向&lt;/strong>，从基线版本更新到最新的版本的过程称为&lt;strong>正向&lt;/strong>，也被称为&lt;strong>注水&lt;/strong>（hydration）。制作差分二进制叫做&lt;strong>脱水&lt;/strong>（dehydration）。&lt;br>
+这两次文件更新的行为都使用差分二进制来完成，因此这就是正向/逆向二进制差分技术。&lt;/p>
+&lt;p>核心逻辑在于通过固定基线版本（RTM）作为唯一中间状态，规避多版本组合带来的差分数爆炸问题。&lt;br>
+这样只需要存储一个当前版本到基线版本的二进制差分，然后统一从基线版本升级到新版本。&lt;br>
+（&lt;em>eg&lt;/em>. 例如有0、1、2、3、4版本。如果用老办法，需要存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4，1-&amp;gt;2，1-&amp;gt;3，1-&amp;gt;4，2-&amp;gt;3，2-&amp;gt;4，3-&amp;gt;4的差分包，多了之后数量爆炸，因为&lt;!-- raw HTML omitted -->增加新版本的时候需要存储之前所有版本到新版本的差分包&lt;!-- raw HTML omitted -->。&lt;br>
+如果采用正向/逆向差分，要存储1-&amp;gt;0，2-&amp;gt;0，3-&amp;gt;0，4-&amp;gt;0，然后存储0-&amp;gt;1，0-&amp;gt;2，0-&amp;gt;3，0-&amp;gt;4。增加新版本的时候，只需要增加5-&amp;gt;0和0-&amp;gt;5，从n的累加优化到了n的线性关系的差分包数量。&lt;br>
+）&lt;/p>
+&lt;p>基于正向/逆向二进制差分的Windows累积更新内部包含以下内容：&lt;/p>
+&lt;ul>
+&lt;li>从基线版本到最新版本N的正向二进制差分文件&lt;/li>
+&lt;li>回退到基线版本所需的逆向二进制差分文件&lt;/li>
+&lt;li>更新文件清单（Manifest）&lt;/li>
+&lt;li>更新文件Metadata&lt;/li>
+&lt;/ul>
+&lt;p>如果是离线更新MSU，还会多一些版本以及操作系统适应性判断的内容。&lt;/p>
+&lt;hr>
+&lt;h3 id="source--reference">Source &amp;amp;&amp;amp; Reference&lt;/h3>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/13382743061">二进制差异文件算法&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://github.com/Squirrel/Squirrel.Windows">Squirrel.Windows: An installation and update framework for Windows desktop apps&lt;/a>。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p>
+&lt;ul>
+&lt;li>​LRU（Least Recently Used）​
+&lt;ul>
+&lt;li>基于时间维度，淘汰最久未被访问的数据。例如，若缓存容量为3，依次访问A→B→C→A，则再次插入新数据时，最久未访问的B会被淘汰。其核心假设是：最近被访问的数据未来更可能被使用。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>​LFU（Least Frequently Used）​
+&lt;ul>
+&lt;li>基于频率维度，淘汰访问次数最少的数据。例如，若数据A被访问5次，B被访问3次，则优先淘汰B。LFU通过计数器记录访问频次，并可能结合时间衰减机制避免旧高频数据长期占用缓存。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="一lru算法时间维度淘汰策略">&lt;strong>一、LRU算法：时间维度淘汰策略&lt;/strong>&lt;/h3>
+&lt;h4 id="核心原理">&lt;strong>核心原理&lt;/strong>&lt;/h4>
+&lt;p>LRU基于“时间局部性”假设：&lt;strong>最近被访问的数据更可能被再次使用&lt;/strong>。其淘汰策略简单直接——移除最久未访问的数据。例如，若缓存容量为3，访问顺序为A→B→C→A，则新数据插入时淘汰最旧的B。&lt;/p>
+&lt;h4 id="c实现">&lt;strong>C++实现&lt;/strong>&lt;/h4>
+&lt;p>LRU需高效支持两种操作：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>快速查询&lt;/strong>（哈希表，O(1)）&lt;/li>
+&lt;li>&lt;strong>顺序维护&lt;/strong>（双向链表，O(1)调整顺序）&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>数据结构设计&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Node&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> key, value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node &lt;span style="color:#f92672">*&lt;/span>prev, &lt;span style="color:#f92672">*&lt;/span>next;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node(&lt;span style="color:#66d9ef">int&lt;/span> k, &lt;span style="color:#66d9ef">int&lt;/span> v) &lt;span style="color:#f92672">:&lt;/span> key(k), value(v), prev(&lt;span style="color:#66d9ef">nullptr&lt;/span>), next(&lt;span style="color:#66d9ef">nullptr&lt;/span>) {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LRUCache&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> capacity;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unordered_map&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>, Node&lt;span style="color:#f92672">*&amp;gt;&lt;/span> cache; &lt;span style="color:#75715e">// 哈希表：键到节点映射
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Node &lt;span style="color:#f92672">*&lt;/span>head, &lt;span style="color:#f92672">*&lt;/span>tail; &lt;span style="color:#75715e">// 双向链表头尾哨兵节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">moveToHead&lt;/span>(Node&lt;span style="color:#f92672">*&lt;/span> node) { &lt;span style="color:#75715e">// 将节点移至头部
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> removeNode(node);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> addToHead(node);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">removeNode&lt;/span>(Node&lt;span style="color:#f92672">*&lt;/span> node) { &lt;span style="color:#75715e">// 移除节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">addToHead&lt;/span>(Node&lt;span style="color:#f92672">*&lt;/span> node) { &lt;span style="color:#75715e">// 头部插入节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> head;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> node;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> node;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LRUCache(&lt;span style="color:#66d9ef">int&lt;/span> cap) &lt;span style="color:#f92672">:&lt;/span> capacity(cap) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Node(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>); &lt;span style="color:#75715e">// 初始化哨兵节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> tail &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Node(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> tail;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tail&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> head;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key) { &lt;span style="color:#75715e">// 查询操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">auto&lt;/span> it &lt;span style="color:#f92672">=&lt;/span> cache.find(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (it &lt;span style="color:#f92672">==&lt;/span> cache.end()) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> moveToHead(it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>second); &lt;span style="color:#75715e">// 更新为最近访问
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>second&lt;span style="color:#f92672">-&amp;gt;&lt;/span>value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">put&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key, &lt;span style="color:#66d9ef">int&lt;/span> value) { &lt;span style="color:#75715e">// 插入/更新操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (cache.find(key) &lt;span style="color:#f92672">!=&lt;/span> cache.end()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cache[key]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>value &lt;span style="color:#f92672">=&lt;/span> value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> moveToHead(cache[key]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node&lt;span style="color:#f92672">*&lt;/span> newNode &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Node(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cache[key] &lt;span style="color:#f92672">=&lt;/span> newNode;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> addToHead(newNode);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (cache.size() &lt;span style="color:#f92672">&amp;gt;&lt;/span> capacity) { &lt;span style="color:#75715e">// 触发淘汰
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Node&lt;span style="color:#f92672">*&lt;/span> toDelete &lt;span style="color:#f92672">=&lt;/span> tail&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cache.erase(toDelete&lt;span style="color:#f92672">-&amp;gt;&lt;/span>key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> removeNode(toDelete);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">delete&lt;/span> toDelete;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>关键点&lt;/strong>：&lt;br>
+• 使用&lt;strong>哈希表+双向链表&lt;/strong>实现O(1)操作复杂度&lt;br>
+• 头节点存放最新访问数据，尾节点为待淘汰数据&lt;/p></description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p>
 &lt;h3 id="一算法原理与公式">一、算法原理与公式&lt;/h3>
 &lt;p>半衰期算法基于放射性衰变公式：&lt;strong>M * (1/2)^(t/T)&lt;/strong>，其中：
 • &lt;strong>M&lt;/strong>：初始值（如点击量）
 • &lt;strong>t&lt;/strong>：时间间隔（如天数）
 • &lt;strong>T&lt;/strong>：半衰期周期（如7天）
-该公式使数据权重随时间呈指数衰减，例如7天半衰期意味着权重每天减少约10%。&lt;/p></description></item><item><title>【AI】使用普通的互斥锁实现读写锁</title><link>https://jekyulll.github.io/post/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</link><pubDate>Mon, 10 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</guid><description>&lt;p>核心在于通过&lt;strong>状态管理&lt;/strong>和&lt;strong>锁的组合&lt;/strong>来模拟读写锁的“读共享、写独占”特性。以下是实现思路和具体方法：&lt;/p>
+该公式使数据权重随时间呈指数衰减，例如7天半衰期意味着权重每天减少约10%。&lt;/p>
+&lt;h3 id="二核心应用场景">二、核心应用场景&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>热搜排序&lt;/strong>（如微博、腾讯平台）
+• 动态平衡点击量与时间衰减：新事件点击量高但衰减快，旧事件点击量低但衰减慢。例如：
+◦ 电影类半衰期设为7天（T=7），初始权重1000，单日点击量20000时，2天后权重为 &lt;code>(1000+20000) * (1/2)^(2/7) * 0.8 ≈ 17474.56&lt;/code>。
+◦ 小说类半衰期15天（T=15），汽车类30天（T=30），体现不同内容时效性差异。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>推荐系统冷启动&lt;/strong>
+• 新内容通过初始权重（如1000）获得曝光机会，同时随时间自然衰减，避免长期占据推荐位。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>动态排行榜&lt;/strong>
+• 结合实时数据与历史表现：例如游戏活动榜单，近期活跃玩家通过半衰期快速提升排名，老玩家贡献逐步降低。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="三后端实现要点">三、后端实现要点&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>数据模型设计&lt;/strong>
+• 数据库需存储&lt;strong>原始点击量&lt;/strong>和&lt;strong>计算后的排序权重字段&lt;/strong>（如&lt;code>sort_info&lt;/code>），通过定时任务（如每小时）更新权重值。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>参数可配置化&lt;/strong>
+• 不同业务类型设置独立参数：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">filmHalfLife&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#a6e22e">T&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">7&lt;/span>; &lt;span style="color:#75715e">//半衰期周期
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#a6e22e">weight&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.8&lt;/span>; &lt;span style="color:#75715e">//类型权重
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过接口&lt;code>halfLifeFactory&lt;/code>实现多态，支持扩展新类型。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>防作弊机制&lt;/strong>
+• 引入&lt;strong>类型权重系数&lt;/strong>（如电影0.8、汽车0.85），降低刷量对排序的影响。
+• 结合IP频率限制、异常点击检测等补充措施。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="四扩展优化方向">四、扩展优化方向&lt;/h3>
+&lt;p>• &lt;strong>时间粒度细化&lt;/strong>：将天级计算改为小时级，适应高实时性场景（如突发新闻）。
+• &lt;strong>复合衰减策略&lt;/strong>：叠加多个半衰期公式，处理复杂业务逻辑（如短视频热度需同时考虑播放、点赞、分享）。
+• &lt;strong>动态调整半衰期&lt;/strong>：通过机器学习根据历史数据自动优化T值。&lt;/p>
+&lt;blockquote>
+&lt;p>该算法已在实际工程中验证可行性，例如某博客示例中，电影类内容在7天内权重从1000衰减至约400，而汽车类内容30天后仍保留约300权重。开发者可根据业务需求调整公式参数，平衡时效性与长尾效应。&lt;/p>
+&lt;/blockquote></description></item><item><title>【AI】使用普通的互斥锁实现读写锁</title><link>https://jekyulll.github.io/post/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</link><pubDate>Mon, 10 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</guid><description>&lt;p>核心在于通过&lt;strong>状态管理&lt;/strong>和&lt;strong>锁的组合&lt;/strong>来模拟读写锁的“读共享、写独占”特性。以下是实现思路和具体方法：&lt;/p>
 &lt;hr>
 &lt;h3 id="一实现原理">一、实现原理&lt;/h3>
 &lt;p>读写锁的核心规则是：&lt;/p>
@@ -19,7 +190,122 @@
 &lt;p>使用普通互斥锁（&lt;code>std::mutex&lt;/code>）和计数器可以实现这一逻辑：&lt;br>
 • &lt;strong>读计数器&lt;/strong>：统计当前活跃的读线程数量。&lt;br>
 • &lt;strong>写互斥锁&lt;/strong>：确保写操作的独占性。&lt;br>
-• &lt;strong>状态保护锁&lt;/strong>：保护读计数器和写锁状态的原子性。&lt;/p></description></item><item><title>线程池调度：动态优先级老化（Aging）+ 双队列混合轮询</title><link>https://jekyulll.github.io/post/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</link><pubDate>Tue, 25 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</guid><description>&lt;p>C++中线程池一般使用队列（&lt;code>std::queue&lt;/code>）配合外部的&lt;code>std::condition_variable&lt;/code>，或者手动构建阻塞队列（BlockQueue）来设计。&lt;/p></description></item><item><title>计时器 timer 的设计</title><link>https://jekyulll.github.io/post/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Tue, 25 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;p>三种经典算法：小顶堆、红黑树、时间轮。&lt;br>
+• &lt;strong>状态保护锁&lt;/strong>：保护读计数器和写锁状态的原子性。&lt;/p>
+&lt;hr>
+&lt;h3 id="二实现步骤">二、实现步骤&lt;/h3>
+&lt;h4 id="1-定义关键成员变量">1. 定义关键成员变量&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;mutex&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;condition_variable&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ReadWriteLock&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>mutex counter_mutex; &lt;span style="color:#75715e">// 保护读计数器和写标志
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>mutex write_mutex; &lt;span style="color:#75715e">// 写操作的独占锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> reader_count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#75715e">// 当前活跃的读线程数量
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">bool&lt;/span> write_pending &lt;span style="color:#f92672">=&lt;/span> false; &lt;span style="color:#75715e">// 是否有写线程在等待
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>condition_variable read_cv, write_cv;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2-读锁的获取与释放">2. 读锁的获取与释放&lt;/h4>
+&lt;p>• &lt;strong>获取读锁&lt;/strong>：&lt;br>
+当无写线程运行时，允许读线程进入；若存在写线程等待，则阻塞新读线程（避免写饥饿）。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">read_lock&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(counter_mutex);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 等待直到没有写线程在等待或运行
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> read_cv.wait(lock, [&lt;span style="color:#66d9ef">this&lt;/span>] { &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">!&lt;/span>write_pending; });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> reader_count&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (reader_count &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> write_mutex.lock(); &lt;span style="color:#75715e">// 第一个读线程获取写锁，阻止写操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>• &lt;strong>释放读锁&lt;/strong>：&lt;br>
+减少读计数器，若最后一个读线程退出，则释放写锁并通知可能的等待写线程。&lt;/p></description></item><item><title>线程池调度：动态优先级老化（Aging）+ 双队列混合轮询</title><link>https://jekyulll.github.io/post/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</link><pubDate>Tue, 25 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</guid><description>&lt;p>C++中线程池一般使用队列（&lt;code>std::queue&lt;/code>）配合外部的&lt;code>std::condition_variable&lt;/code>，或者手动构建阻塞队列（BlockQueue）来设计。&lt;/p>
+&lt;p>而需要使用任务优先级的时候，一般使用大根堆/小根堆的优先级队列&lt;code>std::priority_queue&lt;/code>来实现。&lt;/p>
+&lt;p>那么问题来了，在任务优先级比较不均的时候，怎么避免低优先级任务的长时间饥饿呢？&lt;/p>
+&lt;p>为了实现动态公平调度：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>动态优先级老化（Aging）：优先级动态调整&lt;/strong>：任务在队列中等待时间越长，其有效优先级逐渐升高。&lt;/li>
+&lt;li>&lt;strong>双队列混合轮询&lt;/strong>：每处理一定数量的高优先级任务后，强制处理低优先级任务。&lt;/li>
+&lt;/ul>
+&lt;p>首先抽象出一个&lt;code>Task&lt;/code>用于记录任务的初始优先级和入队时间：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;chrono&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Task&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> base_priority; &lt;span style="color:#75715e">// 初始优先级
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>chrono&lt;span style="color:#f92672">::&lt;/span>steady_clock&lt;span style="color:#f92672">::&lt;/span>time_point enqueue_time;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> job;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 计算动态优先级（等待时间越长，优先级越高）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">dynamic_priority&lt;/span>() &lt;span style="color:#66d9ef">const&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">auto&lt;/span> now &lt;span style="color:#f92672">=&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>chrono&lt;span style="color:#f92672">::&lt;/span>steady_clock&lt;span style="color:#f92672">::&lt;/span>now();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">auto&lt;/span> wait_time &lt;span style="color:#f92672">=&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>chrono&lt;span style="color:#f92672">::&lt;/span>duration_cast&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>chrono&lt;span style="color:#f92672">::&lt;/span>seconds&lt;span style="color:#f92672">&amp;gt;&lt;/span>(now &lt;span style="color:#f92672">-&lt;/span> enqueue_time).count();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> base_priority &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#66d9ef">static_cast&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>(wait_time &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">0.1&lt;/span>); &lt;span style="color:#75715e">// 老化系数可调
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 重载比较运算符（实际比较动态优先级）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#66d9ef">operator&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> Task&lt;span style="color:#f92672">&amp;amp;&lt;/span> other) &lt;span style="color:#66d9ef">const&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">-&amp;gt;&lt;/span>dynamic_priority() &lt;span style="color:#f92672">&amp;lt;&lt;/span> other.dynamic_priority(); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>整体的线程池类设计：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;queue&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;vector&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;thread&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;mutex&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;condition_variable&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ThreadPool&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ThreadPool(size_t threads, size_t high_freq &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>) 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">:&lt;/span> high_processing_count(&lt;span style="color:#ae81ff">0&lt;/span>), high_freq_(high_freq) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>(size_t i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> threads; &lt;span style="color:#f92672">++&lt;/span>i) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> workers.emplace_back([&lt;span style="color:#66d9ef">this&lt;/span>] { worker_loop(); });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add_task&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> priority, std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> task) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(queue_mutex);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> queue.emplace(Task{priority, std&lt;span style="color:#f92672">::&lt;/span>chrono&lt;span style="color:#f92672">::&lt;/span>steady_clock&lt;span style="color:#f92672">::&lt;/span>now(), task});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> condition.notify_one();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">~&lt;/span>ThreadPool() { &lt;span style="color:#75715e">/* ... 省略资源回收代码 ... */&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>mutex queue_mutex;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>condition_variable condition;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>priority_queue&lt;span style="color:#f92672">&amp;lt;&lt;/span>Task&lt;span style="color:#f92672">&amp;gt;&lt;/span> queue; &lt;span style="color:#75715e">// 主队列（动态优先级）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>queue&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> low_priority_queue; &lt;span style="color:#75715e">// 辅助队列
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>&lt;span style="color:#66d9ef">thread&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span> workers;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 轮询控制
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>atomic&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span> high_processing_count;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> high_freq_;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">worker_loop&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span>(true) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> task;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(queue_mutex);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> condition.wait(lock, [&lt;span style="color:#66d9ef">this&lt;/span>] { &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">!&lt;/span>queue.empty(); });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 动态老化：每处理high_freq_个高优任务后强制处理低优
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">++&lt;/span>high_processing_count &lt;span style="color:#f92672">%&lt;/span> high_freq_ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">!&lt;/span>low_priority_queue.empty()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> task &lt;span style="color:#f92672">=&lt;/span> low_priority_queue.front();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low_priority_queue.pop();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> task &lt;span style="color:#f92672">=&lt;/span> queue.top().job;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> queue.pop();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(task) task();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>&lt;strong>拓展&lt;/strong>：&lt;/p></description></item><item><title>计时器 timer 的设计</title><link>https://jekyulll.github.io/post/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</link><pubDate>Tue, 25 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid><description>&lt;p>三种经典算法：小顶堆、红黑树、时间轮。&lt;br>
 Linux内核多采用时间轮处理中断定时器，而Nginx使用红黑树管理定时事件。&lt;/p>
 &lt;ul>
 &lt;li>&lt;em>Redis&lt;/em>:		&lt;code>usUntilEarliestTimer()&lt;/code>&lt;/li>
@@ -80,75 +366,38 @@ Linux内核多采用时间轮处理中断定时器，而Nginx使用红黑树管�
 &lt;li>定时任务数量大，且&lt;strong>频繁触发最近任务&lt;/strong>的场景。&lt;/li>
 &lt;li>不适用于需要频繁取消或修改非堆顶任务的场景。&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;queue&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;vector&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;functional&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">struct&lt;/span> &lt;span class="nc">Timer&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int64_t&lt;/span> &lt;span class="n">expire&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 到期时间戳
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">function&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 小顶堆比较函数
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="nc">Compare&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">bool&lt;/span> &lt;span class="nf">operator&lt;/span>&lt;span class="p">()(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">Timer&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="n">Timer&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">a&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">expire&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">b&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">expire&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">priority_queue&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Timer&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">Timer&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Compare&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">min_heap&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 添加定时任务
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">add_timer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int64_t&lt;/span> &lt;span class="n">expire&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">function&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">min_heap&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push&lt;/span>&lt;span class="p">({&lt;/span>&lt;span class="n">expire&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">});&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 驱动逻辑（在事件循环中调用）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">check_expire&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int64_t&lt;/span> &lt;span class="n">current_time&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">min_heap&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">empty&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">min_heap&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">top&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">expire&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="n">current_time&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">auto&lt;/span> &lt;span class="n">task&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">min_heap&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">top&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">task&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">min_heap&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">pop&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">task&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="c1">// 执行任务
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;queue&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;vector&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;functional&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Timer&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int64_t&lt;/span> expire; &lt;span style="color:#75715e">// 到期时间戳
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> task;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 小顶堆比较函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Compare&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">operator&lt;/span>()(&lt;span style="color:#66d9ef">const&lt;/span> Timer&lt;span style="color:#f92672">&amp;amp;&lt;/span> a, &lt;span style="color:#66d9ef">const&lt;/span> Timer&lt;span style="color:#f92672">&amp;amp;&lt;/span> b) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a.expire &lt;span style="color:#f92672">&amp;gt;&lt;/span> b.expire;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>std&lt;span style="color:#f92672">::&lt;/span>priority_queue&lt;span style="color:#f92672">&amp;lt;&lt;/span>Timer, std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>Timer&lt;span style="color:#f92672">&amp;gt;&lt;/span>, Compare&lt;span style="color:#f92672">&amp;gt;&lt;/span> min_heap;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 添加定时任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add_timer&lt;/span>(&lt;span style="color:#66d9ef">int64_t&lt;/span> expire, std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> task) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> min_heap.push({expire, task});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 驱动逻辑（在事件循环中调用）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">check_expire&lt;/span>(&lt;span style="color:#66d9ef">int64_t&lt;/span> current_time) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>min_heap.empty() &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> min_heap.top().expire &lt;span style="color:#f92672">&amp;lt;=&lt;/span> current_time) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">auto&lt;/span> task &lt;span style="color:#f92672">=&lt;/span> min_heap.top().task;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> min_heap.pop();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> task(); &lt;span style="color:#75715e">// 执行任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h3 id="二红黑树">二、红黑树&lt;/h3>
 &lt;ul>
 &lt;li>使用&lt;strong>有序容器&lt;/strong>（如 &lt;code>std::multimap&lt;/code>）管理定时任务，键为到期时间。&lt;/li>
@@ -163,109 +412,342 @@ Linux内核多采用时间轮处理中断定时器，而Nginx使用红黑树管�
 &lt;li>需要频繁&lt;strong>取消或修改定时任务&lt;/strong>的场景。&lt;/li>
 &lt;li>适合时间跨度大或需要动态调整任务的场景。&lt;/li>
 &lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;span class="lnt">34
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;map&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;functional&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">struct&lt;/span> &lt;span class="nc">Timer&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 唯一标识符，用于取消任务
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">function&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">multimap&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">int64_t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Timer&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 添加定时任务
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">add_timer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int64_t&lt;/span> &lt;span class="n">expire&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">function&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">insert&lt;/span>&lt;span class="p">({&lt;/span>&lt;span class="n">expire&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">task&lt;/span>&lt;span class="p">}});&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 取消定时任务（需遍历）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">cancel_timer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">auto&lt;/span> &lt;span class="n">it&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">begin&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="n">it&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">end&lt;/span>&lt;span class="p">();)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">it&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">second&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">id&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">id&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">it&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">erase&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">it&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">++&lt;/span>&lt;span class="n">it&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 驱动逻辑
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">check_expire&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int64_t&lt;/span> &lt;span class="n">current_time&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">auto&lt;/span> &lt;span class="n">it&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">begin&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">it&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">end&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">it&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">first&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="n">current_time&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">it&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">second&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">task&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="c1">// 执行任务
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">it&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">timer_map&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">erase&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">it&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;map&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;functional&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Timer&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> id; &lt;span style="color:#75715e">// 唯一标识符，用于取消任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> task;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>std&lt;span style="color:#f92672">::&lt;/span>multimap&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int64_t&lt;/span>, Timer&lt;span style="color:#f92672">&amp;gt;&lt;/span> timer_map;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 添加定时任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">add_timer&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> id, &lt;span style="color:#66d9ef">int64_t&lt;/span> expire, std&lt;span style="color:#f92672">::&lt;/span>function&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span>()&lt;span style="color:#f92672">&amp;gt;&lt;/span> task) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> timer_map.insert({expire, {id, task}});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 取消定时任务（需遍历）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">cancel_timer&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> id) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">auto&lt;/span> it &lt;span style="color:#f92672">=&lt;/span> timer_map.begin(); it &lt;span style="color:#f92672">!=&lt;/span> timer_map.end();) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>second.id &lt;span style="color:#f92672">==&lt;/span> id) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> it &lt;span style="color:#f92672">=&lt;/span> timer_map.erase(it);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">++&lt;/span>it;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 驱动逻辑
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">check_expire&lt;/span>(&lt;span style="color:#66d9ef">int64_t&lt;/span> current_time) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">auto&lt;/span> it &lt;span style="color:#f92672">=&lt;/span> timer_map.begin();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (it &lt;span style="color:#f92672">!=&lt;/span> timer_map.end() &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>first &lt;span style="color:#f92672">&amp;lt;=&lt;/span> current_time) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>second.task(); &lt;span style="color:#75715e">// 执行任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> it &lt;span style="color:#f92672">=&lt;/span> timer_map.erase(it);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h3 id="三时间轮">三、时间轮&lt;/h3>
 &lt;blockquote>
 &lt;p>其实可以理解为一种变相的哈希表。&lt;/p></description></item><item><title>扫描线算法计算区间重叠</title><link>https://jekyulll.github.io/post/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link><pubDate>Sat, 15 Feb 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid><description>&lt;p>题目来源：&lt;a href="https://www.marscode.cn/practice/jn1075jrp7j47d?problem_id=7424418560930611244">Marscode&lt;/a>。&lt;/p>
 &lt;blockquote>
 &lt;p>小C和小U有一个从&lt;code>0&lt;/code>开始的数组&lt;code>nums&lt;/code>，以及一个非负整数&lt;code>k&lt;/code>。每次操作中，小C可以选择一个尚未选择的下标&lt;code>i&lt;/code>（范围在 &lt;code>[0, nums.length - 1]&lt;/code>），然后将&lt;code>nums[i]&lt;/code>替换为&lt;code>[nums[i] - k, nums[i] + k]&lt;/code>之间的任意整数（包含边界）。&lt;br>
-在应用任意次数的操作后，返回数组&lt;code>nums&lt;/code>可能达到的最大分数。数组的分数被定义为数组中最多重复的元素个数。注意，每个下标只能被操作一次。&lt;/p></description></item><item><title>检查字符串是否是另一个的子串</title><link>https://jekyulll.github.io/post/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link><pubDate>Wed, 29 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid><description>&lt;h2 id="常见-cc-api">常见 C/C++ API&lt;/h2>
+在应用任意次数的操作后，返回数组&lt;code>nums&lt;/code>可能达到的最大分数。数组的分数被定义为数组中最多重复的元素个数。注意，每个下标只能被操作一次。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h3 id="暴力解超时-onk">暴力解（超时） &lt;code>O(n²k)&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">solution&lt;/span>(vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span> nums, &lt;span style="color:#66d9ef">int&lt;/span> k) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> nums.size();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> maxCount &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; &lt;span style="color:#75715e">// 至少有一个数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 遍历每个数作为可能的目标值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 以nums[i]为中心，考虑范围[nums[i]-k, nums[i]+k]内的所有可能值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> target &lt;span style="color:#f92672">=&lt;/span> nums[i]&lt;span style="color:#f92672">-&lt;/span>k; target &lt;span style="color:#f92672">&amp;lt;=&lt;/span> nums[i]&lt;span style="color:#f92672">+&lt;/span>k; target&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 检查每个位置的数是否能变成target
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (abs(nums[j] &lt;span style="color:#f92672">-&lt;/span> target) &lt;span style="color:#f92672">&amp;lt;=&lt;/span> k) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> maxCount &lt;span style="color:#f92672">=&lt;/span> max(maxCount, count);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> maxCount;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="优化暴力解-on">优化暴力解 &lt;code>O(n²)&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">solution&lt;/span>(vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span> nums, &lt;span style="color:#66d9ef">int&lt;/span> k) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> n &lt;span style="color:#f92672">=&lt;/span> nums.size();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> maxCount &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 只需要考虑将某些数变成数组中已有的数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; i&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> target &lt;span style="color:#f92672">=&lt;/span> nums[i]; &lt;span style="color:#75715e">// 以当前数作为目标值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; j&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (abs(nums[j] &lt;span style="color:#f92672">-&lt;/span> target) &lt;span style="color:#f92672">&amp;lt;=&lt;/span> k) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count&lt;span style="color:#f92672">++&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> maxCount &lt;span style="color:#f92672">=&lt;/span> max(maxCount, count);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> maxCount;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="扫描线算法-onlogn">扫描线算法 &lt;code>O(nlogn)&lt;/code>&lt;/h3>
+&lt;p>像是在数某个时刻有多少个区间重叠。一条水平线从左向右扫过，每个起点让重叠数+1，每个终点让重叠数-1，过程中的最大重叠数就是答案。&lt;/p></description></item><item><title>检查字符串是否是另一个的子串</title><link>https://jekyulll.github.io/post/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link><pubDate>Wed, 29 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid><description>&lt;h2 id="常见-cc-api">常见 C/C++ API&lt;/h2>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>&lt;code>std::string&lt;/code>的 &lt;code>string::find&lt;/code> 成员函数&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;string&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="k">using&lt;/span> &lt;span class="k">namespace&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">bool&lt;/span> &lt;span class="nf">isSubstring&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">mainStr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="o">&amp;amp;&lt;/span> &lt;span class="n">subStr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">mainStr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">find&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">subStr&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">npos&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;string&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">using&lt;/span> &lt;span style="color:#66d9ef">namespace&lt;/span> std;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">isSubstring&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> string&lt;span style="color:#f92672">&amp;amp;&lt;/span> mainStr, &lt;span style="color:#66d9ef">const&lt;/span> string&lt;span style="color:#f92672">&amp;amp;&lt;/span> subStr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> mainStr.find(subStr) &lt;span style="color:#f92672">!=&lt;/span> string&lt;span style="color:#f92672">::&lt;/span>npos;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>大多数标准库的 &lt;code>strstr&lt;/code>（如Glibc）和 &lt;code>string::find&lt;/code>（如MSVC、libc++）已针对子串搜索优化。&lt;br>
-实现中可能直接调用 &lt;code>memmem&lt;/code> 或 &lt;code>strstr&lt;/code>，性能与 &lt;code>strstr&lt;/code> 相当。&lt;/p></description></item><item><title>分段锁技术详解及 C++ 实现</title><link>https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/</link><pubDate>Wed, 01 Jan 2025 14:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。&lt;/p></description></item><item><title>简述如何解决哈希冲突？</title><link>https://jekyulll.github.io/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</link><pubDate>Wed, 01 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</guid><description>&lt;blockquote>
-&lt;p>哈希冲突是指 &lt;strong>不同的输入&lt;/strong>（通常是不同的键）通过哈希函数计算后，得到相同的哈希值并被映射到相同的桶或位置。这是哈希算法的一个固有问题，通常发生在哈希表中。&lt;/p></description></item></channel></rss>
+实现中可能直接调用 &lt;code>memmem&lt;/code> 或 &lt;code>strstr&lt;/code>，性能与 &lt;code>strstr&lt;/code> 相当。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>C标准库的 &lt;code>strstr&lt;/code> 函数&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">isSubstring&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> string&lt;span style="color:#f92672">&amp;amp;&lt;/span> mainStr, &lt;span style="color:#66d9ef">const&lt;/span> string&lt;span style="color:#f92672">&amp;amp;&lt;/span> subStr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> strstr(mainStr.c_str(), subStr.c_str()) &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">nullptr&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>需要将 &lt;code>std::string&lt;/code> 转换为C风格字符串，可能引入额外开销。&lt;/p>
+&lt;blockquote>
+&lt;p>Glibc的 &lt;code>strstr&lt;/code> 使用Two-Way算法，适合长文本和模式。时间复杂度接近&lt;code>O(n)&lt;/code>。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>STL &lt;code>std::search&lt;/code>&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;algorithm&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;string&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">isSubstring&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> string&lt;span style="color:#f92672">&amp;amp;&lt;/span> mainStr, &lt;span style="color:#66d9ef">const&lt;/span> string&lt;span style="color:#f92672">&amp;amp;&lt;/span> subStr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>search(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mainStr.begin(), mainStr.end(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> subStr.begin(), subStr.end()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ) &lt;span style="color:#f92672">!=&lt;/span> mainStr.end();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="算法">算法&lt;/h2>
+&lt;h3 id="1-暴力法brute-force">&lt;strong>1. 暴力法（Brute Force）&lt;/strong>&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;string&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">isSubstringBruteForce&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string&lt;span style="color:#f92672">&amp;amp;&lt;/span> mainStr, &lt;span style="color:#66d9ef">const&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string&lt;span style="color:#f92672">&amp;amp;&lt;/span> subStr) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (subStr.empty()) &lt;span style="color:#66d9ef">return&lt;/span> true; &lt;span style="color:#75715e">// 空子串是任何字符串的子串
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> m &lt;span style="color:#f92672">=&lt;/span> mainStr.length(), n &lt;span style="color:#f92672">=&lt;/span> subStr.length();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (m &lt;span style="color:#f92672">&amp;lt;&lt;/span> n) &lt;span style="color:#66d9ef">return&lt;/span> false;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;=&lt;/span> m &lt;span style="color:#f92672">-&lt;/span> n; &lt;span style="color:#f92672">++&lt;/span>i) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> j;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; &lt;span style="color:#f92672">++&lt;/span>j) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (mainStr[i &lt;span style="color:#f92672">+&lt;/span> j] &lt;span style="color:#f92672">!=&lt;/span> subStr[j]) &lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (j &lt;span style="color:#f92672">==&lt;/span> n) &lt;span style="color:#66d9ef">return&lt;/span> true; &lt;span style="color:#75715e">// 完全匹配
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> false;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>&lt;strong>时间复杂度&lt;/strong>：最坏情况为 (O(m \times n))（如主串为&lt;code>AAAAAAB&lt;/code>，子串为&lt;code>AAAB&lt;/code>）。&lt;/li>
+&lt;li>&lt;strong>空间复杂度&lt;/strong>：(O(1))。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="2-kmp算法knuth-morris-pratt">&lt;strong>2. KMP算法（Knuth-Morris-Pratt）&lt;/strong>&lt;/h3>
+&lt;p>通过预处理子串生成部分匹配表（Longest Prefix Suffix, LPS），利用已匹配的信息跳过不必要的比较。&lt;/p></description></item><item><title>分段锁技术详解及 C++ 实现</title><link>https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/</link><pubDate>Wed, 01 Jan 2025 14:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。&lt;/p>
+&lt;p>分段锁通过减少锁粒度，让多个线程可以同时访问不同的段，从而显著提高性能。这种方法常见于 &lt;strong>哈希表&lt;/strong>、&lt;strong>数据库索引&lt;/strong> 和其他高并发系统中。&lt;/p>
+&lt;hr>
+&lt;h4 id="基本原理">&lt;strong>基本原理&lt;/strong>&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>划分资源&lt;/strong>：
+将容器划分为多个独立的段（&lt;code>segment&lt;/code>），每段可以包含一部分数据。例如，一个哈希表可以按哈希值将数据分配到多个桶（&lt;code>bucket&lt;/code>），每个桶代表一个段。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>独立加锁&lt;/strong>：
+每个段都有一个独立的锁（如 &lt;code>std::mutex&lt;/code> 或 &lt;code>std::shared_mutex&lt;/code>），对该段的数据操作时，只需要锁定对应的段即可，其他段不受影响。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>映射规则&lt;/strong>：
+通过某种映射规则（如哈希函数）将操作定位到特定的段。这种映射规则应尽可能均匀，以避免&lt;em>热点问题&lt;/em>（即某些段过于频繁被访问，导致锁竞争）。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h4 id="适用场景">&lt;strong>适用场景&lt;/strong>&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>高并发读写&lt;/strong>：如多线程访问的大型哈希表、数据库索引。&lt;/li>
+&lt;li>&lt;strong>热点数据分散&lt;/strong>：通过分段减少单点锁的争用，提升性能。&lt;/li>
+&lt;li>&lt;strong>读多写少&lt;/strong>：可以结合 &lt;code>std::shared_mutex&lt;/code> 提供共享锁和独占锁，进一步优化读性能。&lt;/li>
+&lt;/ul>
+&lt;p>注：&lt;strong>负载不均风险&lt;/strong>：如果映射规则不合理，可能导致某些段成为热点(eg. 热点桶)，影响性能。&lt;/p>
+&lt;hr>
+&lt;p>下面通过一个线程安全的哈希表（&lt;code>ThreadSafeHashMap&lt;/code>）来展示分段锁的实现(用&lt;code>std::vector&lt;/code>简单模拟)。&lt;/p>
+&lt;ol>
+&lt;li>将哈希表分为多个桶（&lt;code>bucket&lt;/code>），每个桶独立管理其数据。&lt;/li>
+&lt;li>使用哈希函数将键映射到对应的桶。&lt;/li>
+&lt;li>为每个桶分配一个 &lt;code>std::mutex&lt;/code> 来保护数据。&lt;/li>
+&lt;li>对于读操作，只锁定对应的桶，支持并行读取。&lt;/li>
+&lt;li>对于写操作，也只锁定对应的桶，减少锁的范围。&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;vector&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;mutex&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;shared_mutex&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;thread&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;functional&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">template&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">typename&lt;/span> Key, &lt;span style="color:#66d9ef">typename&lt;/span> Value&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ThreadSafeHashMap&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Bucket&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>shared_mutex mtx; &lt;span style="color:#75715e">// 每个桶的独立锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>pair&lt;span style="color:#f92672">&amp;lt;&lt;/span>Key, Value&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> data;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>Bucket&lt;span style="color:#f92672">&amp;gt;&lt;/span> buckets;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size_t num_buckets;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 哈希函数，将键映射到对应的桶
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> size_t &lt;span style="color:#a6e22e">hash&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> Key&lt;span style="color:#f92672">&amp;amp;&lt;/span> key) &lt;span style="color:#66d9ef">const&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>hash&lt;span style="color:#f92672">&amp;lt;&lt;/span>Key&lt;span style="color:#f92672">&amp;gt;&lt;/span>{}(key) &lt;span style="color:#f92672">%&lt;/span> num_buckets;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ThreadSafeHashMap(size_t num_buckets &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">16&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> num_buckets(num_buckets) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buckets.resize(num_buckets);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 插入操作，按桶分段加锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">insert&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> Key&lt;span style="color:#f92672">&amp;amp;&lt;/span> key, &lt;span style="color:#66d9ef">const&lt;/span> Value&lt;span style="color:#f92672">&amp;amp;&lt;/span> value) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size_t index &lt;span style="color:#f92672">=&lt;/span> hash(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>shared_mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(buckets[index].mtx);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buckets[index].data.push_back({key, value});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 查找操作，按桶分段加锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">find&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> Key&lt;span style="color:#f92672">&amp;amp;&lt;/span> key, Value&lt;span style="color:#f92672">&amp;amp;&lt;/span> value) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size_t index &lt;span style="color:#f92672">=&lt;/span> hash(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>shared_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>shared_mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(buckets[index].mtx);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">auto&lt;/span>&lt;span style="color:#f92672">&amp;amp;&lt;/span> pair : buckets[index].data) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (pair.first &lt;span style="color:#f92672">==&lt;/span> key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> value &lt;span style="color:#f92672">=&lt;/span> pair.second;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> true;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> false;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 删除操作，按桶分段加锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">erase&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> Key&lt;span style="color:#f92672">&amp;amp;&lt;/span> key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size_t index &lt;span style="color:#f92672">=&lt;/span> hash(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>shared_mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(buckets[index].mtx);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">auto&lt;/span>&lt;span style="color:#f92672">&amp;amp;&lt;/span> bucket &lt;span style="color:#f92672">=&lt;/span> buckets[index].data;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">auto&lt;/span> it &lt;span style="color:#f92672">=&lt;/span> bucket.begin(); it &lt;span style="color:#f92672">!=&lt;/span> bucket.end(); &lt;span style="color:#f92672">++&lt;/span>it) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>first &lt;span style="color:#f92672">==&lt;/span> key) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bucket.erase(it);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> true;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> false;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ThreadSafeHashMap&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>, std&lt;span style="color:#f92672">::&lt;/span>string&lt;span style="color:#f92672">&amp;gt;&lt;/span> map;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 多线程插入数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>&lt;span style="color:#66d9ef">thread&lt;/span> t1([&lt;span style="color:#f92672">&amp;amp;&lt;/span>]() { map.insert(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;one&amp;#34;&lt;/span>); });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>&lt;span style="color:#66d9ef">thread&lt;/span> t2([&lt;span style="color:#f92672">&amp;amp;&lt;/span>]() { map.insert(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;two&amp;#34;&lt;/span>); });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>&lt;span style="color:#66d9ef">thread&lt;/span> t3([&lt;span style="color:#f92672">&amp;amp;&lt;/span>]() { map.insert(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;three&amp;#34;&lt;/span>); });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> t1.join();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> t2.join();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> t3.join();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 查找数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (map.find(&lt;span style="color:#ae81ff">2&lt;/span>, value)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Found: &amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> value &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 删除数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> map.erase(&lt;span style="color:#ae81ff">2&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>像 &lt;a href="https://github.com/uxlfoundation/oneTBB">Intel TBB&lt;/a> 等并发库提供了更加高效的线程安全容器。&lt;/p></description></item><item><title>简述如何解决哈希冲突？</title><link>https://jekyulll.github.io/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</link><pubDate>Wed, 01 Jan 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</guid><description>&lt;blockquote>
+&lt;p>哈希冲突是指 &lt;strong>不同的输入&lt;/strong>（通常是不同的键）通过哈希函数计算后，得到相同的哈希值并被映射到相同的桶或位置。这是哈希算法的一个固有问题，通常发生在哈希表中。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h4 id="为什么会有哈希冲突">&lt;strong>为什么会有哈希冲突？&lt;/strong>&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>有限的哈希空间&lt;/strong>：&lt;br>
+假设哈希函数将键映射到一个固定大小的数组中，哈希表的桶数有限，而键的数量可能很大（例如百万个不同的键），那么无论哈希函数设计得多么巧妙，都可能有多个键映射到同一个桶。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>哈希函数的碰撞&lt;/strong>：&lt;br>
+哈希函数的设计决定了如何将键映射到哈希表的桶中。如果哈希函数不足够“分散”键值，导致多个键的哈希值相同，就会产生冲突。即使两个键的实际值不同，它们也可能因为哈希函数的限制而得到相同的哈希值。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>键的分布不均匀&lt;/strong>：&lt;br>
+如果数据（即键）在哈希表中的分布不均匀，某些桶可能会有大量的键，而其他桶则几乎没有。这通常是由于选择的哈希函数无法均匀地分布键值，导致哈希冲突在某些桶中更加集中。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>哈希冲突的发生是不可避免的，因为：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>有限的输出空间&lt;/strong>：
+哈希函数的输出通常是固定长度的（比如 32 位、64 位或更高），而实际的输入数据可以非常庞大。例如，输入可能是所有的整数、字符串或者更复杂的数据结构，数量远远超过了哈希值的种类。因此，总会有两个不同的输入数据被映射到相同的哈希值（即哈希冲突）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>抽象数据类型&lt;/strong>：
+对于复杂的数据类型（如对象、结构体、字符串等），设计一个完美的哈希函数是非常困难的。在某些情况下，即使设计了高效的哈希算法，也很难保证哈希值的完全均匀分布，因此冲突不可避免。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="如何处理哈希冲突">&lt;strong>如何处理哈希冲突？&lt;/strong>&lt;/h3>
+&lt;p>尽管哈希冲突不可避免，但我们可以采用多种方法来解决或减少冲突的影响：&lt;/p>
+&lt;h4 id="1-链表法separate-chaining">1. &lt;strong>链表法（Separate Chaining）&lt;/strong>&lt;/h4>
+&lt;p>每个桶（哈希表的一个位置）存储一个链表，所有映射到相同哈希值的元素都放在这个链表中。虽然哈希冲突发生，但可以通过遍历链表来解决。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>优点&lt;/strong>：简单易懂，适用于动态扩容。&lt;/li>
+&lt;li>&lt;strong>缺点&lt;/strong>：性能取决于链表的长度，如果链表较长，查找、插入、删除的时间复杂度会退化为 &lt;code>O(n)&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;h4 id="2-开放地址法open-addressing">2. &lt;strong>开放地址法（Open Addressing）&lt;/strong>&lt;/h4>
+&lt;p>在这种方法中，当哈希冲突发生时，程序会尝试在表中寻找另一个空的位置来存储数据。常见的解决方式包括：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>线性探测&lt;/strong>：检查当前位置之后的下一个位置，直到找到空位。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>二次探测&lt;/strong>：尝试检查当前位置之后的平方距离的其他位置，避免线性探测中可能出现的聚集问题。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>双重哈希&lt;/strong>：使用第二个哈希函数来决定探测的步长。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>优点&lt;/strong>：避免了链表法的额外内存开销。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>缺点&lt;/strong>：当哈希表装载过高时，查找效率会下降。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="3-再哈希rehashing">3. &lt;strong>再哈希（Rehashing）&lt;/strong>&lt;/h4>
+&lt;p>再哈希是通过扩展哈希表的大小并重新计算每个元素的哈希值来解决冲突。当哈希表装载因子过高时（即元素数量接近桶的数量），会触发再哈希过程。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>优点&lt;/strong>：能够有效减少冲突，提高性能。&lt;/li>
+&lt;li>&lt;strong>缺点&lt;/strong>：再哈希时会涉及到大量的重新计算和内存分配，可能导致性能下降。&lt;/li>
+&lt;/ul>
+&lt;h4 id="4-使用平衡树如红黑树">4. &lt;strong>使用平衡树（如红黑树）&lt;/strong>&lt;/h4>
+&lt;p>在哈希表中，如果某个桶的冲突过多，可以使用红黑树（或者其他平衡二叉树）来存储冲突的元素，这样可以在每个桶内保持较好的查找、插入性能。红黑树的查找、插入、删除时间复杂度为 &lt;code>O(log N)&lt;/code>。&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>优点&lt;/strong>：比链表法更高效，能够提供对数时间的操作。&lt;/li>
+&lt;li>&lt;strong>缺点&lt;/strong>：相比链表法，维护平衡树需要更多的时间和内存。&lt;/li>
+&lt;/ul></description></item></channel></rss>

@@ -1,3 +1,147 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/network/</link><description>Recent content in Network on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 07 Jan 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/network/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux 大文件传输场景题</title><link>https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link><pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid><description>&lt;p>(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on Hello Friend NG</title><link>https://jekyulll.github.io/tags/network/</link><description>Recent content in Network on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 07 Jan 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/network/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux 大文件传输场景题</title><link>https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link><pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid><description>&lt;p>(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)&lt;/p>
 &lt;blockquote>
-&lt;p>问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p></description></item></channel></rss>
+&lt;p>问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;ol>
+&lt;li>大文件传输的优化：&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>分块传输：将大文件分成多个小块（如4KB、8KB等），每次传输一块，避免占用过多内存。&lt;/li>
+&lt;li>校验和（Checksum）：在每一块传输后进行数据校验，确保数据的完整性。&lt;/li>
+&lt;li>带宽控制：通过控制每次发送的数据量来避免一次性传输过多数据，控制网络负载。&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>断点续传的实现：&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>记录传输进度：客户端和服务器都需要记录已经成功传输的数据块或字节的位置。&lt;/li>
+&lt;li>支持断点请求：客户端在恢复传输时，应该告知服务器从哪个位置开始传输。&lt;/li>
+&lt;li>校验和和确认机制：每次传输数据块后，都应该进行确认，确保数据正确传送。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>&lt;strong>步骤&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>使用局域网广播发现B的IP地址
+由于A和B的IP地址不直接已知，A可以通过&lt;strong>局域网广播&lt;/strong>来找到B的IP地址。A可以向网络中的所有主机发送一个&lt;em>UDP广播消息&lt;/em>，所有主机都会接收到这个消息，B在接收到这个广播后，可以回复A，告知自己的IP地址。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>UDP广播&lt;/strong>：A可以通过发送一个UDP广播包到特定的端口，让局域网中的所有主机收到该消息。B可以通过监听这个端口，收到消息后回应自己的IP地址。&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>使用TCP协议进行文件传输
+一旦A得到了B的IP地址，就可以使用TCP协议进行文件传输。A通过TCP连接到B，建立数据通道，开始发送1GB的文件。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="1-udp广播发现b的ip地址">1. UDP广播发现B的IP地址&lt;/h3>
+&lt;p>A使用UDP广播向局域网中的所有主机发送请求，B收到请求后会通过UDP回应自己的IP地址。&lt;/p>
+&lt;h4 id="a端发送udp广播请求">A端：发送UDP广播请求&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;arpa/inet.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define BROADCAST_PORT 12345
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">send_broadcast_message&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sockfd;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr_in&lt;/span> broadcast_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> broadcast_enable &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> message &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Are you there, B? Please reply with your IP address.&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 创建UDP套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> sockfd &lt;span style="color:#f92672">=&lt;/span> socket(AF_INET, SOCK_DGRAM, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (sockfd &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Socket creation failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 允许广播
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, &lt;span style="color:#f92672">&amp;amp;&lt;/span>broadcast_enable, &lt;span style="color:#66d9ef">sizeof&lt;/span>(broadcast_enable)) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Setting broadcast option failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> memset(&lt;span style="color:#f92672">&amp;amp;&lt;/span>broadcast_addr, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#66d9ef">sizeof&lt;/span>(broadcast_addr));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> broadcast_addr.sin_family &lt;span style="color:#f92672">=&lt;/span> AF_INET;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> broadcast_addr.sin_port &lt;span style="color:#f92672">=&lt;/span> htons(BROADCAST_PORT);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> broadcast_addr.sin_addr.s_addr &lt;span style="color:#f92672">=&lt;/span> htonl(INADDR_BROADCAST);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 发送广播消息
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (sendto(sockfd, message, strlen(message), &lt;span style="color:#ae81ff">0&lt;/span>, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>broadcast_addr, &lt;span style="color:#66d9ef">sizeof&lt;/span>(broadcast_addr)) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Broadcast failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Broadcast message sent!&amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> send_broadcast_message();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="b端接收udp广播并回应自己的ip">B端：接收UDP广播并回应自己的IP&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;arpa/inet.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define BROADCAST_PORT 12345
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define RESPONSE_PORT 12346
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">listen_for_broadcasts&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sockfd;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr_in&lt;/span> server_addr, client_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> socklen_t client_len &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">sizeof&lt;/span>(client_addr);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> buffer[&lt;span style="color:#ae81ff">1024&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 创建UDP套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> sockfd &lt;span style="color:#f92672">=&lt;/span> socket(AF_INET, SOCK_DGRAM, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (sockfd &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Socket creation failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> memset(&lt;span style="color:#f92672">&amp;amp;&lt;/span>server_addr, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#66d9ef">sizeof&lt;/span>(server_addr));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_addr.sin_family &lt;span style="color:#f92672">=&lt;/span> AF_INET;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_addr.sin_port &lt;span style="color:#f92672">=&lt;/span> htons(BROADCAST_PORT);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_addr.sin_addr.s_addr &lt;span style="color:#f92672">=&lt;/span> htonl(INADDR_ANY);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 绑定UDP套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (bind(sockfd, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>server_addr, &lt;span style="color:#66d9ef">sizeof&lt;/span>(server_addr)) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Bind failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 接收广播消息
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">while&lt;/span> (true) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> recv_len &lt;span style="color:#f92672">=&lt;/span> recvfrom(sockfd, buffer, &lt;span style="color:#66d9ef">sizeof&lt;/span>(buffer), &lt;span style="color:#ae81ff">0&lt;/span>, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>client_addr, &lt;span style="color:#f92672">&amp;amp;&lt;/span>client_len);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (recv_len &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Failed to receive message&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buffer[recv_len] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;\0&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Received message: &amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> buffer &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 如果消息包含特定请求，可以回复自己的IP地址
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string response &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;IP Address of B: &amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">+=&lt;/span> inet_ntoa(client_addr.sin_addr);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sendto(sockfd, response.c_str(), response.length(), &lt;span style="color:#ae81ff">0&lt;/span>, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>client_addr, client_len);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Sent response with IP address: &amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> inet_ntoa(client_addr.sin_addr) &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> listen_for_broadcasts();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-使用tcp协议传输文件">2. 使用TCP协议传输文件&lt;/h3>
+&lt;p>一旦A得到了B的IP地址，A就可以通过TCP连接与B进行文件传输。&lt;/p></description></item></channel></rss>

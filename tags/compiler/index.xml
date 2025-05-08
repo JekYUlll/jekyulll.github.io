@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Compiler on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/compiler/</link><description>Recent content in Compiler on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 23 Dec 2024 08:42:29 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/compiler/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 编译器返回值优化</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid><description>&lt;p>在 C++ 中，当函数返回一个对象时，编译器通常需要进行对象的拷贝或移动操作。例如：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="n">SomeClass&lt;/span> &lt;span class="nf">createObject&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">SomeClass&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 设置 obj 的一些成员
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">obj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 返回一个对象
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>在没有优化的情况下，&lt;code>obj&lt;/code> 被返回时，编译器可能会执行一次拷贝构造或移动构造操作，甚至可能是两次（先拷贝到临时对象，再从临时对象拷贝到目标变量）。这些额外的拷贝或移动操作会导致性能下降。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Compiler on Hello Friend NG</title><link>https://jekyulll.github.io/tags/compiler/</link><description>Recent content in Compiler on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Mon, 23 Dec 2024 08:42:29 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/compiler/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 编译器返回值优化</title><link>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid><description>&lt;p>在 C++ 中，当函数返回一个对象时，编译器通常需要进行对象的拷贝或移动操作。例如：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>SomeClass &lt;span style="color:#a6e22e">createObject&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 设置 obj 的一些成员
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> obj; &lt;span style="color:#75715e">// 返回一个对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在没有优化的情况下，&lt;code>obj&lt;/code> 被返回时，编译器可能会执行一次拷贝构造或移动构造操作，甚至可能是两次（先拷贝到临时对象，再从临时对象拷贝到目标变量）。这些额外的拷贝或移动操作会导致性能下降。&lt;/p>
+&lt;p>为了减少这种不必要的开销，现代 C++ 编译器通常会进行优化，减少返回值时的拷贝或移动，使用如 &lt;strong>RVO&lt;/strong> 和 &lt;strong>NRVO&lt;/strong> 的优化策略。&lt;/p>
+&lt;h3 id="1-rvoreturn-value-optimization返回值优化">1. RVO（Return Value Optimization，返回值优化）&lt;/h3>
+&lt;p>RVO（Return Value Optimization，返回值优化），编译器可以直接在目标变量的位置构造返回值，减少不必要的对象拷贝和内存开销。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>SomeClass &lt;span style="color:#a6e22e">createObject&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj; &lt;span style="color:#75715e">// 局部对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> obj; &lt;span style="color:#75715e">// 返回该对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在没有优化的情况下，&lt;code>obj&lt;/code> 被返回时，编译器可能会做两次操作：&lt;/p>
+&lt;ol>
+&lt;li>将 &lt;code>obj&lt;/code> 拷贝或移动到一个临时对象中。&lt;/li>
+&lt;li>将临时对象拷贝或移动到调用者的目标变量。&lt;/li>
+&lt;/ol>
+&lt;p>RVO 的核心思想是，在函数返回临时对象时，编译器可以&lt;!-- raw HTML omitted -->直接将返回值构造到调用者的接收变量中&lt;!-- raw HTML omitted -->，而无需通过中间的临时对象进行拷贝或移动。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SomeClass obj &lt;span style="color:#f92672">=&lt;/span> createObject(); &lt;span style="color:#75715e">// RVO 优化将直接构造在 obj 中
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>RVO 只适用于临时对象返回的场景，对于具名对象（有名称的局部对象），编译器一般不能直接应用 RVO。返回具名对象时，编译器会尝试应用 NRVO（Named Return Value Optimization，命名返回值优化），以减少不必要的拷贝或移动。&lt;/p></description></item></channel></rss>

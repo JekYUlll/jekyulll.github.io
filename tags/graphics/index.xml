@@ -1,3 +1,65 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Graphics on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/graphics/</link><description>Recent content in Graphics on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 22 Dec 2024 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/graphics/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenGL 初学笔记 -- Cherno + LearnOpenGL</title><link>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</link><pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</guid><description>&lt;p>&lt;img src="https://jekyulll.github.io/images/ayanami_header.jpg" alt="hearder">&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Graphics on Hello Friend NG</title><link>https://jekyulll.github.io/tags/graphics/</link><description>Recent content in Graphics on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 22 Dec 2024 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/graphics/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenGL 初学笔记 -- Cherno + LearnOpenGL</title><link>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</link><pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-+-learnopengl/</guid><description>&lt;p>&lt;img src="https://jekyulll.github.io/images/ayanami_header.jpg" alt="hearder">&lt;/p>
 &lt;p>这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。&lt;br>
-在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。&lt;/p></description></item></channel></rss>
+在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。&lt;/p>
+&lt;p>&lt;a href="https://www.youtube.com/@TheCherno">Cherno主页&lt;/a> | &lt;a href="https://learnopengl.com/">LearnOpenGL&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2 id="1-直接选择-64-位">&lt;strong>1.&lt;/strong> 直接选择 64 位&lt;/h2>
+&lt;p>Cherno视频是2017及之前的，为了兼容性，教程里32位。而LearnOpenGL写到后面是64位，还要用Assimp库，默认是编译成64位。建议直接x64，像我这样闷头跟着写的话要把 GLEW 和 GLFW 的静态库全换一遍，或者去折腾CMake。&lt;/p>
+&lt;hr>
+&lt;h2 id="2-glew-glad-glfw">&lt;strong>2.&lt;/strong> GLEW, GLAD, GLFW&lt;/h2>
+&lt;p>这三个比较常用。两个教程的选择都是 GLEW + GLFW，其中 GLEW 和 GLAD 定位相似，都是用于访问OpenGL函数。可以先看看自己喜欢哪一个，免得后面想换再费功夫。&lt;/p>
+&lt;hr>
+&lt;h2 id="3-texture-的实现----小心析构函数">&lt;strong>3.&lt;/strong> &lt;code>Texture&lt;/code> 的实现 &amp;ndash; 小心析构函数&lt;/h2>
+&lt;p>LearnOpenGL中的&lt;code>Texture&lt;/code>只是一个存储数据的结构体：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Texture&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GLuint id;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> string type;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> aiString path;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>而Cherno将&lt;code>Texture&lt;/code>创建为类，构造函数中直接完成加载图片的操作，并且在析构函数里调用&lt;code>glDeleteTextures&lt;/code>。&lt;br>
+如果无脑缝代码就完蛋了，因为LearnOpenGL在&lt;code>Model::loadMaterialTextures&lt;/code>函数中创建了&lt;code>Texture&lt;/code>的临时对象并返回，会调用析构函数：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>Texture&lt;span style="color:#f92672">&amp;gt;&lt;/span> loadMaterialTextures(aiMaterial&lt;span style="color:#f92672">*&lt;/span> mat, aiTextureType type, string typeName)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>Texture&lt;span style="color:#f92672">&amp;gt;&lt;/span> textures;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ...
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> textures;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以选择：&lt;/p>
+&lt;ol>
+&lt;li>修改Texture类的实现（比如把）glDeleteTextures单独调用；&lt;/li>
+&lt;li>修改Model类中加载纹理的实现，例如传入Texture的引用；&lt;/li>
+&lt;li>使用指针。我选择了使用智能指针（相对应的地方全要改）：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 顺便把参数改成 `aiTextureType`(Assimp定义的用于表示Texture不同类型的枚举)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 优化掉LearnOpenGL里那个丑陋的字符串处理
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>shared_ptr&lt;span style="color:#f92672">&amp;lt;&lt;/span>Texture&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> Model&lt;span style="color:#f92672">::&lt;/span>loadMaterialTextures(aiMaterial&lt;span style="color:#f92672">*&lt;/span> mat, aiTextureType type)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>shared_ptr&lt;span style="color:#f92672">&amp;lt;&lt;/span>Texture&lt;span style="color:#f92672">&amp;gt;&amp;gt;&lt;/span> textures;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (GLuint i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> mat&lt;span style="color:#f92672">-&amp;gt;&lt;/span>GetTextureCount(type); i&lt;span style="color:#f92672">++&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> aiString str;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mat&lt;span style="color:#f92672">-&amp;gt;&lt;/span>GetTexture(type, i, &lt;span style="color:#f92672">&amp;amp;&lt;/span>str);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">bool&lt;/span> canSkip &lt;span style="color:#f92672">=&lt;/span> false;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">-&amp;gt;&lt;/span>textures_loaded.size(); j&lt;span style="color:#f92672">++&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (textures_loaded[j]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>path &lt;span style="color:#f92672">==&lt;/span> str)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> textures.push_back(textures_loaded[j]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> canSkip &lt;span style="color:#f92672">=&lt;/span> true;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>canSkip)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>string filename &lt;span style="color:#f92672">=&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string(str.C_Str());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> filename &lt;span style="color:#f92672">=&lt;/span> directory &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> filename;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>shared_ptr&lt;span style="color:#f92672">&amp;lt;&lt;/span>Texture&lt;span style="color:#f92672">&amp;gt;&lt;/span> texture &lt;span style="color:#f92672">=&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>make_shared&lt;span style="color:#f92672">&amp;lt;&lt;/span>Texture&lt;span style="color:#f92672">&amp;gt;&lt;/span>(filename); &lt;span style="color:#75715e">// 教程里此处调用了TextureFromFile()来初始化texture，但可以用Texture的构造函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> texture&lt;span style="color:#f92672">-&amp;gt;&lt;/span>type &lt;span style="color:#f92672">=&lt;/span> type; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> texture&lt;span style="color:#f92672">-&amp;gt;&lt;/span>path &lt;span style="color:#f92672">=&lt;/span> str;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> textures.push_back(texture);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>&lt;span style="color:#f92672">-&amp;gt;&lt;/span>textures_loaded.push_back(texture);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> textures;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同理，小心其他类里的析构函数（例如Shader类可能会在析构里调用glDeleteProgram）。&lt;/p></description></item></channel></rss>

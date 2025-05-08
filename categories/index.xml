@@ -1,1 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Categories on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/categories/</link><description>Recent content in Categories on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 08 May 2025 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/index.xml" rel="self" type="application/rss+xml"/><item><title>Cpp</title><link>https://jekyulll.github.io/categories/cpp/</link><pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/cpp/</guid><description/></item><item><title>Redis</title><link>https://jekyulll.github.io/categories/redis/</link><pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/redis/</guid><description/></item><item><title>Linux</title><link>https://jekyulll.github.io/categories/linux/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/linux/</guid><description/></item><item><title>Game</title><link>https://jekyulll.github.io/categories/game/</link><pubDate>Fri, 25 Apr 2025 06:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/game/</guid><description/></item><item><title>Web</title><link>https://jekyulll.github.io/categories/web/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/web/</guid><description/></item><item><title>Algorithm</title><link>https://jekyulll.github.io/categories/algorithm/</link><pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/algorithm/</guid><description/></item><item><title>Frontend</title><link>https://jekyulll.github.io/categories/frontend/</link><pubDate>Tue, 18 Mar 2025 06:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/frontend/</guid><description/></item><item><title>Database</title><link>https://jekyulll.github.io/categories/database/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/database/</guid><description/></item><item><title>System</title><link>https://jekyulll.github.io/categories/system/</link><pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/categories/system/</guid><description/></item><item><title>Path</title><link>https://jekyulll.github.io/categories/path/</link><pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate><guid>https://jekyulll.github.io/categories/path/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on HOREB EVAN JEKYULLL BLOG</title>
+    <link>https://jekyulll.github.io/categories/</link>
+    <description>Recent content in Categories on HOREB EVAN JEKYULLL BLOG</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 02 Jan 2025 07:57:01 +0800</lastBuildDate>
+    <atom:link href="https://jekyulll.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cpp</title>
+      <link>https://jekyulll.github.io/categories/cpp/</link>
+      <pubDate>Wed, 01 Jan 2025 14:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/categories/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://jekyulll.github.io/categories/database/</link>
+      <pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/categories/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://jekyulll.github.io/categories/linux/</link>
+      <pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/categories/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>System</title>
+      <link>https://jekyulll.github.io/categories/system/</link>
+      <pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/categories/system/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Game</title>
+      <link>https://jekyulll.github.io/categories/game/</link>
+      <pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/categories/game/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Path</title>
+      <link>https://jekyulll.github.io/categories/path/</link>
+      <pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate>
+      <guid>https://jekyulll.github.io/categories/path/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

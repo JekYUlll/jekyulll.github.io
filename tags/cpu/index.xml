@@ -1,5 +1,77 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpu on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpu/</link><description>Recent content in Cpu on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 09 Oct 2024 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpu/index.xml" rel="self" type="application/rss+xml"/><item><title>CPU 的五级流水线</title><link>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link><pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/382372072">现代C++的内存模型&lt;/a>。&amp;ndash;神文&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpu on Hello Friend NG</title><link>https://jekyulll.github.io/tags/cpu/</link><description>Recent content in Cpu on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 09 Oct 2024 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpu/index.xml" rel="self" type="application/rss+xml"/><item><title>CPU 的五级流水线</title><link>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link><pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/382372072">现代C++的内存模型&lt;/a>。&amp;ndash;神文&lt;br>
 &lt;a href="https://zhuanlan.zhihu.com/p/682286231">自底向上理解memory_order&lt;/a>。&lt;br>
 &lt;a href="https://blog.csdn.net/sinat_38293503/article/details/134612152">大白话C++之：一文搞懂C++多线程内存模型(Memory Order)&lt;/a>。&lt;/p>
 &lt;blockquote>
-&lt;p>&lt;em>时钟周期&lt;/em>也称为&lt;em>振荡周期&lt;/em>，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了&lt;em>SDRAM&lt;/em>所能运行的最高频率。&lt;/p></description></item></channel></rss>
+&lt;p>&lt;em>时钟周期&lt;/em>也称为&lt;em>振荡周期&lt;/em>，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期表示了&lt;em>SDRAM&lt;/em>所能运行的最高频率。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>如果没有Cache，CPU每执行一条指令，都要去内存取下一条，而执行一条指令也就几个时钟周期（几ns），而取指令却要上百个时钟周期，这将导致CPU大部分时间都在等待状态，进而导致执行效率低下。&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>C++ 内存模型（Memory Model）定义了程序在多线程环境中如何访问和共享内存，它为程序的正确性、并发性和可移植性提供了保证。C++ 内存模型主要通过原子操作、内存序列（Memory Ordering）、同步和锁等机制来规范线程之间的内存访问行为。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h1 id="cpu-的五级流水线">CPU 的五级流水线&lt;/h1>
+&lt;blockquote>
+&lt;p>CPU 将指令执行分解成5个部分，分别是：IF 取指令，ID 译码，EX 执行，MEM 访问内存，WB 写回。&lt;/p>
+&lt;/blockquote>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>内存顺序模型&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>memory_order_seq_cst&lt;/td>
+ &lt;td>顺序一致(sequentially consistent ordering)，只有该值满足sC顺序一致性，原子操作默认使用该值。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>memory_order_relaxed&lt;/td>
+ &lt;td>松散(relaxed ordering)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>memory_order_consume&lt;/td>
+ &lt;td>获取发布(acquire-release ordering)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>memory_order_acquire&lt;/td>
+ &lt;td>获取发布(acquire-release ordering)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>memory_order_release&lt;/td>
+ &lt;td>获取发布(acquire-release ordering)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>memory_order_acq_rel&lt;/td>
+ &lt;td>获取发布(acquire-release ordering)&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>与编译器优化有关：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//reordering 重排示例代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> A &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, B &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">foo&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> A &lt;span style="color:#f92672">=&lt;/span> B &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; &lt;span style="color:#75715e">//(1)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> B &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; &lt;span style="color:#75715e">//(2)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-asm" data-lang="asm">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// g++ -std=c++11 -O2 -S test.cpp
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 编译器重排后的代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 注意第一句汇编，已经将B最初的值存到了
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 寄存器eax，而后将该eax的值加1，再赋给A
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">movl&lt;/span> &lt;span style="color:#66d9ef">B&lt;/span>(%rip), %eax
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">movl&lt;/span> &lt;span style="color:#66d9ef">$1&lt;/span>, &lt;span style="color:#66d9ef">B&lt;/span>(%rip) &lt;span style="color:#75715e">// B = 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">addl&lt;/span> &lt;span style="color:#66d9ef">$1&lt;/span>, %eax &lt;span style="color:#75715e">// A = B + 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">movl&lt;/span> %eax, &lt;span style="color:#66d9ef">A&lt;/span>(%rip)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Invention示例代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 原始代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">if&lt;/span>( cond ) x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">42&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 优化后代码
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>r1 &lt;span style="color:#f92672">=&lt;/span> x;&lt;span style="color:#75715e">// read what&amp;#39;s there
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">42&lt;/span>;&lt;span style="color:#75715e">// oops: optimistic write is not conditional
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">if&lt;/span>( &lt;span style="color:#f92672">!&lt;/span>cond)&lt;span style="color:#75715e">// check if we guessed wrong
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> r1;&lt;span style="color:#75715e">// oops: back-out write is not SC
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对于内存读写来说，读写顺序需要严格按照代码顺序，即要求如下（符号&lt;code>&amp;lt;p&lt;/code>表示程序代码顺序，符号&lt;code>&amp;lt;m&lt;/code>表示内存的读写顺序）：&lt;/p></description></item></channel></rss>

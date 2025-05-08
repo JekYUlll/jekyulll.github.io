@@ -1,8 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/linux/</link><description>Recent content in Linux on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 29 Apr 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/post/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Hello Friend NG</title><link>https://jekyulll.github.io/tags/linux/</link><description>Recent content in Linux on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 29 Apr 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/post/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
 &lt;p>&lt;a href="https://blog.csdn.net/liaowenxiong/article/details/116401524">Linux 命令之 &lt;code>locale&lt;/code> &amp;ndash; 设置和显示程序运行的语言环境&lt;/a>。&lt;/p>
 &lt;blockquote>
 &lt;p>使用 &lt;code>locale&lt;/code> 命令来设置和显示程序运行的语言环境，&lt;code>locale&lt;/code> 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br>
-&lt;code>locale&lt;/code> 由ANSI C提供支持。&lt;code>locale&lt;/code> 的命名规则为&lt;code>&amp;lt;语言&amp;gt;_&amp;lt;地区&amp;gt;.&amp;lt;字符集编码&amp;gt;&lt;/code>。&lt;/p></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/post/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
+&lt;code>locale&lt;/code> 由ANSI C提供支持。&lt;code>locale&lt;/code> 的命名规则为&lt;code>&amp;lt;语言&amp;gt;_&amp;lt;地区&amp;gt;.&amp;lt;字符集编码&amp;gt;&lt;/code>。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989">深刻理解——real user id, effective user id, saved user id in Linux&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423">Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $UID
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/post/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
 &lt;p>编写守护进程的一般步骤步骤：&lt;/p>
 &lt;ol>
 &lt;li>在父进程中执行&lt;code>fork&lt;/code>并&lt;code>exit&lt;/code>退出；&lt;/li>
@@ -11,13 +19,220 @@
 &lt;li>在子进程中调用&lt;code>umask&lt;/code>函数，设置进程的&lt;code>umask&lt;/code>为&lt;code>0&lt;/code>；&lt;/li>
 &lt;li>在子进程中关闭任何不需要的文件描述符。&lt;/li>
 &lt;/ol>
-&lt;p>&lt;a href="https://blog.csdn.net/Change_Improve/article/details/106107317">Linux—umask（创建文件时的掩码）用法详解&lt;/a>。&lt;/p></description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://jekyulll.github.io/post/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p>Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong>保护环&lt;/strong>（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;u>完整副本&lt;/u>。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
-父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p></description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://jekyulll.github.io/post/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容">&lt;strong>一、共享的内容&lt;/strong>&lt;/h3>
+&lt;p>&lt;a href="https://blog.csdn.net/Change_Improve/article/details/106107317">Linux—umask（创建文件时的掩码）用法详解&lt;/a>。&lt;/p>
+&lt;p>&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989">深刻理解——real user id, effective user id, saved user id in Linux&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423">Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
+&lt;/blockquote></description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://jekyulll.github.io/post/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p>Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong>保护环&lt;/strong>（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p>
+&lt;p>x86保护环的完整结构为四层，但实际仅Ring 0和Ring 3被广泛使用：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>零环&lt;/strong>（Ring 0）：
+&lt;ul>
+&lt;li>又称内核态，是CPU权限最高的运行模式。操作系统内核运行于此环，可直接访问硬件资源（如CPU、内存、I/O设备），执行特权指令（如修改内存映射、中断处理等）。例如，Linux内核的进程调度、内存管理和设备驱动均在此层级运行。&lt;/li>
+&lt;li>零环可直接控制硬件，而三环的代码若试图执行特权指令（如直接读写磁盘），CPU会触发异常（如General Protection Fault），强制终止非法操作。这种设计避免了用户程序破坏系统稳定性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>三环&lt;/strong>（Ring 3）：
+&lt;ul>
+&lt;li>又称用户态，是权限最低的层级。普通应用程序运行于此环，仅能通过系统调用（Syscall）请求内核服务，无法直接操作硬件。例如，用户启动的文本编辑器、浏览器等程序均受此限制。&lt;/li>
+&lt;li>用户程序通过系统调用或硬件中断从三环切换到零环。例如，当程序调用&lt;code>open()&lt;/code>函数打开文件时，会触发软中断（如&lt;code>int 0x80&lt;/code>或&lt;code>syscall&lt;/code>指令），内核接管执行文件操作，完成后返回用户态。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://blog.csdn.net/youyou1543724847/article/details/85048490">CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/farmwang/article/details/50094959">原文 ——CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574">Linux内核开发之hook系统调用&lt;/a>。&lt;br>
+&lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html">三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;!-- raw HTML omitted -->完整副本&lt;!-- raw HTML omitted -->。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
+父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p>
+&lt;ul>
+&lt;li>修改文件描述符表本身（如关闭 &lt;code>fd&lt;/code>）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li>
+&lt;li>修改共享的文件表项（如偏移量、状态标志）：子进程的操作会直接影响父进程，因为它们共享同一文件表项。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://blog.csdn.net/DLUTBruceZhang/article/details/8802156">&lt;code>fork()&lt;/code>子进程与父进程之间的文件描述符问题&lt;/a>。&lt;br>
+&lt;a href="https://blog.csdn.net/m0_73209194/article/details/130165449">【Linux】进程间通信&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>文件描述符相当于一个逻辑句柄，而&lt;code>open&lt;/code>，&lt;code>close&lt;/code>等函数则是将文件或者物理设备与句柄相关联。&lt;/p>
+&lt;/blockquote>
+&lt;p>三张表：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>文件描述符表&lt;/strong>：用户区的一部分，除非通过使用文件描述符的函数，否则程序无法对其进行访问。对进程中每个打开的文件，文件描述符表都包含一个条目。&lt;/li>
+&lt;li>&lt;strong>系统文件表&lt;/strong>：为系统中所有的进程共享。对每个活动的open, 它都包含一个条目。每个系统文件表的条目都包含文件偏移量、访问模式（读、写、or 读-写）以及指向它的文件描述符表的条目计数。&lt;/li>
+&lt;li>&lt;strong>内存索引节点表&lt;/strong>: 对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目。几个系统文件表条目可能对应于同一个内存索引节点表（不同进程打开同一个文件）。&lt;/li>
+&lt;/ul></description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://jekyulll.github.io/post/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容">&lt;strong>一、共享的内容&lt;/strong>&lt;/h3>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>文件描述符与文件状态&lt;/strong>&lt;br>
 子进程会继承父进程已打开的文件描述符表，包括文件偏移量、打开模式（如读写权限）和文件状态标志（如&lt;code>O_APPEND&lt;/code>）。例如，若父进程打开了一个文件并写入数据，子进程可通过相同的文件描述符继续操作，且两者的写入位置（偏移量）会相互影响。&lt;br>
-• &lt;strong>示例场景&lt;/strong>：父进程向文件写入“Parent”，子进程写入“Child”，最终文件内容会按操作顺序合并（如“ParentChild”或“ChildParent”），具体取决于调度顺序。&lt;/p></description></item><item><title>文件锁（FileLock）的本质与价值</title><link>https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link><pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid><description>&lt;p>在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。&lt;/p></description></item><item><title>【AI】mmap 和零拷贝</title><link>https://jekyulll.github.io/post/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p>mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p></description></item><item><title>内核的用户态和内核态</title><link>https://jekyulll.github.io/post/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p>线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p>
+• &lt;strong>示例场景&lt;/strong>：父进程向文件写入“Parent”，子进程写入“Child”，最终文件内容会按操作顺序合并（如“ParentChild”或“ChildParent”），具体取决于调度顺序。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>信号处理设置&lt;/strong>&lt;br>
+子进程继承父进程的信号处理函数（如&lt;code>SIG_IGN&lt;/code>或自定义处理程序）和信号屏蔽集（&lt;code>sigprocmask&lt;/code>的设置）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>用户身份与环境变量&lt;/strong>&lt;br>
+子进程继承父进程的用户ID、组ID、环境变量、当前工作目录等身份信息。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>写时复制（Copy-On-Write）的内存初始状态&lt;/strong>&lt;br>
+在未发生写入操作前，父子进程的代码段（&lt;code>.text&lt;/code>）、数据段（&lt;code>.data&lt;/code>、&lt;code>.bss&lt;/code>）、堆、栈等内存区域共享同一物理内存页。一旦某一方尝试修改数据，则会触发写时复制，生成独立的副本。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>文件锁&lt;/strong>&lt;br>
+通过&lt;code>fcntl&lt;/code>或&lt;code>flock&lt;/code>设置的文件锁会被子进程继承，父子进程对同一文件的锁定操作会相互影响。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="二不共享的内容">&lt;strong>二、不共享的内容&lt;/strong>&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>进程独立属性&lt;/strong>&lt;br>
+子进程拥有独立的进程ID（PID）、父进程ID（PPID）、运行时间统计、未决信号队列等。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>多线程环境中的线程资源&lt;/strong>&lt;br>
+若父进程包含多个线程，子进程仅复制执行&lt;code>fork()&lt;/code>的线程，其他线程不会被继承。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>独立的内存修改&lt;/strong>&lt;br>
+通过写时复制机制，父子进程对内存的修改会各自独立。例如，全局变量初始值相同，但修改后互不影响。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>独立的文件描述符关闭操作&lt;/strong>&lt;br>
+子进程关闭某个文件描述符不会影响父进程的同名描述符，反之亦然。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="三关键机制写时复制cow">&lt;strong>三、关键机制：写时复制（COW）&lt;/strong>&lt;/h3>
+&lt;p>内核通过写时复制技术优化性能：&lt;br>
+• &lt;strong>原理&lt;/strong>：&lt;code>fork()&lt;/code>后，父子进程的页表项指向相同的物理内存页，并将这些页标记为只读。当某一进程尝试写入时，触发页错误，内核复制该页并修改权限为可写。&lt;br>
+• &lt;strong>优点&lt;/strong>：避免不必要的内存复制，提高资源利用率。&lt;/p>
+&lt;hr>
+&lt;h3 id="四应用注意事项">&lt;strong>四、应用注意事项&lt;/strong>&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>文件操作同步&lt;/strong>：父子进程对同一文件描述符的并发写入需通过锁（如&lt;code>flock()&lt;/code>）或原子操作避免竞争。&lt;/li>
+&lt;li>&lt;strong>内存共享限制&lt;/strong>：若需主动共享内存，需使用&lt;code>mmap()&lt;/code>或共享内存API（如&lt;code>shmget()&lt;/code>）。&lt;/li>
+&lt;li>&lt;strong>僵尸进程处理&lt;/strong>：父进程需通过&lt;code>wait()&lt;/code>回收子进程资源，或注册&lt;code>SIGCHLD&lt;/code>信号处理函数。&lt;/li>
+&lt;/ol></description></item><item><title>文件锁（FileLock）的本质与价值</title><link>https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link><pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid><description>&lt;p>在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。&lt;/p>
+&lt;p>文件锁的核心逻辑是通过独占标记协调资源访问。&lt;/p>
+&lt;p>&lt;strong>典型应用场景&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>配置文件的原子性更新&lt;/strong>&lt;br>
+多个服务实例同时修改同一配置文件时，未加锁会导致最后的写入覆盖先前内容（例如Nginx配置热更新）&lt;/li>
+&lt;li>&lt;strong>日志文件的顺序写入&lt;/strong>&lt;br>
+多线程日志系统中，不加锁可能引发日志行交错（如Apache日志滚动的并发问题）&lt;/li>
+&lt;li>&lt;strong>分布式系统的资源协调&lt;/strong>&lt;br>
+在无中心化锁服务时，通过共享存储（如NFS）的文件锁实现分布式锁（类似ZooKeeper的临时节点机制）&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="c实现文件锁的三种范式">C++实现文件锁的三种范式&lt;/h3>
+&lt;h4 id="方案一操作系统原生api工业级方案">&lt;strong>方案一：操作系统原生API（工业级方案）&lt;/strong>&lt;/h4>
+&lt;p>&lt;strong>适用场景&lt;/strong>：需要高可靠性、跨平台兼容的生产环境&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;string&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;fcntl.h&amp;gt;&lt;/span>&lt;span style="color:#75715e"> &lt;/span>&lt;span style="color:#75715e">// Linux
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;windows.h&amp;gt;&lt;/span>&lt;span style="color:#75715e"> &lt;/span>&lt;span style="color:#75715e">// Windows
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">NativeFileLock&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">explicit&lt;/span> NativeFileLock(&lt;span style="color:#66d9ef">const&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string&lt;span style="color:#f92672">&amp;amp;&lt;/span> path) &lt;span style="color:#f92672">:&lt;/span> lock_path(path) {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">bool&lt;/span> &lt;span style="color:#a6e22e">acquire&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#ifdef _WIN32
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Windows通过独占模式创建文件实现锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> h_file &lt;span style="color:#f92672">=&lt;/span> CreateFileA(lock_path.c_str(), GENERIC_WRITE, &lt;span style="color:#ae81ff">0&lt;/span>, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">nullptr&lt;/span>, CREATE_ALWAYS, FILE_ATTRIBUTE_HIDDEN, &lt;span style="color:#66d9ef">nullptr&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> h_file &lt;span style="color:#f92672">!=&lt;/span> INVALID_HANDLE_VALUE;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#else
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// Linux使用fcntl记录锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> fd &lt;span style="color:#f92672">=&lt;/span> open(lock_path.c_str(), O_RDWR &lt;span style="color:#f92672">|&lt;/span> O_CREAT, &lt;span style="color:#ae81ff">0644&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (fd &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> false;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> flock lock_struct{};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lock_struct.l_type &lt;span style="color:#f92672">=&lt;/span> F_WRLCK; &lt;span style="color:#75715e">// 排他锁
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> lock_struct.l_whence &lt;span style="color:#f92672">=&lt;/span> SEEK_SET;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> fcntl(fd, F_SETLK, &lt;span style="color:#f92672">&amp;amp;&lt;/span>lock_struct) &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#endif
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">release&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#ifdef _WIN32
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> CloseHandle(h_file);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DeleteFileA(lock_path.c_str());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#else
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> close(fd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unlink(lock_path.c_str());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#endif
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#ifdef _WIN32
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> HANDLE h_file &lt;span style="color:#f92672">=&lt;/span> INVALID_HANDLE_VALUE;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#else
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> fd &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#endif
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string lock_path;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>技术要点&lt;/strong>：&lt;br>
+• Windows通过&lt;code>CREATE_ALWAYS&lt;/code>+隐藏属性实现原子创建&lt;br>
+• Linux使用&lt;code>fcntl&lt;/code>的记录锁，支持对文件部分区域加锁&lt;br>
+• 必须处理进程崩溃后的锁残留（通过&lt;code>unlink/DeleteFile&lt;/code>物理删除锁文件）&lt;/p></description></item><item><title>【AI】mmap 和零拷贝</title><link>https://jekyulll.github.io/post/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p>mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p>
+&lt;hr>
+&lt;h3 id="一mmap的核心机制">一、mmap的核心机制&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>系统调用与映射方式&lt;/strong>：
+• &lt;strong>函数原型&lt;/strong>：&lt;code>void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);&lt;/code>
+• &lt;strong>关键参数&lt;/strong>：
+◦ &lt;code>prot&lt;/code>：控制读写权限（如&lt;code>PROT_READ&lt;/code>、&lt;code>PROT_WRITE&lt;/code>）。
+◦ &lt;code>flags&lt;/code>：决定映射类型（&lt;code>MAP_SHARED&lt;/code>、&lt;code>MAP_PRIVATE&lt;/code>、&lt;code>MAP_ANONYMOUS&lt;/code>）。
+• &lt;strong>两种主要映射&lt;/strong>：
+◦ &lt;strong>文件映射&lt;/strong>：将文件映射到内存，修改可同步到文件（&lt;code>MAP_SHARED&lt;/code>）或仅进程可见（&lt;code>MAP_PRIVATE&lt;/code>）。
+◦ &lt;strong>匿名映射&lt;/strong>：不关联文件，用于进程间共享内存或动态内存分配（&lt;code>MAP_ANONYMOUS&lt;/code>）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>实现原理&lt;/strong>：
+• &lt;strong>虚拟内存管理&lt;/strong>：mmap在进程的虚拟地址空间中划分一段区域（通常位于堆与栈之间），通过页表映射到物理内存或文件的页缓存。
+• &lt;strong>按需加载（Demand Paging）&lt;/strong>：访问映射内存时触发缺页中断，内核自动将文件数据加载到物理内存，减少一次性加载开销。
+• &lt;strong>同步机制&lt;/strong>：修改后的数据由内核异步写回文件，也可通过&lt;code>msync()&lt;/code>强制同步。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="二mmap与io的关系">二、mmap与IO的关系&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>传统IO的瓶颈&lt;/strong>：
+• &lt;strong>数据拷贝开销&lt;/strong>：&lt;code>read()&lt;/code>/&lt;code>write()&lt;/code>需要在内核缓冲区（页缓存）与用户空间之间复制数据，频繁系统调用和拷贝降低性能。
+• &lt;strong>小文件问题&lt;/strong>：多次系统调用对小文件不友好，增加上下文切换开销。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>mmap的优势&lt;/strong>：
+• &lt;strong>零拷贝（Zero-Copy）&lt;/strong>：直接操作映射内存，省去用户态与内核态的数据拷贝。
+• &lt;strong>减少系统调用&lt;/strong>：通过内存访问隐式完成文件读写，无需显式调用&lt;code>read()&lt;/code>/&lt;code>write()&lt;/code>。
+• &lt;strong>高效大文件处理&lt;/strong>：按需加载，避免一次性加载大文件的延迟和内存浪费。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>性能对比&lt;/strong>：
+• &lt;strong>顺序访问&lt;/strong>：mmap与&lt;code>read()&lt;/code>性能接近，但省去拷贝时间。
+• &lt;strong>随机访问&lt;/strong>：mmap显著优于传统IO，减少多次&lt;code>lseek()&lt;/code>和&lt;code>read()&lt;/code>的开销。
+• &lt;strong>适用场景&lt;/strong>：适合频繁读写或需要随机访问的大文件（如数据库、图像处理）。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="三mmap与内存分配的关系">三、mmap与内存分配的关系&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>动态内存分配&lt;/strong>：
+• &lt;strong>glibc的malloc策略&lt;/strong>：
+◦ 小块内存（如&amp;lt;128KB）使用&lt;code>brk()&lt;/code>扩展堆内存。
+◦ 大块内存使用&lt;code>mmap(MAP_ANONYMOUS)&lt;/code>独立映射，避免内存碎片。
+• &lt;strong>优势&lt;/strong>：&lt;code>mmap&lt;/code>分配的内存可独立释放（&lt;code>munmap()&lt;/code>），而&lt;code>brk()&lt;/code>释放需依赖堆顶内存释放顺序。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>匿名映射的应用&lt;/strong>：
+• &lt;strong>进程间共享内存&lt;/strong>：通过&lt;code>MAP_SHARED&lt;/code>标志，多个进程可共享同一物理内存，高效通信。
+• &lt;strong>自定义内存管理&lt;/strong>：替代&lt;code>malloc&lt;/code>，用于需要精细控制的大内存分配（如内存池）。&lt;/p></description></item><item><title>内核的用户态和内核态</title><link>https://jekyulll.github.io/post/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p>线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p>
 &lt;hr>
 &lt;h3 id="一线程概念的双重性用户态与内核态的交织">一、线程概念的双重性：用户态与内核态的交织&lt;/h3>
 &lt;ol>
@@ -26,13 +241,155 @@
 用户态线程由用户空间的线程库直接管理，内核对其无感知。这类线程的创建、调度、同步等操作完全在用户空间完成，无需内核介入。&lt;br>
 存在明显局限性：&lt;br>
 • &lt;strong>阻塞问题&lt;/strong>：若一个用户态线程因系统调用阻塞（如I/O操作），整个进程的所有线程都会被阻塞；
-• &lt;strong>多核利用率低&lt;/strong>：内核无法将用户态线程调度到多个CPU核心上运行。&lt;/p></description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p>&lt;strong>一、线程切换 vs 进程切换&lt;/strong>&lt;/p>
+• &lt;strong>多核利用率低&lt;/strong>：内核无法将用户态线程调度到多个CPU核心上运行。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>内核态线程（内核级线程）&lt;/strong>&lt;br>
+内核直接管理线程的创建、调度和销毁，每个线程对应一个内核线程（如Linux的轻量级进程LWP）。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>轻量级进程&lt;/em>（Light Weight Process, LWP）作为用户线程与内核线程的桥梁，负责处理系统调用、资源分配和CPU映射。当用户线程发起系统调用时，LWP接管请求，避免因单个用户线程阻塞导致整个进程挂起。&lt;/p>
+&lt;/blockquote>
+&lt;p>• &lt;strong>多核并行&lt;/strong>：内核可将不同线程分配到多个CPU核心；
+• &lt;strong>独立阻塞&lt;/strong>：单个线程阻塞不会影响其他线程；
+• &lt;strong>切换开销大&lt;/strong>：线程切换需通过内核态，涉及用户栈和内核栈的切换、寄存器保存与恢复等操作。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="二内核如何处理线程">二、内核如何处理线程？&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>线程模型的映射关系&lt;/strong>&lt;br>
+现代操作系统（如Linux）通常采用&lt;strong>混合型线程模型&lt;/strong>。内核通过以下机制管理线程：&lt;br>
+• &lt;strong>TCB（线程控制块）&lt;/strong>：存储线程的内核栈指针、状态、优先级等信息（进程控制块是PCB）；
+• &lt;strong>调度器&lt;/strong>：基于时间片轮转或优先级策略分配CPU资源，触发上下文切换。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>混合型线程模型&lt;/em>（Hybrid Thread Model）是一种结合用户级线程（ULT）和内核级线程（KLT）优势的线程实现方式。通过N:M映射实现用户线程与内核线程的关联，即多个用户线程（N）动态绑定到少量内核线程（M）。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>用户态与内核态的切换机制&lt;/strong>&lt;br>
+当线程执行系统调用、发生异常或中断时，会触发用户态到内核态的切换：&lt;br>
+• &lt;strong>系统调用流程&lt;/strong>：用户线程通过中断（如Linux的&lt;code>int 80h&lt;/code>）进入内核态，内核完成操作后恢复用户态执行；
+• &lt;strong>上下文保存&lt;/strong>：切换时需要保存用户栈的寄存器状态（如程序计数器、栈指针）到内存，并加载内核栈信息。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>性能优化策略&lt;/strong>&lt;br>
+内核通过以下方式减少切换开销：&lt;br>
+• &lt;strong>避免频繁切换&lt;/strong>：采用无锁编程、CAS算法等减少线程竞争；
+• &lt;strong>轻量级进程（LWP）&lt;/strong>：通过线程池复用内核线程，降低创建销毁成本。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="三语言案例">三、语言案例&lt;/h3>
+&lt;p>Java线程在JDK1.2之后采用&lt;em>1:1模型&lt;/em>，每个Java线程对应一个内核线程。
+支持多核并行、避免单线程阻塞影响整体进程；线程创建和切换需要内核介入。&lt;/p>
+&lt;p>C++11及之后的标准库（如&lt;code>&amp;lt;thread&amp;gt;&lt;/code>）通过&lt;code>std::thread&lt;/code>直接调用操作系统线程（如Linux的POSIX线程或Windows线程），采用&lt;em>1:1线程模型&lt;/em>。&lt;/p>
+&lt;p>Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p></description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p>&lt;strong>一、线程切换 vs 进程切换&lt;/strong>&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>地址空间与页表&lt;/strong>&lt;br>
-进程拥有独立的虚拟地址空间和页表，切换进程时需更新页表并刷新 &lt;strong>TLB（地址转换缓存）&lt;/strong>，导致内存访问速度下降。而线程共享进程的地址空间和页表，切换时无需此操作，TLB 缓存保持有效。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
+进程拥有独立的虚拟地址空间和页表，切换进程时需更新页表并刷新 &lt;strong>TLB（地址转换缓存）&lt;/strong>，导致内存访问速度下降。而线程共享进程的地址空间和页表，切换时无需此操作，TLB 缓存保持有效。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>上下文保存的内容&lt;/strong>&lt;br>
+• &lt;strong>进程切换&lt;/strong>：需保存完整的上下文，包括寄存器、程序计数器、栈指针、内存映射、文件描述符等。&lt;br>
+• &lt;strong>线程切换&lt;/strong>：仅需保存线程私有的寄存器、栈和程序计数器，共享资源（如代码段、文件）无需处理。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>缓存利用率&lt;/strong>&lt;br>
+进程切换会导致 CPU 缓存（如 L1/L2/L3）失效，需重新加载数据，降低性能。线程切换时，缓存因共享地址空间仍有效，减少了数据重载的开销。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>资源分配&lt;/strong>&lt;br>
+进程是资源分配的基本单位（如内存、文件），切换时需重新分配资源；线程共享进程资源，切换仅涉及执行流调度。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>二、协程切换 vs 线程切换&lt;/strong>&lt;/p>
+&lt;p>协程的切换开销更小，原因在于其 &lt;strong>用户态调度&lt;/strong> 和 &lt;strong>轻量级设计&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>用户态调度&lt;/strong>&lt;br>
+协程切换完全由用户态代码控制，无需陷入内核态，避免了 &lt;strong>用户态-内核态切换&lt;/strong> 的开销。而线程切换需操作系统介入，涉及模式切换和内核调度。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>上下文信息更少&lt;/strong>&lt;br>
+协程只需保存少量寄存器（如 PC、SP）和栈指针，且栈空间通常仅需 KB 级别（线程栈为 MB 级别）。例如，Go 协程的初始栈仅 2KB，而 Java 线程默认为 1MB。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>非阻塞与协作式调度&lt;/strong>&lt;br>
+协程通过主动让出（如 &lt;code>yield&lt;/code> 或 &lt;code>await&lt;/code>）实现协作式调度，减少抢占式调度的竞争和锁需求。线程通常依赖操作系统的抢占式调度，可能因频繁切换导致性能损耗。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>内存与并发效率&lt;/strong>&lt;br>
+单线程可运行数万协程（如 Go 的 Goroutine），而同等数量线程会因内存和调度开销过大而崩溃。协程的轻量级特性尤其适合高并发 I/O 密集型任务。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>&lt;strong>维度&lt;/strong>&lt;/th>
+ &lt;th>&lt;strong>进程切换&lt;/strong>&lt;/th>
+ &lt;th>&lt;strong>线程切换&lt;/strong>&lt;/th>
+ &lt;th>&lt;strong>协程切换&lt;/strong>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>地址空间&lt;/strong>&lt;/td>
+ &lt;td>切换（独立）&lt;/td>
+ &lt;td>不切换（共享）&lt;/td>
+ &lt;td>不切换（共享）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>上下文大小&lt;/strong>&lt;/td>
+ &lt;td>大（含全部资源）&lt;/td>
+ &lt;td>较小（仅寄存器）&lt;/td>
+ &lt;td>极小（仅关键寄存器）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>调度模式&lt;/strong>&lt;/td>
+ &lt;td>内核抢占式&lt;/td>
+ &lt;td>内核抢占式&lt;/td>
+ &lt;td>用户协作式&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>内存开销&lt;/strong>&lt;/td>
+ &lt;td>高（独立资源）&lt;/td>
+ &lt;td>中（共享资源）&lt;/td>
+ &lt;td>极低（KB 级栈）&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;!-- raw HTML omitted -->线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;!-- raw HTML omitted -->&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
 &lt;p>Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
-该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a>。此处尝试进行回答。&lt;/p></description></item><item><title>Linux 内核中 C 语言的面向对象</title><link>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link><pubDate>Fri, 21 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid><description>&lt;p>Linux 内核使用 &lt;strong>结构体&lt;/strong> 和 &lt;strong>函数指针&lt;/strong> 的组合模拟面向对象（OO）编程范式。&lt;/p>
+该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a>。此处尝试进行回答。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;p>第一想法一般是：“原程序被操作系统加载进内存，不会受到影响。”&lt;br>
+系统会创建一个新的&lt;code>inode&lt;/code>指向新文件，而正在运行的进程仍会继续使用旧的&lt;code>inode&lt;/code>对应的代码段。&lt;/p>
+&lt;p>但实际上拓展到一个问题：“二进制文件会全部加载到内存吗？”&lt;/p>
+&lt;p>ELF二进制文件在加载时，操作系统通常采用按需分页的机制，只将当前需要的部分加载到物理内存，而不是一次性加载整个文件。虚拟内存映射允许文件的部分内容驻留在磁盘，直到被访问时才调入内存。&lt;br>
+同时，动态链接库的延迟加载和内存映射文件技术（&lt;code>mmap&lt;/code>）也帮助减少实际内存占用。因此，如果二进制文件很大，不会全部加载到物理内存中，而是按需加载，利用虚拟内存管理技术优化资源使用。&lt;/p>
+&lt;p>但是：真的会在运行时加载新的内容吗？&lt;/p>
+&lt;p>ELF文件在启动时如何决定哪些内容加载到内存？主要依赖于其&lt;strong>程序头表&lt;/strong>（Program Header Table）​中定义的段（Segment）信息。程序头表由多个&lt;code>Elf64_Phdr&lt;/code>结构体组成，每个结构体描述了一个需要加载到内存的段（如代码段、数据段、动态链接信息段等）。这些段通常包含多个&lt;em>节&lt;/em>（Section）的集合。&lt;/p>
+&lt;p>覆盖原文件后，旧文件的磁盘空间不会被立即释放，需等待所有关联进程结束后才能回收（通过&lt;code>lsof&lt;/code>可查看占用进程）。&lt;/p>
+&lt;p>&lt;strong>总结&lt;/strong>：&lt;br>
+​已运行的进程不受影响：Linux通过&lt;code>inode&lt;/code>标识文件，旧进程继续执行内存中已加载的旧代码，与原磁盘文件解耦。&lt;/p>
+&lt;hr>
+&lt;h3 id="1-elf文件的按需加载机制">1. &lt;strong>ELF文件的按需加载机制&lt;/strong>&lt;/h3>
+&lt;p>ELF二进制文件通过&lt;strong>程序头表（Program Header Table）&lt;strong>中的&lt;code>PT_LOAD&lt;/code>段描述需要加载的代码和数据区域。内核的&lt;code>load_elf_binary()&lt;/code>函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong>按需分页&lt;/strong>的：
+• 仅当程序访问某个页（通常4KB大小）时，才会触发缺页异常，将对应内容从磁盘加载到物理内存。
+• 未使用的代码或数据（如未执行的函数）可能永远不会被加载到物理内存中。&lt;/p>
+&lt;h3 id="2-虚拟内存映射与内存优化">2. &lt;strong>虚拟内存映射与内存优化&lt;/strong>&lt;/h3>
+&lt;p>• &lt;strong>虚拟内存优势&lt;/strong>：ELF文件通过&lt;code>mmap()&lt;/code>系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
+• &lt;strong>写时复制（Copy-on-Write）&lt;/strong>：对于只读段（如代码段），多个进程可以共享同一物理内存页；对于可写段，修改时才会复制新页。&lt;/p>
+&lt;h3 id="3-动态链接与延迟加载">3. &lt;strong>动态链接与延迟加载&lt;/strong>&lt;/h3>
+&lt;p>动态链接库（如&lt;code>.so&lt;/code>文件）在程序运行时通过&lt;code>ld-linux&lt;/code>动态加载器按需载入。例如：
+• 首次调用某个库函数时，动态链接器才会加载对应的代码段到内存。
+• 部分库可能仅在特定条件下被使用，从而减少初始内存占用。&lt;/p>
+&lt;h3 id="4-大文件的实际内存占用">4. &lt;strong>大文件的实际内存占用&lt;/strong>&lt;/h3>
+&lt;p>• &lt;strong>物理内存限制&lt;/strong>：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
+• &lt;strong>交换空间（Swap）&lt;/strong>：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p></description></item><item><title>Linux 内核中 C 语言的面向对象</title><link>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link><pubDate>Fri, 21 Feb 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid><description>&lt;p>Linux 内核使用 &lt;strong>结构体&lt;/strong> 和 &lt;strong>函数指针&lt;/strong> 的组合模拟面向对象（OO）编程范式。&lt;/p>
 &lt;hr>
 &lt;h3 id="1-结构体封装数据与行为">1. &lt;strong>结构体封装数据与行为&lt;/strong>&lt;/h3>
 &lt;ul>
@@ -40,199 +397,101 @@
 &lt;li>&lt;strong>行为绑定&lt;/strong>：通过函数指针将操作绑定到结构体上，实现动态调用。&lt;/li>
 &lt;/ul>
 &lt;h4 id="示例struct-file_operations">示例：&lt;code>struct file_operations&lt;/code>&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 定义文件操作的函数指针表
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">file_operations&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">ssize_t&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">file&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="n">__user&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">size_t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">loff_t&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">ssize_t&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">file&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="n">__user&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">size_t&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">loff_t&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... 其他方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 具体文件系统的实现（如 ext4）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">file_operations&lt;/span> &lt;span class="n">ext4_fops&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">read&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ext4_read&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">write&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ext4_write&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// ... 初始化其他方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 注册到 VFS 层时关联 fops
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">inode&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">inode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">...;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">inode&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">i_fop&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">ext4_fops&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 绑定特定方法集
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 定义文件操作的函数指针表
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> file_operations {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">ssize_t&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>read)(&lt;span style="color:#66d9ef">struct&lt;/span> file &lt;span style="color:#f92672">*&lt;/span>, &lt;span style="color:#66d9ef">char&lt;/span> __user &lt;span style="color:#f92672">*&lt;/span>, &lt;span style="color:#66d9ef">size_t&lt;/span>, &lt;span style="color:#66d9ef">loff_t&lt;/span> &lt;span style="color:#f92672">*&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">ssize_t&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>write)(&lt;span style="color:#66d9ef">struct&lt;/span> file &lt;span style="color:#f92672">*&lt;/span>, &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> __user &lt;span style="color:#f92672">*&lt;/span>, &lt;span style="color:#66d9ef">size_t&lt;/span>, &lt;span style="color:#66d9ef">loff_t&lt;/span> &lt;span style="color:#f92672">*&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ... 其他方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 具体文件系统的实现（如 ext4）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> file_operations ext4_fops &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .read &lt;span style="color:#f92672">=&lt;/span> ext4_read,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .write &lt;span style="color:#f92672">=&lt;/span> ext4_write,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ... 初始化其他方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 注册到 VFS 层时关联 fops
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> inode &lt;span style="color:#f92672">*&lt;/span>inode &lt;span style="color:#f92672">=&lt;/span> ...;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>inode&lt;span style="color:#f92672">-&amp;gt;&lt;/span>i_fop &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">&amp;amp;&lt;/span>ext4_fops; &lt;span style="color:#75715e">// 绑定特定方法集
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h3 id="2-多态与继承">2. &lt;strong>多态与继承&lt;/strong>&lt;/h3>
 &lt;ul>
 &lt;li>&lt;strong>父子结构体&lt;/strong>：子结构体嵌入父结构体以继承接口。&lt;/li>
 &lt;li>&lt;strong>类型安全转换&lt;/strong>：通过 &lt;code>container_of&lt;/code> 宏从父指针获取子结构体。&lt;/li>
 &lt;/ul>
 &lt;h4 id="示例struct-kobject-与自定义对象">示例：&lt;code>struct kobject&lt;/code> 与自定义对象&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 父结构体（类似抽象基类）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">kset&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">kset&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 公共方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">release&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 子结构体（具体实现）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="n">kobj&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 继承 kobject
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 实现父类的方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="kt">void&lt;/span> &lt;span class="nf">my_device_release&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">kobject&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">container_of&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">kobj&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 清理资源
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 初始化时绑定方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">my_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">kzalloc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">sizeof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">GFP_KERNEL&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dev&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">release&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">my_device_release&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">kobject_init&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">kobj&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">my_device_ktype&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 注册类型
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 父结构体（类似抽象基类）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> kobject {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> kset &lt;span style="color:#f92672">*&lt;/span>kset;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 公共方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>release)(&lt;span style="color:#66d9ef">struct&lt;/span> kobject &lt;span style="color:#f92672">*&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 子结构体（具体实现）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> my_device {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> kobject kobj; &lt;span style="color:#75715e">// 继承 kobject
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> data;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 实现父类的方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">my_device_release&lt;/span>(&lt;span style="color:#66d9ef">struct&lt;/span> kobject &lt;span style="color:#f92672">*&lt;/span>kobj) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> my_device &lt;span style="color:#f92672">*&lt;/span>dev &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">container_of&lt;/span>(kobj, &lt;span style="color:#66d9ef">struct&lt;/span> my_device, kobj);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 清理资源
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 初始化时绑定方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> my_device &lt;span style="color:#f92672">*&lt;/span>dev &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">kzalloc&lt;/span>(&lt;span style="color:#66d9ef">sizeof&lt;/span>(&lt;span style="color:#f92672">*&lt;/span>dev), GFP_KERNEL);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>dev&lt;span style="color:#f92672">-&amp;gt;&lt;/span>kobj.release &lt;span style="color:#f92672">=&lt;/span> my_device_release;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">kobject_init&lt;/span>(&lt;span style="color:#f92672">&amp;amp;&lt;/span>dev&lt;span style="color:#f92672">-&amp;gt;&lt;/span>kobj, &lt;span style="color:#f92672">&amp;amp;&lt;/span>my_device_ktype); &lt;span style="color:#75715e">// 注册类型
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h3 id="3-组合与接口分离">3. &lt;strong>组合与接口分离&lt;/strong>&lt;/h3>
 &lt;ul>
 &lt;li>&lt;strong>模块化设计&lt;/strong>：通过组合而非继承复用代码。&lt;/li>
 &lt;li>&lt;strong>统一接口&lt;/strong>：顶层结构体定义标准接口，底层实现差异化逻辑。&lt;/li>
 &lt;/ul>
 &lt;h4 id="示例struct-block_device">示例：&lt;code>struct block_device&lt;/code>&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 通用块设备接口
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">gendisk&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">disk&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 通用方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ioctl&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">int&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">long&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 桌面硬盘驱动实现
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">my_disk&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="n">bdev&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 私有数据
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 实现接口方法
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="nf">my_disk_ioctl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">block_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">bdev&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">cmd&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">...)&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_disk&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">disk&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">container_of&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bdev&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">my_disk&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bdev&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nf">custom_ioctl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">disk&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cmd&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 通用块设备接口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> block_device {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> gendisk &lt;span style="color:#f92672">*&lt;/span>disk;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 通用方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>ioctl)(&lt;span style="color:#66d9ef">struct&lt;/span> block_device &lt;span style="color:#f92672">*&lt;/span>, &lt;span style="color:#66d9ef">unsigned&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span>, &lt;span style="color:#66d9ef">unsigned&lt;/span> &lt;span style="color:#66d9ef">long&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 桌面硬盘驱动实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> my_disk {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> block_device bdev;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 私有数据
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 实现接口方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">my_disk_ioctl&lt;/span>(&lt;span style="color:#66d9ef">struct&lt;/span> block_device &lt;span style="color:#f92672">*&lt;/span>bdev, &lt;span style="color:#66d9ef">unsigned&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> cmd, ...) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> my_disk &lt;span style="color:#f92672">*&lt;/span>disk &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">container_of&lt;/span>(bdev, &lt;span style="color:#66d9ef">struct&lt;/span> my_disk, bdev);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">custom_ioctl&lt;/span>(disk, cmd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h3 id="4-运行时多态">4. &lt;strong>运行时多态&lt;/strong>&lt;/h3>
 &lt;ul>
 &lt;li>函数指针作为虚函数表（vtable），根据对象类型动态调用不同实现。&lt;/li>
 &lt;/ul>
 &lt;h4 id="示例struct-net_device_ops">示例：&lt;code>struct net_device_ops&lt;/code>&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 网络设备操作接口
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device_ops&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ndo_open&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">ndo_stop&lt;/span>&lt;span class="p">)(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 以太网驱动实现
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">static&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="n">net_device_ops&lt;/span> &lt;span class="n">eth_ops&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">ndo_open&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">eth_open&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">ndo_stop&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">eth_stop&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 注册网络设备时绑定 ops
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">net_device&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">netdev&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">alloc_etherdev&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">sizeof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="n">priv_data&lt;/span>&lt;span class="p">));&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">netdev&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">netdev_ops&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">eth_ops&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 网络设备操作接口
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> net_device_ops {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>ndo_open)(&lt;span style="color:#66d9ef">struct&lt;/span> net_device &lt;span style="color:#f92672">*&lt;/span>dev);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>ndo_stop)(&lt;span style="color:#66d9ef">struct&lt;/span> net_device &lt;span style="color:#f92672">*&lt;/span>dev);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 以太网驱动实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> net_device_ops eth_ops &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .ndo_open &lt;span style="color:#f92672">=&lt;/span> eth_open,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .ndo_stop &lt;span style="color:#f92672">=&lt;/span> eth_stop,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 注册网络设备时绑定 ops
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> net_device &lt;span style="color:#f92672">*&lt;/span>netdev &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">alloc_etherdev&lt;/span>(&lt;span style="color:#66d9ef">sizeof&lt;/span>(&lt;span style="color:#66d9ef">struct&lt;/span> priv_data));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>netdev&lt;span style="color:#f92672">-&amp;gt;&lt;/span>netdev_ops &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">&amp;amp;&lt;/span>eth_ops;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h3 id="5-关键技巧">5. &lt;strong>关键技巧&lt;/strong>&lt;/h3>
 &lt;ul>
 &lt;li>&lt;strong>自引用结构体&lt;/strong>：通过指针成员隐式关联自身。&lt;/li>
@@ -243,13 +502,259 @@
 &lt;h3 id="总结">总结&lt;/h3>
 &lt;p>Linux 内核通过 &lt;strong>结构体+函数指针&lt;/strong> 实现了以下 OO 特性：&lt;/p></description></item><item><title>Linux 大文件传输场景题</title><link>https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link><pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid><description>&lt;p>(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)&lt;/p>
 &lt;blockquote>
-&lt;p>问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p></description></item><item><title>Linux 进程优先级</title><link>https://jekyulll.github.io/post/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link><pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid><description>&lt;h5 id="图解linux进程优先级httpsmpweixinqqcoms__bizmzkyndiynzu4mgmid2247484435idx1snb6f30489cf388f1024d6883abb8237c8chksmc1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13frd">&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd">图解Linux进程优先级&lt;/a>&lt;/h5>
+&lt;p>问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;ol>
+&lt;li>大文件传输的优化：&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>分块传输：将大文件分成多个小块（如4KB、8KB等），每次传输一块，避免占用过多内存。&lt;/li>
+&lt;li>校验和（Checksum）：在每一块传输后进行数据校验，确保数据的完整性。&lt;/li>
+&lt;li>带宽控制：通过控制每次发送的数据量来避免一次性传输过多数据，控制网络负载。&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>断点续传的实现：&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>记录传输进度：客户端和服务器都需要记录已经成功传输的数据块或字节的位置。&lt;/li>
+&lt;li>支持断点请求：客户端在恢复传输时，应该告知服务器从哪个位置开始传输。&lt;/li>
+&lt;li>校验和和确认机制：每次传输数据块后，都应该进行确认，确保数据正确传送。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;p>&lt;strong>步骤&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>使用局域网广播发现B的IP地址
+由于A和B的IP地址不直接已知，A可以通过&lt;strong>局域网广播&lt;/strong>来找到B的IP地址。A可以向网络中的所有主机发送一个&lt;em>UDP广播消息&lt;/em>，所有主机都会接收到这个消息，B在接收到这个广播后，可以回复A，告知自己的IP地址。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>UDP广播&lt;/strong>：A可以通过发送一个UDP广播包到特定的端口，让局域网中的所有主机收到该消息。B可以通过监听这个端口，收到消息后回应自己的IP地址。&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>使用TCP协议进行文件传输
+一旦A得到了B的IP地址，就可以使用TCP协议进行文件传输。A通过TCP连接到B，建立数据通道，开始发送1GB的文件。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="1-udp广播发现b的ip地址">1. UDP广播发现B的IP地址&lt;/h3>
+&lt;p>A使用UDP广播向局域网中的所有主机发送请求，B收到请求后会通过UDP回应自己的IP地址。&lt;/p>
+&lt;h4 id="a端发送udp广播请求">A端：发送UDP广播请求&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;arpa/inet.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define BROADCAST_PORT 12345
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">send_broadcast_message&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sockfd;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr_in&lt;/span> broadcast_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> broadcast_enable &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">*&lt;/span> message &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Are you there, B? Please reply with your IP address.&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 创建UDP套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> sockfd &lt;span style="color:#f92672">=&lt;/span> socket(AF_INET, SOCK_DGRAM, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (sockfd &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Socket creation failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 允许广播
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, &lt;span style="color:#f92672">&amp;amp;&lt;/span>broadcast_enable, &lt;span style="color:#66d9ef">sizeof&lt;/span>(broadcast_enable)) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Setting broadcast option failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> memset(&lt;span style="color:#f92672">&amp;amp;&lt;/span>broadcast_addr, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#66d9ef">sizeof&lt;/span>(broadcast_addr));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> broadcast_addr.sin_family &lt;span style="color:#f92672">=&lt;/span> AF_INET;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> broadcast_addr.sin_port &lt;span style="color:#f92672">=&lt;/span> htons(BROADCAST_PORT);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> broadcast_addr.sin_addr.s_addr &lt;span style="color:#f92672">=&lt;/span> htonl(INADDR_BROADCAST);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 发送广播消息
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (sendto(sockfd, message, strlen(message), &lt;span style="color:#ae81ff">0&lt;/span>, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>broadcast_addr, &lt;span style="color:#66d9ef">sizeof&lt;/span>(broadcast_addr)) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Broadcast failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Broadcast message sent!&amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> send_broadcast_message();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="b端接收udp广播并回应自己的ip">B端：接收UDP广播并回应自己的IP&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;arpa/inet.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define BROADCAST_PORT 12345
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define RESPONSE_PORT 12346
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">listen_for_broadcasts&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> sockfd;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr_in&lt;/span> server_addr, client_addr;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> socklen_t client_len &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">sizeof&lt;/span>(client_addr);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> buffer[&lt;span style="color:#ae81ff">1024&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 创建UDP套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> sockfd &lt;span style="color:#f92672">=&lt;/span> socket(AF_INET, SOCK_DGRAM, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (sockfd &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Socket creation failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> memset(&lt;span style="color:#f92672">&amp;amp;&lt;/span>server_addr, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#66d9ef">sizeof&lt;/span>(server_addr));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_addr.sin_family &lt;span style="color:#f92672">=&lt;/span> AF_INET;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_addr.sin_port &lt;span style="color:#f92672">=&lt;/span> htons(BROADCAST_PORT);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> server_addr.sin_addr.s_addr &lt;span style="color:#f92672">=&lt;/span> htonl(INADDR_ANY);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 绑定UDP套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (bind(sockfd, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>server_addr, &lt;span style="color:#66d9ef">sizeof&lt;/span>(server_addr)) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Bind failed&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 接收广播消息
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">while&lt;/span> (true) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> recv_len &lt;span style="color:#f92672">=&lt;/span> recvfrom(sockfd, buffer, &lt;span style="color:#66d9ef">sizeof&lt;/span>(buffer), &lt;span style="color:#ae81ff">0&lt;/span>, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>client_addr, &lt;span style="color:#f92672">&amp;amp;&lt;/span>client_len);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (recv_len &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;Failed to receive message&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">continue&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buffer[recv_len] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;\0&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Received message: &amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> buffer &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 如果消息包含特定请求，可以回复自己的IP地址
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>string response &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;IP Address of B: &amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">+=&lt;/span> inet_ntoa(client_addr.sin_addr);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sendto(sockfd, response.c_str(), response.length(), &lt;span style="color:#ae81ff">0&lt;/span>, (&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sockaddr&lt;/span>&lt;span style="color:#f92672">*&lt;/span>)&lt;span style="color:#f92672">&amp;amp;&lt;/span>client_addr, client_len);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cout &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Sent response with IP address: &amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> inet_ntoa(client_addr.sin_addr) &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(sockfd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> listen_for_broadcasts();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-使用tcp协议传输文件">2. 使用TCP协议传输文件&lt;/h3>
+&lt;p>一旦A得到了B的IP地址，A就可以通过TCP连接与B进行文件传输。&lt;/p></description></item><item><title>Linux 进程优先级</title><link>https://jekyulll.github.io/post/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link><pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid><description>&lt;h5 id="图解linux进程优先级httpsmpweixinqqcoms__bizmzkyndiynzu4mgmid2247484435idx1snb6f30489cf388f1024d6883abb8237c8chksmc1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13frd">&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd">图解Linux进程优先级&lt;/a>&lt;/h5>
 &lt;p>&lt;em>实时优先级&lt;/em>用于实时应用程序，如硬实时任务和实时控制系统，而&lt;em>普通优先级&lt;/em>用于非实时应用程序。&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>实时进程&lt;/strong>：动态优先级为0-99的进程，采用&lt;em>实时调度算法&lt;/em>调度。&lt;/li>
 &lt;li>&lt;strong>普通进程&lt;/strong>：动态优先级为100-139的进程，采用&lt;em>完全公平调度算法&lt;/em>调度。&lt;/li>
 &lt;/ul>
-&lt;p>&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484458&amp;amp;idx=1&amp;amp;sn=e4e64c006d4d822c6e7c184ab50540c1&amp;amp;chksm=c1d846bbf6afcfad20af0a7132eca1e3fd3c765ea5d4ee4134985b2b03f2461c207239fcc208#rd">Linux进程调度之完全公平调度（压箱底的干货分享）&lt;/a>。完全公平调度，CFS (Completely Fair Scheduler) 。&lt;/p></description></item><item><title>Linux 文件系统与虚拟文件系统</title><link>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="linux-文件系统">Linux 文件系统&lt;/h1>
+&lt;p>&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484458&amp;amp;idx=1&amp;amp;sn=e4e64c006d4d822c6e7c184ab50540c1&amp;amp;chksm=c1d846bbf6afcfad20af0a7132eca1e3fd3c765ea5d4ee4134985b2b03f2461c207239fcc208#rd">Linux进程调度之完全公平调度（压箱底的干货分享）&lt;/a>。完全公平调度，CFS (Completely Fair Scheduler) 。&lt;/p>
+&lt;p>&lt;strong>nice值&lt;/strong>：是用于调整普通进程优先级的参数。范围：&lt;code>-20&lt;/code>-&lt;code>19&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>task_struct {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>......
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> prio; 			&lt;span style="color:#75715e">// prio（动态优先级）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> static_prio;	&lt;span style="color:#75715e">// static_prio（静态优先级）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span> normal_prio;	&lt;span style="color:#75715e">// normal_prio（归一化优先级）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">unsigned&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> rt_priority; 	&lt;span style="color:#75715e">// rt_priority（实时优先级）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol>
+&lt;li>&lt;code>prio&lt;/code>（动态优先级）&lt;br>
+动态优先级，有效优先级，调度器最终使用的优先级数值，范围0-139，值越小，优先级越高。&lt;/li>
+&lt;li>&lt;code>static_prio&lt;/code>（静态优先级）&lt;br>
+静态优先级，采用&lt;code>SCHED_NORMAL&lt;/code>和&lt;code>SCHED_BATCH&lt;/code>调度策略的进程（即普通进程）用于计算动态优先级的，范围100-139。
+prio = static_prio = nice + DEFAULT_PRIO = nice + 120&lt;/li>
+&lt;li>&lt;code>normal_prio&lt;/code>（归一化优先级）&lt;br>
+用于计算&lt;code>prio&lt;/code>的中间变量，不需要太关心。&lt;/li>
+&lt;li>&lt;code>rt_priority&lt;/code>（实时优先级）&lt;br>
+实时优先级，采用&lt;code>SCHED_FIFO&lt;/code>和&lt;code>SCHED_RR&lt;/code>调度策略进程（即实时进程）用于计算动态优先级，范围0-99。
+prio = MAX_RT_PRIO - 1 - rt_prio = 100 - 1 - rt_priority;&lt;/li>
+&lt;/ol>
+&lt;p>实时优先级数值越大，得到的动态优先级数值越小，优先级越高。&lt;/p>
+&lt;p>&lt;code>ps -elf&lt;/code>命令查看进程优先级。&lt;code>PRI&lt;/code>：进程优先级，数值越小，优先级越高。（并非动态优先级）&lt;code>NI&lt;/code>：nice值。&lt;/p>
+&lt;p>&lt;code>SCHED_FIFO&lt;/code>（先进先出调度）和&lt;code>SCHED_RR&lt;/code>（时间片轮转调度），这些策略可以通过&lt;code>sched_setscheduler()&lt;/code>系统调用（头文件&lt;code>&amp;lt;sched.h&amp;gt;&lt;/code>）来设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">sched_param&lt;/span> param;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 设置优先级为最高优先级
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> param.sched_priority &lt;span style="color:#f92672">=&lt;/span> sched_get_priority_max(SCHED_FIFO);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 设置调度策略为SCHED_FIFO
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (sched_setscheduler(getpid(), SCHED_FIFO, &lt;span style="color:#f92672">&amp;amp;&lt;/span>param) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>cerr &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;无法设置实时调度策略&amp;#34;&lt;/span> &lt;span style="color:#f92672">&amp;lt;&amp;lt;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>endl;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux 文件系统与虚拟文件系统</title><link>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="linux-文件系统">Linux 文件系统&lt;/h1>
 &lt;p>&lt;strong>文件描述符&lt;/strong>(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br>
 当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
-是一个进程级别的概念。&lt;/p></description></item></channel></rss>
+是一个进程级别的概念。&lt;/p>
+&lt;ul>
+&lt;li>继承：在创建子进程时，文件描述符可以在父子进程之间共享（例如通过 fork()）。&lt;/li>
+&lt;li>复制：通过系统调用 dup() 或 dup2() 可以复制文件描述符，使它们引用同一个文件或资源。&lt;/li>
+&lt;/ul>
+&lt;p>文件描述符不仅用于操作文件，还可以指向：&lt;/p>
+&lt;ul>
+&lt;li>管道（Pipes）：用于进程间通信。&lt;/li>
+&lt;li>套接字（Sockets）：用于网络通信。&lt;/li>
+&lt;li>设备文件：例如硬盘、串口等设备。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>文件分配表&lt;/strong>(File Allocation Table, FAT)。&lt;/p>
+&lt;p>&lt;a href="https://www.bilibili.com/video/BV1jy4y1K73r/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a">何为文件索引节点?文件与磁盘的爱恨情仇。&lt;/a>。&lt;br>
+&lt;a href="https://ruanyifeng.com/blog/2011/12/inode.html">阮一峰的个人网站&lt;/a>。&lt;br>
+&lt;strong>inode&lt;/strong>（索引节点）。&lt;a href="https://ruanyifeng.com/blog/2011/12/inode.html">理解inode&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>文件储存在硬盘上，硬盘的最小存储单位叫做&amp;quot;扇区&amp;quot;（Sector）。每个扇区储存512字节（相当于0.5KB）。
+操作系统读取硬盘的时候，不会一个个扇区地读取，这样效率太低，而是一次性连续读取多个扇区，即一次性读取一个&amp;quot;块&amp;quot;（block）。这种由多个扇区组成的&amp;quot;块&amp;quot;，是文件存取的最小单位。&amp;ldquo;块&amp;quot;的大小，最常见的是4KB，即连续八个 sector组成一个 block。
+文件数据都储存在&amp;quot;块&amp;quot;中，那么很显然，我们还必须找到一个地方储存文件的元信息，比如文件的创建者、文件的创建日期、文件的大小等等。这种储存文件元信息的区域就叫做inode，中文译名为&amp;quot;索引节点&amp;rdquo;。&lt;br>
+可以用&lt;code>stat&lt;/code>命令，查看某个文件的inode信息。
+inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自动将硬盘分成两个区域。一个是数据区，存放文件数据；另一个是&lt;strong>inode区&lt;/strong>（inode table），存放inode所包含的信息。
+Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>超级块&lt;/strong>（Superblock）位于每个文件系统的开头，提供了操作系统如何解释和管理该文件系统的元数据。(记录各个inode?)&lt;/p>
+&lt;p>&lt;strong>软链接和硬链接：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>软链接是一个独立的文件，它包含了另一个文件或目录的路径。它类似于 Windows 系统中的快捷方式。&lt;/li>
+&lt;li>硬链接是文件的一个直接引用（或者说是指针），它与原文件共享相同的inode。删除原文件后，硬链接仍然有效，因为它直接引用了文件的数据；文件只有当所有硬链接都被删除后，数据才会被清除。inode信息中有一项叫做&amp;quot;链接数&amp;quot;，记录指向该inode的文件名总数。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>linux软件更新过程：软件更新变得简单：系统通过inode号码，识别运行中的文件，不通过文件名。更新的时候，新版文件以同样的文件名，生成一个新的inode，不会影响到运行中的文件。等到下一次运行这个软件的时候，文件名就自动指向新版文件，旧版文件的inode则被回收。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h1 id="linux-虚拟文件系统">Linux 虚拟文件系统&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/3815712411">linux I/O原理、监控、和调优思路&lt;/a>。&lt;br>
+&lt;a href="https://zhuanlan.zhihu.com/p/681048030">图解Linux虚拟文件系统(VFS)之关系篇&lt;/a>。&lt;/p>
+&lt;p>&lt;strong>虚拟文件系统&lt;/strong>（Virtual File System，VFS）：它提供了一个统一的接口，使得用户和应用程序可以通过相同的方式访问不同类型的文件系统。&lt;/p>
+&lt;blockquote>
+&lt;p>通过VFS用户可以使用相同的系统调用（如&lt;code>open&lt;/code>、&lt;code>read&lt;/code>、&lt;code>write&lt;/code>等）来访问不同类型的文件系统，包括本地文件系统（如ext4、XFS等）、网络文件系统（如NFS、CIFS等）以及虚拟文件系统（如procfs、sysfs等）。&lt;/p>
+&lt;/blockquote>
+&lt;p>VFS由以下几个主要组件组成：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>虚拟文件系统接口&lt;/strong>：VFS定义了一组通用的文件系统操作接口。&lt;/li>
+&lt;li>&lt;strong>超级块(super_block)&lt;/strong>：每个文件系统都有一个超级块，它包含了文件系统的元数据信息，如文件系统类型、块大小、inode表等，超级块提供了对文件系统的整体描述和管理。&lt;/li>
+&lt;li>&lt;strong>目录项(dentry)&lt;/strong>：Directory Entry，用于表示文件系统中的目录和文件，dentry包含了目录和文件对应的inode指针、层级关系(parent)等。
+&lt;blockquote>
+&lt;p>dentry结构体的主要作用是提供文件系统层次结构的表示，它们通过形成一个树状结构来组织目录和文件，每个dentry都有一个唯一的路径名，可以通过遍历dentry树来找到特定文件或目录。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c" data-lang="c">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> dentry {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> dentry &lt;span style="color:#f92672">*&lt;/span>d_parent;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> qstr d_name;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> inode &lt;span style="color:#f92672">*&lt;/span>d_inode;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> dentry_operations &lt;span style="color:#f92672">*&lt;/span>d_op;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> super_block &lt;span style="color:#f92672">*&lt;/span>d_sb;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> list_head d_child;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> list_head d_subdirs;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ....
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>&lt;strong>文件节点(inode)&lt;/strong>：inode是文件系统中的一个数据结构，用于存储文件或目录的元数据信息，如文件大小、权限、所有者等，每个文件或目录都对应一个唯一的inode。&lt;/li>
+&lt;li>&lt;strong>文件对象(file)&lt;/strong>：file是表示打开文件的数据结构，它包含了对应的inode指针、当前读写位置等信息，通过file可以进行文件的读写操作。&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>索引节点&lt;/strong>(index node, inode)，用来记录文件的元数据，比如 inode 编号、文件大小、访问权限、修改日期、数据的位置等。索引节点和文件一一对应，它跟文件内容一样，都会被持久化存储到磁盘中。所以记住，索引节点同样占用磁盘空间。&lt;/li>
+&lt;li>&lt;strong>目录项&lt;/strong>(directory entry, dentry)，用来记录文件的名字、索引节点指针以及与其他目录项的关联关系。多个关联的目录项，就构成了文件系统的目录结构。不过，不同于索引节点，目录项是由内核维护的一个内存数据结构，所以通常也被叫做目录项缓存。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;strong>ramfs&lt;/strong>是一种基于内存的文件系统。它将所有的文件数据存储在内存（RAM）中，而不是像传统的文件系统那样存储在磁盘等外部存储设备上。&lt;/p></description></item></channel></rss>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Database on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/database/</link><description>Recent content in Database on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 21 Nov 2024 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/database/index.xml" rel="self" type="application/rss+xml"/><item><title>表格展示 MySQL 基础数据类型</title><link>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Database on Hello Friend NG</title><link>https://jekyulll.github.io/tags/database/</link><description>Recent content in Database on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 21 Nov 2024 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/database/index.xml" rel="self" type="application/rss+xml"/><item><title>表格展示 MySQL 基础数据类型</title><link>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table>
  &lt;thead>
  &lt;tr>
  &lt;th>数据类型&lt;/th>
@@ -76,4 +76,48 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table></description></item><item><title>事务 Transaction 的基础特性</title><link>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p>&lt;strong>事务&lt;/strong>（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br>
-&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p></description></item></channel></rss>
+&lt;strong>ACID&lt;/strong> 是事务的四个重要特性：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>原子性&lt;/strong>（Atomicity）;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>一致性&lt;/strong>（Consistency）;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>隔离性&lt;/strong>（Isolation）；不同的隔离级别：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>读未提交&lt;/strong>（Read Uncommitted）：最低的隔离级别。一个事务可以读取另一个未提交事务的数据。
+&lt;ul>
+&lt;li>可能会出现&lt;strong>脏读&lt;/strong>（Dirty Read）的情况。
+&lt;blockquote>
+&lt;p>脏读是指一个事务读取了另一个尚未提交的事务修改的数据。eg.事务 T1 修改了一条记录但尚未提交，事务 T2 在这个时候读取了这条被修改的记录。如果 T1 后来回滚了，那么 T2 读取的数据就是无效的、“脏” 的数据。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>读已提交&lt;/strong>（Read Committed）：
+&lt;ul>
+&lt;li>可能会出现&lt;strong>不可重复读&lt;/strong>（Non - Repeatable Read）的问题。
+&lt;blockquote>
+&lt;p>不可重复读是指在一个事务内，多次读取同一数据，由于其他事务的修改操作，导致每次读取的结果不同。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>可重复读&lt;/strong>（Repeatable Read）：
+&lt;ul>
+&lt;li>可能会出现幻读（Phantom Read）的情况。
+&lt;blockquote>
+&lt;p>当一个事务（T1）按照一定的条件进行数据读取操作时，第一次读取没有发现满足条件的某些行（记录）。但是在这个事务还没有结束的时候，另一个事务（T2）插入（或删除）了一些满足（或原本满足）T1 查询条件的行。当 T1 再次按照相同的条件进行读取时，就会发现比第一次读取时更多（或更少）的符合条件的行，这些 “凭空出现” 或 “突然消失” 的行就像 “幻觉” 一样，所以被称为幻读。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>串行化&lt;/strong>（Serializable）：最高的隔离级别。牺牲了数据库的并发性能。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>持久性&lt;/strong>（Durability）。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>

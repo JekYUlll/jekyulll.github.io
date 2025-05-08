@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reprint on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/reprint/</link><description>Recent content in Reprint on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 09 Jan 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/reprint/index.xml" rel="self" type="application/rss+xml"/><item><title>[转载] C++的POD以及如何判断是否POD</title><link>https://jekyulll.github.io/post/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link><pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/17003601237">C++的POD以及如何判断是否POD - cheeto的文章 - 知乎&lt;/a>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reprint on Hello Friend NG</title><link>https://jekyulll.github.io/tags/reprint/</link><description>Recent content in Reprint on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Thu, 09 Jan 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/reprint/index.xml" rel="self" type="application/rss+xml"/><item><title>[转载] C++的POD以及如何判断是否POD</title><link>https://jekyulll.github.io/post/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link><pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid><description>&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/17003601237">C++的POD以及如何判断是否POD - cheeto的文章 - 知乎&lt;/a>。&lt;/p>
 &lt;hr>
 &lt;p>在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：&lt;br>
-&lt;strong>平凡类型&lt;/strong>（Trivial Type）和&lt;strong>标准布局类型&lt;/strong>（Standard Layout Type）。当类型为Trivial &amp;amp;&amp;amp; Standard Layout时才能被认为是POD。&lt;/p></description></item></channel></rss>
+&lt;strong>平凡类型&lt;/strong>（Trivial Type）和&lt;strong>标准布局类型&lt;/strong>（Standard Layout Type）。当类型为Trivial &amp;amp;&amp;amp; Standard Layout时才能被认为是POD。&lt;/p>
+&lt;h3 id="平凡类型trivial-type">平凡类型（Trivial Type）&lt;/h3>
+&lt;p>满足以下条件：&lt;/p>
+&lt;ul>
+&lt;li>默认构造函数：没有用户定义的构造函数，即使用默认构造函数。&lt;/li>
+&lt;li>默认拷贝构造函数：没有用户定义的拷贝构造函数。&lt;/li>
+&lt;li>默认析构函数：没有用户定义的析构函数。&lt;/li>
+&lt;li>默认赋值操作符：没有用户定义的拷贝赋值和移动赋值操作符。&lt;/li>
+&lt;/ul>
+&lt;p>对于平凡类型，编译器会为其提供默认的构造、拷贝和析构行为，无需用户显式定义。&lt;/p>
+&lt;p>比如说以下&lt;code>Trivial&lt;/code>，即使它有构造函数和析构函数 只要不是用户自定义而是&lt;code>default&lt;/code>也可以&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Trivial&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Trivial() &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span>; &lt;span style="color:#75715e">// 默认构造函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">~&lt;/span>Trivial() &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span>; &lt;span style="color:#75715e">// 默认析构函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="标准布局类型standard-layout-type">标准布局类型（Standard Layout Type）&lt;/h3>
+&lt;p>满足以下条件：&lt;/p>
+&lt;ul>
+&lt;li>无虚函数：它没有虚函数。&lt;/li>
+&lt;li>无虚基类：它没有虚基类。&lt;/li>
+&lt;li>成员变量顺序：它的成员变量是按声明顺序排列的。&lt;/li>
+&lt;li>&lt;/li>
+&lt;/ul>
+&lt;p>直接用&lt;code>std::is_standard_layout_v&lt;/code>判断即可&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define Print(x) std::cout &amp;lt;&amp;lt; x &amp;lt;&amp;lt; &amp;#39;\n&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">safe&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> m;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">unsafe_cons&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unsafe_cons(unsafe_cons &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#f92672">&amp;amp;&lt;/span>) {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">unsafe_vir&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">virtual&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">foo&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">template&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">typename&lt;/span> T&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">unsafe_tem&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> T data;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Trivial&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> a;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Trivial() &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span>; &lt;span style="color:#75715e">// 默认构造函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">~&lt;/span>Trivial() &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">default&lt;/span>; &lt;span style="color:#75715e">// 默认析构函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">StandardLayout&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">char&lt;/span> a; &lt;span style="color:#75715e">// 1 byte
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> b; &lt;span style="color:#75715e">// 4 bytes
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 用于检查是否为 POD 类型
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">template&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">typename&lt;/span> T&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">is_pod&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">constexpr&lt;/span> &lt;span style="color:#66d9ef">bool&lt;/span> value &lt;span style="color:#f92672">=&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>is_trivial&lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>is_standard_layout&lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>is_trivially_default_constructible&lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">test1&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Print(is_pod&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value); &lt;span style="color:#75715e">// 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Print(is_pod&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>string&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value); &lt;span style="color:#75715e">// 0
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Print(is_pod&lt;span style="color:#f92672">&amp;lt;&lt;/span>Trivial&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value); &lt;span style="color:#75715e">// 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Print(is_pod&lt;span style="color:#f92672">&amp;lt;&lt;/span>StandardLayout&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value); &lt;span style="color:#75715e">// 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Print(std&lt;span style="color:#f92672">::&lt;/span>is_trivial&lt;span style="color:#f92672">&amp;lt;&lt;/span>Trivial&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value); &lt;span style="color:#75715e">// 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Print(std&lt;span style="color:#f92672">::&lt;/span>is_trivial&lt;span style="color:#f92672">&amp;lt;&lt;/span>StandardLayout&lt;span style="color:#f92672">&amp;gt;::&lt;/span>value); &lt;span style="color:#75715e">// 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Print(std&lt;span style="color:#f92672">::&lt;/span>is_standard_layout_v&lt;span style="color:#f92672">&amp;lt;&lt;/span>StandardLayout&lt;span style="color:#f92672">&amp;gt;&lt;/span>); &lt;span style="color:#75715e">// 1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这里的标准布局的判定反而没有这么严格&lt;/p></description></item></channel></rss>

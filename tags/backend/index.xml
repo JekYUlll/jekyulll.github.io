@@ -1,34 +1,426 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/backend/</link><description>Recent content in Backend on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 23 Apr 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础">一、HTTP协议基础&lt;/h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on Hello Friend NG</title><link>https://jekyulll.github.io/tags/backend/</link><description>Recent content in Backend on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Wed, 23 Apr 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础">一、HTTP协议基础&lt;/h3>
 &lt;p>HTTP协议通过&lt;strong>Range请求&lt;/strong>实现断点续传：&lt;/p>
 &lt;ol>
 &lt;li>
 &lt;p>&lt;strong>客户端请求指定范围&lt;/strong>&lt;br>
 客户端在请求头中携带&lt;code>Range&lt;/code>字段，例如：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-http" data-lang="http">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">GET&lt;/span> &lt;span class="nn">/file.zip&lt;/span> &lt;span class="kr">HTTP&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="m">1.1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Range&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="l">bytes=500-1000&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-http" data-lang="http">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">GET&lt;/span> /file.zip &lt;span style="color:#66d9ef">HTTP&lt;/span>&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">1.1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Range&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">bytes=500-1000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
 &lt;li>
 &lt;p>&lt;strong>服务端响应部分内容&lt;/strong>&lt;br>
-若支持范围请求，服务端返回状态码&lt;code>206 Partial Content&lt;/code>及对应数据片段：&lt;/p></description></item><item><title>Nginx 的多进程模型</title><link>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong>多进程模型&lt;/strong>。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p></description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义">一、反向压力（Backpressure）的核心意义&lt;/h2>
-&lt;p>在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong>内存溢出&lt;/strong>或&lt;strong>系统崩溃&lt;/strong>。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong>速率适配&lt;/strong>，从而保证系统的稳定性与资源可控性。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p></description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p>
+若支持范围请求，服务端返回状态码&lt;code>206 Partial Content&lt;/code>及对应数据片段：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-http" data-lang="http">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">HTTP&lt;/span>&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">1.1&lt;/span> &lt;span style="color:#ae81ff">206&lt;/span> &lt;span style="color:#a6e22e">Partial Content&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Content-Range&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">bytes 500-1000/5000&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Content-Length&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">501&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>完整性校验机制&lt;/strong>&lt;br>
+通过&lt;code>ETag&lt;/code>或&lt;code>Last-Modified&lt;/code>头确保文件未变更，避免续传数据不一致。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="二nginx静态资源断点续传">二、Nginx静态资源断点续传&lt;/h3>
+&lt;p>Nginx默认支持静态文件的断点续传。需要有以下配置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-nginx" data-lang="nginx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">server&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">location&lt;/span> &lt;span style="color:#e6db74">/static&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">root&lt;/span> &lt;span style="color:#e6db74">/data/files&lt;/span>; &lt;span style="color:#75715e"># 文件存储路径
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">add_header&lt;/span> &lt;span style="color:#e6db74">Accept-Ranges&lt;/span> &lt;span style="color:#e6db74">bytes&lt;/span>; &lt;span style="color:#75715e"># 声明支持字节范围请求
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>验证方法&lt;/strong>：&lt;br>
+使用&lt;code>curl&lt;/code>检测响应头：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -I http://your-domain/static/large-file.iso
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>若输出包含&lt;code>Accept-Ranges: bytes&lt;/code>与&lt;code>Content-Length&lt;/code>，则表明支持续传。&lt;/p>
+&lt;hr>
+&lt;h3 id="三go实现">三、Go实现&lt;/h3>
+&lt;p>对于动态生成的文件（如需鉴权的资源），需手动处理&lt;code>Range&lt;/code>请求。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-go" data-lang="go">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">package&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;fmt&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;net/http&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;os&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;strconv&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;strings&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">handleDownload&lt;/span>(&lt;span style="color:#a6e22e">w&lt;/span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">ResponseWriter&lt;/span>, &lt;span style="color:#a6e22e">r&lt;/span> &lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">Request&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">filePath&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;/data/dynamic-file.bin&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">file&lt;/span>, &lt;span style="color:#a6e22e">err&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">os&lt;/span>.&lt;span style="color:#a6e22e">Open&lt;/span>(&lt;span style="color:#a6e22e">filePath&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#a6e22e">err&lt;/span> &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">nil&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">Error&lt;/span>(&lt;span style="color:#a6e22e">w&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;File not found&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">StatusNotFound&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defer&lt;/span> &lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Close&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fileInfo&lt;/span>, &lt;span style="color:#a6e22e">_&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Stat&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fileSize&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">fileInfo&lt;/span>.&lt;span style="color:#a6e22e">Size&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">w&lt;/span>.&lt;span style="color:#a6e22e">Header&lt;/span>().&lt;span style="color:#a6e22e">Set&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Content-Length&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">strconv&lt;/span>.&lt;span style="color:#a6e22e">FormatInt&lt;/span>(&lt;span style="color:#a6e22e">fileSize&lt;/span>, &lt;span style="color:#ae81ff">10&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">w&lt;/span>.&lt;span style="color:#a6e22e">Header&lt;/span>().&lt;span style="color:#a6e22e">Set&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ETag&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">fmt&lt;/span>.&lt;span style="color:#a6e22e">Sprintf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;\&amp;#34;%x\&amp;#34;&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">fileInfo&lt;/span>.&lt;span style="color:#a6e22e">ModTime&lt;/span>().&lt;span style="color:#a6e22e">UnixNano&lt;/span>()))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">rangeHeader&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">r&lt;/span>.&lt;span style="color:#a6e22e">Header&lt;/span>.&lt;span style="color:#a6e22e">Get&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Range&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#a6e22e">rangeHeader&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">ServeContent&lt;/span>(&lt;span style="color:#a6e22e">w&lt;/span>, &lt;span style="color:#a6e22e">r&lt;/span>, &lt;span style="color:#a6e22e">fileInfo&lt;/span>.&lt;span style="color:#a6e22e">Name&lt;/span>(), &lt;span style="color:#a6e22e">fileInfo&lt;/span>.&lt;span style="color:#a6e22e">ModTime&lt;/span>(), &lt;span style="color:#a6e22e">file&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">ranges&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">strings&lt;/span>.&lt;span style="color:#a6e22e">Split&lt;/span>(&lt;span style="color:#a6e22e">rangeHeader&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;=&amp;#34;&lt;/span>)[&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">parts&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">strings&lt;/span>.&lt;span style="color:#a6e22e">Split&lt;/span>(&lt;span style="color:#a6e22e">ranges&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;-&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">start&lt;/span>, &lt;span style="color:#a6e22e">_&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">strconv&lt;/span>.&lt;span style="color:#a6e22e">ParseInt&lt;/span>(&lt;span style="color:#a6e22e">parts&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>], &lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">64&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">end&lt;/span> &lt;span style="color:#f92672">:=&lt;/span> &lt;span style="color:#a6e22e">fileSize&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#a6e22e">parts&lt;/span>[&lt;span style="color:#ae81ff">1&lt;/span>] &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">end&lt;/span>, &lt;span style="color:#a6e22e">_&lt;/span> = &lt;span style="color:#a6e22e">strconv&lt;/span>.&lt;span style="color:#a6e22e">ParseInt&lt;/span>(&lt;span style="color:#a6e22e">parts&lt;/span>[&lt;span style="color:#ae81ff">1&lt;/span>], &lt;span style="color:#ae81ff">10&lt;/span>, &lt;span style="color:#ae81ff">64&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#a6e22e">start&lt;/span> &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#a6e22e">fileSize&lt;/span> &lt;span style="color:#f92672">||&lt;/span> &lt;span style="color:#a6e22e">end&lt;/span> &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#a6e22e">fileSize&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">Error&lt;/span>(&lt;span style="color:#a6e22e">w&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Requested range not satisfiable&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">StatusRequestedRangeNotSatisfiable&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">w&lt;/span>.&lt;span style="color:#a6e22e">Header&lt;/span>().&lt;span style="color:#a6e22e">Set&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Content-Range&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">fmt&lt;/span>.&lt;span style="color:#a6e22e">Sprintf&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;bytes %d-%d/%d&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">start&lt;/span>, &lt;span style="color:#a6e22e">end&lt;/span>, &lt;span style="color:#a6e22e">fileSize&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">w&lt;/span>.&lt;span style="color:#a6e22e">Header&lt;/span>().&lt;span style="color:#a6e22e">Set&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Content-Length&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">strconv&lt;/span>.&lt;span style="color:#a6e22e">FormatInt&lt;/span>(&lt;span style="color:#a6e22e">end&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">start&lt;/span>&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">10&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">w&lt;/span>.&lt;span style="color:#a6e22e">WriteHeader&lt;/span>(&lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">StatusPartialContent&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">file&lt;/span>.&lt;span style="color:#a6e22e">Seek&lt;/span>(&lt;span style="color:#a6e22e">start&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">ServeContent&lt;/span>(&lt;span style="color:#a6e22e">w&lt;/span>, &lt;span style="color:#a6e22e">r&lt;/span>, &lt;span style="color:#a6e22e">fileInfo&lt;/span>.&lt;span style="color:#a6e22e">Name&lt;/span>(), &lt;span style="color:#a6e22e">fileInfo&lt;/span>.&lt;span style="color:#a6e22e">ModTime&lt;/span>(), &lt;span style="color:#a6e22e">file&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">func&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">HandleFunc&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;/download&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">handleDownload&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">http&lt;/span>.&lt;span style="color:#a6e22e">ListenAndServe&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;:8080&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">nil&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>• 解析&lt;code>Range&lt;/code>请求头并验证范围有效性
+• 使用&lt;code>Seek&lt;/code>定位文件指针，返回部分内容
+• 通过&lt;code>ETag&lt;/code>实现文件一致性校验&lt;/p></description></item><item><title>Nginx 的多进程模型</title><link>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong>多进程模型&lt;/strong>。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p>
+&lt;hr>
+&lt;h4 id="一多进程模型的核心架构">一、多进程模型的核心架构&lt;/h4>
+&lt;p>Nginx采用经典的&lt;strong>Master-Worker多进程架构&lt;/strong>：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Master进程&lt;/strong>：负责全局管理，包括配置加载、信号处理、Worker进程监控与重启。&lt;/li>
+&lt;li>&lt;strong>Worker进程&lt;/strong>：实际处理请求的“战斗单元”，每个Worker独立运行且绑定到特定CPU核心，通过&lt;strong>异步非阻塞事件驱动模型&lt;/strong>处理成千上万的并发连接。&lt;br>
+这种设计实现了&lt;strong>资源隔离&lt;/strong>与&lt;strong>职责分离&lt;/strong>，Master的稳定性不受Worker业务逻辑影响，Worker的崩溃也不会导致服务中断。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h4 id="二选择多进程的五大核心原因">二、选择多进程的五大核心原因&lt;/h4>
+&lt;h5 id="1-最大化多核cpu利用率">1. &lt;strong>最大化多核CPU利用率&lt;/strong>&lt;/h5>
+&lt;p>现代服务器普遍采用多核架构，Nginx通过为每个Worker进程绑定独立CPU核心，避免了线程上下文切换的开销，使硬件资源被充分调度。例如，8核服务器可启动8个Worker，每个进程独占一核执行无锁化任务处理。&lt;/p>
+&lt;h5 id="2-规避多线程锁竞争">2. &lt;strong>规避多线程锁竞争&lt;/strong>&lt;/h5>
+&lt;p>多线程模型中，共享内存的访问需通过锁机制同步，而锁竞争会导致性能急剧下降。Nginx的多进程模型天然隔离了内存空间，Worker之间无需加锁，消除了这一性能瓶颈。&lt;/p>
+&lt;h5 id="3-故障隔离与高可用性">3. &lt;strong>故障隔离与高可用性&lt;/strong>&lt;/h5>
+&lt;p>若某个Worker进程因代码缺陷崩溃，Master进程可立即重启新Worker，其他进程仍正常服务。这种“单点故障不影响全局”的特性，显著提升了系统的容错能力。相比之下，多线程模型中线程崩溃可能导致整个进程宕机。&lt;/p>
+&lt;h5 id="4-简化开发与维护">4. &lt;strong>简化开发与维护&lt;/strong>&lt;/h5>
+&lt;p>多进程模型的代码结构更清晰：&lt;br>
+• Worker之间无共享状态，避免复杂的线程同步逻辑&lt;br>
+• 调试时可通过&lt;code>gdb&lt;/code>单独附加到某个Worker进程，无需处理线程交织问题&lt;/p>
+&lt;h5 id="5-与事件驱动模型的完美契合">5. &lt;strong>与事件驱动模型的完美契合&lt;/strong>&lt;/h5>
+&lt;p>Nginx的&lt;strong>异步非阻塞I/O多路复用&lt;/strong>（如Linux的epoll）是其高并发的另一基石。每个Worker进程通过单线程循环处理事件，避免了传统多进程模型中“一请求一进程”的资源浪费。这种组合使得单个Worker即可高效管理数万连接。&lt;/p>
+&lt;hr>
+&lt;h4 id="三多进程模型的局限性">三、多进程模型的局限性&lt;/h4>
+&lt;p>尽管优势显著，该模型也存在以下挑战：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>内存占用较高&lt;/strong>：每个Worker需独立的内存空间，连接数极高时可能产生冗余开销。&lt;/li>
+&lt;li>&lt;strong>进程间通信复杂&lt;/strong>：共享数据需通过IPC（如共享内存），开发复杂度高于线程模型。&lt;/li>
+&lt;li>&lt;strong>计算密集型场景劣势&lt;/strong>：若请求涉及大量CPU运算（如加密解密），多线程模型可能更高效。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h4 id="四与其他模型的对比分析">四、与其他模型的对比分析&lt;/h4>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>模型类型&lt;/th>
+ &lt;th>典型代表&lt;/th>
+ &lt;th>适用场景&lt;/th>
+ &lt;th>Nginx的选择依据&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>多进程单线程&lt;/strong>&lt;/td>
+ &lt;td>Nginx&lt;/td>
+ &lt;td>I/O密集型高并发&lt;/td>
+ &lt;td>规避锁竞争，隔离故障&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>单进程多线程&lt;/strong>&lt;/td>
+ &lt;td>Apache&lt;/td>
+ &lt;td>计算密集型任务&lt;/td>
+ &lt;td>线程崩溃风险高，调试复杂&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>协程模型&lt;/strong>&lt;/td>
+ &lt;td>Go&lt;/td>
+ &lt;td>高并发微服务&lt;/td>
+ &lt;td>需语言运行时支持，生态差异&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h4 id="五设计启示如何选择并发模型">五、设计启示：如何选择并发模型？&lt;/h4>
+&lt;p>Nginx的实践为高并发系统设计提供了重要参考：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>区分任务类型&lt;/strong>：I/O密集型首选事件驱动+多进程，计算密集型可考虑多线程。&lt;/li>
+&lt;li>&lt;strong>权衡开发成本&lt;/strong>：多进程模型更易实现稳定性，但需额外处理IPC；多线程开发门槛更高。&lt;/li>
+&lt;li>&lt;strong>利用操作系统特性&lt;/strong>：如Linux的CPU亲和性（affinity）可优化多进程绑定。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h4 id="结语">结语&lt;/h4>
+&lt;p>Nginx的多进程模型并非偶然，而是针对Web服务器&lt;strong>高并发、低延迟、强稳定&lt;/strong>的核心需求做出的理性权衡。它通过资源隔离、无锁架构与事件驱动的三重设计，在I/O密集型场景中展现了无可替代的优势。正如其作者Igor Sysoev所言：“简单性是可扩展性的基石”——多进程模型正是这一哲学的最佳实践。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>参考资料&lt;/strong>：&lt;br>
+[1] 其其网《Nginx为何偏爱多进程模型》&lt;br>
+[4][6] CSDN博客《nginx为什么是多进程单线程》&lt;br>
+[2][3] CSDN博客《Nginx工作原理》&lt;/p>
+&lt;/blockquote></description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义">一、反向压力（Backpressure）的核心意义&lt;/h2>
+&lt;p>在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong>内存溢出&lt;/strong>或&lt;strong>系统崩溃&lt;/strong>。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong>速率适配&lt;/strong>，从而保证系统的稳定性与资源可控性。&lt;/p>
+&lt;h3 id="11-背压的两种实现模式">1.1 背压的两种实现模式&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>阻塞式反馈&lt;/strong>：通过队列容量限制直接阻塞生产者（如线程等待）。&lt;/li>
+&lt;li>&lt;strong>非阻塞式协商&lt;/strong>：通过异步信号（如请求量协商）动态调整生产者速率（Reactive Streams的核心机制）。&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="二reactive-streams规范与c映射">二、Reactive Streams规范与C++映射&lt;/h2>
+&lt;p>Reactive Streams是异步流处理的&lt;strong>标准化规范&lt;/strong>，定义了四个核心组件：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>组件&lt;/th>
+ &lt;th>职责&lt;/th>
+ &lt;th>C++类设计示例（伪代码）&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Publisher&lt;/strong>&lt;/td>
+ &lt;td>数据生产者（如传感器、文件读取）&lt;/td>
+ &lt;td>&lt;code>class Publisher&amp;lt;T&amp;gt; { virtual void subscribe(Subscriber&amp;lt;T&amp;gt;&amp;amp;) = 0; };&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Subscriber&lt;/strong>&lt;/td>
+ &lt;td>数据消费者（如数据库写入、网络发送）&lt;/td>
+ &lt;td>&lt;code>class Subscriber&amp;lt;T&amp;gt; { virtual void onNext(const T&amp;amp;) = 0; };&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Subscription&lt;/strong>&lt;/td>
+ &lt;td>订阅上下文（背压协商）&lt;/td>
+ &lt;td>&lt;code>class Subscription { virtual void request(int n) = 0; };&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Processor&lt;/strong>&lt;/td>
+ &lt;td>中间处理节点（如数据过滤、转换）&lt;/td>
+ &lt;td>&lt;code>class Processor&amp;lt;T, R&amp;gt; : public Subscriber&amp;lt;T&amp;gt;, Publisher&amp;lt;R&amp;gt; {};&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="21-c实现的核心逻辑">2.1 C++实现的核心逻辑&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 基于条件变量的背压队列（简化版） 
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">template&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">typename&lt;/span> T&lt;span style="color:#f92672">&amp;gt;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">BoundedQueue&lt;/span> { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>queue&lt;span style="color:#f92672">&amp;lt;&lt;/span>T&lt;span style="color:#f92672">&amp;gt;&lt;/span> buffer; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>mutex mtx; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>condition_variable not_full; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>condition_variable not_empty; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size_t capacity; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span>&lt;span style="color:#f92672">:&lt;/span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> push(&lt;span style="color:#66d9ef">const&lt;/span> T&lt;span style="color:#f92672">&amp;amp;&lt;/span> item) { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(mtx); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> not_full.wait(lock, [&lt;span style="color:#66d9ef">this&lt;/span>] { &lt;span style="color:#66d9ef">return&lt;/span> buffer.size() &lt;span style="color:#f92672">&amp;lt;&lt;/span> capacity; }); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buffer.push(item); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> not_empty.notify_one(); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> T &lt;span style="color:#a6e22e">pop&lt;/span>() { 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> std&lt;span style="color:#f92672">::&lt;/span>unique_lock&lt;span style="color:#f92672">&amp;lt;&lt;/span>std&lt;span style="color:#f92672">::&lt;/span>mutex&lt;span style="color:#f92672">&amp;gt;&lt;/span> lock(mtx); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> not_empty.wait(lock, [&lt;span style="color:#66d9ef">this&lt;/span>] { &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">!&lt;/span>buffer.empty(); }); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> T val &lt;span style="color:#f92672">=&lt;/span> std&lt;span style="color:#f92672">::&lt;/span>move(buffer.front()); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buffer.pop(); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> not_full.notify_one(); 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> val; 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}; 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>说明&lt;/strong>：队列满时阻塞&lt;code>push&lt;/code>，空时阻塞&lt;code>pop&lt;/code>，通过条件变量实现生产者-消费者的速率同步。&lt;/p></description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong>和&lt;/strong>LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p>
+&lt;ul>
+&lt;li>​LRU（Least Recently Used）​
+&lt;ul>
+&lt;li>基于时间维度，淘汰最久未被访问的数据。例如，若缓存容量为3，依次访问A→B→C→A，则再次插入新数据时，最久未访问的B会被淘汰。其核心假设是：最近被访问的数据未来更可能被使用。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>​LFU（Least Frequently Used）​
+&lt;ul>
+&lt;li>基于频率维度，淘汰访问次数最少的数据。例如，若数据A被访问5次，B被访问3次，则优先淘汰B。LFU通过计数器记录访问频次，并可能结合时间衰减机制避免旧高频数据长期占用缓存。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h3 id="一lru算法时间维度淘汰策略">&lt;strong>一、LRU算法：时间维度淘汰策略&lt;/strong>&lt;/h3>
+&lt;h4 id="核心原理">&lt;strong>核心原理&lt;/strong>&lt;/h4>
+&lt;p>LRU基于“时间局部性”假设：&lt;strong>最近被访问的数据更可能被再次使用&lt;/strong>。其淘汰策略简单直接——移除最久未访问的数据。例如，若缓存容量为3，访问顺序为A→B→C→A，则新数据插入时淘汰最旧的B。&lt;/p>
+&lt;h4 id="c实现">&lt;strong>C++实现&lt;/strong>&lt;/h4>
+&lt;p>LRU需高效支持两种操作：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>快速查询&lt;/strong>（哈希表，O(1)）&lt;/li>
+&lt;li>&lt;strong>顺序维护&lt;/strong>（双向链表，O(1)调整顺序）&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>数据结构设计&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">Node&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> key, value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node &lt;span style="color:#f92672">*&lt;/span>prev, &lt;span style="color:#f92672">*&lt;/span>next;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node(&lt;span style="color:#66d9ef">int&lt;/span> k, &lt;span style="color:#66d9ef">int&lt;/span> v) &lt;span style="color:#f92672">:&lt;/span> key(k), value(v), prev(&lt;span style="color:#66d9ef">nullptr&lt;/span>), next(&lt;span style="color:#66d9ef">nullptr&lt;/span>) {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LRUCache&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">private&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> capacity;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> unordered_map&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>, Node&lt;span style="color:#f92672">*&amp;gt;&lt;/span> cache; &lt;span style="color:#75715e">// 哈希表：键到节点映射
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Node &lt;span style="color:#f92672">*&lt;/span>head, &lt;span style="color:#f92672">*&lt;/span>tail; &lt;span style="color:#75715e">// 双向链表头尾哨兵节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">moveToHead&lt;/span>(Node&lt;span style="color:#f92672">*&lt;/span> node) { &lt;span style="color:#75715e">// 将节点移至头部
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> removeNode(node);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> addToHead(node);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">removeNode&lt;/span>(Node&lt;span style="color:#f92672">*&lt;/span> node) { &lt;span style="color:#75715e">// 移除节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">addToHead&lt;/span>(Node&lt;span style="color:#f92672">*&lt;/span> node) { &lt;span style="color:#75715e">// 头部插入节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> node&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> head;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> node;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> node;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> LRUCache(&lt;span style="color:#66d9ef">int&lt;/span> cap) &lt;span style="color:#f92672">:&lt;/span> capacity(cap) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Node(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>); &lt;span style="color:#75715e">// 初始化哨兵节点
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> tail &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Node(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> head&lt;span style="color:#f92672">-&amp;gt;&lt;/span>next &lt;span style="color:#f92672">=&lt;/span> tail;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tail&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev &lt;span style="color:#f92672">=&lt;/span> head;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key) { &lt;span style="color:#75715e">// 查询操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">auto&lt;/span> it &lt;span style="color:#f92672">=&lt;/span> cache.find(key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (it &lt;span style="color:#f92672">==&lt;/span> cache.end()) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> moveToHead(it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>second); &lt;span style="color:#75715e">// 更新为最近访问
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> it&lt;span style="color:#f92672">-&amp;gt;&lt;/span>second&lt;span style="color:#f92672">-&amp;gt;&lt;/span>value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">put&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key, &lt;span style="color:#66d9ef">int&lt;/span> value) { &lt;span style="color:#75715e">// 插入/更新操作
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (cache.find(key) &lt;span style="color:#f92672">!=&lt;/span> cache.end()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cache[key]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>value &lt;span style="color:#f92672">=&lt;/span> value;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> moveToHead(cache[key]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Node&lt;span style="color:#f92672">*&lt;/span> newNode &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Node(key, value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cache[key] &lt;span style="color:#f92672">=&lt;/span> newNode;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> addToHead(newNode);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (cache.size() &lt;span style="color:#f92672">&amp;gt;&lt;/span> capacity) { &lt;span style="color:#75715e">// 触发淘汰
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> Node&lt;span style="color:#f92672">*&lt;/span> toDelete &lt;span style="color:#f92672">=&lt;/span> tail&lt;span style="color:#f92672">-&amp;gt;&lt;/span>prev;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cache.erase(toDelete&lt;span style="color:#f92672">-&amp;gt;&lt;/span>key);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> removeNode(toDelete);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">delete&lt;/span> toDelete;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>关键点&lt;/strong>：&lt;br>
+• 使用&lt;strong>哈希表+双向链表&lt;/strong>实现O(1)操作复杂度&lt;br>
+• 头节点存放最新访问数据，尾节点为待淘汰数据&lt;/p></description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p>在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p>
 &lt;h3 id="一算法原理与公式">一、算法原理与公式&lt;/h3>
 &lt;p>半衰期算法基于放射性衰变公式：&lt;strong>M * (1/2)^(t/T)&lt;/strong>，其中：
 • &lt;strong>M&lt;/strong>：初始值（如点击量）
 • &lt;strong>t&lt;/strong>：时间间隔（如天数）
 • &lt;strong>T&lt;/strong>：半衰期周期（如7天）
-该公式使数据权重随时间呈指数衰减，例如7天半衰期意味着权重每天减少约10%。&lt;/p></description></item><item><title>web 访问认证机制</title><link>https://jekyulll.github.io/post/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid><description>&lt;p>&lt;a href="https://time.geekbang.org/column/article/398410">25 | 认证机制：应用程序如何进行访问认证？&lt;/a>讲得非常好，图文结合。&lt;/p>
+该公式使数据权重随时间呈指数衰减，例如7天半衰期意味着权重每天减少约10%。&lt;/p>
+&lt;h3 id="二核心应用场景">二、核心应用场景&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>热搜排序&lt;/strong>（如微博、腾讯平台）
+• 动态平衡点击量与时间衰减：新事件点击量高但衰减快，旧事件点击量低但衰减慢。例如：
+◦ 电影类半衰期设为7天（T=7），初始权重1000，单日点击量20000时，2天后权重为 &lt;code>(1000+20000) * (1/2)^(2/7) * 0.8 ≈ 17474.56&lt;/code>。
+◦ 小说类半衰期15天（T=15），汽车类30天（T=30），体现不同内容时效性差异。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>推荐系统冷启动&lt;/strong>
+• 新内容通过初始权重（如1000）获得曝光机会，同时随时间自然衰减，避免长期占据推荐位。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>动态排行榜&lt;/strong>
+• 结合实时数据与历史表现：例如游戏活动榜单，近期活跃玩家通过半衰期快速提升排名，老玩家贡献逐步降低。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="三后端实现要点">三、后端实现要点&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>数据模型设计&lt;/strong>
+• 数据库需存储&lt;strong>原始点击量&lt;/strong>和&lt;strong>计算后的排序权重字段&lt;/strong>（如&lt;code>sort_info&lt;/code>），通过定时任务（如每小时）更新权重值。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>参数可配置化&lt;/strong>
+• 不同业务类型设置独立参数：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">filmHalfLife&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#a6e22e">T&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">7&lt;/span>; &lt;span style="color:#75715e">//半衰期周期
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#a6e22e">weight&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.8&lt;/span>; &lt;span style="color:#75715e">//类型权重
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过接口&lt;code>halfLifeFactory&lt;/code>实现多态，支持扩展新类型。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>防作弊机制&lt;/strong>
+• 引入&lt;strong>类型权重系数&lt;/strong>（如电影0.8、汽车0.85），降低刷量对排序的影响。
+• 结合IP频率限制、异常点击检测等补充措施。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="四扩展优化方向">四、扩展优化方向&lt;/h3>
+&lt;p>• &lt;strong>时间粒度细化&lt;/strong>：将天级计算改为小时级，适应高实时性场景（如突发新闻）。
+• &lt;strong>复合衰减策略&lt;/strong>：叠加多个半衰期公式，处理复杂业务逻辑（如短视频热度需同时考虑播放、点赞、分享）。
+• &lt;strong>动态调整半衰期&lt;/strong>：通过机器学习根据历史数据自动优化T值。&lt;/p>
+&lt;blockquote>
+&lt;p>该算法已在实际工程中验证可行性，例如某博客示例中，电影类内容在7天内权重从1000衰减至约400，而汽车类内容30天后仍保留约300权重。开发者可根据业务需求调整公式参数，平衡时效性与长尾效应。&lt;/p>
+&lt;/blockquote></description></item><item><title>web 访问认证机制</title><link>https://jekyulll.github.io/post/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid><description>&lt;p>&lt;a href="https://time.geekbang.org/column/article/398410">25 | 认证机制：应用程序如何进行访问认证？&lt;/a>讲得非常好，图文结合。&lt;/p>
 &lt;p>&lt;strong>IAM&lt;/strong>：身份识别与访问管理（Identity and Access Management）。&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>认证&lt;/strong>（Authentication，英文缩写 &lt;strong>authn&lt;/strong>）：用来验证某个用户是否具有访问系统的权限。如果认证通过，该用户就可以访问系统，从而创建、修改、删除、查询平台支持的资源。&lt;/li>
 &lt;li>&lt;strong>授权&lt;/strong>（Authorization，英文缩写 &lt;strong>authz&lt;/strong>）：用来验证某个用户是否具有访问某个资源的权限，如果授权通过，该用户就能对资源做增删改查等操作。&lt;/li>
 &lt;/ul>
 &lt;blockquote>
-&lt;p>认证证明了你是谁，授权决定了你能做什么。&lt;/p></description></item></channel></rss>
+&lt;p>认证证明了你是谁，授权决定了你能做什么。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;!-- raw HTML omitted -->四种基本的认证方式：&lt;em>Basic&lt;/em>、&lt;em>Digest&lt;/em>、&lt;em>OAuth&lt;/em>、&lt;em>Bearer&lt;/em>&lt;!-- raw HTML omitted -->。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Basic&lt;/strong> 基础认证&lt;br>
+Basic 认证（基础认证），是最简单的认证方式。它简单地将用户名:密码进行 &lt;code>base64&lt;/code> 编码后，放到 HTTP Authorization Header 中。HTTP 请求到达后端服务后，后端服务会解析出 Authorization Header 中的 &lt;code>base64&lt;/code> 字符串，解码获取用户名和密码，并将用户名和密码跟数据库中记录的值进行比较，如果匹配则认证通过。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Digest&lt;/strong> 摘要认证&lt;br>
+Digest 认证（摘要认证）与基本认证兼容，但修复了基本认证的严重缺陷。&lt;br>
+Digest 具有如下特点：&lt;/p>
+&lt;ul>
+&lt;li>绝不会用明文方式在网络上发送密码。&lt;/li>
+&lt;li>可以有效防止恶意用户进行重放攻击。&lt;/li>
+&lt;li>可以有选择地防止对报文内容的篡改。
+四步：&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>客户端请求服务端的资源。&lt;/li>
+&lt;li>在客户端能够证明它知道密码从而确认其身份之前，服务端认证失败，返回&lt;code>401 Unauthorized&lt;/code>，并返回&lt;code>WWW-Authenticate&lt;/code>头，里面包含认证需要的信息。&lt;/li>
+&lt;li>客户端根据&lt;code>WWW-Authenticate&lt;/code>头中的信息，选择加密算法，并使用密码随机数 &lt;code>nonce&lt;/code>(防止&lt;em>重放攻击&lt;/em>)，计算出密码摘要 &lt;code>response&lt;/code>，并再次请求服务端。&lt;/li>
+&lt;li>服务器将客户端提供的密码摘要与服务器内部计算出的摘要进行对比。如果匹配，就说明客户端知道密码，认证通过，并返回一些与授权会话相关的附加信息，放在 &lt;code>Authorization-Info&lt;/code> 中。&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>OAuth&lt;/strong> 开放授权&lt;br>
+OAuth（开放授权）是一个开放的授权标准，允许用户让第三方应用访问该用户在某一 Web 服务上存储的私密资源（例如照片、视频、音频等），而无需将用户名和密码提供给第三方应用。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>OAuth2.0 一共分为四种授权方式，分别为&lt;em>密码式&lt;/em>、&lt;em>隐藏式&lt;/em>、&lt;em>凭借式&lt;/em>和&lt;em>授权码&lt;/em>模式。&lt;/p>
+&lt;/blockquote>
+&lt;ol start="4">
+&lt;li>&lt;strong>Bearer&lt;/strong> 令牌认证&lt;br>
+Bearer 认证是一种 HTTP 身份验证方法。Bearer 认证的核心是 &lt;code>bearer token&lt;/code>。&lt;code>bearer token&lt;/code> 是一个加密字符串，通常由服务端根据密钥生成。客户端在请求服务端时，必须在请求头中包含&lt;code>Authorization: Bearer&lt;/code> 。服务端收到请求后，解析出&lt;code>&amp;lt;token&amp;gt;&lt;/code>，并校验&lt;code>&amp;lt;token&amp;gt;&lt;/code>的合法性，如果校验通过，则认证通过。&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>跟基本认证一样，Bearer 认证需要配合 HTTPS 一起使用，来保证认证安全性。&lt;/p></description></item></channel></rss>

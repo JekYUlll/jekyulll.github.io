@@ -1,5 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Frontend on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/frontend/</link><description>Recent content in Frontend on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 18 Mar 2025 06:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml"/><item><title>【01】Flet 学习笔记 --Flutter原理</title><link>https://jekyulll.github.io/post/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</link><pubDate>Tue, 18 Mar 2025 06:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</guid><description>&lt;p>Flutter为何能摆脱浏览器依赖？&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Frontend on Hello Friend NG</title><link>https://jekyulll.github.io/tags/frontend/</link><description>Recent content in Frontend on Hello Friend NG</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 18 Mar 2025 06:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/frontend/index.xml" rel="self" type="application/rss+xml"/><item><title>【01】Flet 学习笔记 --Flutter原理</title><link>https://jekyulll.github.io/post/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</link><pubDate>Tue, 18 Mar 2025 06:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</guid><description>&lt;p>Flutter为何能摆脱浏览器依赖？&lt;/p>
 &lt;hr>
 &lt;h3 id="一flutter的三层架构从操作系统到界面渲染">一、Flutter的三层架构：从操作系统到界面渲染&lt;/h3>
 &lt;p>&lt;strong>1. 嵌入层（Embedder）&lt;/strong>&lt;br>
-嵌入层是Flutter与操作系统对话的&amp;quot;翻译官&amp;quot;，负责将Flutter引擎安装到目标平台。例如在Android上，它通过Java/C++与Activity生命周期交互；在iOS上则通过Objective-C桥接UIKit事件。这一层的关键任务是创建绘图表面（Surface）并管理线程模型（如UI线程、GPU线程），为上层渲染提供稳定的运行环境。&lt;/p></description></item></channel></rss>
+嵌入层是Flutter与操作系统对话的&amp;quot;翻译官&amp;quot;，负责将Flutter引擎安装到目标平台。例如在Android上，它通过Java/C++与Activity生命周期交互；在iOS上则通过Objective-C桥接UIKit事件。这一层的关键任务是创建绘图表面（Surface）并管理线程模型（如UI线程、GPU线程），为上层渲染提供稳定的运行环境。&lt;/p>
+&lt;p>&lt;strong>2. 引擎层（Engine）&lt;/strong>&lt;br>
+引擎层是Flutter的心脏，由C++编写，包含三大核心模块：&lt;br>
+• &lt;strong>Skia图形引擎&lt;/strong>：Google开源的2D绘图库，直接操控GPU进行像素绘制，无需经过系统原生控件&lt;br>
+• &lt;strong>Dart运行时&lt;/strong>：支持JIT（开发热重载）与AOT（发布高性能）双模式编译&lt;br>
+• &lt;strong>文本渲染引擎&lt;/strong>：独立处理复杂文字排版（如阿拉伯语从右向左排列）&lt;br>
+这些组件共同构建了跨平台的绘图能力，例如滑动列表时，Skia会将图层数据直接提交给GPU渲染管线。&lt;/p>
+&lt;p>&lt;strong>3. 框架层（Framework）&lt;/strong>&lt;br>
+开发者直接接触的Dart语言层，提供声明式UI组件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-dart" data-lang="dart">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 典型Flutter组件树
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>Scaffold(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> appBar: AppBar(title: Text(&lt;span style="color:#e6db74">&amp;#39;Demo&amp;#39;&lt;/span>)),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> body: ListView.builder(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> itemBuilder: (context, index) &lt;span style="color:#f92672">=&amp;gt;&lt;/span> ListTile(title: Text(&lt;span style="color:#e6db74">&amp;#39;Item &lt;/span>&lt;span style="color:#e6db74">$&lt;/span>index&lt;span style="color:#e6db74">&amp;#39;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>框架层将Widget转化为渲染指令，通过深度优先遍历完成布局计算，最终生成供Skia处理的图层数据。&lt;/p>
+&lt;hr>
+&lt;h3 id="二自渲染机制">二、自渲染机制&lt;/h3>
+&lt;p>传统跨平台方案如React Native需要将JavaScript控件映射为原生组件。Flutter不同：&lt;/p>
+&lt;p>&lt;strong>1. 像素级控制&lt;/strong>&lt;br>
+通过Skia直接向GPU提交绘图指令，绕过了浏览器渲染流程中的HTML解析、CSS计算、合成层处理等环节。例如在实现渐变色动画时，Flutter引擎直接操作着色器，而Web方案需要处理复杂的CSS动画性能优化。&lt;/p>
+&lt;p>&lt;strong>2. 线程模型优化&lt;/strong>&lt;br>
+• &lt;strong>UI线程&lt;/strong>：执行Dart代码，构建图层树&lt;br>
+• &lt;strong>GPU线程&lt;/strong>：调用Skia生成GL指令&lt;br>
+• &lt;strong>IO线程&lt;/strong>：异步加载资源&lt;br>
+三线程通过VSync信号同步，确保60FPS流畅渲染。相比之下，浏览器受限于单线程JavaScript和样式重计算，容易出现卡顿。&lt;/p>
+&lt;p>&lt;strong>3. 跨平台一致性保障&lt;/strong>&lt;br>
+自研渲染引擎避免了不同平台WebView的差异问题。例如在实现Material Design的波纹效果时，Android和iOS会呈现完全相同的动画细节，而传统方案需要分别适配各平台原生控件。&lt;/p>
+&lt;hr>
+&lt;h3 id="三与浏览器方案的对比">三、与浏览器方案的对比&lt;/h3>
+&lt;p>通过实际场景对比传统Web技术与Flutter的差异：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>场景&lt;/th>
+ &lt;th>浏览器方案&lt;/th>
+ &lt;th>Flutter方案&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>列表滚动&lt;/td>
+ &lt;td>依赖DOM更新，易卡顿&lt;/td>
+ &lt;td>图层复用，GPU直接合成&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>交互动画&lt;/td>
+ &lt;td>CSS过渡可能丢帧&lt;/td>
+ &lt;td>基于物理的动画曲线&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>首屏加载&lt;/td>
+ &lt;td>需下载完整HTML/CSS/JS&lt;/td>
+ &lt;td>预编译Dart代码快速启动&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>内存占用&lt;/td>
+ &lt;td>WebView常驻内存较高&lt;/td>
+ &lt;td>原生线程管理更高效&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>以电商商品列表为例，Flutter可稳定保持120FPS滚动帧率，而基于Web的方案在快速滑动时容易出现白屏。&lt;/p></description></item></channel></rss>
