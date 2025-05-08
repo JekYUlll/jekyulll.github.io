@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Mon, 21 Apr 2025 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>C++ 中的乐观锁和悲观锁</title><link>https://jekyulll.github.io/post/cpp-c++-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</link><pubDate>Mon, 21 Apr 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</guid><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpp on HOREB EVAN JEKYULLL BLOG</title><link>https://jekyulll.github.io/tags/cpp/</link><description>Recent content in Cpp on HOREB EVAN JEKYULLL BLOG</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 08 May 2025 18:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>【仅源码】C语言通过getaddrinfo函数获取域名的IP地址</title><link>https://jekyulll.github.io/post/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</link><pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</guid><description>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;cstring&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;stdlib.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;sys/types.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;sys/socket.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;netdb.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;arpa/inet.h&amp;gt;&lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 2025/05/08
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// C语言通过getaddrinfo函数获取域名的IP地址
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">struct&lt;/span> &lt;span class="nc">addrinfo&lt;/span> &lt;span class="n">hints&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">status&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">char&lt;/span> &lt;span class="n">ipstr&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">INET6_ADDRSTRLEN&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 初始化hints结构
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">memset&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">hints&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">sizeof&lt;/span> &lt;span class="n">hints&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">hints&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ai_family&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">AF_UNSPEC&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// IPv4 或者 IPv6
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">hints&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ai_socktype&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">SOCK_STREAM&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// TCP 套接字
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 获取地址信息
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="n">status&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">getaddrinfo&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;www.baidu.com&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">hints&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fprintf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stderr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;getaddrinfo error: %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">gai_strerror&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">status&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 遍历地址列表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">res&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">p&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">p&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">ai_next&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">void&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">addr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">char&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">ipver&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 获取 IP 地址
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">ai_family&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">AF_INET&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">// IPv4
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="nc">sockaddr_in&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">ipv4&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="nc">sockaddr_in&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">ai_addr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">addr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ipv4&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">sin_addr&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ipver&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;IPv4&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="c1">// IPv6
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">struct&lt;/span> &lt;span class="nc">sockaddr_in6&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">ipv6&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">struct&lt;/span> &lt;span class="nc">sockaddr_in6&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">ai_addr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">addr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ipv6&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">sin6_addr&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ipver&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;IPv6&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 将二进制 IP 地址转换为文本格式
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">inet_ntop&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">ai_family&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">addr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ipstr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">sizeof&lt;/span> &lt;span class="n">ipstr&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;%s: %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ipver&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ipstr&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 释放地址信息
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">freeaddrinfo&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>C++ 中的乐观锁和悲观锁</title><link>https://jekyulll.github.io/post/cpp-c++-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</link><pubDate>Mon, 21 Apr 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-c++-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</guid><description>&lt;blockquote>
 &lt;p>&lt;strong>悲观锁&lt;/strong>（Pessimistic Lock）是一种假设冲突会频繁发生的锁机制。每次数据访问时，都会先加锁，直到操作完成后才释放锁，这样可以确保在锁持有期间，其他线程无法访问这段数据，从而避免了并发冲突。
 &lt;strong>乐观锁&lt;/strong>（Optimistic Lock）是一种假设冲突不会频繁发生的锁机制。每次数据访问时，不会加锁，而是在更新数据时检查是否有其他线程修改过数据。如果检测到冲突（数据被其他线程修改过），则重试操作或报错。适用于读多写少的场景。&lt;/p></description></item><item><title>文件锁（FileLock）的本质与价值</title><link>https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link><pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid><description>&lt;p>在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。&lt;/p></description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义">一、反向压力（Backpressure）的核心意义&lt;/h2>
 &lt;p>在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong>内存溢出&lt;/strong>或&lt;strong>系统崩溃&lt;/strong>。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong>速率适配&lt;/strong>，从而保证系统的稳定性与资源可控性。&lt;/p></description></item><item><title>如何限制C++对象只能在堆或栈上创建？heap only 和 stack only</title><link>https://jekyulll.github.io/post/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c++-%E5%AF%B9%E8%B1%A1/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://jekyulll.github.io/post/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c++-%E5%AF%B9%E8%B1%A1/</guid><description>&lt;h2 id="为什么需要限制对象的创建位置">为什么需要限制对象的创建位置？&lt;/h2>
