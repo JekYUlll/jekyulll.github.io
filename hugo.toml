@@ -4,10 +4,22 @@ languageCode = "en-us"
 theme        = "hello-friend-ng"
 pagerSize     = 10
 
+# disableKinds = ["RSS", "sitemap", "robotsTXT"] 
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[[menu.main]]
+  identifier = "tags"
+  name       = "Tags"
+  url        = "/tags/"
+
+[[menu.main]]
+  identifier = "categories"
+  name       = "Categories"
+  url        = "/categories/"
 
 [params]
   dateform        = "Jan 2, 2006"
@@ -16,7 +28,7 @@ pagerSize     = 10
   dateformNumTime = "2006-01-02 15:04"
 
   # Subtitle for home
-  homeSubtitle = "EVAN JEKYULLL HOREB BLOG"
+  homeSubtitle = "Golang是最好的语言"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
@@ -28,27 +40,28 @@ pagerSize     = 10
   enableGlobalLanguageMenu = true
 
   # Metadata mostly used in document's head
-  description = "My new homepage or blog"
+  description = "--C++, Go, Linux--"
   keywords = "homepage, blog"
   images = [""]
 
 [taxonomies]
     category = "blog"
     tag      = "tags"
-    series   = "series"
+    # series   = "series"
+    series   = "categories"
 
 [languages]
   [languages.en]
-    title = "Hello Friend NG"
+    title = "青年大学习"
     keywords = ""
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
   [languages.en.params]
-    subtitle  = "A simple theme for Hugo"
+    subtitle  = "不知道写什么"
 
     [languages.en.params.logo]
-      logoText = "hello friend ng"
+      logoText = "Horeb"
       logoHomeLink = "/"
     # or
     #
