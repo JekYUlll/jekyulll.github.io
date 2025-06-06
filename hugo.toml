@@ -28,7 +28,7 @@ pagerSize     = 10
   dateformNumTime = "2006-01-02 15:04"
 
   # Subtitle for home
-  homeSubtitle = "Golang是最好的语言"
+  homeSubtitle = "do not panic"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   disableReadOtherPosts = false
@@ -52,13 +52,13 @@ pagerSize     = 10
 
 [languages]
   [languages.en]
-    title = "青年大学习"
+    title = "Horeb's Blog ⬆️"
     keywords = ""
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
   [languages.en.params]
-    subtitle  = "不知道写什么"
+    subtitle  = "C++ / Go / Erlang / Linux"
 
     [languages.en.params.logo]
       logoText = "Horeb"
