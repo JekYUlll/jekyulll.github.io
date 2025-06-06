@@ -28,7 +28,7 @@ Squirrel.Windows: An installation and update framework for Windows desktop apps�
 bsdiff源码解析。
 这段时间看到的最牛逼的文章：Windows 客户端软件自动更新服务的开发有哪些需求？。
 微软官方对正向/逆向二进制差分Updates的介绍：Windows Updates using forward and reverse differentials。
-"><meta name=keywords content="homepage,blog,algorithm"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://jekyulll.github.io/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/><title>更新的二进制差异算法 :: 青年大学习 — 不知道写什么
+"><meta name=keywords content="homepage,blog,algorithm"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://jekyulll.github.io/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/><title>更新的二进制差异算法 :: Horeb's Blog ⬆️ — C++ / Go / Erlang / Linux
 </title><link rel=stylesheet href=/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css integrity="sha256-JEGDzeGjjgsI+CwReRGBKI+arBzJYYzW9OnncQxXaLo=" crossorigin=anonymous><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><meta itemprop=name content="更新的二进制差异算法"><meta itemprop=description content="替换一个二进制文件有以下两个思路：
 使用完整的一个新文件直接覆盖旧的文件。 只替换新旧文件之间的差异。通过算法去计算新旧文件之间的差异，然后将差异部分移动到目标机器上。 其中方法一制作的更新就叫做全量更新（Full Update）。而方法二就是二进制差分方式，即增量更新（Delta Update）。
 增量更新 增量更新有两个方式：文件差量更新、二进制差量更新。
