@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Horeb's Blog ⬆️</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Horeb's Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Tue, 29 Apr 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Horeb's Blog ⬆️</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Horeb's Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 08 Jun 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
+&lt;p>PID namespace 中的 &lt;code>init&lt;/code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p>
+&lt;p>有多种namespace:&lt;/p>
+&lt;ul>
+&lt;li>PID Namespace（CLONE_NEWPID）：不同 namespace 中的进程可以拥有相同的 PID&lt;/li>
+&lt;li>Network Namespace（CLONE_NEWNET）：隔离网络栈，包括网络设备、IP 地址、端口、路由表以及防火墙规则&lt;/li>
+&lt;li>Mount Namespace（CLONE_NEWNS）：隔离文件系统挂载点&lt;/li>
+&lt;li>User Namespace（CLONE_NEWUSER）：隔离用户和组 ID 空间，允许同一个用户在不同 namespace 中拥有不同的权限&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;p>Docker 容器默认会使用以下 namespace：&lt;/p>
+&lt;ul>
+&lt;li>PID：隔离进程树。&lt;/li>
+&lt;li>NET：提供独立的网络栈。&lt;/li>
+&lt;li>IPC：隔离进程间通信。&lt;/li>
+&lt;li>UTS：设置独立的主机名。&lt;/li>
+&lt;li>MOUNT：隔离文件系统挂载点。&lt;/li>
+&lt;li>USER：用于映射容器内的 root 用户到宿主机的普通用户。&lt;/li>
+&lt;/ul>
+&lt;p>每个进程的 namespace 信息都存储在/proc/[pid]/ns目录下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls -l /proc/self/ns
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 cgroup -&amp;gt; &amp;#39;cgroup:[4026531835]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 ipc -&amp;gt; &amp;#39;ipc:[4026531839]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 mnt -&amp;gt; &amp;#39;mnt:[4026531840]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 net -&amp;gt; &amp;#39;net:[4026531956]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid_for_children -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 user -&amp;gt; &amp;#39;user:[4026531837]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 uts -&amp;gt; &amp;#39;uts:[4026531838]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="如何创建">如何创建？&lt;/h3>
+&lt;ol>
+&lt;li>使用&lt;code>unshare&lt;/code>命令创建 namespace：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 创建新的挂载点和PID namespace，并在其中启动bash&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>unshare --mount --pid --fork bash
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在新的namespace中查看PID&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $$ &lt;span style="color:#75715e"># 输出通常为1，表示当前bash是新namespace中的第一个进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查看当前namespace中的进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ps aux
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>使用&lt;code>clone()&lt;/code>系统调用&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-C++" data-lang="C++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define _GNU_SOURCE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;sched.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdlib.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;sys/wait.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 子进程执行的函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">child_func&lt;/span>(&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#f92672">*&lt;/span>arg) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 在新的UTS namespace中设置主机名
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> sethostname(&lt;span style="color:#e6db74">&amp;#34;container&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 输出当前进程ID和主机名
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> printf(&lt;span style="color:#e6db74">&amp;#34;子进程PID: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, getpid());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> printf(&lt;span style="color:#e6db74">&amp;#34;主机名: %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;container&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 执行/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> execlp(&lt;span style="color:#e6db74">&amp;#34;/bin/bash&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;bash&amp;#34;&lt;/span>, NULL);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> STACK_SIZE &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">65536&lt;/span>; &lt;span style="color:#75715e">// 为子进程分配栈空间
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>stack &lt;span style="color:#f92672">=&lt;/span> malloc(STACK_SIZE);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>stack) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;内存分配失败&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 设置栈顶（栈是向下增长的）
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>stack_top &lt;span style="color:#f92672">=&lt;/span> stack &lt;span style="color:#f92672">+&lt;/span> STACK_SIZE;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 创建新的UTS和PID namespace，并启动子进程
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> pid_t pid &lt;span style="color:#f92672">=&lt;/span> clone(child_func, stack_top, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CLONE_NEWUTS &lt;span style="color:#f92672">|&lt;/span> CLONE_NEWPID &lt;span style="color:#f92672">|&lt;/span> SIGCHLD, NULL);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (pid &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;clone失败&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 等待子进程结束
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> waitpid(pid, NULL, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> free(stack);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>使用&lt;code>setns()&lt;/code>加入现有 namespace&lt;br>
+加入另一个进程的网络 namespace：&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-C++" data-lang="C++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define _GNU_SOURCE
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;fcntl.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;sched.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 打开目标进程的网络namespace文件
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> fd &lt;span style="color:#f92672">=&lt;/span> open(&lt;span style="color:#e6db74">&amp;#34;/proc/1234/ns/net&amp;#34;&lt;/span>, O_RDONLY);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (fd &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;打开namespace文件失败&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 加入目标namespace
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (setns(fd, CLONE_NEWNET) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;加入namespace失败&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(fd);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 执行需要在目标namespace中运行的命令
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> execlp(&lt;span style="color:#e6db74">&amp;#34;ip&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;ip&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;addr&amp;#34;&lt;/span>, NULL);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>使用&lt;code>nsenter&lt;/code>命令（简化版&lt;code>setns()&lt;/code>）&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nsenter --target &lt;span style="color:#ae81ff">1234&lt;/span> --net ip addr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
 &lt;p>&lt;a href="https://blog.csdn.net/liaowenxiong/article/details/116401524">Linux 命令之 &lt;code>locale&lt;/code> &amp;ndash; 设置和显示程序运行的语言环境&lt;/a>。&lt;/p>
 &lt;blockquote>
 &lt;p>使用 &lt;code>locale&lt;/code> 命令来设置和显示程序运行的语言环境，&lt;code>locale&lt;/code> 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br>
