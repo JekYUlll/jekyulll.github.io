@@ -6,6 +6,9 @@ pagerSize     = 10
 
 # disableKinds = ["RSS", "sitemap", "robotsTXT"] 
 
+[services.googleAnalytics]
+id = 'G-Q6473FXND4'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
