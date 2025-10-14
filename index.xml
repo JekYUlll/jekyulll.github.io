@@ -262,7 +262,27 @@
 &lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
 &lt;/blockquote>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $UID
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>[linux] 在wezterm里使用tmux实现history restore 保存历史会话</title><link>https://jekyulll.github.io/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</guid><description>&lt;hr>
+&lt;p>知乎链接：https://zhuanlan.zhihu.com/p/1961547067106259944&lt;/p>
+&lt;p>wezterm在打开主进程、或者ctrl+alt+t新建tab的时候默认是空的shell会话，有时候不够方便。&lt;/p>
+&lt;p>tmux可以轻松解决痛点，但是如果设置wezterm的default_prog为tmux（即每次会话都启动）：在wezterm里新建tab，你会发现和之前共享同一个tmux，相当于wezterm自带的tab功能没用了。&lt;/p>
+&lt;pre>&lt;code>config.default_prog = { &amp;quot;/usr/bin/tmux&amp;quot;, &amp;quot;new-session&amp;quot;, &amp;quot;-A&amp;quot;, &amp;quot;-s&amp;quot;, &amp;quot;main&amp;quot; }
+&lt;/code>&lt;/pre>
+&lt;p>于是：能否只让wezterm的第一个tab始终开启一个tmux来保存会话，其他tab则使用默认的新建shell功能？&lt;/p>
+&lt;p>具体实现：&lt;/p>
+&lt;pre>&lt;code>-- 第一个tab打开tmux，之后的为空的shell
+local tmux_started = false
+wezterm.on(&amp;quot;gui-startup&amp;quot;, function(cmd)
+	-- 启动 wezterm 时自动打开一个 window
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+	if not tmux_started then
+		tmux_started = true
+		-- 启动 tmux
+		pane:send_text(&amp;quot;tmux -u new-session -A -s main\n&amp;quot;)
+	end
+end)
+&lt;/code>&lt;/pre>
+&lt;p>加在wezterm配置合适的位置即可。&lt;/p></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
 &lt;p>编写守护进程的一般步骤步骤：&lt;/p>
 &lt;ol>
 &lt;li>在父进程中执行&lt;code>fork&lt;/code>并&lt;code>exit&lt;/code>退出；&lt;/li>
