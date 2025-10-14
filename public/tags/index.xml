@@ -1,201 +1,201 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 青年大学习</title>
-    <link>http://localhost:1313/tags/</link>
-    <description>Recent content in Tags on 青年大学习</description>
+    <title>Tags on Horeb&#39;s Blog ⬆️</title>
+    <link>https://jekyulll.github.io/tags/</link>
+    <description>Recent content in Tags on Horeb&#39;s Blog ⬆️</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 08 May 2025 18:05:47 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Cpp</title>
-      <link>http://localhost:1313/tags/cpp/</link>
-      <pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/cpp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Web</title>
-      <link>http://localhost:1313/tags/web/</link>
-      <pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/web/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mq</title>
-      <link>http://localhost:1313/tags/mq/</link>
-      <pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/mq/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Redis</title>
-      <link>http://localhost:1313/tags/redis/</link>
-      <pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/redis/</guid>
-      <description></description>
-    </item>
+    <lastBuildDate>Sun, 08 Jun 2025 20:05:47 +0800</lastBuildDate>
+    <atom:link href="https://jekyulll.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux</title>
-      <link>http://localhost:1313/tags/linux/</link>
-      <pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/linux/</guid>
+      <link>https://jekyulll.github.io/tags/linux/</link>
+      <pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/linux/</guid>
       <description></description>
     </item>
     <item>
       <title>Os</title>
-      <link>http://localhost:1313/tags/os/</link>
-      <pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/os/</guid>
+      <link>https://jekyulll.github.io/tags/os/</link>
+      <pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/os/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cpp</title>
+      <link>https://jekyulll.github.io/tags/cpp/</link>
+      <pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/cpp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>https://jekyulll.github.io/tags/web/</link>
+      <pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mq</title>
+      <link>https://jekyulll.github.io/tags/mq/</link>
+      <pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/mq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Redis</title>
+      <link>https://jekyulll.github.io/tags/redis/</link>
+      <pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate>
+      <guid>https://jekyulll.github.io/tags/redis/</guid>
       <description></description>
     </item>
     <item>
       <title>Game</title>
-      <link>http://localhost:1313/tags/game/</link>
+      <link>https://jekyulll.github.io/tags/game/</link>
       <pubDate>Fri, 25 Apr 2025 06:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/game/</guid>
+      <guid>https://jekyulll.github.io/tags/game/</guid>
       <description></description>
     </item>
     <item>
       <title>Backend</title>
-      <link>http://localhost:1313/tags/backend/</link>
+      <link>https://jekyulll.github.io/tags/backend/</link>
       <pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/backend/</guid>
+      <guid>https://jekyulll.github.io/tags/backend/</guid>
       <description></description>
     </item>
     <item>
       <title>Go</title>
-      <link>http://localhost:1313/tags/go/</link>
+      <link>https://jekyulll.github.io/tags/go/</link>
       <pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/go/</guid>
+      <guid>https://jekyulll.github.io/tags/go/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithm</title>
-      <link>http://localhost:1313/tags/algorithm/</link>
+      <link>https://jekyulll.github.io/tags/algorithm/</link>
       <pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/algorithm/</guid>
+      <guid>https://jekyulll.github.io/tags/algorithm/</guid>
       <description></description>
     </item>
     <item>
       <title>Frontend</title>
-      <link>http://localhost:1313/tags/frontend/</link>
+      <link>https://jekyulll.github.io/tags/frontend/</link>
       <pubDate>Tue, 18 Mar 2025 06:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/frontend/</guid>
+      <guid>https://jekyulll.github.io/tags/frontend/</guid>
       <description></description>
     </item>
     <item>
       <title>面经</title>
-      <link>http://localhost:1313/tags/%E9%9D%A2%E7%BB%8F/</link>
+      <link>https://jekyulll.github.io/tags/%E9%9D%A2%E7%BB%8F/</link>
       <pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/%E9%9D%A2%E7%BB%8F/</guid>
+      <guid>https://jekyulll.github.io/tags/%E9%9D%A2%E7%BB%8F/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Structure</title>
-      <link>http://localhost:1313/tags/data-structure/</link>
+      <link>https://jekyulll.github.io/tags/data-structure/</link>
       <pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/data-structure/</guid>
+      <guid>https://jekyulll.github.io/tags/data-structure/</guid>
       <description></description>
     </item>
     <item>
       <title>Morden Cpp</title>
-      <link>http://localhost:1313/tags/morden-cpp/</link>
+      <link>https://jekyulll.github.io/tags/morden-cpp/</link>
       <pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/morden-cpp/</guid>
+      <guid>https://jekyulll.github.io/tags/morden-cpp/</guid>
       <description></description>
     </item>
     <item>
       <title>Template</title>
-      <link>http://localhost:1313/tags/template/</link>
+      <link>https://jekyulll.github.io/tags/template/</link>
       <pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/template/</guid>
+      <guid>https://jekyulll.github.io/tags/template/</guid>
       <description></description>
     </item>
     <item>
       <title>Macro</title>
-      <link>http://localhost:1313/tags/macro/</link>
+      <link>https://jekyulll.github.io/tags/macro/</link>
       <pubDate>Wed, 15 Jan 2025 12:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/macro/</guid>
+      <guid>https://jekyulll.github.io/tags/macro/</guid>
       <description></description>
     </item>
     <item>
       <title>Reprint</title>
-      <link>http://localhost:1313/tags/reprint/</link>
+      <link>https://jekyulll.github.io/tags/reprint/</link>
       <pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/reprint/</guid>
+      <guid>https://jekyulll.github.io/tags/reprint/</guid>
       <description></description>
     </item>
     <item>
       <title>Hyperloglog</title>
-      <link>http://localhost:1313/tags/hyperloglog/</link>
+      <link>https://jekyulll.github.io/tags/hyperloglog/</link>
       <pubDate>Wed, 08 Jan 2025 10:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/hyperloglog/</guid>
+      <guid>https://jekyulll.github.io/tags/hyperloglog/</guid>
       <description></description>
     </item>
     <item>
       <title>Network</title>
-      <link>http://localhost:1313/tags/network/</link>
+      <link>https://jekyulll.github.io/tags/network/</link>
       <pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/network/</guid>
+      <guid>https://jekyulll.github.io/tags/network/</guid>
       <description></description>
     </item>
     <item>
       <title>Compiler</title>
-      <link>http://localhost:1313/tags/compiler/</link>
+      <link>https://jekyulll.github.io/tags/compiler/</link>
       <pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate>
-      <guid>http://localhost:1313/tags/compiler/</guid>
+      <guid>https://jekyulll.github.io/tags/compiler/</guid>
       <description></description>
     </item>
     <item>
       <title>Database</title>
-      <link>http://localhost:1313/tags/database/</link>
+      <link>https://jekyulll.github.io/tags/database/</link>
       <pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/database/</guid>
+      <guid>https://jekyulll.github.io/tags/database/</guid>
       <description></description>
     </item>
     <item>
       <title>Mysql</title>
-      <link>http://localhost:1313/tags/mysql/</link>
+      <link>https://jekyulll.github.io/tags/mysql/</link>
       <pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/mysql/</guid>
+      <guid>https://jekyulll.github.io/tags/mysql/</guid>
       <description></description>
     </item>
     <item>
       <title>Cpu</title>
-      <link>http://localhost:1313/tags/cpu/</link>
+      <link>https://jekyulll.github.io/tags/cpu/</link>
       <pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/cpu/</guid>
+      <guid>https://jekyulll.github.io/tags/cpu/</guid>
       <description></description>
     </item>
     <item>
       <title>System</title>
-      <link>http://localhost:1313/tags/system/</link>
+      <link>https://jekyulll.github.io/tags/system/</link>
       <pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/system/</guid>
+      <guid>https://jekyulll.github.io/tags/system/</guid>
       <description></description>
     </item>
     <item>
       <title>Graphics</title>
-      <link>http://localhost:1313/tags/graphics/</link>
+      <link>https://jekyulll.github.io/tags/graphics/</link>
       <pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/graphics/</guid>
+      <guid>https://jekyulll.github.io/tags/graphics/</guid>
       <description></description>
     </item>
     <item>
       <title>Opengl</title>
-      <link>http://localhost:1313/tags/opengl/</link>
+      <link>https://jekyulll.github.io/tags/opengl/</link>
       <pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate>
-      <guid>http://localhost:1313/tags/opengl/</guid>
+      <guid>https://jekyulll.github.io/tags/opengl/</guid>
       <description></description>
     </item>
     <item>
       <title>Path</title>
-      <link>http://localhost:1313/tags/path/</link>
+      <link>https://jekyulll.github.io/tags/path/</link>
       <pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate>
-      <guid>http://localhost:1313/tags/path/</guid>
+      <guid>https://jekyulll.github.io/tags/path/</guid>
       <description></description>
     </item>
   </channel>

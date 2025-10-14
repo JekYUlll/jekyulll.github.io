@@ -1,20 +1,260 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Welcome to My Blog on 青年大学习</title>
-        <link>http://localhost:1313/posts/</link>
-        <description>Recent content in Welcome to My Blog on 青年大学习</description>
+        <title>Welcome to My Blog on Horeb&#39;s Blog ⬆️</title>
+        <link>https://jekyulll.github.io/posts/</link>
+        <description>Recent content in Welcome to My Blog on Horeb&#39;s Blog ⬆️</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
         <lastBuildDate>Sun, 22 Dec 2024 21:05:47 +0800</lastBuildDate>
-        <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://jekyulll.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>容器化技术之 Linux namespace</title>
+            <link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link>
+            <pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate>
+            
+            <guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid>
+            <description>&lt;p&gt;Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p&gt;
+&lt;p&gt;PID namespace 中的 &lt;code&gt;init&lt;/code&gt; 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p&gt;
+&lt;p&gt;有多种namespace:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PID Namespace（CLONE_NEWPID）：不同 namespace 中的进程可以拥有相同的 PID&lt;/li&gt;
+&lt;li&gt;Network Namespace（CLONE_NEWNET）：隔离网络栈，包括网络设备、IP 地址、端口、路由表以及防火墙规则&lt;/li&gt;
+&lt;li&gt;Mount Namespace（CLONE_NEWNS）：隔离文件系统挂载点&lt;/li&gt;
+&lt;li&gt;User Namespace（CLONE_NEWUSER）：隔离用户和组 ID 空间，允许同一个用户在不同 namespace 中拥有不同的权限&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Docker 容器默认会使用以下 namespace：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PID：隔离进程树。&lt;/li&gt;
+&lt;li&gt;NET：提供独立的网络栈。&lt;/li&gt;
+&lt;li&gt;IPC：隔离进程间通信。&lt;/li&gt;
+&lt;li&gt;UTS：设置独立的主机名。&lt;/li&gt;
+&lt;li&gt;MOUNT：隔离文件系统挂载点。&lt;/li&gt;
+&lt;li&gt;USER：用于映射容器内的 root 用户到宿主机的普通用户。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个进程的 namespace 信息都存储在/proc/[pid]/ns目录下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ls -l /proc/self/ns
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 cgroup -&amp;gt; &amp;#39;cgroup:[4026531835]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 ipc -&amp;gt; &amp;#39;ipc:[4026531839]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 mnt -&amp;gt; &amp;#39;mnt:[4026531840]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 net -&amp;gt; &amp;#39;net:[4026531956]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid_for_children -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 user -&amp;gt; &amp;#39;user:[4026531837]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 uts -&amp;gt; &amp;#39;uts:[4026531838]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;如何创建&#34;&gt;如何创建？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;使用&lt;code&gt;unshare&lt;/code&gt;命令创建 namespace：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 创建新的挂载点和PID namespace，并在其中启动bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;unshare --mount --pid --fork bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 在新的namespace中查看PID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo $$  &lt;span style=&#34;color:#75715e&#34;&gt;# 输出通常为1，表示当前bash是新namespace中的第一个进程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 查看当前namespace中的进程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps aux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;使用&lt;code&gt;clone()&lt;/code&gt;系统调用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define _GNU_SOURCE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;sched.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;sys/wait.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 子进程执行的函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;child_func&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;arg) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 在新的UTS namespace中设置主机名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    sethostname(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;container&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 输出当前进程ID和主机名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;子进程PID: %d&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, getpid());
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    printf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;主机名: %s&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;container&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 执行/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    execlp(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/bin/bash&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; STACK_SIZE &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;65536&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// 为子进程分配栈空间
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;stack &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; malloc(STACK_SIZE);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;stack) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        perror(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;内存分配失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 设置栈顶（栈是向下增长的）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;stack_top &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; stack &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; STACK_SIZE;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 创建新的UTS和PID namespace，并启动子进程
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    pid_t pid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; clone(child_func, stack_top, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                     CLONE_NEWUTS &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; CLONE_NEWPID &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; SIGCHLD, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (pid &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        perror(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;clone失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 等待子进程结束
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    waitpid(pid, NULL, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    free(stack);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;使用&lt;code&gt;setns()&lt;/code&gt;加入现有 namespace&lt;br&gt;
+加入另一个进程的网络 namespace：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-C++&#34; data-lang=&#34;C++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#define _GNU_SOURCE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;fcntl.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;sched.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 打开目标进程的网络namespace文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; fd &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; open(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/proc/1234/ns/net&amp;#34;&lt;/span&gt;, O_RDONLY);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (fd &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        perror(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;打开namespace文件失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 加入目标namespace
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (setns(fd, CLONE_NEWNET) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        perror(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;加入namespace失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    close(fd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// 执行需要在目标namespace中运行的命令
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    execlp(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;addr&amp;#34;&lt;/span&gt;, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;使用&lt;code&gt;nsenter&lt;/code&gt;命令（简化版&lt;code&gt;setns()&lt;/code&gt;）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo nsenter --target &lt;span style=&#34;color:#ae81ff&#34;&gt;1234&lt;/span&gt; --net ip addr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+            <content type="html"><![CDATA[<p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。</p>
+<p>PID namespace 中的 <code>init</code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。</p>
+<p>有多种namespace:</p>
+<ul>
+<li>PID Namespace（CLONE_NEWPID）：不同 namespace 中的进程可以拥有相同的 PID</li>
+<li>Network Namespace（CLONE_NEWNET）：隔离网络栈，包括网络设备、IP 地址、端口、路由表以及防火墙规则</li>
+<li>Mount Namespace（CLONE_NEWNS）：隔离文件系统挂载点</li>
+<li>User Namespace（CLONE_NEWUSER）：隔离用户和组 ID 空间，允许同一个用户在不同 namespace 中拥有不同的权限</li>
+<li>&hellip;</li>
+</ul>
+<p>Docker 容器默认会使用以下 namespace：</p>
+<ul>
+<li>PID：隔离进程树。</li>
+<li>NET：提供独立的网络栈。</li>
+<li>IPC：隔离进程间通信。</li>
+<li>UTS：设置独立的主机名。</li>
+<li>MOUNT：隔离文件系统挂载点。</li>
+<li>USER：用于映射容器内的 root 用户到宿主机的普通用户。</li>
+</ul>
+<p>每个进程的 namespace 信息都存储在/proc/[pid]/ns目录下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls -l /proc/self/ns
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 cgroup -&gt; &#39;cgroup:[4026531835]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 ipc -&gt; &#39;ipc:[4026531839]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 mnt -&gt; &#39;mnt:[4026531840]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 net -&gt; &#39;net:[4026531956]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid -&gt; &#39;pid:[4026531836]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid_for_children -&gt; &#39;pid:[4026531836]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 user -&gt; &#39;user:[4026531837]&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 uts -&gt; &#39;uts:[4026531838]&#39;</span>
+</span></span></code></pre></div><h3 id="如何创建">如何创建？</h3>
+<ol>
+<li>使用<code>unshare</code>命令创建 namespace：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建新的挂载点和PID namespace，并在其中启动bash</span>
+</span></span><span style="display:flex;"><span>unshare --mount --pid --fork bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在新的namespace中查看PID</span>
+</span></span><span style="display:flex;"><span>echo $$  <span style="color:#75715e"># 输出通常为1，表示当前bash是新namespace中的第一个进程</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前namespace中的进程</span>
+</span></span><span style="display:flex;"><span>ps aux
+</span></span></code></pre></div><ol start="2">
+<li>使用<code>clone()</code>系统调用</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#define _GNU_SOURCE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sched.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sys/wait.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 子进程执行的函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">child_func</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>arg) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在新的UTS namespace中设置主机名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    sethostname(<span style="color:#e6db74">&#34;container&#34;</span>, <span style="color:#ae81ff">9</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出当前进程ID和主机名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    printf(<span style="color:#e6db74">&#34;子进程PID: %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, getpid());
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#e6db74">&#34;主机名: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;container&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 执行/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    execlp(<span style="color:#e6db74">&#34;/bin/bash&#34;</span>, <span style="color:#e6db74">&#34;bash&#34;</span>, NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> STACK_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">65536</span>; <span style="color:#75715e">// 为子进程分配栈空间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>stack <span style="color:#f92672">=</span> malloc(STACK_SIZE);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>stack) {
+</span></span><span style="display:flex;"><span>        perror(<span style="color:#e6db74">&#34;内存分配失败&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 设置栈顶（栈是向下增长的）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>stack_top <span style="color:#f92672">=</span> stack <span style="color:#f92672">+</span> STACK_SIZE;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建新的UTS和PID namespace，并启动子进程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    pid_t pid <span style="color:#f92672">=</span> clone(child_func, stack_top, 
+</span></span><span style="display:flex;"><span>                     CLONE_NEWUTS <span style="color:#f92672">|</span> CLONE_NEWPID <span style="color:#f92672">|</span> SIGCHLD, NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (pid <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        perror(<span style="color:#e6db74">&#34;clone失败&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 等待子进程结束
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    waitpid(pid, NULL, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    free(stack);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="3">
+<li>使用<code>setns()</code>加入现有 namespace<br>
+加入另一个进程的网络 namespace：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#define _GNU_SOURCE
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fcntl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;sched.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 打开目标进程的网络namespace文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;/proc/1234/ns/net&#34;</span>, O_RDONLY);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        perror(<span style="color:#e6db74">&#34;打开namespace文件失败&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 加入目标namespace
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (setns(fd, CLONE_NEWNET) <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        perror(<span style="color:#e6db74">&#34;加入namespace失败&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    close(fd);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 执行需要在目标namespace中运行的命令
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    execlp(<span style="color:#e6db74">&#34;ip&#34;</span>, <span style="color:#e6db74">&#34;ip&#34;</span>, <span style="color:#e6db74">&#34;addr&#34;</span>, NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="4">
+<li>使用<code>nsenter</code>命令（简化版<code>setns()</code>）</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nsenter --target <span style="color:#ae81ff">1234</span> --net ip addr
+</span></span></code></pre></div>]]></content>
+        </item>
         
         <item>
             <title>【仅源码】C语言通过getaddrinfo函数获取域名的IP地址</title>
-            <link>http://localhost:1313/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</link>
+            <link>https://jekyulll.github.io/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</link>
             <pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</guid>
+            <guid>https://jekyulll.github.io/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</guid>
             <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;cstring&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
@@ -127,10 +367,10 @@
         
         <item>
             <title>Redis Stream和MQ</title>
-            <link>http://localhost:1313/posts/redis-redis-stream%E5%92%8Cmq/</link>
+            <link>https://jekyulll.github.io/posts/redis-redis-stream%E5%92%8Cmq/</link>
             <pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/redis-redis-stream%E5%92%8Cmq/</guid>
+            <guid>https://jekyulll.github.io/posts/redis-redis-stream%E5%92%8Cmq/</guid>
             <description>&lt;p&gt;常见MQ的功能，有哪些是用Redis实现不了的？&lt;/p&gt;
 &lt;p&gt;消息队列（MQ）用于解耦系统、异步处理、削峰填谷等，常见的 MQ 有 RabbitMQ、Kafka、RocketMQ、ActiveMQ 等。而 Redis 也提供了发布/订阅（pub/sub）、List 队列、Stream（流）等机制，看似也能实现部分消息队列的功能。&lt;/p&gt;
 &lt;hr&gt;
@@ -306,10 +546,10 @@
         
         <item>
             <title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title>
-            <link>http://localhost:1313/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link>
+            <link>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link>
             <pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid>
             <description>&lt;p&gt;复习：&lt;a href=&#34;https://blog.csdn.net/JMW1407/article/details/108412836&#34;&gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/liaowenxiong/article/details/116401524&#34;&gt;Linux 命令之 &lt;code&gt;locale&lt;/code&gt; &amp;ndash; 设置和显示程序运行的语言环境&lt;/a&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -336,10 +576,10 @@
         
         <item>
             <title>Linux 守护进程</title>
-            <link>http://localhost:1313/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link>
+            <link>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link>
             <pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid>
             <description>&lt;p&gt;复习：&lt;a href=&#34;https://blog.csdn.net/JMW1407/article/details/108412836&#34;&gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;编写守护进程的一般步骤步骤：&lt;/p&gt;
 &lt;ol&gt;
@@ -373,10 +613,10 @@
         
         <item>
             <title>【1】Blender学习日记-入门</title>
-            <link>http://localhost:1313/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</link>
+            <link>https://jekyulll.github.io/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</link>
             <pubDate>Fri, 25 Apr 2025 06:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</guid>
+            <guid>https://jekyulll.github.io/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</guid>
             <description>&lt;p&gt;半夜学一下blender。&lt;/p&gt;
 &lt;!-- 在Mint上也装了一下。   --&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV14u41147YH&#34;&gt;【Kurt】Blender零基础入门教程 | Blender中文区新手必刷教程(已完结)&lt;/a&gt;。第四课著名的珍珠耳环少女，感觉一节课就差不多学会基础操作了，不错。&lt;/p&gt;
@@ -410,10 +650,10 @@
         
         <item>
             <title>实现服务端断点续传：Go与Nginx</title>
-            <link>http://localhost:1313/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link>
+            <link>https://jekyulll.github.io/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link>
             <pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid>
+            <guid>https://jekyulll.github.io/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid>
             <description>&lt;h3 id=&#34;一http协议基础&#34;&gt;一、HTTP协议基础&lt;/h3&gt;
 &lt;p&gt;HTTP协议通过&lt;strong&gt;Range请求&lt;/strong&gt;实现断点续传：&lt;/p&gt;
 &lt;ol&gt;
@@ -663,10 +903,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>C&#43;&#43; 中的乐观锁和悲观锁</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</link>
             <pubDate>Mon, 21 Apr 2025 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</guid>
             <description>&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;悲观锁&lt;/strong&gt;（Pessimistic Lock）是一种假设冲突会频繁发生的锁机制。每次数据访问时，都会先加锁，直到操作完成后才释放锁，这样可以确保在锁持有期间，其他线程无法访问这段数据，从而避免了并发冲突。
 &lt;strong&gt;乐观锁&lt;/strong&gt;（Optimistic Lock）是一种假设冲突不会频繁发生的锁机制。每次数据访问时，不会加锁，而是在更新数据时检查是否有其他线程修改过数据。如果检测到冲突（数据被其他线程修改过），则重试操作或报错。适用于读多写少的场景。&lt;/p&gt;&lt;/blockquote&gt;
@@ -815,10 +1055,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>304 Not Modified 是怎么检测的？</title>
-            <link>http://localhost:1313/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</link>
+            <link>https://jekyulll.github.io/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</link>
             <pubDate>Thu, 17 Apr 2025 04:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</guid>
+            <guid>https://jekyulll.github.io/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</guid>
             <description>&lt;p&gt;&lt;strong&gt;最终判断逻辑由服务端完成&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;• &lt;strong&gt;浏览器行为&lt;/strong&gt;（客户端）：&lt;br&gt;
 • 浏览器会缓存资源（如 HTML、图片、CSS 等），并根据服务端之前返回的响应头（如 &lt;code&gt;Cache-Control&lt;/code&gt;、&lt;code&gt;Expires&lt;/code&gt;、&lt;code&gt;ETag&lt;/code&gt;、&lt;code&gt;Last-Modified&lt;/code&gt;）决定是否发起&lt;strong&gt;条件请求&lt;/strong&gt;。&lt;br&gt;
@@ -890,10 +1130,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>Linux 的CPU保护环，三环和零环</title>
-            <link>http://localhost:1313/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link>
+            <link>https://jekyulll.github.io/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link>
             <pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid>
             <description>&lt;p&gt;Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong&gt;保护环&lt;/strong&gt;（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p&gt;
 &lt;p&gt;x86保护环的完整结构为四层，但实际仅Ring 0和Ring 3被广泛使用：&lt;/p&gt;
 &lt;ul&gt;
@@ -941,10 +1181,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>fork出的子进程是否继承文件描述符表？</title>
-            <link>http://localhost:1313/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link>
+            <link>https://jekyulll.github.io/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link>
             <pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid>
             <description>&lt;p&gt;当通过 &lt;code&gt;fork()&lt;/code&gt; 创建子进程时，子进程会获得父进程文件描述符表的&lt;u&gt;完整副本&lt;/u&gt;。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
 父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p&gt;
 &lt;ul&gt;
@@ -982,10 +1222,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>Linux里fork出子进程的时候，哪些内容是共享的？</title>
-            <link>http://localhost:1313/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link>
+            <link>https://jekyulll.github.io/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link>
             <pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid>
             <description>&lt;h3 id=&#34;一共享的内容&#34;&gt;&lt;strong&gt;一、共享的内容&lt;/strong&gt;&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -1103,10 +1343,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>文件锁（FileLock）的本质与价值</title>
-            <link>http://localhost:1313/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link>
             <pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid>
             <description>&lt;p&gt;在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。&lt;/p&gt;
 &lt;p&gt;文件锁的核心逻辑是通过独占标记协调资源访问。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;典型应用场景&lt;/strong&gt;：&lt;/p&gt;
@@ -1338,10 +1578,10 @@ Nginx配置限速：</p>
         
         <item>
             <title>更新的二进制差异算法</title>
-            <link>http://localhost:1313/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</link>
+            <link>https://jekyulll.github.io/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</link>
             <pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</guid>
+            <guid>https://jekyulll.github.io/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</guid>
             <description>&lt;p&gt;替换一个二进制文件有以下两个思路：&lt;/p&gt;
 &lt;p&gt;使用完整的一个新文件直接覆盖旧的文件。
 只替换新旧文件之间的差异。通过算法去计算新旧文件之间的差异，然后将差异部分移动到目标机器上。
@@ -1439,10 +1679,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>Nginx 的多进程模型</title>
-            <link>http://localhost:1313/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
+            <link>https://jekyulll.github.io/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
             <pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
+            <guid>https://jekyulll.github.io/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
             <description>&lt;p&gt;在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong&gt;多进程模型&lt;/strong&gt;。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h4 id=&#34;一多进程模型的核心架构&#34;&gt;一、多进程模型的核心架构&lt;/h4&gt;
@@ -1606,10 +1846,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>流计算中的反向压力模型与 Reactive Streams --C&#43;&#43;实现</title>
-            <link>http://localhost:1313/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
+            <link>https://jekyulll.github.io/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
             <pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
+            <guid>https://jekyulll.github.io/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
             <description>&lt;h2 id=&#34;一反向压力backpressure的核心意义&#34;&gt;一、反向压力（Backpressure）的核心意义&lt;/h2&gt;
 &lt;p&gt;在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong&gt;内存溢出&lt;/strong&gt;或&lt;strong&gt;系统崩溃&lt;/strong&gt;。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong&gt;速率适配&lt;/strong&gt;，从而保证系统的稳定性与资源可控性。&lt;/p&gt;
 &lt;h3 id=&#34;11-背压的两种实现模式&#34;&gt;1.1 背压的两种实现模式&lt;/h3&gt;
@@ -1848,10 +2088,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>【01】Flet 学习笔记 --Flutter原理</title>
-            <link>http://localhost:1313/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</link>
+            <link>https://jekyulll.github.io/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</link>
             <pubDate>Tue, 18 Mar 2025 06:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</guid>
+            <guid>https://jekyulll.github.io/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0---flutter%E5%8E%9F%E7%90%86/</guid>
             <description>&lt;p&gt;Flutter为何能摆脱浏览器依赖？&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;一flutter的三层架构从操作系统到界面渲染&#34;&gt;一、Flutter的三层架构：从操作系统到界面渲染&lt;/h3&gt;
@@ -2000,10 +2240,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>如何限制C&#43;&#43;对象只能在堆或栈上创建？heap only 和 stack only</title>
-            <link>http://localhost:1313/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</link>
+            <link>https://jekyulll.github.io/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</link>
             <pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</guid>
             <description>&lt;h2 id=&#34;为什么需要限制对象的创建位置&#34;&gt;为什么需要限制对象的创建位置？&lt;/h2&gt;
 &lt;p&gt;例如一个需要&lt;strong&gt;手动控制生命周期&lt;/strong&gt;的数据库连接池，不希望随便在栈上创建一个然后自动销毁。又或者写了一个轻量级的临时计算工具类，如果每次都在堆上创建，性能反而会下降。&lt;/p&gt;
 &lt;p&gt;• ✅ 明确生命周期管理
@@ -2173,10 +2413,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>解析LRU与LFU算法及C&#43;&#43;实现</title>
-            <link>http://localhost:1313/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
+            <link>https://jekyulll.github.io/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
             <pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
+            <guid>https://jekyulll.github.io/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
             <description>&lt;p&gt;在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong&gt;和&lt;/strong&gt;LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;​LRU（Least Recently Used）​
@@ -2466,10 +2706,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>【AI】半衰期算法在后端的应用</title>
-            <link>http://localhost:1313/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+            <link>https://jekyulll.github.io/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link>
             <pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+            <guid>https://jekyulll.github.io/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
             <description>&lt;p&gt;在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p&gt;
 &lt;h3 id=&#34;一算法原理与公式&#34;&gt;一、算法原理与公式&lt;/h3&gt;
 &lt;p&gt;半衰期算法基于放射性衰变公式：&lt;strong&gt;M * (1/2)^(t/T)&lt;/strong&gt;，其中：
@@ -2577,10 +2817,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>【AI】C&#43;&#43;八股：main函数之前执行了什么？</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</link>
             <pubDate>Mon, 10 Mar 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
             <description>&lt;h3 id=&#34;一_start与__libc_start_call_main的作用&#34;&gt;一、&lt;code&gt;_start&lt;/code&gt;与&lt;code&gt;__libc_start_call_main&lt;/code&gt;的作用&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -2694,10 +2934,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>【AI】使用普通的互斥锁实现读写锁</title>
-            <link>http://localhost:1313/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</link>
             <pubDate>Mon, 10 Mar 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</guid>
             <description>&lt;p&gt;核心在于通过&lt;strong&gt;状态管理&lt;/strong&gt;和&lt;strong&gt;锁的组合&lt;/strong&gt;来模拟读写锁的“读共享、写独占”特性。以下是实现思路和具体方法：&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;一实现原理&#34;&gt;一、实现原理&lt;/h3&gt;
@@ -2838,10 +3078,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>【AI】mmap 和零拷贝</title>
-            <link>http://localhost:1313/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link>
+            <link>https://jekyulll.github.io/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link>
             <pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid>
             <description>&lt;p&gt;mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;一mmap的核心机制&#34;&gt;一、mmap的核心机制&lt;/h3&gt;
@@ -3194,10 +3434,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>内核的用户态和内核态</title>
-            <link>http://localhost:1313/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link>
+            <link>https://jekyulll.github.io/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link>
             <pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid>
             <description>&lt;p&gt;线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;一线程概念的双重性用户态与内核态的交织&#34;&gt;一、线程概念的双重性：用户态与内核态的交织&lt;/h3&gt;
@@ -3305,10 +3545,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>进程、线程、协程的资源消耗简述</title>
-            <link>http://localhost:1313/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link>
+            <link>https://jekyulll.github.io/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link>
             <pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid>
             <description>&lt;p&gt;&lt;strong&gt;一、线程切换 vs 进程切换&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -3468,10 +3708,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>在运行的时候，修改并且覆盖该二进制文件会如何？</title>
-            <link>http://localhost:1313/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link>
+            <link>https://jekyulll.github.io/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link>
             <pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid>
             <description>&lt;blockquote&gt;
 &lt;p&gt;Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
 该问题来自一道天美后台开发面试题：&lt;a href=&#34;https://zhuanlan.zhihu.com/p/677307438&#34;&gt;天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a&gt;。此处尝试进行回答。&lt;/p&gt;&lt;/blockquote&gt;
@@ -3535,10 +3775,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>线程池调度：动态优先级老化（Aging）&#43; 双队列混合轮询</title>
-            <link>http://localhost:1313/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</link>
             <pubDate>Tue, 25 Feb 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</guid>
             <description>&lt;p&gt;C++中线程池一般使用队列（&lt;code&gt;std::queue&lt;/code&gt;）配合外部的&lt;code&gt;std::condition_variable&lt;/code&gt;，或者手动构建阻塞队列（BlockQueue）来设计。&lt;/p&gt;
 &lt;p&gt;而需要使用任务优先级的时候，一般使用大根堆/小根堆的优先级队列&lt;code&gt;std::priority_queue&lt;/code&gt;来实现。&lt;/p&gt;
 &lt;p&gt;那么问题来了，在任务优先级比较不均的时候，怎么避免低优先级任务的长时间饥饿呢？&lt;/p&gt;
@@ -3729,10 +3969,10 @@ Windows更新用的方法是，将所有需要被更新的文件版本回到Wind
         
         <item>
             <title>计时器 timer 的设计</title>
-            <link>http://localhost:1313/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
             <pubDate>Tue, 25 Feb 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
             <description>&lt;p&gt;三种经典算法：小顶堆、红黑树、时间轮。&lt;br&gt;
 Linux内核多采用时间轮处理中断定时器，而Nginx使用红黑树管理定时事件。&lt;/p&gt;
 &lt;ul&gt;
@@ -4153,10 +4393,10 @@ Linux内核多采用时间轮处理中断定时器，而Nginx使用红黑树管�
         
         <item>
             <title>如何让函数安全返回 std::string 的 c_str</title>
-            <link>http://localhost:1313/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</link>
             <pubDate>Sun, 23 Feb 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</guid>
             <description>&lt;p&gt;观察以下这段明显错误的代码：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;get_c&lt;/span&gt;() {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    std&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;string s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hello world&amp;#34;&lt;/span&gt;;
@@ -4272,10 +4512,10 @@ call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev@PLT ; 调用�
         
         <item>
             <title>Linux 内核中 C 语言的面向对象</title>
-            <link>http://localhost:1313/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+            <link>https://jekyulll.github.io/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
             <pubDate>Fri, 21 Feb 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
             <description>&lt;p&gt;Linux 内核使用 &lt;strong&gt;结构体&lt;/strong&gt; 和 &lt;strong&gt;函数指针&lt;/strong&gt; 的组合模拟面向对象（OO）编程范式。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;1-结构体封装数据与行为&#34;&gt;1. &lt;strong&gt;结构体封装数据与行为&lt;/strong&gt;&lt;/h3&gt;
@@ -4529,10 +4769,10 @@ call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev@PLT ; 调用�
         
         <item>
             <title>web 访问认证机制</title>
-            <link>http://localhost:1313/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link>
+            <link>https://jekyulll.github.io/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link>
             <pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid>
+            <guid>https://jekyulll.github.io/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid>
             <description>&lt;p&gt;&lt;a href=&#34;https://time.geekbang.org/column/article/398410&#34;&gt;25 | 认证机制：应用程序如何进行访问认证？&lt;/a&gt;讲得非常好，图文结合。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IAM&lt;/strong&gt;：身份识别与访问管理（Identity and Access Management）。&lt;/p&gt;
 &lt;ul&gt;
@@ -4645,10 +4885,10 @@ localStorage 完全处于前端控制之下，可以被同源的 JavaScript 代�
         
         <item>
             <title>扫描线算法计算区间重叠</title>
-            <link>http://localhost:1313/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link>
+            <link>https://jekyulll.github.io/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link>
             <pubDate>Sat, 15 Feb 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid>
+            <guid>https://jekyulll.github.io/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid>
             <description>&lt;p&gt;题目来源：&lt;a href=&#34;https://www.marscode.cn/practice/jn1075jrp7j47d?problem_id=7424418560930611244&#34;&gt;Marscode&lt;/a&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;小C和小U有一个从&lt;code&gt;0&lt;/code&gt;开始的数组&lt;code&gt;nums&lt;/code&gt;，以及一个非负整数&lt;code&gt;k&lt;/code&gt;。每次操作中，小C可以选择一个尚未选择的下标&lt;code&gt;i&lt;/code&gt;（范围在 &lt;code&gt;[0, nums.length - 1]&lt;/code&gt;），然后将&lt;code&gt;nums[i]&lt;/code&gt;替换为&lt;code&gt;[nums[i] - k, nums[i] + k]&lt;/code&gt;之间的任意整数（包含边界）。&lt;br&gt;
@@ -4820,10 +5060,10 @@ localStorage 完全处于前端控制之下，可以被同源的 JavaScript 代�
         
         <item>
             <title>C&#43;&#43; 同一进程的线程之间共享哪些资源？</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link>
             <pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid>
             <description>&lt;p&gt;同一进程内的线程共享的资源：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -4885,10 +5125,10 @@ localStorage 完全处于前端控制之下，可以被同源的 JavaScript 代�
         
         <item>
             <title>运行时是把整个动态库都加载到内存中吗？</title>
-            <link>http://localhost:1313/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link>
             <pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid>
             <description>&lt;p&gt;在 C++ 中，动态库（如 &lt;code&gt;.dll&lt;/code&gt; 或 &lt;code&gt;.so&lt;/code&gt; 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
 &lt;u&gt;具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u&gt;
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p&gt;
@@ -4918,10 +5158,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>检查字符串是否是另一个的子串</title>
-            <link>http://localhost:1313/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link>
             <pubDate>Wed, 29 Jan 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid>
             <description>&lt;h2 id=&#34;常见-cc-api&#34;&gt;常见 C/C++ API&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -5191,10 +5431,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>写个相对现代的 C&#43;&#43; 二叉搜索树</title>
-            <link>http://localhost:1313/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
             <pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
             <description>&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;functional&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;optional&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
@@ -5669,10 +5909,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>C&#43;&#43; std::function 之脱裤子放屁的优化</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</link>
             <pubDate>Wed, 15 Jan 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
             <description>&lt;p&gt;看到一句话：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;std::function&lt;/code&gt; 很强大，但是代价也很高，在创建函数对象的时候总是会有 &lt;code&gt;new&lt;/code&gt; 操作的。虽然通常情况下影响不是很高，但是总觉得这是没必要的。&lt;/p&gt;&lt;/blockquote&gt;
@@ -5817,10 +6057,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>在 C&#43;&#43; 里实现 Golang 的 defer</title>
-            <link>http://localhost:1313/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</link>
             <pubDate>Wed, 15 Jan 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</guid>
             <description>&lt;p&gt;利用 RAII 和 C++ 的析构函数。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;functional&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
@@ -5975,10 +6215,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>[转载] C&#43;&#43;的POD以及如何判断是否POD</title>
-            <link>http://localhost:1313/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link>
             <pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid>
             <description>&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/17003601237&#34;&gt;C++的POD以及如何判断是否POD - cheeto的文章 - 知乎&lt;/a&gt;。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：&lt;br&gt;
@@ -6160,10 +6400,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>从场景解析 C&#43;&#43; shared_from_this</title>
-            <link>http://localhost:1313/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</link>
             <pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</guid>
             <description>&lt;hr&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/weixin_44517656/article/details/114208041&#34;&gt;智能指针之shared_ptr易错点05&lt;/a&gt;。&lt;br&gt;
 &lt;a href=&#34;https://zhuanlan.zhihu.com/p/701343248&#34;&gt;掌握C++ 智能指针的自我引用：深入解析 &lt;code&gt;shared_from_this&lt;/code&gt; 和 &lt;code&gt;weak_from_this&lt;/code&gt;&lt;/a&gt;。&lt;br&gt;
@@ -6357,10 +6597,10 @@ C++ 提供了<strong>显式运行时链接</strong>的机制，程序可以在�
         
         <item>
             <title>Redis 数据结构之超日志 HyperLogLog</title>
-            <link>http://localhost:1313/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</link>
+            <link>https://jekyulll.github.io/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</link>
             <pubDate>Wed, 08 Jan 2025 10:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</guid>
+            <guid>https://jekyulll.github.io/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</guid>
             <description>&lt;p&gt;Redis 在 2.8.9 版本添加了 HyperLogLog （HLL）。&lt;br&gt;
 HyperLogLog 是一种高效的基数估算工具，通过概率算法和哈希化技术，在常数空间内提供了基数的估算。&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;eg&lt;/em&gt;.&lt;/p&gt;
@@ -6449,10 +6689,10 @@ HyperLogLog 有一定误差，但对于海量数据来说，它的内存开销�
         
         <item>
             <title>Linux 大文件传输场景题</title>
-            <link>http://localhost:1313/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link>
+            <link>https://jekyulll.github.io/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link>
             <pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid>
             <description>&lt;p&gt;(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p&gt;&lt;/blockquote&gt;
@@ -6893,10 +7133,10 @@ HyperLogLog 有一定误差，但对于海量数据来说，它的内存开销�
         
         <item>
             <title>分段锁技术详解及 C&#43;&#43; 实现</title>
-            <link>http://localhost:1313/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</link>
             <pubDate>Wed, 01 Jan 2025 14:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</guid>
             <description>&lt;p&gt;分段锁（Segmented Locking）是一种用于优化多线程访问共享资源时锁粒度的技术。它通过将资源分成多个小段，并为每段分配独立的锁，来减少锁的争用，从而提升并发性能。&lt;/p&gt;
 &lt;p&gt;分段锁通过减少锁粒度，让多个线程可以同时访问不同的段，从而显著提高性能。这种方法常见于 &lt;strong&gt;哈希表&lt;/strong&gt;、&lt;strong&gt;数据库索引&lt;/strong&gt; 和其他高并发系统中。&lt;/p&gt;
 &lt;hr&gt;
@@ -7154,10 +7394,10 @@ HyperLogLog 有一定误差，但对于海量数据来说，它的内存开销�
         
         <item>
             <title>简述如何解决哈希冲突？</title>
-            <link>http://localhost:1313/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</link>
             <pubDate>Wed, 01 Jan 2025 12:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</guid>
             <description>&lt;blockquote&gt;
 &lt;p&gt;哈希冲突是指 &lt;strong&gt;不同的输入&lt;/strong&gt;（通常是不同的键）通过哈希函数计算后，得到相同的哈希值并被映射到相同的桶或位置。这是哈希算法的一个固有问题，通常发生在哈希表中。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
@@ -7301,10 +7541,10 @@ HyperLogLog 有一定误差，但对于海量数据来说，它的内存开销�
         
         <item>
             <title>C&#43;&#43; 编译器返回值优化</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link>
             <pubDate>Mon, 23 Dec 2024 08:42:29 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid>
             <description>&lt;p&gt;在 C++ 中，当函数返回一个对象时，编译器通常需要进行对象的拷贝或移动操作。例如：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;SomeClass &lt;span style=&#34;color:#a6e22e&#34;&gt;createObject&lt;/span&gt;() {
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SomeClass obj;
@@ -7405,10 +7645,10 @@ X(X&amp;&amp;)
         
         <item>
             <title>缓存的设计</title>
-            <link>http://localhost:1313/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
             <pubDate>Sat, 21 Dec 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
             <description>&lt;ol&gt;
 &lt;li&gt;数据结构&lt;/li&gt;
 &lt;/ol&gt;
@@ -7478,10 +7718,10 @@ X(X&amp;&amp;)
         
         <item>
             <title>表格展示 MySQL 基础数据类型</title>
-            <link>http://localhost:1313/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+            <link>https://jekyulll.github.io/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
             <pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+            <guid>https://jekyulll.github.io/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
             <description>&lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -7643,10 +7883,10 @@ X(X&amp;&amp;)
         
         <item>
             <title>Linux 进程优先级</title>
-            <link>http://localhost:1313/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link>
+            <link>https://jekyulll.github.io/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link>
             <pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid>
             <description>&lt;h5 id=&#34;图解linux进程优先级&#34;&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd&#34;&gt;图解Linux进程优先级&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;&lt;em&gt;实时优先级&lt;/em&gt;用于实时应用程序，如硬实时任务和实时控制系统，而&lt;em&gt;普通优先级&lt;/em&gt;用于非实时应用程序。&lt;/p&gt;
 &lt;ul&gt;
@@ -7729,10 +7969,10 @@ prio = MAX_RT_PRIO - 1 - rt_prio = 100 - 1 - rt_priority;</li>
         
         <item>
             <title>Linux 文件系统与虚拟文件系统</title>
-            <link>http://localhost:1313/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+            <link>https://jekyulll.github.io/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
             <pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+            <guid>https://jekyulll.github.io/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
             <description>&lt;h1 id=&#34;linux-文件系统&#34;&gt;Linux 文件系统&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;文件描述符&lt;/strong&gt;(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br&gt;
 当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
@@ -7888,10 +8128,10 @@ Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件�
         
         <item>
             <title>事务 Transaction 的基础特性</title>
-            <link>http://localhost:1313/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link>
+            <link>https://jekyulll.github.io/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link>
             <pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid>
+            <guid>https://jekyulll.github.io/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid>
             <description>&lt;p&gt;&lt;strong&gt;事务&lt;/strong&gt;（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br&gt;
 &lt;strong&gt;ACID&lt;/strong&gt; 是事务的四个重要特性：&lt;/p&gt;
 &lt;ol&gt;
@@ -7983,10 +8223,10 @@ Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件�
         
         <item>
             <title>CPU 的五级流水线</title>
-            <link>http://localhost:1313/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link>
+            <link>https://jekyulll.github.io/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link>
             <pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid>
+            <guid>https://jekyulll.github.io/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid>
             <description>&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/382372072&#34;&gt;现代C++的内存模型&lt;/a&gt;。&amp;ndash;神文&lt;br&gt;
 &lt;a href=&#34;https://zhuanlan.zhihu.com/p/682286231&#34;&gt;自底向上理解memory_order&lt;/a&gt;。&lt;br&gt;
 &lt;a href=&#34;https://blog.csdn.net/sinat_38293503/article/details/134612152&#34;&gt;大白话C++之：一文搞懂C++多线程内存模型(Memory Order)&lt;/a&gt;。&lt;/p&gt;
@@ -8160,10 +8400,10 @@ Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件�
         
         <item>
             <title>C&#43;&#43; 中 tuple 是如何实现的？</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</link>
             <pubDate>Sat, 28 Sep 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</guid>
             <description>&lt;p&gt;&lt;code&gt;tuple&lt;/code&gt;本身就是一种结构体，但是是一个模板类。利用&lt;code&gt;形参包&lt;/code&gt;(Parameter pack)。&lt;a href=&#34;https://zhuanlan.zhihu.com/p/715025973&#34;&gt;C++ std::tuple的原理及简易实现&lt;/a&gt;，靠着模板元的递归实现的，相当抽象。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt;...Args&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;tuple&lt;/span&gt;;
@@ -8217,10 +8457,10 @@ Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件�
         
         <item>
             <title>C&#43;&#43; 的四种类型转换</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
             <pubDate>Sat, 28 Sep 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
             <description>&lt;p&gt;思考了一下&lt;code&gt;reinterpret_cast&lt;/code&gt;和强转的区别？这段非常易懂：&lt;br&gt;
 C 语言的类型转换实际上包含各种转换方式，是 &lt;code&gt;static_cast&lt;/code&gt; 跟 &lt;code&gt;reinterpret_cast&lt;/code&gt; 等的父操作。&lt;/p&gt;
 &lt;ul&gt;
@@ -8379,10 +8619,10 @@ C 语言的类型转换实际上包含各种转换方式，是 <code>static_cast
         
         <item>
             <title>对 C&#43;&#43; 左值、右值、智能指针的思考</title>
-            <link>http://localhost:1313/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</link>
+            <link>https://jekyulll.github.io/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</link>
             <pubDate>Thu, 19 Sep 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</guid>
             <description>&lt;h5 id=&#34;左值右值函数传参&#34;&gt;左值右值、函数传参：&lt;/h5&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;传值（按值传递）&lt;/strong&gt;
@@ -8466,10 +8706,10 @@ process(std::move(p1));  // 使用 std::move 将所有权转移给 process 函�
         
         <item>
             <title>C&#43;&#43; 模板类型推导</title>
-            <link>http://localhost:1313/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link>
+            <link>https://jekyulll.github.io/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link>
             <pubDate>Sun, 01 Sep 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid>
             <description>&lt;p&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/649667647&#34;&gt;一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a&gt;：&lt;/p&gt;
 &lt;h2 id=&#34;条款1-模板参数类型推导引用折叠&#34;&gt;条款1： 模板参数类型推导，引用折叠&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
@@ -8574,10 +8814,10 @@ process(std::move(p1));  // 使用 std::move 将所有权转移给 process 函�
         
         <item>
             <title>C&#43;&#43; 的三五法则是什么？</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</link>
             <pubDate>Mon, 26 Aug 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
             <description>&lt;p&gt;三五法则（Rule of Three/Five/Zero）。&lt;/p&gt;
 &lt;p&gt;“三法则”主要适用于 C++98/03 标准下的资源管理。在使用动态内存或其他资源时，如果类需要显式地管理资源，通常需要实现以下三个特殊成员函数：&lt;/p&gt;
 &lt;ol&gt;
@@ -8609,10 +8849,10 @@ process(std::move(p1));  // 使用 std::move 将所有权转移给 process 函�
         
         <item>
             <title>C&#43;&#43; 17 编译期 if</title>
-            <link>http://localhost:1313/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link>
+            <link>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link>
             <pubDate>Sat, 10 Aug 2024 18:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid>
+            <guid>https://jekyulll.github.io/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid>
             <description>&lt;p&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1Eb42177a8/?spm_id_from=333.1007.tianma.1-1-1.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a&#34;&gt;C++17编译期if&lt;/a&gt;：&lt;code&gt;constexpr&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;用例：不加&lt;code&gt;constexpr&lt;/code&gt;会编译出错，因为必有一种情况是语法错误的。如果&lt;code&gt;T&lt;/code&gt;为&lt;code&gt;X&lt;/code&gt;类型，则内部没有&lt;code&gt;y_func()&lt;/code&gt;。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt;
@@ -8657,11 +8897,11 @@ process(std::move(p1));  // 使用 std::move 将所有权转移给 process 函�
         
         <item>
             <title>OpenGL 初学笔记 -- Cherno &#43; LearnOpenGL</title>
-            <link>http://localhost:1313/posts/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-&#43;-learnopengl/</link>
+            <link>https://jekyulll.github.io/posts/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-&#43;-learnopengl/</link>
             <pubDate>Mon, 29 Jul 2024 21:05:47 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-&#43;-learnopengl/</guid>
-            <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/ayanami_header.jpg&#34; alt=&#34;hearder&#34;&gt;&lt;/p&gt;
+            <guid>https://jekyulll.github.io/posts/opengl-%E8%8F%9C--opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0----cherno-&#43;-learnopengl/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;https://jekyulll.github.io/images/ayanami_header.jpg&#34; alt=&#34;hearder&#34;&gt;&lt;/p&gt;
 &lt;p&gt;这两个月学习了一下OpenGL。从Cherno的教学视频开始学习，看完后开始看LearnOpenGL，应该是很常见的学习路径。&lt;br&gt;
 在此以新手视角，记录一下学习中在工程方面遇到的一些坑（数学和底层方面就不打算开口丢人了）。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.youtube.com/@TheCherno&#34;&gt;Cherno主页&lt;/a&gt; | &lt;a href=&#34;https://learnopengl.com/&#34;&gt;LearnOpenGL&lt;/a&gt;&lt;/p&gt;
@@ -8796,10 +9036,10 @@ process(std::move(p1));  // 使用 std::move 将所有权转移给 process 函�
         
         <item>
             <title>C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总</title>
-            <link>http://localhost:1313/posts/means/</link>
+            <link>https://jekyulll.github.io/posts/means/</link>
             <pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate>
             
-            <guid>http://localhost:1313/posts/means/</guid>
+            <guid>https://jekyulll.github.io/posts/means/</guid>
             <description>&lt;!-- -- 2024年6月2日23:56:19
 收藏的路线越来越多，有点乱。单列一个文件，想到的时候汇总一下。 --&gt;
 &lt;h1 id=&#34;c&#34;&gt;C++&lt;/h1&gt;
@@ -9086,6 +9326,35 @@ OSPP开源之夏<br>
 七牛云1024创作节<br>
 code forces<br>
 GitLink“确实开源”编程夏令营(GLCC)</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title></title>
+            <link>https://jekyulll.github.io/posts/cpp-%E4%BA%8B%E5%8A%A1%E6%80%A7%E5%86%85%E5%AD%98/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://jekyulll.github.io/posts/cpp-%E4%BA%8B%E5%8A%A1%E6%80%A7%E5%86%85%E5%AD%98/</guid>
+            <description>&lt;!-- +++
+date = &#39;2025-03-10T12:05:47+08:00&#39;
+draft = false
+title = &#39;【AI】使用普通的互斥锁实现读写锁&#39;
+author = &#39;JekYUlll&#39;
+lastmod = &#39;2025-03-10T12:05:47+08:00&#39;
+tags = [&#39;cpp&#39;,&#39;algorithm&#39;]
+categories = [&#39;cpp&#39;]
++++ --&gt;
+&lt;p&gt;// TODO&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<!-- +++
+date = '2025-03-10T12:05:47+08:00'
+draft = false
+title = '【AI】使用普通的互斥锁实现读写锁'
+author = 'JekYUlll'
+lastmod = '2025-03-10T12:05:47+08:00'
+tags = ['cpp','algorithm']
+categories = ['cpp']
++++ -->
+<p>// TODO</p>
 ]]></content>
         </item>
         
