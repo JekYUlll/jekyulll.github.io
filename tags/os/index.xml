@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Horeb's Blog ⬆️</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Horeb's Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 08 Jun 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Horeb's Blog ⬆️</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Horeb's Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+&lt;p>&lt;span style="color: red;">&lt;strong>校外访问请通过校园 VPN&lt;/strong>&lt;/span>&lt;/p>
+&lt;h3 id="写作目的">写作目的&lt;/h3>
+&lt;p>实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。内容涵盖服务器的基本概念、各操作系统下的连接方式、Conda 环境的使用，以及图形化（远程桌面）操作方法。&lt;/p>
+&lt;h3 id="适用人群">适用人群&lt;/h3>
+&lt;ul>
+&lt;li>对 Linux 或命令行不熟悉的同学；&lt;/li>
+&lt;li>需要进行深度学习、有限元仿真或数据处理的研究生。&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="二什么是深度学习服务器">二、什么是“深度学习服务器”&lt;/h2>
+&lt;p>深度学习服务器是一台高性能计算机，通常配备多块 GPU（图形处理器）、大容量显存、内存和高速存储。
+通常安装Linux系统 ，一般&lt;strong>不直接接显示器&lt;/strong>，而是通过网络远程访问（SSH 或远程桌面）。&lt;/p>
+&lt;h3 id="主要用途">主要用途&lt;/h3>
+&lt;ul>
+&lt;li>深度学习训练（如 PyTorch、TensorFlow）；&lt;/li>
+&lt;li>大规模有限元仿真（Abaqus、ANSYS、COMSOL）；&lt;/li>
+&lt;li>数据分析、图像识别、模型优化等。&lt;/li>
+&lt;/ul>
+&lt;h3 id="系统与软件环境">系统与软件环境&lt;/h3>
+&lt;ul>
+&lt;li>操作系统：Ubuntu 22.04 LTS&lt;/li>
+&lt;li>已安装软件：CUDA、cuDNN、Anaconda、Python、JupyterLab&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="三账户与登录信息">三、账户与登录信息&lt;/h2>
+&lt;h3 id="账户申请">账户申请&lt;/h3>
+&lt;p>新用户请联系实验室管理员开通。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>账户命名规则&lt;/strong>
+实验室统一以&lt;em>姓名全拼&lt;/em>作为用户名，例如：&lt;/p>
+&lt;ul>
+&lt;li>张三 → &lt;em>zhangsan&lt;/em>&lt;/li>
+&lt;li>李四 → &lt;em>lisi&lt;/em>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>初始密码&lt;/strong>
+所有新账户的初始密码为：&lt;code>123456&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h3 id="-手动修改密码必做">🔐 手动修改密码（必做）&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>登录服务器后（见后续教程），在终端输入：&lt;/p>
+&lt;pre tabindex="0">&lt;code>passwd
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>系统会提示：&lt;/p>
+&lt;pre tabindex="0">&lt;code>Changing password for user zhangsan.
+(current) UNIX password:
+&lt;/code>&lt;/pre>&lt;p>输入当前密码（即 &lt;code>123456&lt;/code>）。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>接着输入新密码两次（系统不会显示输入内容，但实际上输进去了）：&lt;/p>
+&lt;pre tabindex="0">&lt;code>Enter new UNIX password:
+Retype new UNIX password:
+&lt;/code>&lt;/pre>&lt;/li>
+&lt;li>
+&lt;p>如果两次输入一致，会显示：&lt;/p>
+&lt;pre tabindex="0">&lt;code>password updated successfully
+&lt;/code>&lt;/pre>&lt;p>表示修改成功。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="网络访问">网络访问&lt;/h3>
+&lt;hr>
+&lt;h2 id="四连接方式">四、连接方式&lt;/h2>
+&lt;h3 id="一windows-用户">（一）Windows 用户&lt;/h3>
+&lt;p>此处推荐三个用于连接的终端工具（就是黑窗口，理论上cmd即可，但不够易用）：&lt;/p></description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
 &lt;p>PID namespace 中的 &lt;code>init&lt;/code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p>
 &lt;p>有多种namespace:&lt;/p>
 &lt;ul>
