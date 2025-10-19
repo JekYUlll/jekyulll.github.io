@@ -12,14 +12,7 @@ categories = ['linux']
 
 <span style="color: red;">**校外访问请通过校园 VPN**</span>
 
-### 写作目的
-
-实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。内容涵盖服务器的基本概念、各操作系统下的连接方式、Conda 环境的使用，以及图形化（远程桌面）操作方法。
-
-### 适用人群
-
-* 对 Linux 或命令行不熟悉的同学；
-* 需要进行深度学习、有限元仿真或数据处理的研究生。
+实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。
 
 ---
 
@@ -37,7 +30,9 @@ categories = ['linux']
 ### 系统与软件环境
 
 * 操作系统：Ubuntu 22.04 LTS
-* 已安装软件：CUDA、cuDNN、Anaconda、Python、JupyterLab
+* 已安装软件：Anaconda、Python、JupyterLab
+  
+为避免cuda版本导致的问题，此处仅保证显卡驱动版本，cuda请根据需求自行安装。
 
 ---
 
@@ -56,19 +51,18 @@ categories = ['linux']
 2. **初始密码**
    所有新账户的初始密码为：`123456`
 
----
 
-### 🔐 手动修改密码（必做）
+### 手动修改密码（重要）
 
 1. 登录服务器后（见后续教程），在终端输入：
 
-   ```
+   ```bash
    passwd
    ```
 
 2. 系统会提示：
 
-   ```
+   ```bash
    Changing password for user zhangsan.
    (current) UNIX password:
    ```
@@ -77,20 +71,18 @@ categories = ['linux']
 
 3. 接着输入新密码两次（系统不会显示输入内容，但实际上输进去了）：
 
-   ```
+   ```bash
    Enter new UNIX password:
    Retype new UNIX password:
    ```
 
 4. 如果两次输入一致，会显示：
 
-   ```
+   ```bash
    password updated successfully
    ```
 
    表示修改成功。
-
-### 网络访问
 
 ---
 
@@ -98,70 +90,76 @@ categories = ['linux']
 
 ### （一）Windows 用户
 
-此处推荐三个用于连接的终端工具（就是黑窗口，理论上cmd即可，但不够易用）：  
+此处推荐三个用于连接的终端工具（就是黑窗口，理论上使用cmd即可，但不够易用）：  
 - [MobaXterm](https://mobaxterm.mobatek.net/)
 - [XShell](https://www.netsarang.com/en/xshell/)
 - [Terminus](https://termius.com/)
 
 此处仅演示MobaXterm。
 
+打开软件，点击左上角的Session
 
+![moba1](images/moba1.png)
+
+再点SSH，在下面的Remote host 填服务器地址，Specify username填你的账号名。
+
+![moba2](images/moba2.png)
+
+![moba3](images/moba3.png)
+
+左边是服务器文件路径，可以按照权限操纵文件，新建个文件夹放代码之类的。
+
+右边就是终端，可以对linux系统进行各种命令行操作。
+
+### 用 VS Code 连接（主要使用方式）
+
+Pycharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因此此处仅演示VS Code，也仅推荐使用VS Code。
+
+1. 安装remote相关插件
+   
+![vscode1](images/vscode1.png)
+
+2. 在侧边栏打开插件
+
+![vscode2](images/vscode2.png)
+
+3. 新建ssh连接
+
+![vscode3](images/vscode3.png)
+
+4. 选择路径
+
+5. 在 VS Code 里使用终端：点击 New Terminal
+
+![vscode5](images/vscode5.png)
 
 ---
 
 ### （二）macOS 用户
 
+此处推荐[Terminus](https://termius.com/)，iPad都能用。
+
+或者直接用mac自带终端也行：
+
 **SSH连接**
 打开“终端”：
 
-```
+```bash
 ssh username@服务器IP
 ```
 
 **文件传输**
 可使用命令行：
 
-```
+```bash
 scp localfile username@服务器IP:/home/username/
 ```
-
-或使用图形化工具 Cyberduck / FileZilla。
-
-**远程桌面**
-
-* 从 App Store 安装 “Microsoft Remote Desktop”。
-* 或安装 XQuartz 后使用命令：
-
-  ```
-  ssh -X username@服务器IP
-  ```
-
-  实现 X11 图形转发。
 
 ---
 
 ### （三）Linux 用户
 
-**SSH连接**
-
-```
-ssh username@服务器IP
-```
-
-**文件传输**
-
-```
-scp localfile username@服务器IP:/home/username/
-```
-
-**远程桌面**
-
-* 使用 Remmina 或 rdesktop 工具。
-* 或使用 X11 转发：
-
-  ```
-  ssh -X username@服务器IP
-  ```
+推荐[WindTerm](https://github.com/kingToolbox/WindTerm)，本人用得最多的一个。
 
 ---
 
@@ -169,7 +167,9 @@ scp localfile username@服务器IP:/home/username/
 
 ### 1. Anaconda 简介
 
-Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环境、安装依赖，避免不同项目间的冲突。
+Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环境、安装依赖，避免不同项目间的冲突。（miniconda是其精简版）  
+
+此处管理员已预装系统级miniconda。
 
 ### 2. 常用命令
 
@@ -181,33 +181,23 @@ Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环
 | 查看环境  | `conda env list`                     |
 | 删除环境  | `conda remove -n myenv --all`        |
 
-### 3. 推荐做法
-
-管理员会准备一个预装常用框架（PyTorch、TensorFlow）的基础环境：
-
-```
-conda create -n myenv --clone dl_env
-```
-
-这样可快速获得标准配置。
-
-### 4. 使用 JupyterLab（可选）
+### 3. 使用 JupyterLab（可选）
 
 在服务器上启动：
 
-```
+```bash
 jupyter lab --no-browser --port=8888
 ```
 
 然后在本地终端执行：
 
-```
+```bash
 ssh -L 8888:localhost:8888 username@服务器IP
 ```
 
 本地浏览器访问：
 
-```
+```txt
 http://localhost:8888
 ```
 
@@ -217,7 +207,8 @@ http://localhost:8888
 
 ### 1. 适用场景
 
-用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。
+用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。  
+（如需使用请联系我，因为我也没配过这玩意）
 
 ### 2. 配置方式（由管理员完成）
 
@@ -245,9 +236,9 @@ http://localhost:8888
 
 | 路径             | 用途             |
 | -------------- | -------------- |
-| /home/username | 用户个人目录         |
-| /data          | 公共数据集或模型       |
-| /workspace     | 项目工作区（可按课题分目录） |
+| `/home/username` | 用户个人目录         |
+| `/data`          | 公共数据集或模型       |
+| `/workspace`     | 项目工作区（可按课题分目录） |
 
 ---
 
@@ -256,13 +247,13 @@ http://localhost:8888
 1. 不要在系统目录（`/`、`/root`）下操作。
 2. 运行长时间任务时请使用：
 
-   ```
+   ```bash
    nohup python train.py > log.txt 2>&1 &
    ```
 
    或在 tmux 会话中执行。
-3. 请勿重启服务器。
-3. 任务结束后释放显存和进程。
+3. 未经沟通严禁重启服务器（如果你有权限的话）。
+3. 任务结束后释放显存和进程（输入`ps -aux | grep 你的进程名`找你的进程，找到`pid`之后`kill -9 你的pid`）。
 4. 请勿安装系统级软件，如需`sudo`权限请在群里询问。
 
 ---
@@ -283,7 +274,7 @@ http://localhost:8888
 
 ### 常用命令速查
 
-```
+```bash
 nvidia-smi          # 查看GPU
 pwd                 # 显示当前路径
 ls -lh              # 列出文件
@@ -316,65 +307,3 @@ conda create -n myenv python=3.10   # 创建新环境
 [实验室服务器使用教程（用户篇）](https://ajohn.top/article/bes1sa4i/)。
 
 [yurizzzzz/TJU-ServerDoc 天津大学实验室服务器使用和管理](https://github.com/yurizzzzz/TJU-ServerDoc)。
-
-
-非常好 👍，这是一个非常重要的安全环节。
-我在原教程的逻辑结构里帮你加上**“初次登录与修改密码”**部分，同时优化了一些上下衔接，使它自然融入第“三章：账户与登录信息”中。下面是修订后的完整段落（你可以直接替换原文对应章节）。
-
----
-
-## 三、账户与登录信息
-
-### 🪪 账户申请与登录方式
-
-
-
-5. 建议密码：
-
-   * 至少 8 位；
-   * 包含数字、大写字母和符号；
-   * 避免使用生日、手机号等弱口令。
-
----
-
-### 🌐 网络访问信息
-
-* **服务器 IP**：由管理员提供。
-* **SSH 端口**：默认 22。
-* **远程桌面端口（RDP）**：默认 3389（如启用 xrdp）。
-* **校外访问**：需先连接校园 VPN。
-
----
-
-### 📁 用户目录结构
-
-每位用户登录后默认进入自己的 home 目录：
-
-```
-/home/username
-```
-
-该目录下的文件仅本人可访问。
-公共数据和项目文件位于：
-
-```
-/data      # 公共数据集区
-/workspace # 项目工作区，可按课题划分
-```
-
----
-
-### ⚠️ 注意事项
-
-* 请务必在首次登录后立即修改密码，否则管理员将强制重置账号。
-* 请不要尝试修改其他用户的文件或目录权限。
-* 若忘记密码，请联系管理员重置。
-
----
-
-是否希望我帮你把这一章节整合进整份完整文档（含前面那版内容），形成一个**最终版服务器使用手册**？
-我可以帮你输出一个可以直接发群、存Wiki或导出PDF的“正式成品版”。
-
-
-
-
