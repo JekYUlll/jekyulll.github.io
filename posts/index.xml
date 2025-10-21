@@ -138,10 +138,10 @@
 </ul>
 <p>此处仅演示MobaXterm。</p>
 <p>打开软件，点击左上角的Session</p>
-<p><img src="images/moba1.png" alt="moba1"></p>
+<p><img src="/images/moba1.png" alt="moba1"></p>
 <p>再点SSH，在下面的Remote host 填服务器地址，Specify username填你的账号名。</p>
-<p><img src="images/moba2.png" alt="moba2"></p>
-<p><img src="images/moba3.png" alt="moba3"></p>
+<p><img src="/images/moba2.png" alt="moba2"></p>
+<p><img src="/images/moba3.png" alt="moba3"></p>
 <p>左边是服务器文件路径，可以按照权限操纵文件，新建个文件夹放代码之类的。</p>
 <p>右边就是终端，可以对linux系统进行各种命令行操作。</p>
 <h3 id="用-vs-code-连接主要使用方式">用 VS Code 连接（主要使用方式）</h3>
@@ -149,15 +149,15 @@
 <ol>
 <li>安装remote相关插件</li>
 </ol>
-<p><img src="images/vscode1.png" alt="vscode1"></p>
+<p><img src="/images/vscode1.png" alt="vscode1"></p>
 <ol start="2">
 <li>在侧边栏打开插件</li>
 </ol>
-<p><img src="images/vscode2.png" alt="vscode2"></p>
+<p><img src="/images/vscode2.png" alt="vscode2"></p>
 <ol start="3">
 <li>新建ssh连接</li>
 </ol>
-<p><img src="images/vscode3.png" alt="vscode3"></p>
+<p><img src="/images/vscode3.png" alt="vscode3"></p>
 <ol start="4">
 <li>
 <p>选择路径</p>
@@ -166,7 +166,7 @@
 <p>在 VS Code 里使用终端：点击 New Terminal</p>
 </li>
 </ol>
-<p><img src="images/vscode5.png" alt="vscode5"></p>
+<p><img src="/images/vscode5.png" alt="vscode5"></p>
 <hr>
 <h3 id="二macos-用户">（二）macOS 用户</h3>
 <p>此处推荐<a href="https://termius.com/">Terminus</a>，iPad都能用。</p>
