@@ -30,9 +30,9 @@ categories = ['linux']
 ### 系统与软件环境
 
 * 操作系统：Ubuntu 22.04 LTS
-* 已安装软件：Anaconda、Python、JupyterLab
+* 已安装软件：Miniconda、Python、Linuxbrew
   
-为避免cuda版本导致的问题，此处仅保证显卡驱动版本，cuda请根据需求自行安装。
+为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。
 
 ---
 
@@ -251,7 +251,7 @@ http://localhost:8888
    nohup python train.py > log.txt 2>&1 &
    ```
 
-   或在 tmux 会话中执行。
+   或在 `tmux` 会话中执行。
 3. 未经沟通严禁重启服务器（如果你有权限的话）。
 3. 任务结束后释放显存和进程（输入`ps -aux | grep 你的进程名`找你的进程，找到`pid`之后`kill -9 你的pid`）。
 4. 请勿安装系统级软件，如需`sudo`权限请在群里询问。
