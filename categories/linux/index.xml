@@ -14,9 +14,9 @@
 &lt;h3 id="系统与软件环境">系统与软件环境&lt;/h3>
 &lt;ul>
 &lt;li>操作系统：Ubuntu 22.04 LTS&lt;/li>
-&lt;li>已安装软件：Anaconda、Python、JupyterLab&lt;/li>
+&lt;li>已安装软件：Miniconda、Python、Linuxbrew&lt;/li>
 &lt;/ul>
-&lt;p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，cuda请根据需求自行安装。&lt;/p>
+&lt;p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。&lt;/p>
 &lt;hr>
 &lt;h2 id="三账户与登录信息">三、账户与登录信息&lt;/h2>
 &lt;h3 id="账户申请">账户申请&lt;/h3>

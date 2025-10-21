@@ -14,9 +14,9 @@
 &lt;h3 id="系统与软件环境">系统与软件环境&lt;/h3>
 &lt;ul>
 &lt;li>操作系统：Ubuntu 22.04 LTS&lt;/li>
-&lt;li>已安装软件：Anaconda、Python、JupyterLab&lt;/li>
+&lt;li>已安装软件：Miniconda、Python、Linuxbrew&lt;/li>
 &lt;/ul>
-&lt;p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，cuda请根据需求自行安装。&lt;/p>
+&lt;p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。&lt;/p>
 &lt;hr>
 &lt;h2 id="三账户与登录信息">三、账户与登录信息&lt;/h2>
 &lt;h3 id="账户申请">账户申请&lt;/h3>
@@ -83,9 +83,9 @@
 <h3 id="系统与软件环境">系统与软件环境</h3>
 <ul>
 <li>操作系统：Ubuntu 22.04 LTS</li>
-<li>已安装软件：Anaconda、Python、JupyterLab</li>
+<li>已安装软件：Miniconda、Python、Linuxbrew</li>
 </ul>
-<p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，cuda请根据需求自行安装。</p>
+<p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。</p>
 <hr>
 <h2 id="三账户与登录信息">三、账户与登录信息</h2>
 <h3 id="账户申请">账户申请</h3>
@@ -299,7 +299,7 @@
 <li>
 <p>运行长时间任务时请使用：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nohup python train.py &gt; log.txt 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
-</span></span></code></pre></div><p>或在 tmux 会话中执行。</p>
+</span></span></code></pre></div><p>或在 <code>tmux</code> 会话中执行。</p>
 </li>
 <li>
 <p>未经沟通严禁重启服务器（如果你有权限的话）。</p>
