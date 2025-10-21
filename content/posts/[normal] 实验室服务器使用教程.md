@@ -99,13 +99,13 @@ categories = ['linux']
 
 打开软件，点击左上角的Session
 
-![moba1](images/moba1.png)
+![moba1](/images/moba1.png)
 
 再点SSH，在下面的Remote host 填服务器地址，Specify username填你的账号名。
 
-![moba2](images/moba2.png)
+![moba2](/images/moba2.png)
 
-![moba3](images/moba3.png)
+![moba3](/images/moba3.png)
 
 左边是服务器文件路径，可以按照权限操纵文件，新建个文件夹放代码之类的。
 
@@ -117,21 +117,21 @@ Pycharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因
 
 1. 安装remote相关插件
    
-![vscode1](images/vscode1.png)
+![vscode1](/images/vscode1.png)
 
 2. 在侧边栏打开插件
 
-![vscode2](images/vscode2.png)
+![vscode2](/images/vscode2.png)
 
 3. 新建ssh连接
 
-![vscode3](images/vscode3.png)
+![vscode3](/images/vscode3.png)
 
 4. 选择路径
 
 5. 在 VS Code 里使用终端：点击 New Terminal
 
-![vscode5](images/vscode5.png)
+![vscode5](/images/vscode5.png)
 
 ---
 
