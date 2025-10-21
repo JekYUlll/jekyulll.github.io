@@ -284,7 +284,7 @@ conda create -n myenv python=3.10   # 创建新环境
 
 ### 管理员联系方式
 
-![微信](images/wechat.jpg)
+![微信](/images/wechat.jpg)
 
 ### 推荐学习资料
 
