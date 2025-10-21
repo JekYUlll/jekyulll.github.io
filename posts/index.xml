@@ -352,7 +352,7 @@
 </span></span><span style="display:flex;"><span>scp localfile user@ip:/home/user/   <span style="color:#75715e"># 上传文件</span>
 </span></span><span style="display:flex;"><span>conda create -n myenv python<span style="color:#f92672">=</span>3.10   <span style="color:#75715e"># 创建新环境</span>
 </span></span></code></pre></div><h3 id="管理员联系方式">管理员联系方式</h3>
-<p><img src="images/wechat.jpg" alt="微信"></p>
+<p><img src="/images/wechat.jpg" alt="微信"></p>
 <h3 id="推荐学习资料">推荐学习资料</h3>
 <ul>
 <li>Linux命令快速入门：<a href="https://wangchujiang.com/linux-command/">https://wangchujiang.com/linux-command/</a></li>
