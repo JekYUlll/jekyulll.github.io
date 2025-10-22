@@ -9,7 +9,7 @@
 • Windows通过CREATE_ALWAYS+隐藏属性实现原子创建
 • Linux使用fcntl的记录锁，支持对文件部分区域加锁
 • 必须处理进程崩溃后的锁残留（通过unlink/DeleteFile物理删除锁文件）
-"><meta name=keywords content="homepage,blog,cpp,linux"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://jekyulll.github.io/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/><title>文件锁（FileLock）的本质与价值 :: Horeb's Blog ⬆️ — C++ / Go / Erlang / Linux
+"><meta name=keywords content="homepage,blog,cpp,linux"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://jekyulll.github.io/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/><title>文件锁（FileLock）的本质与价值 :: Welcome to my Blog ⬆️ — C++ / Go / Rust
 </title><link rel=stylesheet href=/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css integrity="sha256-JEGDzeGjjgsI+CwReRGBKI+arBzJYYzW9OnncQxXaLo=" crossorigin=anonymous><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><meta itemprop=name content="文件锁（FileLock）的本质与价值"><meta itemprop=description content="在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。
 文件锁的核心逻辑是通过独占标记协调资源访问。
 典型应用场景：

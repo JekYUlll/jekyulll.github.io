@@ -15,7 +15,7 @@ Master进程：负责全局管理，包括配置加载、信号处理、Worker�
 [1] 其其网《Nginx为何偏爱多进程模型》
 [4][6] CSDN博客《nginx为什么是多进程单线程》
 [2][3] CSDN博客《Nginx工作原理》
-"><meta name=keywords content="homepage,blog,web,backend"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://jekyulll.github.io/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/><title>Nginx 的多进程模型 :: Horeb's Blog ⬆️ — C++ / Go / Erlang / Linux
+"><meta name=keywords content="homepage,blog,web,backend"><meta name=robots content="noodp"><meta name=theme-color content><link rel=canonical href=https://jekyulll.github.io/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/><title>Nginx 的多进程模型 :: Welcome to my Blog ⬆️ — C++ / Go / Rust
 </title><link rel=stylesheet href=/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css integrity="sha256-JEGDzeGjjgsI+CwReRGBKI+arBzJYYzW9OnncQxXaLo=" crossorigin=anonymous><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/safari-pinned-tab.svg color><link rel="shortcut icon" href=/favicon.ico><meta name=msapplication-TileColor content><meta itemprop=name content="Nginx 的多进程模型"><meta itemprop=description content="在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是多进程模型。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。
 一、多进程模型的核心架构 Nginx采用经典的Master-Worker多进程架构：
 Master进程：负责全局管理，包括配置加载、信号处理、Worker进程监控与重启。 Worker进程：实际处理请求的“战斗单元”，每个Worker独立运行且绑定到特定CPU核心，通过异步非阻塞事件驱动模型处理成千上万的并发连接。
