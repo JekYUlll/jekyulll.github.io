@@ -55,13 +55,13 @@ id = 'G-Q6473FXND4'
 
 [languages]
   [languages.en]
-    title = "Horeb's Blog ⬆️"
+    title = "Welcome to my Blog ⬆️"
     keywords = ""
     copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
     readOtherPosts = "Read other posts"
 
   [languages.en.params]
-    subtitle  = "C++ / Go / Erlang / Linux"
+    subtitle  = "C++ / Go / Rust"
 
     [languages.en.params.logo]
       logoText = "Horeb"
