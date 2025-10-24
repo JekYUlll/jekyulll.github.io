@@ -8,6 +8,11 @@ tags = ['linux', 'os']
 categories = ['linux']
 +++
 
+当前服务器ip:   
+```bash
+10.201.105.150
+```
+
 ## 一、前言
 
 <span style="color: red;">**校外访问请通过校园 VPN**</span>
@@ -29,8 +34,8 @@ categories = ['linux']
 
 ### 系统与软件环境
 
-* 操作系统：Ubuntu 22.04 LTS
-* 已安装软件：Miniconda、Python、Linuxbrew
+* 操作系统：Ubuntu 24.04 LTS
+* 已安装软件：Miniconda、Python、JupyterLab(TODO)
   
 为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。
 
@@ -49,7 +54,7 @@ categories = ['linux']
    * 李四 → *lisi*
 
 2. **初始密码**
-   所有新账户的初始密码为：`123456`
+   所有新账户的初始密码为：`LAB113@temp`
 
 
 ### 手动修改密码（重要）
@@ -67,7 +72,7 @@ categories = ['linux']
    (current) UNIX password:
    ```
 
-   输入当前密码（即 `123456`）。
+   输入当前密码（即 `LAB113@temp`）。
 
 3. 接着输入新密码两次（系统不会显示输入内容，但实际上输进去了）：
 
@@ -83,6 +88,10 @@ categories = ['linux']
    ```
 
    表示修改成功。
+
+![change password](/images/chpasswd.png)
+
+之后会自动退出连接，使用你设置的新密码重新连接。
 
 ---
 
@@ -106,6 +115,8 @@ categories = ['linux']
 ![moba2](/images/moba2.png)
 
 ![moba3](/images/moba3.png)
+
+首次登录后根据提示修改密码。  
 
 左边是服务器文件路径，可以按照权限操纵文件，新建个文件夹放代码之类的。
 
@@ -238,7 +249,7 @@ http://localhost:8888
 | -------------- | -------------- |
 | `/home/username` | 用户个人目录         |
 | `/data`          | 公共数据集或模型       |
-| `/workspace`     | 项目工作区（可按课题分目录） |
+| `/workspace`     | 项目工作区（暂时未开通） |
 
 ---
 
