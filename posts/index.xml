@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Welcome to My Blog on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/posts/</link><description>Recent content in Welcome to My Blog on Welcome to my Blog ⬆️</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sun, 22 Dec 2024 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p>当前服务器ip:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>10.201.105.150
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="一前言">一、前言&lt;/h2>
-&lt;p>&lt;span style="color: red;">&lt;strong>校外访问请通过校园 VPN&lt;/strong>&lt;/span>&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;span style="color: red;">&lt;strong>校外访问请通过校园 VPN&lt;/strong>&lt;/span>&lt;/p>
+&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p>
 &lt;hr>
 &lt;h2 id="二什么是深度学习服务器">二、什么是“深度学习服务器”&lt;/h2>
@@ -40,7 +40,8 @@
 &lt;h3 id="手动修改密码重要">手动修改密码（重要）&lt;/h3>
 &lt;ol>
 &lt;li>
-&lt;p>登录服务器后（见后续教程），在终端输入：&lt;/p>
+&lt;p>登录服务器后（见后续教程），默认会自动弹出修改密码的流程。&lt;br>
+如果后续修改密码，在终端输入：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
 &lt;li>
@@ -61,14 +62,10 @@
 &lt;/li>
 &lt;/ol>
 &lt;p>&lt;img src="https://jekyulll.github.io/images/chpasswd.png" alt="change password">&lt;/p>
-&lt;p>之后会自动退出连接，使用你设置的新密码重新连接。&lt;/p>
-&lt;hr>
-&lt;h2 id="四连接方式">四、连接方式&lt;/h2>
-&lt;h3 id="一windows-用户">（一）Windows 用户&lt;/h3>
-&lt;p>此处推荐三个用于连接的终端工具（就是黑窗口，理论上使用cmd即可，但不够易用）：&lt;/p></description><content type="html"><![CDATA[<p>当前服务器ip:</p>
+&lt;p>之后会自动退出连接，使用你设置的新密码重新连接。&lt;/p></description><content type="html"><![CDATA[<p>当前服务器ip:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>10.201.105.150
-</span></span></code></pre></div><h2 id="一前言">一、前言</h2>
-<p><span style="color: red;"><strong>校外访问请通过校园 VPN</strong></span></p>
+</span></span></code></pre></div><p><span style="color: red;"><strong>校外访问请通过校园 VPN</strong></span></p>
+<h2 id="一前言">一、前言</h2>
 <p>实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。</p>
 <hr>
 <h2 id="二什么是深度学习服务器">二、什么是“深度学习服务器”</h2>
@@ -107,7 +104,8 @@
 <h3 id="手动修改密码重要">手动修改密码（重要）</h3>
 <ol>
 <li>
-<p>登录服务器后（见后续教程），在终端输入：</p>
+<p>登录服务器后（见后续教程），默认会自动弹出修改密码的流程。<br>
+如果后续修改密码，在终端输入：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>passwd
 </span></span></code></pre></div></li>
 <li>
@@ -187,7 +185,7 @@
 <h2 id="五anaconda-与-python-环境管理">五、Anaconda 与 Python 环境管理</h2>
 <h3 id="1-anaconda-简介">1. Anaconda 简介</h3>
 <p>Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环境、安装依赖，避免不同项目间的冲突。（miniconda是其精简版）</p>
-<p>此处管理员已预装系统级miniconda。</p>
+<p>此处管理员已预装系统级miniconda（位于<code>/opt/miniconda3/bin/conda</code>）。</p>
 <h3 id="2-常用命令">2. 常用命令</h3>
 <table>
   <thead>
@@ -219,7 +217,7 @@
       </tr>
   </tbody>
 </table>
-<h3 id="3-使用-jupyterlab可选">3. 使用 JupyterLab（可选）</h3>
+<h3 id="3-使用-jupyterlab暂未安装后续可能会扩展">3. 使用 JupyterLab（暂未安装，后续可能会扩展）</h3>
 <p>在服务器上启动：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jupyter lab --no-browser --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8888</span>
 </span></span></code></pre></div><p>然后在本地终端执行：</p>
@@ -227,7 +225,7 @@
 </span></span></code></pre></div><p>本地浏览器访问：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>http://localhost:8888
 </span></span></code></pre></div><hr>
-<h2 id="六远程桌面与图形化软件">六、远程桌面与图形化软件</h2>
+<h2 id="六远程桌面与图形化软件暂未安装如需仿真请先使用113另一台cpu服务器">六、远程桌面与图形化软件（暂未安装，如需仿真请先使用113另一台CPU服务器）</h2>
 <h3 id="1-适用场景">1. 适用场景</h3>
 <p>用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。<br>
 （如需使用请联系我，因为我也没配过这玩意）</p>
