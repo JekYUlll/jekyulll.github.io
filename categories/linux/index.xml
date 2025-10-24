@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/categories/linux/</link><description>Recent content in Linux on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="一前言">一、前言&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/categories/linux/</link><description>Recent content in Linux on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p>当前服务器ip:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>10.201.105.150
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>&lt;span style="color: red;">&lt;strong>校外访问请通过校园 VPN&lt;/strong>&lt;/span>&lt;/p>
 &lt;p>实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p>
 &lt;hr>
@@ -13,8 +15,8 @@
 &lt;/ul>
 &lt;h3 id="系统与软件环境">系统与软件环境&lt;/h3>
 &lt;ul>
-&lt;li>操作系统：Ubuntu 22.04 LTS&lt;/li>
-&lt;li>已安装软件：Miniconda、Python、Linuxbrew&lt;/li>
+&lt;li>操作系统：Ubuntu 24.04 LTS&lt;/li>
+&lt;li>已安装软件：Miniconda、Python、JupyterLab(TODO)&lt;/li>
 &lt;/ul>
 &lt;p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。&lt;/p>
 &lt;hr>
@@ -32,7 +34,7 @@
 &lt;/li>
 &lt;li>
 &lt;p>&lt;strong>初始密码&lt;/strong>
-所有新账户的初始密码为：&lt;code>123456&lt;/code>&lt;/p>
+所有新账户的初始密码为：&lt;code>LAB113@temp&lt;/code>&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;h3 id="手动修改密码重要">手动修改密码（重要）&lt;/h3>
@@ -45,7 +47,7 @@
 &lt;p>系统会提示：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Changing password &lt;span style="color:#66d9ef">for&lt;/span> user zhangsan.
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">(&lt;/span>current&lt;span style="color:#f92672">)&lt;/span> UNIX password:
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输入当前密码（即 &lt;code>123456&lt;/code>）。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输入当前密码（即 &lt;code>LAB113@temp&lt;/code>）。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>接着输入新密码两次（系统不会显示输入内容，但实际上输进去了）：&lt;/p>
@@ -58,16 +60,12 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>表示修改成功。&lt;/p>
 &lt;/li>
 &lt;/ol>
+&lt;p>&lt;img src="https://jekyulll.github.io/images/chpasswd.png" alt="change password">&lt;/p>
+&lt;p>之后会自动退出连接，使用你设置的新密码重新连接。&lt;/p>
 &lt;hr>
 &lt;h2 id="四连接方式">四、连接方式&lt;/h2>
 &lt;h3 id="一windows-用户">（一）Windows 用户&lt;/h3>
-&lt;p>此处推荐三个用于连接的终端工具（就是黑窗口，理论上使用cmd即可，但不够易用）：&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://mobaxterm.mobatek.net/">MobaXterm&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.netsarang.com/en/xshell/">XShell&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://termius.com/">Terminus&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>此处仅演示MobaXterm。&lt;/p></description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
+&lt;p>此处推荐三个用于连接的终端工具（就是黑窗口，理论上使用cmd即可，但不够易用）：&lt;/p></description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
 &lt;p>PID namespace 中的 &lt;code>init&lt;/code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p>
 &lt;p>有多种namespace:&lt;/p>
 &lt;ul>
