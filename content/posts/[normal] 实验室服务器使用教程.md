@@ -13,9 +13,10 @@ categories = ['linux']
 10.201.105.150
 ```
 
-## 一、前言
-
 <span style="color: red;">**校外访问请通过校园 VPN**</span>
+
+
+## 一、前言
 
 实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。
 
@@ -59,7 +60,8 @@ categories = ['linux']
 
 ### 手动修改密码（重要）
 
-1. 登录服务器后（见后续教程），在终端输入：
+1. 登录服务器后（见后续教程），默认会自动弹出修改密码的流程。  
+   如果后续修改密码，在终端输入：
 
    ```bash
    passwd
@@ -180,7 +182,7 @@ scp localfile username@服务器IP:/home/username/
 
 Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环境、安装依赖，避免不同项目间的冲突。（miniconda是其精简版）  
 
-此处管理员已预装系统级miniconda。
+此处管理员已预装系统级miniconda（位于`/opt/miniconda3/bin/conda`）。
 
 ### 2. 常用命令
 
@@ -192,7 +194,7 @@ Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环
 | 查看环境  | `conda env list`                     |
 | 删除环境  | `conda remove -n myenv --all`        |
 
-### 3. 使用 JupyterLab（可选）
+### 3. 使用 JupyterLab（暂未安装，后续可能会扩展）
 
 在服务器上启动：
 
@@ -214,7 +216,7 @@ http://localhost:8888
 
 ---
 
-## 六、远程桌面与图形化软件
+## 六、远程桌面与图形化软件（暂未安装，如需仿真请先使用113另一台CPU服务器）
 
 ### 1. 适用场景
 
