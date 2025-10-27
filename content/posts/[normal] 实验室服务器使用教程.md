@@ -10,7 +10,7 @@ categories = ['linux']
 
 当前服务器ip:   
 ```bash
-10.201.105.150
+10.201.106.64
 ```
 
 <span style="color: red;">**校外访问请通过校园 VPN**</span>
