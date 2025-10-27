@@ -146,7 +146,8 @@
 <p>左边是服务器文件路径，可以按照权限操纵文件，新建个文件夹放代码之类的。</p>
 <p>右边就是终端，可以对linux系统进行各种命令行操作。</p>
 <h3 id="用-vs-code-连接主要使用方式">用 VS Code 连接（主要使用方式）</h3>
-<p>Pycharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因此此处仅演示VS Code，也仅推荐使用VS Code。</p>
+<p>PyCharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因此此处仅演示VS Code，也仅推荐使用VS Code。<br>
+如果想要使用PyCharm连接，可以阅读<a href="https://github.com/xiaonanQua/serverdoc?tab=readme-ov-file#%E5%9B%9B%E9%80%9A%E8%BF%87ssh%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8%E8%BF%9C%E7%A8%8B%E8%AE%A1%E7%AE%97%E8%B5%84%E6%BA%90pycharmjupyterlab%E9%85%8D%E7%BD%AE">实验室服务器的使用指南</a>。</p>
 <ol>
 <li>安装remote相关插件</li>
 </ol>
@@ -368,6 +369,7 @@
 <p><a href="https://blog.csdn.net/qq_44773719/article/details/104352965">Mac下使用SSH连接远程Linux服务器</a>。</p>
 <p><a href="https://ajohn.top/article/bes1sa4i/">实验室服务器使用教程（用户篇）</a>。</p>
 <p><a href="https://github.com/yurizzzzz/TJU-ServerDoc">yurizzzzz/TJU-ServerDoc 天津大学实验室服务器使用和管理</a>。</p>
+<p><a href="https://github.com/xiaonanQua/serverdoc">实验室服务器的使用指南</a>。</p>
 ]]></content></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
 &lt;p>PID namespace 中的 &lt;code>init&lt;/code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p>
 &lt;p>有多种namespace:&lt;/p>
