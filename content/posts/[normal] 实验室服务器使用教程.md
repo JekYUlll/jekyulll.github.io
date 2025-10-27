@@ -126,7 +126,8 @@ categories = ['linux']
 
 ### 用 VS Code 连接（主要使用方式）
 
-Pycharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因此此处仅演示VS Code，也仅推荐使用VS Code。
+PyCharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因此此处仅演示VS Code，也仅推荐使用VS Code。  
+如果想要使用PyCharm连接，可以阅读[实验室服务器的使用指南](https://github.com/xiaonanQua/serverdoc?tab=readme-ov-file#%E5%9B%9B%E9%80%9A%E8%BF%87ssh%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8%E8%BF%9C%E7%A8%8B%E8%AE%A1%E7%AE%97%E8%B5%84%E6%BA%90pycharmjupyterlab%E9%85%8D%E7%BD%AE)。  
 
 1. 安装remote相关插件
    
@@ -320,3 +321,5 @@ conda create -n myenv python=3.10   # 创建新环境
 [实验室服务器使用教程（用户篇）](https://ajohn.top/article/bes1sa4i/)。
 
 [yurizzzzz/TJU-ServerDoc 天津大学实验室服务器使用和管理](https://github.com/yurizzzzz/TJU-ServerDoc)。
+
+[实验室服务器的使用指南](https://github.com/xiaonanQua/serverdoc)。  
