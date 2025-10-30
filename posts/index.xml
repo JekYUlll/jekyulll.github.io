@@ -226,47 +226,20 @@
 </span></span></code></pre></div><p>本地浏览器访问：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>http://localhost:8888
 </span></span></code></pre></div><hr>
-<h2 id="六远程桌面与图形化软件暂未安装如需仿真请先使用113另一台cpu服务器">六、远程桌面与图形化软件（暂未安装，如需仿真请先使用113另一台CPU服务器）</h2>
+<h2 id="六远程桌面与图形化软件">六、远程桌面与图形化软件</h2>
 <h3 id="1-适用场景">1. 适用场景</h3>
-<p>用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。<br>
-（如需使用请联系我，因为我也没配过这玩意）</p>
-<h3 id="2-配置方式由管理员完成">2. 配置方式（由管理员完成）</h3>
-<ul>
-<li>启用 <code>xrdp</code> 服务；</li>
-<li>为每个用户创建独立桌面会话。</li>
-</ul>
-<h3 id="3-用户连接方式">3. 用户连接方式</h3>
-<table>
-  <thead>
-      <tr>
-          <th>系统</th>
-          <th>工具</th>
-          <th>登录方式</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Windows</td>
-          <td>远程桌面连接 (mstsc)</td>
-          <td>输入 IP、用户名、密码</td>
-      </tr>
-      <tr>
-          <td>macOS</td>
-          <td>Microsoft Remote Desktop</td>
-          <td>App Store 可下载</td>
-      </tr>
-      <tr>
-          <td>Linux</td>
-          <td>Remmina</td>
-          <td>支持 RDP 协议</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="4-注意事项">4. 注意事项</h3>
-<ul>
-<li>远程桌面会占用 GPU 和内存资源，不建议长时间挂起。</li>
-<li>深度学习训练任务应通过命令行执行。</li>
-</ul>
+<p>用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。</p>
+<blockquote>
+<p>其中大部分安装需要<code>sudo</code>权限，如需安装请联系，请勿自行安装。</p>
+</blockquote>
+<h3 id="2-用户连接方式">2. 用户连接方式</h3>
+<p>从windows中打开远程桌面功能。</p>
+<p><img src="/images/desktop1.png" alt="desktop1"></p>
+<p>按步骤依次输入服务器ip、用户名和密码，进行连接。</p>
+<p><img src="/images/desktop2.png" alt="desktop2"></p>
+<p><img src="/images/desktop3.png" alt="desktop3"></p>
+<p>连接上远程桌面（gnome）后，点击最左上角标识可以查看窗口与查找应用。</p>
+<p><img src="/images/desktop4.png" alt="desktop4"></p>
 <hr>
 <h2 id="七文件管理与备份">七、文件管理与备份</h2>
 <h3 id="1-目录说明">1. 目录说明</h3>
