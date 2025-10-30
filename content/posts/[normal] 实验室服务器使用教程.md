@@ -217,30 +217,28 @@ http://localhost:8888
 
 ---
 
-## 六、远程桌面与图形化软件（暂未安装，如需仿真请先使用113另一台CPU服务器）
+## 六、远程桌面与图形化软件
 
 ### 1. 适用场景
 
 用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。  
-（如需使用请联系我，因为我也没配过这玩意）
+> 其中大部分安装需要`sudo`权限，如需安装请联系，请勿自行安装。
 
-### 2. 配置方式（由管理员完成）
+### 2. 用户连接方式
 
-* 启用 `xrdp` 服务；
-* 为每个用户创建独立桌面会话。
+从windows中打开远程桌面功能。
 
-### 3. 用户连接方式
+![desktop1](/images/desktop1.png)
 
-| 系统      | 工具                       | 登录方式          |
-| ------- | ------------------------ | ------------- |
-| Windows | 远程桌面连接 (mstsc)           | 输入 IP、用户名、密码  |
-| macOS   | Microsoft Remote Desktop | App Store 可下载 |
-| Linux   | Remmina                  | 支持 RDP 协议     |
+按步骤依次输入服务器ip、用户名和密码，进行连接。
 
-### 4. 注意事项
+![desktop2](/images/desktop2.png)
 
-* 远程桌面会占用 GPU 和内存资源，不建议长时间挂起。
-* 深度学习训练任务应通过命令行执行。
+![desktop3](/images/desktop3.png)
+
+连接上远程桌面（gnome）后，点击最左上角标识可以查看窗口与查找应用。
+
+![desktop4](/images/desktop4.png)
 
 ---
 
