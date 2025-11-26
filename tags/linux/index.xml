@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/tags/linux/</link><description>Recent content in Linux on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p>当前服务器ip:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>10.201.113.35
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;span style="color: red;">&lt;strong>校外访问请通过校园 VPN&lt;/strong>&lt;/span>&lt;/p>
+&lt;p>&lt;span style="color: red;">&lt;strong>系统盘容量有限，大型文件请放置于&lt;code>/data&lt;/code>文件夹中（&lt;code>~/data&lt;/code>即为其快捷方式）&lt;/strong>&lt;/span>&lt;/p>
 &lt;h2 id="一前言">一、前言&lt;/h2>
 &lt;p>实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p>
 &lt;hr>
@@ -61,8 +62,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>表示修改成功。&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://jekyulll.github.io/images/chpasswd.png" alt="change password">&lt;/p>
-&lt;p>之后会自动退出连接，使用你设置的新密码重新连接。&lt;/p></description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
+&lt;p>&lt;img src="https://jekyulll.github.io/images/chpasswd.png" alt="change password">&lt;/p></description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
 &lt;p>PID namespace 中的 &lt;code>init&lt;/code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p>
 &lt;p>有多种namespace:&lt;/p>
 &lt;ul>
