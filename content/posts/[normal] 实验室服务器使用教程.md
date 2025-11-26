@@ -15,6 +15,8 @@ categories = ['linux']
 
 <span style="color: red;">**校外访问请通过校园 VPN**</span>
 
+<span style="color: red;">**系统盘容量有限，大型文件请放置于`/data`文件夹中（`~/data`即为其快捷方式）**</span>
+
 
 ## 一、前言
 
