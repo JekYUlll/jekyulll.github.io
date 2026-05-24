@@ -1,78 +1,106 @@
-baseurl      = "https://horeb.top/"
-title        = "Horeb"
-languageCode = "en-us"
-theme        = "hello-friend-ng"
-pagerSize     = 10
+baseURL = "https://horeb.top/"
+languageCode = "zh-cn"
+title = "Horeb"
+theme = "stack"
+paginate = 10
+enableEmoji = true
+enableGitInfo = true
 
-# disableKinds = ["RSS", "sitemap", "robotsTXT"] 
+[author]
+  name = "JekYUlll"
 
 [services.googleAnalytics]
-id = 'G-Q6473FXND4'
+  id = 'G-Q6473FXND4'
+
+[frontmatter]
+  date = [':date', ':filename', ':default']
+  lastmod = [':fileModTime', ':default']
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
+# === Taxonomies ===
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# === Left Sidebar ===
+[sidebar]
+  compact = false
+  emoji = "✏️"
+  subtitle = "C++ / Go / Rust"
+
+# === Article defaults ===
+[article]
+  headingAnchor = true
+  math = false
+  toc = true
+  readingTime = true
+
+[article.license]
+  enabled = true
+  default = "CC BY-NC 4.0"
+
+# === Date format ===
+[params.dateFormat]
+  published = "2006-01-02"
+  lastUpdated = "2006-01-02"
+
+# === Site description & keywords ===
+[params]
+  description = "--C++, Go, Linux--"
+  keywords = "homepage, blog, c++, golang, rust, linux"
+  mainSections = ["posts"]
+  homeSubtitle = "do not panic"
+  rssFullContent = true
+
+# === Color Scheme ===
+[colorScheme]
+  toggle = true
+  default = "auto"
+
+# === Footer ===
+[footer]
+  since = 2024
+  customText = ""
+
+# === Menu ===
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 10
+
 [[menu.main]]
   identifier = "tags"
-  name       = "Tags"
-  url        = "/tags/"
+  name = "Tags"
+  url = "/tags/"
+  weight = 20
 
 [[menu.main]]
   identifier = "categories"
-  name       = "Categories"
-  url        = "/categories/"
+  name = "Categories"
+  url = "/categories/"
+  weight = 30
 
-[params]
-  dateform        = "Jan 2, 2006"
-  dateformShort   = "Jan 2"
-  dateformNum     = "2006-01-02"
-  dateformNumTime = "2006-01-02 15:04"
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 40
 
-  # Subtitle for home
-  homeSubtitle = "do not panic"
+# === Related posts ===
+[related]
+  includeNewer = false
+  threshold = 80
+  toLower = false
 
-  # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  disableReadOtherPosts = false
+  [[related.indices]]
+    name = "keywords"
+    weight = 100
 
-  # Enable sharing buttons, if you like
-  enableSharingButtons = true
-  
-  # Show a global language switcher in the navigation bar
-  enableGlobalLanguageMenu = true
-
-  # Metadata mostly used in document's head
-  description = "--C++, Go, Linux--"
-  keywords = "homepage, blog"
-  images = [""]
-
-[taxonomies]
-    category = "blog"
-    tag      = "tags"
-    # series   = "series"
-    series   = "categories"
-
-[languages]
-  [languages.en]
-    title = "Welcome to my Blog ⬆️"
-    keywords = ""
-    copyright = '<a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
-    readOtherPosts = "Read other posts"
-
-  [languages.en.params]
-    subtitle  = "C++ / Go / Rust"
-
-    [languages.en.params.logo]
-      logoText = "Horeb"
-      logoHomeLink = "/"
-    # or
-    #
-    # path = "/img/your-example-logo.svg"
-    # alt = "Your example logo alt text"
-
-  # And you can even create generic menu
-  [[menu.main]]
-    identifier = "blog"
-    name       = "Blog"
-    url        = "/posts"
+  [[related.indices]]
+    name = "tags"
+    weight = 80
