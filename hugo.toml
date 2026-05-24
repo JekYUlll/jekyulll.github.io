@@ -1,12 +1,8 @@
-baseurl      = "https://horeb.top/"
+baseurl      = "https://jekyulll.github.io/"
 title        = "Horeb"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
 pagerSize     = 10
-
-[author]
-  name = "JekYUlll"
-  email = "jekyulll@gmail.com"
 
 # disableKinds = ["RSS", "sitemap", "robotsTXT"] 
 
