@@ -1,7 +1,7 @@
 +++
 date = '2025-04-29T21:05:47+08:00'
 draft = false
-title = '[linux] TODO 守护进程，setsid，Linux三个id，权限'
+title = 'TODO 守护进程，setsid，Linux三个id，权限'
 author = 'JekYUlll'
 lastmod = '2025-04-29T21:05:47+08:00'
 tags = ['linux', 'os']

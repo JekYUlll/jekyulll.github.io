@@ -1,7 +1,7 @@
 +++
 date = '2025-04-29T21:05:47+08:00'
 draft = false
-title = '[linux] 在wezterm里使用tmux实现history restore 保存历史会话'
+title = '在wezterm里使用tmux实现history restore 保存历史会话'
 author = 'JekYUlll'
 lastmod = '2025-04-29T21:05:47+08:00'
 tags = ['linux']

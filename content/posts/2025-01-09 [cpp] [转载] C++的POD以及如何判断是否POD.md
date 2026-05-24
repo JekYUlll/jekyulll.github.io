@@ -1,7 +1,7 @@
 +++
 date = '2025-01-09T20:05:47+08:00'
 draft = false
-title = '[转载] C++的POD以及如何判断是否POD'
+title = 'C++的POD以及如何判断是否POD'
 author = 'cheeto'
 lastmod = '2025-01-09T20:05:47+08:00'
 tags = ['cpp', 'reprint']
