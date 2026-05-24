@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on Welcome to my Blog ⬆️</title><link>https://horeb.top/categories/backend/</link><description>Recent content in Backend on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Sat, 23 May 2026 20:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/categories/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>IM应用开发的两个消息库：同步库与存储库</title><link>https://horeb.top/posts/2026-05-23-backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</link><pubDate>Sat, 23 May 2026 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2026-05-23-backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</guid><description>&lt;h2 id="引言"&gt;引言&lt;/h2&gt;
-&lt;p&gt;IM（Instant Messaging）应用开发的&amp;quot;终局问题&amp;quot;之一，是&lt;strong&gt;消息系统架构&lt;/strong&gt;。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on Horeb</title><link>https://horeb.top/categories/backend/</link><description>Recent content in Backend on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/categories/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>IM应用开发的两个消息库：同步库与存储库</title><link>https://horeb.top/posts/backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</link><pubDate>Sat, 23 May 2026 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</guid><description>&lt;h2 id="引言"&gt;引言
+&lt;/h2&gt;&lt;p&gt;IM（Instant Messaging）应用开发的&amp;quot;终局问题&amp;quot;之一，是&lt;strong&gt;消息系统架构&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;不管你用 Netty、gRPC、WebSocket 还是裸 TCP，不管你用 MySQL、Redis 还是自研分布式存储——最终你都要面对两个核心问题：&lt;strong&gt;消息怎么同步到接收方的每个端&lt;/strong&gt;？&lt;strong&gt;消息怎么持久化，让用户随时翻出半年前的聊天记录&lt;/strong&gt;？&lt;/p&gt;
 &lt;p&gt;业界对这两个问题的解法，经过十几年演化，收敛到了一个经典的范式——&lt;strong&gt;&amp;ldquo;两个消息库&amp;rdquo;&lt;/strong&gt;：一个&lt;strong&gt;消息同步库&lt;/strong&gt;（Sync Store），一个&lt;strong&gt;消息存储库&lt;/strong&gt;（Message Store / Archive Store）。&lt;/p&gt;
 &lt;p&gt;这个范式最早由阿里云 TableStore 团队在 2017 年前后系统性地提出并落地（参见《现代IM系统中消息推送和存储架构的实现》），至今依然是微信、钉钉、QQ 等主流 IM 产品在消息层面的核心架构基础。&lt;/p&gt;
 &lt;p&gt;本文围绕&amp;quot;两个消息库&amp;quot;展开讨论，从&lt;strong&gt;为什么需要两个库&lt;/strong&gt;、&lt;strong&gt;Timeline 模型&lt;/strong&gt;、&lt;strong&gt;写扩散 vs 读扩散&lt;/strong&gt;、&lt;strong&gt;物理存储选型&lt;/strong&gt;到&lt;strong&gt;工程中的取舍&lt;/strong&gt;，希望能讲清楚这个看似简单实则充满权衡的设计问题。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="一传统架构先同步后存储"&gt;一、传统架构：先同步，后存储&lt;/h2&gt;
-&lt;p&gt;在分析现代架构之前，先看看&amp;quot;原始&amp;quot;做法。&lt;/p&gt;
+&lt;h2 id="一传统架构先同步后存储"&gt;一、传统架构：先同步，后存储
+&lt;/h2&gt;&lt;p&gt;在分析现代架构之前，先看看&amp;quot;原始&amp;quot;做法。&lt;/p&gt;
 &lt;p&gt;传统架构是先同步后存储。流程大致是：&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;发送方 → 服务端 → (接收方在线?) → 是 → 在线推送 → 接收方
  ↓ 否
@@ -21,9 +21,235 @@
 &lt;p&gt;这种架构在今天来看已经非常落伍，但它的思路相当直觉——消息嘛，传到了就行了，留着干嘛？&lt;/p&gt;
 &lt;p&gt;然而用户说：不行，我要在手机上看昨天聊的内容，晚上回家在 Mac 上接着看。这就引出了&lt;strong&gt;多端同步&lt;/strong&gt;和&lt;strong&gt;消息漫游&lt;/strong&gt;的需求，传统架构完全做不到。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="二现代架构先存储后同步"&gt;二、现代架构：先存储，后同步&lt;/h2&gt;
-&lt;p&gt;现代架构的核心思想是&lt;strong&gt;先存储，后同步&lt;/strong&gt;。消息从发送方发出，服务端不是先考虑&amp;quot;怎么传给接收方&amp;quot;，而是先存起来。&lt;/p&gt;
+&lt;h2 id="二现代架构先存储后同步"&gt;二、现代架构：先存储，后同步
+&lt;/h2&gt;&lt;p&gt;现代架构的核心思想是&lt;strong&gt;先存储，后同步&lt;/strong&gt;。消息从发送方发出，服务端不是先考虑&amp;quot;怎么传给接收方&amp;quot;，而是先存起来。&lt;/p&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt;发送方 → 服务端 → ①写入消息存储库 → ②写入消息同步库 → ③在线推送(优化路径)
  ↓ 失败/离线
  接收方主动拉取同步库
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的核心变化是引入了&lt;strong&gt;两个独立的存储系统&lt;/strong&gt;：&lt;/p&gt;</description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的核心变化是引入了&lt;strong&gt;两个独立的存储系统&lt;/strong&gt;：&lt;/p&gt;
+&lt;h3 id="21-消息存储库message-store"&gt;2.1 消息存储库（Message Store）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;按&lt;strong&gt;会话&lt;/strong&gt;（Conversation / Session）组织，每个会话一个 Timeline&lt;/li&gt;
+&lt;li&gt;保存该会话的&lt;strong&gt;全量消息&lt;/strong&gt;，永不过期（理论上）&lt;/li&gt;
+&lt;li&gt;用于支持&lt;strong&gt;消息漫游&lt;/strong&gt;：用户在新设备上登录，从这里拉取任意会话的历史消息&lt;/li&gt;
+&lt;li&gt;写入频率稳定：一次会话一条消息就是一次写入&lt;/li&gt;
+&lt;li&gt;数据量最大：需支撑全量持久化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="22-消息同步库sync-store"&gt;2.2 消息同步库（Sync Store）
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;按&lt;strong&gt;接收端&lt;/strong&gt;（Device / Client）组织，每个接收端一个 Timeline&lt;/li&gt;
+&lt;li&gt;保存&lt;strong&gt;待同步给这个端的所有消息&lt;/strong&gt;（可能来自多个会话）&lt;/li&gt;
+&lt;li&gt;用于支持&lt;strong&gt;多端同步&lt;/strong&gt;：手机端、PC 端、Pad 端各自独立拉取各自的同步 Timeline&lt;/li&gt;
+&lt;li&gt;写入频率高：一条消息可能触发 N 次写入（群聊 N 个成员）&lt;/li&gt;
+&lt;li&gt;数据有生命周期：同步完毕后可以清理（取决于设计）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为什么要分成两个库？因为&lt;strong&gt;两者的访问模式完全不同&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;维度&lt;/th&gt;
+ &lt;th&gt;消息存储库&lt;/th&gt;
+ &lt;th&gt;消息同步库&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;主键&lt;/td&gt;
+ &lt;td&gt;会话 ID&lt;/td&gt;
+ &lt;td&gt;接收端 ID&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;访问模式&lt;/td&gt;
+ &lt;td&gt;按会话拉全量历史&lt;/td&gt;
+ &lt;td&gt;按设备拉增量消息&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;写入频率&lt;/td&gt;
+ &lt;td&gt;1 次/消息&lt;/td&gt;
+ &lt;td&gt;1~N 次/消息&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;数据量&lt;/td&gt;
+ &lt;td&gt;全量&lt;/td&gt;
+ &lt;td&gt;有状态的增量&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;TTL&lt;/td&gt;
+ &lt;td&gt;永久&lt;/td&gt;
+ &lt;td&gt;可淘汰&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;核心能力&lt;/td&gt;
+ &lt;td&gt;消息漫游&lt;/td&gt;
+ &lt;td&gt;多端同步&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;强行用一个库同时支撑这两种模式，要么读性能爆炸，要么写放大失控。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="三timeline-模型统一抽象"&gt;三、Timeline 模型：统一抽象
+&lt;/h2&gt;&lt;p&gt;要想理解两个库的具体实现，首先要理解&lt;strong&gt;Timeline&lt;/strong&gt;这个抽象模型。&lt;/p&gt;
+&lt;p&gt;Timeline 是一个&lt;strong&gt;有序消息队列&lt;/strong&gt;，具有以下三个特性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;每一条消息都有一个顺序 ID（SeqId）&lt;/strong&gt;，后面的消息 SeqId 一定比前面的大&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;新消息永远追加到尾部&lt;/strong&gt;，不插入中间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;支持按 SeqId 随机定位和范围读取&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这三条特性赋予了 Timeline 极强的表达能力：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;消息同步&lt;/strong&gt;：接收方的每个端维护一个本地 cursor（即最新已同步的 SeqId），每次拉取时问&amp;quot;从 cursor+1 开始，给我最新的消息&amp;quot;即可。服务端无需维护每个端的状态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;消息漫游&lt;/strong&gt;：直接从会话 Timeline 按 SeqId 范围批量读取&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多端独立进度&lt;/strong&gt;：B1、B2、B3 三个端各自记录自己的 cursor，互不干扰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从这个角度看，消息同步库本质上是一个&lt;strong&gt;按设备维度组织的 Timeline 集合&lt;/strong&gt;，消息存储库是一个&lt;strong&gt;按会话维度组织的 Timeline 集合&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="四消息同步的选择写扩散-vs-读扩散"&gt;四、消息同步的选择：写扩散 vs 读扩散
+&lt;/h2&gt;&lt;p&gt;这是 IM 架构中最经典的 trade-off 讨论。&lt;/p&gt;
+&lt;h3 id="41-读扩散fan-out-on-read"&gt;4.1 读扩散（Fan-out on Read）
+&lt;/h3&gt;&lt;p&gt;每条消息只写入&lt;strong&gt;存储库&lt;/strong&gt;一次，各接收端主动去每个会话的 Timeline 拉取新消息。&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;场景&lt;/th&gt;
+ &lt;th&gt;写入次数&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;单聊&lt;/td&gt;
+ &lt;td&gt;1 次&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;群聊（N 人）&lt;/td&gt;
+ &lt;td&gt;1 次&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：写入极少，非常适合写密集型场景&lt;/li&gt;
+&lt;li&gt;缺点：读放大严重。假设用户有 50 个活跃会话，每次同步需要拉 50 次。大量无效拉取（很多会话并没有新消息）。读写比从 10:1 放大到 100:1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="42-写扩散fan-out-on-write"&gt;4.2 写扩散（Fan-out on Write）
+&lt;/h3&gt;&lt;p&gt;每条消息写入&lt;strong&gt;存储库&lt;/strong&gt; + &lt;strong&gt;所有接收方的同步库&lt;/strong&gt;。&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;场景&lt;/th&gt;
+ &lt;th&gt;写入次数&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;单聊（A→B）&lt;/td&gt;
+ &lt;td&gt;1（存储）+ 2（A和B的同步库）= 3 次&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;群聊（N 人）&lt;/td&gt;
+ &lt;td&gt;1（存储）+ N 次&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;优点：接收方只需拉&lt;strong&gt;一次自己的同步 Timeline&lt;/strong&gt;，即可拿到所有未读消息。读压力极低&lt;/li&gt;
+&lt;li&gt;缺点：写入放大严重，群聊场景尤其恐怖（万人大群每条消息写 1 万次）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="43-主流选择写扩散为主混合为辅"&gt;4.3 主流选择：写扩散为主，混合为辅
+&lt;/h3&gt;&lt;p&gt;IM 场景的特点是&lt;strong&gt;读多写少&lt;/strong&gt;。一条消息产生一次，但会被读取多次（手机端读一次，PC 端读一次，历史翻看再读几次）。读写比约 10:1。&lt;/p&gt;
+&lt;p&gt;用读扩散，10:1 被放大到 100:1。用写扩散，读写比可以平衡到大约 30:30 — 虽然写变多了，但系统两端都不会触顶，整体吞吐更高。&lt;/p&gt;
+&lt;p&gt;现代 IM 系统（微信、钉钉）的普遍做法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;默认使用写扩散&lt;/strong&gt;，小群（&amp;lt;2000 人）走写扩散&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;大群退化到读扩散&lt;/strong&gt;，超过阈值后消息只写存储库，不写同步库。接收方在打开群聊时按需拉取&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;读写混合模式&lt;/strong&gt;：一个高级 IM 系统应该能根据群规模动态选择同步策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="五物理存储选型"&gt;五、物理存储选型
+&lt;/h2&gt;&lt;p&gt;Timeline 是一个逻辑模型，落到底层需要具体的存储引擎。&lt;strong&gt;Timeline 对底层数据库是有要求的&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;需求&lt;/th&gt;
+ &lt;th&gt;说明&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;高并发写&lt;/td&gt;
+ &lt;td&gt;写扩散模式下，同步库面临巨大的写入压力&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;按序范围读&lt;/td&gt;
+ &lt;td&gt;按 SeqId 范围拉取消息是核心操作&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;随机定位&lt;/td&gt;
+ &lt;td&gt;按 SeqId 精确跳到某条消息&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;高可用 + 低成本&lt;/td&gt;
+ &lt;td&gt;消息数据量巨大，存储成本敏感&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;业界常见方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HBase / TableStore&lt;/strong&gt;（阿里云）：天然的 LSM-Tree 架构，按 rowkey 有序排列，range scan 性能极好。阿里系 IM 的经典选择&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cassandra / ScyllaDB&lt;/strong&gt;：分区有序，写性能强悍，适合写扩散场景&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TiKV&lt;/strong&gt;：分布式 KV，支持有序扫描，适合自建&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;（同步库）：&lt;strong&gt;同步库&lt;/strong&gt;可以用 Redis 的有序集合（ZSet），以 SeqId 为 score。带 TTL 自动淘汰。但数据量大了之后内存成本高，一般只用作同步库的缓存层&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自建 B+Tree 引擎&lt;/strong&gt;：大厂的自研路线，极致优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个典型的部署模型：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;同步库: Redis Cluster (主要) + 冷数据下沉到 KV Store
+存储库: HBase / Cassandra (全量) + CDN 缓存热门消息
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id="六工程中的实际考量"&gt;六、工程中的实际考量
+&lt;/h2&gt;&lt;p&gt;理论讲完了，聊几个实际中遇到的痛点：&lt;/p&gt;
+&lt;h3 id="61-同步库的垃圾回收"&gt;6.1 同步库的垃圾回收
+&lt;/h3&gt;&lt;p&gt;同步库的数据有&amp;quot;保质期&amp;quot;——消息一旦被所有端确认已同步，就可以清理了。但实际上很难精确判断&amp;quot;所有端&amp;quot;。一般做法有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基于 TTL&lt;/strong&gt;：给同步库 Timeline 设置过期时间（如 7 天/30 天），超时自动淘汰。接收方如果长期离线，上线后从存储库拉全量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基于 ACK&lt;/strong&gt;：每个端上报已同步的 SeqId，服务端计算最低水位，定期裁剪。实现复杂但更优雅&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="62-消息存储库的瘦身"&gt;6.2 消息存储库的瘦身
+&lt;/h3&gt;&lt;p&gt;存储库是永久存储，规模大了后面临几个问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据倾斜&lt;/strong&gt;：某些高频用户/群聊的消息量远超平均值，单个 Timeline 过大。需做 Timeline 分裂（Split）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;冷热分离&lt;/strong&gt;：近期消息放 SSD，远古消息放 HDD/OSS。常见策略是按时间分片，30 天前的数据迁移到廉价存储&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图片/文件分离&lt;/strong&gt;：大文件不走消息库，单独的对象存储 + CDN，消息体里只存 URL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="63-消息的有序性"&gt;6.3 消息的有序性
+&lt;/h3&gt;&lt;p&gt;我参与的一个项目里遇到了经典的&amp;quot;消息乱序&amp;quot;问题：&lt;/p&gt;
+&lt;p&gt;用户 A 在手机上连接 WebSocket 发了一条&amp;quot;你好&amp;quot;，过了一秒又发了一条&amp;quot;在吗？&amp;quot;。结果 B 的手机上显示&amp;quot;在吗？&amp;ldquo;先到，&amp;ldquo;你好&amp;quot;后到。&lt;/p&gt;
+&lt;p&gt;原因分析：两条消息进了同步库后，由于 SeqId 生成器是分布式 ID（如雪花算法），虽然保证递增但不保证严格递增（即后分配的不一定大于先分配的）。再加上在线推送走的是推送通道（APNs / FCM），和主动拉取的路径不同，在线推送的成功率波动导致了乱序。&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;strong&gt;在线推送不是同步路径，只是优化路径&lt;/strong&gt;。接收方收到的在线推送消息先在本地暂存，等下一次主动拉取同步库，以同步库的 SeqId 顺序为准进行重排，再展示给用户。也就是说——&lt;strong&gt;&amp;ldquo;以拉为准&amp;rdquo;&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id="64-seqid-生成器"&gt;6.4 SeqId 生成器
+&lt;/h3&gt;&lt;p&gt;SeqId 是 Timeline 的灵魂。要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;全局唯一&lt;/li&gt;
+&lt;li&gt;递增（但不要求严格连续）&lt;/li&gt;
+&lt;li&gt;高性能（百万级 QPS）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常见方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;雪花算法（Snowflake）&lt;/strong&gt;：时间戳 + 机器 ID + 序列号。时钟回跳是大坑，需要额外处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redis INCR&lt;/strong&gt;：按 Timeline 维度自增。简单可靠，但 Redis 性能在高并发下是瓶颈&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据库自增序列&lt;/strong&gt;：如 MySQL auto_increment，通过步长和 offset 做多节点。写吞吐受限于单库&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;段锁（Segment）&lt;/strong&gt;：服务端预分配一段 SeqId 区间，用完了再去取。综合性能和复杂度最平衡的方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="七总结两个库的本质"&gt;七、总结：两个库的本质
+&lt;/h2&gt;&lt;p&gt;&amp;ldquo;两个消息库&amp;quot;的本质，是&lt;strong&gt;将&amp;quot;数据持久化&amp;quot;和&amp;quot;数据分发&amp;quot;两个关注点解耦&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;消息存储库解决**&amp;ldquo;数据在哪儿&amp;rdquo;**——持久化、可回溯、可漫游&lt;/li&gt;
+&lt;li&gt;消息同步库解决**&amp;ldquo;数据怎么到终端&amp;rdquo;**——实时、高效、多端&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两者共享 Timeline 这个抽象模型，但在物理实现、访问模式、生命周期上完全不同。&lt;/p&gt;
+&lt;p&gt;如果让我给 IM 架构新手一个建议：&lt;strong&gt;先理解 Timeline 模型，再理解写扩散和读扩散的取舍，最后才去纠结用什么数据库&lt;/strong&gt;。底层存储可以换，但架构设计的思路一旦定下来，整个系统的上限和下限就都画好了。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阿里云 TableStore 团队，《现代IM系统中消息推送和存储架构的实现》&lt;/li&gt;
+&lt;li&gt;掘金，《现代IM系统中聊天消息的同步和存储方案探讨》&lt;/li&gt;
+&lt;li&gt;知乎，《IM 系统的架构设计——消息同步和存储》&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web on Welcome to my Blog ⬆️</title><link>https://horeb.top/categories/web/</link><description>Recent content in Web on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Wed, 23 Apr 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/categories/web/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://horeb.top/posts/2025-04-23-web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-04-23-web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础"&gt;一、HTTP协议基础&lt;/h3&gt;
-&lt;p&gt;HTTP协议通过&lt;strong&gt;Range请求&lt;/strong&gt;实现断点续传：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web on Horeb</title><link>https://horeb.top/categories/web/</link><description>Recent content in Web on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/categories/web/index.xml" rel="self" type="application/rss+xml"/><item><title>实现服务端断点续传：Go与Nginx</title><link>https://horeb.top/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link><pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid><description>&lt;h3 id="一http协议基础"&gt;一、HTTP协议基础
+&lt;/h3&gt;&lt;p&gt;HTTP协议通过&lt;strong&gt;Range请求&lt;/strong&gt;实现断点续传：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;客户端请求指定范围&lt;/strong&gt;&lt;br&gt;
@@ -20,8 +20,8 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="二nginx静态资源断点续传"&gt;二、Nginx静态资源断点续传&lt;/h3&gt;
-&lt;p&gt;Nginx默认支持静态文件的断点续传。需要有以下配置：&lt;/p&gt;
+&lt;h3 id="二nginx静态资源断点续传"&gt;二、Nginx静态资源断点续传
+&lt;/h3&gt;&lt;p&gt;Nginx默认支持静态文件的断点续传。需要有以下配置：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;server&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/static&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;root&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/data/files&lt;/span&gt;; &lt;span style="color:#75715e"&gt;# 文件存储路径
@@ -33,8 +33,8 @@
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -I http://your-domain/static/large-file.iso
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若输出包含&lt;code&gt;Accept-Ranges: bytes&lt;/code&gt;与&lt;code&gt;Content-Length&lt;/code&gt;，则表明支持续传。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="三go实现"&gt;三、Go实现&lt;/h3&gt;
-&lt;p&gt;对于动态生成的文件（如需鉴权的资源），需手动处理&lt;code&gt;Range&lt;/code&gt;请求。&lt;/p&gt;
+&lt;h3 id="三go实现"&gt;三、Go实现
+&lt;/h3&gt;&lt;p&gt;对于动态生成的文件（如需鉴权的资源），需手动处理&lt;code&gt;Range&lt;/code&gt;请求。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-go" data-lang="go"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;package&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; (
@@ -92,7 +92,61 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;• 解析&lt;code&gt;Range&lt;/code&gt;请求头并验证范围有效性
 • 使用&lt;code&gt;Seek&lt;/code&gt;定位文件指针，返回部分内容
-• 通过&lt;code&gt;ETag&lt;/code&gt;实现文件一致性校验&lt;/p&gt;</description></item><item><title>304 Not Modified 是怎么检测的？</title><link>https://horeb.top/posts/2025-04-17-web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</link><pubDate>Thu, 17 Apr 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-04-17-web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</guid><description>&lt;p&gt;&lt;strong&gt;最终判断逻辑由服务端完成&lt;/strong&gt;。&lt;/p&gt;
+• 通过&lt;code&gt;ETag&lt;/code&gt;实现文件一致性校验&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="四客户端如何检测服务端是否支持"&gt;四、客户端如何检测服务端是否支持？
+&lt;/h3&gt;&lt;p&gt;可通过以下步骤判断：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;发送HEAD请求&lt;/strong&gt;&lt;br&gt;
+获取响应头信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -I http://your-domain/file.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;检查关键头字段&lt;/strong&gt;&lt;br&gt;
+• &lt;strong&gt;&lt;code&gt;Accept-Ranges: bytes&lt;/code&gt;&lt;/strong&gt;：表明支持字节范围请求
+• &lt;strong&gt;&lt;code&gt;Content-Length&lt;/code&gt;&lt;/strong&gt;：必须存在且为固定值（动态内容可能无法支持）
+• &lt;strong&gt;&lt;code&gt;ETag&lt;/code&gt;或&lt;code&gt;Last-Modified&lt;/code&gt;&lt;/strong&gt;：用于文件变更校验&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实验性范围请求测试&lt;/strong&gt;&lt;br&gt;
+发送带&lt;code&gt;Range&lt;/code&gt;头的GET请求：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;curl -H &lt;span style="color:#e6db74"&gt;&amp;#34;Range: bytes=0-100&amp;#34;&lt;/span&gt; http://your-domain/file.zip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;若响应状态码为&lt;code&gt;206&lt;/code&gt;且包含&lt;code&gt;Content-Range&lt;/code&gt;头，则确认支持续传。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="五nginx反向代理go服务的注意事项"&gt;五、Nginx反向代理Go服务的注意事项
+&lt;/h3&gt;&lt;p&gt;当Go服务部署于Nginx后，需确保配置正确处理Range请求：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/go-download&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;proxy_pass&lt;/span&gt; &lt;span style="color:#e6db74"&gt;http://go-backend:8080/download&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;proxy_set_header&lt;/span&gt; &lt;span style="color:#e6db74"&gt;Range&lt;/span&gt; $http_range; &lt;span style="color:#75715e"&gt;# 传递原始Range头
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;proxy_set_header&lt;/span&gt; &lt;span style="color:#e6db74"&gt;If-Range&lt;/span&gt; $http_if_range;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;proxy_hide_header&lt;/span&gt; &lt;span style="color:#e6db74"&gt;Accept-Ranges&lt;/span&gt;; &lt;span style="color:#75715e"&gt;# 避免与后端冲突
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;proxy_http_version&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#e6db74"&gt;.1&lt;/span&gt;; &lt;span style="color:#75715e"&gt;# 支持HTTP/1.1特性
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;• 确认Nginx与Go服务对文件有读取权限
+• 检查&lt;code&gt;Content-Length&lt;/code&gt;是否被意外修改（如Gzip压缩）
+• 使用&lt;code&gt;tcpdump&lt;/code&gt;或Wireshark抓包验证请求头传递&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="六边界问题与优化建议"&gt;六、边界问题与优化建议
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;多范围请求处理&lt;/strong&gt;&lt;br&gt;
+支持形如&lt;code&gt;Range: bytes=0-100,200-300&lt;/code&gt;的请求需分段响应，可通过Go的&lt;code&gt;multipart/byteranges&lt;/code&gt;实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;速率限制与防滥用&lt;/strong&gt;&lt;br&gt;
+Nginx配置限速：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-nginx" data-lang="nginx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;location&lt;/span&gt; &lt;span style="color:#e6db74"&gt;/download&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;limit_rate&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1m&lt;/span&gt;; &lt;span style="color:#75715e"&gt;# 限制下载速度为1MB/s
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;日志监控&lt;/strong&gt;&lt;br&gt;
+监控&lt;code&gt;206&lt;/code&gt;状态码频率，识别异常续传行为。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>304 Not Modified 是怎么检测的？</title><link>https://horeb.top/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</link><pubDate>Thu, 17 Apr 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</guid><description>&lt;p&gt;&lt;strong&gt;最终判断逻辑由服务端完成&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;• &lt;strong&gt;浏览器行为&lt;/strong&gt;（客户端）：&lt;br&gt;
 • 浏览器会缓存资源（如 HTML、图片、CSS 等），并根据服务端之前返回的响应头（如 &lt;code&gt;Cache-Control&lt;/code&gt;、&lt;code&gt;Expires&lt;/code&gt;、&lt;code&gt;ETag&lt;/code&gt;、&lt;code&gt;Last-Modified&lt;/code&gt;）决定是否发起&lt;strong&gt;条件请求&lt;/strong&gt;。&lt;br&gt;
 • 当缓存过期或页面刷新（非强制刷新）时，浏览器会向服务端发送一个带有&lt;strong&gt;验证头&lt;/strong&gt;的请求，例如：&lt;br&gt;
@@ -124,40 +178,40 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Last-Modified&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;Wed, 01 Jan 2024 00:00:00 GMT&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;浏览器收到 304 后，继续使用本地缓存。&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>Nginx 的多进程模型</title><link>https://horeb.top/posts/2025-03-21-web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-21-web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p&gt;在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong&gt;多进程模型&lt;/strong&gt;。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p&gt;
+&lt;/ol&gt;</description></item><item><title>Nginx 的多进程模型</title><link>https://horeb.top/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p&gt;在Web服务器领域，Nginx凭借其高并发、低资源消耗的特点脱颖而出。其核心设计选择之一便是&lt;strong&gt;多进程模型&lt;/strong&gt;。这一设计看似与传统多线程模型背道而驰，却恰恰成就了Nginx的卓越性能。本文将从技术原理、场景适配、架构权衡等角度，深度解析Nginx偏爱多进程的底层逻辑。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="一多进程模型的核心架构"&gt;一、多进程模型的核心架构&lt;/h4&gt;
-&lt;p&gt;Nginx采用经典的&lt;strong&gt;Master-Worker多进程架构&lt;/strong&gt;：&lt;/p&gt;
+&lt;h4 id="一多进程模型的核心架构"&gt;一、多进程模型的核心架构
+&lt;/h4&gt;&lt;p&gt;Nginx采用经典的&lt;strong&gt;Master-Worker多进程架构&lt;/strong&gt;：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Master进程&lt;/strong&gt;：负责全局管理，包括配置加载、信号处理、Worker进程监控与重启。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Worker进程&lt;/strong&gt;：实际处理请求的“战斗单元”，每个Worker独立运行且绑定到特定CPU核心，通过&lt;strong&gt;异步非阻塞事件驱动模型&lt;/strong&gt;处理成千上万的并发连接。&lt;br&gt;
 这种设计实现了&lt;strong&gt;资源隔离&lt;/strong&gt;与&lt;strong&gt;职责分离&lt;/strong&gt;，Master的稳定性不受Worker业务逻辑影响，Worker的崩溃也不会导致服务中断。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h4 id="二选择多进程的五大核心原因"&gt;二、选择多进程的五大核心原因&lt;/h4&gt;
-&lt;h5 id="1-最大化多核cpu利用率"&gt;1. &lt;strong&gt;最大化多核CPU利用率&lt;/strong&gt;&lt;/h5&gt;
-&lt;p&gt;现代服务器普遍采用多核架构，Nginx通过为每个Worker进程绑定独立CPU核心，避免了线程上下文切换的开销，使硬件资源被充分调度。例如，8核服务器可启动8个Worker，每个进程独占一核执行无锁化任务处理。&lt;/p&gt;
-&lt;h5 id="2-规避多线程锁竞争"&gt;2. &lt;strong&gt;规避多线程锁竞争&lt;/strong&gt;&lt;/h5&gt;
-&lt;p&gt;多线程模型中，共享内存的访问需通过锁机制同步，而锁竞争会导致性能急剧下降。Nginx的多进程模型天然隔离了内存空间，Worker之间无需加锁，消除了这一性能瓶颈。&lt;/p&gt;
-&lt;h5 id="3-故障隔离与高可用性"&gt;3. &lt;strong&gt;故障隔离与高可用性&lt;/strong&gt;&lt;/h5&gt;
-&lt;p&gt;若某个Worker进程因代码缺陷崩溃，Master进程可立即重启新Worker，其他进程仍正常服务。这种“单点故障不影响全局”的特性，显著提升了系统的容错能力。相比之下，多线程模型中线程崩溃可能导致整个进程宕机。&lt;/p&gt;
-&lt;h5 id="4-简化开发与维护"&gt;4. &lt;strong&gt;简化开发与维护&lt;/strong&gt;&lt;/h5&gt;
-&lt;p&gt;多进程模型的代码结构更清晰：&lt;br&gt;
+&lt;h4 id="二选择多进程的五大核心原因"&gt;二、选择多进程的五大核心原因
+&lt;/h4&gt;&lt;h5 id="1-最大化多核cpu利用率"&gt;1. &lt;strong&gt;最大化多核CPU利用率&lt;/strong&gt;
+&lt;/h5&gt;&lt;p&gt;现代服务器普遍采用多核架构，Nginx通过为每个Worker进程绑定独立CPU核心，避免了线程上下文切换的开销，使硬件资源被充分调度。例如，8核服务器可启动8个Worker，每个进程独占一核执行无锁化任务处理。&lt;/p&gt;
+&lt;h5 id="2-规避多线程锁竞争"&gt;2. &lt;strong&gt;规避多线程锁竞争&lt;/strong&gt;
+&lt;/h5&gt;&lt;p&gt;多线程模型中，共享内存的访问需通过锁机制同步，而锁竞争会导致性能急剧下降。Nginx的多进程模型天然隔离了内存空间，Worker之间无需加锁，消除了这一性能瓶颈。&lt;/p&gt;
+&lt;h5 id="3-故障隔离与高可用性"&gt;3. &lt;strong&gt;故障隔离与高可用性&lt;/strong&gt;
+&lt;/h5&gt;&lt;p&gt;若某个Worker进程因代码缺陷崩溃，Master进程可立即重启新Worker，其他进程仍正常服务。这种“单点故障不影响全局”的特性，显著提升了系统的容错能力。相比之下，多线程模型中线程崩溃可能导致整个进程宕机。&lt;/p&gt;
+&lt;h5 id="4-简化开发与维护"&gt;4. &lt;strong&gt;简化开发与维护&lt;/strong&gt;
+&lt;/h5&gt;&lt;p&gt;多进程模型的代码结构更清晰：&lt;br&gt;
 • Worker之间无共享状态，避免复杂的线程同步逻辑&lt;br&gt;
 • 调试时可通过&lt;code&gt;gdb&lt;/code&gt;单独附加到某个Worker进程，无需处理线程交织问题&lt;/p&gt;
-&lt;h5 id="5-与事件驱动模型的完美契合"&gt;5. &lt;strong&gt;与事件驱动模型的完美契合&lt;/strong&gt;&lt;/h5&gt;
-&lt;p&gt;Nginx的&lt;strong&gt;异步非阻塞I/O多路复用&lt;/strong&gt;（如Linux的epoll）是其高并发的另一基石。每个Worker进程通过单线程循环处理事件，避免了传统多进程模型中“一请求一进程”的资源浪费。这种组合使得单个Worker即可高效管理数万连接。&lt;/p&gt;
+&lt;h5 id="5-与事件驱动模型的完美契合"&gt;5. &lt;strong&gt;与事件驱动模型的完美契合&lt;/strong&gt;
+&lt;/h5&gt;&lt;p&gt;Nginx的&lt;strong&gt;异步非阻塞I/O多路复用&lt;/strong&gt;（如Linux的epoll）是其高并发的另一基石。每个Worker进程通过单线程循环处理事件，避免了传统多进程模型中“一请求一进程”的资源浪费。这种组合使得单个Worker即可高效管理数万连接。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h4 id="三多进程模型的局限性"&gt;三、多进程模型的局限性&lt;/h4&gt;
-&lt;p&gt;尽管优势显著，该模型也存在以下挑战：&lt;/p&gt;
+&lt;h4 id="三多进程模型的局限性"&gt;三、多进程模型的局限性
+&lt;/h4&gt;&lt;p&gt;尽管优势显著，该模型也存在以下挑战：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;内存占用较高&lt;/strong&gt;：每个Worker需独立的内存空间，连接数极高时可能产生冗余开销。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;进程间通信复杂&lt;/strong&gt;：共享数据需通过IPC（如共享内存），开发复杂度高于线程模型。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;计算密集型场景劣势&lt;/strong&gt;：若请求涉及大量CPU运算（如加密解密），多线程模型可能更高效。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h4 id="四与其他模型的对比分析"&gt;四、与其他模型的对比分析&lt;/h4&gt;
-&lt;table&gt;
+&lt;h4 id="四与其他模型的对比分析"&gt;四、与其他模型的对比分析
+&lt;/h4&gt;&lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
  &lt;th&gt;模型类型&lt;/th&gt;
@@ -188,31 +242,33 @@
  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h4 id="五设计启示如何选择并发模型"&gt;五、设计启示：如何选择并发模型？&lt;/h4&gt;
-&lt;p&gt;Nginx的实践为高并发系统设计提供了重要参考：&lt;/p&gt;
+&lt;h4 id="五设计启示如何选择并发模型"&gt;五、设计启示：如何选择并发模型？
+&lt;/h4&gt;&lt;p&gt;Nginx的实践为高并发系统设计提供了重要参考：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;区分任务类型&lt;/strong&gt;：I/O密集型首选事件驱动+多进程，计算密集型可考虑多线程。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;权衡开发成本&lt;/strong&gt;：多进程模型更易实现稳定性，但需额外处理IPC；多线程开发门槛更高。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;利用操作系统特性&lt;/strong&gt;：如Linux的CPU亲和性（affinity）可优化多进程绑定。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h4 id="结语"&gt;结语&lt;/h4&gt;
-&lt;p&gt;Nginx的多进程模型并非偶然，而是针对Web服务器&lt;strong&gt;高并发、低延迟、强稳定&lt;/strong&gt;的核心需求做出的理性权衡。它通过资源隔离、无锁架构与事件驱动的三重设计，在I/O密集型场景中展现了无可替代的优势。正如其作者Igor Sysoev所言：“简单性是可扩展性的基石”——多进程模型正是这一哲学的最佳实践。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;br&gt;
+&lt;h4 id="结语"&gt;结语
+&lt;/h4&gt;&lt;p&gt;Nginx的多进程模型并非偶然，而是针对Web服务器&lt;strong&gt;高并发、低延迟、强稳定&lt;/strong&gt;的核心需求做出的理性权衡。它通过资源隔离、无锁架构与事件驱动的三重设计，在I/O密集型场景中展现了无可替代的优势。正如其作者Igor Sysoev所言：“简单性是可扩展性的基石”——多进程模型正是这一哲学的最佳实践。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;&lt;strong&gt;参考资料&lt;/strong&gt;：&lt;br&gt;
 [1] 其其网《Nginx为何偏爱多进程模型》&lt;br&gt;
 [4][6] CSDN博客《nginx为什么是多进程单线程》&lt;br&gt;
 [2][3] CSDN博客《Nginx工作原理》&lt;/p&gt;
-&lt;/blockquote&gt;</description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://horeb.top/posts/2025-03-21-web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-21-web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams---c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义"&gt;一、反向压力（Backpressure）的核心意义&lt;/h2&gt;
-&lt;p&gt;在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong&gt;内存溢出&lt;/strong&gt;或&lt;strong&gt;系统崩溃&lt;/strong&gt;。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong&gt;速率适配&lt;/strong&gt;，从而保证系统的稳定性与资源可控性。&lt;/p&gt;
-&lt;h3 id="11-背压的两种实现模式"&gt;1.1 背压的两种实现模式&lt;/h3&gt;
-&lt;ol&gt;
+
+ &lt;/blockquote&gt;</description></item><item><title>流计算中的反向压力模型与 Reactive Streams --C++实现</title><link>https://horeb.top/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c++%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 21 Mar 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="一反向压力backpressure的核心意义"&gt;一、反向压力（Backpressure）的核心意义
+&lt;/h2&gt;&lt;p&gt;在流式计算中，数据生产者的生成速率与消费者的处理速率往往不匹配。若生产者速度远高于消费者，无限制的缓冲会导致&lt;strong&gt;内存溢出&lt;/strong&gt;或&lt;strong&gt;系统崩溃&lt;/strong&gt;。反向压力（Backpressure）机制通过动态调节数据流速，实现生产者与消费者的&lt;strong&gt;速率适配&lt;/strong&gt;，从而保证系统的稳定性与资源可控性。&lt;/p&gt;
+&lt;h3 id="11-背压的两种实现模式"&gt;1.1 背压的两种实现模式
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;阻塞式反馈&lt;/strong&gt;：通过队列容量限制直接阻塞生产者（如线程等待）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;非阻塞式协商&lt;/strong&gt;：通过异步信号（如请求量协商）动态调整生产者速率（Reactive Streams的核心机制）。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h2 id="二reactive-streams规范与c映射"&gt;二、Reactive Streams规范与C++映射&lt;/h2&gt;
-&lt;p&gt;Reactive Streams是异步流处理的&lt;strong&gt;标准化规范&lt;/strong&gt;，定义了四个核心组件：&lt;/p&gt;
+&lt;h2 id="二reactive-streams规范与c映射"&gt;二、Reactive Streams规范与C++映射
+&lt;/h2&gt;&lt;p&gt;Reactive Streams是异步流处理的&lt;strong&gt;标准化规范&lt;/strong&gt;，定义了四个核心组件：&lt;/p&gt;
 &lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
@@ -244,8 +300,8 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id="21-c实现的核心逻辑"&gt;2.1 C++实现的核心逻辑&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 基于条件变量的背压队列（简化版） 
+&lt;h3 id="21-c实现的核心逻辑"&gt;2.1 C++实现的核心逻辑
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 基于条件变量的背压队列（简化版） 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;BoundedQueue&lt;/span&gt; { 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
@@ -272,7 +328,100 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; val; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}; 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：队列满时阻塞&lt;code&gt;push&lt;/code&gt;，空时阻塞&lt;code&gt;pop&lt;/code&gt;，通过条件变量实现生产者-消费者的速率同步。&lt;/p&gt;</description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://horeb.top/posts/2025-03-16-web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-16-web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p&gt;在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong&gt;和&lt;/strong&gt;LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：队列满时阻塞&lt;code&gt;push&lt;/code&gt;，空时阻塞&lt;code&gt;pop&lt;/code&gt;，通过条件变量实现生产者-消费者的速率同步。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="三完整流处理管道的c实现"&gt;三、完整流处理管道的C++实现
+&lt;/h2&gt;&lt;h3 id="31-流处理节点设计"&gt;3.1 流处理节点设计
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 数据源（Publisher实现） 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DataSource&lt;/span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; Publisher&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; subscribe(Subscriber&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&amp;amp;&lt;/span&gt; sub) &lt;span style="color:#66d9ef"&gt;override&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt; subscription &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; DataSubscription(sub); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sub.onSubscribe(&lt;span style="color:#f92672"&gt;*&lt;/span&gt;subscription); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 订阅契约（实现背压请求） 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DataSubscription&lt;/span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; Subscription { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Subscriber&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&amp;amp;&lt;/span&gt; subscriber; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;atomic&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;bool&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; canceled{false}; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; request(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; n) &lt;span style="color:#66d9ef"&gt;override&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; (&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; i &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;; i &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; n &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style="color:#f92672"&gt;!&lt;/span&gt;canceled; &lt;span style="color:#f92672"&gt;++&lt;/span&gt;i) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; data &lt;span style="color:#f92672"&gt;=&lt;/span&gt; generateData(); &lt;span style="color:#75715e"&gt;// 模拟数据生成 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; subscriber.onNext(data); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 数据处理节点（Processor实现） 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;TransformProcessor&lt;/span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; Processor&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;string&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; onNext(&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; data) &lt;span style="color:#66d9ef"&gt;override&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;string transformed &lt;span style="color:#f92672"&gt;=&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;to_string(data &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; outputQueue.push(transformed); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="32-线程池与异步调度"&gt;3.2 线程池与异步调度
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 基于线程池的任务执行器 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;ReactiveExecutor&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; BoundedQueue&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;function&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt;()&lt;span style="color:#f92672"&gt;&amp;gt;&amp;gt;&lt;/span&gt; taskQueue{&lt;span style="color:#ae81ff"&gt;1024&lt;/span&gt;}; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;vector&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;thread&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; workers; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ReactiveExecutor(size_t threads) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; (size_t i &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;; i &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; threads; &lt;span style="color:#f92672"&gt;++&lt;/span&gt;i) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; workers.emplace_back([&lt;span style="color:#66d9ef"&gt;this&lt;/span&gt;] { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; (true) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt; task &lt;span style="color:#f92672"&gt;=&lt;/span&gt; taskQueue.pop(); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; task(); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;submit&lt;/span&gt;(std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;function&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt;()&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; task) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; taskQueue.push(std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;move(task)); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;优化点&lt;/strong&gt;：通过有界队列实现任务提交的背压控制，防止线程池过载。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="四性能调优与扩展"&gt;四、性能调优与扩展
+&lt;/h2&gt;&lt;h3 id="41-动态队列扩容策略"&gt;4.1 动态队列扩容策略
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DynamicBoundedQueue&lt;/span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; BoundedQueue&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; push(&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; item) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (buffer.size() &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; capacity &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0.8&lt;/span&gt;) { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; capacity &lt;span style="color:#f92672"&gt;*=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 动态扩容 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; BoundedQueue&lt;span style="color:#f92672"&gt;::&lt;/span&gt;push(item); 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}; 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="42-背压指标监控"&gt;4.2 背压指标监控
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;size_t &lt;span style="color:#a6e22e"&gt;getBackpressureLevel&lt;/span&gt;() &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; { 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; buffer.size() &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt; &lt;span style="color:#f92672"&gt;/&lt;/span&gt; capacity; &lt;span style="color:#75715e"&gt;// 返回队列占用百分比 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;} 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="五应用场景"&gt;五、应用场景
+&lt;/h2&gt;&lt;p&gt;• &lt;strong&gt;实时风控系统&lt;/strong&gt;：防止数据洪峰导致内存溢出&lt;br&gt;
+• &lt;strong&gt;物联网设备&lt;/strong&gt;：处理海量传感器数据流&lt;br&gt;
+• &lt;strong&gt;视频流处理&lt;/strong&gt;：动态调整视频帧解码速率&lt;/p&gt;
+&lt;hr&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;strong&gt;扩展阅读&lt;/strong&gt;：Reactor框架设计思想 | 微服务背压实践&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;流计算中的反向压力模型与生产者-消费者模式&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dd&gt;Reactive Streams背压机制解析&lt;/dd&gt;
+&lt;dd&gt;Reactive Streams规范与组件定义&lt;/dd&gt;
+&lt;dd&gt;背压的应用场景与实现策略&lt;/dd&gt;
+&lt;dd&gt;物联网中的流处理实践&lt;/dd&gt;
+&lt;dd&gt;Spring WebFlux与Reactor模型&lt;/dd&gt;
+&lt;dd&gt;微服务架构中的背压设计&lt;/dd&gt;
+&lt;dd&gt;C++线程池与异步任务调度&lt;/dd&gt;
+&lt;/dl&gt;</description></item><item><title>解析LRU与LFU算法及C++实现</title><link>https://horeb.top/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</link><pubDate>Sun, 16 Mar 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p&gt;在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）&lt;strong&gt;和&lt;/strong&gt;LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;​LRU（Least Recently Used）​
 &lt;ul&gt;
@@ -286,11 +435,11 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id="一lru算法时间维度淘汰策略"&gt;&lt;strong&gt;一、LRU算法：时间维度淘汰策略&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4 id="核心原理"&gt;&lt;strong&gt;核心原理&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;LRU基于“时间局部性”假设：&lt;strong&gt;最近被访问的数据更可能被再次使用&lt;/strong&gt;。其淘汰策略简单直接——移除最久未访问的数据。例如，若缓存容量为3，访问顺序为A→B→C→A，则新数据插入时淘汰最旧的B。&lt;/p&gt;
-&lt;h4 id="c实现"&gt;&lt;strong&gt;C++实现&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;LRU需高效支持两种操作：&lt;/p&gt;
+&lt;h3 id="一lru算法时间维度淘汰策略"&gt;&lt;strong&gt;一、LRU算法：时间维度淘汰策略&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id="核心原理"&gt;&lt;strong&gt;核心原理&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;LRU基于“时间局部性”假设：&lt;strong&gt;最近被访问的数据更可能被再次使用&lt;/strong&gt;。其淘汰策略简单直接——移除最久未访问的数据。例如，若缓存容量为3，访问顺序为A→B→C→A，则新数据插入时淘汰最旧的B。&lt;/p&gt;
+&lt;h4 id="c实现"&gt;&lt;strong&gt;C++实现&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;LRU需高效支持两种操作：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;快速查询&lt;/strong&gt;（哈希表，O(1)）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;顺序维护&lt;/strong&gt;（双向链表，O(1)调整顺序）&lt;/li&gt;
@@ -359,15 +508,123 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;关键点&lt;/strong&gt;：&lt;br&gt;
 • 使用&lt;strong&gt;哈希表+双向链表&lt;/strong&gt;实现O(1)操作复杂度&lt;br&gt;
-• 头节点存放最新访问数据，尾节点为待淘汰数据&lt;/p&gt;</description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://horeb.top/posts/2025-03-10-web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-10-web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p&gt;在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p&gt;
-&lt;h3 id="一算法原理与公式"&gt;一、算法原理与公式&lt;/h3&gt;
-&lt;p&gt;半衰期算法基于放射性衰变公式：&lt;strong&gt;M * (1/2)^(t/T)&lt;/strong&gt;，其中：
+• 头节点存放最新访问数据，尾节点为待淘汰数据&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="二lfu算法频率维度淘汰策略"&gt;&lt;strong&gt;二、LFU算法：频率维度淘汰策略&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id="核心原理-1"&gt;&lt;strong&gt;核心原理&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;LFU基于“频率优先”原则：&lt;strong&gt;淘汰访问次数最少的数据&lt;/strong&gt;。例如，数据A访问5次、B访问3次，则优先淘汰B。LFU需记录每个键的访问频率，并维护最小频率值。&lt;/p&gt;
+&lt;h4 id="c实现-1"&gt;&lt;strong&gt;C++实现&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;LFU需维护三个核心结构：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;键到值和频率的映射&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;频率到键集合的映射&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;当前最小频率值&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;数据结构设计&lt;/strong&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;LFUCache&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;private&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; capacity, minFreq;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; unordered_map&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, pair&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&amp;gt;&lt;/span&gt; keyMap; &lt;span style="color:#75715e"&gt;// key→{value, freq}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; unordered_map&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, list&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;&amp;gt;&lt;/span&gt; freqMap; &lt;span style="color:#75715e"&gt;// freq→keys list
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; unordered_map&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, list&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;gt;::&lt;/span&gt;iterator&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; keyIter;&lt;span style="color:#75715e"&gt;// key在freqMap中的迭代器
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;increaseFreq&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; key) { &lt;span style="color:#75715e"&gt;// 增加键的频率
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; oldFreq &lt;span style="color:#f92672"&gt;=&lt;/span&gt; keyMap[key].second;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyMap[key].second&lt;span style="color:#f92672"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freqMap[oldFreq].erase(keyIter[key]); &lt;span style="color:#75715e"&gt;// 从旧频率列表移除
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (freqMap[oldFreq].empty()) { &lt;span style="color:#75715e"&gt;// 更新最小频率
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freqMap.erase(oldFreq);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (oldFreq &lt;span style="color:#f92672"&gt;==&lt;/span&gt; minFreq) minFreq&lt;span style="color:#f92672"&gt;++&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freqMap[oldFreq &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;].push_front(key); &lt;span style="color:#75715e"&gt;// 加入新频率列表
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyIter[key] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; freqMap[req &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;].begin();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;public&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; LFUCache(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; cap) &lt;span style="color:#f92672"&gt;:&lt;/span&gt; capacity(cap), minFreq(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; key) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (keyMap.find(key) &lt;span style="color:#f92672"&gt;==&lt;/span&gt; keyMap.end()) &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; increaseFreq(key); &lt;span style="color:#75715e"&gt;// 更新频率
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; keyMap[key].first;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;put&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; key, &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; value) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (capacity &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (keyMap.find(key) &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; keyMap.end()) { &lt;span style="color:#75715e"&gt;// 已存在则更新值
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyMap[key].first &lt;span style="color:#f92672"&gt;=&lt;/span&gt; value;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; increaseFreq(key);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (keyMap.size() &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; capacity) { &lt;span style="color:#75715e"&gt;// 触发淘汰
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; evictKey &lt;span style="color:#f92672"&gt;=&lt;/span&gt; freqMap[minFreq].back();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freqMap[minFreq].pop_back();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (freqMap[minFreq].empty()) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freqMap.erase(minFreq);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyMap.erase(evictKey);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyIter.erase(evictKey);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyMap[key] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {value, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;}; &lt;span style="color:#75715e"&gt;// 插入新键
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freqMap[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;].push_front(key);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keyIter[key] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; freqMap[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;].begin();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; minFreq &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 最小频率重置为1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;关键点&lt;/strong&gt;：&lt;br&gt;
+• 通过三层映射实现频率统计与快速淘汰&lt;br&gt;
+• 维护&lt;code&gt;minFreq&lt;/code&gt;避免遍历所有频率值&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="三lru与lfu对比与应用场景"&gt;&lt;strong&gt;三、LRU与LFU对比与应用场景&lt;/strong&gt;
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;strong&gt;维度&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;LRU&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;LFU&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;淘汰依据&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;访问时间（最久未用）&lt;/td&gt;
+ &lt;td&gt;访问频率（最少使用）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;实现简单，适应突发流量&lt;/td&gt;
+ &lt;td&gt;精准捕捉长期热点数据&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;缺点&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;周期性访问易误淘汰（如扫描操作）&lt;/td&gt;
+ &lt;td&gt;新数据易被淘汰（冷启动问题）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;适用场景&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;实时榜单、用户会话管理&lt;/td&gt;
+ &lt;td&gt;热门视频缓存、搜索引擎热词&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;实际案例&lt;/strong&gt;：&lt;br&gt;
+• &lt;strong&gt;数据库缓存&lt;/strong&gt;：MySQL的Buffer Pool使用改进版LRU（冷热数据分离）&lt;br&gt;
+• &lt;strong&gt;高并发系统&lt;/strong&gt;：Redis采用近似LFU，平衡性能与内存开销&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="四总结与选型建议"&gt;&lt;strong&gt;四、总结与选型建议&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;选择LRU&lt;/strong&gt;：若业务存在明显的时间局部性（如新闻热点），或需快速响应访问顺序变化。&lt;br&gt;
+• &lt;strong&gt;选择LFU&lt;/strong&gt;：若数据访问频次差异大（如电商热门商品），且需长期保留高频数据。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;性能优化方向&lt;/strong&gt;：&lt;br&gt;
+• 分段锁减少并发竞争（如将缓存分16段）&lt;br&gt;
+• 添加频率衰减机制（避免旧高频数据长期占用）&lt;/p&gt;
+&lt;p&gt;建议根据场景调整参数（如缓存容量、锁粒度等）以获得最佳效果。&lt;/p&gt;</description></item><item><title>【AI】半衰期算法在后端的应用</title><link>https://horeb.top/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link><pubDate>Mon, 10 Mar 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid><description>&lt;p&gt;在后端开发中，半衰期算法常用于动态调整数据权重的场景，其核心是通过时间衰减机制平衡实时性与历史价值。以下是其典型应用及实现逻辑：&lt;/p&gt;
+&lt;h3 id="一算法原理与公式"&gt;一、算法原理与公式
+&lt;/h3&gt;&lt;p&gt;半衰期算法基于放射性衰变公式：&lt;strong&gt;M * (1/2)^(t/T)&lt;/strong&gt;，其中：
 • &lt;strong&gt;M&lt;/strong&gt;：初始值（如点击量）
 • &lt;strong&gt;t&lt;/strong&gt;：时间间隔（如天数）
 • &lt;strong&gt;T&lt;/strong&gt;：半衰期周期（如7天）
 该公式使数据权重随时间呈指数衰减，例如7天半衰期意味着权重每天减少约10%。&lt;/p&gt;
-&lt;h3 id="二核心应用场景"&gt;二、核心应用场景&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="二核心应用场景"&gt;二、核心应用场景
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;热搜排序&lt;/strong&gt;（如微博、腾讯平台）
 • 动态平衡点击量与时间衰减：新事件点击量高但衰减快，旧事件点击量低但衰减慢。例如：
@@ -383,8 +640,8 @@
 • 结合实时数据与历史表现：例如游戏活动榜单，近期活跃玩家通过半衰期快速提升排名，老玩家贡献逐步降低。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id="三后端实现要点"&gt;三、后端实现要点&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="三后端实现要点"&gt;三、后端实现要点
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;数据模型设计&lt;/strong&gt;
 • 数据库需存储&lt;strong&gt;原始点击量&lt;/strong&gt;和&lt;strong&gt;计算后的排序权重字段&lt;/strong&gt;（如&lt;code&gt;sort_info&lt;/code&gt;），通过定时任务（如每小时）更新权重值。&lt;/p&gt;
@@ -404,21 +661,26 @@
 • 结合IP频率限制、异常点击检测等补充措施。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id="四扩展优化方向"&gt;四、扩展优化方向&lt;/h3&gt;
-&lt;p&gt;• &lt;strong&gt;时间粒度细化&lt;/strong&gt;：将天级计算改为小时级，适应高实时性场景（如突发新闻）。
+&lt;h3 id="四扩展优化方向"&gt;四、扩展优化方向
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;时间粒度细化&lt;/strong&gt;：将天级计算改为小时级，适应高实时性场景（如突发新闻）。
 • &lt;strong&gt;复合衰减策略&lt;/strong&gt;：叠加多个半衰期公式，处理复杂业务逻辑（如短视频热度需同时考虑播放、点赞、分享）。
 • &lt;strong&gt;动态调整半衰期&lt;/strong&gt;：通过机器学习根据历史数据自动优化T值。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;该算法已在实际工程中验证可行性，例如某博客示例中，电影类内容在7天内权重从1000衰减至约400，而汽车类内容30天后仍保留约300权重。开发者可根据业务需求调整公式参数，平衡时效性与长尾效应。&lt;/p&gt;
-&lt;/blockquote&gt;</description></item><item><title>web 访问认证机制</title><link>https://horeb.top/posts/2025-02-17-web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-02-17-web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid><description>&lt;p&gt;&lt;a href="https://time.geekbang.org/column/article/398410"&gt;25 | 认证机制：应用程序如何进行访问认证？&lt;/a&gt;讲得非常好，图文结合。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;该算法已在实际工程中验证可行性，例如某博客示例中，电影类内容在7天内权重从1000衰减至约400，而汽车类内容30天后仍保留约300权重。开发者可根据业务需求调整公式参数，平衡时效性与长尾效应。&lt;/p&gt;
+
+ &lt;/blockquote&gt;</description></item><item><title>web 访问认证机制</title><link>https://horeb.top/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 17 Feb 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid><description>&lt;p&gt;&lt;a class="link" href="https://time.geekbang.org/column/article/398410" target="_blank" rel="noopener"
+ &gt;25 | 认证机制：应用程序如何进行访问认证？&lt;/a&gt;讲得非常好，图文结合。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;IAM&lt;/strong&gt;：身份识别与访问管理（Identity and Access Management）。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;认证&lt;/strong&gt;（Authentication，英文缩写 &lt;strong&gt;authn&lt;/strong&gt;）：用来验证某个用户是否具有访问系统的权限。如果认证通过，该用户就可以访问系统，从而创建、修改、删除、查询平台支持的资源。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;授权&lt;/strong&gt;（Authorization，英文缩写 &lt;strong&gt;authz&lt;/strong&gt;）：用来验证某个用户是否具有访问某个资源的权限，如果授权通过，该用户就能对资源做增删改查等操作。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;认证证明了你是谁，授权决定了你能做什么。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;认证证明了你是谁，授权决定了你能做什么。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;p&gt;&lt;u&gt;四种基本的认证方式：&lt;em&gt;Basic&lt;/em&gt;、&lt;em&gt;Digest&lt;/em&gt;、&lt;em&gt;OAuth&lt;/em&gt;、&lt;em&gt;Bearer&lt;/em&gt;&lt;/u&gt;。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -447,12 +709,36 @@ Digest 具有如下特点：&lt;/p&gt;
 OAuth（开放授权）是一个开放的授权标准，允许用户让第三方应用访问该用户在某一 Web 服务上存储的私密资源（例如照片、视频、音频等），而无需将用户名和密码提供给第三方应用。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OAuth2.0 一共分为四种授权方式，分别为&lt;em&gt;密码式&lt;/em&gt;、&lt;em&gt;隐藏式&lt;/em&gt;、&lt;em&gt;凭借式&lt;/em&gt;和&lt;em&gt;授权码&lt;/em&gt;模式。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;OAuth2.0 一共分为四种授权方式，分别为&lt;em&gt;密码式&lt;/em&gt;、&lt;em&gt;隐藏式&lt;/em&gt;、&lt;em&gt;凭借式&lt;/em&gt;和&lt;em&gt;授权码&lt;/em&gt;模式。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;ol start="4"&gt;
 &lt;li&gt;&lt;strong&gt;Bearer&lt;/strong&gt; 令牌认证&lt;br&gt;
 Bearer 认证是一种 HTTP 身份验证方法。Bearer 认证的核心是 &lt;code&gt;bearer token&lt;/code&gt;。&lt;code&gt;bearer token&lt;/code&gt; 是一个加密字符串，通常由服务端根据密钥生成。客户端在请求服务端时，必须在请求头中包含&lt;code&gt;Authorization: Bearer&lt;/code&gt; 。服务端收到请求后，解析出&lt;code&gt;&amp;lt;token&amp;gt;&lt;/code&gt;，并校验&lt;code&gt;&amp;lt;token&amp;gt;&lt;/code&gt;的合法性，如果校验通过，则认证通过。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;跟基本认证一样，Bearer 认证需要配合 HTTPS 一起使用，来保证认证安全性。&lt;/p&gt;</description></item></channel></rss>
+
+ &lt;blockquote&gt;
+ &lt;p&gt;跟基本认证一样，Bearer 认证需要配合 HTTPS 一起使用，来保证认证安全性。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;h6 id="jwt"&gt;JWT
+&lt;/h6&gt;&lt;p&gt;JSON Web Token（JWT）是 Bearer Token 的一个具体实现，由 JSON 数据格式组成，通过 HASH 散列算法生成一个字符串。该字符串可以用来进行授权和信息交换。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;客户端使用用户名和密码请求登录。&lt;/li&gt;
+&lt;li&gt;服务端收到请求后，会去验证用户名和密码。如果用户名和密码跟数据库记录不一致，则验证失败；如果一致则验证通过，服务端会签发一个 Token 返回给客户端。&lt;/li&gt;
+&lt;li&gt;客户端收到请求后会将 Token 缓存起来，比如放在浏览器 Cookie 中或者 LocalStorage 中，之后每次请求都会携带该 Token。&lt;/li&gt;
+&lt;li&gt;服务端收到请求后，会验证请求中的 Token，验证通过则进行业务逻辑处理，处理完后返回处理后的结果。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;JWT 由三部分组成，分别是 &lt;code&gt;Header&lt;/code&gt;、&lt;code&gt;Payload&lt;/code&gt; 和 &lt;code&gt;Signature&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Header&lt;/code&gt;：包含了 Token 的类型、Token 使用的加密算法。在某些场景下，你还可以添加 kid 字段，用来标识一个密钥 ID。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Payload&lt;/code&gt;：Payload 中携带 Token 的具体内容，由 JWT 标准中注册的声明、公共的声明和私有的声明三部分组成。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Signature&lt;/code&gt;：Signature 是 Token 的签名部分，程序通过验证 Signature 是否合法，来决定认证是否通过。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;问&lt;/em&gt;：JWT的Token存储在哪里比较好？&lt;br&gt;
+cookie中比较好，可由服务端保存，localstorage在纯前端，中很容易泄露。&lt;br&gt;
+服务器可以将 cookie 设置为 HTTP - Only，无法被 JavaScript 脚本访问。&lt;br&gt;
+localStorage 完全处于前端控制之下，可以被同源的 JavaScript 代码访问和修改。&lt;/p&gt;
+&lt;p&gt;(Basic 认证用在前端登陆的场景，Bearer 认证用在调用后端 API 服务的场景下。)&lt;/p&gt;</description></item></channel></rss>

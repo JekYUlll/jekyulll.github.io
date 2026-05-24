@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>面经 on Welcome to my Blog ⬆️</title><link>https://horeb.top/tags/%E9%9D%A2%E7%BB%8F/</link><description>Recent content in 面经 on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Thu, 06 Mar 2025 18:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/tags/%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://horeb.top/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
-该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438"&gt;天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a&gt;。此处尝试进行回答。&lt;/p&gt;
-&lt;/blockquote&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>面经 on Horeb</title><link>https://horeb.top/tags/%E9%9D%A2%E7%BB%8F/</link><description>Recent content in 面经 on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/tags/%E9%9D%A2%E7%BB%8F/index.xml" rel="self" type="application/rss+xml"/><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://horeb.top/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>
+ &lt;blockquote&gt;
+ &lt;p&gt;Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
+该问题来自一道天美后台开发面试题：&lt;a class="link" href="https://zhuanlan.zhihu.com/p/677307438" target="_blank" rel="noopener"
+ &gt;天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a&gt;。此处尝试进行回答。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;第一想法一般是：“原程序被操作系统加载进内存，不会受到影响。”&lt;br&gt;
 系统会创建一个新的&lt;code&gt;inode&lt;/code&gt;指向新文件，而正在运行的进程仍会继续使用旧的&lt;code&gt;inode&lt;/code&gt;对应的代码段。&lt;/p&gt;
@@ -14,20 +17,20 @@
 &lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;：&lt;br&gt;
 ​已运行的进程不受影响：Linux通过&lt;code&gt;inode&lt;/code&gt;标识文件，旧进程继续执行内存中已加载的旧代码，与原磁盘文件解耦。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="1-elf文件的按需加载机制"&gt;1. &lt;strong&gt;ELF文件的按需加载机制&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;ELF二进制文件通过&lt;strong&gt;程序头表（Program Header Table）&lt;strong&gt;中的&lt;code&gt;PT_LOAD&lt;/code&gt;段描述需要加载的代码和数据区域。内核的&lt;code&gt;load_elf_binary()&lt;/code&gt;函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong&gt;按需分页&lt;/strong&gt;的：
+&lt;h3 id="1-elf文件的按需加载机制"&gt;1. &lt;strong&gt;ELF文件的按需加载机制&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;ELF二进制文件通过&lt;strong&gt;程序头表（Program Header Table）&lt;strong&gt;中的&lt;code&gt;PT_LOAD&lt;/code&gt;段描述需要加载的代码和数据区域。内核的&lt;code&gt;load_elf_binary()&lt;/code&gt;函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong&gt;按需分页&lt;/strong&gt;的：
 • 仅当程序访问某个页（通常4KB大小）时，才会触发缺页异常，将对应内容从磁盘加载到物理内存。
 • 未使用的代码或数据（如未执行的函数）可能永远不会被加载到物理内存中。&lt;/p&gt;
-&lt;h3 id="2-虚拟内存映射与内存优化"&gt;2. &lt;strong&gt;虚拟内存映射与内存优化&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;• &lt;strong&gt;虚拟内存优势&lt;/strong&gt;：ELF文件通过&lt;code&gt;mmap()&lt;/code&gt;系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
+&lt;h3 id="2-虚拟内存映射与内存优化"&gt;2. &lt;strong&gt;虚拟内存映射与内存优化&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;虚拟内存优势&lt;/strong&gt;：ELF文件通过&lt;code&gt;mmap()&lt;/code&gt;系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
 • &lt;strong&gt;写时复制（Copy-on-Write）&lt;/strong&gt;：对于只读段（如代码段），多个进程可以共享同一物理内存页；对于可写段，修改时才会复制新页。&lt;/p&gt;
-&lt;h3 id="3-动态链接与延迟加载"&gt;3. &lt;strong&gt;动态链接与延迟加载&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;动态链接库（如&lt;code&gt;.so&lt;/code&gt;文件）在程序运行时通过&lt;code&gt;ld-linux&lt;/code&gt;动态加载器按需载入。例如：
+&lt;h3 id="3-动态链接与延迟加载"&gt;3. &lt;strong&gt;动态链接与延迟加载&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;动态链接库（如&lt;code&gt;.so&lt;/code&gt;文件）在程序运行时通过&lt;code&gt;ld-linux&lt;/code&gt;动态加载器按需载入。例如：
 • 首次调用某个库函数时，动态链接器才会加载对应的代码段到内存。
 • 部分库可能仅在特定条件下被使用，从而减少初始内存占用。&lt;/p&gt;
-&lt;h3 id="4-大文件的实际内存占用"&gt;4. &lt;strong&gt;大文件的实际内存占用&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;• &lt;strong&gt;物理内存限制&lt;/strong&gt;：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
-• &lt;strong&gt;交换空间（Swap）&lt;/strong&gt;：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p&gt;</description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://horeb.top/posts/2025-02-08-cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-02-08-cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p&gt;同一进程内的线程共享的资源：&lt;/p&gt;
+&lt;h3 id="4-大文件的实际内存占用"&gt;4. &lt;strong&gt;大文件的实际内存占用&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;物理内存限制&lt;/strong&gt;：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
+• &lt;strong&gt;交换空间（Swap）&lt;/strong&gt;：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p&gt;</description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://horeb.top/posts/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p&gt;同一进程内的线程共享的资源：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;代码段&lt;/strong&gt;：存放程序的可执行指令，所有线程共享相同的代码段，因此任何线程都可以执行程序中的函数。&lt;/p&gt;
@@ -54,7 +57,7 @@
 &lt;p&gt;&lt;strong&gt;线程局部存储（Thread Local Storage）&lt;/strong&gt;：存放线程私有的全局变量，即使变量名相同，不同线程访问的也是各自独立的副本。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;em&gt;注意&lt;/em&gt;：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p&gt;</description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://horeb.top/posts/2025-02-08-cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-02-08-cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p&gt;在 C++ 中，动态库（如 &lt;code&gt;.dll&lt;/code&gt; 或 &lt;code&gt;.so&lt;/code&gt; 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
+&lt;p&gt;&lt;em&gt;注意&lt;/em&gt;：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p&gt;</description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://horeb.top/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p&gt;在 C++ 中，动态库（如 &lt;code&gt;.dll&lt;/code&gt; 或 &lt;code&gt;.so&lt;/code&gt; 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
 &lt;u&gt;具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u&gt;
 (动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p&gt;
 &lt;p&gt;另外：&lt;br&gt;

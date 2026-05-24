@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reprint on Welcome to my Blog ⬆️</title><link>https://horeb.top/tags/reprint/</link><description>Recent content in Reprint on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Thu, 09 Jan 2025 20:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/tags/reprint/index.xml" rel="self" type="application/rss+xml"/><item><title>[转载] C++的POD以及如何判断是否POD</title><link>https://horeb.top/posts/2025-01-09-cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link><pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-01-09-cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid><description>&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/17003601237"&gt;C++的POD以及如何判断是否POD - cheeto的文章 - 知乎&lt;/a&gt;。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reprint on Horeb</title><link>https://horeb.top/tags/reprint/</link><description>Recent content in Reprint on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/tags/reprint/index.xml" rel="self" type="application/rss+xml"/><item><title>[转载] C++的POD以及如何判断是否POD</title><link>https://horeb.top/posts/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link><pubDate>Thu, 09 Jan 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid><description>&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/17003601237" target="_blank" rel="noopener"
+ &gt;C++的POD以及如何判断是否POD - cheeto的文章 - 知乎&lt;/a&gt;。&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：&lt;br&gt;
 &lt;strong&gt;平凡类型&lt;/strong&gt;（Trivial Type）和&lt;strong&gt;标准布局类型&lt;/strong&gt;（Standard Layout Type）。当类型为Trivial &amp;amp;&amp;amp; Standard Layout时才能被认为是POD。&lt;/p&gt;
-&lt;h3 id="平凡类型trivial-type"&gt;平凡类型（Trivial Type）&lt;/h3&gt;
-&lt;p&gt;满足以下条件：&lt;/p&gt;
+&lt;h3 id="平凡类型trivial-type"&gt;平凡类型（Trivial Type）
+&lt;/h3&gt;&lt;p&gt;满足以下条件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;默认构造函数：没有用户定义的构造函数，即使用默认构造函数。&lt;/li&gt;
 &lt;li&gt;默认拷贝构造函数：没有用户定义的拷贝构造函数。&lt;/li&gt;
@@ -17,8 +18,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Trivial() &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 默认构造函数
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;~&lt;/span&gt;Trivial() &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;default&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 默认析构函数
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="标准布局类型standard-layout-type"&gt;标准布局类型（Standard Layout Type）&lt;/h3&gt;
-&lt;p&gt;满足以下条件：&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="标准布局类型standard-layout-type"&gt;标准布局类型（Standard Layout Type）
+&lt;/h3&gt;&lt;p&gt;满足以下条件：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;无虚函数：它没有虚函数。&lt;/li&gt;
 &lt;li&gt;无虚基类：它没有虚基类。&lt;/li&gt;
@@ -64,4 +65,47 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Print(std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;is_trivial&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;StandardLayout&lt;span style="color:#f92672"&gt;&amp;gt;::&lt;/span&gt;value); &lt;span style="color:#75715e"&gt;// 1
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Print(std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;is_standard_layout_v&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;StandardLayout&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;); &lt;span style="color:#75715e"&gt;// 1
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里的标准布局的判定反而没有这么严格&lt;/p&gt;</description></item></channel></rss>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里的标准布局的判定反而没有这么严格&lt;/p&gt;
+&lt;p&gt;我说的严格指的是&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;A&lt;/span&gt;{ 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; a; &lt;span style="color:#75715e"&gt;// 1 byte
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; b; &lt;span style="color:#75715e"&gt;// 4 bytes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;和&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;B&lt;/span&gt;{ 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; b; &lt;span style="color:#75715e"&gt;// 4 bytes
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; a; &lt;span style="color:#75715e"&gt;// 1 byte
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这种&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;struct A&lt;/code&gt; 会在 &lt;code&gt;char&lt;/code&gt; 后插入填充字节，以满足 &lt;code&gt;int&lt;/code&gt; 的对齐要求。
+&lt;code&gt;struct B&lt;/code&gt; 的内存布局使得结构体末尾需要填充字节，确保结构体的总大小满足 4 字节对齐要求。&lt;/p&gt;
+&lt;h3 id="小结"&gt;小结
+&lt;/h3&gt;&lt;p&gt;也就是说填充不影响POD的判定 而是成员变量顺序发生了改变才不算POD。&lt;/p&gt;
+&lt;p&gt;POD 类型的定义主要关注&lt;strong&gt;是否有特殊的构造、析构或拷贝操作&lt;/strong&gt;，以及&lt;strong&gt;成员变量的顺序是否保持一致&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;如何判断是否POD&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 用于检查是否为 POD 类型
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 使用例is_pod&amp;lt;int&amp;gt;::value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;is_pod&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;static&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;constexpr&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;bool&lt;/span&gt; value &lt;span style="color:#f92672"&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;is_trivial&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;T&lt;span style="color:#f92672"&gt;&amp;gt;::&lt;/span&gt;value &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;is_standard_layout&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;T&lt;span style="color:#f92672"&gt;&amp;gt;::&lt;/span&gt;value &lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;is_trivially_default_constructible&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;T&lt;span style="color:#f92672"&gt;&amp;gt;::&lt;/span&gt;value;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id="拓展"&gt;拓展
+&lt;/h3&gt;&lt;p&gt;对于平凡类型的 &lt;code&gt;class&lt;/code&gt; 和 &lt;code&gt;struct&lt;/code&gt;，它们在内存布局、对象拷贝、传递给 C 函数等操作中，几乎没有区别。因此，可以像使用 C 语言中的结构体一样使用它们。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Point&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; x, y;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Point p &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 使用 reinterpret_cast 强制转换
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt; ptr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;p; &lt;span style="color:#75715e"&gt;// void* 指针指向结构体
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 使用 reinterpret_cast 强制转换为 Point* 类型
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Point&lt;span style="color:#f92672"&gt;*&lt;/span&gt; p2 &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;reinterpret_cast&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;Point&lt;span style="color:#f92672"&gt;*&amp;gt;&lt;/span&gt;(ptr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 访问成员
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;x: &amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; p2&lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;x &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;, y: &amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; p2&lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt;y &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

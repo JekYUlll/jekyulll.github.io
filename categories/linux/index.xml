@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Welcome to my Blog ⬆️</title><link>https://horeb.top/categories/linux/</link><description>Recent content in Linux on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://horeb.top/posts/2025-10-18-normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-10-18-normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p&gt;当前服务器ip:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Horeb</title><link>https://horeb.top/categories/linux/</link><description>Recent content in Linux on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://horeb.top/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p&gt;当前服务器ip:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;10.201.113.35
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;span style="color: red;"&gt;&lt;strong&gt;校外访问请通过校园 VPN&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span style="color: red;"&gt;&lt;strong&gt;系统盘容量有限，大型文件请放置于&lt;code&gt;/data&lt;/code&gt;文件夹中（&lt;code&gt;~/data&lt;/code&gt;即为其软链接快捷方式）&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id="一前言"&gt;一、前言&lt;/h2&gt;
-&lt;p&gt;实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p&gt;
+&lt;h2 id="一前言"&gt;一、前言
+&lt;/h2&gt;&lt;p&gt;实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="二什么是深度学习服务器"&gt;二、什么是“深度学习服务器”&lt;/h2&gt;
-&lt;p&gt;深度学习服务器是一台高性能计算机，通常配备多块 GPU（图形处理器）、大容量显存、内存和高速存储。
+&lt;h2 id="二什么是深度学习服务器"&gt;二、什么是“深度学习服务器”
+&lt;/h2&gt;&lt;p&gt;深度学习服务器是一台高性能计算机，通常配备多块 GPU（图形处理器）、大容量显存、内存和高速存储。
 通常安装Linux系统 ，一般&lt;strong&gt;不直接接显示器&lt;/strong&gt;，而是通过网络远程访问（SSH 或远程桌面）。&lt;/p&gt;
-&lt;h3 id="主要用途"&gt;主要用途&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id="主要用途"&gt;主要用途
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;深度学习训练（如 PyTorch、TensorFlow）；&lt;/li&gt;
 &lt;li&gt;大规模有限元仿真（Abaqus、ANSYS、COMSOL）；&lt;/li&gt;
 &lt;li&gt;数据分析、图像识别、模型优化等。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="系统与软件环境"&gt;系统与软件环境&lt;/h3&gt;
-&lt;ul&gt;
+&lt;h3 id="系统与软件环境"&gt;系统与软件环境
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;操作系统：Ubuntu 24.04 LTS&lt;/li&gt;
 &lt;li&gt;已安装软件：Miniconda、Python、JupyterLab(TODO)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id="三账户与登录信息"&gt;三、账户与登录信息&lt;/h2&gt;
-&lt;h3 id="账户申请"&gt;账户申请&lt;/h3&gt;
-&lt;p&gt;新用户请联系实验室管理员开通。&lt;/p&gt;
+&lt;h2 id="三账户与登录信息"&gt;三、账户与登录信息
+&lt;/h2&gt;&lt;h3 id="账户申请"&gt;账户申请
+&lt;/h3&gt;&lt;p&gt;新用户请联系实验室管理员开通。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;账户命名规则&lt;/strong&gt;
@@ -38,8 +38,8 @@
 所有新账户的初始密码为：&lt;code&gt;LAB113@temp&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id="手动修改密码重要"&gt;手动修改密码（重要）&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="手动修改密码重要"&gt;手动修改密码（重要）
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;登录服务器后（见后续教程），默认会自动弹出修改密码的流程。&lt;br&gt;
 如果后续修改密码，在终端输入：&lt;/p&gt;
@@ -62,7 +62,247 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示修改成功。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src="https://horeb.top/images/chpasswd.png" alt="change password"&gt;&lt;/p&gt;</description></item><item><title>容器化技术之 Linux namespace</title><link>https://horeb.top/posts/2025-06-08-linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-06-08-linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p&gt;Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="change password" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/chpasswd.png"&gt;&lt;/p&gt;
+&lt;p&gt;之后会自动退出连接，使用你设置的新密码重新连接。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="四连接方式"&gt;四、连接方式
+&lt;/h2&gt;&lt;h3 id="一windows-用户"&gt;（一）Windows 用户
+&lt;/h3&gt;&lt;p&gt;此处推荐三个用于连接的终端工具（就是黑窗口，理论上使用cmd即可，但不够易用）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener"
+ &gt;MobaXterm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://www.netsarang.com/en/xshell/" target="_blank" rel="noopener"
+ &gt;XShell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://termius.com/" target="_blank" rel="noopener"
+ &gt;Terminus&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;此处仅演示MobaXterm。&lt;/p&gt;
+&lt;p&gt;打开软件，点击左上角的Session&lt;/p&gt;
+&lt;p&gt;&lt;img alt="moba1" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/moba1.png"&gt;&lt;/p&gt;
+&lt;p&gt;再点SSH，在下面的Remote host 填服务器地址，Specify username填你的账号名。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="moba2" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/moba2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="moba3" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/moba3.png"&gt;&lt;/p&gt;
+&lt;p&gt;首次登录后根据提示修改密码。&lt;/p&gt;
+&lt;p&gt;左边是服务器文件路径，可以按照权限操纵文件，新建个文件夹放代码之类的。&lt;/p&gt;
+&lt;p&gt;右边就是终端，可以对linux系统进行各种命令行操作。&lt;/p&gt;
+&lt;h3 id="用-vs-code-连接主要使用方式"&gt;用 VS Code 连接（主要使用方式）
+&lt;/h3&gt;&lt;p&gt;PyCharm（以及其他Jetbrains的IDE）远程连接功能远不如VS Code，因此此处仅演示VS Code，也仅推荐使用VS Code。&lt;br&gt;
+如果想要使用PyCharm连接，可以阅读&lt;a class="link" href="https://github.com/xiaonanQua/serverdoc?tab=readme-ov-file#%E5%9B%9B%E9%80%9A%E8%BF%87ssh%E6%9C%AC%E5%9C%B0%E8%B0%83%E7%94%A8%E8%BF%9C%E7%A8%8B%E8%AE%A1%E7%AE%97%E8%B5%84%E6%BA%90pycharmjupyterlab%E9%85%8D%E7%BD%AE" target="_blank" rel="noopener"
+ &gt;实验室服务器的使用指南&lt;/a&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装remote相关插件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="vscode1" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/vscode1.png"&gt;&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;在侧边栏打开插件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="vscode2" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/vscode2.png"&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;新建ssh连接&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="vscode3" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/vscode3.png"&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;
+&lt;p&gt;选择路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 VS Code 里使用终端：点击 New Terminal&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="vscode5" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/vscode5.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="二macos-用户"&gt;（二）macOS 用户
+&lt;/h3&gt;&lt;p&gt;此处推荐&lt;a class="link" href="https://termius.com/" target="_blank" rel="noopener"
+ &gt;Terminus&lt;/a&gt;，iPad都能用。&lt;/p&gt;
+&lt;p&gt;或者直接用mac自带终端也行：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSH连接&lt;/strong&gt;
+打开“终端”：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh username@服务器IP
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;文件传输&lt;/strong&gt;
+可使用命令行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp localfile username@服务器IP:/home/username/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h3 id="三linux-用户"&gt;（三）Linux 用户
+&lt;/h3&gt;&lt;p&gt;推荐&lt;a class="link" href="https://github.com/kingToolbox/WindTerm" target="_blank" rel="noopener"
+ &gt;WindTerm&lt;/a&gt;，本人用得最多的一个。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="五anaconda-与-python-环境管理"&gt;五、Anaconda 与 Python 环境管理
+&lt;/h2&gt;&lt;h3 id="1-anaconda-简介"&gt;1. Anaconda 简介
+&lt;/h3&gt;&lt;p&gt;Anaconda 是一个 Python 环境与包管理工具，可方便地创建独立环境、安装依赖，避免不同项目间的冲突。（miniconda是其精简版）&lt;/p&gt;
+&lt;p&gt;此处管理员已预装系统级miniconda（位于&lt;code&gt;/opt/miniconda3/bin/conda&lt;/code&gt;）。&lt;/p&gt;
+&lt;h3 id="2-常用命令"&gt;2. 常用命令
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;操作&lt;/th&gt;
+ &lt;th&gt;命令示例&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;创建新环境&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;conda create -n myenv python=3.10&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;激活环境&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;conda activate myenv&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;安装包&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;conda install numpy pandas pytorch&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;查看环境&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;conda env list&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;删除环境&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;conda remove -n myenv --all&lt;/code&gt;&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id="3-使用-jupyterlab暂未安装后续可能会扩展"&gt;3. 使用 JupyterLab（暂未安装，后续可能会扩展）
+&lt;/h3&gt;&lt;p&gt;在服务器上启动：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;jupyter lab --no-browser --port&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;8888&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后在本地终端执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ssh -L 8888:localhost:8888 username@服务器IP
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;本地浏览器访问：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-txt" data-lang="txt"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;http://localhost:8888
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id="六远程桌面与图形化软件"&gt;六、远程桌面与图形化软件
+&lt;/h2&gt;
+ &lt;blockquote&gt;
+ &lt;p&gt;远程桌面比起ssh命令行会有一定卡顿，深度学习等应用请保持原来的方式。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;h3 id="1-适用场景"&gt;1. 适用场景
+&lt;/h3&gt;&lt;p&gt;用于运行图形化仿真软件（Abaqus、ANSYS、COMSOL、Matlab 等）。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;其中大部分安装需要&lt;code&gt;sudo&lt;/code&gt;权限，如需安装请联系，请勿自行安装。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;h3 id="2-用户连接方式"&gt;2. 用户连接方式
+&lt;/h3&gt;&lt;p&gt;从windows中打开远程桌面功能。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="desktop1" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/desktop1.png"&gt;&lt;/p&gt;
+&lt;p&gt;按步骤依次输入服务器ip、用户名和密码，进行连接。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="desktop2" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/desktop2.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="desktop3" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/desktop3.png"&gt;&lt;/p&gt;
+&lt;p&gt;连接上远程桌面（gnome）后，点击最左上角标识可以查看窗口与查找应用。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="desktop4" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/desktop4.png"&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="七文件管理与备份"&gt;七、文件管理与备份
+&lt;/h2&gt;&lt;h3 id="1-目录说明"&gt;1. 目录说明
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;路径&lt;/th&gt;
+ &lt;th&gt;用途&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;/home/username&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;用户个人目录&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;/data&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;公共数据集或模型&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;/workspace&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;项目工作区（暂时未开通）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="八服务器使用规范"&gt;八、服务器使用规范
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;不要在系统目录（&lt;code&gt;/&lt;/code&gt;、&lt;code&gt;/root&lt;/code&gt;）下操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;运行长时间任务时请使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nohup python train.py &amp;gt; log.txt 2&amp;gt;&amp;amp;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &amp;amp;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或在 &lt;code&gt;tmux&lt;/code&gt; 会话中执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;未经沟通严禁重启服务器（如果你有权限的话）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;任务结束后释放显存和进程（输入&lt;code&gt;ps -aux | grep 你的进程名&lt;/code&gt;找你的进程，找到&lt;code&gt;pid&lt;/code&gt;之后&lt;code&gt;kill -9 你的pid&lt;/code&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;请勿安装系统级软件，如需&lt;code&gt;sudo&lt;/code&gt;权限请在群里询问。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="九常见问题faq"&gt;九、常见问题（FAQ）
+&lt;/h2&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;问题&lt;/th&gt;
+ &lt;th&gt;解决方法&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;SSH 连不上&lt;/td&gt;
+ &lt;td&gt;检查网络/VPN，确认端口22是否开放&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;GPU 已占满&lt;/td&gt;
+ &lt;td&gt;使用 &lt;code&gt;nvidia-smi&lt;/code&gt; 查看使用者，协商使用&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Conda 包冲突&lt;/td&gt;
+ &lt;td&gt;新建独立环境&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Jupyter 无法访问&lt;/td&gt;
+ &lt;td&gt;检查端口转发是否正确&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;远程桌面卡顿&lt;/td&gt;
+ &lt;td&gt;降低分辨率或关闭3D加速&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id="十附录"&gt;十、附录
+&lt;/h2&gt;&lt;h3 id="常用命令速查"&gt;常用命令速查
+&lt;/h3&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nvidia-smi &lt;span style="color:#75715e"&gt;# 查看GPU&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pwd &lt;span style="color:#75715e"&gt;# 显示当前路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls -lh &lt;span style="color:#75715e"&gt;# 列出文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;scp localfile user@ip:/home/user/ &lt;span style="color:#75715e"&gt;# 上传文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;conda create -n myenv python&lt;span style="color:#f92672"&gt;=&lt;/span&gt;3.10 &lt;span style="color:#75715e"&gt;# 创建新环境&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="管理员联系方式"&gt;管理员联系方式
+&lt;/h3&gt;&lt;p&gt;&lt;img alt="微信" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/wechat.jpg"&gt;&lt;/p&gt;
+&lt;h3 id="推荐学习资料"&gt;推荐学习资料
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Linux命令快速入门：&lt;a class="link" href="https://wangchujiang.com/linux-command/" target="_blank" rel="noopener"
+ &gt;https://wangchujiang.com/linux-command/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Anaconda官方文档：&lt;a class="link" href="https://docs.anaconda.com/" target="_blank" rel="noopener"
+ &gt;https://docs.anaconda.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;PyTorch教程：&lt;a class="link" href="https://pytorch.org/tutorials/" target="_blank" rel="noopener"
+ &gt;https://pytorch.org/tutorials/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="参考文档"&gt;参考文档
+&lt;/h3&gt;&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/422462131" target="_blank" rel="noopener"
+ &gt;实验室GPU管理神器Determined - 吕昱峰的文章 - 知乎&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/1908296804832879701" target="_blank" rel="noopener"
+ &gt;实验室服务器管理经验 - PurRigiN的文章 - 知乎&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/qq_38356397/article/details/103166234" target="_blank" rel="noopener"
+ &gt;手把手教你如何连上实验室的服务器&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/qq_44773719/article/details/104352965" target="_blank" rel="noopener"
+ &gt;Mac下使用SSH连接远程Linux服务器&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://ajohn.top/article/bes1sa4i/" target="_blank" rel="noopener"
+ &gt;实验室服务器使用教程（用户篇）&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/yurizzzzz/TJU-ServerDoc" target="_blank" rel="noopener"
+ &gt;yurizzzzz/TJU-ServerDoc 天津大学实验室服务器使用和管理&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/xiaonanQua/serverdoc" target="_blank" rel="noopener"
+ &gt;实验室服务器的使用指南&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>容器化技术之 Linux namespace</title><link>https://horeb.top/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p&gt;Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p&gt;
 &lt;p&gt;PID namespace 中的 &lt;code&gt;init&lt;/code&gt; 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p&gt;
 &lt;p&gt;有多种namespace:&lt;/p&gt;
 &lt;ul&gt;
@@ -91,8 +331,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid_for_children -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 user -&amp;gt; &amp;#39;user:[4026531837]&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 uts -&amp;gt; &amp;#39;uts:[4026531838]&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="如何创建"&gt;如何创建？&lt;/h3&gt;
-&lt;ol&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="如何创建"&gt;如何创建？
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;使用&lt;code&gt;unshare&lt;/code&gt;命令创建 namespace：&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建新的挂载点和PID namespace，并在其中启动bash&lt;/span&gt;
@@ -177,19 +417,27 @@
 &lt;li&gt;使用&lt;code&gt;nsenter&lt;/code&gt;命令（简化版&lt;code&gt;setns()&lt;/code&gt;）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nsenter --target &lt;span style="color:#ae81ff"&gt;1234&lt;/span&gt; --net ip addr
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://horeb.top/posts/2025-04-29-linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-04-29-linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p&gt;复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836"&gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.csdn.net/liaowenxiong/article/details/116401524"&gt;Linux 命令之 &lt;code&gt;locale&lt;/code&gt; &amp;ndash; 设置和显示程序运行的语言环境&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;使用 &lt;code&gt;locale&lt;/code&gt; 命令来设置和显示程序运行的语言环境，&lt;code&gt;locale&lt;/code&gt; 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://horeb.top/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p&gt;复习：&lt;a class="link" href="https://blog.csdn.net/JMW1407/article/details/108412836" target="_blank" rel="noopener"
+ &gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/liaowenxiong/article/details/116401524" target="_blank" rel="noopener"
+ &gt;Linux 命令之 &lt;code&gt;locale&lt;/code&gt; &amp;ndash; 设置和显示程序运行的语言环境&lt;/a&gt;。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;使用 &lt;code&gt;locale&lt;/code&gt; 命令来设置和显示程序运行的语言环境，&lt;code&gt;locale&lt;/code&gt; 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br&gt;
 &lt;code&gt;locale&lt;/code&gt; 由ANSI C提供支持。&lt;code&gt;locale&lt;/code&gt; 的命名规则为&lt;code&gt;&amp;lt;语言&amp;gt;_&amp;lt;地区&amp;gt;.&amp;lt;字符集编码&amp;gt;&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989"&gt;深刻理解——real user id, effective user id, saved user id in Linux&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423"&gt;Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/fmeng23/article/details/23115989" target="_blank" rel="noopener"
+ &gt;深刻理解——real user id, effective user id, saved user id in Linux&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.csdn.net/ybxuwei/article/details/23563423" target="_blank" rel="noopener"
+ &gt;Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a&gt;。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo $UID
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[linux] 在wezterm里使用tmux实现history restore 保存历史会话</title><link>https://horeb.top/posts/2025-04-29-linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-04-29-linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</guid><description>&lt;hr&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[linux] 在wezterm里使用tmux实现history restore 保存历史会话</title><link>https://horeb.top/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</guid><description>&lt;hr&gt;
 &lt;p&gt;知乎链接：https://zhuanlan.zhihu.com/p/1961547067106259944&lt;/p&gt;
 &lt;p&gt;wezterm在打开主进程、或者ctrl+alt+t新建tab的时候默认是空的shell会话，有时候不够方便。&lt;/p&gt;
 &lt;p&gt;tmux可以轻松解决痛点，但是如果设置wezterm的default_prog为tmux（即每次会话都启动）：在wezterm里新建tab，你会发现和之前共享同一个tmux，相当于wezterm自带的tab功能没用了。&lt;/p&gt;
@@ -209,7 +457,8 @@ wezterm.on(&amp;quot;gui-startup&amp;quot;, function(cmd)
 	end
 end)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;加在wezterm配置合适的位置即可。&lt;/p&gt;</description></item><item><title>Linux 守护进程</title><link>https://horeb.top/posts/2025-04-29-linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-04-29-linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p&gt;复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836"&gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;加在wezterm配置合适的位置即可。&lt;/p&gt;</description></item><item><title>Linux 守护进程</title><link>https://horeb.top/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p&gt;复习：&lt;a class="link" href="https://blog.csdn.net/JMW1407/article/details/108412836" target="_blank" rel="noopener"
+ &gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;编写守护进程的一般步骤步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;在父进程中执行&lt;code&gt;fork&lt;/code&gt;并&lt;code&gt;exit&lt;/code&gt;退出；&lt;/li&gt;
@@ -218,12 +467,17 @@ end)
 &lt;li&gt;在子进程中调用&lt;code&gt;umask&lt;/code&gt;函数，设置进程的&lt;code&gt;umask&lt;/code&gt;为&lt;code&gt;0&lt;/code&gt;；&lt;/li&gt;
 &lt;li&gt;在子进程中关闭任何不需要的文件描述符。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;a href="https://blog.csdn.net/Change_Improve/article/details/106107317"&gt;Linux—umask（创建文件时的掩码）用法详解&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989"&gt;深刻理解——real user id, effective user id, saved user id in Linux&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423"&gt;Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p&gt;
-&lt;/blockquote&gt;</description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://horeb.top/posts/2025-03-30-linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-30-linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p&gt;Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong&gt;保护环&lt;/strong&gt;（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/Change_Improve/article/details/106107317" target="_blank" rel="noopener"
+ &gt;Linux—umask（创建文件时的掩码）用法详解&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/fmeng23/article/details/23115989" target="_blank" rel="noopener"
+ &gt;深刻理解——real user id, effective user id, saved user id in Linux&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.csdn.net/ybxuwei/article/details/23563423" target="_blank" rel="noopener"
+ &gt;Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a&gt;。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p&gt;
+
+ &lt;/blockquote&gt;</description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://horeb.top/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p&gt;Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong&gt;保护环&lt;/strong&gt;（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p&gt;
 &lt;p&gt;x86保护环的完整结构为四层，但实际仅Ring 0和Ring 3被广泛使用：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;零环&lt;/strong&gt;（Ring 0）：
@@ -239,28 +493,37 @@ end)
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://blog.csdn.net/youyou1543724847/article/details/85048490"&gt;CPU的运行环, 特权级与保护&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.csdn.net/farmwang/article/details/50094959"&gt;原文 ——CPU的运行环, 特权级与保护&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574"&gt;Linux内核开发之hook系统调用&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html"&gt;三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401"&gt;系统调用之_KUSER_SHARED_DATA&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://horeb.top/posts/2025-03-29-linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-29-linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p&gt;当通过 &lt;code&gt;fork()&lt;/code&gt; 创建子进程时，子进程会获得父进程文件描述符表的&lt;u&gt;完整副本&lt;/u&gt;。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/youyou1543724847/article/details/85048490" target="_blank" rel="noopener"
+ &gt;CPU的运行环, 特权级与保护&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.csdn.net/farmwang/article/details/50094959" target="_blank" rel="noopener"
+ &gt;原文 ——CPU的运行环, 特权级与保护&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.csdn.net/qq_26962739/article/details/133133574" target="_blank" rel="noopener"
+ &gt;Linux内核开发之hook系统调用&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://www.cnblogs.com/onetrainee/p/11707130.html" target="_blank" rel="noopener"
+ &gt;三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.csdn.net/wxy_xx1/article/details/142953401" target="_blank" rel="noopener"
+ &gt;系统调用之_KUSER_SHARED_DATA&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://horeb.top/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p&gt;当通过 &lt;code&gt;fork()&lt;/code&gt; 创建子进程时，子进程会获得父进程文件描述符表的&lt;u&gt;完整副本&lt;/u&gt;。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
 父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;修改文件描述符表本身（如关闭 &lt;code&gt;fd&lt;/code&gt;）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li&gt;
 &lt;li&gt;修改共享的文件表项（如偏移量、状态标志）：子进程的操作会直接影响父进程，因为它们共享同一文件表项。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://blog.csdn.net/DLUTBruceZhang/article/details/8802156"&gt;&lt;code&gt;fork()&lt;/code&gt;子进程与父进程之间的文件描述符问题&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.csdn.net/m0_73209194/article/details/130165449"&gt;【Linux】进程间通信&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;文件描述符相当于一个逻辑句柄，而&lt;code&gt;open&lt;/code&gt;，&lt;code&gt;close&lt;/code&gt;等函数则是将文件或者物理设备与句柄相关联。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="link" href="https://blog.csdn.net/DLUTBruceZhang/article/details/8802156" target="_blank" rel="noopener"
+ &gt;&lt;code&gt;fork()&lt;/code&gt;子进程与父进程之间的文件描述符问题&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.csdn.net/m0_73209194/article/details/130165449" target="_blank" rel="noopener"
+ &gt;【Linux】进程间通信&lt;/a&gt;。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;文件描述符相当于一个逻辑句柄，而&lt;code&gt;open&lt;/code&gt;，&lt;code&gt;close&lt;/code&gt;等函数则是将文件或者物理设备与句柄相关联。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;p&gt;三张表：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;文件描述符表&lt;/strong&gt;：用户区的一部分，除非通过使用文件描述符的函数，否则程序无法对其进行访问。对进程中每个打开的文件，文件描述符表都包含一个条目。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;系统文件表&lt;/strong&gt;：为系统中所有的进程共享。对每个活动的open, 它都包含一个条目。每个系统文件表的条目都包含文件偏移量、访问模式（读、写、or 读-写）以及指向它的文件描述符表的条目计数。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;内存索引节点表&lt;/strong&gt;: 对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目。几个系统文件表条目可能对应于同一个内存索引节点表（不同进程打开同一个文件）。&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://horeb.top/posts/2025-03-27-linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-27-linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容"&gt;&lt;strong&gt;一、共享的内容&lt;/strong&gt;&lt;/h3&gt;
-&lt;ol&gt;
+&lt;/ul&gt;</description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://horeb.top/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容"&gt;&lt;strong&gt;一、共享的内容&lt;/strong&gt;
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;文件描述符与文件状态&lt;/strong&gt;&lt;br&gt;
 子进程会继承父进程已打开的文件描述符表，包括文件偏移量、打开模式（如读写权限）和文件状态标志（如&lt;code&gt;O_APPEND&lt;/code&gt;）。例如，若父进程打开了一个文件并写入数据，子进程可通过相同的文件描述符继续操作，且两者的写入位置（偏移量）会相互影响。&lt;br&gt;
@@ -284,8 +547,8 @@ end)
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="二不共享的内容"&gt;&lt;strong&gt;二、不共享的内容&lt;/strong&gt;&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="二不共享的内容"&gt;&lt;strong&gt;二、不共享的内容&lt;/strong&gt;
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;进程独立属性&lt;/strong&gt;&lt;br&gt;
 子进程拥有独立的进程ID（PID）、父进程ID（PPID）、运行时间统计、未决信号队列等。&lt;/p&gt;
@@ -304,20 +567,20 @@ end)
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="三关键机制写时复制cow"&gt;&lt;strong&gt;三、关键机制：写时复制（COW）&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;内核通过写时复制技术优化性能：&lt;br&gt;
+&lt;h3 id="三关键机制写时复制cow"&gt;&lt;strong&gt;三、关键机制：写时复制（COW）&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;内核通过写时复制技术优化性能：&lt;br&gt;
 • &lt;strong&gt;原理&lt;/strong&gt;：&lt;code&gt;fork()&lt;/code&gt;后，父子进程的页表项指向相同的物理内存页，并将这些页标记为只读。当某一进程尝试写入时，触发页错误，内核复制该页并修改权限为可写。&lt;br&gt;
 • &lt;strong&gt;优点&lt;/strong&gt;：避免不必要的内存复制，提高资源利用率。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="四应用注意事项"&gt;&lt;strong&gt;四、应用注意事项&lt;/strong&gt;&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="四应用注意事项"&gt;&lt;strong&gt;四、应用注意事项&lt;/strong&gt;
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;文件操作同步&lt;/strong&gt;：父子进程对同一文件描述符的并发写入需通过锁（如&lt;code&gt;flock()&lt;/code&gt;）或原子操作避免竞争。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;内存共享限制&lt;/strong&gt;：若需主动共享内存，需使用&lt;code&gt;mmap()&lt;/code&gt;或共享内存API（如&lt;code&gt;shmget()&lt;/code&gt;）。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;僵尸进程处理&lt;/strong&gt;：父进程需通过&lt;code&gt;wait()&lt;/code&gt;回收子进程资源，或注册&lt;code&gt;SIGCHLD&lt;/code&gt;信号处理函数。&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>【AI】mmap 和零拷贝</title><link>https://horeb.top/posts/2025-03-07-linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-07-linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p&gt;mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p&gt;
+&lt;/ol&gt;</description></item><item><title>【AI】mmap 和零拷贝</title><link>https://horeb.top/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p&gt;mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="一mmap的核心机制"&gt;一、mmap的核心机制&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="一mmap的核心机制"&gt;一、mmap的核心机制
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;系统调用与映射方式&lt;/strong&gt;：
 • &lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);&lt;/code&gt;
@@ -336,8 +599,8 @@ end)
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="二mmap与io的关系"&gt;二、mmap与IO的关系&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="二mmap与io的关系"&gt;二、mmap与IO的关系
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;传统IO的瓶颈&lt;/strong&gt;：
 • &lt;strong&gt;数据拷贝开销&lt;/strong&gt;：&lt;code&gt;read()&lt;/code&gt;/&lt;code&gt;write()&lt;/code&gt;需要在内核缓冲区（页缓存）与用户空间之间复制数据，频繁系统调用和拷贝降低性能。
@@ -357,8 +620,8 @@ end)
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="三mmap与内存分配的关系"&gt;三、mmap与内存分配的关系&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="三mmap与内存分配的关系"&gt;三、mmap与内存分配的关系
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;动态内存分配&lt;/strong&gt;：
 • &lt;strong&gt;glibc的malloc策略&lt;/strong&gt;：
@@ -369,10 +632,245 @@ end)
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;匿名映射的应用&lt;/strong&gt;：
 • &lt;strong&gt;进程间共享内存&lt;/strong&gt;：通过&lt;code&gt;MAP_SHARED&lt;/code&gt;标志，多个进程可共享同一物理内存，高效通信。
-• &lt;strong&gt;自定义内存管理&lt;/strong&gt;：替代&lt;code&gt;malloc&lt;/code&gt;，用于需要精细控制的大内存分配（如内存池）。&lt;/p&gt;</description></item><item><title>内核的用户态和内核态</title><link>https://horeb.top/posts/2025-03-07-linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-07-linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p&gt;线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p&gt;
+• &lt;strong&gt;自定义内存管理&lt;/strong&gt;：替代&lt;code&gt;malloc&lt;/code&gt;，用于需要精细控制的大内存分配（如内存池）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;与传统堆内存的对比&lt;/strong&gt;：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;mmap分配&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;brk()分配&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;内存来源&lt;/td&gt;
+ &lt;td&gt;独立虚拟内存区域&lt;/td&gt;
+ &lt;td&gt;进程堆区&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;释放方式&lt;/td&gt;
+ &lt;td&gt;立即归还系统（&lt;code&gt;munmap&lt;/code&gt;）&lt;/td&gt;
+ &lt;td&gt;依赖堆顶收缩，易产生碎片&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;适用场景&lt;/td&gt;
+ &lt;td&gt;大块内存、共享内存&lt;/td&gt;
+ &lt;td&gt;小块内存、频繁分配释放&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="一线程概念的双重性用户态与内核态的交织"&gt;一、线程概念的双重性：用户态与内核态的交织&lt;/h3&gt;
+&lt;h3 id="四总结与扩展"&gt;四、总结与扩展
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;核心价值&lt;/strong&gt;：mmap通过内存映射机制，统一了文件IO与内存操作，同时优化了动态内存分配策略。
+• &lt;strong&gt;与页缓存的关系&lt;/strong&gt;：mmap直接操作内核页缓存，而传统IO需显式读写页缓存，因此mmap在频繁访问时更高效。
+• &lt;strong&gt;注意事项&lt;/strong&gt;：
+• &lt;strong&gt;32位系统限制&lt;/strong&gt;：虚拟地址空间有限，映射大文件可能失败。
+• &lt;strong&gt;文件截断问题&lt;/strong&gt;：文件被外部修改时需处理&lt;code&gt;SIGBUS&lt;/code&gt;信号。
+• &lt;strong&gt;延迟加载风险&lt;/strong&gt;：首次访问可能因缺页中断引入延迟。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;应用场景示例&lt;/strong&gt;：
+• &lt;strong&gt;数据库系统&lt;/strong&gt;：使用mmap加速数据文件的随机访问。
+• &lt;strong&gt;进程间通信&lt;/strong&gt;：通过匿名共享内存传递大量数据。
+• &lt;strong&gt;动态库加载&lt;/strong&gt;：系统通过mmap将共享库映射到多个进程，节省内存。&lt;/p&gt;
+&lt;p&gt;mmap通过将文件、内存和进程虚拟地址空间紧密结合，成为高性能IO和灵活内存管理的基石。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="零拷贝"&gt;零拷贝
+&lt;/h1&gt;&lt;p&gt;在Linux系统中，零拷贝（Zero-Copy）是一种优化数据传输效率的核心技术，旨在减少或消除数据在内核空间与用户空间之间的冗余拷贝操作。以下是针对该问题的结构化回答：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="1-零拷贝的核心概念"&gt;&lt;strong&gt;1. 零拷贝的核心概念&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;零拷贝通过避免数据在内存中的多次复制，降低CPU和内存带宽的消耗，尤其适用于高吞吐量场景（如文件传输、网络通信）。其核心目标包括：
+• &lt;strong&gt;减少CPU拷贝次数&lt;/strong&gt;：利用DMA（直接内存访问）等技术，让硬件直接传输数据。
+• &lt;strong&gt;减少上下文切换&lt;/strong&gt;：通过内核态与用户态的协作优化系统调用次数。
+• &lt;strong&gt;最大化内存利用率&lt;/strong&gt;：直接操作内核缓冲区或共享内存区域。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="2-传统io的瓶颈"&gt;&lt;strong&gt;2. 传统IO的瓶颈&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;以读取文件并通过网络发送为例，传统流程涉及多次数据拷贝和上下文切换：&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;磁盘到内核缓冲区&lt;/strong&gt;：DMA将文件数据从磁盘拷贝到内核的页缓存（Page Cache）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内核到用户空间&lt;/strong&gt;：&lt;code&gt;read()&lt;/code&gt;系统调用将数据从页缓存拷贝到用户空间缓冲区（CPU参与）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户空间到Socket缓冲区&lt;/strong&gt;：&lt;code&gt;write()&lt;/code&gt;系统调用将数据从用户空间拷贝到内核的Socket缓冲区（CPU参与）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Socket缓冲区到网卡&lt;/strong&gt;：DMA将数据从Socket缓冲区发送到网卡。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;问题&lt;/strong&gt;：共4次拷贝（2次DMA，2次CPU拷贝），2次系统调用（read + write）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="3-linux零拷贝的实现方式"&gt;&lt;strong&gt;3. Linux零拷贝的实现方式&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id="1-mmap--write"&gt;**(1) **&lt;code&gt;mmap&lt;/code&gt; + &lt;code&gt;write&lt;/code&gt;
+&lt;/h4&gt;&lt;p&gt;• &lt;strong&gt;原理&lt;/strong&gt;：通过内存映射（&lt;code&gt;mmap&lt;/code&gt;）将文件映射到用户空间，直接操作内核缓冲区，避免用户空间拷贝。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;addr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;mmap&lt;/span&gt;(file_fd, ...);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;write&lt;/span&gt;(socket_fd, addr, file_size);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;• &lt;strong&gt;优化&lt;/strong&gt;：减少1次CPU拷贝（用户空间到内核的拷贝）。
+• &lt;strong&gt;剩余拷贝&lt;/strong&gt;：3次拷贝（2次DMA，1次CPU拷贝）。
+• &lt;strong&gt;适用场景&lt;/strong&gt;：需要频繁读写文件内容（如数据库）。&lt;/p&gt;
+&lt;h4 id="2"&gt;&lt;strong&gt;(2) &lt;code&gt;sendfile&lt;/code&gt;&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;• &lt;strong&gt;原理&lt;/strong&gt;：通过&lt;code&gt;sendfile&lt;/code&gt;系统调用直接在文件描述符和Socket之间传输数据，完全在内核态完成。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;sendfile&lt;/span&gt;(socket_fd, file_fd, NULL, file_size);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;• &lt;strong&gt;优化&lt;/strong&gt;：消除用户空间参与，减少2次上下文切换，2次拷贝（仅1次CPU拷贝）。
+• &lt;strong&gt;剩余拷贝&lt;/strong&gt;：3次拷贝（2次DMA，1次CPU拷贝）。
+• &lt;strong&gt;增强版（Linux 2.4+）&lt;/strong&gt;：支持SG-DMA（Scatter-Gather DMA），直接从页缓存到网卡，&lt;strong&gt;仅需2次DMA拷贝&lt;/strong&gt;，完全消除CPU拷贝。
+• &lt;strong&gt;适用场景&lt;/strong&gt;：静态文件传输（如Nginx发送大文件）。&lt;/p&gt;
+&lt;h4 id="3"&gt;&lt;strong&gt;(3) &lt;code&gt;splice&lt;/code&gt;&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;• &lt;strong&gt;原理&lt;/strong&gt;：通过管道（Pipe）在内核中移动数据，无需用户空间参与。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;splice&lt;/span&gt;(file_fd, NULL, pipe_fd, NULL, file_size, SPLICE_F_MOVE);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;splice&lt;/span&gt;(pipe_fd, NULL, socket_fd, NULL, file_size, SPLICE_F_MOVE);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;• &lt;strong&gt;优化&lt;/strong&gt;：类似&lt;code&gt;sendfile&lt;/code&gt;，但支持任意文件描述符（包括管道）。
+• &lt;strong&gt;剩余拷贝&lt;/strong&gt;：2次DMA拷贝（SG-DMA支持时）。
+• &lt;strong&gt;适用场景&lt;/strong&gt;：非文件到网络的数据传输（如进程间数据转发）。&lt;/p&gt;
+&lt;h4 id="4-直接ioo_"&gt;&lt;strong&gt;(4) 直接IO（O_DIRECT）&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;• &lt;strong&gt;原理&lt;/strong&gt;：绕过页缓存，直接从用户空间缓冲区读写磁盘（需硬件对齐）。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;open&lt;/span&gt;(file_path, O_RDWR &lt;span style="color:#f92672"&gt;|&lt;/span&gt; O_DIRECT);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;• &lt;strong&gt;优化&lt;/strong&gt;：避免页缓存拷贝，但需应用自行管理缓存。
+• &lt;strong&gt;适用场景&lt;/strong&gt;：自缓存应用（如某些数据库）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="4-零拷贝的对比与选择"&gt;&lt;strong&gt;4. 零拷贝的对比与选择&lt;/strong&gt;
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;strong&gt;技术&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;CPU拷贝次数&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;上下文切换&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;适用场景&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;传统&lt;code&gt;read/write&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;td&gt;4（read+write）&lt;/td&gt;
+ &lt;td&gt;通用，但性能差&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;mmap&lt;/code&gt; + &lt;code&gt;write&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;1&lt;/td&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;td&gt;需修改文件内容&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;sendfile&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;0（SG-DMA）&lt;/td&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;td&gt;文件到网络的单向传输（如Nginx）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;splice&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;0（SG-DMA）&lt;/td&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;td&gt;任意描述符间传输（需管道支持）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;O_DIRECT&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;td&gt;自管理缓存的专用场景&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id="5-零拷贝的实际应用"&gt;&lt;strong&gt;5. 零拷贝的实际应用&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;Nginx&lt;/strong&gt;：使用&lt;code&gt;sendfile&lt;/code&gt;加速静态文件传输。
+• &lt;strong&gt;Kafka&lt;/strong&gt;：通过&lt;code&gt;sendfile&lt;/code&gt;高效传输日志文件。
+• &lt;strong&gt;数据库&lt;/strong&gt;：结合&lt;code&gt;mmap&lt;/code&gt;或O_DIRECT优化磁盘IO。
+• &lt;strong&gt;虚拟化&lt;/strong&gt;：VMware/VirtIO使用零拷贝减少虚拟机间数据传输开销。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="6-注意事项与局限性"&gt;&lt;strong&gt;6. 注意事项与局限性&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;硬件依赖&lt;/strong&gt;：SG-DMA需要网卡支持分散-聚集操作。
+• &lt;strong&gt;数据修改&lt;/strong&gt;：零拷贝技术通常适用于只读或无需修改数据的场景。
+• &lt;strong&gt;小文件&lt;/strong&gt;：零拷贝的优化效果在大文件中更显著，小文件可能因系统调用开销掩盖优势。
+• &lt;strong&gt;兼容性&lt;/strong&gt;：&lt;code&gt;sendfile&lt;/code&gt;在传输带数据头的内容时需结合其他技术（如&lt;code&gt;writev&lt;/code&gt;）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="7-扩展问题准备"&gt;&lt;strong&gt;7. 扩展问题准备&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;DMA的作用&lt;/strong&gt;：允许外设直接访问内存，减少CPU负担。
+• &lt;strong&gt;Page Cache的影响&lt;/strong&gt;：零拷贝依赖内核缓冲区管理，频繁写入可能导致缓存膨胀。
+• &lt;strong&gt;与内存映射的关系&lt;/strong&gt;：&lt;code&gt;mmap&lt;/code&gt;是零拷贝的基石，但并非所有零拷贝都依赖内存映射。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;总结回答示例&lt;/strong&gt;：&lt;br&gt;
+“零拷贝技术通过减少数据在内核与用户空间之间的冗余拷贝，显著提升IO性能。Linux中主要通过&lt;code&gt;mmap&lt;/code&gt;、&lt;code&gt;sendfile&lt;/code&gt;和&lt;code&gt;splice&lt;/code&gt;等系统调用实现。例如，&lt;code&gt;sendfile&lt;/code&gt;在内核态直接将文件数据从页缓存发送到网卡，避免了用户空间的参与，适合静态文件传输。选择时需要结合场景：&lt;code&gt;sendfile&lt;/code&gt;适合单向传输，&lt;code&gt;mmap&lt;/code&gt;适合需要读写文件内容，而&lt;code&gt;splice&lt;/code&gt;更灵活但依赖管道。实际应用中需注意硬件支持和数据特性。”&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="mmap-和-dma-的关系"&gt;mmap 和 DMA 的关系
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;mmap 不是 DMA 的一种&lt;/strong&gt;，它们是两个完全不同的技术，但可以协同工作以提高系统性能。以下是详细对比和解释：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="1-核心概念对比"&gt;&lt;strong&gt;1. 核心概念对比&lt;/strong&gt;
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;strong&gt;特性&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;mmap&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;DMA（直接内存访问）&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;定义&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;内存映射技术，将文件或设备映射到进程的虚拟地址空间&lt;/td&gt;
+ &lt;td&gt;硬件技术，允许外设直接访问内存，无需CPU参与&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;作用层级&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;操作系统/软件层（内存管理、文件I/O优化）&lt;/td&gt;
+ &lt;td&gt;硬件/驱动层（数据传输优化）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;主要目的&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;减少用户态与内核态的数据拷贝&lt;/td&gt;
+ &lt;td&gt;减少CPU在数据传输中的负担&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;依赖关系&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;依赖操作系统内存管理机制（如页表、缺页中断）&lt;/td&gt;
+ &lt;td&gt;依赖硬件支持（如DMA控制器、设备兼容性）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id="2-技术原理差异"&gt;&lt;strong&gt;2. 技术原理差异&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id="mmap-的工作流程"&gt;&lt;strong&gt;mmap 的工作流程&lt;/strong&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;映射文件到内存&lt;/strong&gt;：调用 &lt;code&gt;mmap&lt;/code&gt; 后，文件被映射到进程的虚拟地址空间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;按需加载数据&lt;/strong&gt;：访问内存时触发缺页中断，内核将文件内容从磁盘加载到物理内存（可能通过DMA）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;直接操作内存&lt;/strong&gt;：应用程序通过指针读写内存，无需调用 &lt;code&gt;read()&lt;/code&gt;/&lt;code&gt;write()&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;同步数据&lt;/strong&gt;：修改后的数据由内核异步写回磁盘（或通过 &lt;code&gt;msync()&lt;/code&gt; 强制同步）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="dma-的工作流程"&gt;&lt;strong&gt;DMA 的工作流程&lt;/strong&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;CPU 初始化传输&lt;/strong&gt;：CPU 设置DMA传输参数（源地址、目标地址、数据大小）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DMA 接管数据传输&lt;/strong&gt;：DMA控制器直接在外设（如磁盘）和内存之间搬运数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;传输完成中断&lt;/strong&gt;：DMA完成后，通过中断通知CPU。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CPU 处理后续逻辑&lt;/strong&gt;：如更新状态、唤醒等待的进程。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="3-协同工作场景"&gt;&lt;strong&gt;3. 协同工作场景&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;虽然 mmap 和 DMA 是独立的技术，但它们可以在某些场景下配合使用：&lt;/p&gt;
+&lt;h4 id="示例通过-mmap-读取文件"&gt;&lt;strong&gt;示例：通过 mmap 读取文件&lt;/strong&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;mmap 映射文件&lt;/strong&gt;：文件被映射到用户空间，但物理内存中可能尚未加载数据。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;首次访问触发缺页中断&lt;/strong&gt;：内核调用磁盘驱动，使用 &lt;strong&gt;DMA 将文件数据从磁盘读取到物理内存&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;后续访问直接操作内存&lt;/strong&gt;：无需CPU参与数据拷贝，直接读写内存即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;优势&lt;/strong&gt;：&lt;br&gt;
+• &lt;strong&gt;减少CPU拷贝&lt;/strong&gt;：DMA负责磁盘到内存的传输，mmap避免用户态与内核态的数据复制。
+• &lt;strong&gt;零拷贝优化&lt;/strong&gt;：在文件处理中，mmap + DMA的组合是零拷贝技术的一部分。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="4-常见误解澄清"&gt;&lt;strong&gt;4. 常见误解澄清&lt;/strong&gt;
+&lt;/h3&gt;&lt;h4 id="误解1mmap直接使用dma传输数据"&gt;&lt;strong&gt;误解1：“mmap直接使用DMA传输数据”&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;• &lt;strong&gt;真相&lt;/strong&gt;：mmap本身不控制数据传输方式，数据加载到内存的具体过程（是否用DMA）由内核和驱动决定。DMA的调用是透明的，对mmap不可见。&lt;/p&gt;
+&lt;h4 id="误解2dma只能在mmap中使用"&gt;&lt;strong&gt;误解2：“DMA只能在mmap中使用”&lt;/strong&gt;
+&lt;/h4&gt;&lt;p&gt;• &lt;strong&gt;真相&lt;/strong&gt;：DMA广泛用于所有IO场景，包括传统&lt;code&gt;read()&lt;/code&gt;/&lt;code&gt;write()&lt;/code&gt;。例如：
+• &lt;code&gt;read()&lt;/code&gt;：磁盘 → 内核缓冲区（DMA） → 用户缓冲区（CPU拷贝）。
+• &lt;code&gt;mmap&lt;/code&gt;：磁盘 → 内核缓冲区（DMA） → 用户直接访问（无需CPU拷贝）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="5-总结"&gt;&lt;strong&gt;5. 总结&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;mmap ≠ DMA&lt;/strong&gt;：mmap是软件层的内存映射技术，DMA是硬件层的数据传输技术。
+• &lt;strong&gt;协同关系&lt;/strong&gt;：在mmap访问文件时，DMA可能被内核用于磁盘到内存的数据传输，但这是内核的底层优化，与mmap无直接关联。
+• &lt;strong&gt;性能优化&lt;/strong&gt;：两者结合可实现零拷贝（如&lt;code&gt;mmap&lt;/code&gt; + &lt;code&gt;write&lt;/code&gt;），但DMA的参与是隐式的，由操作系统自动管理。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;回答示例&lt;/strong&gt;：&lt;br&gt;
+“mmap和DMA是不同层级的技术。mmap是操作系统提供的内存映射机制，用于让应用程序直接访问文件数据，减少数据拷贝；而DMA是硬件功能，允许外设直接读写内存，无需CPU参与。虽然mmap访问文件时，数据加载到内存的过程可能由DMA完成，但mmap本身并不等同于DMA，它们是互补关系，共同实现高效IO。”&lt;/p&gt;</description></item><item><title>内核的用户态和内核态</title><link>https://horeb.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p&gt;线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="一线程概念的双重性用户态与内核态的交织"&gt;一、线程概念的双重性：用户态与内核态的交织
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;用户态线程（用户级线程）&lt;/strong&gt;&lt;br&gt;
 用户态线程由用户空间的线程库直接管理，内核对其无感知。这类线程的创建、调度、同步等操作完全在用户空间完成，无需内核介入。&lt;br&gt;
@@ -383,25 +881,29 @@ end)
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;内核态线程（内核级线程）&lt;/strong&gt;&lt;br&gt;
 内核直接管理线程的创建、调度和销毁，每个线程对应一个内核线程（如Linux的轻量级进程LWP）。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;轻量级进程&lt;/em&gt;（Light Weight Process, LWP）作为用户线程与内核线程的桥梁，负责处理系统调用、资源分配和CPU映射。当用户线程发起系统调用时，LWP接管请求，避免因单个用户线程阻塞导致整个进程挂起。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;&lt;em&gt;轻量级进程&lt;/em&gt;（Light Weight Process, LWP）作为用户线程与内核线程的桥梁，负责处理系统调用、资源分配和CPU映射。当用户线程发起系统调用时，LWP接管请求，避免因单个用户线程阻塞导致整个进程挂起。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;p&gt;• &lt;strong&gt;多核并行&lt;/strong&gt;：内核可将不同线程分配到多个CPU核心；
 • &lt;strong&gt;独立阻塞&lt;/strong&gt;：单个线程阻塞不会影响其他线程；
 • &lt;strong&gt;切换开销大&lt;/strong&gt;：线程切换需通过内核态，涉及用户栈和内核栈的切换、寄存器保存与恢复等操作。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="二内核如何处理线程"&gt;二、内核如何处理线程？&lt;/h3&gt;
-&lt;ol&gt;
+&lt;h3 id="二内核如何处理线程"&gt;二、内核如何处理线程？
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;线程模型的映射关系&lt;/strong&gt;&lt;br&gt;
 现代操作系统（如Linux）通常采用&lt;strong&gt;混合型线程模型&lt;/strong&gt;。内核通过以下机制管理线程：&lt;br&gt;
 • &lt;strong&gt;TCB（线程控制块）&lt;/strong&gt;：存储线程的内核栈指针、状态、优先级等信息（进程控制块是PCB）；
 • &lt;strong&gt;调度器&lt;/strong&gt;：基于时间片轮转或优先级策略分配CPU资源，触发上下文切换。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;混合型线程模型&lt;/em&gt;（Hybrid Thread Model）是一种结合用户级线程（ULT）和内核级线程（KLT）优势的线程实现方式。通过N:M映射实现用户线程与内核线程的关联，即多个用户线程（N）动态绑定到少量内核线程（M）。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;&lt;em&gt;混合型线程模型&lt;/em&gt;（Hybrid Thread Model）是一种结合用户级线程（ULT）和内核级线程（KLT）优势的线程实现方式。通过N:M映射实现用户线程与内核线程的关联，即多个用户线程（N）动态绑定到少量内核线程（M）。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;用户态与内核态的切换机制&lt;/strong&gt;&lt;br&gt;
@@ -417,11 +919,11 @@ end)
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="三语言案例"&gt;三、语言案例&lt;/h3&gt;
-&lt;p&gt;Java线程在JDK1.2之后采用&lt;em&gt;1:1模型&lt;/em&gt;，每个Java线程对应一个内核线程。
+&lt;h3 id="三语言案例"&gt;三、语言案例
+&lt;/h3&gt;&lt;p&gt;Java线程在JDK1.2之后采用&lt;em&gt;1:1模型&lt;/em&gt;，每个Java线程对应一个内核线程。
 支持多核并行、避免单线程阻塞影响整体进程；线程创建和切换需要内核介入。&lt;/p&gt;
 &lt;p&gt;C++11及之后的标准库（如&lt;code&gt;&amp;lt;thread&amp;gt;&lt;/code&gt;）通过&lt;code&gt;std::thread&lt;/code&gt;直接调用操作系统线程（如Linux的POSIX线程或Windows线程），采用&lt;em&gt;1:1线程模型&lt;/em&gt;。&lt;/p&gt;
-&lt;p&gt;Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p&gt;</description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://horeb.top/posts/2025-03-07-linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-07-linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p&gt;&lt;strong&gt;一、线程切换 vs 进程切换&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p&gt;</description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://horeb.top/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p&gt;&lt;strong&gt;一、线程切换 vs 进程切换&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;地址空间与页表&lt;/strong&gt;&lt;br&gt;
@@ -497,10 +999,13 @@ end)
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;u&gt;线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u&gt;&amp;gt;。&lt;/p&gt;</description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://horeb.top/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
-该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438"&gt;天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a&gt;。此处尝试进行回答。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;u&gt;线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u&gt;&amp;gt;。&lt;/p&gt;</description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://horeb.top/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>
+ &lt;blockquote&gt;
+ &lt;p&gt;Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
+该问题来自一道天美后台开发面试题：&lt;a class="link" href="https://zhuanlan.zhihu.com/p/677307438" target="_blank" rel="noopener"
+ &gt;天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a&gt;。此处尝试进行回答。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;p&gt;第一想法一般是：“原程序被操作系统加载进内存，不会受到影响。”&lt;br&gt;
 系统会创建一个新的&lt;code&gt;inode&lt;/code&gt;指向新文件，而正在运行的进程仍会继续使用旧的&lt;code&gt;inode&lt;/code&gt;对应的代码段。&lt;/p&gt;
@@ -513,23 +1018,25 @@ end)
 &lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;：&lt;br&gt;
 ​已运行的进程不受影响：Linux通过&lt;code&gt;inode&lt;/code&gt;标识文件，旧进程继续执行内存中已加载的旧代码，与原磁盘文件解耦。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="1-elf文件的按需加载机制"&gt;1. &lt;strong&gt;ELF文件的按需加载机制&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;ELF二进制文件通过&lt;strong&gt;程序头表（Program Header Table）&lt;strong&gt;中的&lt;code&gt;PT_LOAD&lt;/code&gt;段描述需要加载的代码和数据区域。内核的&lt;code&gt;load_elf_binary()&lt;/code&gt;函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong&gt;按需分页&lt;/strong&gt;的：
+&lt;h3 id="1-elf文件的按需加载机制"&gt;1. &lt;strong&gt;ELF文件的按需加载机制&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;ELF二进制文件通过&lt;strong&gt;程序头表（Program Header Table）&lt;strong&gt;中的&lt;code&gt;PT_LOAD&lt;/code&gt;段描述需要加载的代码和数据区域。内核的&lt;code&gt;load_elf_binary()&lt;/code&gt;函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong&gt;按需分页&lt;/strong&gt;的：
 • 仅当程序访问某个页（通常4KB大小）时，才会触发缺页异常，将对应内容从磁盘加载到物理内存。
 • 未使用的代码或数据（如未执行的函数）可能永远不会被加载到物理内存中。&lt;/p&gt;
-&lt;h3 id="2-虚拟内存映射与内存优化"&gt;2. &lt;strong&gt;虚拟内存映射与内存优化&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;• &lt;strong&gt;虚拟内存优势&lt;/strong&gt;：ELF文件通过&lt;code&gt;mmap()&lt;/code&gt;系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
+&lt;h3 id="2-虚拟内存映射与内存优化"&gt;2. &lt;strong&gt;虚拟内存映射与内存优化&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;虚拟内存优势&lt;/strong&gt;：ELF文件通过&lt;code&gt;mmap()&lt;/code&gt;系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
 • &lt;strong&gt;写时复制（Copy-on-Write）&lt;/strong&gt;：对于只读段（如代码段），多个进程可以共享同一物理内存页；对于可写段，修改时才会复制新页。&lt;/p&gt;
-&lt;h3 id="3-动态链接与延迟加载"&gt;3. &lt;strong&gt;动态链接与延迟加载&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;动态链接库（如&lt;code&gt;.so&lt;/code&gt;文件）在程序运行时通过&lt;code&gt;ld-linux&lt;/code&gt;动态加载器按需载入。例如：
+&lt;h3 id="3-动态链接与延迟加载"&gt;3. &lt;strong&gt;动态链接与延迟加载&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;动态链接库（如&lt;code&gt;.so&lt;/code&gt;文件）在程序运行时通过&lt;code&gt;ld-linux&lt;/code&gt;动态加载器按需载入。例如：
 • 首次调用某个库函数时，动态链接器才会加载对应的代码段到内存。
 • 部分库可能仅在特定条件下被使用，从而减少初始内存占用。&lt;/p&gt;
-&lt;h3 id="4-大文件的实际内存占用"&gt;4. &lt;strong&gt;大文件的实际内存占用&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;• &lt;strong&gt;物理内存限制&lt;/strong&gt;：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
-• &lt;strong&gt;交换空间（Swap）&lt;/strong&gt;：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p&gt;</description></item><item><title>Linux 大文件传输场景题</title><link>https://horeb.top/posts/2025-01-07-linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link><pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-01-07-linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid><description>&lt;p&gt;(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h3 id="4-大文件的实际内存占用"&gt;4. &lt;strong&gt;大文件的实际内存占用&lt;/strong&gt;
+&lt;/h3&gt;&lt;p&gt;• &lt;strong&gt;物理内存限制&lt;/strong&gt;：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
+• &lt;strong&gt;交换空间（Swap）&lt;/strong&gt;：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p&gt;</description></item><item><title>Linux 大文件传输场景题</title><link>https://horeb.top/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link><pubDate>Tue, 07 Jan 2025 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid><description>&lt;p&gt;(考察linux网络编程、系统编程、网络协议、网络传输协议等知识)&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;问：局域网内有A、B、C三台主机，A与B不知道相互之间的IP。A要向B传输一个1G的文件，怎么做？&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;大文件传输的优化：&lt;/li&gt;
@@ -561,10 +1068,10 @@ end)
 一旦A得到了B的IP地址，就可以使用TCP协议进行文件传输。A通过TCP连接到B，建立数据通道，开始发送1GB的文件。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
-&lt;h3 id="1-udp广播发现b的ip地址"&gt;1. UDP广播发现B的IP地址&lt;/h3&gt;
-&lt;p&gt;A使用UDP广播向局域网中的所有主机发送请求，B收到请求后会通过UDP回应自己的IP地址。&lt;/p&gt;
-&lt;h4 id="a端发送udp广播请求"&gt;A端：发送UDP广播请求&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;h3 id="1-udp广播发现b的ip地址"&gt;1. UDP广播发现B的IP地址
+&lt;/h3&gt;&lt;p&gt;A使用UDP广播向局域网中的所有主机发送请求，B收到请求后会通过UDP回应自己的IP地址。&lt;/p&gt;
+&lt;h4 id="a端发送udp广播请求"&gt;A端：发送UDP广播请求
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;cstring&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
@@ -612,8 +1119,8 @@ end)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; send_broadcast_message();
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="b端接收udp广播并回应自己的ip"&gt;B端：接收UDP广播并回应自己的IP&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="b端接收udp广播并回应自己的ip"&gt;B端：接收UDP广播并回应自己的IP
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;cstring&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
@@ -671,14 +1178,261 @@ end)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; listen_for_broadcasts();
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="2-使用tcp协议传输文件"&gt;2. 使用TCP协议传输文件&lt;/h3&gt;
-&lt;p&gt;一旦A得到了B的IP地址，A就可以通过TCP连接与B进行文件传输。&lt;/p&gt;</description></item><item><title>Linux 进程优先级</title><link>https://horeb.top/posts/2024-11-04-linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link><pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/2024-11-04-linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid><description>&lt;h5 id="图解linux进程优先级"&gt;&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd"&gt;图解Linux进程优先级&lt;/a&gt;&lt;/h5&gt;
-&lt;p&gt;&lt;em&gt;实时优先级&lt;/em&gt;用于实时应用程序，如硬实时任务和实时控制系统，而&lt;em&gt;普通优先级&lt;/em&gt;用于非实时应用程序。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="2-使用tcp协议传输文件"&gt;2. 使用TCP协议传输文件
+&lt;/h3&gt;&lt;p&gt;一旦A得到了B的IP地址，A就可以通过TCP连接与B进行文件传输。&lt;/p&gt;
+&lt;h4 id="a端通过tcp向b发送文件"&gt;A端：通过TCP向B发送文件
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;fstream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;cstring&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define SERVER_PORT 8080
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define CHUNK_SIZE 4096 &lt;/span&gt;&lt;span style="color:#75715e"&gt;// 4KB per chunk
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;send_file&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;string &lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;filename, &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;string &lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;ip_address) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; sockfd;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sockaddr_in&lt;/span&gt; server_addr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; buffer[CHUNK_SIZE];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;ifstream file(filename, std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;ios&lt;span style="color:#f92672"&gt;::&lt;/span&gt;binary);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; off_t offset &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 记录已经发送的文件偏移量
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 创建TCP套接字
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sockfd &lt;span style="color:#f92672"&gt;=&lt;/span&gt; socket(AF_INET, SOCK_STREAM, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (sockfd &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;Socket creation failed&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; memset(&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;server_addr, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;sizeof&lt;/span&gt;(server_addr));
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_addr.sin_family &lt;span style="color:#f92672"&gt;=&lt;/span&gt; AF_INET;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_addr.sin_port &lt;span style="color:#f92672"&gt;=&lt;/span&gt; htons(SERVER_PORT);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_addr.sin_addr.s_addr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; inet_addr(ip_address.c_str());
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 连接到B
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (connect(sockfd, (&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sockaddr&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;)&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;server_addr, &lt;span style="color:#66d9ef"&gt;sizeof&lt;/span&gt;(server_addr)) &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;Connection failed&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(sockfd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 发送文件的分块数据
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; (file.read(buffer, CHUNK_SIZE)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 发送文件块数据
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ssize_t bytes_sent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; send(sockfd, buffer, file.gcount(), &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (bytes_sent &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;Send failed&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; offset &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; bytes_sent;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 发送每个块后，需要确认接收进度
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 可以通过协议的方式要求B确认
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Sent chunk, current offset: &amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; offset &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 发送文件剩余的数据（如果有）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (file.gcount() &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; send(sockfd, buffer, file.gcount(), &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; offset &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; file.gcount();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;File sent successfully! Total bytes sent: &amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; offset &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(sockfd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; send_file(&lt;span style="color:#e6db74"&gt;&amp;#34;large_file.bin&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;192.168.1.2&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="b端接收文件并保存"&gt;B端：接收文件并保存
+&lt;/h4&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;fstream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;cstring&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define SERVER_PORT 8080
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define CHUNK_SIZE 4096 &lt;/span&gt;&lt;span style="color:#75715e"&gt;// 4KB per chunk
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;receive_file&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;string &lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;filename) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; sockfd, newsockfd;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sockaddr_in&lt;/span&gt; server_addr, client_addr;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; socklen_t client_len &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;sizeof&lt;/span&gt;(client_addr);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; buffer[CHUNK_SIZE];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;ofstream file(filename, std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;ios&lt;span style="color:#f92672"&gt;::&lt;/span&gt;binary &lt;span style="color:#f92672"&gt;|&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;ios&lt;span style="color:#f92672"&gt;::&lt;/span&gt;app); &lt;span style="color:#75715e"&gt;// 以追加方式打开文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; off_t offset &lt;span style="color:#f92672"&gt;=&lt;/span&gt; file.tellp(); &lt;span style="color:#75715e"&gt;// 获取文件当前的偏移量（即已经接收的字节数）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 创建TCP套接字
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sockfd &lt;span style="color:#f92672"&gt;=&lt;/span&gt; socket(AF_INET, SOCK_STREAM, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (sockfd &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;Socket creation failed&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; memset(&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;server_addr, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;sizeof&lt;/span&gt;(server_addr));
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_addr.sin_family &lt;span style="color:#f92672"&gt;=&lt;/span&gt; AF_INET;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_addr.sin_port &lt;span style="color:#f92672"&gt;=&lt;/span&gt; htons(SERVER_PORT);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; server_addr.sin_addr.s_addr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; INADDR_ANY;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 绑定套接字
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (bind(sockfd, (&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sockaddr&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;)&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;server_addr, &lt;span style="color:#66d9ef"&gt;sizeof&lt;/span&gt;(server_addr)) &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;Bind failed&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(sockfd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 监听
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; listen(sockfd, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Waiting for connection...&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 接受连接
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; newsockfd &lt;span style="color:#f92672"&gt;=&lt;/span&gt; accept(sockfd, (&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sockaddr&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt;)&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;client_addr, &lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;client_len);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (newsockfd &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;Accept failed&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(sockfd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 接收文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; (true) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; recv_len &lt;span style="color:#f92672"&gt;=&lt;/span&gt; recv(newsockfd, buffer, CHUNK_SIZE, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (recv_len &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;break&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 写入文件（追加模式）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; file.write(buffer, recv_len);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; offset &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; recv_len;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Received chunk, current offset: &amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; offset &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;File received successfully! Total bytes received: &amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; offset &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(newsockfd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(sockfd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; receive_file(&lt;span style="color:#e6db74"&gt;&amp;#34;received_large_file.bin&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;断点续传实现说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A端：每发送完一个块，A会更新文件的偏移量（即&lt;code&gt;offset&lt;/code&gt;），并传递该偏移量的信息。如果传输过程中发生中断，A可以记录上次发送的偏移量，从该位置开始重新传输。&lt;/li&gt;
+&lt;li&gt;B端：B端会在接收每个块时，记录接收到的字节数（即&lt;code&gt;offset&lt;/code&gt;）。B端可以通过检查文件的大小来判断是否需要继续接收文件。如果B端关闭了连接，下次启动时会从文件尾部继续接收。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="拓展"&gt;拓展：
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;MD5&lt;/strong&gt;（Message Digest Algorithm 5）是一种广泛使用的加密哈希函数，它产生一个128位（16字节）的哈希值，通常用32个十六进制字符表示。MD5被设计用来接收任意长度的数据（通常是文件或消息）并生成一个固定长度的“摘要”或“指纹”，这个摘要用于验证数据的完整性。&lt;/p&gt;</description></item><item><title>Linux 文件系统与虚拟文件系统</title><link>https://horeb.top/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="linux-文件系统"&gt;Linux 文件系统
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;文件描述符&lt;/strong&gt;(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br&gt;
+当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
+是一个进程级别的概念。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;继承：在创建子进程时，文件描述符可以在父子进程之间共享（例如通过 fork()）。&lt;/li&gt;
+&lt;li&gt;复制：通过系统调用 dup() 或 dup2() 可以复制文件描述符，使它们引用同一个文件或资源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;文件描述符不仅用于操作文件，还可以指向：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;管道（Pipes）：用于进程间通信。&lt;/li&gt;
+&lt;li&gt;套接字（Sockets）：用于网络通信。&lt;/li&gt;
+&lt;li&gt;设备文件：例如硬盘、串口等设备。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;文件分配表&lt;/strong&gt;(File Allocation Table, FAT)。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.bilibili.com/video/BV1jy4y1K73r/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a" target="_blank" rel="noopener"
+ &gt;何为文件索引节点?文件与磁盘的爱恨情仇。&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://ruanyifeng.com/blog/2011/12/inode.html" target="_blank" rel="noopener"
+ &gt;阮一峰的个人网站&lt;/a&gt;。&lt;br&gt;
+&lt;strong&gt;inode&lt;/strong&gt;（索引节点）。&lt;a class="link" href="https://ruanyifeng.com/blog/2011/12/inode.html" target="_blank" rel="noopener"
+ &gt;理解inode&lt;/a&gt;。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;文件储存在硬盘上，硬盘的最小存储单位叫做&amp;quot;扇区&amp;quot;（Sector）。每个扇区储存512字节（相当于0.5KB）。
+操作系统读取硬盘的时候，不会一个个扇区地读取，这样效率太低，而是一次性连续读取多个扇区，即一次性读取一个&amp;quot;块&amp;quot;（block）。这种由多个扇区组成的&amp;quot;块&amp;quot;，是文件存取的最小单位。&amp;ldquo;块&amp;quot;的大小，最常见的是4KB，即连续八个 sector组成一个 block。
+文件数据都储存在&amp;quot;块&amp;quot;中，那么很显然，我们还必须找到一个地方储存文件的元信息，比如文件的创建者、文件的创建日期、文件的大小等等。这种储存文件元信息的区域就叫做inode，中文译名为&amp;quot;索引节点&amp;rdquo;。&lt;br&gt;
+可以用&lt;code&gt;stat&lt;/code&gt;命令，查看某个文件的inode信息。
+inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自动将硬盘分成两个区域。一个是数据区，存放文件数据；另一个是&lt;strong&gt;inode区&lt;/strong&gt;（inode table），存放inode所包含的信息。
+Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;超级块&lt;/strong&gt;（Superblock）位于每个文件系统的开头，提供了操作系统如何解释和管理该文件系统的元数据。(记录各个inode?)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;软链接和硬链接：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;软链接是一个独立的文件，它包含了另一个文件或目录的路径。它类似于 Windows 系统中的快捷方式。&lt;/li&gt;
+&lt;li&gt;硬链接是文件的一个直接引用（或者说是指针），它与原文件共享相同的inode。删除原文件后，硬链接仍然有效，因为它直接引用了文件的数据；文件只有当所有硬链接都被删除后，数据才会被清除。inode信息中有一项叫做&amp;quot;链接数&amp;quot;，记录指向该inode的文件名总数。&lt;/li&gt;
+&lt;/ul&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;linux软件更新过程：软件更新变得简单：系统通过inode号码，识别运行中的文件，不通过文件名。更新的时候，新版文件以同样的文件名，生成一个新的inode，不会影响到运行中的文件。等到下一次运行这个软件的时候，文件名就自动指向新版文件，旧版文件的inode则被回收。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id="linux-虚拟文件系统"&gt;Linux 虚拟文件系统
+&lt;/h1&gt;&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/3815712411" target="_blank" rel="noopener"
+ &gt;linux I/O原理、监控、和调优思路&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://zhuanlan.zhihu.com/p/681048030" target="_blank" rel="noopener"
+ &gt;图解Linux虚拟文件系统(VFS)之关系篇&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;虚拟文件系统&lt;/strong&gt;（Virtual File System，VFS）：它提供了一个统一的接口，使得用户和应用程序可以通过相同的方式访问不同类型的文件系统。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;通过VFS用户可以使用相同的系统调用（如&lt;code&gt;open&lt;/code&gt;、&lt;code&gt;read&lt;/code&gt;、&lt;code&gt;write&lt;/code&gt;等）来访问不同类型的文件系统，包括本地文件系统（如ext4、XFS等）、网络文件系统（如NFS、CIFS等）以及虚拟文件系统（如procfs、sysfs等）。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;p&gt;VFS由以下几个主要组件组成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;虚拟文件系统接口&lt;/strong&gt;：VFS定义了一组通用的文件系统操作接口。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;超级块(super_block)&lt;/strong&gt;：每个文件系统都有一个超级块，它包含了文件系统的元数据信息，如文件系统类型、块大小、inode表等，超级块提供了对文件系统的整体描述和管理。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目录项(dentry)&lt;/strong&gt;：Directory Entry，用于表示文件系统中的目录和文件，dentry包含了目录和文件对应的inode指针、层级关系(parent)等。
+
+ &lt;blockquote&gt;
+ &lt;p&gt;dentry结构体的主要作用是提供文件系统层次结构的表示，它们通过形成一个树状结构来组织目录和文件，每个dentry都有一个唯一的路径名，可以通过遍历dentry树来找到特定文件或目录。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; dentry {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; dentry &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_parent;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; qstr d_name;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; inode &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_inode;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; dentry_operations &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_op;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; super_block &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_sb;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; list_head d_child;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; list_head d_subdirs;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ....
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;&lt;strong&gt;文件节点(inode)&lt;/strong&gt;：inode是文件系统中的一个数据结构，用于存储文件或目录的元数据信息，如文件大小、权限、所有者等，每个文件或目录都对应一个唯一的inode。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件对象(file)&lt;/strong&gt;：file是表示打开文件的数据结构，它包含了对应的inode指针、当前读写位置等信息，通过file可以进行文件的读写操作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;索引节点&lt;/strong&gt;(index node, inode)，用来记录文件的元数据，比如 inode 编号、文件大小、访问权限、修改日期、数据的位置等。索引节点和文件一一对应，它跟文件内容一样，都会被持久化存储到磁盘中。所以记住，索引节点同样占用磁盘空间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目录项&lt;/strong&gt;(directory entry, dentry)，用来记录文件的名字、索引节点指针以及与其他目录项的关联关系。多个关联的目录项，就构成了文件系统的目录结构。不过，不同于索引节点，目录项是由内核维护的一个内存数据结构，所以通常也被叫做目录项缓存。&lt;/li&gt;
+&lt;/ul&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;&lt;strong&gt;ramfs&lt;/strong&gt;是一种基于内存的文件系统。它将所有的文件数据存储在内存（RAM）中，而不是像传统的文件系统那样存储在磁盘等外部存储设备上。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;定义好文件系统后，通过register_filesystem函数将文件系统注册至Linux系统，注册成功的文件系统会插入全局文件系统链表，已注册的文件系统能够用来创建超级块（super block）。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;文件系统挂载&lt;/strong&gt;：新文件系统生成一个挂载实例（struct mount），让新挂载实例和父文件系统的挂载实例建立父子关系。每个文件系统都有一个根目录，当索引一个文件路径进入到一个新的文件系统后，会从新的文件系统根目录开始索引。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h6 id="memory-cgroup内存控制组"&gt;Memory Cgroup（内存控制组）
+&lt;/h6&gt;&lt;p&gt;Memory Cgroup 是 cgroup（控制组）的一个子系统，用于控制和限制进程组或任务组的内存使用。它是 Linux 内核提供的一种资源管理机制，主要目的是隔离和限制内存资源的使用，确保系统的稳定性和公平性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以通过配置参数来设置内存使用的硬限制（&lt;code&gt;memory.limit_in_bytes&lt;/code&gt;）。当进程组使用的内存达到这个硬限制时，会触发内存回收机制，如通过&lt;code&gt;OOM - Killer&lt;/code&gt;（内存不足杀手）选择并终止进程组中的某些进程来释放内存。&lt;/li&gt;
+&lt;li&gt;会收集进程组的各种内存使用统计信息，包括&lt;code&gt;rss&lt;/code&gt;（ Resident Set Size，实际驻留在内存中的内存大小）、&lt;code&gt;cache&lt;/code&gt;（缓存内存大小）等。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Linux 进程优先级</title><link>https://horeb.top/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link><pubDate>Mon, 04 Nov 2024 21:05:47 +0800</pubDate><guid>https://horeb.top/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid><description>&lt;h5 id="图解linux进程优先级"&gt;&lt;a class="link" href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484435&amp;amp;idx=1&amp;amp;sn=b6f30489cf388f1024d6883abb8237c8&amp;amp;chksm=c1d84682f6afcf94c1af14678d5401d558d2b728f0e6c853dbe4efe02c12dfa147369ceee13f#rd" target="_blank" rel="noopener"
+ &gt;图解Linux进程优先级&lt;/a&gt;
+&lt;/h5&gt;&lt;p&gt;&lt;em&gt;实时优先级&lt;/em&gt;用于实时应用程序，如硬实时任务和实时控制系统，而&lt;em&gt;普通优先级&lt;/em&gt;用于非实时应用程序。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;实时进程&lt;/strong&gt;：动态优先级为0-99的进程，采用&lt;em&gt;实时调度算法&lt;/em&gt;调度。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;普通进程&lt;/strong&gt;：动态优先级为100-139的进程，采用&lt;em&gt;完全公平调度算法&lt;/em&gt;调度。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484458&amp;amp;idx=1&amp;amp;sn=e4e64c006d4d822c6e7c184ab50540c1&amp;amp;chksm=c1d846bbf6afcfad20af0a7132eca1e3fd3c765ea5d4ee4134985b2b03f2461c207239fcc208#rd"&gt;Linux进程调度之完全公平调度（压箱底的干货分享）&lt;/a&gt;。完全公平调度，CFS (Completely Fair Scheduler) 。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://mp.weixin.qq.com/s?__biz=MzkyNDIyNzU4Mg==&amp;amp;mid=2247484458&amp;amp;idx=1&amp;amp;sn=e4e64c006d4d822c6e7c184ab50540c1&amp;amp;chksm=c1d846bbf6afcfad20af0a7132eca1e3fd3c765ea5d4ee4134985b2b03f2461c207239fcc208#rd" target="_blank" rel="noopener"
+ &gt;Linux进程调度之完全公平调度（压箱底的干货分享）&lt;/a&gt;。完全公平调度，CFS (Completely Fair Scheduler) 。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;nice值&lt;/strong&gt;：是用于调整普通进程优先级的参数。范围：&lt;code&gt;-20&lt;/code&gt;-&lt;code&gt;19&lt;/code&gt;。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;task_struct {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;......
@@ -710,77 +1464,4 @@ prio = MAX_RT_PRIO - 1 - rt_prio = 100 - 1 - rt_priority;&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cerr &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;无法设置实时调度策略&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Linux 文件系统与虚拟文件系统</title><link>https://horeb.top/posts/2024-11-04-linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link><pubDate>Mon, 04 Nov 2024 20:05:47 +0800</pubDate><guid>https://horeb.top/posts/2024-11-04-linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid><description>&lt;h1 id="linux-文件系统"&gt;Linux 文件系统&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;文件描述符&lt;/strong&gt;(File Descriptor，FD)(win里一般称为文件句柄)是操作系统中用于标识和管理已打开文件或I/O资源的整数值。&lt;br&gt;
-当进程请求打开一个文件或资源时，操作系统为该资源分配一个文件描述符，并将其返回给进程。进程随后使用该文件描述符来进行读写操作。
-是一个进程级别的概念。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;继承：在创建子进程时，文件描述符可以在父子进程之间共享（例如通过 fork()）。&lt;/li&gt;
-&lt;li&gt;复制：通过系统调用 dup() 或 dup2() 可以复制文件描述符，使它们引用同一个文件或资源。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;文件描述符不仅用于操作文件，还可以指向：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;管道（Pipes）：用于进程间通信。&lt;/li&gt;
-&lt;li&gt;套接字（Sockets）：用于网络通信。&lt;/li&gt;
-&lt;li&gt;设备文件：例如硬盘、串口等设备。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;文件分配表&lt;/strong&gt;(File Allocation Table, FAT)。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://www.bilibili.com/video/BV1jy4y1K73r/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"&gt;何为文件索引节点?文件与磁盘的爱恨情仇。&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://ruanyifeng.com/blog/2011/12/inode.html"&gt;阮一峰的个人网站&lt;/a&gt;。&lt;br&gt;
-&lt;strong&gt;inode&lt;/strong&gt;（索引节点）。&lt;a href="https://ruanyifeng.com/blog/2011/12/inode.html"&gt;理解inode&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;文件储存在硬盘上，硬盘的最小存储单位叫做&amp;quot;扇区&amp;quot;（Sector）。每个扇区储存512字节（相当于0.5KB）。
-操作系统读取硬盘的时候，不会一个个扇区地读取，这样效率太低，而是一次性连续读取多个扇区，即一次性读取一个&amp;quot;块&amp;quot;（block）。这种由多个扇区组成的&amp;quot;块&amp;quot;，是文件存取的最小单位。&amp;ldquo;块&amp;quot;的大小，最常见的是4KB，即连续八个 sector组成一个 block。
-文件数据都储存在&amp;quot;块&amp;quot;中，那么很显然，我们还必须找到一个地方储存文件的元信息，比如文件的创建者、文件的创建日期、文件的大小等等。这种储存文件元信息的区域就叫做inode，中文译名为&amp;quot;索引节点&amp;rdquo;。&lt;br&gt;
-可以用&lt;code&gt;stat&lt;/code&gt;命令，查看某个文件的inode信息。
-inode也会消耗硬盘空间，所以硬盘格式化的时候，操作系统自动将硬盘分成两个区域。一个是数据区，存放文件数据；另一个是&lt;strong&gt;inode区&lt;/strong&gt;（inode table），存放inode所包含的信息。
-Unix/Linux系统内部不使用文件名，而使用inode号码来识别文件。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;超级块&lt;/strong&gt;（Superblock）位于每个文件系统的开头，提供了操作系统如何解释和管理该文件系统的元数据。(记录各个inode?)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;软链接和硬链接：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;软链接是一个独立的文件，它包含了另一个文件或目录的路径。它类似于 Windows 系统中的快捷方式。&lt;/li&gt;
-&lt;li&gt;硬链接是文件的一个直接引用（或者说是指针），它与原文件共享相同的inode。删除原文件后，硬链接仍然有效，因为它直接引用了文件的数据；文件只有当所有硬链接都被删除后，数据才会被清除。inode信息中有一项叫做&amp;quot;链接数&amp;quot;，记录指向该inode的文件名总数。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;linux软件更新过程：软件更新变得简单：系统通过inode号码，识别运行中的文件，不通过文件名。更新的时候，新版文件以同样的文件名，生成一个新的inode，不会影响到运行中的文件。等到下一次运行这个软件的时候，文件名就自动指向新版文件，旧版文件的inode则被回收。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;h1 id="linux-虚拟文件系统"&gt;Linux 虚拟文件系统&lt;/h1&gt;
-&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/3815712411"&gt;linux I/O原理、监控、和调优思路&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://zhuanlan.zhihu.com/p/681048030"&gt;图解Linux虚拟文件系统(VFS)之关系篇&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;虚拟文件系统&lt;/strong&gt;（Virtual File System，VFS）：它提供了一个统一的接口，使得用户和应用程序可以通过相同的方式访问不同类型的文件系统。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;通过VFS用户可以使用相同的系统调用（如&lt;code&gt;open&lt;/code&gt;、&lt;code&gt;read&lt;/code&gt;、&lt;code&gt;write&lt;/code&gt;等）来访问不同类型的文件系统，包括本地文件系统（如ext4、XFS等）、网络文件系统（如NFS、CIFS等）以及虚拟文件系统（如procfs、sysfs等）。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;VFS由以下几个主要组件组成：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;虚拟文件系统接口&lt;/strong&gt;：VFS定义了一组通用的文件系统操作接口。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;超级块(super_block)&lt;/strong&gt;：每个文件系统都有一个超级块，它包含了文件系统的元数据信息，如文件系统类型、块大小、inode表等，超级块提供了对文件系统的整体描述和管理。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;目录项(dentry)&lt;/strong&gt;：Directory Entry，用于表示文件系统中的目录和文件，dentry包含了目录和文件对应的inode指针、层级关系(parent)等。
-&lt;blockquote&gt;
-&lt;p&gt;dentry结构体的主要作用是提供文件系统层次结构的表示，它们通过形成一个树状结构来组织目录和文件，每个dentry都有一个唯一的路径名，可以通过遍历dentry树来找到特定文件或目录。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; dentry {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; dentry &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_parent;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; qstr d_name;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; inode &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_inode;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; dentry_operations &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_op;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; super_block &lt;span style="color:#f92672"&gt;*&lt;/span&gt;d_sb;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; list_head d_child;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; list_head d_subdirs;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ....
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
-&lt;li&gt;&lt;strong&gt;文件节点(inode)&lt;/strong&gt;：inode是文件系统中的一个数据结构，用于存储文件或目录的元数据信息，如文件大小、权限、所有者等，每个文件或目录都对应一个唯一的inode。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;文件对象(file)&lt;/strong&gt;：file是表示打开文件的数据结构，它包含了对应的inode指针、当前读写位置等信息，通过file可以进行文件的读写操作。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;索引节点&lt;/strong&gt;(index node, inode)，用来记录文件的元数据，比如 inode 编号、文件大小、访问权限、修改日期、数据的位置等。索引节点和文件一一对应，它跟文件内容一样，都会被持久化存储到磁盘中。所以记住，索引节点同样占用磁盘空间。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;目录项&lt;/strong&gt;(directory entry, dentry)，用来记录文件的名字、索引节点指针以及与其他目录项的关联关系。多个关联的目录项，就构成了文件系统的目录结构。不过，不同于索引节点，目录项是由内核维护的一个内存数据结构，所以通常也被叫做目录项缓存。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;ramfs&lt;/strong&gt;是一种基于内存的文件系统。它将所有的文件数据存储在内存（RAM）中，而不是像传统的文件系统那样存储在磁盘等外部存储设备上。&lt;/p&gt;</description></item></channel></rss>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item></channel></rss>

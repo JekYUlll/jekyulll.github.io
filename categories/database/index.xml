@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Database on Welcome to my Blog ⬆️</title><link>https://horeb.top/categories/database/</link><description>Recent content in Database on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Thu, 21 Nov 2024 18:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/categories/database/index.xml" rel="self" type="application/rss+xml"/><item><title>表格展示 MySQL 基础数据类型</title><link>https://horeb.top/posts/2024-11-21-database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2024-11-21-database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Database on Horeb</title><link>https://horeb.top/categories/database/</link><description>Recent content in Database on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/categories/database/index.xml" rel="self" type="application/rss+xml"/><item><title>表格展示 MySQL 基础数据类型</title><link>https://horeb.top/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;table&gt;
  &lt;thead&gt;
  &lt;tr&gt;
  &lt;th&gt;数据类型&lt;/th&gt;
@@ -75,7 +75,7 @@
  &lt;td&gt;&lt;code&gt;update_time TIMESTAMP;&lt;/code&gt;用于记录更新时间，在不同时区设置下可能会有变化&lt;/td&gt;
  &lt;/tr&gt;
  &lt;/tbody&gt;
-&lt;/table&gt;</description></item><item><title>事务 Transaction 的基础特性</title><link>https://horeb.top/posts/2024-11-04-database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2024-11-04-database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p&gt;&lt;strong&gt;事务&lt;/strong&gt;（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br&gt;
+&lt;/table&gt;</description></item><item><title>事务 Transaction 的基础特性</title><link>https://horeb.top/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link><pubDate>Mon, 04 Nov 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid><description>&lt;p&gt;&lt;strong&gt;事务&lt;/strong&gt;（Transaction）是数据库管理系统执行过程中的一个逻辑单位，它由一个或多个数据库操作组成，这些操作要么全部执行成功，要么全部不执行，以保证数据的一致性和完整性。&lt;br&gt;
 &lt;strong&gt;ACID&lt;/strong&gt; 是事务的四个重要特性：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -90,27 +90,33 @@
 &lt;li&gt;&lt;strong&gt;读未提交&lt;/strong&gt;（Read Uncommitted）：最低的隔离级别。一个事务可以读取另一个未提交事务的数据。
 &lt;ul&gt;
 &lt;li&gt;可能会出现&lt;strong&gt;脏读&lt;/strong&gt;（Dirty Read）的情况。
-&lt;blockquote&gt;
-&lt;p&gt;脏读是指一个事务读取了另一个尚未提交的事务修改的数据。eg.事务 T1 修改了一条记录但尚未提交，事务 T2 在这个时候读取了这条被修改的记录。如果 T1 后来回滚了，那么 T2 读取的数据就是无效的、“脏” 的数据。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;脏读是指一个事务读取了另一个尚未提交的事务修改的数据。eg.事务 T1 修改了一条记录但尚未提交，事务 T2 在这个时候读取了这条被修改的记录。如果 T1 后来回滚了，那么 T2 读取的数据就是无效的、“脏” 的数据。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;读已提交&lt;/strong&gt;（Read Committed）：
 &lt;ul&gt;
 &lt;li&gt;可能会出现&lt;strong&gt;不可重复读&lt;/strong&gt;（Non - Repeatable Read）的问题。
-&lt;blockquote&gt;
-&lt;p&gt;不可重复读是指在一个事务内，多次读取同一数据，由于其他事务的修改操作，导致每次读取的结果不同。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;不可重复读是指在一个事务内，多次读取同一数据，由于其他事务的修改操作，导致每次读取的结果不同。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;可重复读&lt;/strong&gt;（Repeatable Read）：
 &lt;ul&gt;
 &lt;li&gt;可能会出现幻读（Phantom Read）的情况。
-&lt;blockquote&gt;
-&lt;p&gt;当一个事务（T1）按照一定的条件进行数据读取操作时，第一次读取没有发现满足条件的某些行（记录）。但是在这个事务还没有结束的时候，另一个事务（T2）插入（或删除）了一些满足（或原本满足）T1 查询条件的行。当 T1 再次按照相同的条件进行读取时，就会发现比第一次读取时更多（或更少）的符合条件的行，这些 “凭空出现” 或 “突然消失” 的行就像 “幻觉” 一样，所以被称为幻读。&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;当一个事务（T1）按照一定的条件进行数据读取操作时，第一次读取没有发现满足条件的某些行（记录）。但是在这个事务还没有结束的时候，另一个事务（T2）插入（或删除）了一些满足（或原本满足）T1 查询条件的行。当 T1 再次按照相同的条件进行读取时，就会发现比第一次读取时更多（或更少）的符合条件的行，这些 “凭空出现” 或 “突然消失” 的行就像 “幻觉” 一样，所以被称为幻读。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;

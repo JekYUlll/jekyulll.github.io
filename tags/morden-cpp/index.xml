@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Morden Cpp on Welcome to my Blog ⬆️</title><link>https://horeb.top/tags/morden-cpp/</link><description>Recent content in Morden Cpp on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Tue, 21 Jan 2025 12:05:47 +0800</lastBuildDate><atom:link href="https://horeb.top/tags/morden-cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>写个相对现代的 C++ 二叉搜索树</title><link>https://horeb.top/posts/2025-01-21-cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link><pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-01-21-cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid><description>&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;functional&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Morden Cpp on Horeb</title><link>https://horeb.top/tags/morden-cpp/</link><description>Recent content in Morden Cpp on Horeb</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 24 May 2026 03:16:53 +0000</lastBuildDate><atom:link href="https://horeb.top/tags/morden-cpp/index.xml" rel="self" type="application/rss+xml"/><item><title>写个相对现代的 C++ 二叉搜索树</title><link>https://horeb.top/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link><pubDate>Tue, 21 Jan 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c++-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid><description>&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;functional&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;optional&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
@@ -232,18 +232,24 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>C++ std::function 之脱裤子放屁的优化</title><link>https://horeb.top/posts/2025-01-15-cpp-c++-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</link><pubDate>Wed, 15 Jan 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/2025-01-15-cpp-c++-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</guid><description>&lt;p&gt;看到一句话：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;std::function&lt;/code&gt; 很强大，但是代价也很高，在创建函数对象的时候总是会有 &lt;code&gt;new&lt;/code&gt; 操作的。虽然通常情况下影响不是很高，但是总觉得这是没必要的。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>C++ std::function 之脱裤子放屁的优化</title><link>https://horeb.top/posts/cpp-c++-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</link><pubDate>Wed, 15 Jan 2025 12:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-c++-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</guid><description>&lt;p&gt;看到一句话：&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;&lt;code&gt;std::function&lt;/code&gt; 很强大，但是代价也很高，在创建函数对象的时候总是会有 &lt;code&gt;new&lt;/code&gt; 操作的。虽然通常情况下影响不是很高，但是总觉得这是没必要的。&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;p&gt;于是草草找一下资料，看看有没有隐藏的性能优化。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="stdfunction-的实现"&gt;&lt;code&gt;std::function&lt;/code&gt; 的实现&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://zh.cppreference.com/w/cpp/utility/functional/function"&gt;&lt;code&gt;std::function&lt;/code&gt;&lt;/a&gt; 是一个可变参类模板，是一个通用的函数包装器（Polymorphic function wrapper）。&lt;br&gt;
+&lt;h3 id="stdfunction-的实现"&gt;&lt;code&gt;std::function&lt;/code&gt; 的实现
+&lt;/h3&gt;&lt;p&gt;&lt;a class="link" href="https://zh.cppreference.com/w/cpp/utility/functional/function" target="_blank" rel="noopener"
+ &gt;&lt;code&gt;std::function&lt;/code&gt;&lt;/a&gt; 是一个可变参类模板，是一个通用的函数包装器（Polymorphic function wrapper）。&lt;br&gt;
 通过类型擦除（type erasure）机制，将具体类型的可调用对象封装到一个统一的接口中。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;其实例可以存储、复制和调用任何可复制构造的可调用目标，包括普通函数、成员函数、类对象（重载了operator()的类的对象）、Lambda表达式等。是对C++现有的可调用实体的一种类型安全的包裹（相比而言，函数指针这种可调用实体，是类型不安全的）。 &amp;ndash; &lt;a href="https://zhuanlan.zhihu.com/p/560964284"&gt;STL源码分析之std::function&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;其实例可以存储、复制和调用任何可复制构造的可调用目标，包括普通函数、成员函数、类对象（重载了operator()的类的对象）、Lambda表达式等。是对C++现有的可调用实体的一种类型安全的包裹（相比而言，函数指针这种可调用实体，是类型不安全的）。 &amp;ndash; &lt;a class="link" href="https://zhuanlan.zhihu.com/p/560964284" target="_blank" rel="noopener"
+ &gt;STL源码分析之std::function&lt;/a&gt;&lt;/p&gt;
+
+ &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; _Res, &lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt;... _ArgTypes&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;function&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;_Res(_ArgTypes...)&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;public&lt;/span&gt; _Maybe_unary_or_binary_function&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;_Res, _ArgTypes...&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
@@ -261,24 +267,97 @@
 &lt;/ul&gt;
 &lt;p&gt;其类型擦除通过接口表的方式实现，类似于虚函数机制，但它通常采用静态接口表和手动的动态分配来支持多种类型的可调用对象。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id="性能分析"&gt;性能分析&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/370563773"&gt;关于std function和lambda function的性能调试 &amp;ndash;法号桑菜&lt;/a&gt;。&lt;br&gt;
-&lt;a href="https://blog.demofox.org/2015/02/25/avoiding-the-performance-hazzards-of-stdfunction/"&gt;Avoiding The Performance Hazzards of std::function&lt;/a&gt;。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;There are two performance implications of using &lt;code&gt;std::function&lt;/code&gt; that might surprise you:&lt;/p&gt;
+&lt;h3 id="性能分析"&gt;性能分析
+&lt;/h3&gt;&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/370563773" target="_blank" rel="noopener"
+ &gt;关于std function和lambda function的性能调试 &amp;ndash;法号桑菜&lt;/a&gt;。&lt;br&gt;
+&lt;a class="link" href="https://blog.demofox.org/2015/02/25/avoiding-the-performance-hazzards-of-stdfunction/" target="_blank" rel="noopener"
+ &gt;Avoiding The Performance Hazzards of std::function&lt;/a&gt;。&lt;/p&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;There are two performance implications of using &lt;code&gt;std::function&lt;/code&gt; that might surprise you:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;When calling a &lt;code&gt;std::function&lt;/code&gt;, it does a virtual function call.&lt;/li&gt;
 &lt;li&gt;When assigning a lambda with significant captures to a &lt;code&gt;std::function&lt;/code&gt;, it will do a dynamic memory allocation!&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/blockquote&gt;
+
+ &lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;一是&lt;code&gt;std::function&lt;/code&gt; 会使用虚函数调用，有开销。&lt;/li&gt;
 &lt;li&gt;二是将 lambda 赋给&lt;code&gt;std::function&lt;/code&gt;的时候，如果捕获内容较多，会需要额外的动态内存分配。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;第二点其实说的就是：&lt;br&gt;
-&lt;code&gt;std::function&lt;/code&gt; 对小型的可调用对象会使用“&lt;strong&gt;小对象优化&lt;/strong&gt;（Small Object Optimization, SOO）”，避免动态分配堆内存。但如果对象超过了实现中的小对象优化阈值，则会触发堆分配（&lt;code&gt;new&lt;/code&gt; 操作）。&lt;/p&gt;</description></item><item><title>C++ 模板类型推导</title><link>https://horeb.top/posts/2024-09-01-cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link><pubDate>Sun, 01 Sep 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2024-09-01-cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid><description>&lt;p&gt;&lt;a href="https://zhuanlan.zhihu.com/p/649667647"&gt;一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a&gt;：&lt;/p&gt;
-&lt;h2 id="条款1-模板参数类型推导引用折叠"&gt;条款1： 模板参数类型推导，引用折叠&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;code&gt;std::function&lt;/code&gt; 对小型的可调用对象会使用“&lt;strong&gt;小对象优化&lt;/strong&gt;（Small Object Optimization, SOO）”，避免动态分配堆内存。但如果对象超过了实现中的小对象优化阈值，则会触发堆分配（&lt;code&gt;new&lt;/code&gt; 操作）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="一些可能有用的优化"&gt;一些可能有用的优化
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;手动使用模板代替 &lt;code&gt;std::function&lt;/code&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Callable&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; invoke(Callable f) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; f();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;直接在编译期确定类型，避免了类型擦除和动态分配。&lt;br&gt;
+缺点就是使用场景受限于编译期类型，灵活性不如 &lt;code&gt;std::function&lt;/code&gt;。&lt;/p&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;向 &lt;code&gt;std::function&lt;/code&gt; 传递 lambda 的时候使用 &lt;code&gt;std::ref()&lt;/code&gt; / &lt;code&gt;std::cref()&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+ &lt;blockquote&gt;
+ &lt;p&gt;&lt;code&gt;std::ref()&lt;/code&gt; and &lt;code&gt;std::cref()&lt;/code&gt; return reference wrappers (costant ref wrapper in the cref case) which can hold arbitrary types as references. If you put your large capture lambda into one of these functions and give it to &lt;code&gt;std::function&lt;/code&gt;, there’s a &lt;code&gt;std::function&lt;/code&gt; constructor which is able to take this reference, and use that instead of allocating more memory.&lt;/p&gt;
+
+ &lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;array i;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt; A &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#f92672"&gt;=&lt;/span&gt;]() &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; (i[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;+&lt;/span&gt; i[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; i[&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;] &lt;span style="color:#f92672"&gt;+&lt;/span&gt; i[&lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;]) &lt;span style="color:#f92672"&gt;^&lt;/span&gt; i[&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// no allocation, std::function stores a reference to A instead of A itself
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;function &lt;span style="color:#a6e22e"&gt;fA&lt;/span&gt;(ref(A));
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;使用 &lt;code&gt;std::variant&lt;/code&gt;：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;通过 &lt;code&gt;std::variant&lt;/code&gt; 直接存储无类型擦除的函数对象。似乎有点跑题，在此处作用有限。&lt;br&gt;
+&lt;code&gt;std::variant&lt;/code&gt; 的内存是静态分配的：其大小是所有可能存储的类型大小的最大值，避免了堆分配的开销。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;struct&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;PrintHello&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;operator&lt;/span&gt;()() &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; { std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Hello, Struct!&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;using&lt;/span&gt; Callable &lt;span style="color:#f92672"&gt;=&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;variant&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt;(&lt;span style="color:#f92672"&gt;*&lt;/span&gt;)(), PrintHello&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;invoke&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; Callable&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; f) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;visit([](&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; func) { func(); }, f);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; invoke([]() { std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Hello, Function Pointer!&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl; }); &lt;span style="color:#75715e"&gt;// 函数指针
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; invoke(PrintHello{}); &lt;span style="color:#75715e"&gt;// 自定义的函数对象
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;
+&lt;p&gt;Stack Allocation: 给 &lt;code&gt;std::function&lt;/code&gt; 一个自定义分配器&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lambda 的 &lt;code&gt;+&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;一个无捕获的 lambda 表达式不依赖于任何外部状态，可以被隐式转换为函数指针：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt; lambda &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []() { std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Hello, Lambda!&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; (&lt;span style="color:#f92672"&gt;*&lt;/span&gt;funcPtr)() &lt;span style="color:#f92672"&gt;=&lt;/span&gt; lambda; &lt;span style="color:#75715e"&gt;// 无需显式转换
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;funcPtr(); &lt;span style="color:#75715e"&gt;// 调用函数指针，输出 &amp;#34;Hello, Lambda!&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 lambda 表达式前使用&lt;code&gt;+&lt;/code&gt;，会强制将 lambda 转换为函数指针：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;invoke&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; (&lt;span style="color:#f92672"&gt;*&lt;/span&gt;func)()) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; func();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; invoke(&lt;span style="color:#f92672"&gt;+&lt;/span&gt;[]() { std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;cout &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Hello, Lambda!&amp;#34;&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;endl; }); &lt;span style="color:#75715e"&gt;// 显式转换为函数指针
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;p&gt;All in all:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="确实" loading="lazy" sizes="(max-width: 767px) calc(100vw - 30px), (max-width: 1023px) 700px, (max-width: 1279px) 950px, 1232px" src="https://horeb.top/images/stdfunction.png"&gt;&lt;/p&gt;</description></item><item><title>C++ 模板类型推导</title><link>https://horeb.top/posts/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link><pubDate>Sun, 01 Sep 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-morden-c++-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid><description>&lt;p&gt;&lt;a class="link" href="https://zhuanlan.zhihu.com/p/649667647" target="_blank" rel="noopener"
+ &gt;一篇文章学完 Effective Modern C++：条款 &amp;amp; 实践&lt;/a&gt;：&lt;/p&gt;
+&lt;h2 id="条款1-模板参数类型推导引用折叠"&gt;条款1： 模板参数类型推导，引用折叠
+&lt;/h2&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; f(T&lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; param);
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; x &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;27&lt;/span&gt;;
@@ -299,7 +378,60 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt;&lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; ptr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;Fun with pointers&amp;#34;&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;f(ptr); &lt;span style="color:#75715e"&gt;// T 和 param 的类型均为 const char*
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按值传递给函数模板的数组类型将退化为指针类型，但按引用传递却能推导出真正的数组类型：&lt;/p&gt;</description></item><item><title>C++ 17 编译期 if</title><link>https://horeb.top/posts/2024-08-10-cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link><pubDate>Sat, 10 Aug 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/2024-08-10-cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid><description>&lt;p&gt;&lt;a href="https://www.bilibili.com/video/BV1Eb42177a8/?spm_id_from=333.1007.tianma.1-1-1.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"&gt;C++17编译期if&lt;/a&gt;：&lt;code&gt;constexpr&lt;/code&gt;。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;按值传递给函数模板的数组类型将退化为指针类型，但按引用传递却能推导出真正的数组类型：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; f(T&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; param);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; name[] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;J. P. Briggs&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;f(name); &lt;span style="color:#75715e"&gt;// T 的类型为 const char[13], paramType 为 const char (&amp;amp;)[13]
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;利用声明数组引用这一能力可以创造出一个模板，用来推导出数组含有的元素个数：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T, std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;size_t N&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;constexpr&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;size_t arraySize(T (&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt;)[N]) &lt;span style="color:#66d9ef"&gt;noexcept&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; N;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;} &lt;span style="color:#75715e"&gt;// constexpr 函数，表示这个函数可以在编译时计算结果
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; arr[&lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;size_t size &lt;span style="color:#f92672"&gt;=&lt;/span&gt; arraySize(arr); &lt;span style="color:#75715e"&gt;// size 的值是 10
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;函数类型同样也会退化成函数指针，并且和数组类型的规则类似：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;someFunc&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;double&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; f1(T param);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; f2(T&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; param);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;f1(someFunc); &lt;span style="color:#75715e"&gt;// param 被推导为函数指针，具体类型为 void (*)(int, double)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;f2(someFunc); &lt;span style="color:#75715e"&gt;// param 被推导为函数引用，具体类型为 void (&amp;amp;)(int, double)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="条款2-auto类型推导"&gt;条款2： auto类型推导
+&lt;/h2&gt;&lt;h2 id="条款3理解-decltype"&gt;条款3：理解 decltype
+&lt;/h2&gt;&lt;p&gt;在 C++11 中，&lt;code&gt;decltype&lt;/code&gt;的主要用途是声明返回值类型依赖于形参类型的函数模板，这需要用到返回值类型尾置语法(trailing return type syntax)：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Container, &lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Index&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt; authAndAccess(Container&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; c, Index i) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;decltype&lt;/span&gt;(c[i]) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; authenticateUser();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; c[i];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;C++11 允许对单表达式的 lambda 的返回值实施类型推导，而 C++14 将这个允许范围扩张到了一切函数和一切 lambda，包括那些多表达式的。这就意味着在 C++14 中可以去掉返回值类型尾置语法，仅保留前导&lt;code&gt;auto&lt;/code&gt;。&lt;br&gt;
+但编译器会为&lt;code&gt;auto&lt;/code&gt;指定为返回值类型的函数实施模板类型推导，这样就会留下隐患（例如忽略初始化表达的引用性），使用&lt;code&gt;decltype(auto)&lt;/code&gt;来说明我们采用的是&lt;code&gt;decltype&lt;/code&gt;的规则，就可以解决这个问题：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Container, &lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Index&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;decltype&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt;) authAndAccess(Container&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; c, Index i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; authenticateUser();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; c[i];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在初始化表达式处也可以应用&lt;code&gt;decltype&lt;/code&gt;类型推导规则：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Widget w;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; Widget&lt;span style="color:#f92672"&gt;&amp;amp;&lt;/span&gt; cw &lt;span style="color:#f92672"&gt;=&lt;/span&gt; w;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt; myWidget1 &lt;span style="color:#f92672"&gt;=&lt;/span&gt; cw; &lt;span style="color:#75715e"&gt;// auto 推导出类型为 Widget
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;decltype&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt;) myWidget2 &lt;span style="color:#f92672"&gt;=&lt;/span&gt; cw; &lt;span style="color:#75715e"&gt;// decltype 推导出类型为 const Widget&amp;amp;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在上述情形中，我们无法向函数传递右值容器，若想要采用一种既能绑定到左值也能绑定到右值的引用形参，就需要借助万能引用，并应用&lt;code&gt;std::forward&lt;/code&gt;（参考条款 25）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Container, &lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; Index&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;decltype&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;auto&lt;/span&gt;) authAndAccess(Container&lt;span style="color:#f92672"&gt;&amp;amp;&amp;amp;&lt;/span&gt; c, Index i) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; authenticateUser();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; std&lt;span style="color:#f92672"&gt;::&lt;/span&gt;forward&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;Container&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;(c)[i];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>C++ 17 编译期 if</title><link>https://horeb.top/posts/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link><pubDate>Sat, 10 Aug 2024 18:05:47 +0800</pubDate><guid>https://horeb.top/posts/cpp-c++-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid><description>&lt;p&gt;&lt;a class="link" href="https://www.bilibili.com/video/BV1Eb42177a8/?spm_id_from=333.1007.tianma.1-1-1.click&amp;amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a" target="_blank" rel="noopener"
+ &gt;C++17编译期if&lt;/a&gt;：&lt;code&gt;constexpr&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;用例：不加&lt;code&gt;constexpr&lt;/code&gt;会编译出错，因为必有一种情况是语法错误的。如果&lt;code&gt;T&lt;/code&gt;为&lt;code&gt;X&lt;/code&gt;类型，则内部没有&lt;code&gt;y_func()&lt;/code&gt;。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;template&lt;/span&gt;&lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;typename&lt;/span&gt; T&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; f(T t) {
