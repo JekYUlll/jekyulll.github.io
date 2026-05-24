@@ -13,26 +13,34 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-    # steps:
-    #   - name: Checkout repository
-    #     uses: actions/checkout@v2
+          submodules: true
+          fetch-depth: 0
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.140.0" # 使用你当前 Hugo 的版本
+          hugo-version: "0.161.1"
           extended: true
 
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+
+      - name: Fix theme compatibility for Hugo v0.123+
+        run: |
+          # Fix .Site.Author deprecated usage in hello-friend-ng theme
+          # Hugo v0.123+ changed .Site.Author from map to struct
+          sed -i 's/{{ range .Site.Author }}{{ . }} {{ end }}/{{ site.Params.author.name }}/' themes/hello-friend-ng/layouts/partials/head.html
+          sed -i 's/.Site.Author.email/site.Params.author.email/g' themes/hello-friend-ng/layouts/posts/rss.xml
+          sed -i 's/$.Site.Author.name/site.Params.author.name/g' themes/hello-friend-ng/layouts/posts/rss.xml
+
       - name: Build the site
-        run: hugo --minify # 生成静态文件到 public 文件夹
+        run: hugo --minify --buildFuture
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # 用于推送文件的 GitHub Token
-          publish_dir: ./public # Hugo 生成的静态文件目录
-          publish_branch: gh-pages # 将生成的文件推送到 gh-pages 分支
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
