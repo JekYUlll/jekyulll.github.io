@@ -27,14 +27,6 @@ jobs:
       - name: Install Dart Sass
         run: sudo snap install dart-sass
 
-      - name: Fix theme compatibility for Hugo v0.123+
-        run: |
-          # Fix .Site.Author deprecated usage in hello-friend-ng theme
-          # Hugo v0.123+ changed .Site.Author from map to struct
-          sed -i 's/{{ range .Site.Author }}{{ . }} {{ end }}/{{ site.Params.author.name }}/' themes/hello-friend-ng/layouts/partials/head.html
-          sed -i 's/.Site.Author.email/site.Params.author.email/g' themes/hello-friend-ng/layouts/posts/rss.xml
-          sed -i 's/$.Site.Author.name/site.Params.author.name/g' themes/hello-friend-ng/layouts/posts/rss.xml
-
       - name: Build the site
         run: hugo --minify
 
