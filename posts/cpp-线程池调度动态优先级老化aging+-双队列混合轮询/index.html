@@ -1,0 +1,194 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="C++中线程池一般使用队列（std::queue）配合外部的std::condition_variable，或者手动构建阻塞队列（BlockQueue）来设计。\n"><title>线程池调度：动态优先级老化（Aging）+ 双队列混合轮询</title><link rel=canonical href=https://horeb.top/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.e62e09c60ba428a627e03568fa3df938f6a8224f815b5846f00816c17d4a0be4.css><meta property='og:title' content="线程池调度：动态优先级老化（Aging）+ 双队列混合轮询"><meta property='og:description' content="C++中线程池一般使用队列（std::queue）配合外部的std::condition_variable，或者手动构建阻塞队列（BlockQueue）来设计。\n"><meta property='og:url' content='https://horeb.top/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/'><meta property='og:site_name' content='Horeb'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='cpp'><meta property='article:tag' content='algorithm'><meta property='article:published_time' content='2025-02-25T00:00:00+00:00'><meta property='article:modified_time' content='2026-05-24T09:36:37+08:00'><meta name=twitter:title content="线程池调度：动态优先级老化（Aging）+ 双队列混合轮询"><meta name=twitter:description content="C++中线程池一般使用队列（std::queue）配合外部的std::condition_variable，或者手动构建阻塞队列（BlockQueue）来设计。\n"><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Horeb</a></h1><h2 class=site-description>C++ / Go / Rust</h2></div></header><ol class=menu-social><li><a href=https://github.com/JekYUlll target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Posts</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>Tags</span></a></li><li><a href=/categories/><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>Categories</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cpp/ style=background-color:#beddef;color:#0f2c3d>Cpp</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging+-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/>线程池调度：动态优先级老化（Aging）+ 双队列混合轮询</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2025-02-25T00:00:00Z>2025-02-25</time>
+<svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><p>C++中线程池一般使用队列（<code>std::queue</code>）配合外部的<code>std::condition_variable</code>，或者手动构建阻塞队列（BlockQueue）来设计。</p><p>而需要使用任务优先级的时候，一般使用大根堆/小根堆的优先级队列<code>std::priority_queue</code>来实现。</p><p>那么问题来了，在任务优先级比较不均的时候，怎么避免低优先级任务的长时间饥饿呢？</p><p>为了实现动态公平调度：</p><ul><li><strong>动态优先级老化（Aging）：优先级动态调整</strong>：任务在队列中等待时间越长，其有效优先级逐渐升高。</li><li><strong>双队列混合轮询</strong>：每处理一定数量的高优先级任务后，强制处理低优先级任务。</li></ul><p>首先抽象出一个<code>Task</code>用于记录任务的初始优先级和入队时间：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;chrono&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>Task</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>base_priority</span><span class=p>;</span> <span class=c1>// 初始优先级
+</span></span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>steady_clock</span><span class=o>::</span><span class=n>time_point</span> <span class=n>enqueue_time</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>job</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 计算动态优先级（等待时间越长，优先级越高）
+</span></span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>dynamic_priority</span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>now</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>steady_clock</span><span class=o>::</span><span class=n>now</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>wait_time</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>duration_cast</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>seconds</span><span class=o>&gt;</span><span class=p>(</span><span class=n>now</span> <span class=o>-</span> <span class=n>enqueue_time</span><span class=p>).</span><span class=n>count</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>base_priority</span> <span class=o>+</span> <span class=k>static_cast</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=p>(</span><span class=n>wait_time</span> <span class=o>*</span> <span class=mf>0.1</span><span class=p>);</span> <span class=c1>// 老化系数可调
+</span></span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1>// 重载比较运算符（实际比较动态优先级）
+</span></span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=k>operator</span><span class=o>&lt;</span><span class=p>(</span><span class=k>const</span> <span class=n>Task</span><span class=o>&amp;</span> <span class=n>other</span><span class=p>)</span> <span class=k>const</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=k>this</span><span class=o>-&gt;</span><span class=n>dynamic_priority</span><span class=p>()</span> <span class=o>&lt;</span> <span class=n>other</span><span class=p>.</span><span class=n>dynamic_priority</span><span class=p>();</span> 
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>整体的线程池类设计：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;queue&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;vector&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;thread&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;mutex&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&lt;condition_variable&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>ThreadPool</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>ThreadPool</span><span class=p>(</span><span class=n>size_t</span> <span class=n>threads</span><span class=p>,</span> <span class=n>size_t</span> <span class=n>high_freq</span> <span class=o>=</span> <span class=mi>5</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>        <span class=o>:</span> <span class=n>high_processing_count</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span> <span class=n>high_freq_</span><span class=p>(</span><span class=n>high_freq</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=n>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>threads</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>workers</span><span class=p>.</span><span class=n>emplace_back</span><span class=p>([</span><span class=k>this</span><span class=p>]</span> <span class=p>{</span> <span class=n>worker_loop</span><span class=p>();</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>add_task</span><span class=p>(</span><span class=kt>int</span> <span class=n>priority</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>task</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>queue_mutex</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=n>queue</span><span class=p>.</span><span class=n>emplace</span><span class=p>(</span><span class=n>Task</span><span class=p>{</span><span class=n>priority</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>steady_clock</span><span class=o>::</span><span class=n>now</span><span class=p>(),</span> <span class=n>task</span><span class=p>});</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=n>condition</span><span class=p>.</span><span class=n>notify_one</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=o>~</span><span class=n>ThreadPool</span><span class=p>()</span> <span class=p>{</span> <span class=cm>/* ... 省略资源回收代码 ... */</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>mutex</span> <span class=n>queue_mutex</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>condition_variable</span> <span class=n>condition</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>priority_queue</span><span class=o>&lt;</span><span class=n>Task</span><span class=o>&gt;</span> <span class=n>queue</span><span class=p>;</span> <span class=c1>// 主队列（动态优先级）
+</span></span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>queue</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;&gt;</span> <span class=n>low_priority_queue</span><span class=p>;</span> <span class=c1>// 辅助队列
+</span></span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=kr>thread</span><span class=o>&gt;</span> <span class=n>workers</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=c1>// 轮询控制
+</span></span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>atomic</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>high_processing_count</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>const</span> <span class=kt>int</span> <span class=n>high_freq_</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>worker_loop</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span><span class=p>(</span><span class=nb>true</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>std</span><span class=o>::</span><span class=n>function</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>()</span><span class=o>&gt;</span> <span class=n>task</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>std</span><span class=o>::</span><span class=n>unique_lock</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>mutex</span><span class=o>&gt;</span> <span class=n>lock</span><span class=p>(</span><span class=n>queue_mutex</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=n>condition</span><span class=p>.</span><span class=n>wait</span><span class=p>(</span><span class=n>lock</span><span class=p>,</span> <span class=p>[</span><span class=k>this</span><span class=p>]</span> <span class=p>{</span> <span class=k>return</span> <span class=o>!</span><span class=n>queue</span><span class=p>.</span><span class=n>empty</span><span class=p>();</span> <span class=p>});</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                <span class=c1>// 动态老化：每处理high_freq_个高优任务后强制处理低优
+</span></span></span><span class=line><span class=cl>                <span class=k>if</span><span class=p>(</span><span class=o>++</span><span class=n>high_processing_count</span> <span class=o>%</span> <span class=n>high_freq_</span> <span class=o>==</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> 
+</span></span><span class=line><span class=cl>                   <span class=o>!</span><span class=n>low_priority_queue</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=n>task</span> <span class=o>=</span> <span class=n>low_priority_queue</span><span class=p>.</span><span class=n>front</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                    <span class=n>low_priority_queue</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                    <span class=n>task</span> <span class=o>=</span> <span class=n>queue</span><span class=p>.</span><span class=n>top</span><span class=p>().</span><span class=n>job</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                    <span class=n>queue</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span><span class=p>(</span><span class=n>task</span><span class=p>)</span> <span class=n>task</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><hr><p><strong>拓展</strong>：</p><ul><li><strong>（处理超时）时间阈值兜底</strong>：可添加最大等待时间监控，对超时任务直接提升到最高优先级</li><li><strong>优先级区间划分</strong>：将任务分为<code>URGENT</code>/<code>HIGH</code>/<code>NORMAL</code>等级别，不同级别采用不同老化系数</li><li>根据系统负载动态调整<code>high_freq_</code>参数</li><li>根据队列负载动态增减线程，避免资源浪费（如 C++17 的 <code>std::jthread</code>）。</li></ul><p>线程池常见实现：<a class=link href=https://zhuanlan.zhihu.com/p/367309864 target=_blank rel=noopener>基于C++11实现线程池 - Skykey的文章 - 知乎</a>。</p><p><a class=link href=https://paul.pub/cpp-concurrency/ target=_blank rel=noopener>C++ 并发编程（从C++11到C++17）</a>。<br><a class=link href=https://segmentfault.com/a/1190000002706259 target=_blank rel=noopener>货比三家：C++ 中的 task based 并发</a>。</p></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/cpp/>Cpp</a>
+<a href=/tags/algorithm/>Algorithm</a></section><section class="article-copyright inline-meta"><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>CC BY-NC 4.0</span></section><section class="article-lastmod inline-meta"><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>最后更新于 2026-05-24</span></section></footer></article><aside><h2 class=section-title>相关文章</h2><div class=subsection-list><div class=article-list--tile><article><a href=/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/><div class=article-details><h2 class=article-title>计时器 timer 的设计</h2></div></a></article><article><a href=/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/><div class=article-details><h2 class=article-title>扫描线算法计算区间重叠</h2></div></a></article><article><a href=/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/><div class=article-details><h2 class=article-title>检查字符串是否是另一个的子串</h2></div></a></article><article><a href=/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/><div class=article-details><h2 class=article-title>分段锁技术详解及 C++ 实现</h2></div></a></article><article><a href=/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/><div class=article-details><h2 class=article-title>简述如何解决哈希冲突？</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2026 Horeb</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.2>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><script type=module>
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script></main></div><script type=text/javascript src=/ts/main.f856840516f7c2ad1769a8f5937e3d08d6cb386e2cd2dd025ae696e0ff207958.js defer></script></body></html>

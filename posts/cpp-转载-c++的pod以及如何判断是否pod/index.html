@@ -1,0 +1,192 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="C++的POD以及如何判断是否POD - cheeto的文章 - 知乎。\n在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：\n平凡类型（Trivial Type）和标准布局类型（Standard Layout Type）。当类型为Trivial && Standard Layout时才能被认为是POD。\n"><title>[转载] C++的POD以及如何判断是否POD</title><link rel=canonical href=https://horeb.top/posts/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.e62e09c60ba428a627e03568fa3df938f6a8224f815b5846f00816c17d4a0be4.css><meta property='og:title' content="[转载] C++的POD以及如何判断是否POD"><meta property='og:description' content="C++的POD以及如何判断是否POD - cheeto的文章 - 知乎。\n在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：\n平凡类型（Trivial Type）和标准布局类型（Standard Layout Type）。当类型为Trivial && Standard Layout时才能被认为是POD。\n"><meta property='og:url' content='https://horeb.top/posts/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/'><meta property='og:site_name' content='Horeb'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='cpp'><meta property='article:tag' content='reprint'><meta property='article:published_time' content='2025-01-09T00:00:00+00:00'><meta property='article:modified_time' content='2026-05-24T09:36:37+08:00'><meta name=twitter:title content="[转载] C++的POD以及如何判断是否POD"><meta name=twitter:description content="C++的POD以及如何判断是否POD - cheeto的文章 - 知乎。\n在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：\n平凡类型（Trivial Type）和标准布局类型（Standard Layout Type）。当类型为Trivial && Standard Layout时才能被认为是POD。\n"><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Horeb</a></h1><h2 class=site-description>C++ / Go / Rust</h2></div></header><ol class=menu-social><li><a href=https://github.com/JekYUlll target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Posts</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>Tags</span></a></li><li><a href=/categories/><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>Categories</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav class=toc-nav id=TableOfContents><ol><li><ol><li><a href=#平凡类型trivial-type>平凡类型（Trivial Type）</a></li><li><a href=#标准布局类型standard-layout-type>标准布局类型（Standard Layout Type）</a></li><li><a href=#小结>小结</a></li><li><a href=#拓展>拓展</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cpp/ style=background-color:#beddef;color:#0f2c3d>Cpp</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/cpp-%E8%BD%AC%E8%BD%BD-c++%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/>[转载] C++的POD以及如何判断是否POD</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2025-01-09T00:00:00Z>2025-01-09</time>
+<svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><aside class=article-toc><details><summary><div class=article-toc-title><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6-6 6"/></svg>
+<span>目录</span></div></summary><nav class=toc-nav><ol><li><ol><li><a href=#平凡类型trivial-type>平凡类型（Trivial Type）</a></li><li><a href=#标准布局类型standard-layout-type>标准布局类型（Standard Layout Type）</a></li><li><a href=#小结>小结</a></li><li><a href=#拓展>拓展</a></li></ol></li></ol></nav></details></aside><section class=article-content><p><a class=link href=https://zhuanlan.zhihu.com/p/17003601237 target=_blank rel=noopener>C++的POD以及如何判断是否POD - cheeto的文章 - 知乎</a>。</p><hr><p>在C++11及以后的版本中，POD类型（Plain Old Data）的定义被细化为两个核心概念：<br><strong>平凡类型</strong>（Trivial Type）和<strong>标准布局类型</strong>（Standard Layout Type）。当类型为Trivial && Standard Layout时才能被认为是POD。</p><h3 id=平凡类型trivial-type><a href=#%e5%b9%b3%e5%87%a1%e7%b1%bb%e5%9e%8btrivial-type class=header-anchor></a>平凡类型（Trivial Type）</h3><p>满足以下条件：</p><ul><li>默认构造函数：没有用户定义的构造函数，即使用默认构造函数。</li><li>默认拷贝构造函数：没有用户定义的拷贝构造函数。</li><li>默认析构函数：没有用户定义的析构函数。</li><li>默认赋值操作符：没有用户定义的拷贝赋值和移动赋值操作符。</li></ul><p>对于平凡类型，编译器会为其提供默认的构造、拷贝和析构行为，无需用户显式定义。</p><p>比如说以下<code>Trivial</code>，即使它有构造函数和析构函数 只要不是用户自定义而是<code>default</code>也可以</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>struct</span> <span class=nc>Trivial</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=kt>int</span> <span class=n>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> <span class=n>Trivial</span><span class=p>()</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span>  <span class=c1>// 默认构造函数
+</span></span></span><span class=line><span class=cl> <span class=o>~</span><span class=n>Trivial</span><span class=p>()</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span> <span class=c1>// 默认析构函数
+</span></span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=标准布局类型standard-layout-type><a href=#%e6%a0%87%e5%87%86%e5%b8%83%e5%b1%80%e7%b1%bb%e5%9e%8bstandard-layout-type class=header-anchor></a>标准布局类型（Standard Layout Type）</h3><p>满足以下条件：</p><ul><li>无虚函数：它没有虚函数。</li><li>无虚基类：它没有虚基类。</li><li>成员变量顺序：它的成员变量是按声明顺序排列的。</li><li></li></ul><p>直接用<code>std::is_standard_layout_v</code>判断即可</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=cp>#define Print(x) std::cout &lt;&lt; x &lt;&lt; &#39;\n&#39;
+</span></span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>safe</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=kt>int</span> <span class=n>m</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>unsafe_cons</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=n>unsafe_cons</span><span class=p>(</span><span class=n>unsafe_cons</span> <span class=k>const</span> <span class=o>&amp;</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>unsafe_vir</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=k>virtual</span> <span class=kt>void</span> <span class=nf>foo</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span> <span class=k>class</span> <span class=nc>unsafe_tem</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=n>T</span> <span class=n>data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>Trivial</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=kt>int</span> <span class=n>a</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> <span class=n>Trivial</span><span class=p>()</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span>  <span class=c1>// 默认构造函数
+</span></span></span><span class=line><span class=cl> <span class=o>~</span><span class=n>Trivial</span><span class=p>()</span> <span class=o>=</span> <span class=k>default</span><span class=p>;</span> <span class=c1>// 默认析构函数
+</span></span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>StandardLayout</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=kt>char</span> <span class=n>a</span><span class=p>;</span> <span class=c1>// 1 byte
+</span></span></span><span class=line><span class=cl> <span class=kt>int</span> <span class=n>b</span><span class=p>;</span>  <span class=c1>// 4 bytes
+</span></span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>// 用于检查是否为 POD 类型
+</span></span></span><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span> <span class=k>struct</span> <span class=nc>is_pod</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=k>static</span> <span class=k>constexpr</span> <span class=kt>bool</span> <span class=n>value</span> <span class=o>=</span>
+</span></span><span class=line><span class=cl> <span class=n>std</span><span class=o>::</span><span class=n>is_trivial</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;::</span><span class=n>value</span> <span class=o>&amp;&amp;</span> <span class=n>std</span><span class=o>::</span><span class=n>is_standard_layout</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;::</span><span class=n>value</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl> <span class=n>std</span><span class=o>::</span><span class=n>is_trivially_default_constructible</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>test1</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>is_pod</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>);</span>                           <span class=c1>// 1
+</span></span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>is_pod</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>);</span>                   <span class=c1>// 0
+</span></span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>is_pod</span><span class=o>&lt;</span><span class=n>Trivial</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>);</span>                       <span class=c1>// 1
+</span></span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>is_pod</span><span class=o>&lt;</span><span class=n>StandardLayout</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>);</span>             <span class=c1>// 1
+</span></span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>is_trivial</span><span class=o>&lt;</span><span class=n>Trivial</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>);</span>              <span class=c1>// 1
+</span></span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>is_trivial</span><span class=o>&lt;</span><span class=n>StandardLayout</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>);</span>    <span class=c1>// 1
+</span></span></span><span class=line><span class=cl> <span class=n>Print</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>is_standard_layout_v</span><span class=o>&lt;</span><span class=n>StandardLayout</span><span class=o>&gt;</span><span class=p>);</span> <span class=c1>// 1
+</span></span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>这里的标准布局的判定反而没有这么严格</p><p>我说的严格指的是</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>struct</span> <span class=nc>A</span><span class=p>{</span> 
+</span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>a</span><span class=p>;</span>  <span class=c1>// 1 byte
+</span></span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>b</span><span class=p>;</span>   <span class=c1>// 4 bytes
+</span></span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=err>和</span>
+</span></span><span class=line><span class=cl><span class=k>struct</span> <span class=nc>B</span><span class=p>{</span> 
+</span></span><span class=line><span class=cl> <span class=kt>int</span> <span class=n>b</span><span class=p>;</span>   <span class=c1>// 4 bytes
+</span></span></span><span class=line><span class=cl>    <span class=kt>char</span> <span class=n>a</span><span class=p>;</span>  <span class=c1>// 1 byte
+</span></span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><p>这种</p><p><code>struct A</code> 会在 <code>char</code> 后插入填充字节，以满足 <code>int</code> 的对齐要求。
+<code>struct B</code> 的内存布局使得结构体末尾需要填充字节，确保结构体的总大小满足 4 字节对齐要求。</p><h3 id=小结><a href=#%e5%b0%8f%e7%bb%93 class=header-anchor></a>小结</h3><p>也就是说填充不影响POD的判定 而是成员变量顺序发生了改变才不算POD。</p><p>POD 类型的定义主要关注<strong>是否有特殊的构造、析构或拷贝操作</strong>，以及<strong>成员变量的顺序是否保持一致</strong>。</p><p><strong>如何判断是否POD</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// 用于检查是否为 POD 类型
+</span></span></span><span class=line><span class=cl><span class=c1>// 使用例is_pod&lt;int&gt;::value
+</span></span></span><span class=line><span class=cl><span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span> <span class=k>struct</span> <span class=nc>is_pod</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl> <span class=k>static</span> <span class=k>constexpr</span> <span class=kt>bool</span> <span class=n>value</span> <span class=o>=</span>
+</span></span><span class=line><span class=cl> <span class=n>std</span><span class=o>::</span><span class=n>is_trivial</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;::</span><span class=n>value</span> <span class=o>&amp;&amp;</span> <span class=n>std</span><span class=o>::</span><span class=n>is_standard_layout</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;::</span><span class=n>value</span> <span class=o>&amp;&amp;</span>
+</span></span><span class=line><span class=cl> <span class=n>std</span><span class=o>::</span><span class=n>is_trivially_default_constructible</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;::</span><span class=n>value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h3 id=拓展><a href=#%e6%8b%93%e5%b1%95 class=header-anchor></a>拓展</h3><p>对于平凡类型的 <code>class</code> 和 <code>struct</code>，它们在内存布局、对象拷贝、传递给 C 函数等操作中，几乎没有区别。因此，可以像使用 C 语言中的结构体一样使用它们。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=k>struct</span> <span class=nc>Point</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>Point</span> <span class=n>p</span> <span class=o>=</span> <span class=p>{</span><span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>};</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 使用 reinterpret_cast 强制转换
+</span></span></span><span class=line><span class=cl>    <span class=kt>void</span><span class=o>*</span> <span class=n>ptr</span> <span class=o>=</span> <span class=o>&amp;</span><span class=n>p</span><span class=p>;</span>  <span class=c1>// void* 指针指向结构体
+</span></span></span><span class=line><span class=cl>    <span class=c1>// 使用 reinterpret_cast 强制转换为 Point* 类型
+</span></span></span><span class=line><span class=cl>    <span class=n>Point</span><span class=o>*</span> <span class=n>p2</span> <span class=o>=</span> <span class=k>reinterpret_cast</span><span class=o>&lt;</span><span class=n>Point</span><span class=o>*&gt;</span><span class=p>(</span><span class=n>ptr</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 访问成员
+</span></span></span><span class=line><span class=cl>    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;x: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>p2</span><span class=o>-&gt;</span><span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;, y: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>p2</span><span class=o>-&gt;</span><span class=n>y</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/cpp/>Cpp</a>
+<a href=/tags/reprint/>Reprint</a></section><section class="article-copyright inline-meta"><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>CC BY-NC 4.0</span></section><section class="article-lastmod inline-meta"><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>最后更新于 2026-05-24</span></section></footer></article><aside><h2 class=section-title>相关文章</h2><div class=subsection-list><div class=article-list--tile><article><a href=/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c++-shared_from_this/><div class=article-details><h2 class=article-title>从场景解析 C++ shared_from_this</h2></div></a></article><article><a href=/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/><div class=article-details><h2 class=article-title>Linux 大文件传输场景题</h2></div></a></article><article><a href=/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c++-%E5%AE%9E%E7%8E%B0/><div class=article-details><h2 class=article-title>分段锁技术详解及 C++ 实现</h2></div></a></article><article><a href=/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/><div class=article-details><h2 class=article-title>简述如何解决哈希冲突？</h2></div></a></article><article><a href=/posts/cpp-c++-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/><div class=article-details><h2 class=article-title>C++ 编译器返回值优化</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2026 Horeb</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.2>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><script type=module>
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script></main></div><script type=text/javascript src=/ts/main.f856840516f7c2ad1769a8f5937e3d08d6cb386e2cd2dd025ae696e0ff207958.js defer></script></body></html>

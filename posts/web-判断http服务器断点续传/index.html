@@ -1,0 +1,208 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="一、HTTP协议基础 HTTP协议通过Range请求实现断点续传：\n客户端请求指定范围\n客户端在请求头中携带Range字段，例如：\n1 2 GET /file.zip HTTP/1.1 Range: bytes=500-1000 服务端响应部分内容\n若支持范围请求，服务端返回状态码206 Partial Content及对应数据片段：\n"><title>实现服务端断点续传：Go与Nginx</title><link rel=canonical href=https://horeb.top/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=preload as=style href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap"><link rel=stylesheet href=/scss/style.min.e62e09c60ba428a627e03568fa3df938f6a8224f815b5846f00816c17d4a0be4.css><meta property='og:title' content="实现服务端断点续传：Go与Nginx"><meta property='og:description' content="一、HTTP协议基础 HTTP协议通过Range请求实现断点续传：\n客户端请求指定范围\n客户端在请求头中携带Range字段，例如：\n1 2 GET /file.zip HTTP/1.1 Range: bytes=500-1000 服务端响应部分内容\n若支持范围请求，服务端返回状态码206 Partial Content及对应数据片段：\n"><meta property='og:url' content='https://horeb.top/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/'><meta property='og:site_name' content='Horeb'><meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='go'><meta property='article:tag' content='web'><meta property='article:tag' content='backend'><meta property='article:published_time' content='2025-04-23T00:00:00+00:00'><meta property='article:modified_time' content='2026-05-24T09:36:37+08:00'><meta name=twitter:title content="实现服务端断点续传：Go与Nginx"><meta name=twitter:description content="一、HTTP协议基础 HTTP协议通过Range请求实现断点续传：\n客户端请求指定范围\n客户端在请求头中携带Range字段，例如：\n1 2 GET /file.zip HTTP/1.1 Range: bytes=500-1000 服务端响应部分内容\n若支持范围请求，服务端返回状态码206 Partial Content及对应数据片段：\n"><script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-Q6473FXND4")}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><div class=site-meta><h1 class=site-name><a href=/>Horeb</a></h1><h2 class=site-description>C++ / Go / Rust</h2></div></header><ol class=menu-social><li><a href=https://github.com/JekYUlll target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/posts/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Posts</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/tags/><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>Tags</span></a></li><li><a href=/categories/><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>Categories</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav class=toc-nav id=TableOfContents><ol><li><ol><li><a href=#一http协议基础>一、HTTP协议基础</a></li><li><a href=#二nginx静态资源断点续传>二、Nginx静态资源断点续传</a></li><li><a href=#三go实现>三、Go实现</a></li><li><a href=#四客户端如何检测服务端是否支持>四、客户端如何检测服务端是否支持？</a></li><li><a href=#五nginx反向代理go服务的注意事项>五、Nginx反向代理Go服务的注意事项</a></li><li><a href=#六边界问题与优化建议>六、边界问题与优化建议</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/web/ style=background-color:#beefcc;color:#0f3d1c>Web</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/>实现服务端断点续传：Go与Nginx</a></h2></div><footer class=article-meta><div class=inline-meta><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2025-04-23T00:00:00Z>2025-04-23</time>
+<svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><aside class=article-toc><details><summary><div class=article-toc-title><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6-6 6"/></svg>
+<span>目录</span></div></summary><nav class=toc-nav><ol><li><ol><li><a href=#一http协议基础>一、HTTP协议基础</a></li><li><a href=#二nginx静态资源断点续传>二、Nginx静态资源断点续传</a></li><li><a href=#三go实现>三、Go实现</a></li><li><a href=#四客户端如何检测服务端是否支持>四、客户端如何检测服务端是否支持？</a></li><li><a href=#五nginx反向代理go服务的注意事项>五、Nginx反向代理Go服务的注意事项</a></li><li><a href=#六边界问题与优化建议>六、边界问题与优化建议</a></li></ol></li></ol></nav></details></aside><section class=article-content><h3 id=一http协议基础><a href=#%e4%b8%80http%e5%8d%8f%e8%ae%ae%e5%9f%ba%e7%a1%80 class=header-anchor></a>一、HTTP协议基础</h3><p>HTTP协议通过<strong>Range请求</strong>实现断点续传：</p><ol><li><p><strong>客户端请求指定范围</strong><br>客户端在请求头中携带<code>Range</code>字段，例如：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-http data-lang=http><span class=line><span class=cl><span class=nf>GET</span> <span class=nn>/file.zip</span> <span class=kr>HTTP</span><span class=o>/</span><span class=m>1.1</span>
+</span></span><span class=line><span class=cl><span class=n>Range</span><span class=o>:</span> <span class=l>bytes=500-1000</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p><strong>服务端响应部分内容</strong><br>若支持范围请求，服务端返回状态码<code>206 Partial Content</code>及对应数据片段：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-http data-lang=http><span class=line><span class=cl><span class=kr>HTTP</span><span class=o>/</span><span class=m>1.1</span> <span class=m>206</span> <span class=ne>Partial Content</span>
+</span></span><span class=line><span class=cl><span class=n>Content-Range</span><span class=o>:</span> <span class=l>bytes 500-1000/5000</span>
+</span></span><span class=line><span class=cl><span class=n>Content-Length</span><span class=o>:</span> <span class=l>501</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p><strong>完整性校验机制</strong><br>通过<code>ETag</code>或<code>Last-Modified</code>头确保文件未变更，避免续传数据不一致。</p></li></ol><hr><h3 id=二nginx静态资源断点续传><a href=#%e4%ba%8cnginx%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90%e6%96%ad%e7%82%b9%e7%bb%ad%e4%bc%a0 class=header-anchor></a>二、Nginx静态资源断点续传</h3><p>Nginx默认支持静态文件的断点续传。需要有以下配置：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-nginx data-lang=nginx><span class=line><span class=cl><span class=k>server</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kn>location</span> <span class=s>/static</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kn>root</span> <span class=s>/data/files</span><span class=p>;</span>           <span class=c1># 文件存储路径
+</span></span></span><span class=line><span class=cl>        <span class=kn>add_header</span> <span class=s>Accept-Ranges</span> <span class=s>bytes</span><span class=p>;</span>  <span class=c1># 声明支持字节范围请求
+</span></span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>验证方法</strong>：<br>使用<code>curl</code>检测响应头：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>curl -I http://your-domain/static/large-file.iso
+</span></span></code></pre></td></tr></table></div></div><p>若输出包含<code>Accept-Ranges: bytes</code>与<code>Content-Length</code>，则表明支持续传。</p><hr><h3 id=三go实现><a href=#%e4%b8%89go%e5%ae%9e%e7%8e%b0 class=header-anchor></a>三、Go实现</h3><p>对于动态生成的文件（如需鉴权的资源），需手动处理<code>Range</code>请求。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-go data-lang=go><span class=line><span class=cl><span class=kn>package</span><span class=w> </span><span class=nx>main</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=kn>import</span><span class=w> </span><span class=p>(</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=s>&#34;fmt&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=s>&#34;net/http&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=s>&#34;os&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=s>&#34;strconv&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=s>&#34;strings&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=kd>func</span><span class=w> </span><span class=nf>handleDownload</span><span class=p>(</span><span class=nx>w</span><span class=w> </span><span class=nx>http</span><span class=p>.</span><span class=nx>ResponseWriter</span><span class=p>,</span><span class=w> </span><span class=nx>r</span><span class=w> </span><span class=o>*</span><span class=nx>http</span><span class=p>.</span><span class=nx>Request</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>filePath</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=s>&#34;/data/dynamic-file.bin&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>file</span><span class=p>,</span><span class=w> </span><span class=nx>err</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>os</span><span class=p>.</span><span class=nf>Open</span><span class=p>(</span><span class=nx>filePath</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=nx>err</span><span class=w> </span><span class=o>!=</span><span class=w> </span><span class=kc>nil</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nx>http</span><span class=p>.</span><span class=nf>Error</span><span class=p>(</span><span class=nx>w</span><span class=p>,</span><span class=w> </span><span class=s>&#34;File not found&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>http</span><span class=p>.</span><span class=nx>StatusNotFound</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=k>return</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=k>defer</span><span class=w> </span><span class=nx>file</span><span class=p>.</span><span class=nf>Close</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>fileInfo</span><span class=p>,</span><span class=w> </span><span class=nx>_</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>file</span><span class=p>.</span><span class=nf>Stat</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>fileSize</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>fileInfo</span><span class=p>.</span><span class=nf>Size</span><span class=p>()</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>w</span><span class=p>.</span><span class=nf>Header</span><span class=p>().</span><span class=nf>Set</span><span class=p>(</span><span class=s>&#34;Content-Length&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>strconv</span><span class=p>.</span><span class=nf>FormatInt</span><span class=p>(</span><span class=nx>fileSize</span><span class=p>,</span><span class=w> </span><span class=mi>10</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>w</span><span class=p>.</span><span class=nf>Header</span><span class=p>().</span><span class=nf>Set</span><span class=p>(</span><span class=s>&#34;ETag&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>fmt</span><span class=p>.</span><span class=nf>Sprintf</span><span class=p>(</span><span class=s>&#34;\&#34;%x\&#34;&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>fileInfo</span><span class=p>.</span><span class=nf>ModTime</span><span class=p>().</span><span class=nf>UnixNano</span><span class=p>()))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>rangeHeader</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>r</span><span class=p>.</span><span class=nx>Header</span><span class=p>.</span><span class=nf>Get</span><span class=p>(</span><span class=s>&#34;Range&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=nx>rangeHeader</span><span class=w> </span><span class=o>==</span><span class=w> </span><span class=s>&#34;&#34;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nx>http</span><span class=p>.</span><span class=nf>ServeContent</span><span class=p>(</span><span class=nx>w</span><span class=p>,</span><span class=w> </span><span class=nx>r</span><span class=p>,</span><span class=w> </span><span class=nx>fileInfo</span><span class=p>.</span><span class=nf>Name</span><span class=p>(),</span><span class=w> </span><span class=nx>fileInfo</span><span class=p>.</span><span class=nf>ModTime</span><span class=p>(),</span><span class=w> </span><span class=nx>file</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=k>return</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>ranges</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>strings</span><span class=p>.</span><span class=nf>Split</span><span class=p>(</span><span class=nx>rangeHeader</span><span class=p>,</span><span class=w> </span><span class=s>&#34;=&#34;</span><span class=p>)[</span><span class=mi>1</span><span class=p>]</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>parts</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>strings</span><span class=p>.</span><span class=nf>Split</span><span class=p>(</span><span class=nx>ranges</span><span class=p>,</span><span class=w> </span><span class=s>&#34;-&#34;</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>start</span><span class=p>,</span><span class=w> </span><span class=nx>_</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>strconv</span><span class=p>.</span><span class=nf>ParseInt</span><span class=p>(</span><span class=nx>parts</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span><span class=w> </span><span class=mi>10</span><span class=p>,</span><span class=w> </span><span class=mi>64</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>end</span><span class=w> </span><span class=o>:=</span><span class=w> </span><span class=nx>fileSize</span><span class=w> </span><span class=o>-</span><span class=w> </span><span class=mi>1</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=nx>parts</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span><span class=w> </span><span class=o>!=</span><span class=w> </span><span class=s>&#34;&#34;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nx>end</span><span class=p>,</span><span class=w> </span><span class=nx>_</span><span class=w> </span><span class=p>=</span><span class=w> </span><span class=nx>strconv</span><span class=p>.</span><span class=nf>ParseInt</span><span class=p>(</span><span class=nx>parts</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span><span class=w> </span><span class=mi>10</span><span class=p>,</span><span class=w> </span><span class=mi>64</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=nx>start</span><span class=w> </span><span class=o>&gt;=</span><span class=w> </span><span class=nx>fileSize</span><span class=w> </span><span class=o>||</span><span class=w> </span><span class=nx>end</span><span class=w> </span><span class=o>&gt;=</span><span class=w> </span><span class=nx>fileSize</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=nx>http</span><span class=p>.</span><span class=nf>Error</span><span class=p>(</span><span class=nx>w</span><span class=p>,</span><span class=w> </span><span class=s>&#34;Requested range not satisfiable&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>http</span><span class=p>.</span><span class=nx>StatusRequestedRangeNotSatisfiable</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span><span class=k>return</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>w</span><span class=p>.</span><span class=nf>Header</span><span class=p>().</span><span class=nf>Set</span><span class=p>(</span><span class=s>&#34;Content-Range&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>fmt</span><span class=p>.</span><span class=nf>Sprintf</span><span class=p>(</span><span class=s>&#34;bytes %d-%d/%d&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>start</span><span class=p>,</span><span class=w> </span><span class=nx>end</span><span class=p>,</span><span class=w> </span><span class=nx>fileSize</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>w</span><span class=p>.</span><span class=nf>Header</span><span class=p>().</span><span class=nf>Set</span><span class=p>(</span><span class=s>&#34;Content-Length&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>strconv</span><span class=p>.</span><span class=nf>FormatInt</span><span class=p>(</span><span class=nx>end</span><span class=o>-</span><span class=nx>start</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>10</span><span class=p>))</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>w</span><span class=p>.</span><span class=nf>WriteHeader</span><span class=p>(</span><span class=nx>http</span><span class=p>.</span><span class=nx>StatusPartialContent</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>file</span><span class=p>.</span><span class=nf>Seek</span><span class=p>(</span><span class=nx>start</span><span class=p>,</span><span class=w> </span><span class=mi>0</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>http</span><span class=p>.</span><span class=nf>ServeContent</span><span class=p>(</span><span class=nx>w</span><span class=p>,</span><span class=w> </span><span class=nx>r</span><span class=p>,</span><span class=w> </span><span class=nx>fileInfo</span><span class=p>.</span><span class=nf>Name</span><span class=p>(),</span><span class=w> </span><span class=nx>fileInfo</span><span class=p>.</span><span class=nf>ModTime</span><span class=p>(),</span><span class=w> </span><span class=nx>file</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=p>}</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=kd>func</span><span class=w> </span><span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>http</span><span class=p>.</span><span class=nf>HandleFunc</span><span class=p>(</span><span class=s>&#34;/download&#34;</span><span class=p>,</span><span class=w> </span><span class=nx>handleDownload</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nx>http</span><span class=p>.</span><span class=nf>ListenAndServe</span><span class=p>(</span><span class=s>&#34;:8080&#34;</span><span class=p>,</span><span class=w> </span><span class=kc>nil</span><span class=p>)</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=p>}</span><span class=w>
+</span></span></span></code></pre></td></tr></table></div></div><p>• 解析<code>Range</code>请求头并验证范围有效性
+• 使用<code>Seek</code>定位文件指针，返回部分内容
+• 通过<code>ETag</code>实现文件一致性校验</p><hr><h3 id=四客户端如何检测服务端是否支持><a href=#%e5%9b%9b%e5%ae%a2%e6%88%b7%e7%ab%af%e5%a6%82%e4%bd%95%e6%a3%80%e6%b5%8b%e6%9c%8d%e5%8a%a1%e7%ab%af%e6%98%af%e5%90%a6%e6%94%af%e6%8c%81 class=header-anchor></a>四、客户端如何检测服务端是否支持？</h3><p>可通过以下步骤判断：</p><ol><li><p><strong>发送HEAD请求</strong><br>获取响应头信息：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>curl -I http://your-domain/file.zip
+</span></span></code></pre></td></tr></table></div></div></li><li><p><strong>检查关键头字段</strong><br>• <strong><code>Accept-Ranges: bytes</code></strong>：表明支持字节范围请求
+• <strong><code>Content-Length</code></strong>：必须存在且为固定值（动态内容可能无法支持）
+• <strong><code>ETag</code>或<code>Last-Modified</code></strong>：用于文件变更校验</p></li><li><p><strong>实验性范围请求测试</strong><br>发送带<code>Range</code>头的GET请求：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>curl -H <span class=s2>&#34;Range: bytes=0-100&#34;</span> http://your-domain/file.zip
+</span></span></code></pre></td></tr></table></div></div><p>若响应状态码为<code>206</code>且包含<code>Content-Range</code>头，则确认支持续传。</p></li></ol><hr><h3 id=五nginx反向代理go服务的注意事项><a href=#%e4%ba%94nginx%e5%8f%8d%e5%90%91%e4%bb%a3%e7%90%86go%e6%9c%8d%e5%8a%a1%e7%9a%84%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9 class=header-anchor></a>五、Nginx反向代理Go服务的注意事项</h3><p>当Go服务部署于Nginx后，需确保配置正确处理Range请求：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-nginx data-lang=nginx><span class=line><span class=cl><span class=k>location</span> <span class=s>/go-download</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kn>proxy_pass</span> <span class=s>http://go-backend:8080/download</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kn>proxy_set_header</span> <span class=s>Range</span> <span class=nv>$http_range</span><span class=p>;</span>    <span class=c1># 传递原始Range头
+</span></span></span><span class=line><span class=cl>    <span class=kn>proxy_set_header</span> <span class=s>If-Range</span> <span class=nv>$http_if_range</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kn>proxy_hide_header</span> <span class=s>Accept-Ranges</span><span class=p>;</span>      <span class=c1># 避免与后端冲突
+</span></span></span><span class=line><span class=cl>    <span class=kn>proxy_http_version</span> <span class=mi>1</span><span class=s>.1</span><span class=p>;</span>               <span class=c1># 支持HTTP/1.1特性
+</span></span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>• 确认Nginx与Go服务对文件有读取权限
+• 检查<code>Content-Length</code>是否被意外修改（如Gzip压缩）
+• 使用<code>tcpdump</code>或Wireshark抓包验证请求头传递</p><hr><h3 id=六边界问题与优化建议><a href=#%e5%85%ad%e8%be%b9%e7%95%8c%e9%97%ae%e9%a2%98%e4%b8%8e%e4%bc%98%e5%8c%96%e5%bb%ba%e8%ae%ae class=header-anchor></a>六、边界问题与优化建议</h3><ol><li><p><strong>多范围请求处理</strong><br>支持形如<code>Range: bytes=0-100,200-300</code>的请求需分段响应，可通过Go的<code>multipart/byteranges</code>实现。</p></li><li><p><strong>速率限制与防滥用</strong><br>Nginx配置限速：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-nginx data-lang=nginx><span class=line><span class=cl><span class=k>location</span> <span class=s>/download</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kn>limit_rate</span> <span class=mi>1m</span><span class=p>;</span>  <span class=c1># 限制下载速度为1MB/s
+</span></span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p><strong>日志监控</strong><br>监控<code>206</code>状态码频率，识别异常续传行为。</p></li></ol></section><footer class="article-meta article-footer"><section class=article-tags><a href=/tags/go/>Go</a>
+<a href=/tags/web/>Web</a>
+<a href=/tags/backend/>Backend</a></section><section class="article-copyright inline-meta"><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>CC BY-NC 4.0</span></section><section class="article-lastmod inline-meta"><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>最后更新于 2026-05-24</span></section></footer></article><aside><h2 class=section-title>相关文章</h2><div class=subsection-list><div class=article-list--tile><article><a href=/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/><div class=article-details><h2 class=article-title>Nginx 的多进程模型</h2></div></a></article><article><a href=/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c++%E5%AE%9E%E7%8E%B0/><div class=article-details><h2 class=article-title>流计算中的反向压力模型与 Reactive Streams --C++实现</h2></div></a></article><article><a href=/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac++%E5%AE%9E%E7%8E%B0/><div class=article-details><h2 class=article-title>解析LRU与LFU算法及C++实现</h2></div></a></article><article><a href=/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/><div class=article-details><h2 class=article-title>【AI】半衰期算法在后端的应用</h2></div></a></article><article><a href=/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/><div class=article-details><h2 class=article-title>web 访问认证机制</h2></div></a></article></div></div></aside><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2026 Horeb</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=4.0.2>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><script type=module>
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script></main></div><script type=text/javascript src=/ts/main.f856840516f7c2ad1769a8f5937e3d08d6cb386e2cd2dd025ae696e0ff207958.js defer></script></body></html>
