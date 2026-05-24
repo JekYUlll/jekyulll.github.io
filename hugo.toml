@@ -1,10 +1,14 @@
 baseURL = "https://horeb.top/"
-languageCode = "zh-cn"
+locale = "zh-cn"
 title = "Horeb"
 theme = "stack"
-paginate = 10
+defaultContentLanguage = "zh"
+hasCJKLanguage = true
 enableEmoji = true
 enableGitInfo = true
+
+[pagination]
+  pagerSize = 10
 
 [author]
   name = "JekYUlll"
@@ -20,76 +24,153 @@ enableGitInfo = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = true
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 4
 
 # === Taxonomies ===
 [taxonomies]
   tag = "tags"
   category = "categories"
 
+# === Site description & keywords ===
+[params]
+  description = "--C++, Go, Linux--"
+  keywords = "homepage, blog, c++, golang, rust, linux"
+  mainSections = ["posts"]
+  rssFullContent = true
+
 # === Left Sidebar ===
-[sidebar]
+[params.sidebar]
   compact = false
   emoji = "✏️"
   subtitle = "C++ / Go / Rust"
 
+# === Color scheme ===
+[params.colorScheme]
+  toggle = true
+  default = "auto"
+
 # === Article defaults ===
-[article]
+[params.article]
   headingAnchor = true
   math = false
   toc = true
   readingTime = true
 
-[article.license]
+[params.article.license]
   enabled = true
   default = "CC BY-NC 4.0"
+
+# === Right sidebar widgets ===
+[params.widgets]
+  homepage = [
+    { type = "search" },
+    { type = "archives", params = { limit = 5 } },
+    { type = "categories", params = { limit = 10 } },
+    { type = "tag-cloud", params = { limit = 20 } },
+  ]
+  page = [
+    { type = "toc" },
+  ]
+
+# === Comments ===
+[params.comments]
+  enabled = false
+
+# === Cookies ===
+[params.cookies]
+  enabled = false
 
 # === Date format ===
 [params.dateFormat]
   published = "2006-01-02"
   lastUpdated = "2006-01-02"
 
-# === Site description & keywords ===
-[params]
-  description = "--C++, Go, Linux--"
-  keywords = "homepage, blog, c++, golang, rust, linux"
-  mainSections = ["posts"]
-  homeSubtitle = "do not panic"
-  rssFullContent = true
-
-# === Color Scheme ===
-[colorScheme]
-  toggle = true
-  default = "auto"
-
 # === Footer ===
-[footer]
+[params.footer]
   since = 2024
   customText = ""
 
+# === Image processing ===
+[params.imageProcessing]
+  autoOrient = true
+
+[params.imageProcessing.content]
+  enabled = true
+  widths = [800, 1600, 2400]
+
+[params.imageProcessing.thumbnail]
+  enabled = true
+
+[params.imageProcessing.external]
+  timeout = "5s"
+
 # === Menu ===
+[[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 10
+  [menu.main.params]
+    icon = "home"
+
 [[menu.main]]
   identifier = "posts"
   name = "Posts"
   url = "/posts/"
-  weight = 10
+  weight = 20
+  [menu.main.params]
+    icon = "archives"
+
+[[menu.main]]
+  identifier = "archives"
+  name = "Archives"
+  url = "/archives/"
+  weight = 30
+  [menu.main.params]
+    icon = "archives"
 
 [[menu.main]]
   identifier = "tags"
   name = "Tags"
   url = "/tags/"
-  weight = 20
+  weight = 40
+  [menu.main.params]
+    icon = "tag"
 
 [[menu.main]]
   identifier = "categories"
   name = "Categories"
   url = "/categories/"
-  weight = 30
+  weight = 50
+  [menu.main.params]
+    icon = "categories"
 
 [[menu.main]]
   identifier = "search"
   name = "Search"
   url = "/search/"
-  weight = 40
+  weight = 60
+  [menu.main.params]
+    icon = "search"
+
+[[menu.social]]
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/JekYUlll"
+  [menu.social.params]
+    icon = "brand-github"
+    newTab = true
 
 # === Related posts ===
 [related]
