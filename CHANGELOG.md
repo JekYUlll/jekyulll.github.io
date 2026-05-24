@@ -50,3 +50,12 @@ Commands:
   - `git -C /home/horeb/_code/_space/blog show origin/gh-pages:posts/index.html | grep -c "post-item" && echo "---2026---" && git -C /home/horeb/_code/_space/blog show origin/gh-pages:posts/index.html | gr…`
   - … and 39 more
 
+### 2026-05-24 02:49:47 UTC | session `20260524_092` | model `deepseek-v4-flash` | completed
+**Tools:** edit, shell
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-24 [backend] IM应用开发的两个消息库：同步库与存储库.md`
+Commands:
+  - `cd /home/horeb/_code/_space/blog/content/posts && mv "2026-05-24 [backend] IM应用开发的两个消息库：同步库与存储库.md" "2026-05-23 [backend] IM应用开发的两个消息库：同步库与存储库.md"`
+  - `cd /home/horeb/_code/_space/blog && git add -A && git commit -m "fix: change blog post date to yesterday (2026-05-23) to avoid future-date filtering" && git push origin master`
+  - `sleep 45 && curl -s https://horeb.top/posts/ | grep "2026\|post-year" | head -5`
+

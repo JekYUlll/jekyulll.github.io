@@ -36,7 +36,7 @@ jobs:
           sed -i 's/$.Site.Author.name/site.Params.author.name/g' themes/hello-friend-ng/layouts/posts/rss.xml
 
       - name: Build the site
-        run: hugo --minify --buildFuture
+        run: hugo --minify
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
