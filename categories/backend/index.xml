@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Backend on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/categories/backend/</link><description>Recent content in Backend on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Sun, 24 May 2026 20:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/categories/backend/index.xml" rel="self" type="application/rss+xml"/><item><title>IM应用开发的两个消息库：同步库与存储库</title><link>https://jekyulll.github.io/posts/2026-05-24-backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</link><pubDate>Sun, 24 May 2026 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2026-05-24-backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</guid><description>&lt;h2 id="引言"&gt;引言&lt;/h2&gt;
+&lt;p&gt;IM（Instant Messaging）应用开发的&amp;quot;终局问题&amp;quot;之一，是&lt;strong&gt;消息系统架构&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;不管你用 Netty、gRPC、WebSocket 还是裸 TCP，不管你用 MySQL、Redis 还是自研分布式存储——最终你都要面对两个核心问题：&lt;strong&gt;消息怎么同步到接收方的每个端&lt;/strong&gt;？&lt;strong&gt;消息怎么持久化，让用户随时翻出半年前的聊天记录&lt;/strong&gt;？&lt;/p&gt;
+&lt;p&gt;业界对这两个问题的解法，经过十几年演化，收敛到了一个经典的范式——&lt;strong&gt;&amp;ldquo;两个消息库&amp;rdquo;&lt;/strong&gt;：一个&lt;strong&gt;消息同步库&lt;/strong&gt;（Sync Store），一个&lt;strong&gt;消息存储库&lt;/strong&gt;（Message Store / Archive Store）。&lt;/p&gt;
+&lt;p&gt;这个范式最早由阿里云 TableStore 团队在 2017 年前后系统性地提出并落地（参见《现代IM系统中消息推送和存储架构的实现》），至今依然是微信、钉钉、QQ 等主流 IM 产品在消息层面的核心架构基础。&lt;/p&gt;
+&lt;p&gt;本文围绕&amp;quot;两个消息库&amp;quot;展开讨论，从&lt;strong&gt;为什么需要两个库&lt;/strong&gt;、&lt;strong&gt;Timeline 模型&lt;/strong&gt;、&lt;strong&gt;写扩散 vs 读扩散&lt;/strong&gt;、&lt;strong&gt;物理存储选型&lt;/strong&gt;到&lt;strong&gt;工程中的取舍&lt;/strong&gt;，希望能讲清楚这个看似简单实则充满权衡的设计问题。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="一传统架构先同步后存储"&gt;一、传统架构：先同步，后存储&lt;/h2&gt;
+&lt;p&gt;在分析现代架构之前，先看看&amp;quot;原始&amp;quot;做法。&lt;/p&gt;
+&lt;p&gt;传统架构是先同步后存储。流程大致是：&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;发送方 → 服务端 → (接收方在线?) → 是 → 在线推送 → 接收方
+ ↓ 否
+ 离线库(暂存) → 接收方上线后拉取 → 删除离线消息
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;关键特征：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务端不持久化消息。消息同步到接收方后，服务端就丢弃了&lt;/li&gt;
+&lt;li&gt;离线消息是临时缓存，接收方拉取后就删除&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不支持消息漫游&lt;/strong&gt;（换个设备看历史消息？不存在）&lt;/li&gt;
+&lt;li&gt;写放大几乎没有，但读放大严重（每条消息都要问：接收方在不在？发不发推送？）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这种架构在今天来看已经非常落伍，但它的思路相当直觉——消息嘛，传到了就行了，留着干嘛？&lt;/p&gt;
+&lt;p&gt;然而用户说：不行，我要在手机上看昨天聊的内容，晚上回家在 Mac 上接着看。这就引出了&lt;strong&gt;多端同步&lt;/strong&gt;和&lt;strong&gt;消息漫游&lt;/strong&gt;的需求，传统架构完全做不到。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="二现代架构先存储后同步"&gt;二、现代架构：先存储，后同步&lt;/h2&gt;
+&lt;p&gt;现代架构的核心思想是&lt;strong&gt;先存储，后同步&lt;/strong&gt;。消息从发送方发出，服务端不是先考虑&amp;quot;怎么传给接收方&amp;quot;，而是先存起来。&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;发送方 → 服务端 → ①写入消息存储库 → ②写入消息同步库 → ③在线推送(优化路径)
+ ↓ 失败/离线
+ 接收方主动拉取同步库
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里的核心变化是引入了&lt;strong&gt;两个独立的存储系统&lt;/strong&gt;：&lt;/p&gt;</description></item></channel></rss>

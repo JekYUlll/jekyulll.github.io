@@ -1,547 +1,547 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/2025-10-18-normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-10-18-normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p>当前服务器ip:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>10.201.113.35
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;span style="color: red;">&lt;strong>校外访问请通过校园 VPN&lt;/strong>&lt;/span>&lt;/p>
-&lt;p>&lt;span style="color: red;">&lt;strong>系统盘容量有限，大型文件请放置于&lt;code>/data&lt;/code>文件夹中（&lt;code>~/data&lt;/code>即为其软链接快捷方式）&lt;/strong>&lt;/span>&lt;/p>
-&lt;h2 id="一前言">一、前言&lt;/h2>
-&lt;p>实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p>
-&lt;hr>
-&lt;h2 id="二什么是深度学习服务器">二、什么是“深度学习服务器”&lt;/h2>
-&lt;p>深度学习服务器是一台高性能计算机，通常配备多块 GPU（图形处理器）、大容量显存、内存和高速存储。
-通常安装Linux系统 ，一般&lt;strong>不直接接显示器&lt;/strong>，而是通过网络远程访问（SSH 或远程桌面）。&lt;/p>
-&lt;h3 id="主要用途">主要用途&lt;/h3>
-&lt;ul>
-&lt;li>深度学习训练（如 PyTorch、TensorFlow）；&lt;/li>
-&lt;li>大规模有限元仿真（Abaqus、ANSYS、COMSOL）；&lt;/li>
-&lt;li>数据分析、图像识别、模型优化等。&lt;/li>
-&lt;/ul>
-&lt;h3 id="系统与软件环境">系统与软件环境&lt;/h3>
-&lt;ul>
-&lt;li>操作系统：Ubuntu 24.04 LTS&lt;/li>
-&lt;li>已安装软件：Miniconda、Python、JupyterLab(TODO)&lt;/li>
-&lt;/ul>
-&lt;p>为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。&lt;/p>
-&lt;hr>
-&lt;h2 id="三账户与登录信息">三、账户与登录信息&lt;/h2>
-&lt;h3 id="账户申请">账户申请&lt;/h3>
-&lt;p>新用户请联系实验室管理员开通。&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>账户命名规则&lt;/strong>
-实验室统一以&lt;em>姓名全拼&lt;/em>作为用户名，例如：&lt;/p>
-&lt;ul>
-&lt;li>张三 → &lt;em>zhangsan&lt;/em>&lt;/li>
-&lt;li>李四 → &lt;em>lisi&lt;/em>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>初始密码&lt;/strong>
-所有新账户的初始密码为：&lt;code>LAB113@temp&lt;/code>&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h3 id="手动修改密码重要">手动修改密码（重要）&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>登录服务器后（见后续教程），默认会自动弹出修改密码的流程。&lt;br>
-如果后续修改密码，在终端输入：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>系统会提示：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Changing password &lt;span style="color:#66d9ef">for&lt;/span> user zhangsan.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">(&lt;/span>current&lt;span style="color:#f92672">)&lt;/span> UNIX password:
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输入当前密码（即 &lt;code>LAB113@temp&lt;/code>）。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>接着输入新密码两次（系统不会显示输入内容，但实际上输进去了）：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>Enter new UNIX password:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Retype new UNIX password:
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>如果两次输入一致，会显示：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>password updated successfully
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>表示修改成功。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>&lt;img src="https://jekyulll.github.io/images/chpasswd.png" alt="change password">&lt;/p></description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/2025-06-08-linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-06-08-linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p>Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p>
-&lt;p>PID namespace 中的 &lt;code>init&lt;/code> 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p>
-&lt;p>有多种namespace:&lt;/p>
-&lt;ul>
-&lt;li>PID Namespace（CLONE_NEWPID）：不同 namespace 中的进程可以拥有相同的 PID&lt;/li>
-&lt;li>Network Namespace（CLONE_NEWNET）：隔离网络栈，包括网络设备、IP 地址、端口、路由表以及防火墙规则&lt;/li>
-&lt;li>Mount Namespace（CLONE_NEWNS）：隔离文件系统挂载点&lt;/li>
-&lt;li>User Namespace（CLONE_NEWUSER）：隔离用户和组 ID 空间，允许同一个用户在不同 namespace 中拥有不同的权限&lt;/li>
-&lt;li>&amp;hellip;&lt;/li>
-&lt;/ul>
-&lt;p>Docker 容器默认会使用以下 namespace：&lt;/p>
-&lt;ul>
-&lt;li>PID：隔离进程树。&lt;/li>
-&lt;li>NET：提供独立的网络栈。&lt;/li>
-&lt;li>IPC：隔离进程间通信。&lt;/li>
-&lt;li>UTS：设置独立的主机名。&lt;/li>
-&lt;li>MOUNT：隔离文件系统挂载点。&lt;/li>
-&lt;li>USER：用于映射容器内的 root 用户到宿主机的普通用户。&lt;/li>
-&lt;/ul>
-&lt;p>每个进程的 namespace 信息都存储在/proc/[pid]/ns目录下：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls -l /proc/self/ns
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 cgroup -&amp;gt; &amp;#39;cgroup:[4026531835]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 ipc -&amp;gt; &amp;#39;ipc:[4026531839]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 mnt -&amp;gt; &amp;#39;mnt:[4026531840]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 net -&amp;gt; &amp;#39;net:[4026531956]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid_for_children -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 user -&amp;gt; &amp;#39;user:[4026531837]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lrwxrwxrwx 1 user user 0 Jun 10 12:00 uts -&amp;gt; &amp;#39;uts:[4026531838]&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="如何创建">如何创建？&lt;/h3>
-&lt;ol>
-&lt;li>使用&lt;code>unshare&lt;/code>命令创建 namespace：&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 创建新的挂载点和PID namespace，并在其中启动bash&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>unshare --mount --pid --fork bash
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在新的namespace中查看PID&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>echo $$ &lt;span style="color:#75715e"># 输出通常为1，表示当前bash是新namespace中的第一个进程&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 查看当前namespace中的进程&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ps aux
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>使用&lt;code>clone()&lt;/code>系统调用&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-C++" data-lang="C++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define _GNU_SOURCE
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;sched.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdlib.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;sys/wait.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 子进程执行的函数
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">child_func&lt;/span>(&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#f92672">*&lt;/span>arg) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 在新的UTS namespace中设置主机名
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> sethostname(&lt;span style="color:#e6db74">&amp;#34;container&amp;#34;&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 输出当前进程ID和主机名
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> printf(&lt;span style="color:#e6db74">&amp;#34;子进程PID: %d&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, getpid());
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> printf(&lt;span style="color:#e6db74">&amp;#34;主机名: %s&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;container&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 执行/bin/bash
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> execlp(&lt;span style="color:#e6db74">&amp;#34;/bin/bash&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;bash&amp;#34;&lt;/span>, NULL);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> STACK_SIZE &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">65536&lt;/span>; &lt;span style="color:#75715e">// 为子进程分配栈空间
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>stack &lt;span style="color:#f92672">=&lt;/span> malloc(STACK_SIZE);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>stack) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;内存分配失败&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 设置栈顶（栈是向下增长的）
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>stack_top &lt;span style="color:#f92672">=&lt;/span> stack &lt;span style="color:#f92672">+&lt;/span> STACK_SIZE;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 创建新的UTS和PID namespace，并启动子进程
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> pid_t pid &lt;span style="color:#f92672">=&lt;/span> clone(child_func, stack_top, 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> CLONE_NEWUTS &lt;span style="color:#f92672">|&lt;/span> CLONE_NEWPID &lt;span style="color:#f92672">|&lt;/span> SIGCHLD, NULL);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (pid &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;clone失败&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 等待子进程结束
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> waitpid(pid, NULL, &lt;span style="color:#ae81ff">0&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> free(stack);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
-&lt;li>使用&lt;code>setns()&lt;/code>加入现有 namespace&lt;br>
-加入另一个进程的网络 namespace：&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-C++" data-lang="C++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#define _GNU_SOURCE
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;fcntl.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;sched.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;unistd.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;stdio.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 打开目标进程的网络namespace文件
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">int&lt;/span> fd &lt;span style="color:#f92672">=&lt;/span> open(&lt;span style="color:#e6db74">&amp;#34;/proc/1234/ns/net&amp;#34;&lt;/span>, O_RDONLY);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (fd &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;打开namespace文件失败&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 加入目标namespace
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (setns(fd, CLONE_NEWNET) &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> perror(&lt;span style="color:#e6db74">&amp;#34;加入namespace失败&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> close(fd);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 执行需要在目标namespace中运行的命令
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> execlp(&lt;span style="color:#e6db74">&amp;#34;ip&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;ip&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;addr&amp;#34;&lt;/span>, NULL);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
-&lt;li>使用&lt;code>nsenter&lt;/code>命令（简化版&lt;code>setns()&lt;/code>）&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo nsenter --target &lt;span style="color:#ae81ff">1234&lt;/span> --net ip addr
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/posts/2025-04-29-linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-04-29-linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
-&lt;p>&lt;a href="https://blog.csdn.net/liaowenxiong/article/details/116401524">Linux 命令之 &lt;code>locale&lt;/code> &amp;ndash; 设置和显示程序运行的语言环境&lt;/a>。&lt;/p>
-&lt;blockquote>
-&lt;p>使用 &lt;code>locale&lt;/code> 命令来设置和显示程序运行的语言环境，&lt;code>locale&lt;/code> 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br>
-&lt;code>locale&lt;/code> 由ANSI C提供支持。&lt;code>locale&lt;/code> 的命名规则为&lt;code>&amp;lt;语言&amp;gt;_&amp;lt;地区&amp;gt;.&amp;lt;字符集编码&amp;gt;&lt;/code>。&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989">深刻理解——real user id, effective user id, saved user id in Linux&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423">Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a>。&lt;/p>
-&lt;blockquote>
-&lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>echo $UID
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/posts/2025-04-29-linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-04-29-linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p>复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836">【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a>。&lt;/p>
-&lt;p>编写守护进程的一般步骤步骤：&lt;/p>
-&lt;ol>
-&lt;li>在父进程中执行&lt;code>fork&lt;/code>并&lt;code>exit&lt;/code>退出；&lt;/li>
-&lt;li>在子进程中调用&lt;code>setsid&lt;/code>函数创建新的会话；&lt;/li>
-&lt;li>在子进程中调用&lt;code>chdir&lt;/code>函数，让根目录&lt;code>/&lt;/code>成为子进程的工作目录；&lt;/li>
-&lt;li>在子进程中调用&lt;code>umask&lt;/code>函数，设置进程的&lt;code>umask&lt;/code>为&lt;code>0&lt;/code>；&lt;/li>
-&lt;li>在子进程中关闭任何不需要的文件描述符。&lt;/li>
-&lt;/ol>
-&lt;p>&lt;a href="https://blog.csdn.net/Change_Improve/article/details/106107317">Linux—umask（创建文件时的掩码）用法详解&lt;/a>。&lt;/p>
-&lt;p>&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989">深刻理解——real user id, effective user id, saved user id in Linux&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423">Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a>。&lt;/p>
-&lt;blockquote>
-&lt;p>调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p>
-&lt;/blockquote></description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://jekyulll.github.io/posts/2025-03-30-linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-30-linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p>Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong>保护环&lt;/strong>（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p>
-&lt;p>x86保护环的完整结构为四层，但实际仅Ring 0和Ring 3被广泛使用：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>零环&lt;/strong>（Ring 0）：
-&lt;ul>
-&lt;li>又称内核态，是CPU权限最高的运行模式。操作系统内核运行于此环，可直接访问硬件资源（如CPU、内存、I/O设备），执行特权指令（如修改内存映射、中断处理等）。例如，Linux内核的进程调度、内存管理和设备驱动均在此层级运行。&lt;/li>
-&lt;li>零环可直接控制硬件，而三环的代码若试图执行特权指令（如直接读写磁盘），CPU会触发异常（如General Protection Fault），强制终止非法操作。这种设计避免了用户程序破坏系统稳定性。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>三环&lt;/strong>（Ring 3）：
-&lt;ul>
-&lt;li>又称用户态，是权限最低的层级。普通应用程序运行于此环，仅能通过系统调用（Syscall）请求内核服务，无法直接操作硬件。例如，用户启动的文本编辑器、浏览器等程序均受此限制。&lt;/li>
-&lt;li>用户程序通过系统调用或硬件中断从三环切换到零环。例如，当程序调用&lt;code>open()&lt;/code>函数打开文件时，会触发软中断（如&lt;code>int 0x80&lt;/code>或&lt;code>syscall&lt;/code>指令），内核接管执行文件操作，完成后返回用户态。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;a href="https://blog.csdn.net/youyou1543724847/article/details/85048490">CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/farmwang/article/details/50094959">原文 ——CPU的运行环, 特权级与保护&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574">Linux内核开发之hook系统调用&lt;/a>。&lt;br>
-&lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html">三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401">系统调用之_KUSER_SHARED_DATA&lt;/a>。&lt;/p></description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/posts/2025-03-29-linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-29-linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p>当通过 &lt;code>fork()&lt;/code> 创建子进程时，子进程会获得父进程文件描述符表的&lt;u>完整副本&lt;/u>。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
-父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p>
-&lt;ul>
-&lt;li>修改文件描述符表本身（如关闭 &lt;code>fd&lt;/code>）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li>
-&lt;li>修改共享的文件表项（如偏移量、状态标志）：子进程的操作会直接影响父进程，因为它们共享同一文件表项。&lt;/li>
-&lt;/ul>
-&lt;p>&lt;a href="https://blog.csdn.net/DLUTBruceZhang/article/details/8802156">&lt;code>fork()&lt;/code>子进程与父进程之间的文件描述符问题&lt;/a>。&lt;br>
-&lt;a href="https://blog.csdn.net/m0_73209194/article/details/130165449">【Linux】进程间通信&lt;/a>。&lt;/p>
-&lt;blockquote>
-&lt;p>文件描述符相当于一个逻辑句柄，而&lt;code>open&lt;/code>，&lt;code>close&lt;/code>等函数则是将文件或者物理设备与句柄相关联。&lt;/p>
-&lt;/blockquote>
-&lt;p>三张表：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>文件描述符表&lt;/strong>：用户区的一部分，除非通过使用文件描述符的函数，否则程序无法对其进行访问。对进程中每个打开的文件，文件描述符表都包含一个条目。&lt;/li>
-&lt;li>&lt;strong>系统文件表&lt;/strong>：为系统中所有的进程共享。对每个活动的open, 它都包含一个条目。每个系统文件表的条目都包含文件偏移量、访问模式（读、写、or 读-写）以及指向它的文件描述符表的条目计数。&lt;/li>
-&lt;li>&lt;strong>内存索引节点表&lt;/strong>: 对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目。几个系统文件表条目可能对应于同一个内存索引节点表（不同进程打开同一个文件）。&lt;/li>
-&lt;/ul></description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://jekyulll.github.io/posts/2025-03-27-linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-27-linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容">&lt;strong>一、共享的内容&lt;/strong>&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>文件描述符与文件状态&lt;/strong>&lt;br>
-子进程会继承父进程已打开的文件描述符表，包括文件偏移量、打开模式（如读写权限）和文件状态标志（如&lt;code>O_APPEND&lt;/code>）。例如，若父进程打开了一个文件并写入数据，子进程可通过相同的文件描述符继续操作，且两者的写入位置（偏移量）会相互影响。&lt;br>
-• &lt;strong>示例场景&lt;/strong>：父进程向文件写入“Parent”，子进程写入“Child”，最终文件内容会按操作顺序合并（如“ParentChild”或“ChildParent”），具体取决于调度顺序。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>信号处理设置&lt;/strong>&lt;br>
-子进程继承父进程的信号处理函数（如&lt;code>SIG_IGN&lt;/code>或自定义处理程序）和信号屏蔽集（&lt;code>sigprocmask&lt;/code>的设置）。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>用户身份与环境变量&lt;/strong>&lt;br>
-子进程继承父进程的用户ID、组ID、环境变量、当前工作目录等身份信息。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>写时复制（Copy-On-Write）的内存初始状态&lt;/strong>&lt;br>
-在未发生写入操作前，父子进程的代码段（&lt;code>.text&lt;/code>）、数据段（&lt;code>.data&lt;/code>、&lt;code>.bss&lt;/code>）、堆、栈等内存区域共享同一物理内存页。一旦某一方尝试修改数据，则会触发写时复制，生成独立的副本。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>文件锁&lt;/strong>&lt;br>
-通过&lt;code>fcntl&lt;/code>或&lt;code>flock&lt;/code>设置的文件锁会被子进程继承，父子进程对同一文件的锁定操作会相互影响。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h3 id="二不共享的内容">&lt;strong>二、不共享的内容&lt;/strong>&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>进程独立属性&lt;/strong>&lt;br>
-子进程拥有独立的进程ID（PID）、父进程ID（PPID）、运行时间统计、未决信号队列等。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>多线程环境中的线程资源&lt;/strong>&lt;br>
-若父进程包含多个线程，子进程仅复制执行&lt;code>fork()&lt;/code>的线程，其他线程不会被继承。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>独立的内存修改&lt;/strong>&lt;br>
-通过写时复制机制，父子进程对内存的修改会各自独立。例如，全局变量初始值相同，但修改后互不影响。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>独立的文件描述符关闭操作&lt;/strong>&lt;br>
-子进程关闭某个文件描述符不会影响父进程的同名描述符，反之亦然。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h3 id="三关键机制写时复制cow">&lt;strong>三、关键机制：写时复制（COW）&lt;/strong>&lt;/h3>
-&lt;p>内核通过写时复制技术优化性能：&lt;br>
-• &lt;strong>原理&lt;/strong>：&lt;code>fork()&lt;/code>后，父子进程的页表项指向相同的物理内存页，并将这些页标记为只读。当某一进程尝试写入时，触发页错误，内核复制该页并修改权限为可写。&lt;br>
-• &lt;strong>优点&lt;/strong>：避免不必要的内存复制，提高资源利用率。&lt;/p>
-&lt;hr>
-&lt;h3 id="四应用注意事项">&lt;strong>四、应用注意事项&lt;/strong>&lt;/h3>
-&lt;ol>
-&lt;li>&lt;strong>文件操作同步&lt;/strong>：父子进程对同一文件描述符的并发写入需通过锁（如&lt;code>flock()&lt;/code>）或原子操作避免竞争。&lt;/li>
-&lt;li>&lt;strong>内存共享限制&lt;/strong>：若需主动共享内存，需使用&lt;code>mmap()&lt;/code>或共享内存API（如&lt;code>shmget()&lt;/code>）。&lt;/li>
-&lt;li>&lt;strong>僵尸进程处理&lt;/strong>：父进程需通过&lt;code>wait()&lt;/code>回收子进程资源，或注册&lt;code>SIGCHLD&lt;/code>信号处理函数。&lt;/li>
-&lt;/ol></description></item><item><title>【AI】mmap 和零拷贝</title><link>https://jekyulll.github.io/posts/2025-03-07-linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-07-linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p>mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p>
-&lt;hr>
-&lt;h3 id="一mmap的核心机制">一、mmap的核心机制&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>系统调用与映射方式&lt;/strong>：
-• &lt;strong>函数原型&lt;/strong>：&lt;code>void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);&lt;/code>
-• &lt;strong>关键参数&lt;/strong>：
-◦ &lt;code>prot&lt;/code>：控制读写权限（如&lt;code>PROT_READ&lt;/code>、&lt;code>PROT_WRITE&lt;/code>）。
-◦ &lt;code>flags&lt;/code>：决定映射类型（&lt;code>MAP_SHARED&lt;/code>、&lt;code>MAP_PRIVATE&lt;/code>、&lt;code>MAP_ANONYMOUS&lt;/code>）。
-• &lt;strong>两种主要映射&lt;/strong>：
-◦ &lt;strong>文件映射&lt;/strong>：将文件映射到内存，修改可同步到文件（&lt;code>MAP_SHARED&lt;/code>）或仅进程可见（&lt;code>MAP_PRIVATE&lt;/code>）。
-◦ &lt;strong>匿名映射&lt;/strong>：不关联文件，用于进程间共享内存或动态内存分配（&lt;code>MAP_ANONYMOUS&lt;/code>）。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>实现原理&lt;/strong>：
-• &lt;strong>虚拟内存管理&lt;/strong>：mmap在进程的虚拟地址空间中划分一段区域（通常位于堆与栈之间），通过页表映射到物理内存或文件的页缓存。
-• &lt;strong>按需加载（Demand Paging）&lt;/strong>：访问映射内存时触发缺页中断，内核自动将文件数据加载到物理内存，减少一次性加载开销。
-• &lt;strong>同步机制&lt;/strong>：修改后的数据由内核异步写回文件，也可通过&lt;code>msync()&lt;/code>强制同步。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h3 id="二mmap与io的关系">二、mmap与IO的关系&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>传统IO的瓶颈&lt;/strong>：
-• &lt;strong>数据拷贝开销&lt;/strong>：&lt;code>read()&lt;/code>/&lt;code>write()&lt;/code>需要在内核缓冲区（页缓存）与用户空间之间复制数据，频繁系统调用和拷贝降低性能。
-• &lt;strong>小文件问题&lt;/strong>：多次系统调用对小文件不友好，增加上下文切换开销。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>mmap的优势&lt;/strong>：
-• &lt;strong>零拷贝（Zero-Copy）&lt;/strong>：直接操作映射内存，省去用户态与内核态的数据拷贝。
-• &lt;strong>减少系统调用&lt;/strong>：通过内存访问隐式完成文件读写，无需显式调用&lt;code>read()&lt;/code>/&lt;code>write()&lt;/code>。
-• &lt;strong>高效大文件处理&lt;/strong>：按需加载，避免一次性加载大文件的延迟和内存浪费。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>性能对比&lt;/strong>：
-• &lt;strong>顺序访问&lt;/strong>：mmap与&lt;code>read()&lt;/code>性能接近，但省去拷贝时间。
-• &lt;strong>随机访问&lt;/strong>：mmap显著优于传统IO，减少多次&lt;code>lseek()&lt;/code>和&lt;code>read()&lt;/code>的开销。
-• &lt;strong>适用场景&lt;/strong>：适合频繁读写或需要随机访问的大文件（如数据库、图像处理）。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h3 id="三mmap与内存分配的关系">三、mmap与内存分配的关系&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>动态内存分配&lt;/strong>：
-• &lt;strong>glibc的malloc策略&lt;/strong>：
-◦ 小块内存（如&amp;lt;128KB）使用&lt;code>brk()&lt;/code>扩展堆内存。
-◦ 大块内存使用&lt;code>mmap(MAP_ANONYMOUS)&lt;/code>独立映射，避免内存碎片。
-• &lt;strong>优势&lt;/strong>：&lt;code>mmap&lt;/code>分配的内存可独立释放（&lt;code>munmap()&lt;/code>），而&lt;code>brk()&lt;/code>释放需依赖堆顶内存释放顺序。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>匿名映射的应用&lt;/strong>：
-• &lt;strong>进程间共享内存&lt;/strong>：通过&lt;code>MAP_SHARED&lt;/code>标志，多个进程可共享同一物理内存，高效通信。
-• &lt;strong>自定义内存管理&lt;/strong>：替代&lt;code>malloc&lt;/code>，用于需要精细控制的大内存分配（如内存池）。&lt;/p></description></item><item><title>内核的用户态和内核态</title><link>https://jekyulll.github.io/posts/2025-03-07-linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-07-linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p>线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p>
-&lt;hr>
-&lt;h3 id="一线程概念的双重性用户态与内核态的交织">一、线程概念的双重性：用户态与内核态的交织&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>用户态线程（用户级线程）&lt;/strong>&lt;br>
-用户态线程由用户空间的线程库直接管理，内核对其无感知。这类线程的创建、调度、同步等操作完全在用户空间完成，无需内核介入。&lt;br>
-存在明显局限性：&lt;br>
-• &lt;strong>阻塞问题&lt;/strong>：若一个用户态线程因系统调用阻塞（如I/O操作），整个进程的所有线程都会被阻塞；
-• &lt;strong>多核利用率低&lt;/strong>：内核无法将用户态线程调度到多个CPU核心上运行。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>内核态线程（内核级线程）&lt;/strong>&lt;br>
-内核直接管理线程的创建、调度和销毁，每个线程对应一个内核线程（如Linux的轻量级进程LWP）。&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;em>轻量级进程&lt;/em>（Light Weight Process, LWP）作为用户线程与内核线程的桥梁，负责处理系统调用、资源分配和CPU映射。当用户线程发起系统调用时，LWP接管请求，避免因单个用户线程阻塞导致整个进程挂起。&lt;/p>
-&lt;/blockquote>
-&lt;p>• &lt;strong>多核并行&lt;/strong>：内核可将不同线程分配到多个CPU核心；
-• &lt;strong>独立阻塞&lt;/strong>：单个线程阻塞不会影响其他线程；
-• &lt;strong>切换开销大&lt;/strong>：线程切换需通过内核态，涉及用户栈和内核栈的切换、寄存器保存与恢复等操作。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h3 id="二内核如何处理线程">二、内核如何处理线程？&lt;/h3>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>线程模型的映射关系&lt;/strong>&lt;br>
-现代操作系统（如Linux）通常采用&lt;strong>混合型线程模型&lt;/strong>。内核通过以下机制管理线程：&lt;br>
-• &lt;strong>TCB（线程控制块）&lt;/strong>：存储线程的内核栈指针、状态、优先级等信息（进程控制块是PCB）；
-• &lt;strong>调度器&lt;/strong>：基于时间片轮转或优先级策略分配CPU资源，触发上下文切换。&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;em>混合型线程模型&lt;/em>（Hybrid Thread Model）是一种结合用户级线程（ULT）和内核级线程（KLT）优势的线程实现方式。通过N:M映射实现用户线程与内核线程的关联，即多个用户线程（N）动态绑定到少量内核线程（M）。&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>用户态与内核态的切换机制&lt;/strong>&lt;br>
-当线程执行系统调用、发生异常或中断时，会触发用户态到内核态的切换：&lt;br>
-• &lt;strong>系统调用流程&lt;/strong>：用户线程通过中断（如Linux的&lt;code>int 80h&lt;/code>）进入内核态，内核完成操作后恢复用户态执行；
-• &lt;strong>上下文保存&lt;/strong>：切换时需要保存用户栈的寄存器状态（如程序计数器、栈指针）到内存，并加载内核栈信息。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>性能优化策略&lt;/strong>&lt;br>
-内核通过以下方式减少切换开销：&lt;br>
-• &lt;strong>避免频繁切换&lt;/strong>：采用无锁编程、CAS算法等减少线程竞争；
-• &lt;strong>轻量级进程（LWP）&lt;/strong>：通过线程池复用内核线程，降低创建销毁成本。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h3 id="三语言案例">三、语言案例&lt;/h3>
-&lt;p>Java线程在JDK1.2之后采用&lt;em>1:1模型&lt;/em>，每个Java线程对应一个内核线程。
-支持多核并行、避免单线程阻塞影响整体进程；线程创建和切换需要内核介入。&lt;/p>
-&lt;p>C++11及之后的标准库（如&lt;code>&amp;lt;thread&amp;gt;&lt;/code>）通过&lt;code>std::thread&lt;/code>直接调用操作系统线程（如Linux的POSIX线程或Windows线程），采用&lt;em>1:1线程模型&lt;/em>。&lt;/p>
-&lt;p>Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p></description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://jekyulll.github.io/posts/2025-03-07-linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-07-linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p>&lt;strong>一、线程切换 vs 进程切换&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>地址空间与页表&lt;/strong>&lt;br>
-进程拥有独立的虚拟地址空间和页表，切换进程时需更新页表并刷新 &lt;strong>TLB（地址转换缓存）&lt;/strong>，导致内存访问速度下降。而线程共享进程的地址空间和页表，切换时无需此操作，TLB 缓存保持有效。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>上下文保存的内容&lt;/strong>&lt;br>
-• &lt;strong>进程切换&lt;/strong>：需保存完整的上下文，包括寄存器、程序计数器、栈指针、内存映射、文件描述符等。&lt;br>
-• &lt;strong>线程切换&lt;/strong>：仅需保存线程私有的寄存器、栈和程序计数器，共享资源（如代码段、文件）无需处理。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>缓存利用率&lt;/strong>&lt;br>
-进程切换会导致 CPU 缓存（如 L1/L2/L3）失效，需重新加载数据，降低性能。线程切换时，缓存因共享地址空间仍有效，减少了数据重载的开销。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>资源分配&lt;/strong>&lt;br>
-进程是资源分配的基本单位（如内存、文件），切换时需重新分配资源；线程共享进程资源，切换仅涉及执行流调度。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>二、协程切换 vs 线程切换&lt;/strong>&lt;/p>
-&lt;p>协程的切换开销更小，原因在于其 &lt;strong>用户态调度&lt;/strong> 和 &lt;strong>轻量级设计&lt;/strong>：&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>用户态调度&lt;/strong>&lt;br>
-协程切换完全由用户态代码控制，无需陷入内核态，避免了 &lt;strong>用户态-内核态切换&lt;/strong> 的开销。而线程切换需操作系统介入，涉及模式切换和内核调度。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>上下文信息更少&lt;/strong>&lt;br>
-协程只需保存少量寄存器（如 PC、SP）和栈指针，且栈空间通常仅需 KB 级别（线程栈为 MB 级别）。例如，Go 协程的初始栈仅 2KB，而 Java 线程默认为 1MB。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>非阻塞与协作式调度&lt;/strong>&lt;br>
-协程通过主动让出（如 &lt;code>yield&lt;/code> 或 &lt;code>await&lt;/code>）实现协作式调度，减少抢占式调度的竞争和锁需求。线程通常依赖操作系统的抢占式调度，可能因频繁切换导致性能损耗。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>内存与并发效率&lt;/strong>&lt;br>
-单线程可运行数万协程（如 Go 的 Goroutine），而同等数量线程会因内存和调度开销过大而崩溃。协程的轻量级特性尤其适合高并发 I/O 密集型任务。&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th>&lt;strong>维度&lt;/strong>&lt;/th>
- &lt;th>&lt;strong>进程切换&lt;/strong>&lt;/th>
- &lt;th>&lt;strong>线程切换&lt;/strong>&lt;/th>
- &lt;th>&lt;strong>协程切换&lt;/strong>&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td>&lt;strong>地址空间&lt;/strong>&lt;/td>
- &lt;td>切换（独立）&lt;/td>
- &lt;td>不切换（共享）&lt;/td>
- &lt;td>不切换（共享）&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>&lt;strong>上下文大小&lt;/strong>&lt;/td>
- &lt;td>大（含全部资源）&lt;/td>
- &lt;td>较小（仅寄存器）&lt;/td>
- &lt;td>极小（仅关键寄存器）&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>&lt;strong>调度模式&lt;/strong>&lt;/td>
- &lt;td>内核抢占式&lt;/td>
- &lt;td>内核抢占式&lt;/td>
- &lt;td>用户协作式&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>&lt;strong>内存开销&lt;/strong>&lt;/td>
- &lt;td>高（独立资源）&lt;/td>
- &lt;td>中（共享资源）&lt;/td>
- &lt;td>极低（KB 级栈）&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;p>&lt;u>线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u>&amp;gt;。&lt;/p></description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote>
-&lt;p>Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
-该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a>。此处尝试进行回答。&lt;/p>
-&lt;/blockquote>
-&lt;hr>
-&lt;p>第一想法一般是：“原程序被操作系统加载进内存，不会受到影响。”&lt;br>
-系统会创建一个新的&lt;code>inode&lt;/code>指向新文件，而正在运行的进程仍会继续使用旧的&lt;code>inode&lt;/code>对应的代码段。&lt;/p>
-&lt;p>但实际上拓展到一个问题：“二进制文件会全部加载到内存吗？”&lt;/p>
-&lt;p>ELF二进制文件在加载时，操作系统通常采用按需分页的机制，只将当前需要的部分加载到物理内存，而不是一次性加载整个文件。虚拟内存映射允许文件的部分内容驻留在磁盘，直到被访问时才调入内存。&lt;br>
-同时，动态链接库的延迟加载和内存映射文件技术（&lt;code>mmap&lt;/code>）也帮助减少实际内存占用。因此，如果二进制文件很大，不会全部加载到物理内存中，而是按需加载，利用虚拟内存管理技术优化资源使用。&lt;/p>
-&lt;p>但是：真的会在运行时加载新的内容吗？&lt;/p>
-&lt;p>ELF文件在启动时如何决定哪些内容加载到内存？主要依赖于其&lt;strong>程序头表&lt;/strong>（Program Header Table）​中定义的段（Segment）信息。程序头表由多个&lt;code>Elf64_Phdr&lt;/code>结构体组成，每个结构体描述了一个需要加载到内存的段（如代码段、数据段、动态链接信息段等）。这些段通常包含多个&lt;em>节&lt;/em>（Section）的集合。&lt;/p>
-&lt;p>覆盖原文件后，旧文件的磁盘空间不会被立即释放，需等待所有关联进程结束后才能回收（通过&lt;code>lsof&lt;/code>可查看占用进程）。&lt;/p>
-&lt;p>&lt;strong>总结&lt;/strong>：&lt;br>
-​已运行的进程不受影响：Linux通过&lt;code>inode&lt;/code>标识文件，旧进程继续执行内存中已加载的旧代码，与原磁盘文件解耦。&lt;/p>
-&lt;hr>
-&lt;h3 id="1-elf文件的按需加载机制">1. &lt;strong>ELF文件的按需加载机制&lt;/strong>&lt;/h3>
-&lt;p>ELF二进制文件通过&lt;strong>程序头表（Program Header Table）&lt;strong>中的&lt;code>PT_LOAD&lt;/code>段描述需要加载的代码和数据区域。内核的&lt;code>load_elf_binary()&lt;/code>函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong>按需分页&lt;/strong>的：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Os on Welcome to my Blog ⬆️</title><link>https://jekyulll.github.io/tags/os/</link><description>Recent content in Os on Welcome to my Blog ⬆️</description><generator>Hugo</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener"&gt;CC BY-NC 4.0&lt;/a&gt;</copyright><lastBuildDate>Sat, 18 Oct 2025 21:05:47 +0800</lastBuildDate><atom:link href="https://jekyulll.github.io/tags/os/index.xml" rel="self" type="application/rss+xml"/><item><title>实验室服务器使用教程</title><link>https://jekyulll.github.io/posts/2025-10-18-normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-10-18-normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid><description>&lt;p&gt;当前服务器ip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;10.201.113.35
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;span style="color: red;"&gt;&lt;strong&gt;校外访问请通过校园 VPN&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="color: red;"&gt;&lt;strong&gt;系统盘容量有限，大型文件请放置于&lt;code&gt;/data&lt;/code&gt;文件夹中（&lt;code&gt;~/data&lt;/code&gt;即为其软链接快捷方式）&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id="一前言"&gt;一、前言&lt;/h2&gt;
+&lt;p&gt;实验室近期新购置了一台深度学习服务器，供成员进行模型训练、仿真和计算任务。为了帮助大家快速上手、规范使用、避免资源浪费或系统损坏，特编写此教程。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="二什么是深度学习服务器"&gt;二、什么是“深度学习服务器”&lt;/h2&gt;
+&lt;p&gt;深度学习服务器是一台高性能计算机，通常配备多块 GPU（图形处理器）、大容量显存、内存和高速存储。
+通常安装Linux系统 ，一般&lt;strong&gt;不直接接显示器&lt;/strong&gt;，而是通过网络远程访问（SSH 或远程桌面）。&lt;/p&gt;
+&lt;h3 id="主要用途"&gt;主要用途&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;深度学习训练（如 PyTorch、TensorFlow）；&lt;/li&gt;
+&lt;li&gt;大规模有限元仿真（Abaqus、ANSYS、COMSOL）；&lt;/li&gt;
+&lt;li&gt;数据分析、图像识别、模型优化等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="系统与软件环境"&gt;系统与软件环境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;操作系统：Ubuntu 24.04 LTS&lt;/li&gt;
+&lt;li&gt;已安装软件：Miniconda、Python、JupyterLab(TODO)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为避免cuda版本导致的问题，此处仅保证显卡驱动版本，请根据需求自行安装cuda。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="三账户与登录信息"&gt;三、账户与登录信息&lt;/h2&gt;
+&lt;h3 id="账户申请"&gt;账户申请&lt;/h3&gt;
+&lt;p&gt;新用户请联系实验室管理员开通。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;账户命名规则&lt;/strong&gt;
+实验室统一以&lt;em&gt;姓名全拼&lt;/em&gt;作为用户名，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;张三 → &lt;em&gt;zhangsan&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;李四 → &lt;em&gt;lisi&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;初始密码&lt;/strong&gt;
+所有新账户的初始密码为：&lt;code&gt;LAB113@temp&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="手动修改密码重要"&gt;手动修改密码（重要）&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;登录服务器后（见后续教程），默认会自动弹出修改密码的流程。&lt;br&gt;
+如果后续修改密码，在终端输入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;系统会提示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Changing password &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; user zhangsan.
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;(&lt;/span&gt;current&lt;span style="color:#f92672"&gt;)&lt;/span&gt; UNIX password:
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;输入当前密码（即 &lt;code&gt;LAB113@temp&lt;/code&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接着输入新密码两次（系统不会显示输入内容，但实际上输进去了）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Enter new UNIX password:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Retype new UNIX password:
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果两次输入一致，会显示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;password updated successfully
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示修改成功。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="https://jekyulll.github.io/images/chpasswd.png" alt="change password"&gt;&lt;/p&gt;</description></item><item><title>容器化技术之 Linux namespace</title><link>https://jekyulll.github.io/posts/2025-06-08-linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link><pubDate>Sun, 08 Jun 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-06-08-linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid><description>&lt;p&gt;Linux namespace做一层资源隔离，使里面的进程/进程组看起来拥有自己的独立资源。&lt;/p&gt;
+&lt;p&gt;PID namespace 中的 &lt;code&gt;init&lt;/code&gt; 进程（PID=1）需要正确处理子进程的僵尸状态，否则会导致资源泄漏。&lt;/p&gt;
+&lt;p&gt;有多种namespace:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PID Namespace（CLONE_NEWPID）：不同 namespace 中的进程可以拥有相同的 PID&lt;/li&gt;
+&lt;li&gt;Network Namespace（CLONE_NEWNET）：隔离网络栈，包括网络设备、IP 地址、端口、路由表以及防火墙规则&lt;/li&gt;
+&lt;li&gt;Mount Namespace（CLONE_NEWNS）：隔离文件系统挂载点&lt;/li&gt;
+&lt;li&gt;User Namespace（CLONE_NEWUSER）：隔离用户和组 ID 空间，允许同一个用户在不同 namespace 中拥有不同的权限&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Docker 容器默认会使用以下 namespace：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PID：隔离进程树。&lt;/li&gt;
+&lt;li&gt;NET：提供独立的网络栈。&lt;/li&gt;
+&lt;li&gt;IPC：隔离进程间通信。&lt;/li&gt;
+&lt;li&gt;UTS：设置独立的主机名。&lt;/li&gt;
+&lt;li&gt;MOUNT：隔离文件系统挂载点。&lt;/li&gt;
+&lt;li&gt;USER：用于映射容器内的 root 用户到宿主机的普通用户。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个进程的 namespace 信息都存储在/proc/[pid]/ns目录下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ls -l /proc/self/ns
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 cgroup -&amp;gt; &amp;#39;cgroup:[4026531835]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 ipc -&amp;gt; &amp;#39;ipc:[4026531839]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 mnt -&amp;gt; &amp;#39;mnt:[4026531840]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 net -&amp;gt; &amp;#39;net:[4026531956]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 pid_for_children -&amp;gt; &amp;#39;pid:[4026531836]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 user -&amp;gt; &amp;#39;user:[4026531837]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# lrwxrwxrwx 1 user user 0 Jun 10 12:00 uts -&amp;gt; &amp;#39;uts:[4026531838]&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="如何创建"&gt;如何创建？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;使用&lt;code&gt;unshare&lt;/code&gt;命令创建 namespace：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 创建新的挂载点和PID namespace，并在其中启动bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;unshare --mount --pid --fork bash
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 在新的namespace中查看PID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo $$ &lt;span style="color:#75715e"&gt;# 输出通常为1，表示当前bash是新namespace中的第一个进程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# 查看当前namespace中的进程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ps aux
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;使用&lt;code&gt;clone()&lt;/code&gt;系统调用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-C++" data-lang="C++"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define _GNU_SOURCE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;sched.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;sys/wait.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;// 子进程执行的函数
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;static&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;child_func&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;arg) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 在新的UTS namespace中设置主机名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sethostname(&lt;span style="color:#e6db74"&gt;&amp;#34;container&amp;#34;&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;9&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 输出当前进程ID和主机名
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; printf(&lt;span style="color:#e6db74"&gt;&amp;#34;子进程PID: %d&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;, getpid());
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; printf(&lt;span style="color:#e6db74"&gt;&amp;#34;主机名: %s&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;\n&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;container&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 执行/bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; execlp(&lt;span style="color:#e6db74"&gt;&amp;#34;/bin/bash&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;bash&amp;#34;&lt;/span&gt;, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; STACK_SIZE &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;65536&lt;/span&gt;; &lt;span style="color:#75715e"&gt;// 为子进程分配栈空间
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; malloc(STACK_SIZE);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (&lt;span style="color:#f92672"&gt;!&lt;/span&gt;stack) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;内存分配失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 设置栈顶（栈是向下增长的）
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;stack_top &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;+&lt;/span&gt; STACK_SIZE;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 创建新的UTS和PID namespace，并启动子进程
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pid_t pid &lt;span style="color:#f92672"&gt;=&lt;/span&gt; clone(child_func, stack_top, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; CLONE_NEWUTS &lt;span style="color:#f92672"&gt;|&lt;/span&gt; CLONE_NEWPID &lt;span style="color:#f92672"&gt;|&lt;/span&gt; SIGCHLD, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (pid &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;clone失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 等待子进程结束
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; waitpid(pid, NULL, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; free(stack);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;使用&lt;code&gt;setns()&lt;/code&gt;加入现有 namespace&lt;br&gt;
+加入另一个进程的网络 namespace：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-C++" data-lang="C++"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#define _GNU_SOURCE
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;fcntl.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;sched.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;unistd.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 打开目标进程的网络namespace文件
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; fd &lt;span style="color:#f92672"&gt;=&lt;/span&gt; open(&lt;span style="color:#e6db74"&gt;&amp;#34;/proc/1234/ns/net&amp;#34;&lt;/span&gt;, O_RDONLY);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (fd &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;打开namespace文件失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 加入目标namespace
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (setns(fd, CLONE_NEWNET) &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; perror(&lt;span style="color:#e6db74"&gt;&amp;#34;加入namespace失败&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close(fd);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;// 执行需要在目标namespace中运行的命令
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; execlp(&lt;span style="color:#e6db74"&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;ip&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;addr&amp;#34;&lt;/span&gt;, NULL);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;使用&lt;code&gt;nsenter&lt;/code&gt;命令（简化版&lt;code&gt;setns()&lt;/code&gt;）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo nsenter --target &lt;span style="color:#ae81ff"&gt;1234&lt;/span&gt; --net ip addr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>[linux] TODO 守护进程，setsid，Linux三个id，权限</title><link>https://jekyulll.github.io/posts/2025-04-29-linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link><pubDate>Tue, 29 Apr 2025 21:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-04-29-linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid><description>&lt;p&gt;复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836"&gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/liaowenxiong/article/details/116401524"&gt;Linux 命令之 &lt;code&gt;locale&lt;/code&gt; &amp;ndash; 设置和显示程序运行的语言环境&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 &lt;code&gt;locale&lt;/code&gt; 命令来设置和显示程序运行的语言环境，&lt;code&gt;locale&lt;/code&gt; 会根据计算机用户所使用的语言，所在国家或者地区，以及当地的文化传统定义一个软件运行时的语言环境。&lt;br&gt;
+&lt;code&gt;locale&lt;/code&gt; 由ANSI C提供支持。&lt;code&gt;locale&lt;/code&gt; 的命名规则为&lt;code&gt;&amp;lt;语言&amp;gt;_&amp;lt;地区&amp;gt;.&amp;lt;字符集编码&amp;gt;&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989"&gt;深刻理解——real user id, effective user id, saved user id in Linux&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423"&gt;Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;echo $UID
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Linux 守护进程</title><link>https://jekyulll.github.io/posts/2025-04-29-linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link><pubDate>Tue, 29 Apr 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-04-29-linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid><description>&lt;p&gt;复习：&lt;a href="https://blog.csdn.net/JMW1407/article/details/108412836"&gt;【Linux】守护进程（ Daemon）的定义，作用，创建流程&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;编写守护进程的一般步骤步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在父进程中执行&lt;code&gt;fork&lt;/code&gt;并&lt;code&gt;exit&lt;/code&gt;退出；&lt;/li&gt;
+&lt;li&gt;在子进程中调用&lt;code&gt;setsid&lt;/code&gt;函数创建新的会话；&lt;/li&gt;
+&lt;li&gt;在子进程中调用&lt;code&gt;chdir&lt;/code&gt;函数，让根目录&lt;code&gt;/&lt;/code&gt;成为子进程的工作目录；&lt;/li&gt;
+&lt;li&gt;在子进程中调用&lt;code&gt;umask&lt;/code&gt;函数，设置进程的&lt;code&gt;umask&lt;/code&gt;为&lt;code&gt;0&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;在子进程中关闭任何不需要的文件描述符。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/Change_Improve/article/details/106107317"&gt;Linux—umask（创建文件时的掩码）用法详解&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/fmeng23/article/details/23115989"&gt;深刻理解——real user id, effective user id, saved user id in Linux&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://blog.csdn.net/ybxuwei/article/details/23563423"&gt;Linux进程权限的研究——real user id, effective user id, saved set-user-id&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;调用setsid的进程不是一个进程组的组长，此函数创建一个新的会话期。&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>Linux 的CPU保护环，三环和零环</title><link>https://jekyulll.github.io/posts/2025-03-30-linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link><pubDate>Sun, 30 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-30-linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid><description>&lt;p&gt;Linux系统中的“三环”和“零环”概念源自CPU的&lt;strong&gt;保护环&lt;/strong&gt;（Protection Rings）机制，是操作系统实现权限隔离和安全保护的核心设计。&lt;/p&gt;
+&lt;p&gt;x86保护环的完整结构为四层，但实际仅Ring 0和Ring 3被广泛使用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;零环&lt;/strong&gt;（Ring 0）：
+&lt;ul&gt;
+&lt;li&gt;又称内核态，是CPU权限最高的运行模式。操作系统内核运行于此环，可直接访问硬件资源（如CPU、内存、I/O设备），执行特权指令（如修改内存映射、中断处理等）。例如，Linux内核的进程调度、内存管理和设备驱动均在此层级运行。&lt;/li&gt;
+&lt;li&gt;零环可直接控制硬件，而三环的代码若试图执行特权指令（如直接读写磁盘），CPU会触发异常（如General Protection Fault），强制终止非法操作。这种设计避免了用户程序破坏系统稳定性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;三环&lt;/strong&gt;（Ring 3）：
+&lt;ul&gt;
+&lt;li&gt;又称用户态，是权限最低的层级。普通应用程序运行于此环，仅能通过系统调用（Syscall）请求内核服务，无法直接操作硬件。例如，用户启动的文本编辑器、浏览器等程序均受此限制。&lt;/li&gt;
+&lt;li&gt;用户程序通过系统调用或硬件中断从三环切换到零环。例如，当程序调用&lt;code&gt;open()&lt;/code&gt;函数打开文件时，会触发软中断（如&lt;code&gt;int 0x80&lt;/code&gt;或&lt;code&gt;syscall&lt;/code&gt;指令），内核接管执行文件操作，完成后返回用户态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/youyou1543724847/article/details/85048490"&gt;CPU的运行环, 特权级与保护&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://blog.csdn.net/farmwang/article/details/50094959"&gt;原文 ——CPU的运行环, 特权级与保护&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://blog.csdn.net/qq_26962739/article/details/133133574"&gt;Linux内核开发之hook系统调用&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://www.cnblogs.com/onetrainee/p/11707130.html"&gt;三环进入零环的细节（KiFastCallEntry函数分析）&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://blog.csdn.net/wxy_xx1/article/details/142953401"&gt;系统调用之_KUSER_SHARED_DATA&lt;/a&gt;。&lt;/p&gt;</description></item><item><title>fork出的子进程是否继承文件描述符表？</title><link>https://jekyulll.github.io/posts/2025-03-29-linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link><pubDate>Sat, 29 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-29-linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid><description>&lt;p&gt;当通过 &lt;code&gt;fork()&lt;/code&gt; 创建子进程时，子进程会获得父进程文件描述符表的&lt;u&gt;完整副本&lt;/u&gt;。这意味着子进程的文件描述符表中每个条目指向的 系统级文件表项（File Table Entry）与父进程相同。
+父子进程共享文件表项中的文件偏移量（Offset）、打开模式（Read/Write Flags）、文件状态标志等信息。例如，如果父进程写入文件后移动了偏移量，子进程会从新的偏移位置继续操作。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改文件描述符表本身（如关闭 &lt;code&gt;fd&lt;/code&gt;）：子进程的操作不会影响父进程。例如，子进程关闭 fd=3，父进程的 fd=3 仍然有效。&lt;/li&gt;
+&lt;li&gt;修改共享的文件表项（如偏移量、状态标志）：子进程的操作会直接影响父进程，因为它们共享同一文件表项。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://blog.csdn.net/DLUTBruceZhang/article/details/8802156"&gt;&lt;code&gt;fork()&lt;/code&gt;子进程与父进程之间的文件描述符问题&lt;/a&gt;。&lt;br&gt;
+&lt;a href="https://blog.csdn.net/m0_73209194/article/details/130165449"&gt;【Linux】进程间通信&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文件描述符相当于一个逻辑句柄，而&lt;code&gt;open&lt;/code&gt;，&lt;code&gt;close&lt;/code&gt;等函数则是将文件或者物理设备与句柄相关联。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;三张表：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文件描述符表&lt;/strong&gt;：用户区的一部分，除非通过使用文件描述符的函数，否则程序无法对其进行访问。对进程中每个打开的文件，文件描述符表都包含一个条目。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;系统文件表&lt;/strong&gt;：为系统中所有的进程共享。对每个活动的open, 它都包含一个条目。每个系统文件表的条目都包含文件偏移量、访问模式（读、写、or 读-写）以及指向它的文件描述符表的条目计数。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内存索引节点表&lt;/strong&gt;: 对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目。几个系统文件表条目可能对应于同一个内存索引节点表（不同进程打开同一个文件）。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Linux里fork出子进程的时候，哪些内容是共享的？</title><link>https://jekyulll.github.io/posts/2025-03-27-linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link><pubDate>Thu, 27 Mar 2025 04:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-27-linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid><description>&lt;h3 id="一共享的内容"&gt;&lt;strong&gt;一、共享的内容&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文件描述符与文件状态&lt;/strong&gt;&lt;br&gt;
+子进程会继承父进程已打开的文件描述符表，包括文件偏移量、打开模式（如读写权限）和文件状态标志（如&lt;code&gt;O_APPEND&lt;/code&gt;）。例如，若父进程打开了一个文件并写入数据，子进程可通过相同的文件描述符继续操作，且两者的写入位置（偏移量）会相互影响。&lt;br&gt;
+• &lt;strong&gt;示例场景&lt;/strong&gt;：父进程向文件写入“Parent”，子进程写入“Child”，最终文件内容会按操作顺序合并（如“ParentChild”或“ChildParent”），具体取决于调度顺序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;信号处理设置&lt;/strong&gt;&lt;br&gt;
+子进程继承父进程的信号处理函数（如&lt;code&gt;SIG_IGN&lt;/code&gt;或自定义处理程序）和信号屏蔽集（&lt;code&gt;sigprocmask&lt;/code&gt;的设置）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;用户身份与环境变量&lt;/strong&gt;&lt;br&gt;
+子进程继承父进程的用户ID、组ID、环境变量、当前工作目录等身份信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;写时复制（Copy-On-Write）的内存初始状态&lt;/strong&gt;&lt;br&gt;
+在未发生写入操作前，父子进程的代码段（&lt;code&gt;.text&lt;/code&gt;）、数据段（&lt;code&gt;.data&lt;/code&gt;、&lt;code&gt;.bss&lt;/code&gt;）、堆、栈等内存区域共享同一物理内存页。一旦某一方尝试修改数据，则会触发写时复制，生成独立的副本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;文件锁&lt;/strong&gt;&lt;br&gt;
+通过&lt;code&gt;fcntl&lt;/code&gt;或&lt;code&gt;flock&lt;/code&gt;设置的文件锁会被子进程继承，父子进程对同一文件的锁定操作会相互影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="二不共享的内容"&gt;&lt;strong&gt;二、不共享的内容&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;进程独立属性&lt;/strong&gt;&lt;br&gt;
+子进程拥有独立的进程ID（PID）、父进程ID（PPID）、运行时间统计、未决信号队列等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;多线程环境中的线程资源&lt;/strong&gt;&lt;br&gt;
+若父进程包含多个线程，子进程仅复制执行&lt;code&gt;fork()&lt;/code&gt;的线程，其他线程不会被继承。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;独立的内存修改&lt;/strong&gt;&lt;br&gt;
+通过写时复制机制，父子进程对内存的修改会各自独立。例如，全局变量初始值相同，但修改后互不影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;独立的文件描述符关闭操作&lt;/strong&gt;&lt;br&gt;
+子进程关闭某个文件描述符不会影响父进程的同名描述符，反之亦然。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="三关键机制写时复制cow"&gt;&lt;strong&gt;三、关键机制：写时复制（COW）&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;内核通过写时复制技术优化性能：&lt;br&gt;
+• &lt;strong&gt;原理&lt;/strong&gt;：&lt;code&gt;fork()&lt;/code&gt;后，父子进程的页表项指向相同的物理内存页，并将这些页标记为只读。当某一进程尝试写入时，触发页错误，内核复制该页并修改权限为可写。&lt;br&gt;
+• &lt;strong&gt;优点&lt;/strong&gt;：避免不必要的内存复制，提高资源利用率。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="四应用注意事项"&gt;&lt;strong&gt;四、应用注意事项&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;文件操作同步&lt;/strong&gt;：父子进程对同一文件描述符的并发写入需通过锁（如&lt;code&gt;flock()&lt;/code&gt;）或原子操作避免竞争。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内存共享限制&lt;/strong&gt;：若需主动共享内存，需使用&lt;code&gt;mmap()&lt;/code&gt;或共享内存API（如&lt;code&gt;shmget()&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;僵尸进程处理&lt;/strong&gt;：父进程需通过&lt;code&gt;wait()&lt;/code&gt;回收子进程资源，或注册&lt;code&gt;SIGCHLD&lt;/code&gt;信号处理函数。&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>【AI】mmap 和零拷贝</title><link>https://jekyulll.github.io/posts/2025-03-07-linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-07-linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid><description>&lt;p&gt;mmap（Memory Mapping）是Unix/Linux系统中的一种重要机制，它允许将文件或设备直接映射到进程的虚拟地址空间，从而将文件操作与内存操作高效结合。以下从核心机制、与IO的关系、与内存分配的关系三个方面详细解析：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="一mmap的核心机制"&gt;一、mmap的核心机制&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;系统调用与映射方式&lt;/strong&gt;：
+• &lt;strong&gt;函数原型&lt;/strong&gt;：&lt;code&gt;void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);&lt;/code&gt;
+• &lt;strong&gt;关键参数&lt;/strong&gt;：
+◦ &lt;code&gt;prot&lt;/code&gt;：控制读写权限（如&lt;code&gt;PROT_READ&lt;/code&gt;、&lt;code&gt;PROT_WRITE&lt;/code&gt;）。
+◦ &lt;code&gt;flags&lt;/code&gt;：决定映射类型（&lt;code&gt;MAP_SHARED&lt;/code&gt;、&lt;code&gt;MAP_PRIVATE&lt;/code&gt;、&lt;code&gt;MAP_ANONYMOUS&lt;/code&gt;）。
+• &lt;strong&gt;两种主要映射&lt;/strong&gt;：
+◦ &lt;strong&gt;文件映射&lt;/strong&gt;：将文件映射到内存，修改可同步到文件（&lt;code&gt;MAP_SHARED&lt;/code&gt;）或仅进程可见（&lt;code&gt;MAP_PRIVATE&lt;/code&gt;）。
+◦ &lt;strong&gt;匿名映射&lt;/strong&gt;：不关联文件，用于进程间共享内存或动态内存分配（&lt;code&gt;MAP_ANONYMOUS&lt;/code&gt;）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;实现原理&lt;/strong&gt;：
+• &lt;strong&gt;虚拟内存管理&lt;/strong&gt;：mmap在进程的虚拟地址空间中划分一段区域（通常位于堆与栈之间），通过页表映射到物理内存或文件的页缓存。
+• &lt;strong&gt;按需加载（Demand Paging）&lt;/strong&gt;：访问映射内存时触发缺页中断，内核自动将文件数据加载到物理内存，减少一次性加载开销。
+• &lt;strong&gt;同步机制&lt;/strong&gt;：修改后的数据由内核异步写回文件，也可通过&lt;code&gt;msync()&lt;/code&gt;强制同步。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="二mmap与io的关系"&gt;二、mmap与IO的关系&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;传统IO的瓶颈&lt;/strong&gt;：
+• &lt;strong&gt;数据拷贝开销&lt;/strong&gt;：&lt;code&gt;read()&lt;/code&gt;/&lt;code&gt;write()&lt;/code&gt;需要在内核缓冲区（页缓存）与用户空间之间复制数据，频繁系统调用和拷贝降低性能。
+• &lt;strong&gt;小文件问题&lt;/strong&gt;：多次系统调用对小文件不友好，增加上下文切换开销。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;mmap的优势&lt;/strong&gt;：
+• &lt;strong&gt;零拷贝（Zero-Copy）&lt;/strong&gt;：直接操作映射内存，省去用户态与内核态的数据拷贝。
+• &lt;strong&gt;减少系统调用&lt;/strong&gt;：通过内存访问隐式完成文件读写，无需显式调用&lt;code&gt;read()&lt;/code&gt;/&lt;code&gt;write()&lt;/code&gt;。
+• &lt;strong&gt;高效大文件处理&lt;/strong&gt;：按需加载，避免一次性加载大文件的延迟和内存浪费。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;性能对比&lt;/strong&gt;：
+• &lt;strong&gt;顺序访问&lt;/strong&gt;：mmap与&lt;code&gt;read()&lt;/code&gt;性能接近，但省去拷贝时间。
+• &lt;strong&gt;随机访问&lt;/strong&gt;：mmap显著优于传统IO，减少多次&lt;code&gt;lseek()&lt;/code&gt;和&lt;code&gt;read()&lt;/code&gt;的开销。
+• &lt;strong&gt;适用场景&lt;/strong&gt;：适合频繁读写或需要随机访问的大文件（如数据库、图像处理）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="三mmap与内存分配的关系"&gt;三、mmap与内存分配的关系&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;动态内存分配&lt;/strong&gt;：
+• &lt;strong&gt;glibc的malloc策略&lt;/strong&gt;：
+◦ 小块内存（如&amp;lt;128KB）使用&lt;code&gt;brk()&lt;/code&gt;扩展堆内存。
+◦ 大块内存使用&lt;code&gt;mmap(MAP_ANONYMOUS)&lt;/code&gt;独立映射，避免内存碎片。
+• &lt;strong&gt;优势&lt;/strong&gt;：&lt;code&gt;mmap&lt;/code&gt;分配的内存可独立释放（&lt;code&gt;munmap()&lt;/code&gt;），而&lt;code&gt;brk()&lt;/code&gt;释放需依赖堆顶内存释放顺序。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;匿名映射的应用&lt;/strong&gt;：
+• &lt;strong&gt;进程间共享内存&lt;/strong&gt;：通过&lt;code&gt;MAP_SHARED&lt;/code&gt;标志，多个进程可共享同一物理内存，高效通信。
+• &lt;strong&gt;自定义内存管理&lt;/strong&gt;：替代&lt;code&gt;malloc&lt;/code&gt;，用于需要精细控制的大内存分配（如内存池）。&lt;/p&gt;</description></item><item><title>内核的用户态和内核态</title><link>https://jekyulll.github.io/posts/2025-03-07-linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-07-linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid><description>&lt;p&gt;线程的管理和调度涉及用户态与内核态的协作，不同编程语言和操作系统对线程的处理方式也有所差异。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="一线程概念的双重性用户态与内核态的交织"&gt;一、线程概念的双重性：用户态与内核态的交织&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;用户态线程（用户级线程）&lt;/strong&gt;&lt;br&gt;
+用户态线程由用户空间的线程库直接管理，内核对其无感知。这类线程的创建、调度、同步等操作完全在用户空间完成，无需内核介入。&lt;br&gt;
+存在明显局限性：&lt;br&gt;
+• &lt;strong&gt;阻塞问题&lt;/strong&gt;：若一个用户态线程因系统调用阻塞（如I/O操作），整个进程的所有线程都会被阻塞；
+• &lt;strong&gt;多核利用率低&lt;/strong&gt;：内核无法将用户态线程调度到多个CPU核心上运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;内核态线程（内核级线程）&lt;/strong&gt;&lt;br&gt;
+内核直接管理线程的创建、调度和销毁，每个线程对应一个内核线程（如Linux的轻量级进程LWP）。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;轻量级进程&lt;/em&gt;（Light Weight Process, LWP）作为用户线程与内核线程的桥梁，负责处理系统调用、资源分配和CPU映射。当用户线程发起系统调用时，LWP接管请求，避免因单个用户线程阻塞导致整个进程挂起。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;• &lt;strong&gt;多核并行&lt;/strong&gt;：内核可将不同线程分配到多个CPU核心；
+• &lt;strong&gt;独立阻塞&lt;/strong&gt;：单个线程阻塞不会影响其他线程；
+• &lt;strong&gt;切换开销大&lt;/strong&gt;：线程切换需通过内核态，涉及用户栈和内核栈的切换、寄存器保存与恢复等操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="二内核如何处理线程"&gt;二、内核如何处理线程？&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;线程模型的映射关系&lt;/strong&gt;&lt;br&gt;
+现代操作系统（如Linux）通常采用&lt;strong&gt;混合型线程模型&lt;/strong&gt;。内核通过以下机制管理线程：&lt;br&gt;
+• &lt;strong&gt;TCB（线程控制块）&lt;/strong&gt;：存储线程的内核栈指针、状态、优先级等信息（进程控制块是PCB）；
+• &lt;strong&gt;调度器&lt;/strong&gt;：基于时间片轮转或优先级策略分配CPU资源，触发上下文切换。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;混合型线程模型&lt;/em&gt;（Hybrid Thread Model）是一种结合用户级线程（ULT）和内核级线程（KLT）优势的线程实现方式。通过N:M映射实现用户线程与内核线程的关联，即多个用户线程（N）动态绑定到少量内核线程（M）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;用户态与内核态的切换机制&lt;/strong&gt;&lt;br&gt;
+当线程执行系统调用、发生异常或中断时，会触发用户态到内核态的切换：&lt;br&gt;
+• &lt;strong&gt;系统调用流程&lt;/strong&gt;：用户线程通过中断（如Linux的&lt;code&gt;int 80h&lt;/code&gt;）进入内核态，内核完成操作后恢复用户态执行；
+• &lt;strong&gt;上下文保存&lt;/strong&gt;：切换时需要保存用户栈的寄存器状态（如程序计数器、栈指针）到内存，并加载内核栈信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;性能优化策略&lt;/strong&gt;&lt;br&gt;
+内核通过以下方式减少切换开销：&lt;br&gt;
+• &lt;strong&gt;避免频繁切换&lt;/strong&gt;：采用无锁编程、CAS算法等减少线程竞争；
+• &lt;strong&gt;轻量级进程（LWP）&lt;/strong&gt;：通过线程池复用内核线程，降低创建销毁成本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3 id="三语言案例"&gt;三、语言案例&lt;/h3&gt;
+&lt;p&gt;Java线程在JDK1.2之后采用&lt;em&gt;1:1模型&lt;/em&gt;，每个Java线程对应一个内核线程。
+支持多核并行、避免单线程阻塞影响整体进程；线程创建和切换需要内核介入。&lt;/p&gt;
+&lt;p&gt;C++11及之后的标准库（如&lt;code&gt;&amp;lt;thread&amp;gt;&lt;/code&gt;）通过&lt;code&gt;std::thread&lt;/code&gt;直接调用操作系统线程（如Linux的POSIX线程或Windows线程），采用&lt;em&gt;1:1线程模型&lt;/em&gt;。&lt;/p&gt;
+&lt;p&gt;Go未直接使用操作系统线程，而是通过Goroutine实现并发。Goroutine由Go运行时调度，采用M:N线程模型​（多个Goroutine映射到少量内核线程），由运行时动态分配CPU时间片。&lt;/p&gt;</description></item><item><title>进程、线程、协程的资源消耗简述</title><link>https://jekyulll.github.io/posts/2025-03-07-linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link><pubDate>Fri, 07 Mar 2025 20:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-07-linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid><description>&lt;p&gt;&lt;strong&gt;一、线程切换 vs 进程切换&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;地址空间与页表&lt;/strong&gt;&lt;br&gt;
+进程拥有独立的虚拟地址空间和页表，切换进程时需更新页表并刷新 &lt;strong&gt;TLB（地址转换缓存）&lt;/strong&gt;，导致内存访问速度下降。而线程共享进程的地址空间和页表，切换时无需此操作，TLB 缓存保持有效。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;上下文保存的内容&lt;/strong&gt;&lt;br&gt;
+• &lt;strong&gt;进程切换&lt;/strong&gt;：需保存完整的上下文，包括寄存器、程序计数器、栈指针、内存映射、文件描述符等。&lt;br&gt;
+• &lt;strong&gt;线程切换&lt;/strong&gt;：仅需保存线程私有的寄存器、栈和程序计数器，共享资源（如代码段、文件）无需处理。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;缓存利用率&lt;/strong&gt;&lt;br&gt;
+进程切换会导致 CPU 缓存（如 L1/L2/L3）失效，需重新加载数据，降低性能。线程切换时，缓存因共享地址空间仍有效，减少了数据重载的开销。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;资源分配&lt;/strong&gt;&lt;br&gt;
+进程是资源分配的基本单位（如内存、文件），切换时需重新分配资源；线程共享进程资源，切换仅涉及执行流调度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;二、协程切换 vs 线程切换&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;协程的切换开销更小，原因在于其 &lt;strong&gt;用户态调度&lt;/strong&gt; 和 &lt;strong&gt;轻量级设计&lt;/strong&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;用户态调度&lt;/strong&gt;&lt;br&gt;
+协程切换完全由用户态代码控制，无需陷入内核态，避免了 &lt;strong&gt;用户态-内核态切换&lt;/strong&gt; 的开销。而线程切换需操作系统介入，涉及模式切换和内核调度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;上下文信息更少&lt;/strong&gt;&lt;br&gt;
+协程只需保存少量寄存器（如 PC、SP）和栈指针，且栈空间通常仅需 KB 级别（线程栈为 MB 级别）。例如，Go 协程的初始栈仅 2KB，而 Java 线程默认为 1MB。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;非阻塞与协作式调度&lt;/strong&gt;&lt;br&gt;
+协程通过主动让出（如 &lt;code&gt;yield&lt;/code&gt; 或 &lt;code&gt;await&lt;/code&gt;）实现协作式调度，减少抢占式调度的竞争和锁需求。线程通常依赖操作系统的抢占式调度，可能因频繁切换导致性能损耗。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;内存与并发效率&lt;/strong&gt;&lt;br&gt;
+单线程可运行数万协程（如 Go 的 Goroutine），而同等数量线程会因内存和调度开销过大而崩溃。协程的轻量级特性尤其适合高并发 I/O 密集型任务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;&lt;strong&gt;维度&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;进程切换&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;线程切换&lt;/strong&gt;&lt;/th&gt;
+ &lt;th&gt;&lt;strong&gt;协程切换&lt;/strong&gt;&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;地址空间&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;切换（独立）&lt;/td&gt;
+ &lt;td&gt;不切换（共享）&lt;/td&gt;
+ &lt;td&gt;不切换（共享）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;上下文大小&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;大（含全部资源）&lt;/td&gt;
+ &lt;td&gt;较小（仅寄存器）&lt;/td&gt;
+ &lt;td&gt;极小（仅关键寄存器）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;调度模式&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;内核抢占式&lt;/td&gt;
+ &lt;td&gt;内核抢占式&lt;/td&gt;
+ &lt;td&gt;用户协作式&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;strong&gt;内存开销&lt;/strong&gt;&lt;/td&gt;
+ &lt;td&gt;高（独立资源）&lt;/td&gt;
+ &lt;td&gt;中（共享资源）&lt;/td&gt;
+ &lt;td&gt;极低（KB 级栈）&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;u&gt;线程通过共享资源减少开销，协程通过用户态轻量级调度进一步优化，两者均通过减少内核参与和资源复用来提升性能&lt;/u&gt;&amp;gt;。&lt;/p&gt;</description></item><item><title>在运行的时候，修改并且覆盖该二进制文件会如何？</title><link>https://jekyulll.github.io/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link><pubDate>Thu, 06 Mar 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-03-06-linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Linux上有个二进制程序一直在运行，修改代码后重新编译把原来的二进制程序覆盖了，会怎么样？
+该问题来自一道天美后台开发面试题：&lt;a href="https://zhuanlan.zhihu.com/p/677307438"&gt;天美一面 后台开发（凉） - 牛客面经的文章 - 知乎&lt;/a&gt;。此处尝试进行回答。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;第一想法一般是：“原程序被操作系统加载进内存，不会受到影响。”&lt;br&gt;
+系统会创建一个新的&lt;code&gt;inode&lt;/code&gt;指向新文件，而正在运行的进程仍会继续使用旧的&lt;code&gt;inode&lt;/code&gt;对应的代码段。&lt;/p&gt;
+&lt;p&gt;但实际上拓展到一个问题：“二进制文件会全部加载到内存吗？”&lt;/p&gt;
+&lt;p&gt;ELF二进制文件在加载时，操作系统通常采用按需分页的机制，只将当前需要的部分加载到物理内存，而不是一次性加载整个文件。虚拟内存映射允许文件的部分内容驻留在磁盘，直到被访问时才调入内存。&lt;br&gt;
+同时，动态链接库的延迟加载和内存映射文件技术（&lt;code&gt;mmap&lt;/code&gt;）也帮助减少实际内存占用。因此，如果二进制文件很大，不会全部加载到物理内存中，而是按需加载，利用虚拟内存管理技术优化资源使用。&lt;/p&gt;
+&lt;p&gt;但是：真的会在运行时加载新的内容吗？&lt;/p&gt;
+&lt;p&gt;ELF文件在启动时如何决定哪些内容加载到内存？主要依赖于其&lt;strong&gt;程序头表&lt;/strong&gt;（Program Header Table）​中定义的段（Segment）信息。程序头表由多个&lt;code&gt;Elf64_Phdr&lt;/code&gt;结构体组成，每个结构体描述了一个需要加载到内存的段（如代码段、数据段、动态链接信息段等）。这些段通常包含多个&lt;em&gt;节&lt;/em&gt;（Section）的集合。&lt;/p&gt;
+&lt;p&gt;覆盖原文件后，旧文件的磁盘空间不会被立即释放，需等待所有关联进程结束后才能回收（通过&lt;code&gt;lsof&lt;/code&gt;可查看占用进程）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;总结&lt;/strong&gt;：&lt;br&gt;
+​已运行的进程不受影响：Linux通过&lt;code&gt;inode&lt;/code&gt;标识文件，旧进程继续执行内存中已加载的旧代码，与原磁盘文件解耦。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="1-elf文件的按需加载机制"&gt;1. &lt;strong&gt;ELF文件的按需加载机制&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;ELF二进制文件通过&lt;strong&gt;程序头表（Program Header Table）&lt;strong&gt;中的&lt;code&gt;PT_LOAD&lt;/code&gt;段描述需要加载的代码和数据区域。内核的&lt;code&gt;load_elf_binary()&lt;/code&gt;函数会将这些段映射到进程的虚拟地址空间，但实际物理内存的占用是&lt;/strong&gt;按需分页&lt;/strong&gt;的：
 • 仅当程序访问某个页（通常4KB大小）时，才会触发缺页异常，将对应内容从磁盘加载到物理内存。
-• 未使用的代码或数据（如未执行的函数）可能永远不会被加载到物理内存中。&lt;/p>
-&lt;h3 id="2-虚拟内存映射与内存优化">2. &lt;strong>虚拟内存映射与内存优化&lt;/strong>&lt;/h3>
-&lt;p>• &lt;strong>虚拟内存优势&lt;/strong>：ELF文件通过&lt;code>mmap()&lt;/code>系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
-• &lt;strong>写时复制（Copy-on-Write）&lt;/strong>：对于只读段（如代码段），多个进程可以共享同一物理内存页；对于可写段，修改时才会复制新页。&lt;/p>
-&lt;h3 id="3-动态链接与延迟加载">3. &lt;strong>动态链接与延迟加载&lt;/strong>&lt;/h3>
-&lt;p>动态链接库（如&lt;code>.so&lt;/code>文件）在程序运行时通过&lt;code>ld-linux&lt;/code>动态加载器按需载入。例如：
+• 未使用的代码或数据（如未执行的函数）可能永远不会被加载到物理内存中。&lt;/p&gt;
+&lt;h3 id="2-虚拟内存映射与内存优化"&gt;2. &lt;strong&gt;虚拟内存映射与内存优化&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;• &lt;strong&gt;虚拟内存优势&lt;/strong&gt;：ELF文件通过&lt;code&gt;mmap()&lt;/code&gt;系统调用映射到虚拟地址空间，此时文件内容并不直接占用物理内存，而是由内核通过页表管理。
+• &lt;strong&gt;写时复制（Copy-on-Write）&lt;/strong&gt;：对于只读段（如代码段），多个进程可以共享同一物理内存页；对于可写段，修改时才会复制新页。&lt;/p&gt;
+&lt;h3 id="3-动态链接与延迟加载"&gt;3. &lt;strong&gt;动态链接与延迟加载&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;动态链接库（如&lt;code&gt;.so&lt;/code&gt;文件）在程序运行时通过&lt;code&gt;ld-linux&lt;/code&gt;动态加载器按需载入。例如：
 • 首次调用某个库函数时，动态链接器才会加载对应的代码段到内存。
-• 部分库可能仅在特定条件下被使用，从而减少初始内存占用。&lt;/p>
-&lt;h3 id="4-大文件的实际内存占用">4. &lt;strong>大文件的实际内存占用&lt;/strong>&lt;/h3>
-&lt;p>• &lt;strong>物理内存限制&lt;/strong>：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
-• &lt;strong>交换空间（Swap）&lt;/strong>：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p></description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://jekyulll.github.io/posts/2025-02-08-cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-02-08-cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p>同一进程内的线程共享的资源：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;strong>代码段&lt;/strong>：存放程序的可执行指令，所有线程共享相同的代码段，因此任何线程都可以执行程序中的函数。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>数据段&lt;/strong>：包含全局变量和静态变量，这些变量在程序运行期间只有一个实例，所有线程都可以访问和修改它们。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>堆&lt;/strong>：用于动态内存分配，线程可以在堆上分配和释放内存，因此堆上的数据对所有线程可见。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>打开的文件&lt;/strong>：如果程序在运行过程中打开了文件，文件描述符等信息在进程地址空间中保存，所有线程都可以访问这些打开的文件。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>每个线程的私有资源：&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;strong>栈&lt;/strong>：每个线程都有自己的栈空间，用于存储函数的局部变量、返回地址等。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>寄存器&lt;/strong>：线程在执行过程中使用的寄存器集是独立的，包括程序计数器（PC）等。&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>线程局部存储（Thread Local Storage）&lt;/strong>：存放线程私有的全局变量，即使变量名相同，不同线程访问的也是各自独立的副本。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;em>注意&lt;/em>：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p></description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/posts/2025-02-08-cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-02-08-cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p>在 C++ 中，动态库（如 &lt;code>.dll&lt;/code> 或 &lt;code>.so&lt;/code> 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
-&lt;u>具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u>
-(动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p>
-&lt;p>另外：&lt;br>
-C++ 提供了&lt;strong>显式运行时链接&lt;/strong>的机制，程序可以在运行时根据需要动态加载库的特定部分。(&lt;code>dlopen&lt;/code>、&lt;code>dlsym&lt;/code> 等函数)程序可以在运行时按需加载特定的符号（函数或变量）。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;dlfcn.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#f92672">*&lt;/span>&lt;span style="color:#a6e22e">dlopen&lt;/span>(&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>filename, &lt;span style="color:#66d9ef">int&lt;/span> flag);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>flag&lt;/code>：指定加载选项：
-- &lt;code>RTLD_LAZY&lt;/code>：延迟解析符号，即在实际使用时才解析。&lt;br>
-- &lt;code>RTLD_NOW&lt;/code>：立即解析所有未定义的符号。如果无法解析，&lt;code>dlopen&lt;/code> 将返回 &lt;code>NULL&lt;/code>。&lt;br>
-- &lt;code>RTLD_GLOBAL&lt;/code>：使加载的库中的符号在后续加载的其他库中可见。&lt;br>
-- &lt;code>RTLD_LOCAL&lt;/code>：与 &lt;code>RTLD_GLOBAL&lt;/code> 相反，加载的库中的符号对后续加载的库不可见（这是默认行为）。&lt;/p></description></item></channel></rss>
+• 部分库可能仅在特定条件下被使用，从而减少初始内存占用。&lt;/p&gt;
+&lt;h3 id="4-大文件的实际内存占用"&gt;4. &lt;strong&gt;大文件的实际内存占用&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;• &lt;strong&gt;物理内存限制&lt;/strong&gt;：若二进制文件极大（如8GB），但程序实际执行的代码路径有限，物理内存占用可能远小于文件大小。
+• &lt;strong&gt;交换空间（Swap）&lt;/strong&gt;：当物理内存不足时，操作系统会将不活跃的内存页交换到磁盘，腾出空间供当前进程使用。&lt;/p&gt;</description></item><item><title>C++ 同一进程的线程之间共享哪些资源？</title><link>https://jekyulll.github.io/posts/2025-02-08-cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-02-08-cpp-c++-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid><description>&lt;p&gt;同一进程内的线程共享的资源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;代码段&lt;/strong&gt;：存放程序的可执行指令，所有线程共享相同的代码段，因此任何线程都可以执行程序中的函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;数据段&lt;/strong&gt;：包含全局变量和静态变量，这些变量在程序运行期间只有一个实例，所有线程都可以访问和修改它们。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;堆&lt;/strong&gt;：用于动态内存分配，线程可以在堆上分配和释放内存，因此堆上的数据对所有线程可见。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;打开的文件&lt;/strong&gt;：如果程序在运行过程中打开了文件，文件描述符等信息在进程地址空间中保存，所有线程都可以访问这些打开的文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个线程的私有资源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;栈&lt;/strong&gt;：每个线程都有自己的栈空间，用于存储函数的局部变量、返回地址等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;寄存器&lt;/strong&gt;：线程在执行过程中使用的寄存器集是独立的，包括程序计数器（PC）等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;线程局部存储（Thread Local Storage）&lt;/strong&gt;：存放线程私有的全局变量，即使变量名相同，不同线程访问的也是各自独立的副本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;注意&lt;/em&gt;：虽然栈是线程私有的，但由于线程间没有严格的内存隔离机制，一个线程可以通过指针访问和修改另一个线程的栈数据。&lt;/p&gt;</description></item><item><title>运行时是把整个动态库都加载到内存中吗？</title><link>https://jekyulll.github.io/posts/2025-02-08-cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link><pubDate>Sat, 08 Feb 2025 18:05:47 +0800</pubDate><guid>https://jekyulll.github.io/posts/2025-02-08-cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid><description>&lt;p&gt;在 C++ 中，动态库（如 &lt;code&gt;.dll&lt;/code&gt; 或 &lt;code&gt;.so&lt;/code&gt; 文件）在加载时，操作系统会将整个库文件映射到进程的地址空间中。
+&lt;u&gt;具体的函数和数据只有在被实际使用时才会被加载到内存中。&lt;/u&gt;
+(动态库作为一个整体被映射，但其中的各个部分仅在需要时才占用物理内存。)&lt;/p&gt;
+&lt;p&gt;另外：&lt;br&gt;
+C++ 提供了&lt;strong&gt;显式运行时链接&lt;/strong&gt;的机制，程序可以在运行时根据需要动态加载库的特定部分。(&lt;code&gt;dlopen&lt;/code&gt;、&lt;code&gt;dlsym&lt;/code&gt; 等函数)程序可以在运行时按需加载特定的符号（函数或变量）。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#include&lt;/span&gt; &lt;span style="color:#75715e"&gt;&amp;lt;dlfcn.h&amp;gt;&lt;/span&gt;&lt;span style="color:#75715e"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;void&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;&lt;span style="color:#a6e22e"&gt;dlopen&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;const&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;char&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt;filename, &lt;span style="color:#66d9ef"&gt;int&lt;/span&gt; flag);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;flag&lt;/code&gt;：指定加载选项：
+- &lt;code&gt;RTLD_LAZY&lt;/code&gt;：延迟解析符号，即在实际使用时才解析。&lt;br&gt;
+- &lt;code&gt;RTLD_NOW&lt;/code&gt;：立即解析所有未定义的符号。如果无法解析，&lt;code&gt;dlopen&lt;/code&gt; 将返回 &lt;code&gt;NULL&lt;/code&gt;。&lt;br&gt;
+- &lt;code&gt;RTLD_GLOBAL&lt;/code&gt;：使加载的库中的符号在后续加载的其他库中可见。&lt;br&gt;
+- &lt;code&gt;RTLD_LOCAL&lt;/code&gt;：与 &lt;code&gt;RTLD_GLOBAL&lt;/code&gt; 相反，加载的库中的符号对后续加载的库不可见（这是默认行为）。&lt;/p&gt;</description></item></channel></rss>
