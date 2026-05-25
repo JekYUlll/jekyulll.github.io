@@ -10,11 +10,11 @@ categories = ['backend']
 
 ## 背景
 
-AI Agent 的「实时调研」能力已经成为标配。无论是写博客前查资料、回答问题前核实事实，还是分析最新市场动态，Agent 都需要在运行时通过搜索引擎获取实时信息。
+AI Agent 的「实时调研」能力已经成为标配。写博客前查资料、回答问题前核实事实、分析最新市场动态——Agent 都需要实时搜索。
 
-但这里有一个关键区别：**Agent 需要的不是广告，不是 SEO 优化的摘要，不是几十个导航链接——它需要的是机器可读的结构化结果和完整文档内容。**
+但这里有一个关键区别：**Agent 不需要广告，不需要 SEO 摘要，不需要几十个导航链接。它需要的是完整文档内容。**
 
-传统搜索引擎的返回格式（标题 + 200 字 snippet）对人类够用，但对 AI 来说太短了。一个 LLM 要从搜索结果中理解技术概念，需要读完整的原文。这就引出了搜索架构中的一个核心分层：**Search Backend** 和 **Extract Backend**。
+传统搜索引擎的返回格式（标题 + 200 字 snippet）对人类够用，对 AI 来说太短了。一个 LLM 要从搜索结果中理解技术概念，需要读完整原文。这就引出了搜索架构的一个核心分层：**Search Backend** 和 **Extract Backend**。
 
 ## 搜索后端 vs 提取后端
 
@@ -60,9 +60,9 @@ with DDGS() as client:
         print(r['body'][:200])
 ```
 
-**特点：** 纯免费、无需 API Key、即装即用。底层是模拟浏览器向 DuckDuckGo 的 HTML 接口发起搜索请求。搜索质量对于英语技术关键词来说相当不错——在我实测中，"speculative decoding" 返回了 Google Research 博客、NVIDIA Developer Blog、arXiv 论文等高质量结果。
+纯免费，无需 API Key，即装即用。底层是模拟浏览器向 DuckDuckGo 的 HTML 接口发起搜索。搜索质量对英语技术关键词来说相当不错——我实测 `speculative decoding` 返回了 Google Research 博客、NVIDIA Developer Blog、arXiv 论文。
 
-**缺点：** 有服务端频率限制，不能高并发。search only——不能做 extract。
+**缺点：** 有服务端频率限制，不能高并发。且是 search only，不能做 extract。
 
 ### 2. SearXNG（自托管元搜索引擎）
 
@@ -172,7 +172,7 @@ print(text[:2000])
 
 之后干脆把 search backend 切成了 ddgs——API Key 都不要，质量反而更好。
 
-这个经历说明了两个教训：一是代理 IP 被污染对搜索引擎的影响比想象中大；二是掌握多种后端方案并在它们之间切换是 AI Agent 工程的必备技能。
+教训：代理 IP 被污染对搜索引擎的影响比想象中大。掌握多种后端方案并在它们之间切换，是 AI Agent 工程的必备技能。
 
 ## 代码实战：配置一个 Agent 搜索管道
 

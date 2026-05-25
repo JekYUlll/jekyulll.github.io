@@ -10,18 +10,15 @@ categories = ['system']
 
 ## 背景
 
-用过 ChatGPT 的人都有这种体验：打字过程中模型已经开始回复，似乎不用等太久。但如果你跑过本地 70B 模型，感受就完全不同了——每生成一个 token（≈0.75 个汉字）就要等 14ms 左右，生成一篇 500 字的短文得等将近 10 秒。
+用过 ChatGPT 的人都有这种体验：打字过程中模型已经开始回复，似乎不用等太久。但如果你跑过本地 70B 模型，感受就完全不同了。每生成一个 token（≈0.75 个汉字）就要等 14ms 左右，生成 500 字的短文得等将近 10 秒。
 
 为什么这么慢？答案是**自回归解码**的串行瓶颈。
 
-大语言模型的标准推理是逐 token 生成的：
-$$x_{t+1} \sim p(\cdot \mid x_1, x_2, \ldots, x_t)$$
+大语言模型的标准推理是逐 token 生成的。每个 token 的生成都必须完整执行一次模型前向传播。对于 70B 的模型，每次要把约 140GB 的权重从 HBM 搬到计算单元，只产出 **1 个 token**。单序列推理时 GPU 利用率常常不到 10%——绝大多数时间花在搬运上，不是在算。
 
-每个 token 的生成都必须完整执行一次模型前向传播。对于 70B 参数的大模型，这意味着每次都要把约 140GB 的模型权重从 HBM（高带宽内存）加载到计算单元，只产出 **1 个 token**。在单序列推理（batch=1）场景下，GPU 的算术强度极低，利用率常常不到 10%——绝大多数时间花在搬运权重上，而不是做计算。
+传统优化各有各的代价：INT4/INT8 量化是有损的，Flash Attention 需要硬件支持，batching 提升的是吞吐不是单请求延迟。
 
-传统优化思路有：INT4/INT8 量化减少权重体积、Flash Attention 重排 attention 计算、批量推理（batching）提升吞吐。但这些方法要么需要硬件支持，要么改变输出分布（量化是有损的），要么无法降低单请求延迟（batching 提升的是吞吐而不是首 token 延迟）。
-
-**Speculative Decoding（推测解码）** 提供了一个完全不同的思路：用小模型快速起草、大模型并行验证。它不仅能实现 2–3× 的加速比，而且**数学上保证了输出分布与原始模型完全一致**——没有任何质量损失。
+**Speculative Decoding（推测解码）** 换了个思路：用小模型快速起草、大模型并行验证。不仅能实现 2–3× 的加速，而且数学上保证输出分布与原始模型完全一致。
 
 ## 核心原理
 
@@ -29,27 +26,19 @@ $$x_{t+1} \sim p(\cdot \mid x_1, x_2, \ldots, x_t)$$
 
 Speculative Decoding 的核心前提来自 Transformer 架构的一个特点：**当 batch=1 时，单次前向传播处理 k 个 token 的延迟 ≈ 处理 1 个 token 的延迟**。
 
-这是内存带宽瓶颈的直接结果——对于单序列推理，前向传播的时间主要花在从 HBM 搬运权重到计算单元上，而不是花在序列维度的计算上。所以处理 1 个 token 还是 5 个 token，搬运权重的开销是相同的。
+这是内存带宽瓶颈的直接结果。单序列推理时前向传播的时间主要花在从 HBM 搬运权重上，而不是花在序列维度的计算上。所以处理 1 个 token 还是 5 个 token，搬运开销是一样的。
 
-这个洞察意味着：如果我们能提前猜出接下来几个 token，让大模型一次性并行验证，就能在一次前向传播中产出多个 token。
+这个洞察意味着：如果能提前猜出接下来几个 token，让大模型一次性并行验证，就能在一次前向传播中产出多个 token。
 
 ### Draft-then-Verify 两阶段框架
 
-Speculative Decoding 使用两个模型协同工作：
-
-| 角色 | 模型 | 特点 |
-|------|------|------|
-| **Draft Model (q)** | 小模型（如 68M 辅助头，或 7B 模型） | 速度快，自回归生成候选 token |
-| **Target Model (p)** | 原始大模型（如 70B Llama） | 速度慢，一次并行验证所有候选 |
+Speculative Decoding 用两个模型协同工作：
 
 每轮迭代分三步：
 
-1. **Draft 阶段**：Draft Model 自回归生成 $\gamma$ 个候选 token $\tilde{x}_1, \tilde{x}_2, \ldots, \tilde{x}_\gamma$（通常 $\gamma=4\sim8$）。由于 draft model 很小，这一步很快。
-
-2. **Verify 阶段**：将 prefix + 全部 $\gamma$ 个 draft token 拼接，一次性喂给 Target Model 做一次前向传播。得到每个位置的真实分布 $p_1, p_2, \ldots, p_{\gamma+1}$。
-
-3. **Accept/Reject 阶段**：逐个检查每个 draft token 是否可以被接受：
-   - 计算接受概率 $\alpha_i = \min\left(1, \frac{p_i(\tilde{x}_i)}{q_i(\tilde{x}_i)}\right)$
+1. **Draft 阶段**：Draft Model 自回归生成 $\gamma$ 个候选 token（通常 $\gamma=4\sim8$）。小模型，快。
+2. **Verify 阶段**：把 prefix + 全部 $\gamma$ 个 draft token 拼起来，一次性喂给 Target Model 做一次前向传播，得到每个位置的真实分布。
+3. **Accept/Reject 阶段**：逐个检查是否接受。如果随机数小于接受概率就收下，否则从差值分布重新采样并停在这个位置。
    - 如果随机数 $r < \alpha_i$，接受 $\tilde{x}_i$
    - 否则从分布 $p'(x) = \text{norm}(\max(0, p_i(x) - q_i(x)))$ 中采样并停止
 
@@ -57,9 +46,9 @@ Speculative Decoding 使用两个模型协同工作：
 
 ### 加速比分析
 
-加速比取决于 draft model 的**接受率**（acceptance rate）。如果 draft model 与 target model 的分布很接近（比如用 target model 的浅层做 draft），接受率可达 0.7–0.9，加速比约为 $\frac{\gamma}{1/t + \gamma \cdot (1-\alpha)}$，实践中实测可达 2–3×。在最佳情况下（EAGLE-3 等方法）可达 4–6.5×。
+加速比取决于 draft model 的**接受率**。draft model 和 target model 分布越接近（比如用 target model 的浅层做 draft），接受率越高。实践中实测可达 2–3×，最佳情况（EAGLE-3）可达 4–6.5×。
 
-关键约束：draft model 必须**足够快**——如果 draft 时间 + verify 时间 > 直接生成时间，反而会变慢。
+关键约束：draft model 必须**足够快**。如果 draft 时间 + verify 时间 > 直接生成时间，反而更慢。
 
 ## 代码实战
 
@@ -197,7 +186,7 @@ Speculative Decoding 已在工业界和学术界广泛应用：
 | TensorRT-LLM | 集成 speculative decoding | 2–3× | NVIDIA 官方优化 |
 | Self-Speculative Decoding | 用自身浅层做 draft | 1.5–2× | 无需额外模型 |
 
-其中 EAGLE-3（2025）利用 target model 中间层的特征向量作为 draft head 的输入，大幅提高了 draft 质量，同时 draft head 极小（~68M 参数），是目前已知的最佳方案。
+其中 EAGLE-3（2025）用 target model 中间层的特征向量做 draft head 输入，大幅提高 draft 质量，同时 draft head 极小（~68M 参数），是目前公开方案里最快的。
 
 ## 今日可执行动作
 

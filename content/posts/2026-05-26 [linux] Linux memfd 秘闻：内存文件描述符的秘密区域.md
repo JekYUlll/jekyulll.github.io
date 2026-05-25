@@ -12,9 +12,9 @@ categories = ['linux']
 
 在 Linux 系统编程中，"一切皆文件"是一个核心哲学。但有些场景下，你并不想真正落盘——你需要的只是一个**存在于内存中的临时文件**，用完即焚，不留痕迹。
 
-传统做法是：在 `/tmp` 下创建临时文件，使用完后 `unlink`。但这条路有隐患：残留在磁盘或 swap 分区中的数据可能被恢复；文件路径可在 `/proc` 中被窥探；而且涉及真实的文件系统操作，有性能开销。
+传统做法是在 `/tmp` 下创建临时文件，用完 `unlink`。但这条路有隐患：残留在磁盘或 swap 中的数据可能被恢复；文件路径可在 `/proc` 中被窥探；而且涉及真实文件系统操作，有性能开销。
 
-更严重的是安全场景。想象一下：你的程序持有私钥、会话 Token 或加密内存中的敏感数据。即使进程空间被保护，内核依然可以通过 direct map 访问任何物理页面。如果内核被攻破（ROP 攻击、Spectre 侧信道），敏感数据瞬间裸奔。
+安全场景更麻烦。你的程序持有私钥、会话 Token 或加密内存中的敏感数据。即使进程空间被保护，内核依然可以通过 direct map 访问任何物理页面。如果内核被攻破，数据直接裸奔。
 
 Linux 提供了两个内核特性来解决这两个层次的问题：
 
@@ -40,13 +40,7 @@ fd 在 `/proc/self/fd/` 中显示为 `memfd:<name> (deleted)`——它已被 unl
 
 ### memfd_secret：连内核都看不见的秘密内存
 
-`memfd_secret()` 是 `memfd_create()` 在安全维度上的超集。它创建的文件描述符对应的物理页面会被**从内核的 direct map 中移除**。这意味着：
-
-- 内核在直接映射虚拟地址空间中再也看不到这些页面
-- 侧信道攻击无法通过内核读取这些区域
-- `get_user_pages()` 拒绝返回这些页面的指针
-- 无法通过 DMA 访问
-- 这些页面的指针**不能**传给任何系统调用（内核根本不知道它们的虚拟地址）
+`memfd_secret()` 是 `memfd_create()` 在安全维度上的超集。它创建的文件描述符对应的物理页面会被**从内核的 direct map 中移除**。这意味着内核再也看不到这些页面、侧信道攻击读不到、`get_user_pages()` 拒绝返回这些页面的指针、DMA 也无法访问。而且这些页面的指针**不能**传给任何系统调用——内核根本不知道它们的虚拟地址。
 
 实现原理：`memfd_secret()` 背后的 `mm/secretmem.c` 使用 `set_direct_map_invalid_noflush()` 在页面分配时解除内核 direct map 的映射。页面被锁定在内存中（类似 `mlock()`），防止被 swap 到磁盘。当存在活跃的 secret memory 用户时，休眠（hibernation）被自动禁用。
 
@@ -198,17 +192,17 @@ cat /proc/cmdline | grep secretmem_enable
 
 ### memfd 的两个面孔
 
-memfd 是一把双刃剑。合法场景下，它是高性能的进程间通信和内存安全工具；但在攻击者手中，`memfd_create()` 创建的匿名文件成为"无文件恶意软件"（fileless malware）的理想载体——直接在内存中执行 SHELLCODE，绕过基于文件的 AV 扫描。Sysdig、bpflock 等工具已支持检测来自 memfd 的可执行文件。
+memfd 是一把双刃剑。合法用是高性能 IPC 和内存安全工具。但在攻击者手中，`memfd_create()` 成为"无文件恶意软件"的理想载体——直接在内存中执行 SHELLCODE，绕过基于文件的 AV 扫描。Sysdig、bpflock 等工具已支持检测来自 memfd 的可执行文件。
 
-`memfd_secret()` 则始终专注于防御——它针对的是内核级攻击面，为私钥、密码、会话令牌提供硬件级的内存隔离。随着 Linux 6.5 后默认启用，它的采用率正在上升。
+`memfd_secret()` 则始终专注防御——它针对内核级攻击面，为私钥、密码、会话令牌提供硬件级内存隔离。Linux 6.5 后默认启用，采用率正在上升。
 
 ## 今日可执行动作
 
-1. **在内核菜单中验证 memfd_secret 是否启用**：运行 `cat /proc/cmdline | grep -o secretmem_enable`；如果没有输出但内核版本 >= 6.5，则默认已启用。检查 `/proc/config.gz` 中 `CONFIG_SECRETMEM=y`。
+1. **验证内核支持**：`cat /proc/cmdline | grep -o secretmem_enable`。内核 >= 6.5 默认启用，无需参数。检查 `/proc/config.gz` 中 `CONFIG_SECRETMEM=y`。
 
-2. **编译并运行上面的 `secret_demo.c`**：在你的 Linux 机器上验证 memfd_secret 是否能正常工作。如果返回 `ENOSYS`，说明内核编译时未启用或者需要 `secretmem_enable=1` 启动参数。
+2. **编译运行上面的 `secret_demo.c`**：`gcc -o secret_demo secret_demo.c && ./secret_demo`。如果返回 `ENOSYS`，说明内核未编译 `CONFIG_SECRETMEM`。
 
-3. **检测系统中活跃的 memfd 文件**：运行 `ls -la /proc/*/fd/ 2>/dev/null | grep memfd` 查看哪些进程正在使用 memfd 文件。可以进一步结合 `lsof` 或自定义脚本监控 memfd 活动。
+3. **查看系统中有哪些进程在用 memfd**：`ls -la /proc/*/fd/ 2>/dev/null | grep memfd`
 
 ## 参考
 
