@@ -1,0 +1,46 @@
+# -- Main Menu --
+[[main]]
+  identifier = "home"
+  name = "首页"
+  pageRef = "/"
+  weight = 10
+
+[[main]]
+  identifier = "posts"
+  name = "文章"
+  pageRef = "posts"
+  weight = 20
+
+[[main]]
+  identifier = "tags"
+  name = "标签"
+  pageRef = "tags"
+  weight = 30
+
+[[main]]
+  identifier = "categories"
+  name = "分类"
+  pageRef = "categories"
+  weight = 40
+
+[[main]]
+  identifier = "github"
+  pre = "github"
+  url = "https://github.com/JekYUlll"
+  weight = 200
+
+# -- Footer Menu --
+[[footer]]
+  name = "标签"
+  pageRef = "tags"
+  weight = 10
+
+[[footer]]
+  name = "分类"
+  pageRef = "categories"
+  weight = 20
+
+[[footer]]
+  name = "RSS"
+  pageRef = "/index.xml"
+  weight = 30

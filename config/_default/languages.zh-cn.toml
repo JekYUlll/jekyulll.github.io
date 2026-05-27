@@ -1,0 +1,19 @@
+locale = "zh-cn"
+label = "中文"
+weight = 1
+title = "Horeb"
+
+[params]
+  displayName = "中文"
+  isoCode = "zh-cn"
+  rtl = false
+  dateFormat = "2006-01-02"
+  description = "--C++, Go, Linux--"
+
+[params.author]
+  name = "JekYUlll"
+  headline = "C++ / Go / Rust"
+  bio = "C++ / Go / Linux 开发者"
+  links = [
+    { github = "https://github.com/JekYUlll" },
+  ]
