@@ -4,8 +4,8 @@ draft = false
 title = '解析LRU与LFU算法及C++实现'
 author = 'JekYUlll'
 lastmod = '2025-03-16T12:05:47+08:00'
-tags = ['cpp', 'web', 'backend', 'algorithm']
-categories = ['web']
+tags = ['cache', 'data-structure']
+categories = ['algorithm']
 +++
 
 在计算机系统中，缓存是提升性能的核心技术之一。当内存资源有限时，如何高效淘汰无用数据、保留热点数据？**LRU（最近最少使用）**和**LFU（最不频繁使用）**算法为此提供了经典解决方案。本文将从原理到实践，详解这两种算法，并附完整C++实现代码。

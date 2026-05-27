@@ -4,7 +4,7 @@ draft = false
 title = 'Linux 内核中 C 语言的面向对象'
 author = 'JekYUlll'
 lastmod = '2025-02-21T12:05:47+08:00'
-tags = ['cpp', 'linux']
+tags = ['linux', 'design-pattern']
 categories = ['cpp']
 +++
 

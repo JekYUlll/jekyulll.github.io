@@ -4,7 +4,7 @@ draft = false
 title = 'C++26 编译期反射（Reflection）来了：P2996 全解析'
 author = 'JekYUlll'
 lastmod = '2026-05-24T15:27:55+08:00'
-tags = ['cpp']
+tags = ['cpp26', 'reflection']
 categories = ['cpp']
 +++
 

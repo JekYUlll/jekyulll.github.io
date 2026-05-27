@@ -4,7 +4,7 @@ draft = false
 title = '从场景解析 C++ shared_from_this'
 author = 'JekYUlll'
 lastmod = '2025-01-09T20:05:47+08:00'
-tags = ['cpp']
+tags = ['memory', 'smart-pointer']
 categories = ['cpp']
 +++
 

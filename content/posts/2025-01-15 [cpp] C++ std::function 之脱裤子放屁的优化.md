@@ -4,7 +4,7 @@ draft = false
 title = 'C++ std::function 之脱裤子放屁的优化'
 author = 'JekYUlll'
 lastmod = '2025-01-15T12:05:47+08:00'
-tags = ['cpp', 'morden cpp']
+tags = ['stl', 'lambda']
 categories = ['cpp']
 +++
 

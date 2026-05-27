@@ -4,7 +4,7 @@ draft = false
 title = 'Linux里fork出子进程的时候，哪些内容是共享的？'
 author = 'JekYUlll'
 lastmod = '2025-03-27T04:05:47+08:00'
-tags = ['linux', 'os']
+tags = ['process', 'memory']
 categories = ['linux']
 +++
 

@@ -1,75 +1,93 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Categories on Horeb</title>
-        <link>https://horeb.top/categories/</link>
-        <description>Recent content in Categories on Horeb</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>zh-cn</language>
-        <lastBuildDate>Sun, 24 May 2026 10:48:47 +0800</lastBuildDate><atom:link href="https://horeb.top/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>Backend</title>
-            <link>https://horeb.top/categories/backend/</link>
-            <pubDate>Sat, 23 May 2026 20:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/backend/</guid>
-            <description></description>
-        </item><item>
-            <title>Linux</title>
-            <link>https://horeb.top/categories/linux/</link>
-            <pubDate>Sat, 18 Oct 2025 21:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/linux/</guid>
-            <description></description>
-        </item><item>
-            <title>Cpp</title>
-            <link>https://horeb.top/categories/cpp/</link>
-            <pubDate>Thu, 08 May 2025 18:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/cpp/</guid>
-            <description></description>
-        </item><item>
-            <title>Redis</title>
-            <link>https://horeb.top/categories/redis/</link>
-            <pubDate>Mon, 05 May 2025 21:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/redis/</guid>
-            <description></description>
-        </item><item>
-            <title>Game</title>
-            <link>https://horeb.top/categories/game/</link>
-            <pubDate>Fri, 25 Apr 2025 06:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/game/</guid>
-            <description></description>
-        </item><item>
-            <title>Web</title>
-            <link>https://horeb.top/categories/web/</link>
-            <pubDate>Wed, 23 Apr 2025 12:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/web/</guid>
-            <description></description>
-        </item><item>
-            <title>Algorithm</title>
-            <link>https://horeb.top/categories/algorithm/</link>
-            <pubDate>Wed, 26 Mar 2025 04:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/algorithm/</guid>
-            <description></description>
-        </item><item>
-            <title>Frontend</title>
-            <link>https://horeb.top/categories/frontend/</link>
-            <pubDate>Tue, 18 Mar 2025 06:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/frontend/</guid>
-            <description></description>
-        </item><item>
-            <title>Database</title>
-            <link>https://horeb.top/categories/database/</link>
-            <pubDate>Thu, 21 Nov 2024 18:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/database/</guid>
-            <description></description>
-        </item><item>
-            <title>System</title>
-            <link>https://horeb.top/categories/system/</link>
-            <pubDate>Wed, 09 Oct 2024 21:05:47 +0800</pubDate>
-            <guid>https://horeb.top/categories/system/</guid>
-            <description></description>
-        </item><item>
-            <title>Path</title>
-            <link>https://horeb.top/categories/path/</link>
-            <pubDate>Sun, 02 Jun 2024 19:46:34 +0800</pubDate>
-            <guid>https://horeb.top/categories/path/</guid>
-            <description></description>
-        </item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Horeb</title>
+    <link>https://horeb.top/categories/</link>
+    <description>Recent content in Categories on Horeb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2026 JekYUlll</copyright>
+    <lastBuildDate>Wed, 27 May 2026 14:36:28 +0800</lastBuildDate><atom:link href="https://horeb.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Backend</title>
+      <link>https://horeb.top/categories/backend/</link>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/backend/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Infra</title>
+      <link>https://horeb.top/categories/infra/</link>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/infra/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Cpp</title>
+      <link>https://horeb.top/categories/cpp/</link>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/cpp/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://horeb.top/categories/linux/</link>
+      <pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/linux/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Database</title>
+      <link>https://horeb.top/categories/database/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/database/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Game-Dev</title>
+      <link>https://horeb.top/categories/game-dev/</link>
+      <pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/game-dev/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Algorithm</title>
+      <link>https://horeb.top/categories/algorithm/</link>
+      <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/algorithm/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Frontend</title>
+      <link>https://horeb.top/categories/frontend/</link>
+      <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://horeb.top/categories/frontend/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
 </rss>

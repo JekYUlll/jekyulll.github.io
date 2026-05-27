@@ -4,7 +4,7 @@ draft = false
 title = 'Web Search 技术漫谈：ddgs / SearXNG / Firecrawl 与搜索架构'
 author = 'JekYUlll'
 lastmod = '2026-05-26T01:11:41+08:00'
-tags = ['backend']
+tags = ['search-engine', 'web-crawler']
 categories = ['backend']
 +++
 

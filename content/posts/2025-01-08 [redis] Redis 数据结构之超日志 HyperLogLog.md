@@ -4,8 +4,8 @@ draft = false
 title = 'Redis 数据结构之超日志 HyperLogLog'
 author = 'JekYUlll'
 lastmod = '2025-01-08T10:05:47+08:00'
-tags = ['redis', 'data structure', 'hyperloglog']
-categories = ['redis']
+tags = ['redis', 'data-structure']
+categories = ['database']
 +++
 
 Redis 在 2.8.9 版本添加了 HyperLogLog （HLL）。  

@@ -4,7 +4,7 @@ draft = false
 title = '在wezterm里使用tmux实现history restore 保存历史会话'
 author = 'JekYUlll'
 lastmod = '2025-04-29T21:05:47+08:00'
-tags = ['linux']
+tags = ['terminal', 'tmux']
 categories = ['linux']
 +++
 

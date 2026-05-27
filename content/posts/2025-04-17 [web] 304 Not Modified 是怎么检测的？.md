@@ -4,8 +4,8 @@ draft = false
 title = '304 Not Modified 是怎么检测的？'
 author = 'JekYUlll'
 lastmod = '2025-04-17T04:05:47+08:00'
-tags = ['web']
-categories = ['web']
+tags = ['http', 'cache']
+categories = ['backend']
 +++
 
 **最终判断逻辑由服务端完成**。

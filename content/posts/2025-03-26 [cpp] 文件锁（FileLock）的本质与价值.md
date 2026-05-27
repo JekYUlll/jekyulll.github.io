@@ -4,8 +4,8 @@ draft = false
 title = '文件锁（FileLock）的本质与价值'
 author = 'JekYUlll'
 lastmod = '2025-03-26T04:05:47+08:00'
-tags = ['cpp', 'linux']
-categories = ['cpp']
+tags = ['file-system', 'concurrency']
+categories = ['linux']
 +++
 
 在多进程/多线程环境中，Mutex针对的是程序内部的内存数据结构（如链表、哈希表），无法直接控制外部资源（如磁盘文件）。例如，线程A通过Mutex保护一个缓存队列，但若另一个进程直接修改磁盘上的对应文件，Mutex无法拦截。此时可以用文件锁来解决。

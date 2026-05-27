@@ -4,8 +4,8 @@ draft = false
 title = '【1】Blender学习日记-入门'
 author = 'JekYUlll'
 lastmod = '2025-04-25T06:05:47+08:00'
-tags = ['game']
-categories = ['game']
+tags = ['blender', '3d-modeling']
+categories = ['game-dev']
 +++
 
 半夜学一下blender。  

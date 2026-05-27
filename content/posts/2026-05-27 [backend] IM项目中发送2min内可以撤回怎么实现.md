@@ -4,7 +4,7 @@ draft = false
 title = 'IM项目中，"发送2min内可以撤回"怎么实现？'
 author = 'JekYUlll'
 lastmod = '2026-05-27T12:55:10+08:00'
-tags = ['backend']
+tags = ['im', 'messaging']
 categories = ['backend']
 +++
 

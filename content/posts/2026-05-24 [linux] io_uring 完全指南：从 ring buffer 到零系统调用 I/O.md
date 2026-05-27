@@ -4,7 +4,7 @@ draft = false
 title = 'io_uring 完全指南：从 ring buffer 到零系统调用 I/O'
 author = 'JekYUlll'
 lastmod = '2026-05-24T14:52:36+08:00'
-tags = ['linux']
+tags = ['io-uring', 'async-io']
 categories = ['linux']
 +++
 

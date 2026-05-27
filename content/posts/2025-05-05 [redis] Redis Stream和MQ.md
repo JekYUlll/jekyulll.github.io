@@ -5,7 +5,7 @@ title = 'Redis Stream和MQ'
 author = 'JekYUlll'
 lastmod = '2025-05-05T21:05:47+08:00'
 tags = ['redis', 'mq']
-categories = ['redis']
+categories = ['database']
 +++
 
 常见MQ的功能，有哪些是用Redis实现不了的？

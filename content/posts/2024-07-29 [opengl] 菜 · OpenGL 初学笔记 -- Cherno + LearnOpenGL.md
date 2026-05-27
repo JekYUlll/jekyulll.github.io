@@ -4,8 +4,8 @@ draft = false
 title = 'OpenGL 初学笔记 -- Cherno + LearnOpenGL'
 author = 'JekYUlll'
 lastmod = '2024-12-22T21:05:47+08:00'
-tags = ['opengl', 'graphics', 'game']
-categories = ['game']
+tags = ['opengl', 'graphics']
+categories = ['game-dev']
 +++
 
 ![hearder](/images/ayanami_header.jpg)

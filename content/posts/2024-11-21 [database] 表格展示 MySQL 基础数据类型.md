@@ -4,7 +4,7 @@ draft = false
 title = '表格展示 MySQL 基础数据类型'
 author = 'JekYUlll'
 lastmod = '2024-11-21T18:05:47+08:00'
-tags = ['database', 'mysql']
+tags = ['mysql', 'data-type']
 categories = ['database']
 +++
 

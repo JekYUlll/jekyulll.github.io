@@ -1485,6 +1485,64 @@
         "内存文件描述符的秘密区域"
       ],
       "summary_preview": "date = '2026-05-26T01:07:21+08:00' draft = false title = 'Linux memfd 秘闻：内存文件描述符的秘密区域' author = 'JekYUlll' lastmod = '2026-05-26T01:07:21+08:00' tags = ['linux'] categories = ['linux'] +++  ## 背景  在 L"
+    },
+    {
+      "filename": "2026-05-26 [linux] eBPF 可观测性：在内核里跑代码改变了什么.md",
+      "inner_file": "",
+      "title": "eBPF 可观测性：在内核里跑代码改变了什么",
+      "date": "2026-05-26",
+      "tags": [
+        "linux"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "ebpf",
+        "可观测性",
+        "在内核里跑代码改变了什么"
+      ],
+      "summary_preview": "date = '2026-05-26T10:00:44+08:00' draft = false title = 'eBPF 可观测性：在内核里跑代码改变了什么' author = 'JekYUlll' lastmod = '2026-05-26T10:00:44+08:00' tags = ['linux'] categories = ['linux'] +++  ## 背景  Linux 内核"
+    },
+    {
+      "filename": "2026-05-27 [backend] IM项目中发送2min内可以撤回怎么实现.md",
+      "inner_file": "",
+      "title": "IM项目中，\"发送2min内可以撤回\"怎么实现？",
+      "date": "2026-05-27",
+      "tags": [
+        "backend"
+      ],
+      "categories": [
+        "backend"
+      ],
+      "file_category": "backend",
+      "keywords": [
+        "im项目中",
+        "\"发送2min内可以撤回\"怎么实现？",
+        "im",
+        "2min"
+      ],
+      "summary_preview": "date = '2026-05-27T12:55:10+08:00' draft = false title = 'IM项目中，\"发送2min内可以撤回\"怎么实现？' author = 'JekYUlll' lastmod = '2026-05-27T12:55:10+08:00' tags = ['backend'] categories = ['backend'] +++  ## 背景  消息"
+    },
+    {
+      "filename": "2026-05-27 [system] vLLM PagedAttention：大模型推理的显存管理革命.md",
+      "inner_file": "",
+      "title": "vLLM PagedAttention：大模型推理的显存管理革命",
+      "date": "2026-05-27",
+      "tags": [
+        "system"
+      ],
+      "categories": [
+        "system"
+      ],
+      "file_category": "system",
+      "keywords": [
+        "vllm",
+        "pagedattention",
+        "大模型推理的显存管理革命"
+      ],
+      "summary_preview": "date = '2026-05-27T10:04:19+08:00' draft = false title = 'vLLM PagedAttention：大模型推理的显存管理革命' author = 'JekYUlll' lastmod = '2026-05-27T10:04:19+08:00' tags = ['system'] categories = ['system'] +++  ## "
     }
   ]
 }

@@ -4,8 +4,8 @@ draft = false
 title = 'Speculative Decoding：大模型推理加速的新范式'
 author = 'JekYUlll'
 lastmod = '2026-05-25T23:54:00+08:00'
-tags = ['system']
-categories = ['system']
+tags = ['llm-inference', 'speculative-decoding']
+categories = ['infra']
 +++
 
 ## 背景

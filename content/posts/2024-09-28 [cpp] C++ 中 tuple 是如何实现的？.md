@@ -4,7 +4,7 @@ draft = false
 title = 'C++ 中 tuple 是如何实现的？'
 author = 'JekYUlll'
 lastmod = '2024-09-28T18:05:47+08:00'
-tags = ['cpp', 'template']
+tags = ['template', 'stl']
 categories = ['cpp']
 +++
 

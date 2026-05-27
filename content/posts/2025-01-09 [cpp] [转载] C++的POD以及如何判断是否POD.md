@@ -4,7 +4,7 @@ draft = false
 title = 'C++的POD以及如何判断是否POD'
 author = 'cheeto'
 lastmod = '2025-01-09T20:05:47+08:00'
-tags = ['cpp', 'reprint']
+tags = ['memory', 'stl']
 categories = ['cpp']
 +++
 

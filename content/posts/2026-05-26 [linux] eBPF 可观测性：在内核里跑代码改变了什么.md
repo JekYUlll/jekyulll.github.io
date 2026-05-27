@@ -4,7 +4,7 @@ draft = false
 title = 'eBPF 可观测性：在内核里跑代码改变了什么'
 author = 'JekYUlll'
 lastmod = '2026-05-26T10:00:44+08:00'
-tags = ['linux']
+tags = ['ebpf', 'observability']
 categories = ['linux']
 +++
 

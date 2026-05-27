@@ -4,7 +4,7 @@ draft = false
 title = '[linux] io_uring 实战：Linux 异步 I/O 的终极答案'
 author = 'JekYUlll'
 lastmod = '2026-05-25T10:01:05+08:00'
-tags = ['linux']
+tags = ['io-uring', 'async-io']
 categories = ['linux']
 +++
 

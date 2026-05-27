@@ -4,7 +4,7 @@ draft = false
 title = '【仅源码】C语言通过getaddrinfo函数获取域名的IP地址'
 author = 'JekYUlll'
 lastmod = '2025-05-08T18:05:47+08:00'
-tags = ['cpp', 'web']
+tags = ['network', 'socket']
 categories = ['cpp']
 +++
 

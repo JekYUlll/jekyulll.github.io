@@ -4,7 +4,7 @@ draft = false
 title = '【01】Flet 学习笔记 --Flutter原理'
 author = 'JekYUlll'
 lastmod = '2025-03-18T06:05:47+08:00'
-tags = ['frontend']
+tags = ['flutter', 'python']
 categories = ['frontend']
 +++
 

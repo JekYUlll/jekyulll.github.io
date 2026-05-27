@@ -4,7 +4,7 @@ draft = false
 title = '如何限制C++对象只能在堆或栈上创建？heap only 和 stack only'
 author = 'JekYUlll'
 lastmod = '2025-03-16T12:05:47+08:00'
-tags = ['cpp']
+tags = ['memory', 'stl']
 categories = ['cpp']
 +++
 

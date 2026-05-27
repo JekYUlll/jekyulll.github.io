@@ -4,7 +4,7 @@ draft = false
 title = 'Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战'
 author = 'JekYUlll'
 lastmod = '2026-05-24T15:19:41+08:00'
-tags = ['backend', 'golang']
+tags = ['go', 'data-structure']
 categories = ['backend']
 +++
 

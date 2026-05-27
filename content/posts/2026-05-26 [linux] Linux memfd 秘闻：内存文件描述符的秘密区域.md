@@ -4,7 +4,7 @@ draft = false
 title = 'Linux memfd 秘闻：内存文件描述符的秘密区域'
 author = 'JekYUlll'
 lastmod = '2026-05-26T01:07:21+08:00'
-tags = ['linux']
+tags = ['memfd', 'memory']
 categories = ['linux']
 +++
 

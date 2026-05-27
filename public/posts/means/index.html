@@ -1,516 +1,1243 @@
-<!DOCTYPE html>
-<html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=" C++ 一篇文章学完 Effective Modern C++：条款 &amp; 实践。\n深入理解C++内存管理：指针、引用和内存分配。\nCPU的核心数和线程数量是什么关系？ - texttime vage的回答 - 知乎。\n合集·现代 C++ 语言核心特性解析。\n现代 C++ 教程：高速上手 C++ 11/14/17/20。\n小鹏的教程：合集·现代C++项目实战。\n校招C++大概学习到什么程度？ - 程序员内功修炼的回答 - 知乎。八股文组合拳。\n陈皓（左耳朵耗子）的一些博客：\nC++ 虚函数表解析。\nC++ 对象的内存布局（上）。\n跟我一起写 Makefile（一）。\nTCP 的那些事儿（上）。\nC++那些事 CPlusPlusThings。\nC++那些事 中文。\n现代C++教程 2023。\nCUDA C++ Programming Guide。\n如何成为linux服务端C++开发专家? - 不谙世事的吴同学的回答 - 知乎。\nc++17 多态内存资源(PMR)。\n内存管理：设计Arena。\n">
-<title>C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总</title>
+<!doctype html>
+<html
+  lang="zh-cn"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="true"><head>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="zh-cn">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总 &middot; Horeb</title>
+    <meta name="title" content="C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总 &middot; Horeb">
+  
+
+  
+  
+  
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    <meta name="description" content="--C&#43;&#43;, Go, Linux--">
+  
+  
+    <meta name="keywords" content="learning-path,cpp,golang,">
+  
+  
+  
+  <link rel="canonical" href="https://horeb.top/posts/means/">
+  
+  
+
+  
+  
+    <meta name="author" content="JekYUlll">
+  
+  
+    
+      
+        
+          <link href="https://github.com/JekYUlll" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="https://horeb.top/posts/means/">
+  <meta property="og:site_name" content="Horeb">
+  <meta property="og:title" content="C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总">
+  <meta property="og:description" content="--C&#43;&#43;, Go, Linux--">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-02T19:46:34+08:00">
+    <meta property="article:modified_time" content="2026-05-27T14:36:28+08:00">
+    <meta property="article:tag" content="Learning-Path">
+    <meta property="article:tag" content="Cpp">
+    <meta property="article:tag" content="Golang">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总">
+  <meta name="twitter:description" content="--C&#43;&#43;, Go, Linux--">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+  
+    
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.f0d1cb007b64144f564a99767f809eee7e4e190c90f5b910323d49469c86835a955db5d06899102761a81b8268c8a3821d89b989255023e5668b0c9ebb02a23e.css"
+    integrity="sha512-8NHLAHtkFE9WSpl2f4Ce7n5OGQyQ9bkQMj1JRpyGg1qVXbXQaJkQJ2GoG4JoyKOCHYm5iSVQI&#43;VmiwyeuwKiPg==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+    
+    <script
+      type="text/javascript"
+      src="/js/zen-mode.min.9814dee9614d32aeb56239d118edfe20acd6231424f9b19c2dd48835038414130a5e946c0d1c9087d60e60e31840c9babfd217e3d4b95643dc8d651a71ccdf4a.js"
+      integrity="sha512-mBTe6WFNMq61YjnRGO3&#43;IKzWIxQk&#43;bGcLdSINQOEFBMKXpRsDRyQh9YOYOMYQMm6v9IX49S5VkPcjWUacczfSg=="></script>
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+    
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.8f75559c3b0987cc436337d462a0b075ebdd214d92a8eac880da424282daeece8759e586481872b873dc2eaa92c6a66f083e3be96ab847d926aea25777dfb292.js"
+      integrity="sha512-j3VVnDsJh8xDYzfUYqCwdevdIU2SqOrIgNpCQoLa7s6HWeWGSBhyuHPcLqqSxqZvCD476Wq4R9kmrqJXd9&#43;ykg=="
+      data-copy="复制"
+      data-copied="已复制"></script>
+  
+
+  
+  
 
 
-<link rel="canonical" href="https://horeb.top/posts/means/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
 
 
-<link rel="stylesheet" href="/scss/style.min.e62e09c60ba428a627e03568fa3df938f6a8224f815b5846f00816c17d4a0be4.css"><meta property='og:title' content="C++ / Golang / 游戏开发 / TA 学习路线汇总">
-<meta property='og:description' content=" C++ 一篇文章学完 Effective Modern C++：条款 &amp; 实践。\n深入理解C++内存管理：指针、引用和内存分配。\nCPU的核心数和线程数量是什么关系？ - texttime vage的回答 - 知乎。\n合集·现代 C++ 语言核心特性解析。\n现代 C++ 教程：高速上手 C++ 11/14/17/20。\n小鹏的教程：合集·现代C++项目实战。\n校招C++大概学习到什么程度？ - 程序员内功修炼的回答 - 知乎。八股文组合拳。\n陈皓（左耳朵耗子）的一些博客：\nC++ 虚函数表解析。\nC++ 对象的内存布局（上）。\n跟我一起写 Makefile（一）。\nTCP 的那些事儿（上）。\nC++那些事 CPlusPlusThings。\nC++那些事 中文。\n现代C++教程 2023。\nCUDA C++ Programming Guide。\n如何成为linux服务端C++开发专家? - 不谙世事的吴同学的回答 - 知乎。\nc++17 多态内存资源(PMR)。\n内存管理：设计Arena。\n">
-<meta property='og:url' content='https://horeb.top/posts/means/'>
-<meta property='og:site_name' content='Horeb'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts' /><meta property='article:tag' content='path' /><meta property='article:published_time' content='2024-06-02T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-05-24T09:36:37&#43;08:00'/>
-<meta name="twitter:title" content="C++ / Golang / 游戏开发 / TA 学习路线汇总">
-<meta name="twitter:description" content=" C++ 一篇文章学完 Effective Modern C++：条款 &amp; 实践。\n深入理解C++内存管理：指针、引用和内存分配。\nCPU的核心数和线程数量是什么关系？ - texttime vage的回答 - 知乎。\n合集·现代 C++ 语言核心特性解析。\n现代 C++ 教程：高速上手 C++ 11/14/17/20。\n小鹏的教程：合集·现代C++项目实战。\n校招C++大概学习到什么程度？ - 程序员内功修炼的回答 - 知乎。八股文组合拳。\n陈皓（左耳朵耗子）的一些博客：\nC++ 虚函数表解析。\nC++ 对象的内存布局（上）。\n跟我一起写 Makefile（一）。\nTCP 的那些事儿（上）。\nC++那些事 CPlusPlusThings。\nC++那些事 中文。\n现代C++教程 2023。\nCUDA C++ Programming Guide。\n如何成为linux服务端C++开发专家? - 不谙世事的吴同学的回答 - 知乎。\nc++17 多态内存资源(PMR)。\n内存管理：设计Arena。\n">
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-Q6473FXND4');
-        }
-      </script>
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
-            }
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
 
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Welcome to My Blog",
+    "name": "C\u002b\u002b \/ Golang \/ 游戏开发 \/ TA 学习路线汇总",
+    "headline": "C\u002b\u002b \/ Golang \/ 游戏开发 \/ TA 学习路线汇总",
+    
+    "inLanguage": "zh-cn",
+    "url" : "https://horeb.top/posts/means/",
+    "author" : {
+      "@type": "Person",
+      "name": "JekYUlll"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-06-02T00:00:00\u002b00:00",
+    "datePublished": "2024-06-02T19:46:34\u002b08:00",
+    
+    "dateModified": "2026-05-27T14:36:28\u002b08:00",
+    
+    "keywords": ["learning-path","cpp","golang"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "5321"
+  }]
+  </script>
+
+
+
+  
+  
+    
+
+  <script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-Q6473FXND4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q6473FXND4');
 </script>
-<div class="container main-container flex on-phone--column compact"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/">Horeb</a></h1>
-            <h2 class="site-description"></h2>
-        </div>
-    </header><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/posts/' >
-                
-                <span>Posts</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/tags/' >
-                
-                <span>Tags</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/categories/' >
-                
-                <span>Categories</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/search/' >
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-                    <li id="dark-mode-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="8" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
 
 
 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="16" cy="12" r="2" />
-  <rect x="2" y="6" width="20" height="12" rx="6" />
-</svg>
+
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
 
 
 
-                        <span>Dark Mode</span>
-                    </li>
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
 
+
+
+
+
+
+
+
+
+
+  
     
+  
 
-            <main class="main full-width">
-    <article class="main-article">
-    <header class="article-header">
 
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            
-            
-            
-            <a href="/categories/path/" style="background-color: hsl(246, 60%, 84%); color: hsl(246, 60%, 15%);">
-                Path
-            </a>
-        
-    </header>
-    
 
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/posts/means/">C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总</a>
-        </h2>
-    
-        
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        跳过正文
+      </a>
     </div>
+    
+    
+      <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      Horeb
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="首页"
+      title="Horeb">
+      
+      
+        <span class="text-base font-medium break-normal">
+          首页
+        </span>
+      
+    </a>
+  
 
     
+      
+  
+    <a
+      href="/posts/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="文章"
+      title="Welcome to My Blog">
+      
+      
+        <span class="text-base font-medium break-normal">
+          文章
+        </span>
+      
+    </a>
+  
+
     
+      
+  
+    <a
+      href="/tags/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="标签"
+      title="Tags">
+      
+      
+        <span class="text-base font-medium break-normal">
+          标签
+        </span>
+      
+    </a>
+  
+
     
+      
+  
+    <a
+      href="/categories/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="分类"
+      title="Categories">
+      
+      
+        <span class="text-base font-medium break-normal">
+          分类
+        </span>
+      
+    </a>
+  
+
     
+      
+  
+    <a
+      href="https://github.com/JekYUlll"
+      
+        target="_blank"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="github"
+      title="">
+      
+        <span >
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+        </span>
+      
+      
+    </a>
+  
+
     
-    
-    
-    <footer class="article-meta">
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="搜索 (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base bf-icon-color-hover">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    </div>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="搜索 (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Dark mode switcher"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
         
-            <div class="inline-meta">
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                    <time class="article-time--published" datetime='2024-06-02T00:00:00Z'>2024-06-02</time>
-                
-
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                    <time class="article-time--reading">
-                        3 minutes read
-                    </time>
-                
-            </div>
-        
-
-        
-
-        
-    </footer>
+  
     
+    <div class="px-2">
+      <a
+        href="/"
+        aria-label="首页"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Horeb" class="text-2xl font-bold tracking-tight">
+          首页
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/posts/"
+        aria-label="文章"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Welcome to My Blog" class="text-2xl font-bold tracking-tight">
+          文章
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/tags/"
+        aria-label="标签"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Tags" class="text-2xl font-bold tracking-tight">
+          标签
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/categories/"
+        aria-label="分类"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Categories" class="text-2xl font-bold tracking-tight">
+          分类
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="https://github.com/JekYUlll"
+        aria-label="github"
+        
+          target="_blank"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+          </span>
+        
+        <span title="" class="text-2xl font-bold tracking-tight">
+          
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
 </div>
 
-</header>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+
+
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/"
+      >Horeb</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/posts/"
+      >Welcome to My Blog</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/posts/means/"
+      >C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        C++ / Golang / 游戏开发 / TA 学习路线汇总
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2024-06-02T00:00:00&#43;00:00">2024-06-02</time><span class="px-2 text-primary-500">&middot;</span><time datetime="2026-05-27T14:36:28&#43;08:00">更新于: 2026-05-27</time><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">11 分钟</span><span class="px-2 text-primary-500">&middot;</span><span class="mb-[2px]">
+  <span
+    id="zen-mode-button"
+    class="text-lg hover:text-primary-500"
+    title="啟用阅读模式"
+    data-title-i18n-disable="啟用阅读模式"
+    data-title-i18n-enable="停用阅读模式">
+    <span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+    <path fill="currentColor" d="M 12.980469 4 C 9.1204688 4 5.9804688 7.14 5.9804688 11 L 6 26 L 9.9804688 26 L 9.9804688 11 C 9.9804688 9.35 11.320469 8 12.980469 8 L 40.019531 8 C 41.679531 8 43.019531 9.35 43.019531 11 L 43.019531 39 C 43.019531 40.65 41.679531 42 40.019531 42 L 29 42 C 29 43.54 28.420938 44.94 27.460938 46 L 40.019531 46 C 43.879531 46 47.019531 42.86 47.019531 39 L 47.019531 11 C 47.019531 7.14 43.879531 4 40.019531 4 L 12.980469 4 z M 7 28 C 4.794 28 3 29.794 3 32 L 3 42 C 3 44.206 4.794 46 7 46 L 23 46 C 25.206 46 27 44.206 27 42 L 27 32 C 27 29.794 25.206 28 23 28 L 7 28 z M 7 32 L 23 32 L 23.001953 42 L 7 42 L 7 32 z"/>
+</svg></span></span>
+  </span>
+</span>
 
     
 
-    <section class="article-content">
     
     
-    <!-- -- 2024年6月2日23:56:19
+  </div>
+
+  
+
+  
+  
+    <div class="flex flex-row flex-wrap items-center">
+      
+        
+          
+            
+              
+                <a class="relative mt-[0.5rem] me-2" href="/categories/algorithm/">
+                  
+                  <span class="flex cursor-pointer">
+  
+  
+  
+    
+    
+  
+  
+    <span
+      class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+  
+    Algorithm
+  </span>
+</span>
+
+                </a>
+              
+            
+            
+              
+            
+          
+        
+      
+        
+          
+            
+              
+            
+            
+              
+                <a class="relative mt-[0.5rem] me-2" href="/tags/learning-path/">
+                  <span class="flex cursor-pointer">
+  
+  
+  
+  
+    <span
+      class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+  
+    Learning-Path
+  </span>
+</span>
+
+                </a>
+              
+            
+          
+            
+              
+            
+            
+              
+                <a class="relative mt-[0.5rem] me-2" href="/tags/cpp/">
+                  <span class="flex cursor-pointer">
+  
+  
+  
+  
+    <span
+      class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+  
+    Cpp
+  </span>
+</span>
+
+                </a>
+              
+            
+          
+            
+              
+            
+            
+              
+                <a class="relative mt-[0.5rem] me-2" href="/tags/golang/">
+                  <span class="flex cursor-pointer">
+  
+  
+  
+  
+    <span
+      class="rounded-md border border-primary-400 px-1 py-[1px] text-xs font-normal text-primary-700 dark:border-primary-600 dark:text-primary-400">
+  
+    Golang
+  </span>
+</span>
+
+                </a>
+              
+            
+          
+        
+      
+    </div>
+  
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="JekYUlll"
+        src="/img/author_hu_f571c3a564bd4443.jpg"
+        data-zoom-src="/img/author_hu_8e44e266a7bce438.jpg">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        作者
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        JekYUlll
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">C++ / Go / Linux 开发者</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2">
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/JekYUlll"
+          
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <!-- -- 2024年6月2日23:56:19
 收藏的路线越来越多，有点乱。单列一个文件，想到的时候汇总一下。 -->
-<h1 id="c">C++
-</h1><p><a class="link" href="https://zhuanlan.zhihu.com/p/649667647"  target="_blank" rel="noopener"
-    >一篇文章学完 Effective Modern C++：条款 &amp; 实践</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/14264391441"  target="_blank" rel="noopener"
-    >深入理解C++内存管理：指针、引用和内存分配</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/274189552/answer/3578048970"  target="_blank" rel="noopener"
-    >CPU的核心数和线程数量是什么关系？ - texttime vage的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://space.bilibili.com/28615855/channel/collectiondetail?sid=43297"  target="_blank" rel="noopener"
-    >合集·现代 C++ 语言核心特性解析</a>。<br>
-<a class="link" href="https://changkun.de/modern-cpp/zh-cn/01-intro/"  target="_blank" rel="noopener"
-    >现代 C++ 教程：高速上手 C++ 11/14/17/20</a>。</p>
-<p>小鹏的教程：<a class="link" href="https://space.bilibili.com/263032155/channel/collectiondetail?sid=599074"  target="_blank" rel="noopener"
-    >合集·现代C++项目实战</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/290102232/answer/2094675219"  target="_blank" rel="noopener"
-    >校招C++大概学习到什么程度？ - 程序员内功修炼的回答 - 知乎</a>。八股文组合拳。</p>
+
+<h1 class="relative group">C++
+    <div id="c" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#c" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/649667647"  target="_blank" rel="noreferrer">一篇文章学完 Effective Modern C++：条款 &amp; 实践</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/14264391441"  target="_blank" rel="noreferrer">深入理解C++内存管理：指针、引用和内存分配</a>。</p>
+<p><a href="https://www.zhihu.com/question/274189552/answer/3578048970"  target="_blank" rel="noreferrer">CPU的核心数和线程数量是什么关系？ - texttime vage的回答 - 知乎</a>。</p>
+<p><a href="https://space.bilibili.com/28615855/channel/collectiondetail?sid=43297"  target="_blank" rel="noreferrer">合集·现代 C++ 语言核心特性解析</a>。<br>
+<a href="https://changkun.de/modern-cpp/zh-cn/01-intro/"  target="_blank" rel="noreferrer">现代 C++ 教程：高速上手 C++ 11/14/17/20</a>。</p>
+<p>小鹏的教程：<a href="https://space.bilibili.com/263032155/channel/collectiondetail?sid=599074"  target="_blank" rel="noreferrer">合集·现代C++项目实战</a>。</p>
+<p><a href="https://www.zhihu.com/question/290102232/answer/2094675219"  target="_blank" rel="noreferrer">校招C++大概学习到什么程度？ - 程序员内功修炼的回答 - 知乎</a>。八股文组合拳。</p>
 <p>陈皓（左耳朵耗子）的一些博客：<br>
-<a class="link" href="https://blog.csdn.net/haoel/article/details/1948051"  target="_blank" rel="noopener"
-    >C++ 虚函数表解析</a>。<br>
-<a class="link" href="https://haoel.blog.csdn.net/article/details/3081328"  target="_blank" rel="noopener"
-    >C++ 对象的内存布局（上）</a>。<br>
-<a class="link" href="https://haoel.blog.csdn.net/article/details/2886"  target="_blank" rel="noopener"
-    >跟我一起写 Makefile（一）</a>。<br>
-<a class="link" href="https://coolshell.cn/articles/11564.html"  target="_blank" rel="noopener"
-    >TCP 的那些事儿（上）</a>。</p>
-<p><a class="link" href="https://github.com/Light-City/CPlusPlusThings"  target="_blank" rel="noopener"
-    >C++那些事 CPlusPlusThings</a>。<br>
-<a class="link" href="https://light-city.github.io/stories_things/"  target="_blank" rel="noopener"
-    >C++那些事 中文</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1D84y1t76J/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >现代C++教程 2023</a>。</p>
-<p><a class="link" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"  target="_blank" rel="noopener"
-    >CUDA C++ Programming Guide</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/394704611/answer/1245846184"  target="_blank" rel="noopener"
-    >如何成为linux服务端C++开发专家? - 不谙世事的吴同学的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/527327054"  target="_blank" rel="noopener"
-    >c++17 多态内存资源(PMR)</a>。<br>
-<a class="link" href="https://zhuanlan.zhihu.com/p/452697297"  target="_blank" rel="noopener"
-    >内存管理：设计Arena</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Se411D7y4/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >这本书加深了我对C++的理解 | C++ Core Guidelines解析</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/weixin_42136255/article/details/133815129"  target="_blank" rel="noopener"
-    >深入理解Asan:内存错误检测工具与实践</a>。</p>
+<a href="https://blog.csdn.net/haoel/article/details/1948051"  target="_blank" rel="noreferrer">C++ 虚函数表解析</a>。<br>
+<a href="https://haoel.blog.csdn.net/article/details/3081328"  target="_blank" rel="noreferrer">C++ 对象的内存布局（上）</a>。<br>
+<a href="https://haoel.blog.csdn.net/article/details/2886"  target="_blank" rel="noreferrer">跟我一起写 Makefile（一）</a>。<br>
+<a href="https://coolshell.cn/articles/11564.html"  target="_blank" rel="noreferrer">TCP 的那些事儿（上）</a>。</p>
+<p><a href="https://github.com/Light-City/CPlusPlusThings"  target="_blank" rel="noreferrer">C++那些事 CPlusPlusThings</a>。<br>
+<a href="https://light-city.github.io/stories_things/"  target="_blank" rel="noreferrer">C++那些事 中文</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1D84y1t76J/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">现代C++教程 2023</a>。</p>
+<p><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html"  target="_blank" rel="noreferrer">CUDA C++ Programming Guide</a>。</p>
+<p><a href="https://www.zhihu.com/question/394704611/answer/1245846184"  target="_blank" rel="noreferrer">如何成为linux服务端C++开发专家? - 不谙世事的吴同学的回答 - 知乎</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/527327054"  target="_blank" rel="noreferrer">c++17 多态内存资源(PMR)</a>。<br>
+<a href="https://zhuanlan.zhihu.com/p/452697297"  target="_blank" rel="noreferrer">内存管理：设计Arena</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1Se411D7y4/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">这本书加深了我对C++的理解 | C++ Core Guidelines解析</a>。</p>
+<p><a href="https://blog.csdn.net/weixin_42136255/article/details/133815129"  target="_blank" rel="noreferrer">深入理解Asan:内存错误检测工具与实践</a>。</p>
 <!-- [C++翻译阶段中的编码转换-执行字符集与源字符集](https://www.bilibili.com/video/BV1yof2Y4EPF/?spm_id_from=333.1007.tianma.2-1-4.click&vd_source=9b0b9cbfd8c349b95b4776bd10953f3a)。 -->
-<p><a class="link" href="https://www.zhihu.com/question/428340896/answer/2913419725"  target="_blank" rel="noopener"
-    >为什么C/C++等少数编程语言要区分左右值？ - 腾讯技术工程的回答 - 知乎</a>。非常牛逼。讲得很深，从C语言的发展、寄存器讲起。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/670821214"  target="_blank" rel="noopener"
-    >13.纤程（Fiber）与协程（Coroutine）</a>。</p>
-<p><a class="link" href="https://baijiahao.baidu.com/s?id=1719486804831856788&amp;wfr=spider&amp;for=pc"  target="_blank" rel="noopener"
-    >深入并发之线程、进程、纤程、协程、管程与死锁、活锁｜详解</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/33979489/answer/1854635802"  target="_blank" rel="noopener"
-    >从操作系统内存管理来说，malloc申请一块内存的背后原理是什么？ - 编程指北的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/m0_49476241/article/details/131183319"  target="_blank" rel="noopener"
-    >深入理解程序的结构</a>。<br>
-<a class="link" href="https://blog.csdn.net/qq_26626709/article/details/51887085"  target="_blank" rel="noopener"
-    >快速理解 <code>.bss</code>、<code>.data</code>和<code>.rodata</code></a>。
-<a class="link" href="https://blog.csdn.net/OUYANG_LINUX007/article/details/7448814?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7EPaidSort-1-7448814-blog-51887085.235%5Ev43%5Epc_blog_bottom_relevance_base4&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7EPaidSort-1-7448814-blog-51887085.235%5Ev43%5Epc_blog_bottom_relevance_base4&amp;utm_relevant_index=2"  target="_blank" rel="noopener"
-    >bss,data,text,rodata,堆,栈,常量段</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/20201738/answer/2928936881"  target="_blank" rel="noopener"
-    >有哪些优秀的 C/C++ 开源代码框架？这些框架的设计思路是怎样的？ - 南山烟雨珠江潮的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV11cwbeXEyw/?spm_id_from=333.1007.tianma.2-2-5.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >C++内存模型：从C++11到C++23 - Alex Dathskovsky - CppCon 2023</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Yr4y157Ci/"  target="_blank" rel="noopener"
-    >C++设计模式入门</a>。</p>
-<p><a class="link" href="https://developer.aliyun.com/article/1324367"  target="_blank" rel="noopener"
-    >Linux系统调试篇——核心转储(core dump)</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1MtQLYhEm1"  target="_blank" rel="noopener"
-    >编译过程-动画演示</a>。</p>
-<h3 id="项目--库">项目 / 库
-</h3><p><a class="link" href="https://aweiii.work/posts/23109e98/"  target="_blank" rel="noopener"
-    >webserver面试题汇总</a>。<br>
-<a class="link" href="https://zhuanlan.zhihu.com/p/985908526"  target="_blank" rel="noopener"
-    >从面试角度重新看c++11的Webserver</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/6426611756"  target="_blank" rel="noopener"
-    >linux服务器编程：从epoll升级到io_uring</a>。
-<a class="link" href="https://mp.weixin.qq.com/s?__biz=MzIyMDkxMTIwNA==&amp;mid=2247485149&amp;idx=1&amp;sn=20fc45200195e6af774599147d4c37dc&amp;chksm=96d59b436d32e4b4546098b54e43372ee243a5600c1914cb80311f0e7989918df8e20d88e441&amp;mpshare=1&amp;scene=23&amp;srcid=1101sK368AjN8MB04HoF6NK3&amp;sharer_shareinfo=89f1444dc11755950d46ef3891230eb1&amp;sharer_shareinfo_first=5fb62de6698930fcaad86ddac76a5b7f#rd"  target="_blank" rel="noopener"
-    >Swoole v6 将引入 Linux io_uring ，并发读写文件性能提升了 5 倍</a>。</p>
-<p>知名开源小线程池：<a class="link" href="https://github.com/mtrebi/thread-pool"  target="_blank" rel="noopener"
-    >thread-pool</a>。<br>
-<a class="link" href="https://zhuanlan.zhihu.com/p/367309864"  target="_blank" rel="noopener"
-    >基于C++11实现线程池 - Skykey的文章 - 知乎</a>。</p>
-<p>C++项目：<a class="link" href="https://www.zhihu.com/question/280881677/answer/3110226717"  target="_blank" rel="noopener"
-    >如何找合适的C++项目给自己的简历加分？ - 大糖的回答 - 知乎</a>。</p>
+<p><a href="https://www.zhihu.com/question/428340896/answer/2913419725"  target="_blank" rel="noreferrer">为什么C/C++等少数编程语言要区分左右值？ - 腾讯技术工程的回答 - 知乎</a>。非常牛逼。讲得很深，从C语言的发展、寄存器讲起。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/670821214"  target="_blank" rel="noreferrer">13.纤程（Fiber）与协程（Coroutine）</a>。</p>
+<p><a href="https://baijiahao.baidu.com/s?id=1719486804831856788&amp;wfr=spider&amp;for=pc"  target="_blank" rel="noreferrer">深入并发之线程、进程、纤程、协程、管程与死锁、活锁｜详解</a>。</p>
+<p><a href="https://www.zhihu.com/question/33979489/answer/1854635802"  target="_blank" rel="noreferrer">从操作系统内存管理来说，malloc申请一块内存的背后原理是什么？ - 编程指北的回答 - 知乎</a>。</p>
+<p><a href="https://blog.csdn.net/m0_49476241/article/details/131183319"  target="_blank" rel="noreferrer">深入理解程序的结构</a>。<br>
+<a href="https://blog.csdn.net/qq_26626709/article/details/51887085"  target="_blank" rel="noreferrer">快速理解 <code>.bss</code>、<code>.data</code>和<code>.rodata</code></a>。
+<a href="https://blog.csdn.net/OUYANG_LINUX007/article/details/7448814?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7EPaidSort-1-7448814-blog-51887085.235%5Ev43%5Epc_blog_bottom_relevance_base4&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7EPaidSort-1-7448814-blog-51887085.235%5Ev43%5Epc_blog_bottom_relevance_base4&amp;utm_relevant_index=2"  target="_blank" rel="noreferrer">bss,data,text,rodata,堆,栈,常量段</a>。</p>
+<p><a href="https://www.zhihu.com/question/20201738/answer/2928936881"  target="_blank" rel="noreferrer">有哪些优秀的 C/C++ 开源代码框架？这些框架的设计思路是怎样的？ - 南山烟雨珠江潮的回答 - 知乎</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV11cwbeXEyw/?spm_id_from=333.1007.tianma.2-2-5.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">C++内存模型：从C++11到C++23 - Alex Dathskovsky - CppCon 2023</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1Yr4y157Ci/"  target="_blank" rel="noreferrer">C++设计模式入门</a>。</p>
+<p><a href="https://developer.aliyun.com/article/1324367"  target="_blank" rel="noreferrer">Linux系统调试篇——核心转储(core dump)</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1MtQLYhEm1"  target="_blank" rel="noreferrer">编译过程-动画演示</a>。</p>
+
+<h3 class="relative group">项目 / 库
+    <div id="项目--库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%a1%b9%e7%9b%ae--%e5%ba%93" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p><a href="https://aweiii.work/posts/23109e98/"  target="_blank" rel="noreferrer">webserver面试题汇总</a>。<br>
+<a href="https://zhuanlan.zhihu.com/p/985908526"  target="_blank" rel="noreferrer">从面试角度重新看c++11的Webserver</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/6426611756"  target="_blank" rel="noreferrer">linux服务器编程：从epoll升级到io_uring</a>。
+<a href="https://mp.weixin.qq.com/s?__biz=MzIyMDkxMTIwNA==&amp;mid=2247485149&amp;idx=1&amp;sn=20fc45200195e6af774599147d4c37dc&amp;chksm=96d59b436d32e4b4546098b54e43372ee243a5600c1914cb80311f0e7989918df8e20d88e441&amp;mpshare=1&amp;scene=23&amp;srcid=1101sK368AjN8MB04HoF6NK3&amp;sharer_shareinfo=89f1444dc11755950d46ef3891230eb1&amp;sharer_shareinfo_first=5fb62de6698930fcaad86ddac76a5b7f#rd"  target="_blank" rel="noreferrer">Swoole v6 将引入 Linux io_uring ，并发读写文件性能提升了 5 倍</a>。</p>
+<p>知名开源小线程池：<a href="https://github.com/mtrebi/thread-pool"  target="_blank" rel="noreferrer">thread-pool</a>。<br>
+<a href="https://zhuanlan.zhihu.com/p/367309864"  target="_blank" rel="noreferrer">基于C++11实现线程池 - Skykey的文章 - 知乎</a>。</p>
+<p>C++项目：<a href="https://www.zhihu.com/question/280881677/answer/3110226717"  target="_blank" rel="noreferrer">如何找合适的C++项目给自己的简历加分？ - 大糖的回答 - 知乎</a>。</p>
 <p>游双《Linux高性能服务器》springsnail（一个简易的四层负载均衡服务器，只提供least connection最小连接数算法，以进程池提供原动力）、LVS（linux virtual server，一个成熟的四层负载均衡服务器，提供了3种工作模式和10种负载均衡算法等等）</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/3306132128"  target="_blank" rel="noopener"
-    >深入探索libevent网络库的内部实现机制</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1a4zzYKEAt/?spm_id_from=333.788.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >C++Linux进阶项目分析-仿写Redis之Qedis，深入掌握C++Linux必备的Redis技术栈</a>。</p>
-<p>vectorDB：<a class="link" href="https://www.zhihu.com/question/610131777/answer/64211441517"  target="_blank" rel="noopener"
-    >有什么高质量c++练手项目推荐嘛？ - zlatan的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://space.bilibili.com/48698932/channel/collectiondetail?sid=1466783&amp;spm_id_from=333.788.0.0"  target="_blank" rel="noopener"
-    >合集·CheatEngine源码探究</a>。</p>
-<p><a class="link" href="https://github.com/alibaba/yalantinglibs"  target="_blank" rel="noopener"
-    >雅兰亭库</a>, 是一个非常现代的c++库(阿里写的), 除了反射 还有协程库、RPC库&hellip;</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1bGkPYzExW/?spm_id_from=333.1007.tianma.1-2-2.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >Linux C++项目推荐：WebFileServer文件服务器+如何快速上手C++大项目</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/18232912635?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_psn=1862832492203089920&amp;utm_source=wechat_session"  target="_blank" rel="noopener"
-    >小而美的C++项目推荐：缓存系统</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/337200770?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_psn=1864621380202528768&amp;utm_source=wechat_session"  target="_blank" rel="noopener"
-    >&ldquo;全球最强&rdquo; | C++ 动态反射库</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/cheese/play/ss3021?query_from=0&amp;search_id=10611084605111698952&amp;search_query=RPC&amp;csource=common_hpsearch_null_null&amp;spm_id_from=333.337.search-card.all.click"  target="_blank" rel="noopener"
-    >C++后台开发实战-高性能异步RPC框架</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/612921777"  target="_blank" rel="noopener"
-    >三个比较小的C++项目与简历内容 - 严格鸽的文章 - 知乎</a>。json解析器，跳表，线程池。</p>
-<p><a class="link" href="https://github.com/CodingHanYa/workspace"  target="_blank" rel="noopener"
-    >workspace是基于C++11的轻量级异步执行框架</a>。一个开源的线程池。<br>
-这是前身的教程：<a class="link" href="https://www.bilibili.com/video/BV1CY4y1Z7NG"  target="_blank" rel="noopener"
-    >01 Hipe_C++线程池框架_简介（更新）</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/m0_73311735/article/details/127788105"  target="_blank" rel="noopener"
-    >netty源码看不懂？试着写一个吧</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/113695485"  target="_blank" rel="noopener"
-    >深入了解QT消息循环及线程相关性Froser</a>。</p>
-<p><a class="link" href="https://www.cnblogs.com/fortunely/p/17388565.html"  target="_blank" rel="noopener"
-    >spdlog库笔记汇总</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1YG41137Vk"  target="_blank" rel="noopener"
-    >黑马C++项目之分布式服务器编程</a>。</p>
-<h3 id="面经">面经
-</h3><p>百度面经。<a class="link" href="https://www.zhihu.com/question/585465188/answer/2958195873"  target="_blank" rel="noopener"
-    >C++ 找工作校招需要掌握到什么程度？ - 阿biu的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/1416699587"  target="_blank" rel="noopener"
-    >C/C++高频面试题：内存泄漏的原因、检测、解决方案</a>。</p>
-<p><a class="link" href="https://www.nowcoder.com/discuss/353157644871475200"  target="_blank" rel="noopener"
-    >腾讯天美C++后端三次面试</a>。</p>
-<p><a class="link" href="https://www.nowcoder.com/discuss/353154640814481408"  target="_blank" rel="noopener"
-    >一个失败者的秋招面经</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/4044485462"  target="_blank" rel="noopener"
-    >腾讯一面：malloc是如何分配内存的，free怎么知道该释放多少内存？</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1eHwPewE4E/?spm_id_from=333.337.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >字节跳动C++二面：手撕shared_ptr</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Rbwhe3Euh/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >华为海思C++一面：手撕线程池~源码分享</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1KgATecEDk/?spm_id_from=333.1007.tianma.2-2-5.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >腾讯、百度C++二面：手撕定时器实现、附实现源码~</a></p>
-<p><a class="link" href="https://www.nowcoder.com/feed/main/detail/624784454bde4a04a8466f60c0dfc739?sourceSSR=search"  target="_blank" rel="noopener"
-    >momenta内推momenta面经 Go</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/985908526"  target="_blank" rel="noopener"
-    >从面试角度重新看c++11的Webserver</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/zvideo/1415721944793124864?utm_id=0"  target="_blank" rel="noopener"
-    >大厂面试系统设计题：如何设计一个红包雨系统？</a></p>
-<p><a class="link" href="https://xiaolincoding.com/os/#%E5%B0%8F%E7%99%BD%E9%80%82%E5%90%88%E7%9C%8B%E5%90%97"  target="_blank" rel="noopener"
-    >小林coding图解系统</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/645463314/answer/3571960871"  target="_blank" rel="noopener"
-    >字节一面：TCP 和 UDP 可以使用同一个端口吗？ - 小林coding的回答 - 知乎</a>。<br>
-<a class="link" href="https://www.zhihu.com/question/645463314/answer/3618363162"  target="_blank" rel="noopener"
-    >字节一面：TCP 和 UDP 可以使用同一个端口吗？ - 车小胖的回答 - 知乎</a>。一些非常刁钻的面试题。答案是可以，有点意外。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/19951719175"  target="_blank" rel="noopener"
-    >腾讯面试：那些腾讯面试过的MySQL场景问题 - 王中阳讲编程的文章 - 知乎</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/26153765896"  target="_blank" rel="noopener"
-    >美团C++面经 - 泸沽寻梦的文章 - 知乎</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/liangzc1124/article/details/145379276"  target="_blank" rel="noopener"
-    >内存泄漏的通用排查方法</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/677307438"  target="_blank" rel="noopener"
-    >天美一面 后台开发（凉） - 牛客面经的文章 - 知乎</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/629336564"  target="_blank" rel="noopener"
-    >C++面试题个人总结（2023-5）</a>。里面有一些听说不准确。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/836863961"  target="_blank" rel="noopener"
-    >Linux系统面试题汇总，纯八股文~</a></p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/28707582070"  target="_blank" rel="noopener"
-    >几千HC下的大厂暑期实习锐评（一）</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/3306132128"  target="_blank" rel="noreferrer">深入探索libevent网络库的内部实现机制</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1a4zzYKEAt/?spm_id_from=333.788.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">C++Linux进阶项目分析-仿写Redis之Qedis，深入掌握C++Linux必备的Redis技术栈</a>。</p>
+<p>vectorDB：<a href="https://www.zhihu.com/question/610131777/answer/64211441517"  target="_blank" rel="noreferrer">有什么高质量c++练手项目推荐嘛？ - zlatan的回答 - 知乎</a>。</p>
+<p><a href="https://space.bilibili.com/48698932/channel/collectiondetail?sid=1466783&amp;spm_id_from=333.788.0.0"  target="_blank" rel="noreferrer">合集·CheatEngine源码探究</a>。</p>
+<p><a href="https://github.com/alibaba/yalantinglibs"  target="_blank" rel="noreferrer">雅兰亭库</a>, 是一个非常现代的c++库(阿里写的), 除了反射 还有协程库、RPC库&hellip;</p>
+<p><a href="https://www.bilibili.com/video/BV1bGkPYzExW/?spm_id_from=333.1007.tianma.1-2-2.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">Linux C++项目推荐：WebFileServer文件服务器+如何快速上手C++大项目</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/18232912635?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_psn=1862832492203089920&amp;utm_source=wechat_session"  target="_blank" rel="noreferrer">小而美的C++项目推荐：缓存系统</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/337200770?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_psn=1864621380202528768&amp;utm_source=wechat_session"  target="_blank" rel="noreferrer">&ldquo;全球最强&rdquo; | C++ 动态反射库</a>。</p>
+<p><a href="https://www.bilibili.com/cheese/play/ss3021?query_from=0&amp;search_id=10611084605111698952&amp;search_query=RPC&amp;csource=common_hpsearch_null_null&amp;spm_id_from=333.337.search-card.all.click"  target="_blank" rel="noreferrer">C++后台开发实战-高性能异步RPC框架</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/612921777"  target="_blank" rel="noreferrer">三个比较小的C++项目与简历内容 - 严格鸽的文章 - 知乎</a>。json解析器，跳表，线程池。</p>
+<p><a href="https://github.com/CodingHanYa/workspace"  target="_blank" rel="noreferrer">workspace是基于C++11的轻量级异步执行框架</a>。一个开源的线程池。<br>
+这是前身的教程：<a href="https://www.bilibili.com/video/BV1CY4y1Z7NG"  target="_blank" rel="noreferrer">01 Hipe_C++线程池框架_简介（更新）</a>。</p>
+<p><a href="https://blog.csdn.net/m0_73311735/article/details/127788105"  target="_blank" rel="noreferrer">netty源码看不懂？试着写一个吧</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/113695485"  target="_blank" rel="noreferrer">深入了解QT消息循环及线程相关性Froser</a>。</p>
+<p><a href="https://www.cnblogs.com/fortunely/p/17388565.html"  target="_blank" rel="noreferrer">spdlog库笔记汇总</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1YG41137Vk"  target="_blank" rel="noreferrer">黑马C++项目之分布式服务器编程</a>。</p>
+
+<h3 class="relative group">面经
+    <div id="面经" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%9d%a2%e7%bb%8f" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>百度面经。<a href="https://www.zhihu.com/question/585465188/answer/2958195873"  target="_blank" rel="noreferrer">C++ 找工作校招需要掌握到什么程度？ - 阿biu的回答 - 知乎</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/1416699587"  target="_blank" rel="noreferrer">C/C++高频面试题：内存泄漏的原因、检测、解决方案</a>。</p>
+<p><a href="https://www.nowcoder.com/discuss/353157644871475200"  target="_blank" rel="noreferrer">腾讯天美C++后端三次面试</a>。</p>
+<p><a href="https://www.nowcoder.com/discuss/353154640814481408"  target="_blank" rel="noreferrer">一个失败者的秋招面经</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/4044485462"  target="_blank" rel="noreferrer">腾讯一面：malloc是如何分配内存的，free怎么知道该释放多少内存？</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1eHwPewE4E/?spm_id_from=333.337.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">字节跳动C++二面：手撕shared_ptr</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1Rbwhe3Euh/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">华为海思C++一面：手撕线程池~源码分享</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1KgATecEDk/?spm_id_from=333.1007.tianma.2-2-5.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">腾讯、百度C++二面：手撕定时器实现、附实现源码~</a></p>
+<p><a href="https://www.nowcoder.com/feed/main/detail/624784454bde4a04a8466f60c0dfc739?sourceSSR=search"  target="_blank" rel="noreferrer">momenta内推momenta面经 Go</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/985908526"  target="_blank" rel="noreferrer">从面试角度重新看c++11的Webserver</a>。</p>
+<p><a href="https://www.zhihu.com/zvideo/1415721944793124864?utm_id=0"  target="_blank" rel="noreferrer">大厂面试系统设计题：如何设计一个红包雨系统？</a></p>
+<p><a href="https://xiaolincoding.com/os/#%E5%B0%8F%E7%99%BD%E9%80%82%E5%90%88%E7%9C%8B%E5%90%97"  target="_blank" rel="noreferrer">小林coding图解系统</a>。</p>
+<p><a href="https://www.zhihu.com/question/645463314/answer/3571960871"  target="_blank" rel="noreferrer">字节一面：TCP 和 UDP 可以使用同一个端口吗？ - 小林coding的回答 - 知乎</a>。<br>
+<a href="https://www.zhihu.com/question/645463314/answer/3618363162"  target="_blank" rel="noreferrer">字节一面：TCP 和 UDP 可以使用同一个端口吗？ - 车小胖的回答 - 知乎</a>。一些非常刁钻的面试题。答案是可以，有点意外。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/19951719175"  target="_blank" rel="noreferrer">腾讯面试：那些腾讯面试过的MySQL场景问题 - 王中阳讲编程的文章 - 知乎</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/26153765896"  target="_blank" rel="noreferrer">美团C++面经 - 泸沽寻梦的文章 - 知乎</a>。</p>
+<p><a href="https://blog.csdn.net/liangzc1124/article/details/145379276"  target="_blank" rel="noreferrer">内存泄漏的通用排查方法</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/677307438"  target="_blank" rel="noreferrer">天美一面 后台开发（凉） - 牛客面经的文章 - 知乎</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/629336564"  target="_blank" rel="noreferrer">C++面试题个人总结（2023-5）</a>。里面有一些听说不准确。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/836863961"  target="_blank" rel="noreferrer">Linux系统面试题汇总，纯八股文~</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/28707582070"  target="_blank" rel="noreferrer">几千HC下的大厂暑期实习锐评（一）</a>。</p>
 <hr>
-<h1 id="数学算法">数学/算法
-</h1><p><a class="link" href="https://www.bilibili.com/video/BV1ys411472E/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >【官方双语/合集】线性代数的本质 - 系列合集</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/147297924"  target="_blank" rel="noopener"
-    >【从入门到放弃】线性回归</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/list/watchlater?oid=882796110&amp;bvid=BV1AK4y1k7Px&amp;spm_id_from=333.1007.top_right_bar_window_view_later.content.click"  target="_blank" rel="noopener"
-    >《数值分析》| 华科 | 研究生基础课</a>。</p>
-<p><a class="link" href="http://tutorial.math.lamar.edu/"  target="_blank" rel="noopener"
-    >Paul&rsquo;s Online Math Notes</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV18Q4y1d7Kt/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >你还不懂ZIP压缩的原理？一条视频讲清楚ZIP算法中的LZ77编码</a>。<br>
-<a class="link" href="https://www.bilibili.com/video/BV1c64y1r7Sc/?spm_id_from=333.788.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >哈夫曼编码很难懂？一条视频讲清楚</a>。<br>
-<a class="link" href="https://www.bilibili.com/video/BV17M4y1u7Ek?spm_id_from=333.788.recommend_more_video.1&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >JPEG 有损压缩 离散余弦变换 DCT 一条视频讲清楚</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1zF68YdEJY/?spm_id_from=333.1007.tianma.2-3-6.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >模型分割后处理 加速 极致优化 4 矩阵乘法优化</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/695042849"  target="_blank" rel="noopener"
-    >图解世界上最快的排序算法：Timsort</a>。</p>
-<h1 id="底层--四大件">底层 / 四大件
-</h1><p><a class="link" href="https://www.cnblogs.com/timlly/p/11471507.html#45-shader%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"  target="_blank" rel="noopener"
-    >深入GPU硬件架构及运行机制</a>。</p>
-<p><a class="link" href="https://mp.weixin.qq.com/s/FOmUP9YcMORpPxqrz_Ravw"  target="_blank" rel="noopener"
-    >HPC(高性能计算第一篇):一文彻底搞懂并发编程与内存屏障</a>。</p>
-<p><a class="link" href="https://mp.weixin.qq.com/s/bt2YVej-vXTHPA1Nfi_mHw"  target="_blank" rel="noopener"
-    >基础软件开发新坑 &ndash; 神秘的MESI和坑爹的LockFree（一）</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >MIT 6.033 Spring 2021: Computer System 计算机系统</a>。</p>
-<p>讲得很清晰的计网概述：<a class="link" href="https://mp.weixin.qq.com/s?__biz=MzI0MzI1Mjg5Nw==&amp;mid=2247484435&amp;idx=1&amp;sn=6ecaaab82bbd15d6b05ad05754501910&amp;chksm=e96eafddde1926cbab2f18d48f3b17886b91a1f176650216e51a212c9474176ef226905a77f3&amp;token=466537573&amp;lang=zh_CN#rd"  target="_blank" rel="noopener"
-    >详细剖析分布式微服务架构下网络通信的底层实现原理（图解）</a>。</p>
-<p><a class="link" href="https://space.bilibili.com/12995787/channel/collectiondetail?sid=196337&amp;spm_id_from=333.788.0.0"  target="_blank" rel="noopener"
-    >合集·从零开始自制操作系统</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1px411E7ST/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >【合集】MIT 6.828: Operating System Engineering [Fall 2014] (无字幕)</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1oufmYEET7/?spm_id_from=333.1007.tianma.1-1-1.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >面试必考题：笨叔总结的DMA Cache用法1</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/653863659/answer/3476115054"  target="_blank" rel="noopener"
-    >我想写一个demo级别的编译器，我是该用C语言实现还是用nodejs实现？ - 南山烟雨珠江潮的回答 - 知乎</a>。南山对编译器入门的推荐。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/774701158"  target="_blank" rel="noopener"
-    >深入理解Linux的TCP三次握手</a>。<br>
+
+<h1 class="relative group">数学/算法
+    <div id="数学算法" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e5%ad%a6%e7%ae%97%e6%b3%95" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://www.bilibili.com/video/BV1ys411472E/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">【官方双语/合集】线性代数的本质 - 系列合集</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/147297924"  target="_blank" rel="noreferrer">【从入门到放弃】线性回归</a>。</p>
+<p><a href="https://www.bilibili.com/list/watchlater?oid=882796110&amp;bvid=BV1AK4y1k7Px&amp;spm_id_from=333.1007.top_right_bar_window_view_later.content.click"  target="_blank" rel="noreferrer">《数值分析》| 华科 | 研究生基础课</a>。</p>
+<p><a href="http://tutorial.math.lamar.edu/"  target="_blank" rel="noreferrer">Paul&rsquo;s Online Math Notes</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV18Q4y1d7Kt/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">你还不懂ZIP压缩的原理？一条视频讲清楚ZIP算法中的LZ77编码</a>。<br>
+<a href="https://www.bilibili.com/video/BV1c64y1r7Sc/?spm_id_from=333.788.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">哈夫曼编码很难懂？一条视频讲清楚</a>。<br>
+<a href="https://www.bilibili.com/video/BV17M4y1u7Ek?spm_id_from=333.788.recommend_more_video.1&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">JPEG 有损压缩 离散余弦变换 DCT 一条视频讲清楚</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1zF68YdEJY/?spm_id_from=333.1007.tianma.2-3-6.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">模型分割后处理 加速 极致优化 4 矩阵乘法优化</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/695042849"  target="_blank" rel="noreferrer">图解世界上最快的排序算法：Timsort</a>。</p>
+
+<h1 class="relative group">底层 / 四大件
+    <div id="底层--四大件" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%ba%95%e5%b1%82--%e5%9b%9b%e5%a4%a7%e4%bb%b6" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://www.cnblogs.com/timlly/p/11471507.html#45-shader%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"  target="_blank" rel="noreferrer">深入GPU硬件架构及运行机制</a>。</p>
+<p><a href="https://mp.weixin.qq.com/s/FOmUP9YcMORpPxqrz_Ravw"  target="_blank" rel="noreferrer">HPC(高性能计算第一篇):一文彻底搞懂并发编程与内存屏障</a>。</p>
+<p><a href="https://mp.weixin.qq.com/s/bt2YVej-vXTHPA1Nfi_mHw"  target="_blank" rel="noreferrer">基础软件开发新坑 &ndash; 神秘的MESI和坑爹的LockFree（一）</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV12T4y1R78D/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">MIT 6.033 Spring 2021: Computer System 计算机系统</a>。</p>
+<p>讲得很清晰的计网概述：<a href="https://mp.weixin.qq.com/s?__biz=MzI0MzI1Mjg5Nw==&amp;mid=2247484435&amp;idx=1&amp;sn=6ecaaab82bbd15d6b05ad05754501910&amp;chksm=e96eafddde1926cbab2f18d48f3b17886b91a1f176650216e51a212c9474176ef226905a77f3&amp;token=466537573&amp;lang=zh_CN#rd"  target="_blank" rel="noreferrer">详细剖析分布式微服务架构下网络通信的底层实现原理（图解）</a>。</p>
+<p><a href="https://space.bilibili.com/12995787/channel/collectiondetail?sid=196337&amp;spm_id_from=333.788.0.0"  target="_blank" rel="noreferrer">合集·从零开始自制操作系统</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1px411E7ST/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">【合集】MIT 6.828: Operating System Engineering [Fall 2014] (无字幕)</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1oufmYEET7/?spm_id_from=333.1007.tianma.1-1-1.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">面试必考题：笨叔总结的DMA Cache用法1</a>。</p>
+<p><a href="https://www.zhihu.com/question/653863659/answer/3476115054"  target="_blank" rel="noreferrer">我想写一个demo级别的编译器，我是该用C语言实现还是用nodejs实现？ - 南山烟雨珠江潮的回答 - 知乎</a>。南山对编译器入门的推荐。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/774701158"  target="_blank" rel="noreferrer">深入理解Linux的TCP三次握手</a>。<br>
 从Linux系统函数角度，讲得比较深。</p>
-<p><a class="link" href="https://www.zhihu.com/question/8348811114/answer/107394250557"  target="_blank" rel="noopener"
-    >有哪些讲源码的书籍？ - 南山烟雨珠江潮的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://cloud.tencent.com/developer/article/1848933"  target="_blank" rel="noopener"
-    >一文看懂 | 什么是页缓存（Page Cache）</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/679773351"  target="_blank" rel="noopener"
-    >一文读懂Linux内存管理</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/676385200"  target="_blank" rel="noopener"
-    >一口气搞懂【Linux内存管理】，就靠这60张图、59个问题了</a>。</p>
+<p><a href="https://www.zhihu.com/question/8348811114/answer/107394250557"  target="_blank" rel="noreferrer">有哪些讲源码的书籍？ - 南山烟雨珠江潮的回答 - 知乎</a>。</p>
+<p><a href="https://cloud.tencent.com/developer/article/1848933"  target="_blank" rel="noreferrer">一文看懂 | 什么是页缓存（Page Cache）</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/679773351"  target="_blank" rel="noreferrer">一文读懂Linux内存管理</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/676385200"  target="_blank" rel="noreferrer">一口气搞懂【Linux内存管理】，就靠这60张图、59个问题了</a>。</p>
 <hr>
-<h1 id="go">Go
-</h1><p>uber出的go的指南<a class="link" href="https://github.com/uber-go/guide"  target="_blank" rel="noopener"
-    >guide</a>。</p>
-<p><a class="link" href="https://books.studygolang.com/gopl-zh/"  target="_blank" rel="noopener"
-    >Go语言圣经（中文版）</a>。</p>
-<p><a class="link" href="https://github.com/darius-khll/golang-developer-roadmap"  target="_blank" rel="noopener"
-    >Go Developer Roadmap</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/qq_45467608/article/details/137768942"  target="_blank" rel="noopener"
-    >【Go手写RPC框架】</a>。<br>
-<a class="link" href="https://www.php.cn/faq/588274.html"  target="_blank" rel="noopener"
-    >如何在go语言中实现高并发的RPC框架</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/381788230"  target="_blank" rel="noopener"
-    >Go 语言中的零拷贝优化</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/369863905/answer/1018940882"  target="_blank" rel="noopener"
-    >有没有推荐的golang的练手项目？ - 极客兔兔的回答 - 知乎</a>。</p>
-<p><a class="link" href="https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&amp;mid=2247487656&amp;idx=1&amp;sn=e6e125db1fa1bad01048f341a4b7165a&amp;scene=21#wechat_redirect"  target="_blank" rel="noopener"
-    >字节跳动 Go RPC 框架 KiteX 性能优化实践</a>。</p>
-<p><a class="link" href="https://izualzhy.cn/archive.html?tag=leveldb"  target="_blank" rel="noopener"
-    >leveldb的优秀博客</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Pv411C7dL/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >使用Golang实现Tcp反向代理服务器</a>。<br>
-<a class="link" href="https://www.bilibili.com/video/BV1TD4y1d7s4/?spm_id_from=333.788.recommend_more_video.-1&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >使用Golang实现内网端口映射</a>。</p>
-<p><a class="link" href="https://space.bilibili.com/646640992/lists?sid=3820295&amp;spm_id_from=333.788.0.0"  target="_blank" rel="noopener"
-    >合集·大厂Go面经系列</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/CSDNedu/article/details/143511035"  target="_blank" rel="noopener"
-    >01 | IAM系统概述：我们要实现什么样的 Go 项目？</a></p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/555188132?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_psn=1875375517919744000&amp;utm_source=wechat_session"  target="_blank" rel="noopener"
-    >Go 组件：context 学习笔记</a>。</p>
-<p><a class="link" href="https://github.com/HDT3213/godis"  target="_blank" rel="noopener"
-    >godis</a>。Go 语言实现的 Redis 服务器和分布式集群。</p>
-<p><a class="link" href="https://blog.csdn.net/2401_84204413/article/details/145979165"  target="_blank" rel="noopener"
-    >基于Golang所开发的大模型API高性能调度平台</a>。</p>
-<p><a class="link" href="https://github.com/fogleman/nes"  target="_blank" rel="noopener"
-    >nes</a>，这是一个用Golang编写的NES模拟器。可以看到如何用Golang编写一个模拟器，以及如何用Go模拟CPU和GPU。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1YG41137Vk"  target="_blank" rel="noopener"
-    >面试别再商城项目博客项目啦！双非学员用【分布式AI微服务Golang项目】已经上岸了！</a>。</p>
-<h1 id="数据库">数据库
-</h1><p><a class="link" href="https://zhuanlan.zhihu.com/p/653179752"  target="_blank" rel="noopener"
-    >面试被经常问的SQL窗口函数！</a></p>
-<p><a class="link" href="https://juejin.cn/post/7198982002304942138"  target="_blank" rel="noopener"
-    >课程：Redis - 大厂程序员是怎么用的</a>。掘金的字节课。</p>
-<p><a class="link" href="https://www.cnblogs.com/ccEmma/p/9202107.html"  target="_blank" rel="noopener"
-    >为什么分布式一定要有redis?</a></p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Q8NVetERW/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >Go 实战项目 rosedb 源码剖析 1—架构原理</a>。<br>
-<a class="link" href="https://github.com/rosedblabs/rosedb"  target="_blank" rel="noopener"
-    >rosedb github</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1q2421L7Wd/?spm_id_from=333.1391.0.0&amp;p=2&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >2024年吃透MySQL数据库（MySQL高级优化+索引调优+SQL调优+经典面试题一站式掌握）</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1hQ4y1x7Ym?spm_id_from=333.788.videopod.episodes&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >2024吃透数据库MySQL+Redis缓存+分库分表实战，1000分钟数据库面试高质量教程！</a><br>
+
+<h1 class="relative group">Go
+    <div id="go" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#go" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p>uber出的go的指南<a href="https://github.com/uber-go/guide"  target="_blank" rel="noreferrer">guide</a>。</p>
+<p><a href="https://books.studygolang.com/gopl-zh/"  target="_blank" rel="noreferrer">Go语言圣经（中文版）</a>。</p>
+<p><a href="https://github.com/darius-khll/golang-developer-roadmap"  target="_blank" rel="noreferrer">Go Developer Roadmap</a>。</p>
+<p><a href="https://blog.csdn.net/qq_45467608/article/details/137768942"  target="_blank" rel="noreferrer">【Go手写RPC框架】</a>。<br>
+<a href="https://www.php.cn/faq/588274.html"  target="_blank" rel="noreferrer">如何在go语言中实现高并发的RPC框架</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/381788230"  target="_blank" rel="noreferrer">Go 语言中的零拷贝优化</a>。</p>
+<p><a href="https://www.zhihu.com/question/369863905/answer/1018940882"  target="_blank" rel="noreferrer">有没有推荐的golang的练手项目？ - 极客兔兔的回答 - 知乎</a>。</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&amp;mid=2247487656&amp;idx=1&amp;sn=e6e125db1fa1bad01048f341a4b7165a&amp;scene=21#wechat_redirect"  target="_blank" rel="noreferrer">字节跳动 Go RPC 框架 KiteX 性能优化实践</a>。</p>
+<p><a href="https://izualzhy.cn/archive.html?tag=leveldb"  target="_blank" rel="noreferrer">leveldb的优秀博客</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1Pv411C7dL/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">使用Golang实现Tcp反向代理服务器</a>。<br>
+<a href="https://www.bilibili.com/video/BV1TD4y1d7s4/?spm_id_from=333.788.recommend_more_video.-1&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">使用Golang实现内网端口映射</a>。</p>
+<p><a href="https://space.bilibili.com/646640992/lists?sid=3820295&amp;spm_id_from=333.788.0.0"  target="_blank" rel="noreferrer">合集·大厂Go面经系列</a>。</p>
+<p><a href="https://blog.csdn.net/CSDNedu/article/details/143511035"  target="_blank" rel="noreferrer">01 | IAM系统概述：我们要实现什么样的 Go 项目？</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/555188132?utm_campaign=shareopn&amp;utm_medium=social&amp;utm_psn=1875375517919744000&amp;utm_source=wechat_session"  target="_blank" rel="noreferrer">Go 组件：context 学习笔记</a>。</p>
+<p><a href="https://github.com/HDT3213/godis"  target="_blank" rel="noreferrer">godis</a>。Go 语言实现的 Redis 服务器和分布式集群。</p>
+<p><a href="https://blog.csdn.net/2401_84204413/article/details/145979165"  target="_blank" rel="noreferrer">基于Golang所开发的大模型API高性能调度平台</a>。</p>
+<p><a href="https://github.com/fogleman/nes"  target="_blank" rel="noreferrer">nes</a>，这是一个用Golang编写的NES模拟器。可以看到如何用Golang编写一个模拟器，以及如何用Go模拟CPU和GPU。</p>
+<p><a href="https://www.bilibili.com/video/BV1YG41137Vk"  target="_blank" rel="noreferrer">面试别再商城项目博客项目啦！双非学员用【分布式AI微服务Golang项目】已经上岸了！</a>。</p>
+
+<h1 class="relative group">数据库
+    <div id="数据库" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%95%b0%e6%8d%ae%e5%ba%93" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/653179752"  target="_blank" rel="noreferrer">面试被经常问的SQL窗口函数！</a></p>
+<p><a href="https://juejin.cn/post/7198982002304942138"  target="_blank" rel="noreferrer">课程：Redis - 大厂程序员是怎么用的</a>。掘金的字节课。</p>
+<p><a href="https://www.cnblogs.com/ccEmma/p/9202107.html"  target="_blank" rel="noreferrer">为什么分布式一定要有redis?</a></p>
+<p><a href="https://www.bilibili.com/video/BV1Q8NVetERW/?spm_id_from=333.1007.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">Go 实战项目 rosedb 源码剖析 1—架构原理</a>。<br>
+<a href="https://github.com/rosedblabs/rosedb"  target="_blank" rel="noreferrer">rosedb github</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1q2421L7Wd/?spm_id_from=333.1391.0.0&amp;p=2&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">2024年吃透MySQL数据库（MySQL高级优化+索引调优+SQL调优+经典面试题一站式掌握）</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1hQ4y1x7Ym?spm_id_from=333.788.videopod.episodes&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">2024吃透数据库MySQL+Redis缓存+分库分表实战，1000分钟数据库面试高质量教程！</a><br>
 一些想看的场景题。</p>
-<p><a class="link" href="https://blog.csdn.net/zhaoylzy/article/details/144204107"  target="_blank" rel="noopener"
-    >分布式数据库与集中式数据库区别详解！</a></p>
-<h1 id="web-通识">web 通识
-</h1><p><a class="link" href="https://time.geekbang.org/column/article/398410"  target="_blank" rel="noopener"
-    >25 | 认证机制：应用程序如何进行访问认证？</a>讲得非常好。</p>
-<p><a class="link" href="https://blog.csdn.net/2401_84240431/article/details/137848638"  target="_blank" rel="noopener"
-    >cookie、localStorage和sessionStorage三者的区别</a>。</p>
-<h1 id="微服务--分布式--rpc--流计算--云计算">微服务 / 分布式 / rpc / 流计算 / 云计算
-</h1><p><a class="link" href="https://zhuanlan.zhihu.com/p/471626286"  target="_blank" rel="noopener"
-    >5种微服务注册中心如何选型？从原理给你解读！</a></p>
-<p><a class="link" href="https://blog.csdn.net/weixin_46619605/article/details/142170925"  target="_blank" rel="noopener"
-    >解析消息队列（Kafka版本）</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1jk4y1D7mU/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >全B站最好懂的云计算入门课（Azure）</a></p>
-<p><a class="link" href="https://blog.csdn.net/yy139926/article/details/128468074"  target="_blank" rel="noopener"
-    >分布式 ID 详解 CSDN</a>。
-<a class="link" href="https://cloud.tencent.com/developer/article/2364487"  target="_blank" rel="noopener"
-    >一文读懂“Snowflake（雪花）”算法 腾讯云</a>。</p>
-<p><a class="link" href="https://blog.csdn.net/crazymakercircle/article/details/143200817"  target="_blank" rel="noopener"
-    >‘分布式事务‘ 圣经：从入门到精通，架构师尼恩最新、最全详解 (50+图文4万字全面总结 )</a>。</p>
-<p><a class="link" href="https://www.upyun.com/tech/article/683/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%81%B0%E5%BA%A6%E6%9B%B4%E6%96%B0%E5%AE%9E%E8%B7%B5.html"  target="_blank" rel="noopener"
-    >云原生灰度更新实践</a>。<br>
-<a class="link" href="https://blog.csdn.net/weixin_39702335/article/details/111797549"  target="_blank" rel="noopener"
-    >k8s灰度更新_k8s实现灰度发布</a>。<br>
+<p><a href="https://blog.csdn.net/zhaoylzy/article/details/144204107"  target="_blank" rel="noreferrer">分布式数据库与集中式数据库区别详解！</a></p>
+
+<h1 class="relative group">web 通识
+    <div id="web-通识" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#web-%e9%80%9a%e8%af%86" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://time.geekbang.org/column/article/398410"  target="_blank" rel="noreferrer">25 | 认证机制：应用程序如何进行访问认证？</a>讲得非常好。</p>
+<p><a href="https://blog.csdn.net/2401_84240431/article/details/137848638"  target="_blank" rel="noreferrer">cookie、localStorage和sessionStorage三者的区别</a>。</p>
+
+<h1 class="relative group">微服务 / 分布式 / rpc / 流计算 / 云计算
+    <div id="微服务--分布式--rpc--流计算--云计算" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%be%ae%e6%9c%8d%e5%8a%a1--%e5%88%86%e5%b8%83%e5%bc%8f--rpc--%e6%b5%81%e8%ae%a1%e7%ae%97--%e4%ba%91%e8%ae%a1%e7%ae%97" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/471626286"  target="_blank" rel="noreferrer">5种微服务注册中心如何选型？从原理给你解读！</a></p>
+<p><a href="https://blog.csdn.net/weixin_46619605/article/details/142170925"  target="_blank" rel="noreferrer">解析消息队列（Kafka版本）</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1jk4y1D7mU/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">全B站最好懂的云计算入门课（Azure）</a></p>
+<p><a href="https://blog.csdn.net/yy139926/article/details/128468074"  target="_blank" rel="noreferrer">分布式 ID 详解 CSDN</a>。
+<a href="https://cloud.tencent.com/developer/article/2364487"  target="_blank" rel="noreferrer">一文读懂“Snowflake（雪花）”算法 腾讯云</a>。</p>
+<p><a href="https://blog.csdn.net/crazymakercircle/article/details/143200817"  target="_blank" rel="noreferrer">‘分布式事务‘ 圣经：从入门到精通，架构师尼恩最新、最全详解 (50+图文4万字全面总结 )</a>。</p>
+<p><a href="https://www.upyun.com/tech/article/683/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%81%B0%E5%BA%A6%E6%9B%B4%E6%96%B0%E5%AE%9E%E8%B7%B5.html"  target="_blank" rel="noreferrer">云原生灰度更新实践</a>。<br>
+<a href="https://blog.csdn.net/weixin_39702335/article/details/111797549"  target="_blank" rel="noreferrer">k8s灰度更新_k8s实现灰度发布</a>。<br>
 未读。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Vb411m7go"  target="_blank" rel="noopener"
-    >深入浅出讲解 MapReduce</a>。</p>
-<p><a class="link" href="https://cloud.tencent.com/developer/article/1617967"  target="_blank" rel="noopener"
-    >HDFS原理 | 一文读懂HDFS架构与设计</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1Vb411m7go"  target="_blank" rel="noreferrer">深入浅出讲解 MapReduce</a>。</p>
+<p><a href="https://cloud.tencent.com/developer/article/1617967"  target="_blank" rel="noreferrer">HDFS原理 | 一文读懂HDFS架构与设计</a>。</p>
 <p>分布式系统基础：</p>
 <ul>
 <li>CAP定理与BASE理论（理解分布式系统设计的核心约束）</li>
@@ -527,84 +1254,69 @@
 <li>Serverless范式（冷启动问题与函数计算优化）</li>
 <li>云原生生态（Service Mesh/Istio的sidecar模式）</li>
 </ul>
-<h1 id="架构">架构
-</h1><p><a class="link" href="https://blog.csdn.net/weixin_60707895/article/details/121143294"  target="_blank" rel="noopener"
-    >性能追击：30+图详解8大主流服务器程序线程模型展示</a>。</p>
-<p><a class="link" href="https://www.infoq.cn/article/l1KUimTRzb8wZ0ffNNoG?utm_campaign=geektime_search&amp;utm_content=geektime_search&amp;utm_medium=geektime_search&amp;utm_source=geektime_search&amp;utm_term=geektime_search"  target="_blank" rel="noopener"
-    >字节跳动开源 Go HTTP 框架 Hertz 设计实践</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/zvideo/1415721944793124864?utm_id=0"  target="_blank" rel="noopener"
-    >大厂面试系统设计题：如何设计一个红包雨系统？</a></p>
-<p><a class="link" href="https://cloud.tencent.com/developer/article/1445567"  target="_blank" rel="noopener"
-    >从0到10亿，微信后台架构及基础设施设计与实践！</a></p>
+
+<h1 class="relative group">架构
+    <div id="架构" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%9e%b6%e6%9e%84" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://blog.csdn.net/weixin_60707895/article/details/121143294"  target="_blank" rel="noreferrer">性能追击：30+图详解8大主流服务器程序线程模型展示</a>。</p>
+<p><a href="https://www.infoq.cn/article/l1KUimTRzb8wZ0ffNNoG?utm_campaign=geektime_search&amp;utm_content=geektime_search&amp;utm_medium=geektime_search&amp;utm_source=geektime_search&amp;utm_term=geektime_search"  target="_blank" rel="noreferrer">字节跳动开源 Go HTTP 框架 Hertz 设计实践</a>。</p>
+<p><a href="https://www.zhihu.com/zvideo/1415721944793124864?utm_id=0"  target="_blank" rel="noreferrer">大厂面试系统设计题：如何设计一个红包雨系统？</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1445567"  target="_blank" rel="noreferrer">从0到10亿，微信后台架构及基础设施设计与实践！</a></p>
 <hr>
-<h1 id="ta--引擎--游戏">TA / 引擎 / 游戏
-</h1><p><a class="link" href="https://zhuanlan.zhihu.com/p/436920189"  target="_blank" rel="noopener"
-    >转行技术美术（TA）的分享</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/261861130"  target="_blank" rel="noopener"
-    >TA技术美术（偏T)学习规划</a>。</p>
-<p><a class="link" href="https://www.zhihu.com/question/640467378/answer/3382207520"  target="_blank" rel="noopener"
-    >我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎</a> &ndash; 图程路线。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/711481617"  target="_blank" rel="noopener"
-    >光线追踪无痛入门</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/129372723"  target="_blank" rel="noopener"
-    >Ray Tracing: The Next Week V3.0中文翻译（上）</a>。<br>
-<a class="link" href="https://zhuanlan.zhihu.com/p/129745508"  target="_blank" rel="noopener"
-    >Ray Tracing: The Next Week V3.0中文翻译（下）</a>。</p>
-<p><a class="link" href="https://www.nowcoder.com/discuss/590687392735014912"  target="_blank" rel="noopener"
-    >游戏研发秋招 经验信息分享帖</a>。</p>
-<p><a class="link" href="https://www.audiokinetic.com/zh/"  target="_blank" rel="noopener"
-    >audiokinetic</a>。音频开发。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/410710318"  target="_blank" rel="noopener"
-    >在shader中实现五种描边方法</a>。</p>
-<p><a class="link" href="https://dev.epicgames.com/documentation/en-us/unreal-engine/mesh-drawing-pipeline-in-unreal-engine"  target="_blank" rel="noopener"
-    >unreal engine Mesh Drawing Pipeline</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/711437664"  target="_blank" rel="noopener"
-    >游戏制作的窄门：构建mini游戏引擎 - 1 - Third Party Libs</a>。<br>
-音频库<a class="link" href="https://codyclaborn.me/tutorials/setting-up-xcode-and-visual-studio-for-fmod-development/"  target="_blank" rel="noopener"
-    >FMOD</a>。<br>
-<a class="link" href="https://www.fmod.com/download#fmodengine"  target="_blank" rel="noopener"
-    >FMOD</a>。远不仅是音频库，还有引擎内核的。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/637308167"  target="_blank" rel="noopener"
-    >花了一年半时间写的玩具离线渲染器，用来学习并实现各种渲染算法</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1ys4y167Cb?spm_id_from=333.788.videopod.sections&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >【搬运】Hazel 3D游戏引擎开发教程#001</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1avCsYMEsS/?spm_id_from=333.1007.tianma.2-2-5.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >用C++打造超强物理引擎 - 模拟机械运动</a>。</p>
-<p>导出 3D 刚体物理并用 C/C++ 实现：<a class="link" href="https://www.youtube.com/watch?v=4r_EvmPKOvY"  target="_blank" rel="noopener"
-    >Deriving 3D Rigid Body Physics and implementing it in C/C++ (with intuitions)</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/16489499289"  target="_blank" rel="noopener"
-    >数字孪生常见特效Shader实现4 直线 PolyLine</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/96089089"  target="_blank" rel="noopener"
-    >游戏引擎开发新感觉！(6) c++17内存管理</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/648804908"  target="_blank" rel="noopener"
-    >OpenGL 面试题 - Leslie的文章 - 知乎</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/39707078"  target="_blank" rel="noopener"
-    >《游戏设计模式》(游戏编程模式)全书笔记+Unity实现</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/398852950"  target="_blank" rel="noopener"
-    >Unreal从0到1专栏概述</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/25796897059"  target="_blank" rel="noopener"
-    >对UE5神经网络引擎的一些理解和看法</a>。</p>
-<p><a class="link" href="https://zhuanlan.zhihu.com/p/492678365"  target="_blank" rel="noopener"
-    >【游戏开发】动画技术文章合集</a>。</p>
+
+<h1 class="relative group">TA / 引擎 / 游戏
+    <div id="ta--引擎--游戏" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ta--%e5%bc%95%e6%93%8e--%e6%b8%b8%e6%88%8f" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/436920189"  target="_blank" rel="noreferrer">转行技术美术（TA）的分享</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/261861130"  target="_blank" rel="noreferrer">TA技术美术（偏T)学习规划</a>。</p>
+<p><a href="https://www.zhihu.com/question/640467378/answer/3382207520"  target="_blank" rel="noreferrer">我是一名前端，部门想让我转webgl方向，要不要考虑一下？ - Jhohkkk的回答 - 知乎</a> &ndash; 图程路线。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/711481617"  target="_blank" rel="noreferrer">光线追踪无痛入门</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/129372723"  target="_blank" rel="noreferrer">Ray Tracing: The Next Week V3.0中文翻译（上）</a>。<br>
+<a href="https://zhuanlan.zhihu.com/p/129745508"  target="_blank" rel="noreferrer">Ray Tracing: The Next Week V3.0中文翻译（下）</a>。</p>
+<p><a href="https://www.nowcoder.com/discuss/590687392735014912"  target="_blank" rel="noreferrer">游戏研发秋招 经验信息分享帖</a>。</p>
+<p><a href="https://www.audiokinetic.com/zh/"  target="_blank" rel="noreferrer">audiokinetic</a>。音频开发。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/410710318"  target="_blank" rel="noreferrer">在shader中实现五种描边方法</a>。</p>
+<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/mesh-drawing-pipeline-in-unreal-engine"  target="_blank" rel="noreferrer">unreal engine Mesh Drawing Pipeline</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/711437664"  target="_blank" rel="noreferrer">游戏制作的窄门：构建mini游戏引擎 - 1 - Third Party Libs</a>。<br>
+音频库<a href="https://codyclaborn.me/tutorials/setting-up-xcode-and-visual-studio-for-fmod-development/"  target="_blank" rel="noreferrer">FMOD</a>。<br>
+<a href="https://www.fmod.com/download#fmodengine"  target="_blank" rel="noreferrer">FMOD</a>。远不仅是音频库，还有引擎内核的。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/637308167"  target="_blank" rel="noreferrer">花了一年半时间写的玩具离线渲染器，用来学习并实现各种渲染算法</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1ys4y167Cb?spm_id_from=333.788.videopod.sections&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">【搬运】Hazel 3D游戏引擎开发教程#001</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1avCsYMEsS/?spm_id_from=333.1007.tianma.2-2-5.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">用C++打造超强物理引擎 - 模拟机械运动</a>。</p>
+<p>导出 3D 刚体物理并用 C/C++ 实现：<a href="https://www.youtube.com/watch?v=4r_EvmPKOvY"  target="_blank" rel="noreferrer">Deriving 3D Rigid Body Physics and implementing it in C/C++ (with intuitions)</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/16489499289"  target="_blank" rel="noreferrer">数字孪生常见特效Shader实现4 直线 PolyLine</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/96089089"  target="_blank" rel="noreferrer">游戏引擎开发新感觉！(6) c++17内存管理</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/648804908"  target="_blank" rel="noreferrer">OpenGL 面试题 - Leslie的文章 - 知乎</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/39707078"  target="_blank" rel="noreferrer">《游戏设计模式》(游戏编程模式)全书笔记+Unity实现</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/398852950"  target="_blank" rel="noreferrer">Unreal从0到1专栏概述</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/25796897059"  target="_blank" rel="noreferrer">对UE5神经网络引擎的一些理解和看法</a>。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/492678365"  target="_blank" rel="noreferrer">【游戏开发】动画技术文章合集</a>。</p>
 <p>图形学：
 入门：GAMES-101 
-实时渲染：GAMES-202、GAMES-104、RTR4(<a class="link" href="https://github.com/Morakito/Real-Time-Rendering-4th-CN"  target="_blank" rel="noopener"
-    >https://github.com/Morakito/Real-Time-Rendering-4th-CN</a>)
+实时渲染：GAMES-202、GAMES-104、RTR4(<a href="https://github.com/Morakito/Real-Time-Rendering-4th-CN"  target="_blank" rel="noreferrer">https://github.com/Morakito/Real-Time-Rendering-4th-CN</a>)
 离线渲染：
-简单的软光追：Ray Tracing in One Weekend三部曲(<a class="link" href="https://raytracing.github.io"  target="_blank" rel="noopener"
-    >https://raytracing.github.io</a>)
-进阶：PBRT-V4 (<a class="link" href="https://pbr-book.org/4ed/contents"  target="_blank" rel="noopener"
-    >https://pbr-book.org/4ed/contents</a>)
+简单的软光追：Ray Tracing in One Weekend三部曲(<a href="https://raytracing.github.io"  target="_blank" rel="noreferrer">https://raytracing.github.io</a>)
+进阶：PBRT-V4 (<a href="https://pbr-book.org/4ed/contents"  target="_blank" rel="noreferrer">https://pbr-book.org/4ed/contents</a>)
 图形API：
 OpenGL：https://learnopengl-cn.github.io
 Vulkan：渐进式教程：https://vulkan-tutorial.com
       Example：https://github.com/SaschaWillems/Vulkan
       将Vulkan封装成RHI，写出小引擎：https://github.com/BoomingTech/Piccolo
 引擎原理:
-GAMES-104, 课程附带的 Piccolo源码值得一读 (<a class="link" href="https://github.com/BoomingTech/Piccolo"  target="_blank" rel="noopener"
-    >https://github.com/BoomingTech/Piccolo</a>)
-Godot (<a class="link" href="https://github.com/godotengine/godot"  target="_blank" rel="noopener"
-    >https://github.com/godotengine/godot</a>)
+GAMES-104, 课程附带的 Piccolo源码值得一读 (<a href="https://github.com/BoomingTech/Piccolo"  target="_blank" rel="noreferrer">https://github.com/BoomingTech/Piccolo</a>)
+Godot (<a href="https://github.com/godotengine/godot"  target="_blank" rel="noreferrer">https://github.com/godotengine/godot</a>)
 以及虚幻5源码</p>
 <p>引擎使用:
 Unity：https://catlikecoding.com/unity/tutorials/</p>
@@ -622,153 +1334,254 @@ SIGGRAPH</p>
 链接：https://www.nowcoder.com/?
 来源：牛客网 -->
 <p>Unity开发，手机sdk接入<br>
-<a class="link" href="https://zhuanlan.zhihu.com/p/720705077"  target="_blank" rel="noopener"
-    >搞懂Unity在Android上C#，Java，C++的互通</a>。</p>
+<a href="https://zhuanlan.zhihu.com/p/720705077"  target="_blank" rel="noreferrer">搞懂Unity在Android上C#，Java，C++的互通</a>。</p>
 <hr>
-<h1 id="ai--机器学习">AI / 机器学习
-</h1><p><a class="link" href="https://www.bilibili.com/video/BV1R1xWeSEUR?spm_id_from=333.788.recommend_more_video.0&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >B站最全智能优化算法课程，模拟退火算法，粒子群算法，遗传算法等16种优化算法_机器学习_深度学习_人工智能</a>。</p>
+
+<h1 class="relative group">AI / 机器学习
+    <div id="ai--机器学习" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ai--%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://www.bilibili.com/video/BV1R1xWeSEUR?spm_id_from=333.788.recommend_more_video.0&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">B站最全智能优化算法课程，模拟退火算法，粒子群算法，遗传算法等16种优化算法_机器学习_深度学习_人工智能</a>。</p>
 <hr>
-<h1 id="python">Python
-</h1><p><a class="link" href="https://zhuanlan.zhihu.com/p/673578424"  target="_blank" rel="noopener"
-    >一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days</a>。<br>
-<a class="link" href="https://github.com/jackfrued/Python-100-Days"  target="_blank" rel="noopener"
-    >Python-100-Days</a>。</p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1RDfpYVEcX/?spm_id_from=333.788.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >通过一个项目全面了解FastAPI（绝无废话！）</a></p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1ZxQ2YAERj"  target="_blank" rel="noopener"
-    >13分钟解释每个Python库/模块 ｜ Python 常用库</a>。</p>
+
+<h1 class="relative group">Python
+    <div id="python" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#python" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/673578424"  target="_blank" rel="noreferrer">一个标星144.4k⭐Python项目 100 天从新手到大师 :Python-100-Days</a>。<br>
+<a href="https://github.com/jackfrued/Python-100-Days"  target="_blank" rel="noreferrer">Python-100-Days</a>。</p>
+<p><a href="https://www.bilibili.com/video/BV1RDfpYVEcX/?spm_id_from=333.788.top_right_bar_window_history.content.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">通过一个项目全面了解FastAPI（绝无废话！）</a></p>
+<p><a href="https://www.bilibili.com/video/BV1ZxQ2YAERj"  target="_blank" rel="noreferrer">13分钟解释每个Python库/模块 ｜ Python 常用库</a>。</p>
 <hr>
-<h1 id="其他">其他
-</h1><!-- 一些要补的东西：设计模式、互联网各种架构、分布式、云计算。 -->
-<p><a class="link" href="https://blog.csdn.net/oOBubbleX/article/details/140127181"  target="_blank" rel="noopener"
-    >【大数据】什么是数据融合（Data Fusion)?</a></p>
-<p><a class="link" href="https://www.bilibili.com/video/BV1Nb421p7ov/?trackid=web_pegasus_7.router-web-pegasus-1901290-6fffd7554f-wzxmd.1737806345154.451&amp;track_id=pbaes.zI5yT6S9ARdssOJatHoNZM9QXe5HTP9ttPkZjoy7mJpDOxzpoiEH-lCRLgYg2xUK3UnJ3UqCdFOFvGj-JwHiPv5tJDO0AUHdVB-rcuHU_bmsfbsknR3R_9gioyEg--PjL7s3YisvN1rpI-Dpvvee0DsaDipQiYGQ6svyDtl4DI38_PZjZDxLUtSBGyDzlDQt&amp;caid=__CAID__&amp;resource_id=__RESOURCEID__&amp;source_id=5614&amp;request_id=1737806345205q172a27a45a218q6281&amp;from_spmid=__FROMSPMID__&amp;creative_id=205962179&amp;linked_creative_id=205962179&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >【情报修考】形式语言与自动机 基础知识</a>。</p>
-<p>java <a class="link" href="https://www.bilibili.com/video/BV16P411L7Er/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noopener"
-    >手写一个WEB应用服务，彻底搞懂Tomcat</a>。</p>
-<h3 id="训练营证书比赛gamejam实习">训练营、证书、比赛、GameJam、实习
-</h3><p>PAT考试<br>
+
+<h1 class="relative group">其他
+    <div id="其他" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e5%85%b6%e4%bb%96" aria-label="锚点">#</a>
+    </span>
+    
+</h1>
+<!-- 一些要补的东西：设计模式、互联网各种架构、分布式、云计算。 -->
+<p><a href="https://blog.csdn.net/oOBubbleX/article/details/140127181"  target="_blank" rel="noreferrer">【大数据】什么是数据融合（Data Fusion)?</a></p>
+<p><a href="https://www.bilibili.com/video/BV1Nb421p7ov/?trackid=web_pegasus_7.router-web-pegasus-1901290-6fffd7554f-wzxmd.1737806345154.451&amp;track_id=pbaes.zI5yT6S9ARdssOJatHoNZM9QXe5HTP9ttPkZjoy7mJpDOxzpoiEH-lCRLgYg2xUK3UnJ3UqCdFOFvGj-JwHiPv5tJDO0AUHdVB-rcuHU_bmsfbsknR3R_9gioyEg--PjL7s3YisvN1rpI-Dpvvee0DsaDipQiYGQ6svyDtl4DI38_PZjZDxLUtSBGyDzlDQt&amp;caid=__CAID__&amp;resource_id=__RESOURCEID__&amp;source_id=5614&amp;request_id=1737806345205q172a27a45a218q6281&amp;from_spmid=__FROMSPMID__&amp;creative_id=205962179&amp;linked_creative_id=205962179&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">【情报修考】形式语言与自动机 基础知识</a>。</p>
+<p>java <a href="https://www.bilibili.com/video/BV16P411L7Er/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9b0b9cbfd8c349b95b4776bd10953f3a"  target="_blank" rel="noreferrer">手写一个WEB应用服务，彻底搞懂Tomcat</a>。</p>
+
+<h3 class="relative group">训练营、证书、比赛、GameJam、实习
+    <div id="训练营证书比赛gamejam实习" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%ae%ad%e7%bb%83%e8%90%a5%e8%af%81%e4%b9%a6%e6%af%94%e8%b5%9bgamejam%e5%ae%9e%e4%b9%a0" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>PAT考试<br>
 OSPP开源之夏<br>
 字节青训营<br>
 七牛云1024创作节<br>
 code forces<br>
 GitLink“确实开源”编程夏令营(GLCC)</p>
 
-</section>
-
-
-    <footer class="article-meta article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/path/">Path</a>
-        
-    </section>
-
-
-    <section class="article-lastmod inline-meta">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-        <span>
-            Last updated on 2026-05-24
-        </span>
-    </section></footer>
-
-
-    
-</article>
-
-    
-
-    
-
-     
-    
-        
-
-        <div class="disqus-container">
-    
-</div>
-
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
-
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2026 Horeb
-    </section>
-    
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.2">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
-    </section>
-</footer>
-
-
-    
-
-
-
-<script type="module">
-    import gallery from '\/ts\/gallery.js';
-
-    const articleContent = document.querySelector('.article-content');
-    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
-    
-    if (shouldLoad) {
-        gallery(articleContent);
-
-        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
-        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
-
-        const styleTag = document.createElement('link');
-        styleTag.rel = 'stylesheet';
-        styleTag.href = styleHref;
-        document.head.appendChild(styleTag);
-
-        const lightbox = new PhotoSwipeLightbox({
-            gallerySelector: '.article-content',
-            childSelector: 'figure a.image-link',
-            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
-        });
-        lightbox.init();
-    }
-</script>
-
-    
-
-            </main>
+          
+          
+          
         </div>
         
-<script type="text/javascript" src="/ts/main.1ff1e5fdc4e178ed422e50aa407526dc552f26342d729343fded19416194382c.js" defer></script>
+        
+
+        
+
+        
+  
+  
 
 
-    </body>
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/opengl-%E8%8F%9C-opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0--cherno-&#43;-learnopengl/">
+              <span class="leading-6">
+                OpenGL 初学笔记 -- Cherno + LearnOpenGL&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2024-07-29T00:00:00&#43;00:00">2024-07-29</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="返回顶部"
+    title="返回顶部">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+      
+      
+        
+          
+          
+      
+      
+      
+      <nav class="flex flex-row pb-4 text-base font-medium text-neutral-500 dark:text-neutral-400 ">
+        <ul class="flex list-none flex-col sm:flex-row">
+          
+            <li class=" flex mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0 ">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center"
+                href="/tags/"
+                title="Tags">
+                
+                标签
+              </a>
+            </li>
+          
+            <li class=" flex mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0 ">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center"
+                href="/categories/"
+                title="Categories">
+                
+                分类
+              </a>
+            </li>
+          
+            <li class=" flex mb-1 text-end sm:mb-0 sm:me-7 sm:last:me-0 ">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center"
+                href=""
+                title="">
+                
+                RSS
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          JekYUlll
+      </p>
+    
+
+    
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="https://horeb.top/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="搜索"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="关闭 (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
 </html>

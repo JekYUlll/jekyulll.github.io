@@ -4,7 +4,7 @@ draft = false
 title = '【AI】mmap 和零拷贝'
 author = 'JekYUlll'
 lastmod = '2025-03-07T20:05:47+08:00'
-tags = ['linux', 'os']
+tags = ['memory', 'io', 'zero-copy']
 categories = ['linux']
 +++
 

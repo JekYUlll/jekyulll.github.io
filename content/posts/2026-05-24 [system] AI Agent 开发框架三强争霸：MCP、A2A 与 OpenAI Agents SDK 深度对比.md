@@ -4,8 +4,8 @@ draft = false
 title = 'AI Agent 开发框架三强争霸：MCP、A2A 与 OpenAI Agents SDK 深度对比'
 author = 'JekYUlll'
 lastmod = '2026-05-24T15:21:02+08:00'
-tags = ['Agent', '框架', 'MCP', 'A2A', 'OpenAI', 'Agent SDK']
-categories = ['Agent/框架']
+tags = ['ai-agent', 'mcp', 'a2a']
+categories = ['infra']
 summary = '2025-2026 年，AI Agent 从概念走向规模化落地。MCP 统一了模型与工具之间的连接标准，A2A 打通了 Agent 之间的协作壁垒，OpenAI Agents SDK 提供了极简的多 Agent 编排体验。本文通过核心原理解读、可运行的代码实战以及生态对比表格，帮你理清三者的定位与选型策略。'
 +++
 

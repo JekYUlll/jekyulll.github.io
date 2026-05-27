@@ -4,7 +4,7 @@ draft = false
 title = '容器化技术之 Linux namespace'
 author = 'JekYUlll'
 lastmod = '2025-06-08T20:05:47+08:00'
-tags = ['linux', 'os']
+tags = ['namespace', 'container']
 categories = ['linux']
 +++
 

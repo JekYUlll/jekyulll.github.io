@@ -9,6 +9,7 @@ enableCodeCopy = true
 enableBreadcrumbs = true
 
 mainSections = ["posts"]
+defaultBackgroundImage = "/img/default-bg.png"
 
 [header]
   layout = "basic"

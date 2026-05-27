@@ -4,7 +4,7 @@ draft = false
 title = 'Linux 进程优先级'
 author = 'JekYUlll'
 lastmod = '2024-11-04T21:05:47+08:00'
-tags = ['linux']
+tags = ['process', 'scheduling']
 categories = ['linux']
 +++
 

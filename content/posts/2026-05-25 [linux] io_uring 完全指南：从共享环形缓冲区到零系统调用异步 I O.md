@@ -4,7 +4,7 @@ draft = false
 title = '[linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I/O'
 author = 'JekYUlll'
 lastmod = '2026-05-25T23:48:54+08:00'
-tags = ['linux']
+tags = ['io-uring', 'async-io']
 categories = ['linux']
 +++
 

@@ -4,8 +4,8 @@ draft = false
 title = 'CPU 的五级流水线'
 author = 'JekYUlll'
 lastmod = '2024-10-09T21:05:47+08:00'
-tags = ['cpu', 'system']
-categories = ['system']
+tags = ['cpu', 'architecture']
+categories = ['infra']
 +++
 
 [现代C++的内存模型](https://zhuanlan.zhihu.com/p/382372072)。--神文  

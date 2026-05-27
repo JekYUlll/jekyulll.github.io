@@ -4,7 +4,7 @@ draft = false
 title = 'Linux 的CPU保护环，三环和零环'
 author = 'JekYUlll'
 lastmod = '2025-03-30T04:05:47+08:00'
-tags = ['linux', 'os']
+tags = ['process', 'security']
 categories = ['linux']
 +++
 

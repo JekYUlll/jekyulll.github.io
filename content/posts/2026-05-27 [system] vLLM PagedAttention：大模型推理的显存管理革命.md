@@ -4,8 +4,8 @@ draft = false
 title = 'vLLM PagedAttention：大模型推理的显存管理革命'
 author = 'JekYUlll'
 lastmod = '2026-05-27T10:04:19+08:00'
-tags = ['system']
-categories = ['system']
+tags = ['vllm', 'pagedattention', 'llm-inference']
+categories = ['infra']
 +++
 
 ## 背景

@@ -12,6 +12,7 @@ title = "Horeb"
 
 [params.author]
   name = "JekYUlll"
+  image = "img/author.jpg"
   headline = "C++ / Go / Rust"
   bio = "C++ / Go / Linux 开发者"
   links = [

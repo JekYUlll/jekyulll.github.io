@@ -4,8 +4,8 @@ draft = false
 title = '流计算中的反向压力模型与 Reactive Streams --C++实现'
 author = 'JekYUlll'
 lastmod = '2025-03-21T12:05:47+08:00'
-tags = ['cpp', 'web', 'backend']
-categories = ['web']
+tags = ['reactive-streams', 'back-pressure']
+categories = ['backend']
 +++
 
 ## 一、反向压力（Backpressure）的核心意义  

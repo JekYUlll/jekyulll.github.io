@@ -4,7 +4,7 @@ draft = false
 title = '事务 Transaction 的基础特性'
 author = 'JekYUlll'
 lastmod = '2024-11-04T18:05:47+08:00'
-tags = ['database']
+tags = ['transaction', 'acid']
 categories = ['database']
 +++
 

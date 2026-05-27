@@ -4,7 +4,7 @@ draft = false
 title = 'fork出的子进程是否继承文件描述符表？'
 author = 'JekYUlll'
 lastmod = '2025-03-29T04:05:47+08:00'
-tags = ['linux', 'os']
+tags = ['process', 'file-descriptor']
 categories = ['linux']
 +++
 
