@@ -2,799 +2,799 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Horeb</title>
-    <link>https://horeb.top/</link>
+    <link>http://localhost:1314/</link>
     <description>Recent content on Horeb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2026 JekYUlll</copyright>
-    <lastBuildDate>Wed, 27 May 2026 14:36:28 +0800</lastBuildDate><atom:link href="https://horeb.top/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 May 2026 14:36:28 +0800</lastBuildDate><atom:link href="http://localhost:1314/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>IM项目中，&#34;发送2min内可以撤回&#34;怎么实现？</title>
-      <link>https://horeb.top/posts/backend-im%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8F%91%E9%80%812min%E5%86%85%E5%8F%AF%E4%BB%A5%E6%92%A4%E5%9B%9E%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://localhost:1314/posts/backend-im%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8F%91%E9%80%812min%E5%86%85%E5%8F%AF%E4%BB%A5%E6%92%A4%E5%9B%9E%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/backend-im%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8F%91%E9%80%812min%E5%86%85%E5%8F%AF%E4%BB%A5%E6%92%A4%E5%9B%9E%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://localhost:1314/posts/backend-im%E9%A1%B9%E7%9B%AE%E4%B8%AD%E5%8F%91%E9%80%812min%E5%86%85%E5%8F%AF%E4%BB%A5%E6%92%A4%E5%9B%9E%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>vLLM PagedAttention：大模型推理的显存管理革命</title>
-      <link>https://horeb.top/posts/system-vllm-pagedattention%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%9A%84%E6%98%BE%E5%AD%98%E7%AE%A1%E7%90%86%E9%9D%A9%E5%91%BD/</link>
+      <link>http://localhost:1314/posts/system-vllm-pagedattention%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%9A%84%E6%98%BE%E5%AD%98%E7%AE%A1%E7%90%86%E9%9D%A9%E5%91%BD/</link>
       <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/system-vllm-pagedattention%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%9A%84%E6%98%BE%E5%AD%98%E7%AE%A1%E7%90%86%E9%9D%A9%E5%91%BD/</guid>
+      <guid>http://localhost:1314/posts/system-vllm-pagedattention%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E7%9A%84%E6%98%BE%E5%AD%98%E7%AE%A1%E7%90%86%E9%9D%A9%E5%91%BD/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43;26 时代的 AI 应答：当 C&#43;&#43; 开始为机器学习铺路</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;26-%E6%97%B6%E4%BB%A3%E7%9A%84-ai-%E5%BA%94%E7%AD%94%E5%BD%93-c&#43;&#43;-%E5%BC%80%E5%A7%8B%E4%B8%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%93%BA%E8%B7%AF/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;26-%E6%97%B6%E4%BB%A3%E7%9A%84-ai-%E5%BA%94%E7%AD%94%E5%BD%93-c&#43;&#43;-%E5%BC%80%E5%A7%8B%E4%B8%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%93%BA%E8%B7%AF/</link>
       <pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;26-%E6%97%B6%E4%BB%A3%E7%9A%84-ai-%E5%BA%94%E7%AD%94%E5%BD%93-c&#43;&#43;-%E5%BC%80%E5%A7%8B%E4%B8%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%93%BA%E8%B7%AF/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;26-%E6%97%B6%E4%BB%A3%E7%9A%84-ai-%E5%BA%94%E7%AD%94%E5%BD%93-c&#43;&#43;-%E5%BC%80%E5%A7%8B%E4%B8%BA%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E9%93%BA%E8%B7%AF/</guid>
       <description>&lt;p&gt;每次 AI 编程工具出新版本，评论区就有人问：&amp;ldquo;C++ 是不是快被 AI 淘汰了？&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;这问题每年出现一次，跟季节一样准时。逻辑链大概是这样：AI 写 Python 又快又准 → Python 是 AI 的主力语言 → C++ 语法复杂、特性臃肿 → LLM 生成的 C++ 代码质量堪忧 → C++ 没前途。&lt;/p&gt;&#xA;&lt;p&gt;表面看有点道理。C++ 的语法确实复杂，模板元编程的坑 AI 不一定能避开，指针错误、生命周期问题，这些对 LLM 来说全是重灾区。&lt;/p&gt;&#xA;&lt;p&gt;但另一面是：&lt;strong&gt;C++ 26 标准可能是十多年来对 AI 场景最友好的一次更新。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;这篇文章不讲焦虑，只讲事实：C++26 带来了哪些直接服务于 AI/ML 开发的新技术，以及委员会的提案方向在怎么回应&amp;quot;AI 时代&amp;quot;这个命题。&lt;/p&gt;</description>
       
     </item>
     
     <item>
       <title>eBPF 可观测性：在内核里跑代码改变了什么</title>
-      <link>https://horeb.top/posts/linux-ebpf-%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E5%9C%A8%E5%86%85%E6%A0%B8%E9%87%8C%E8%B7%91%E4%BB%A3%E7%A0%81%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+      <link>http://localhost:1314/posts/linux-ebpf-%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E5%9C%A8%E5%86%85%E6%A0%B8%E9%87%8C%E8%B7%91%E4%BB%A3%E7%A0%81%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</link>
       <pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-ebpf-%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E5%9C%A8%E5%86%85%E6%A0%B8%E9%87%8C%E8%B7%91%E4%BB%A3%E7%A0%81%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+      <guid>http://localhost:1314/posts/linux-ebpf-%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7%E5%9C%A8%E5%86%85%E6%A0%B8%E9%87%8C%E8%B7%91%E4%BB%A3%E7%A0%81%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux memfd 秘闻：内存文件描述符的秘密区域</title>
-      <link>https://horeb.top/posts/linux-linux-memfd-%E7%A7%98%E9%97%BB%E5%86%85%E5%AD%98%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E7%A7%98%E5%AF%86%E5%8C%BA%E5%9F%9F/</link>
+      <link>http://localhost:1314/posts/linux-linux-memfd-%E7%A7%98%E9%97%BB%E5%86%85%E5%AD%98%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E7%A7%98%E5%AF%86%E5%8C%BA%E5%9F%9F/</link>
       <pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-linux-memfd-%E7%A7%98%E9%97%BB%E5%86%85%E5%AD%98%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E7%A7%98%E5%AF%86%E5%8C%BA%E5%9F%9F/</guid>
+      <guid>http://localhost:1314/posts/linux-linux-memfd-%E7%A7%98%E9%97%BB%E5%86%85%E5%AD%98%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%9A%84%E7%A7%98%E5%AF%86%E5%8C%BA%E5%9F%9F/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Web Search 技术漫谈：ddgs / SearXNG / Firecrawl 与搜索架构</title>
-      <link>https://horeb.top/posts/backend-web-search-%E6%8A%80%E6%9C%AF%E6%BC%AB%E8%B0%88ddgs-_-searxng-_-firecrawl-%E4%B8%8E%E6%90%9C%E7%B4%A2%E6%9E%B6%E6%9E%84/</link>
+      <link>http://localhost:1314/posts/backend-web-search-%E6%8A%80%E6%9C%AF%E6%BC%AB%E8%B0%88ddgs-_-searxng-_-firecrawl-%E4%B8%8E%E6%90%9C%E7%B4%A2%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Tue, 26 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/backend-web-search-%E6%8A%80%E6%9C%AF%E6%BC%AB%E8%B0%88ddgs-_-searxng-_-firecrawl-%E4%B8%8E%E6%90%9C%E7%B4%A2%E6%9E%B6%E6%9E%84/</guid>
+      <guid>http://localhost:1314/posts/backend-web-search-%E6%8A%80%E6%9C%AF%E6%BC%AB%E8%B0%88ddgs-_-searxng-_-firecrawl-%E4%B8%8E%E6%90%9C%E7%B4%A2%E6%9E%B6%E6%9E%84/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>[linux] io_uring 实战：Linux 异步 I/O 的终极答案</title>
-      <link>https://horeb.top/posts/2026-05-25-linux-io_uring-%E5%AE%9E%E6%88%98linux-%E5%BC%82%E6%AD%A5-i/o-%E7%9A%84%E7%BB%88%E6%9E%81%E7%AD%94%E6%A1%88/</link>
+      <link>http://localhost:1314/posts/2026-05-25-linux-io_uring-%E5%AE%9E%E6%88%98linux-%E5%BC%82%E6%AD%A5-i/o-%E7%9A%84%E7%BB%88%E6%9E%81%E7%AD%94%E6%A1%88/</link>
       <pubDate>Mon, 25 May 2026 10:01:05 +0800</pubDate>
       
-      <guid>https://horeb.top/posts/2026-05-25-linux-io_uring-%E5%AE%9E%E6%88%98linux-%E5%BC%82%E6%AD%A5-i/o-%E7%9A%84%E7%BB%88%E6%9E%81%E7%AD%94%E6%A1%88/</guid>
+      <guid>http://localhost:1314/posts/2026-05-25-linux-io_uring-%E5%AE%9E%E6%88%98linux-%E5%BC%82%E6%AD%A5-i/o-%E7%9A%84%E7%BB%88%E6%9E%81%E7%AD%94%E6%A1%88/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>[linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I/O</title>
-      <link>https://horeb.top/posts/linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E%E5%85%B1%E4%BA%AB%E7%8E%AF%E5%BD%A2%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E6%AD%A5-i-o/</link>
+      <link>http://localhost:1314/posts/linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E%E5%85%B1%E4%BA%AB%E7%8E%AF%E5%BD%A2%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E6%AD%A5-i-o/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E%E5%85%B1%E4%BA%AB%E7%8E%AF%E5%BD%A2%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E6%AD%A5-i-o/</guid>
+      <guid>http://localhost:1314/posts/linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E%E5%85%B1%E4%BA%AB%E7%8E%AF%E5%BD%A2%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BC%82%E6%AD%A5-i-o/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43;26 反射：从模板元编程到编译期内省</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;26-%E5%8F%8D%E5%B0%84%E4%BB%8E%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B%E5%88%B0%E7%BC%96%E8%AF%91%E6%9C%9F%E5%86%85%E7%9C%81/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;26-%E5%8F%8D%E5%B0%84%E4%BB%8E%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B%E5%88%B0%E7%BC%96%E8%AF%91%E6%9C%9F%E5%86%85%E7%9C%81/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;26-%E5%8F%8D%E5%B0%84%E4%BB%8E%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B%E5%88%B0%E7%BC%96%E8%AF%91%E6%9C%9F%E5%86%85%E7%9C%81/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;26-%E5%8F%8D%E5%B0%84%E4%BB%8E%E6%A8%A1%E6%9D%BF%E5%85%83%E7%BC%96%E7%A8%8B%E5%88%B0%E7%BC%96%E8%AF%91%E6%9C%9F%E5%86%85%E7%9C%81/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Speculative Decoding：大模型推理加速的新范式</title>
-      <link>https://horeb.top/posts/system-speculative-decoding%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F%E7%9A%84%E6%96%B0%E8%8C%83%E5%BC%8F/</link>
+      <link>http://localhost:1314/posts/system-speculative-decoding%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F%E7%9A%84%E6%96%B0%E8%8C%83%E5%BC%8F/</link>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/system-speculative-decoding%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F%E7%9A%84%E6%96%B0%E8%8C%83%E5%BC%8F/</guid>
+      <guid>http://localhost:1314/posts/system-speculative-decoding%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F%E7%9A%84%E6%96%B0%E8%8C%83%E5%BC%8F/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>io_uring 完全指南：从 ring buffer 到零系统调用 I/O</title>
-      <link>https://horeb.top/posts/2026-05-24-linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E-ring-buffer-%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8-i/o/</link>
+      <link>http://localhost:1314/posts/2026-05-24-linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E-ring-buffer-%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8-i/o/</link>
       <pubDate>Sun, 24 May 2026 14:52:36 +0800</pubDate>
       
-      <guid>https://horeb.top/posts/2026-05-24-linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E-ring-buffer-%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8-i/o/</guid>
+      <guid>http://localhost:1314/posts/2026-05-24-linux-io_uring-%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8D%97%E4%BB%8E-ring-buffer-%E5%88%B0%E9%9B%B6%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8-i/o/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>AI Agent 开发框架三强争霸：MCP、A2A 与 OpenAI Agents SDK 深度对比</title>
-      <link>https://horeb.top/posts/system-ai-agent-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%89%E5%BC%BA%E4%BA%89%E9%9C%B8mcpa2a-%E4%B8%8E-openai-agents-sdk-%E6%B7%B1%E5%BA%A6%E5%AF%B9%E6%AF%94/</link>
+      <link>http://localhost:1314/posts/system-ai-agent-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%89%E5%BC%BA%E4%BA%89%E9%9C%B8mcpa2a-%E4%B8%8E-openai-agents-sdk-%E6%B7%B1%E5%BA%A6%E5%AF%B9%E6%AF%94/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/system-ai-agent-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%89%E5%BC%BA%E4%BA%89%E9%9C%B8mcpa2a-%E4%B8%8E-openai-agents-sdk-%E6%B7%B1%E5%BA%A6%E5%AF%B9%E6%AF%94/</guid>
+      <guid>http://localhost:1314/posts/system-ai-agent-%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E4%B8%89%E5%BC%BA%E4%BA%89%E9%9C%B8mcpa2a-%E4%B8%8E-openai-agents-sdk-%E6%B7%B1%E5%BA%A6%E5%AF%B9%E6%AF%94/</guid>
       <description>2025-2026 年，AI Agent 从概念走向规模化落地。MCP 统一了模型与工具之间的连接标准，A2A 打通了 Agent 之间的协作壁垒，OpenAI Agents SDK 提供了极简的多 Agent 编排体验。本文通过核心原理解读、可运行的代码实战以及生态对比表格，帮你理清三者的定位与选型策略。</description>
       
     </item>
     
     <item>
       <title>C&#43;&#43;26 编译期反射（Reflection）来了：P2996 全解析</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;26-%E7%BC%96%E8%AF%91%E6%9C%9F%E5%8F%8D%E5%B0%84reflection%E6%9D%A5%E4%BA%86p2996-%E5%85%A8%E8%A7%A3%E6%9E%90/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;26-%E7%BC%96%E8%AF%91%E6%9C%9F%E5%8F%8D%E5%B0%84reflection%E6%9D%A5%E4%BA%86p2996-%E5%85%A8%E8%A7%A3%E6%9E%90/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;26-%E7%BC%96%E8%AF%91%E6%9C%9F%E5%8F%8D%E5%B0%84reflection%E6%9D%A5%E4%BA%86p2996-%E5%85%A8%E8%A7%A3%E6%9E%90/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;26-%E7%BC%96%E8%AF%91%E6%9C%9F%E5%8F%8D%E5%B0%84reflection%E6%9D%A5%E4%BA%86p2996-%E5%85%A8%E8%A7%A3%E6%9E%90/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战</title>
-      <link>https://horeb.top/posts/backend-go-%E7%94%9F%E6%80%81%E6%96%B0%E5%8A%A8%E5%90%91range-over-func-%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E-swiss-table-map-%E5%AE%9E%E6%88%98/</link>
+      <link>http://localhost:1314/posts/backend-go-%E7%94%9F%E6%80%81%E6%96%B0%E5%8A%A8%E5%90%91range-over-func-%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E-swiss-table-map-%E5%AE%9E%E6%88%98/</link>
       <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/backend-go-%E7%94%9F%E6%80%81%E6%96%B0%E5%8A%A8%E5%90%91range-over-func-%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E-swiss-table-map-%E5%AE%9E%E6%88%98/</guid>
+      <guid>http://localhost:1314/posts/backend-go-%E7%94%9F%E6%80%81%E6%96%B0%E5%8A%A8%E5%90%91range-over-func-%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E-swiss-table-map-%E5%AE%9E%E6%88%98/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>IM应用开发的两个消息库：同步库与存储库</title>
-      <link>https://horeb.top/posts/backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</link>
+      <link>http://localhost:1314/posts/backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</link>
       <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</guid>
+      <guid>http://localhost:1314/posts/backend-im%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%B6%88%E6%81%AF%E5%BA%93%E5%90%8C%E6%AD%A5%E5%BA%93%E4%B8%8E%E5%AD%98%E5%82%A8%E5%BA%93/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>实验室服务器使用教程</title>
-      <link>https://horeb.top/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
+      <link>http://localhost:1314/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
       <pubDate>Sat, 18 Oct 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://localhost:1314/posts/normal-%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>容器化技术之 Linux namespace</title>
-      <link>https://horeb.top/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link>
+      <link>http://localhost:1314/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</link>
       <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid>
+      <guid>http://localhost:1314/posts/linux-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF%E4%B9%8B-linux-namespace/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【仅源码】C语言通过getaddrinfo函数获取域名的IP地址</title>
-      <link>https://horeb.top/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</link>
+      <link>http://localhost:1314/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</link>
       <pubDate>Thu, 08 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</guid>
+      <guid>http://localhost:1314/posts/cppc%E8%AF%AD%E8%A8%80%E9%80%9A%E8%BF%87getaddrinfo%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96%E5%9F%9F%E5%90%8D%E7%9A%84ip%E5%9C%B0%E5%9D%80/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Redis Stream和MQ</title>
-      <link>https://horeb.top/posts/redis-redis-stream%E5%92%8Cmq/</link>
+      <link>http://localhost:1314/posts/redis-redis-stream%E5%92%8Cmq/</link>
       <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/redis-redis-stream%E5%92%8Cmq/</guid>
+      <guid>http://localhost:1314/posts/redis-redis-stream%E5%92%8Cmq/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux 守护进程</title>
-      <link>https://horeb.top/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link>
+      <link>http://localhost:1314/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</link>
       <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid>
+      <guid>http://localhost:1314/posts/linux-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>TODO 守护进程，setsid，Linux三个id，权限</title>
-      <link>https://horeb.top/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link>
+      <link>http://localhost:1314/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</link>
       <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid>
+      <guid>http://localhost:1314/posts/linux-todo-%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8Bsetsidlinux%E4%B8%89%E4%B8%AAid%E6%9D%83%E9%99%90/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>在wezterm里使用tmux实现history restore 保存历史会话</title>
-      <link>https://horeb.top/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</link>
+      <link>http://localhost:1314/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</link>
       <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</guid>
+      <guid>http://localhost:1314/posts/linux-tmux%E5%AE%9E%E7%8E%B0wezterm%E4%BF%9D%E5%AD%98%E4%BC%9A%E8%AF%9D/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【1】Blender学习日记-入门</title>
-      <link>https://horeb.top/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</link>
+      <link>http://localhost:1314/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</link>
       <pubDate>Fri, 25 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</guid>
+      <guid>http://localhost:1314/posts/game-1blender%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0-%E5%85%A5%E9%97%A8/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>实现服务端断点续传：Go与Nginx</title>
-      <link>https://horeb.top/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link>
+      <link>http://localhost:1314/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</link>
       <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid>
+      <guid>http://localhost:1314/posts/web-%E5%88%A4%E6%96%ADhttp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 中的乐观锁和悲观锁</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-%E4%B8%AD%E7%9A%84%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>304 Not Modified 是怎么检测的？</title>
-      <link>https://horeb.top/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</link>
+      <link>http://localhost:1314/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</guid>
+      <guid>http://localhost:1314/posts/web-304-not-modified-%E6%98%AF%E6%80%8E%E4%B9%88%E6%A3%80%E6%B5%8B%E7%9A%84/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux 的CPU保护环，三环和零环</title>
-      <link>https://horeb.top/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link>
+      <link>http://localhost:1314/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</link>
       <pubDate>Sun, 30 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid>
+      <guid>http://localhost:1314/posts/linux-linux-%E7%9A%84cpu%E4%BF%9D%E6%8A%A4%E7%8E%AF%E4%B8%89%E7%8E%AF%E5%92%8C%E9%9B%B6%E7%8E%AF/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>fork出的子进程是否继承文件描述符表？</title>
-      <link>https://horeb.top/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link>
+      <link>http://localhost:1314/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</link>
       <pubDate>Sat, 29 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid>
+      <guid>http://localhost:1314/posts/linux-fork%E5%87%BA%E7%9A%84%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%A7%E6%89%BF%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux里fork出子进程的时候，哪些内容是共享的？</title>
-      <link>https://horeb.top/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link>
+      <link>http://localhost:1314/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</link>
       <pubDate>Thu, 27 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid>
+      <guid>http://localhost:1314/posts/linux-linux%E9%87%8Cfork%E5%87%BA%E5%AD%90%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%97%B6%E5%80%99%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E6%98%AF%E5%85%B1%E4%BA%AB%E7%9A%84/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>更新的二进制差异算法</title>
-      <link>https://horeb.top/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</link>
+      <link>http://localhost:1314/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</link>
       <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</guid>
+      <guid>http://localhost:1314/posts/alg-%E6%9B%B4%E6%96%B0%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%B7%AE%E5%BC%82%E7%AE%97%E6%B3%95/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>文件锁（FileLock）的本质与价值</title>
-      <link>https://horeb.top/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link>
+      <link>http://localhost:1314/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</link>
       <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E6%96%87%E4%BB%B6%E9%94%81filelock%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E4%BB%B7%E5%80%BC/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Nginx 的多进程模型</title>
-      <link>https://horeb.top/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
+      <link>http://localhost:1314/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>http://localhost:1314/posts/web-nginx-%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>流计算中的反向压力模型与 Reactive Streams --C&#43;&#43;实现</title>
-      <link>https://horeb.top/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://localhost:1314/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Fri, 21 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://localhost:1314/posts/web-%E6%B5%81%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E5%8F%8D%E5%90%91%E5%8E%8B%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B8%8E-reactive-streams--c&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【01】Flet 学习笔记 --Flutter原理</title>
-      <link>https://horeb.top/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--flutter%E5%8E%9F%E7%90%86/</link>
+      <link>http://localhost:1314/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--flutter%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 18 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--flutter%E5%8E%9F%E7%90%86/</guid>
+      <guid>http://localhost:1314/posts/frontend-01flet-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0--flutter%E5%8E%9F%E7%90%86/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>解析LRU与LFU算法及C&#43;&#43;实现</title>
-      <link>https://horeb.top/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://localhost:1314/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://localhost:1314/posts/web-%E8%A7%A3%E6%9E%90lru%E4%B8%8Elfu%E7%AE%97%E6%B3%95%E5%8F%8Ac&#43;&#43;%E5%AE%9E%E7%8E%B0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>如何限制C&#43;&#43;对象只能在堆或栈上创建？heap only 和 stack only</title>
-      <link>https://horeb.top/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</link>
+      <link>http://localhost:1314/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</link>
       <pubDate>Sun, 16 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</guid>
+      <guid>http://localhost:1314/posts/cpp-heap-only-%E5%92%8C-stack-only-%E7%9A%84-c&#43;&#43;-%E5%AF%B9%E8%B1%A1/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title></title>
-      <link>https://horeb.top/posts/cpp-%E4%BA%8B%E5%8A%A1%E6%80%A7%E5%86%85%E5%AD%98/</link>
+      <link>http://localhost:1314/posts/cpp-%E4%BA%8B%E5%8A%A1%E6%80%A7%E5%86%85%E5%AD%98/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E4%BA%8B%E5%8A%A1%E6%80%A7%E5%86%85%E5%AD%98/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E4%BA%8B%E5%8A%A1%E6%80%A7%E5%86%85%E5%AD%98/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【AI】C&#43;&#43;八股：main函数之前执行了什么？</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;%E5%85%AB%E8%82%A1main%E5%87%BD%E6%95%B0%E4%B9%8B%E5%89%8D%E6%89%A7%E8%A1%8C%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【AI】半衰期算法在后端的应用</title>
-      <link>https://horeb.top/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+      <link>http://localhost:1314/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+      <guid>http://localhost:1314/posts/web-%E5%8D%8A%E8%A1%B0%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9C%A8%E5%90%8E%E7%AB%AF%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【AI】使用普通的互斥锁实现读写锁</title>
-      <link>https://horeb.top/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</link>
+      <link>http://localhost:1314/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</link>
       <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E7%9A%84%E4%BA%92%E6%96%A5%E9%94%81%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E9%94%81/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>【AI】mmap 和零拷贝</title>
-      <link>https://horeb.top/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link>
+      <link>http://localhost:1314/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</link>
       <pubDate>Fri, 07 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid>
+      <guid>http://localhost:1314/posts/linux-mmap-%E5%92%8C%E9%9B%B6%E6%8B%B7%E8%B4%9D/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>进程、线程、协程的资源消耗简述</title>
-      <link>https://horeb.top/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link>
+      <link>http://localhost:1314/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</link>
       <pubDate>Fri, 07 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid>
+      <guid>http://localhost:1314/posts/linux-%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B%E7%9A%84%E8%B5%84%E6%BA%90%E6%B6%88%E8%80%97%E7%AE%80%E8%BF%B0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>内核的用户态和内核态</title>
-      <link>https://horeb.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link>
+      <link>http://localhost:1314/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</link>
       <pubDate>Fri, 07 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid>
+      <guid>http://localhost:1314/posts/linux-%E5%86%85%E6%A0%B8%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>在运行的时候，修改并且覆盖该二进制文件会如何？</title>
-      <link>https://horeb.top/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link>
+      <link>http://localhost:1314/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</link>
       <pubDate>Thu, 06 Mar 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid>
+      <guid>http://localhost:1314/posts/linux-%E5%9C%A8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%97%B6%E5%80%99%E4%BF%AE%E6%94%B9%E5%B9%B6%E4%B8%94%E8%A6%86%E7%9B%96%E8%AF%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%E4%BC%9A%E5%A6%82%E4%BD%95/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>计时器 timer 的设计</title>
-      <link>https://horeb.top/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+      <link>http://localhost:1314/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E8%AE%A1%E6%97%B6%E5%99%A8-timer-%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>线程池调度：动态优先级老化（Aging）&#43; 双队列混合轮询</title>
-      <link>https://horeb.top/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</link>
+      <link>http://localhost:1314/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</link>
       <pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B0%83%E5%BA%A6%E5%8A%A8%E6%80%81%E4%BC%98%E5%85%88%E7%BA%A7%E8%80%81%E5%8C%96aging&#43;-%E5%8F%8C%E9%98%9F%E5%88%97%E6%B7%B7%E5%90%88%E8%BD%AE%E8%AF%A2/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>如何让函数安全返回 std::string 的 c_str</title>
-      <link>https://horeb.top/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</link>
+      <link>http://localhost:1314/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</link>
       <pubDate>Sun, 23 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AAc_str%E7%9A%84%E5%B0%8F%E5%9D%91/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux 内核中 C 语言的面向对象</title>
-      <link>https://horeb.top/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <link>http://localhost:1314/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
       <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      <guid>http://localhost:1314/posts/cpp-linux-%E5%86%85%E6%A0%B8%E4%B8%AD-c-%E8%AF%AD%E8%A8%80%E7%9A%84%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>web 访问认证机制</title>
-      <link>https://horeb.top/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link>
+      <link>http://localhost:1314/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</link>
       <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid>
+      <guid>http://localhost:1314/posts/web-web-%E8%AE%BF%E9%97%AE%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>扫描线算法计算区间重叠</title>
-      <link>https://horeb.top/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link>
+      <link>http://localhost:1314/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</link>
       <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid>
+      <guid>http://localhost:1314/posts/alg-%E6%89%AB%E6%8F%8F%E7%BA%BF%E7%AE%97%E6%B3%95%E8%AE%A1%E7%AE%97%E5%8C%BA%E9%97%B4%E9%87%8D%E5%8F%A0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 同一进程的线程之间共享哪些资源？</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</link>
       <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-%E5%90%8C%E4%B8%80%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BA%BF%E7%A8%8B%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E5%93%AA%E4%BA%9B%E8%B5%84%E6%BA%90/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>运行时是把整个动态库都加载到内存中吗？</title>
-      <link>https://horeb.top/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link>
+      <link>http://localhost:1314/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</link>
       <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%98%AF%E6%8A%8A%E6%95%B4%E4%B8%AA%E5%8A%A8%E6%80%81%E5%BA%93%E9%83%BD%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD%E5%90%97/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>检查字符串是否是另一个的子串</title>
-      <link>https://horeb.top/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link>
+      <link>http://localhost:1314/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</link>
       <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E6%A3%80%E6%9F%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%9A%84%E5%AD%90%E4%B8%B2/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>写个相对现代的 C&#43;&#43; 二叉搜索树</title>
-      <link>https://horeb.top/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
+      <link>http://localhost:1314/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</link>
       <pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E5%86%99%E4%B8%AA%E7%9B%B8%E5%AF%B9%E7%8E%B0%E4%BB%A3%E7%9A%84-c&#43;&#43;-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; std::function 之脱裤子放屁的优化</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</link>
       <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-stdfunction-%E4%B9%8B%E8%84%B1%E8%A3%A4%E5%AD%90%E6%94%BE%E5%B1%81%E7%9A%84%E4%BC%98%E5%8C%96/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>在 C&#43;&#43; 里实现 Golang 的 defer</title>
-      <link>https://horeb.top/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</link>
+      <link>http://localhost:1314/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</link>
       <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E7%94%A8-c&#43;&#43;-%E5%AE%9E%E7%8E%B0-golang-%E7%9A%84-defer/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43;的POD以及如何判断是否POD</title>
-      <link>https://horeb.top/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link>
+      <link>http://localhost:1314/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</link>
       <pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E8%BD%AC%E8%BD%BD-c&#43;&#43;%E7%9A%84pod%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6pod/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>从场景解析 C&#43;&#43; shared_from_this</title>
-      <link>https://horeb.top/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</link>
+      <link>http://localhost:1314/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</link>
       <pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E4%BB%8E%E5%9C%BA%E6%99%AF%E8%A7%A3%E6%9E%90-c&#43;&#43;-shared_from_this/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Redis 数据结构之超日志 HyperLogLog</title>
-      <link>https://horeb.top/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</link>
+      <link>http://localhost:1314/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</link>
       <pubDate>Wed, 08 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</guid>
+      <guid>http://localhost:1314/posts/redis-redis-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E8%B6%85%E6%97%A5%E5%BF%97-hyperloglog/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux 大文件传输场景题</title>
-      <link>https://horeb.top/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link>
+      <link>http://localhost:1314/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</link>
       <pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid>
+      <guid>http://localhost:1314/posts/linux-linux-%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%9C%BA%E6%99%AF%E9%A2%98/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>分段锁技术详解及 C&#43;&#43; 实现</title>
-      <link>https://horeb.top/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</link>
+      <link>http://localhost:1314/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E5%88%86%E6%AE%B5%E9%94%81%E6%8A%80%E6%9C%AF%E8%AF%A6%E8%A7%A3%E5%8F%8A-c&#43;&#43;-%E5%AE%9E%E7%8E%B0/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>简述如何解决哈希冲突？</title>
-      <link>https://horeb.top/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</link>
+      <link>http://localhost:1314/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</link>
       <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 编译器返回值优化</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</link>
       <pubDate>Mon, 23 Dec 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-%E7%BC%96%E8%AF%91%E5%99%A8%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%98%E5%8C%96/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>缓存的设计</title>
-      <link>https://horeb.top/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
+      <link>http://localhost:1314/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E7%BC%93%E5%AD%98%E7%9A%84%E8%AE%BE%E8%AE%A1/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>表格展示 MySQL 基础数据类型</title>
-      <link>https://horeb.top/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+      <link>http://localhost:1314/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+      <guid>http://localhost:1314/posts/database-%E8%A1%A8%E6%A0%BC%E5%B1%95%E7%A4%BA-mysql-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux 进程优先级</title>
-      <link>https://horeb.top/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link>
+      <link>http://localhost:1314/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</link>
       <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid>
+      <guid>http://localhost:1314/posts/linux-linux-%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Linux 文件系统与虚拟文件系统</title>
-      <link>https://horeb.top/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+      <link>http://localhost:1314/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>http://localhost:1314/posts/linux-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>事务 Transaction 的基础特性</title>
-      <link>https://horeb.top/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link>
+      <link>http://localhost:1314/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</link>
       <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid>
+      <guid>http://localhost:1314/posts/database-%E4%BA%8B%E5%8A%A1transaction%E7%9A%84%E5%9F%BA%E7%A1%80%E7%89%B9%E6%80%A7/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>CPU 的五级流水线</title>
-      <link>https://horeb.top/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link>
+      <link>http://localhost:1314/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</link>
       <pubDate>Wed, 09 Oct 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid>
+      <guid>http://localhost:1314/posts/system-cpu-%E7%9A%84%E4%BA%94%E7%BA%A7%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 的四种类型转换</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link>
       <pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-%E7%9A%84%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 中 tuple 是如何实现的？</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</link>
       <pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-%E4%B8%AD-tuple-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%9A%84/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>对 C&#43;&#43; 左值、右值、智能指针的思考</title>
-      <link>https://horeb.top/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <link>http://localhost:1314/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</link>
       <pubDate>Thu, 19 Sep 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <guid>http://localhost:1314/posts/cpp-%E5%AF%B9-c&#43;&#43;-%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%80%9D%E8%80%83/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 模板类型推导</title>
-      <link>https://horeb.top/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link>
+      <link>http://localhost:1314/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid>
+      <guid>http://localhost:1314/posts/cpp-morden-c&#43;&#43;-%E6%A8%A1%E6%9D%BF%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 的三五法则是什么？</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</link>
       <pubDate>Mon, 26 Aug 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-%E7%9A%84%E4%B8%89%E4%BA%94%E6%B3%95%E5%88%99%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; 17 编译期 if</title>
-      <link>https://horeb.top/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link>
+      <link>http://localhost:1314/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</link>
       <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid>
+      <guid>http://localhost:1314/posts/cpp-c&#43;&#43;-17-%E7%BC%96%E8%AF%91%E6%9C%9F-if/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>OpenGL 初学笔记 -- Cherno &#43; LearnOpenGL</title>
-      <link>https://horeb.top/posts/opengl-%E8%8F%9C-opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0--cherno-&#43;-learnopengl/</link>
+      <link>http://localhost:1314/posts/opengl-%E8%8F%9C-opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0--cherno-&#43;-learnopengl/</link>
       <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/opengl-%E8%8F%9C-opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0--cherno-&#43;-learnopengl/</guid>
+      <guid>http://localhost:1314/posts/opengl-%E8%8F%9C-opengl-%E5%88%9D%E5%AD%A6%E7%AC%94%E8%AE%B0--cherno-&#43;-learnopengl/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>C&#43;&#43; / Golang / 游戏开发 / TA 学习路线汇总</title>
-      <link>https://horeb.top/posts/means/</link>
+      <link>http://localhost:1314/posts/means/</link>
       <pubDate>Sun, 02 Jun 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/posts/means/</guid>
+      <guid>http://localhost:1314/posts/means/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Archives</title>
-      <link>https://horeb.top/archives/</link>
+      <link>http://localhost:1314/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/archives/</guid>
+      <guid>http://localhost:1314/archives/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Search</title>
-      <link>https://horeb.top/search/</link>
+      <link>http://localhost:1314/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://horeb.top/search/</guid>
+      <guid>http://localhost:1314/search/</guid>
       <description></description>
       
     </item>
