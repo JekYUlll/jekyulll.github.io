@@ -497,3 +497,23 @@ Commands:
   - `cd /home/horeb/_code/_space/blog && export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 && git add -A && git commit -m "fix: 分散 Nginx 系列日期 5-18~5-29 + weight 参数保证顺序" && git push …`
   - … and 57 more
 
+### 2026-05-29 10:10:42 UTC | session `20260529_173` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-18 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-19 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-20 [infra] Nginx 源码解析（十）：定时器系统.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-21 [infra] Nginx 源码解析（九）：缓冲区与零拷贝.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-22 [infra] Nginx 源码解析（八）：连接管理.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-23 [infra] Nginx 源码解析（七）：Upstream 与负载均衡.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-24 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-25 [infra] Nginx 源码解析（五）：配置解析系统.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-26 [infra] Nginx 源码解析（四）：内存管理.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-27 [infra] Nginx 源码解析（三）：事件驱动核心.md`
+  - … and 2 more
+Commands:
+  - `cd /home/horeb/_code/_space/blog && ls content/posts/*Nginx*源码*.md | head -14`
+  - `cd /home/horeb/_code/_space/blog && python3 ~/.hermes/skills/blog/hugo-blog-new-post/scripts/build-registry.py 2>&1 | tail -3 && export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:78…`
+  - `sleep 60 && cd /home/horeb/_code/_space/blog && gh run list --workflow="Deploy Hugo Site" --limit=1 --json=databaseId,conclusion,status 2>&1`
+  - … and 33 more
+
