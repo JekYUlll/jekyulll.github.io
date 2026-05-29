@@ -1,6 +1,6 @@
 +++
 title = 'Nginx 源码解析（十一）：线程池与异步 IO'
-date = '2026-05-19T12:00:00+08:00'
+date = '2026-05-28T12:00:00+08:00'
 weight = 11
 draft = false
 author = 'JekYUlll'
