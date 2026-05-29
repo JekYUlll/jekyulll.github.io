@@ -457,3 +457,23 @@ Commands:
   - `cd "/home/horeb/_code/_space/blog/content/posts" && echo "=== Article 6 ===" && grep -c '\*\*' "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md" && echo "=== Article 12 ===" && grep -c '\*\*' "2026-0…`
   - `cd "/home/horeb/_code/_space/blog/content/posts" && echo "=== Article 6 ===" && grep -c '\*\*' "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md" && echo "=== Article 12 ===" && grep -c '\*\*' "2026-0…`
 
+### 2026-05-29 10:05:18 UTC | session `20260529_173` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（七）：Upstream 与负载均衡.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（三）：事件驱动核心.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（九）：缓冲区与零拷贝.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（二）：进程模型与生命周期.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（五）：配置解析系统.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（八）：连接管理.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md`
+  - … and 2 more
+Commands:
+  - `cd /home/horeb/_code/_space/blog && export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 && git add -A && git commit -m "fix: 调整 Nginx 源码解析系列时间戳修复顺序" && git push origin master 2>&…`
+  - `sleep 40 && cd /home/horeb/_code/_space/blog && export http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 && gh run list --workflow="Deploy Hugo Site" --limit=1 --json=databaseId,concl…`
+  - `cd /home/horeb/_code/_space/blog && gh run list --workflow="Deploy Hugo Site" --limit=1 --json=databaseId,conclusion,status 2>&1`
+  - … and 45 more
+

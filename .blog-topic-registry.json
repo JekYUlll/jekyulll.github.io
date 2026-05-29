@@ -1228,6 +1228,121 @@
       "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2025-10-18T21:05:47+08:00' tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器ip:    ```bash"
     },
     {
+      "filename": "2026-05-18 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（十二）：模块系统与动态加载",
+      "date": "2026-05-18",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "module-system",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "十二",
+        "模块系统与动态加载"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-18T12:00:00+08:00' weight = 12 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'module-system', 'c'] +++  系"
+    },
+    {
+      "filename": "2026-05-19 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（十一）：线程池与异步 IO",
+      "date": "2026-05-19",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "thread-pool",
+        "async-io",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "十一",
+        "线程池与异步",
+        "io"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（十一）：线程池与异步 IO' date = '2026-05-19T12:00:00+08:00' weight = 11 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'thread-pool', 'async-io', '"
+    },
+    {
+      "filename": "2026-05-20 [infra] Nginx 源码解析（十）：定时器系统.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（十）：定时器系统",
+      "date": "2026-05-20",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "timer",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "定时器系统"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（十）：定时器系统' date = '2026-05-20T12:00:00+08:00' weight = 10 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'timer', 'c'] +++  前面我们分析了 Nginx "
+    },
+    {
+      "filename": "2026-05-21 [infra] Nginx 源码解析（九）：缓冲区与零拷贝.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（九）：缓冲区与零拷贝",
+      "date": "2026-05-21",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "i-o",
+        "buffer",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "缓冲区与零拷贝"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（九）：缓冲区与零拷贝' date = '2026-05-21T12:00:00+08:00' weight = 9 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'i-o', 'buffer', 'c'] +++  响应 10"
+    },
+    {
+      "filename": "2026-05-22 [infra] Nginx 源码解析（八）：连接管理.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（八）：连接管理",
+      "date": "2026-05-22",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "connection",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "连接管理"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（八）：连接管理' date = '2026-05-22T12:00:00+08:00' weight = 8 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'connection', 'c'] +++  前几篇文章我们聊了事件"
+    },
+    {
       "filename": "2026-05-23 [backend] IM应用开发的两个消息库：同步库与存储库.md",
       "inner_file": "",
       "title": "IM应用开发的两个消息库：同步库与存储库",
@@ -1246,6 +1361,29 @@
         "im"
       ],
       "summary_preview": "date = '2026-05-23T20:05:47+08:00' draft = false title = 'IM应用开发的两个消息库：同步库与存储库' author = 'JekYUlll' lastmod = '2026-05-23T20:05:47+08:00' tags = ['im', 'messaging'] categories = ['backend'] +++  ## 引言"
+    },
+    {
+      "filename": "2026-05-23 [infra] Nginx 源码解析（七）：Upstream 与负载均衡.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（七）：Upstream 与负载均衡",
+      "date": "2026-05-23",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "upstream",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "upstream",
+        "与负载均衡"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（七）：Upstream 与负载均衡' date = '2026-05-23T12:00:00+08:00' weight = 7 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'upstream', 'c'] +++  Ngi"
     },
     {
       "filename": "2026-05-24 [backend] Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战.md",
@@ -1295,6 +1433,29 @@
         "26"
       ],
       "summary_preview": "date = '2026-05-24T15:27:55+08:00' draft = false title = 'C++26 编译期反射（Reflection）来了：P2996 全解析' author = 'JekYUlll' lastmod = '2026-05-24T15:27:55+08:00' tags = ['cpp26', 'reflection'] categories = ['c"
+    },
+    {
+      "filename": "2026-05-24 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（六）：HTTP 模块与请求处理",
+      "date": "2026-05-24",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "http",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "http",
+        "模块与请求处理"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（六）：HTTP 模块与请求处理' date = '2026-05-24T12:00:00+08:00' weight = 6 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'http', 'c'] +++  前五篇我们从整体架"
     },
     {
       "filename": "2026-05-24 [linux] io_uring 完全指南：从 ring buffer 到零系统调用 I",
@@ -1367,6 +1528,28 @@
         "26"
       ],
       "summary_preview": "date = '2026-05-25T04:30:07+08:00' draft = false title = 'C++26 反射：从模板元编程到编译期内省' author = 'JekYUlll' lastmod = '2026-05-25T04:30:07+08:00' tags = ['cpp26', 'reflection'] categories = ['cpp'] +++  C++ "
+    },
+    {
+      "filename": "2026-05-25 [infra] Nginx 源码解析（五）：配置解析系统.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（五）：配置解析系统",
+      "date": "2026-05-25",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "config",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "配置解析系统"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（五）：配置解析系统' date = '2026-05-25T12:00:00+08:00' weight = 5 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'config', 'c'] +++  Nginx 的配置系统不是"
     },
     {
       "filename": "2026-05-25 [linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I O.md",
@@ -1486,6 +1669,28 @@
       "summary_preview": "date = '2026-05-26T06:54:44+08:00' draft = false title = 'C++26 时代的 AI 应答：当 C++ 开始为机器学习铺路' author = 'JekYUlll' lastmod = '2026-05-26T06:54:44+08:00' tags = ['cpp26', 'ai', 'machine-learning'] categori"
     },
     {
+      "filename": "2026-05-26 [infra] Nginx 源码解析（四）：内存管理.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（四）：内存管理",
+      "date": "2026-05-26",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "memory-management",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "内存管理"
+      ],
+      "summary_preview": "date = '2026-05-26T12:00:00+08:00' weight = 4 draft = false title = 'Nginx 源码解析（四）：内存管理' author = 'JekYUlll' lastmod = '2026-05-26T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'memory-management',"
+    },
+    {
       "filename": "2026-05-26 [linux] Linux memfd 秘闻：内存文件描述符的秘密区域.md",
       "inner_file": "",
       "title": "Linux memfd 秘闻：内存文件描述符的秘密区域",
@@ -1548,6 +1753,29 @@
       "summary_preview": "date = '2026-05-27T12:55:10+08:00' draft = false title = 'IM项目中，\"发送2min内可以撤回\"怎么实现？' author = 'JekYUlll' lastmod = '2026-05-27T12:55:10+08:00' tags = ['im', 'messaging'] categories = ['backend'] +++  #"
     },
     {
+      "filename": "2026-05-27 [infra] Nginx 源码解析（三）：事件驱动核心.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（三）：事件驱动核心",
+      "date": "2026-05-27",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "event-loop",
+        "epoll",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "事件驱动核心"
+      ],
+      "summary_preview": "date = '2026-05-27T12:00:00+08:00' weight = 3 draft = false title = 'Nginx 源码解析（三）：事件驱动核心' author = 'JekYUlll' lastmod = '2026-05-27T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'event-loop', 'epo"
+    },
+    {
       "filename": "2026-05-27 [system] vLLM PagedAttention：大模型推理的显存管理革命.md",
       "inner_file": "",
       "title": "vLLM PagedAttention：大模型推理的显存管理革命",
@@ -1569,6 +1797,28 @@
       "summary_preview": "date = '2026-05-27T10:04:19+08:00' draft = false title = 'vLLM PagedAttention：大模型推理的显存管理革命' author = 'JekYUlll' lastmod = '2026-05-27T10:04:19+08:00' tags = ['vllm', 'pagedattention', 'llm-inference']"
     },
     {
+      "filename": "2026-05-28 [infra] Nginx 源码解析（二）：进程模型与生命周期.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（二）：进程模型与生命周期",
+      "date": "2026-05-28",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "process-model",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "进程模型与生命周期"
+      ],
+      "summary_preview": "date = '2026-05-28T12:00:00+08:00' weight = 2 draft = false title = 'Nginx 源码解析（二）：进程模型与生命周期' author = 'JekYUlll' lastmod = '2026-05-28T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'process-model'"
+    },
+    {
       "filename": "2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md",
       "inner_file": "",
       "title": "Nginx 源码解析（一）：整体架构总览",
@@ -1588,257 +1838,7 @@
         "源码解析",
         "整体架构总览"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（一）：整体架构总览' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'architecture', 'c'] +++  去年生产环境一个诡异的 TIME_W"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（七）：Upstream 与负载均衡.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（七）：Upstream 与负载均衡",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "upstream",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "upstream",
-        "与负载均衡"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（七）：Upstream 与负载均衡' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'upstream', 'c'] +++  Nginx 反向代理的核心是"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（三）：事件驱动核心.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（三）：事件驱动核心",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "event-loop",
-        "epoll",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "事件驱动核心"
-      ],
-      "summary_preview": "date = '2026-05-29T17:40:09+08:00' draft = false title = 'Nginx 源码解析（三）：事件驱动核心' author = 'JekYUlll' lastmod = '2026-05-29T17:40:09+08:00' tags = ['nginx-source', 'nginx', 'event-loop', 'epoll', 'c'] c"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（九）：缓冲区与零拷贝.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（九）：缓冲区与零拷贝",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "i-o",
-        "buffer",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "缓冲区与零拷贝"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（九）：缓冲区与零拷贝' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'i-o', 'buffer', 'c'] +++  响应 1000 并发静态文件请求"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（二）：进程模型与生命周期.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（二）：进程模型与生命周期",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "process-model",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "进程模型与生命周期"
-      ],
-      "summary_preview": "date = '2026-05-29T17:40:09+08:00' draft = false title = 'Nginx 源码解析（二）：进程模型与生命周期' author = 'JekYUlll' lastmod = '2026-05-29T17:40:09+08:00' tags = ['nginx-source', 'nginx', 'process-model', 'c'] cate"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（五）：配置解析系统.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（五）：配置解析系统",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "config",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "配置解析系统"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（五）：配置解析系统' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'config', 'c'] +++  Nginx 的配置系统不是简单的 INI 解析，"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（八）：连接管理.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（八）：连接管理",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "connection",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "连接管理"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（八）：连接管理' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'connection', 'c'] +++  前几篇文章我们聊了事件驱动和内存池，这次来看"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（六）：HTTP 模块与请求处理",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "http",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "http",
-        "模块与请求处理"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（六）：HTTP 模块与请求处理' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'http', 'c'] +++  前五篇我们从整体架构走到事件驱动和配置系"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（十一）：线程池与异步 IO",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "thread-pool",
-        "async-io",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "十一",
-        "线程池与异步",
-        "io"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（十一）：线程池与异步 IO' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'thread-pool', 'async-io', 'c'] +++  Ngi"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（十二）：模块系统与动态加载",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "module-system",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "十二",
-        "模块系统与动态加载"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'module-system', 'c'] +++  系列开篇就说过，Nginx"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（十）：定时器系统.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（十）：定时器系统",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "timer",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "定时器系统"
-      ],
-      "summary_preview": "title = 'Nginx 源码解析（十）：定时器系统' date = '2026-05-29T17:40:19+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'timer', 'c'] +++  前面我们分析了 Nginx 事件循环的核心骨架，，`"
-    },
-    {
-      "filename": "2026-05-29 [infra] Nginx 源码解析（四）：内存管理.md",
-      "inner_file": "",
-      "title": "Nginx 源码解析（四）：内存管理",
-      "date": "2026-05-29",
-      "tags": [
-        "nginx-source",
-        "nginx",
-        "memory-management",
-        "c"
-      ],
-      "categories": [
-        "infra"
-      ],
-      "file_category": "infra",
-      "keywords": [
-        "nginx",
-        "源码解析",
-        "内存管理"
-      ],
-      "summary_preview": "date = '2026-05-29T17:40:09+08:00' draft = false title = 'Nginx 源码解析（四）：内存管理' author = 'JekYUlll' lastmod = '2026-05-29T17:40:09+08:00' tags = ['nginx-source', 'nginx', 'memory-management', 'c'] categ"
+      "summary_preview": "title = 'Nginx 源码解析（一）：整体架构总览' date = '2026-05-29T12:00:00+08:00' weight = 1 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'architecture', 'c'] +++  去年生产环境一"
     },
     {
       "filename": "2026-05-29 [linux] Linux Landlock LSM：无特权沙箱的原理与实战.md",

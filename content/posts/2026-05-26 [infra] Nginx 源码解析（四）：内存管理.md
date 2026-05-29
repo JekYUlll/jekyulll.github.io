@@ -1,9 +1,10 @@
 +++
-date = '2026-05-29T17:32:00+08:00'
+date = '2026-05-26T12:00:00+08:00'
+weight = 4
 draft = false
 title = 'Nginx 源码解析（四）：内存管理'
 author = 'JekYUlll'
-lastmod = '2026-05-29T17:40:09+08:00'
+lastmod = '2026-05-26T12:00:00+08:00'
 tags = ['nginx-source', 'nginx', 'memory-management', 'c']
 categories = ['infra']
 +++
