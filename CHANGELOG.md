@@ -318,3 +318,142 @@ Commands:
   - `cd /home/horeb/_code/_space/blog && git add -A && git status --short | head -20 && echo "---" && git diff --cached --stat`
   - … and 5 more
 
+### 2026-05-29 02:07:02 UTC | session `cron_6cc8018` | model `deepseek-v4-flash` | completed
+**Tools:** edit, shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [linux] Linux Landlock LSM：无特权沙箱的原理与实战.md`
+Commands:
+  - `cd /home/horeb/_code/_space/blog && python3 ~/.hermes/skills/blog/hugo-blog-new-post/scripts/build-registry.py 2>&1`
+  - `cd /home/horeb/_code/_space/blog && ls -la content/posts/ 2>&1 | head -60`
+  - `cd /home/horeb/_code/_space/blog && ls -la content/posts/ 2>&1 | tail -40`
+  - … and 12 more
+
+### 2026-05-29 09:42:33 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（三）：事件驱动核心.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（二）：进程模型与生命周期.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（四）：内存管理.md`
+Commands:
+  - `ls /tmp/nginx-src/src/`
+  - `wc -c -m /home/horeb/_code/_space/blog/content/posts/2026-05-29\ \[infra\]\ Nginx\ 源码解析（一）：整体架构总览.md && head -10 /home/horeb/_code/_space/blog/content/posts/2026-05-29\ \[infra\]\ Nginx\ 源码解析（一）：整体架构总…`
+  - `cd /home/horeb/_code/_space/blog/content/posts/ && python3 -c "
+import re
+with open('2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md', 'r') as f:
+    # Skip frontmatter
+    content = f.read()
+content = con…`
+  - … and 2 more
+
+### 2026-05-29 09:42:34 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** edit
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md`
+
+### 2026-05-29 09:42:50 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** edit, shell
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md`
+Commands:
+  - `python3 -c "
+import re
+with open('/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md', 'r') as f:
+    content = f.read()
+content = content.split('+++')[-1]
+chinese_…`
+  - `python3 -c "
+import re
+with open('/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md', 'r') as f:
+    content = f.read()
+    
+chinese_chars = len(re.findall(r'[\u4e…`
+
+### 2026-05-29 09:44:33 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（五）：配置解析系统.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（八）：连接管理.md`
+Commands:
+  - `wc -c -w "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（五）：配置解析系统.md"`
+  - `python3 -c "
+import re
+with open('/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（五）：配置解析系统.md', 'r') as f:
+    text = f.read()
+# Count all Chinese characters
+chinese_chars =…`
+  - `wc -c -l "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（八）：连接管理.md"`
+  - … and 1 more
+
+### 2026-05-29 09:44:40 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（七）：Upstream 与负载均衡.md`
+Commands:
+  - `wc -m /home/horeb/_code/_space/blog/content/posts/2026-05-29\ \[infra\]\ Nginx\ 源码解析（七）：Upstream\ 与负载均衡.md`
+
+### 2026-05-29 09:44:58 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md`
+Commands:
+  - `wc -c -m "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md"`
+  - `cat "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md" | grep -oP '[\x{4e00}-\x{9fff}\x{3000}-\x{303f}\x{ff00}-\x{ffef}]' | wc -l`
+
+### 2026-05-29 09:46:18 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（九）：缓冲区与零拷贝.md`
+Commands:
+  - `wc -c -w -l /home/horeb/_code/_space/blog/content/posts/2026-05-29\ \[infra\]\ Nginx\ 源码解析（九）：缓冲区与零拷贝.md`
+
+### 2026-05-29 09:46:31 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十）：定时器系统.md`
+Commands:
+  - `wc -c -m "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md"`
+  - `wc -c -l "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十）：定时器系统.md"`
+  - `grep -oP '[\x{4e00}-\x{9fff}\x{3000}-\x{303f}\x{ff00}-\x{ffef}]' "/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十）：定时器系统.md" | wc -l`
+
+### 2026-05-29 09:46:35 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md`
+
+### 2026-05-29 09:50:57 UTC | session `20260529_174` | model `deepseek-v4-flash` | completed
+**Tools:** edit, shell, write
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（三）：事件驱动核心.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（二）：进程模型与生命周期.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md`
+  - `/home/horeb/process_nginx_posts.py`
+  - `/home/horeb/process_nginx_posts_v2.py`
+Commands:
+  - `cd "/home/horeb/_code/_space/blog/content/posts/" && ls -la *.md | grep -i "nginx.*源码" | head -20`
+  - `cd "/home/horeb/_code/_space/blog/content/posts/"
+# Check which articles still have high em dash counts
+for f in *nginx*源码*.md; do
+    count=$(grep -o '—' "$f" | wc -l)
+    if [ "$count" -gt "10" ]; t…`
+  - `cd "/home/horeb/_code/_space/blog/content/posts/"
+for f in *; do
+    if echo "$f" | grep -q "Nginx.*源码"; then
+        count=$(grep -o '—' "$f" | wc -l)
+        if [ "$count" -gt "10" ]; then
+         …`
+  - … and 54 more
+
+### 2026-05-29 09:54:13 UTC | session `20260529_175` | model `deepseek-v4-flash` | completed
+**Tools:** edit, shell
+**Files:**
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md`
+  - `/home/horeb/_code/_space/blog/content/posts/2026-05-29 [infra] Nginx 源码解析（四）：内存管理.md`
+Commands:
+  - `cd "/home/horeb/_code/_space/blog/content/posts" && echo "=== Article 6 ===" && grep -c '\*\*' "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md" && echo "=== Article 12 ===" && grep -c '\*\*' "2026-0…`
+  - `cd "/home/horeb/_code/_space/blog/content/posts" && echo "=== Article 6 ===" && grep -c '\*\*' "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md" && echo "=== Article 12 ===" && grep -c '\*\*' "2026-0…`
+  - `cd "/home/horeb/_code/_space/blog/content/posts" && echo "=== Article 6 ===" && grep -c '\*\*' "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md" && echo "=== Article 12 ===" && grep -c '\*\*' "2026-0…`
+

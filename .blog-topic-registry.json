@@ -8,12 +8,14 @@
       "title": "C++ / Golang / 游戏开发 / TA 学习路线汇总",
       "date": "2024-06-02",
       "tags": [
-        "path"
+        "learning-path",
+        "cpp",
+        "golang"
       ],
       "categories": [
-        "path"
+        "algorithm"
       ],
-      "file_category": "path",
+      "file_category": "algorithm",
       "keywords": [
         "c++",
         "golang",
@@ -21,7 +23,7 @@
         "ta",
         "学习路线汇总"
       ],
-      "summary_preview": "date = '2024-06-02T19:46:34+08:00' draft = false title = 'C++ / Golang / 游戏开发 / TA 学习路线汇总' author = 'JekYUlll' lastmod = '2024-12-22T21:05:47+08:00' tags = ['path'] categories = ['path'] +++ <!-- -- 2"
+      "summary_preview": "date = '2024-06-02T19:46:34+08:00' draft = false title = 'C++ / Golang / 游戏开发 / TA 学习路线汇总' author = 'JekYUlll' lastmod = '2024-12-22T21:05:47+08:00' tags = ['learning-path', 'cpp', 'golang'] categorie"
     },
     {
       "filename": "2024-07-29 [opengl] 菜 · OpenGL 初学笔记 -- Cherno + LearnOpenGL.md",
@@ -30,11 +32,10 @@
       "date": "2024-07-29",
       "tags": [
         "opengl",
-        "graphics",
-        "game"
+        "graphics"
       ],
       "categories": [
-        "game"
+        "game-dev"
       ],
       "file_category": "opengl",
       "keywords": [
@@ -43,7 +44,7 @@
         "cherno",
         "learnopengl"
       ],
-      "summary_preview": "date = '2024-07-29T21:05:47+08:00' draft = false title = 'OpenGL 初学笔记 -- Cherno + LearnOpenGL' author = 'JekYUlll' lastmod = '2024-12-22T21:05:47+08:00' tags = ['opengl', 'graphics', 'game'] categorie"
+      "summary_preview": "date = '2024-07-29T21:05:47+08:00' draft = false title = 'OpenGL 初学笔记 -- Cherno + LearnOpenGL' author = 'JekYUlll' lastmod = '2024-12-22T21:05:47+08:00' tags = ['opengl', 'graphics'] categories = ['ga"
     },
     {
       "filename": "2024-08-10 [cpp] C++ 17 编译期 if.md",
@@ -51,8 +52,8 @@
       "title": "C++ 17 编译期 if",
       "date": "2024-08-10",
       "tags": [
-        "cpp",
-        "morden cpp"
+        "cpp17",
+        "template"
       ],
       "categories": [
         "cpp"
@@ -64,7 +65,7 @@
         "编译期",
         "if"
       ],
-      "summary_preview": "date = '2024-08-10T18:05:47+08:00' draft = false title = 'C++ 17 编译期 if' author = 'JekYUlll' lastmod = '2024-08-10T18:05:47+08:00' tags = ['cpp', 'morden cpp'] categories = ['cpp'] +++  [C++17编译期if](h"
+      "summary_preview": "date = '2024-08-10T18:05:47+08:00' draft = false title = 'C++ 17 编译期 if' author = 'JekYUlll' lastmod = '2024-08-10T18:05:47+08:00' tags = ['cpp17', 'template'] categories = ['cpp'] +++  [C++17编译期if](h"
     },
     {
       "filename": "2024-08-26 [cpp] C++ 的三五法则是什么？.md",
@@ -72,7 +73,8 @@
       "title": "C++ 的三五法则是什么？",
       "date": "2024-08-26",
       "tags": [
-        "cpp"
+        "memory",
+        "raii"
       ],
       "categories": [
         "cpp"
@@ -82,7 +84,7 @@
         "c++",
         "的三五法则是什么？"
       ],
-      "summary_preview": "date = '2024-08-26T18:05:47+08:00' draft = false title = 'C++ 的三五法则是什么？' author = 'JekYUlll' lastmod = '2024-08-26T18:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  三五法则（Rule of Three/Five/Zero"
+      "summary_preview": "date = '2024-08-26T18:05:47+08:00' draft = false title = 'C++ 的三五法则是什么？' author = 'JekYUlll' lastmod = '2024-08-26T18:05:47+08:00' tags = ['memory', 'raii'] categories = ['cpp'] +++  三五法则（Rule of Thre"
     },
     {
       "filename": "2024-09-01 [cpp] Morden C++ 模板类型推导.md",
@@ -90,9 +92,8 @@
       "title": "C++ 模板类型推导",
       "date": "2024-09-01",
       "tags": [
-        "cpp",
-        "morden cpp",
-        "template"
+        "template",
+        "type-deduction"
       ],
       "categories": [
         "cpp"
@@ -102,7 +103,7 @@
         "c++",
         "模板类型推导"
       ],
-      "summary_preview": "date = '2024-09-01T18:05:47+08:00' draft = false title = 'C++ 模板类型推导' author = 'JekYUlll' lastmod = '2024-09-01T18:05:47+08:00' tags = ['cpp', 'morden cpp', 'template'] categories = ['cpp'] +++  [一篇文章"
+      "summary_preview": "date = '2024-09-01T18:05:47+08:00' draft = false title = 'C++ 模板类型推导' author = 'JekYUlll' lastmod = '2024-09-01T18:05:47+08:00' tags = ['template', 'type-deduction'] categories = ['cpp'] +++  [一篇文章学完 "
     },
     {
       "filename": "2024-09-19 [cpp] 对 C++ 左值、右值、智能指针的思考.md",
@@ -110,7 +111,8 @@
       "title": "对 C++ 左值、右值、智能指针的思考",
       "date": "2024-09-19",
       "tags": [
-        "cpp"
+        "memory",
+        "smart-pointer"
       ],
       "categories": [
         "cpp"
@@ -122,7 +124,7 @@
         "右值",
         "智能指针的思考"
       ],
-      "summary_preview": "date = '2024-09-19T18:05:47+08:00' draft = false title = '对 C++ 左值、右值、智能指针的思考' author = 'JekYUlll' lastmod = '2024-09-19T18:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  ##### 左值右值、函数传参：  1. *"
+      "summary_preview": "date = '2024-09-19T18:05:47+08:00' draft = false title = '对 C++ 左值、右值、智能指针的思考' author = 'JekYUlll' lastmod = '2024-09-19T18:05:47+08:00' tags = ['memory', 'smart-pointer'] categories = ['cpp'] +++  ##"
     },
     {
       "filename": "2024-09-28 [cpp] C++ 中 tuple 是如何实现的？.md",
@@ -130,8 +132,8 @@
       "title": "C++ 中 tuple 是如何实现的？",
       "date": "2024-09-28",
       "tags": [
-        "cpp",
-        "template"
+        "template",
+        "stl"
       ],
       "categories": [
         "cpp"
@@ -142,7 +144,7 @@
         "tuple",
         "是如何实现的？"
       ],
-      "summary_preview": "date = '2024-09-28T18:05:47+08:00' draft = false title = 'C++ 中 tuple 是如何实现的？' author = 'JekYUlll' lastmod = '2024-09-28T18:05:47+08:00' tags = ['cpp', 'template'] categories = ['cpp'] +++  `tuple`本身就"
+      "summary_preview": "date = '2024-09-28T18:05:47+08:00' draft = false title = 'C++ 中 tuple 是如何实现的？' author = 'JekYUlll' lastmod = '2024-09-28T18:05:47+08:00' tags = ['template', 'stl'] categories = ['cpp'] +++  `tuple`本身就"
     },
     {
       "filename": "2024-09-28 [cpp] C++ 的四种类型转换.md",
@@ -150,7 +152,8 @@
       "title": "C++ 的四种类型转换",
       "date": "2024-09-28",
       "tags": [
-        "cpp"
+        "rtti",
+        "type-casting"
       ],
       "categories": [
         "cpp"
@@ -160,7 +163,7 @@
         "c++",
         "的四种类型转换"
       ],
-      "summary_preview": "date = '2024-09-28T18:05:47+08:00' draft = false title = 'C++ 的四种类型转换' author = 'JekYUlll' lastmod = '2025-02-28T18:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  思考了一下`reinterpret_cast`和强转的区别？"
+      "summary_preview": "date = '2024-09-28T18:05:47+08:00' draft = false title = 'C++ 的四种类型转换' author = 'JekYUlll' lastmod = '2025-02-28T18:05:47+08:00' tags = ['rtti', 'type-casting'] categories = ['cpp'] +++  思考了一下`reinter"
     },
     {
       "filename": "2024-10-09 [system] CPU 的五级流水线.md",
@@ -169,17 +172,17 @@
       "date": "2024-10-09",
       "tags": [
         "cpu",
-        "system"
+        "architecture"
       ],
       "categories": [
-        "system"
+        "infra"
       ],
       "file_category": "system",
       "keywords": [
         "cpu",
         "的五级流水线"
       ],
-      "summary_preview": "date = '2024-10-09T21:05:47+08:00' draft = false title = 'CPU 的五级流水线' author = 'JekYUlll' lastmod = '2024-10-09T21:05:47+08:00' tags = ['cpu', 'system'] categories = ['system'] +++  [现代C++的内存模型](https"
+      "summary_preview": "date = '2024-10-09T21:05:47+08:00' draft = false title = 'CPU 的五级流水线' author = 'JekYUlll' lastmod = '2024-10-09T21:05:47+08:00' tags = ['cpu', 'architecture'] categories = ['infra'] +++  [现代C++的内存模型]("
     },
     {
       "filename": "2024-11-04 [database] 事务Transaction的基础特性.md",
@@ -187,7 +190,8 @@
       "title": "事务 Transaction 的基础特性",
       "date": "2024-11-04",
       "tags": [
-        "database"
+        "transaction",
+        "acid"
       ],
       "categories": [
         "database"
@@ -198,7 +202,7 @@
         "transaction",
         "的基础特性"
       ],
-      "summary_preview": "date = '2024-11-04T18:05:47+08:00' draft = false title = '事务 Transaction 的基础特性' author = 'JekYUlll' lastmod = '2024-11-04T18:05:47+08:00' tags = ['database'] categories = ['database'] +++  **事务**（Tran"
+      "summary_preview": "date = '2024-11-04T18:05:47+08:00' draft = false title = '事务 Transaction 的基础特性' author = 'JekYUlll' lastmod = '2024-11-04T18:05:47+08:00' tags = ['transaction', 'acid'] categories = ['database'] +++  "
     },
     {
       "filename": "2024-11-04 [linux] Linux 进程优先级.md",
@@ -206,7 +210,8 @@
       "title": "Linux 进程优先级",
       "date": "2024-11-04",
       "tags": [
-        "linux"
+        "process",
+        "scheduling"
       ],
       "categories": [
         "linux"
@@ -216,7 +221,7 @@
         "linux",
         "进程优先级"
       ],
-      "summary_preview": "date = '2024-11-04T21:05:47+08:00' draft = false title = 'Linux 进程优先级' author = 'JekYUlll' lastmod = '2024-11-04T21:05:47+08:00' tags = ['linux'] categories = ['linux'] +++  ##### [图解Linux进程优先级](https"
+      "summary_preview": "date = '2024-11-04T21:05:47+08:00' draft = false title = 'Linux 进程优先级' author = 'JekYUlll' lastmod = '2024-11-04T21:05:47+08:00' tags = ['process', 'scheduling'] categories = ['linux'] +++  ##### [图解L"
     },
     {
       "filename": "2024-11-04 [linux] 文件系统与虚拟文件系统.md",
@@ -224,7 +229,8 @@
       "title": "Linux 文件系统与虚拟文件系统",
       "date": "2024-11-04",
       "tags": [
-        "linux"
+        "file-system",
+        "vfs"
       ],
       "categories": [
         "linux"
@@ -234,7 +240,7 @@
         "linux",
         "文件系统与虚拟文件系统"
       ],
-      "summary_preview": "date = '2024-11-04T20:05:47+08:00' draft = false title = 'Linux 文件系统与虚拟文件系统' author = 'JekYUlll' lastmod = '2024-11-04T20:05:47+08:00' tags = ['linux'] categories = ['linux'] +++  # Linux 文件系统  **文件描述"
+      "summary_preview": "date = '2024-11-04T20:05:47+08:00' draft = false title = 'Linux 文件系统与虚拟文件系统' author = 'JekYUlll' lastmod = '2024-11-04T20:05:47+08:00' tags = ['file-system', 'vfs'] categories = ['linux'] +++  # Linux"
     },
     {
       "filename": "2024-11-21 [database] 表格展示 MySQL 基础数据类型.md",
@@ -242,8 +248,8 @@
       "title": "表格展示 MySQL 基础数据类型",
       "date": "2024-11-21",
       "tags": [
-        "database",
-        "mysql"
+        "mysql",
+        "data-type"
       ],
       "categories": [
         "database"
@@ -254,7 +260,7 @@
         "mysql",
         "基础数据类型"
       ],
-      "summary_preview": "date = '2024-11-21T18:05:47+08:00' draft = false title = '表格展示 MySQL 基础数据类型' author = 'JekYUlll' lastmod = '2024-11-21T18:05:47+08:00' tags = ['database', 'mysql'] categories = ['database'] +++  |数据类型"
+      "summary_preview": "date = '2024-11-21T18:05:47+08:00' draft = false title = '表格展示 MySQL 基础数据类型' author = 'JekYUlll' lastmod = '2024-11-21T18:05:47+08:00' tags = ['mysql', 'data-type'] categories = ['database'] +++  |数据类"
     },
     {
       "filename": "2024-12-21 [cpp] 缓存的设计.md",
@@ -262,16 +268,17 @@
       "title": "缓存的设计",
       "date": "2024-12-21",
       "tags": [
-        "cpp"
+        "cache",
+        "design-pattern"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "cpp",
       "keywords": [
         "缓存的设计"
       ],
-      "summary_preview": "date = '2024-12-21T18:05:47+08:00' draft = false title = '缓存的设计' author = 'JekYUlll' lastmod = '2024-12-21T18:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  1. 数据结构 - `std::unordered_map`：用于快速查"
+      "summary_preview": "date = '2024-12-21T18:05:47+08:00' draft = false title = '缓存的设计' author = 'JekYUlll' lastmod = '2024-12-21T18:05:47+08:00' tags = ['cache', 'design-pattern'] categories = ['algorithm'] +++  1. 数据结构 - "
     },
     {
       "filename": "2024-12-23 [cpp] C++ 编译器返回值优化.md",
@@ -279,8 +286,8 @@
       "title": "C++ 编译器返回值优化",
       "date": "2024-12-23",
       "tags": [
-        "cpp",
-        "compiler"
+        "compiler",
+        "optimization"
       ],
       "categories": [
         "cpp"
@@ -290,7 +297,7 @@
         "c++",
         "编译器返回值优化"
       ],
-      "summary_preview": "date = '2024-12-23T08:42:29+08:00' draft = false title = 'C++ 编译器返回值优化' author = 'JekYUlll' lastmod = '2024-12-23T08:42:29+08:00' tags = ['cpp', 'compiler'] categories = ['cpp'] +++  在 C++ 中，当函数返回一个对象"
+      "summary_preview": "date = '2024-12-23T08:42:29+08:00' draft = false title = 'C++ 编译器返回值优化' author = 'JekYUlll' lastmod = '2024-12-23T08:42:29+08:00' tags = ['compiler', 'optimization'] categories = ['cpp'] +++  在 C++ 中，"
     },
     {
       "filename": "2025-01-01 [cpp] 分段锁技术详解及 C++ 实现.md",
@@ -298,8 +305,8 @@
       "title": "分段锁技术详解及 C++ 实现",
       "date": "2025-01-01",
       "tags": [
-        "cpp",
-        "algorithm"
+        "concurrency",
+        "lock-free"
       ],
       "categories": [
         "cpp"
@@ -310,7 +317,7 @@
         "c++",
         "实现"
       ],
-      "summary_preview": "date = '2025-01-01T14:05:47+08:00' draft = false title = '分段锁技术详解及 C++ 实现' author = 'JekYUlll' lastmod = '2025-01-01T14:05:47+08:00' tags = ['cpp','algorithm'] categories = ['cpp'] +++  分段锁（Segmented "
+      "summary_preview": "date = '2025-01-01T14:05:47+08:00' draft = false title = '分段锁技术详解及 C++ 实现' author = 'JekYUlll' lastmod = '2025-01-01T14:05:47+08:00' tags = ['concurrency', 'lock-free'] categories = ['cpp'] +++  分段锁（S"
     },
     {
       "filename": "2025-01-01 [cpp] 如何解决哈希冲突？.md",
@@ -318,17 +325,17 @@
       "title": "简述如何解决哈希冲突？",
       "date": "2025-01-01",
       "tags": [
-        "cpp",
-        "algorithm"
+        "hash",
+        "data-structure"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "cpp",
       "keywords": [
         "简述如何解决哈希冲突？"
       ],
-      "summary_preview": "date = '2025-01-01T12:05:47+08:00' draft = false title = '简述如何解决哈希冲突？' author = 'JekYUlll' lastmod = '2025-01-01T12:05:47+08:00' tags = ['cpp','algorithm'] categories = ['cpp'] +++  > 哈希冲突是指 **不同的输入**"
+      "summary_preview": "date = '2025-01-01T12:05:47+08:00' draft = false title = '简述如何解决哈希冲突？' author = 'JekYUlll' lastmod = '2025-01-01T12:05:47+08:00' tags = ['hash', 'data-structure'] categories = ['algorithm'] +++  > 哈希冲"
     },
     {
       "filename": "2025-01-07 [linux] Linux 大文件传输场景题.md",
@@ -336,9 +343,9 @@
       "title": "Linux 大文件传输场景题",
       "date": "2025-01-07",
       "tags": [
-        "linux",
-        "cpp",
-        "network"
+        "io",
+        "network",
+        "zero-copy"
       ],
       "categories": [
         "linux"
@@ -348,7 +355,7 @@
         "linux",
         "大文件传输场景题"
       ],
-      "summary_preview": "date = '2025-01-07T20:05:47+08:00' draft = false title = 'Linux 大文件传输场景题' author = 'JekYUlll' lastmod = '2025-01-07T20:05:47+08:00' tags = ['linux', 'cpp', 'network'] categories = ['linux'] +++  (考察li"
+      "summary_preview": "date = '2025-01-07T20:05:47+08:00' draft = false title = 'Linux 大文件传输场景题' author = 'JekYUlll' lastmod = '2025-01-07T20:05:47+08:00' tags = ['io', 'network', 'zero-copy'] categories = ['linux'] +++  (考"
     },
     {
       "filename": "2025-01-08 [redis] Redis 数据结构之超日志 HyperLogLog.md",
@@ -357,11 +364,10 @@
       "date": "2025-01-08",
       "tags": [
         "redis",
-        "data structure",
-        "hyperloglog"
+        "data-structure"
       ],
       "categories": [
-        "redis"
+        "database"
       ],
       "file_category": "redis",
       "keywords": [
@@ -369,7 +375,7 @@
         "数据结构之超日志",
         "hyperloglog"
       ],
-      "summary_preview": "date = '2025-01-08T10:05:47+08:00' draft = false title = 'Redis 数据结构之超日志 HyperLogLog' author = 'JekYUlll' lastmod = '2025-01-08T10:05:47+08:00' tags = ['redis', 'data structure', 'hyperloglog'] catego"
+      "summary_preview": "date = '2025-01-08T10:05:47+08:00' draft = false title = 'Redis 数据结构之超日志 HyperLogLog' author = 'JekYUlll' lastmod = '2025-01-08T10:05:47+08:00' tags = ['redis', 'data-structure'] categories = ['databa"
     },
     {
       "filename": "2025-01-09 [cpp] [转载] C++的POD以及如何判断是否POD.md",
@@ -377,8 +383,8 @@
       "title": "C++的POD以及如何判断是否POD",
       "date": "2025-01-09",
       "tags": [
-        "cpp",
-        "reprint"
+        "memory",
+        "stl"
       ],
       "categories": [
         "cpp"
@@ -388,7 +394,7 @@
         "c++的pod以及如何判断是否pod",
         "pod"
       ],
-      "summary_preview": "date = '2025-01-09T20:05:47+08:00' draft = false title = 'C++的POD以及如何判断是否POD' author = 'cheeto' lastmod = '2025-01-09T20:05:47+08:00' tags = ['cpp', 'reprint'] categories = ['cpp'] +++  [C++的POD以及如何判断"
+      "summary_preview": "date = '2025-01-09T20:05:47+08:00' draft = false title = 'C++的POD以及如何判断是否POD' author = 'cheeto' lastmod = '2025-01-09T20:05:47+08:00' tags = ['memory', 'stl'] categories = ['cpp'] +++  [C++的POD以及如何判断是"
     },
     {
       "filename": "2025-01-09 [cpp] 从场景解析 C++ shared_from_this.md",
@@ -396,7 +402,8 @@
       "title": "从场景解析 C++ shared_from_this",
       "date": "2025-01-09",
       "tags": [
-        "cpp"
+        "memory",
+        "smart-pointer"
       ],
       "categories": [
         "cpp"
@@ -410,7 +417,7 @@
         "from",
         "this"
       ],
-      "summary_preview": "date = '2025-01-09T20:05:47+08:00' draft = false title = '从场景解析 C++ shared_from_this' author = 'JekYUlll' lastmod = '2025-01-09T20:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  ---  [智能指针之shar"
+      "summary_preview": "date = '2025-01-09T20:05:47+08:00' draft = false title = '从场景解析 C++ shared_from_this' author = 'JekYUlll' lastmod = '2025-01-09T20:05:47+08:00' tags = ['memory', 'smart-pointer'] categories = ['cpp'] "
     },
     {
       "filename": "2025-01-15 [cpp] C++ std::function 之脱裤子放屁的优化.md",
@@ -418,8 +425,8 @@
       "title": "C++ std::function 之脱裤子放屁的优化",
       "date": "2025-01-15",
       "tags": [
-        "cpp",
-        "morden cpp"
+        "stl",
+        "lambda"
       ],
       "categories": [
         "cpp"
@@ -431,7 +438,7 @@
         "function",
         "之脱裤子放屁的优化"
       ],
-      "summary_preview": "date = '2025-01-15T12:05:47+08:00' draft = false title = 'C++ std::function 之脱裤子放屁的优化' author = 'JekYUlll' lastmod = '2025-01-15T12:05:47+08:00' tags = ['cpp', 'morden cpp'] categories = ['cpp'] +++  "
+      "summary_preview": "date = '2025-01-15T12:05:47+08:00' draft = false title = 'C++ std::function 之脱裤子放屁的优化' author = 'JekYUlll' lastmod = '2025-01-15T12:05:47+08:00' tags = ['stl', 'lambda'] categories = ['cpp'] +++  看到一句"
     },
     {
       "filename": "2025-01-15 [cpp] 用 C++ 实现 Golang 的 defer.md",
@@ -439,8 +446,8 @@
       "title": "在 C++ 里实现 Golang 的 defer",
       "date": "2025-01-15",
       "tags": [
-        "cpp",
-        "macro"
+        "macro",
+        "raii"
       ],
       "categories": [
         "cpp"
@@ -452,7 +459,7 @@
         "golang",
         "defer"
       ],
-      "summary_preview": "date = '2025-01-15T12:05:47+08:00' draft = false title = '在 C++ 里实现 Golang 的 defer' author = 'JekYUlll' lastmod = '2025-01-15T12:05:47+08:00' tags = ['cpp', 'macro'] categories = ['cpp'] +++  利用 RAII "
+      "summary_preview": "date = '2025-01-15T12:05:47+08:00' draft = false title = '在 C++ 里实现 Golang 的 defer' author = 'JekYUlll' lastmod = '2025-01-15T12:05:47+08:00' tags = ['macro', 'raii'] categories = ['cpp'] +++  利用 RAII"
     },
     {
       "filename": "2025-01-21 [cpp] 写个相对现代的 C++ 二叉搜索树.md",
@@ -460,13 +467,11 @@
       "title": "写个相对现代的 C++ 二叉搜索树",
       "date": "2025-01-21",
       "tags": [
-        "cpp",
-        "morden cpp",
-        "template",
-        "data structure"
+        "data-structure",
+        "template"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "cpp",
       "keywords": [
@@ -474,7 +479,7 @@
         "c++",
         "二叉搜索树"
       ],
-      "summary_preview": "date = '2025-01-21T12:05:47+08:00' draft = false title = '写个相对现代的 C++ 二叉搜索树' author = 'JekYUlll' lastmod = '2025-01-21T12:05:47+08:00' tags = ['cpp', 'morden cpp', 'template', 'data structure'] catego"
+      "summary_preview": "date = '2025-01-21T12:05:47+08:00' draft = false title = '写个相对现代的 C++ 二叉搜索树' author = 'JekYUlll' lastmod = '2025-01-21T12:05:47+08:00' tags = ['data-structure', 'template'] categories = ['algorithm'] "
     },
     {
       "filename": "2025-01-29 [cpp] 检查字符串是否是另一个的子串.md",
@@ -482,17 +487,17 @@
       "title": "检查字符串是否是另一个的子串",
       "date": "2025-01-29",
       "tags": [
-        "cpp",
-        "algorithm"
+        "string",
+        "search"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "cpp",
       "keywords": [
         "检查字符串是否是另一个的子串"
       ],
-      "summary_preview": "date = '2025-01-29T12:05:47+08:00' draft = false title = '检查字符串是否是另一个的子串' author = 'JekYUlll' lastmod = '2025-01-29T12:05:47+08:00' tags = ['cpp','algorithm'] categories = ['cpp'] +++  ## 常见 C/C++ API"
+      "summary_preview": "date = '2025-01-29T12:05:47+08:00' draft = false title = '检查字符串是否是另一个的子串' author = 'JekYUlll' lastmod = '2025-01-29T12:05:47+08:00' tags = ['string', 'search'] categories = ['algorithm'] +++  ## 常见 C/"
     },
     {
       "filename": "2025-02-08 [cpp] C++ 同一进程的线程之间共享哪些资源？.md",
@@ -500,19 +505,19 @@
       "title": "C++ 同一进程的线程之间共享哪些资源？",
       "date": "2025-02-08",
       "tags": [
-        "cpp",
-        "os",
-        "面经"
+        "process",
+        "memory",
+        "interview"
       ],
       "categories": [
-        "cpp"
+        "linux"
       ],
       "file_category": "cpp",
       "keywords": [
         "c++",
         "同一进程的线程之间共享哪些资源？"
       ],
-      "summary_preview": "date = '2025-02-08T18:05:47+08:00' draft = false title = 'C++ 同一进程的线程之间共享哪些资源？' author = 'JekYUlll' lastmod = '2025-02-08T18:05:47+08:00' tags = ['cpp', 'os', '面经'] categories = ['cpp'] +++  同一进程内的线程共"
+      "summary_preview": "date = '2025-02-08T18:05:47+08:00' draft = false title = 'C++ 同一进程的线程之间共享哪些资源？' author = 'JekYUlll' lastmod = '2025-02-08T18:05:47+08:00' tags = ['process', 'memory', 'interview'] categories = ['linux"
     },
     {
       "filename": "2025-02-08 [cpp] 运行时是把整个动态库都加载到内存中吗？.md",
@@ -520,18 +525,18 @@
       "title": "运行时是把整个动态库都加载到内存中吗？",
       "date": "2025-02-08",
       "tags": [
-        "cpp",
-        "os",
-        "面经"
+        "process",
+        "linker",
+        "interview"
       ],
       "categories": [
-        "cpp"
+        "linux"
       ],
       "file_category": "cpp",
       "keywords": [
         "运行时是把整个动态库都加载到内存中吗？"
       ],
-      "summary_preview": "date = '2025-02-08T18:05:47+08:00' draft = false title = '运行时是把整个动态库都加载到内存中吗？' author = 'JekYUlll' lastmod = '2025-02-08T18:05:47+08:00' tags = ['cpp', 'os', '面经'] categories = ['cpp'] +++  在 C++ 中，动态"
+      "summary_preview": "date = '2025-02-08T18:05:47+08:00' draft = false title = '运行时是把整个动态库都加载到内存中吗？' author = 'JekYUlll' lastmod = '2025-02-08T18:05:47+08:00' tags = ['process', 'linker', 'interview'] categories = ['linux'"
     },
     {
       "filename": "2025-02-15 [alg] 扫描线算法计算区间重叠.md",
@@ -539,17 +544,17 @@
       "title": "扫描线算法计算区间重叠",
       "date": "2025-02-15",
       "tags": [
-        "cpp",
-        "algorithm"
+        "scanline",
+        "geometry"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "alg",
       "keywords": [
         "扫描线算法计算区间重叠"
       ],
-      "summary_preview": "date = '2025-02-15T20:05:47+08:00' draft = false title = '扫描线算法计算区间重叠' author = 'JekYUlll' lastmod = '2025-02-15T20:05:47+08:00' tags = ['cpp', 'algorithm'] categories = ['cpp'] +++  题目来源：[Marscode](h"
+      "summary_preview": "date = '2025-02-15T20:05:47+08:00' draft = false title = '扫描线算法计算区间重叠' author = 'JekYUlll' lastmod = '2025-02-15T20:05:47+08:00' tags = ['scanline', 'geometry'] categories = ['algorithm'] +++  题目来源：[M"
     },
     {
       "filename": "2025-02-17 [web] web 访问认证机制.md",
@@ -557,18 +562,18 @@
       "title": "web 访问认证机制",
       "date": "2025-02-17",
       "tags": [
-        "web",
-        "backend"
+        "auth",
+        "security"
       ],
       "categories": [
-        "web"
+        "backend"
       ],
       "file_category": "web",
       "keywords": [
         "web",
         "访问认证机制"
       ],
-      "summary_preview": "date = '2025-02-17T21:05:47+08:00' draft = false title = 'web 访问认证机制' author = 'JekYUlll' lastmod = '2025-02-17T21:05:47+08:00' tags = ['web', 'backend'] categories = ['web'] +++   [25 | 认证机制：应用程序如何进行"
+      "summary_preview": "date = '2025-02-17T21:05:47+08:00' draft = false title = 'web 访问认证机制' author = 'JekYUlll' lastmod = '2025-02-17T21:05:47+08:00' tags = ['auth', 'security'] categories = ['backend'] +++   [25 | 认证机制：应用"
     },
     {
       "filename": "2025-02-21 [cpp] Linux 内核中 C 语言的面向对象.md",
@@ -576,8 +581,8 @@
       "title": "Linux 内核中 C 语言的面向对象",
       "date": "2025-02-21",
       "tags": [
-        "cpp",
-        "linux"
+        "linux",
+        "design-pattern"
       ],
       "categories": [
         "cpp"
@@ -588,7 +593,7 @@
         "内核中",
         "语言的面向对象"
       ],
-      "summary_preview": "date = '2025-02-21T12:05:47+08:00' draft = false title = 'Linux 内核中 C 语言的面向对象' author = 'JekYUlll' lastmod = '2025-02-21T12:05:47+08:00' tags = ['cpp', 'linux'] categories = ['cpp'] +++  Linux 内核使用 **"
+      "summary_preview": "date = '2025-02-21T12:05:47+08:00' draft = false title = 'Linux 内核中 C 语言的面向对象' author = 'JekYUlll' lastmod = '2025-02-21T12:05:47+08:00' tags = ['linux', 'design-pattern'] categories = ['cpp'] +++  Li"
     },
     {
       "filename": "2025-02-23 [cpp] 记录一个c_str的小坑.md",
@@ -596,7 +601,8 @@
       "title": "如何让函数安全返回 std::string 的 c_str",
       "date": "2025-02-23",
       "tags": [
-        "cpp"
+        "memory",
+        "stl"
       ],
       "categories": [
         "cpp"
@@ -609,7 +615,7 @@
         "c_str",
         "str"
       ],
-      "summary_preview": "date = '2025-02-23T12:05:47+08:00' draft = false title = '如何让函数安全返回 std::string 的 c_str' author = 'JekYUlll' lastmod = '2025-02-23T12:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  观察以下这段明显错误的代"
+      "summary_preview": "date = '2025-02-23T12:05:47+08:00' draft = false title = '如何让函数安全返回 std::string 的 c_str' author = 'JekYUlll' lastmod = '2025-02-23T12:05:47+08:00' tags = ['memory', 'stl'] categories = ['cpp'] +++  观察"
     },
     {
       "filename": "2025-02-25 [cpp] 线程池调度：动态优先级老化（Aging）+ 双队列混合轮询.md",
@@ -617,11 +623,11 @@
       "title": "线程池调度：动态优先级老化（Aging）+ 双队列混合轮询",
       "date": "2025-02-25",
       "tags": [
-        "cpp",
-        "algorithm"
+        "thread-pool",
+        "scheduling"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "cpp",
       "keywords": [
@@ -630,7 +636,7 @@
         "aging",
         "双队列混合轮询"
       ],
-      "summary_preview": "date = '2025-02-25T12:05:47+08:00' draft = false title = '线程池调度：动态优先级老化（Aging）+ 双队列混合轮询' author = 'JekYUlll' lastmod = '2025-02-25T12:05:47+08:00' tags = ['cpp','algorithm'] categories = ['cpp'] +++  "
+      "summary_preview": "date = '2025-02-25T12:05:47+08:00' draft = false title = '线程池调度：动态优先级老化（Aging）+ 双队列混合轮询' author = 'JekYUlll' lastmod = '2025-02-25T12:05:47+08:00' tags = ['thread-pool', 'scheduling'] categories = ['a"
     },
     {
       "filename": "2025-02-25 [cpp] 计时器 timer 的设计.md",
@@ -638,11 +644,11 @@
       "title": "计时器 timer 的设计",
       "date": "2025-02-25",
       "tags": [
-        "cpp",
-        "algorithm"
+        "timer",
+        "data-structure"
       ],
       "categories": [
-        "cpp"
+        "algorithm"
       ],
       "file_category": "cpp",
       "keywords": [
@@ -650,7 +656,7 @@
         "timer",
         "的设计"
       ],
-      "summary_preview": "date = '2025-02-25T12:05:47+08:00' draft = false title = '计时器 timer 的设计' author = 'JekYUlll' lastmod = '2025-02-25T12:05:47+08:00' tags = ['cpp','algorithm'] categories = ['cpp'] +++  三种经典算法：小顶堆、红黑树、时"
+      "summary_preview": "date = '2025-02-25T12:05:47+08:00' draft = false title = '计时器 timer 的设计' author = 'JekYUlll' lastmod = '2025-02-25T12:05:47+08:00' tags = ['timer', 'data-structure'] categories = ['algorithm'] +++  三种"
     },
     {
       "filename": "2025-03-06 [linux] 在运行的时候，修改并且覆盖该二进制文件会如何？.md",
@@ -658,9 +664,9 @@
       "title": "在运行的时候，修改并且覆盖该二进制文件会如何？",
       "date": "2025-03-06",
       "tags": [
-        "linux",
-        "os",
-        "面经"
+        "process",
+        "file-system",
+        "interview"
       ],
       "categories": [
         "linux"
@@ -670,7 +676,7 @@
         "在运行的时候",
         "修改并且覆盖该二进制文件会如何？"
       ],
-      "summary_preview": "date = '2025-03-06T18:05:47+08:00' draft = false title = '在运行的时候，修改并且覆盖该二进制文件会如何？' author = 'JekYUlll' lastmod = '2025-03-06T18:05:47+08:00' tags = ['linux', 'os', '面经'] categories = ['linux'] +++  > "
+      "summary_preview": "date = '2025-03-06T18:05:47+08:00' draft = false title = '在运行的时候，修改并且覆盖该二进制文件会如何？' author = 'JekYUlll' lastmod = '2025-03-06T18:05:47+08:00' tags = ['process', 'file-system', 'interview'] categories ="
     },
     {
       "filename": "2025-03-07 [linux] mmap 和零拷贝.md",
@@ -678,8 +684,9 @@
       "title": "【AI】mmap 和零拷贝",
       "date": "2025-03-07",
       "tags": [
-        "linux",
-        "os"
+        "memory",
+        "io",
+        "zero-copy"
       ],
       "categories": [
         "linux"
@@ -690,7 +697,7 @@
         "mmap",
         "和零拷贝"
       ],
-      "summary_preview": "date = '2025-03-07T20:05:47+08:00' draft = false title = '【AI】mmap 和零拷贝' author = 'JekYUlll' lastmod = '2025-03-07T20:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  mmap（Memory Mappin"
+      "summary_preview": "date = '2025-03-07T20:05:47+08:00' draft = false title = '【AI】mmap 和零拷贝' author = 'JekYUlll' lastmod = '2025-03-07T20:05:47+08:00' tags = ['memory', 'io', 'zero-copy'] categories = ['linux'] +++  mmap"
     },
     {
       "filename": "2025-03-07 [linux] 内核的用户态和内核态.md",
@@ -698,8 +705,8 @@
       "title": "内核的用户态和内核态",
       "date": "2025-03-07",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "memory"
       ],
       "categories": [
         "linux"
@@ -708,7 +715,7 @@
       "keywords": [
         "内核的用户态和内核态"
       ],
-      "summary_preview": "date = '2025-03-07T20:05:47+08:00' draft = false title = '内核的用户态和内核态' author = 'JekYUlll' lastmod = '2025-03-07T20:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  线程的管理和调度涉及用户态与内核态的协作，"
+      "summary_preview": "date = '2025-03-07T20:05:47+08:00' draft = false title = '内核的用户态和内核态' author = 'JekYUlll' lastmod = '2025-03-07T20:05:47+08:00' tags = ['process', 'memory'] categories = ['linux'] +++  线程的管理和调度涉及用户态与内"
     },
     {
       "filename": "2025-03-07 [linux] 进程、线程、协程的资源消耗简述.md",
@@ -716,8 +723,8 @@
       "title": "进程、线程、协程的资源消耗简述",
       "date": "2025-03-07",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "concurrency"
       ],
       "categories": [
         "linux"
@@ -728,7 +735,7 @@
         "线程",
         "协程的资源消耗简述"
       ],
-      "summary_preview": "date = '2025-03-07T20:05:47+08:00' draft = false title = '进程、线程、协程的资源消耗简述' author = 'JekYUlll' lastmod = '2025-03-07T20:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  **一、线程切换 vs 进程切换"
+      "summary_preview": "date = '2025-03-07T20:05:47+08:00' draft = false title = '进程、线程、协程的资源消耗简述' author = 'JekYUlll' lastmod = '2025-03-07T20:05:47+08:00' tags = ['process', 'concurrency'] categories = ['linux'] +++  **一、线"
     },
     {
       "filename": "2025-03-10 [cpp] C++八股：main函数之前执行了什么？.md",
@@ -736,7 +743,9 @@
       "title": "【AI】C++八股：main函数之前执行了什么？",
       "date": "2025-03-10",
       "tags": [
-        "cpp"
+        "compiler",
+        "linker",
+        "interview"
       ],
       "categories": [
         "cpp"
@@ -748,7 +757,7 @@
         "main函数之前执行了什么？",
         "main"
       ],
-      "summary_preview": "date = '2025-03-10T12:05:47+08:00' draft = false title = '【AI】C++八股：main函数之前执行了什么？' author = 'JekYUlll' lastmod = '2025-03-10T12:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  ### 一、`_start`与`_"
+      "summary_preview": "date = '2025-03-10T12:05:47+08:00' draft = false title = '【AI】C++八股：main函数之前执行了什么？' author = 'JekYUlll' lastmod = '2025-03-10T12:05:47+08:00' tags = ['compiler', 'linker', 'interview'] categories = ['"
     },
     {
       "filename": "2025-03-10 [cpp] 使用普通的互斥锁实现读写锁.md",
@@ -756,8 +765,8 @@
       "title": "【AI】使用普通的互斥锁实现读写锁",
       "date": "2025-03-10",
       "tags": [
-        "cpp",
-        "algorithm"
+        "concurrency",
+        "lock"
       ],
       "categories": [
         "cpp"
@@ -767,7 +776,7 @@
         "ai",
         "使用普通的互斥锁实现读写锁"
       ],
-      "summary_preview": "date = '2025-03-10T12:05:47+08:00' draft = false title = '【AI】使用普通的互斥锁实现读写锁' author = 'JekYUlll' lastmod = '2025-03-10T12:05:47+08:00' tags = ['cpp','algorithm'] categories = ['cpp'] +++  核心在于通过**状态管理"
+      "summary_preview": "date = '2025-03-10T12:05:47+08:00' draft = false title = '【AI】使用普通的互斥锁实现读写锁' author = 'JekYUlll' lastmod = '2025-03-10T12:05:47+08:00' tags = ['concurrency', 'lock'] categories = ['cpp'] +++  核心在于通过**"
     },
     {
       "filename": "2025-03-10 [web] 半衰期算法在后端的应用.md",
@@ -775,19 +784,18 @@
       "title": "【AI】半衰期算法在后端的应用",
       "date": "2025-03-10",
       "tags": [
-        "web",
-        "backend",
-        "algorithm"
+        "algorithm",
+        "ranking"
       ],
       "categories": [
-        "web"
+        "backend"
       ],
       "file_category": "web",
       "keywords": [
         "ai",
         "半衰期算法在后端的应用"
       ],
-      "summary_preview": "date = '2025-03-10T21:05:47+08:00' draft = false title = '【AI】半衰期算法在后端的应用' author = 'JekYUlll' lastmod = '2025-03-10T21:05:47+08:00' tags = ['web', 'backend', 'algorithm'] categories = ['web'] +++  在后"
+      "summary_preview": "date = '2025-03-10T21:05:47+08:00' draft = false title = '【AI】半衰期算法在后端的应用' author = 'JekYUlll' lastmod = '2025-03-10T21:05:47+08:00' tags = ['algorithm', 'ranking'] categories = ['backend'] +++  在后端开发"
     },
     {
       "filename": "2025-03-16 [cpp] heap only 和 stack only 的 C++ 对象.md",
@@ -795,7 +803,8 @@
       "title": "如何限制C++对象只能在堆或栈上创建？heap only 和 stack only",
       "date": "2025-03-16",
       "tags": [
-        "cpp"
+        "memory",
+        "stl"
       ],
       "categories": [
         "cpp"
@@ -808,7 +817,7 @@
         "only",
         "heap"
       ],
-      "summary_preview": "date = '2025-03-16T12:05:47+08:00' draft = false title = '如何限制C++对象只能在堆或栈上创建？heap only 和 stack only' author = 'JekYUlll' lastmod = '2025-03-16T12:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  "
+      "summary_preview": "date = '2025-03-16T12:05:47+08:00' draft = false title = '如何限制C++对象只能在堆或栈上创建？heap only 和 stack only' author = 'JekYUlll' lastmod = '2025-03-16T12:05:47+08:00' tags = ['memory', 'stl'] categories = ['c"
     },
     {
       "filename": "2025-03-16 [web] 解析LRU与LFU算法及C++实现.md",
@@ -816,13 +825,11 @@
       "title": "解析LRU与LFU算法及C++实现",
       "date": "2025-03-16",
       "tags": [
-        "cpp",
-        "web",
-        "backend",
-        "algorithm"
+        "cache",
+        "data-structure"
       ],
       "categories": [
-        "web"
+        "algorithm"
       ],
       "file_category": "web",
       "keywords": [
@@ -830,7 +837,7 @@
         "lru",
         "lfu"
       ],
-      "summary_preview": "date = '2025-03-16T12:05:47+08:00' draft = false title = '解析LRU与LFU算法及C++实现' author = 'JekYUlll' lastmod = '2025-03-16T12:05:47+08:00' tags = ['cpp', 'web', 'backend', 'algorithm'] categories = ['web'"
+      "summary_preview": "date = '2025-03-16T12:05:47+08:00' draft = false title = '解析LRU与LFU算法及C++实现' author = 'JekYUlll' lastmod = '2025-03-16T12:05:47+08:00' tags = ['cache', 'data-structure'] categories = ['algorithm'] +++"
     },
     {
       "filename": "2025-03-18 [frontend] 【01】Flet 学习笔记 --Flutter原理.md",
@@ -838,7 +845,8 @@
       "title": "【01】Flet 学习笔记 --Flutter原理",
       "date": "2025-03-18",
       "tags": [
-        "frontend"
+        "flutter",
+        "python"
       ],
       "categories": [
         "frontend"
@@ -851,7 +859,7 @@
         "--flutter原理",
         "flutter"
       ],
-      "summary_preview": "date = '2025-03-18T06:05:47+08:00' draft = false title = '【01】Flet 学习笔记 --Flutter原理' author = 'JekYUlll' lastmod = '2025-03-18T06:05:47+08:00' tags = ['frontend'] categories = ['frontend'] +++  Flutte"
+      "summary_preview": "date = '2025-03-18T06:05:47+08:00' draft = false title = '【01】Flet 学习笔记 --Flutter原理' author = 'JekYUlll' lastmod = '2025-03-18T06:05:47+08:00' tags = ['flutter', 'python'] categories = ['frontend'] ++"
     },
     {
       "filename": "2025-03-21 [web] Nginx 的多进程模型.md",
@@ -859,18 +867,18 @@
       "title": "Nginx 的多进程模型",
       "date": "2025-03-21",
       "tags": [
-        "web",
-        "backend"
+        "nginx",
+        "process-model"
       ],
       "categories": [
-        "web"
+        "backend"
       ],
       "file_category": "web",
       "keywords": [
         "nginx",
         "的多进程模型"
       ],
-      "summary_preview": "date = '2025-03-21T12:05:47+08:00' draft = false title = 'Nginx 的多进程模型' author = 'JekYUlll' lastmod = '2025-03-21T12:05:47+08:00' tags = ['web', 'backend'] categories = ['web'] +++  在Web服务器领域，Nginx凭借其"
+      "summary_preview": "date = '2025-03-21T12:05:47+08:00' draft = false title = 'Nginx 的多进程模型' author = 'JekYUlll' lastmod = '2025-03-21T12:05:47+08:00' tags = ['nginx', 'process-model'] categories = ['backend'] +++  在Web服务"
     },
     {
       "filename": "2025-03-21 [web] 流计算中的反向压力模型与 Reactive Streams --C++实现.md",
@@ -878,12 +886,11 @@
       "title": "流计算中的反向压力模型与 Reactive Streams --C++实现",
       "date": "2025-03-21",
       "tags": [
-        "cpp",
-        "web",
-        "backend"
+        "reactive-streams",
+        "back-pressure"
       ],
       "categories": [
-        "web"
+        "backend"
       ],
       "file_category": "web",
       "keywords": [
@@ -892,7 +899,7 @@
         "streams",
         "--c++实现"
       ],
-      "summary_preview": "date = '2025-03-21T12:05:47+08:00' draft = false title = '流计算中的反向压力模型与 Reactive Streams --C++实现' author = 'JekYUlll' lastmod = '2025-03-21T12:05:47+08:00' tags = ['cpp', 'web', 'backend'] categories ="
+      "summary_preview": "date = '2025-03-21T12:05:47+08:00' draft = false title = '流计算中的反向压力模型与 Reactive Streams --C++实现' author = 'JekYUlll' lastmod = '2025-03-21T12:05:47+08:00' tags = ['reactive-streams', 'back-pressure'] "
     },
     {
       "filename": "2025-03-26 [alg] 更新的二进制差异算法.md",
@@ -900,7 +907,8 @@
       "title": "更新的二进制差异算法",
       "date": "2025-03-26",
       "tags": [
-        "algorithm"
+        "diff",
+        "binary"
       ],
       "categories": [
         "algorithm"
@@ -909,7 +917,7 @@
       "keywords": [
         "更新的二进制差异算法"
       ],
-      "summary_preview": "date = '2025-03-26T04:05:47+08:00' draft = false title = '更新的二进制差异算法' author = 'JekYUlll' lastmod = '2025-03-26T04:05:47+08:00' tags = ['algorithm'] categories = ['algorithm'] +++  替换一个二进制文件有以下两个思路：  "
+      "summary_preview": "date = '2025-03-26T04:05:47+08:00' draft = false title = '更新的二进制差异算法' author = 'JekYUlll' lastmod = '2025-03-26T04:05:47+08:00' tags = ['diff', 'binary'] categories = ['algorithm'] +++  替换一个二进制文件有以下两个"
     },
     {
       "filename": "2025-03-26 [cpp] 文件锁（FileLock）的本质与价值.md",
@@ -917,11 +925,11 @@
       "title": "文件锁（FileLock）的本质与价值",
       "date": "2025-03-26",
       "tags": [
-        "cpp",
-        "linux"
+        "file-system",
+        "concurrency"
       ],
       "categories": [
-        "cpp"
+        "linux"
       ],
       "file_category": "cpp",
       "keywords": [
@@ -929,7 +937,7 @@
         "filelock",
         "的本质与价值"
       ],
-      "summary_preview": "date = '2025-03-26T04:05:47+08:00' draft = false title = '文件锁（FileLock）的本质与价值' author = 'JekYUlll' lastmod = '2025-03-26T04:05:47+08:00' tags = ['cpp', 'linux'] categories = ['cpp'] +++  在多进程/多线程环境中，M"
+      "summary_preview": "date = '2025-03-26T04:05:47+08:00' draft = false title = '文件锁（FileLock）的本质与价值' author = 'JekYUlll' lastmod = '2025-03-26T04:05:47+08:00' tags = ['file-system', 'concurrency'] categories = ['linux'] ++"
     },
     {
       "filename": "2025-03-27 [linux] Linux里fork出子进程的时候，哪些内容是共享的？.md",
@@ -937,8 +945,8 @@
       "title": "Linux里fork出子进程的时候，哪些内容是共享的？",
       "date": "2025-03-27",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "memory"
       ],
       "categories": [
         "linux"
@@ -950,7 +958,7 @@
         "linux",
         "fork"
       ],
-      "summary_preview": "date = '2025-03-27T04:05:47+08:00' draft = false title = 'Linux里fork出子进程的时候，哪些内容是共享的？' author = 'JekYUlll' lastmod = '2025-03-27T04:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  ### "
+      "summary_preview": "date = '2025-03-27T04:05:47+08:00' draft = false title = 'Linux里fork出子进程的时候，哪些内容是共享的？' author = 'JekYUlll' lastmod = '2025-03-27T04:05:47+08:00' tags = ['process', 'memory'] categories = ['linux'] +++"
     },
     {
       "filename": "2025-03-29 [linux] fork出的子进程是否继承文件描述符表？.md",
@@ -958,8 +966,8 @@
       "title": "fork出的子进程是否继承文件描述符表？",
       "date": "2025-03-29",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "file-descriptor"
       ],
       "categories": [
         "linux"
@@ -969,7 +977,7 @@
         "fork出的子进程是否继承文件描述符表？",
         "fork"
       ],
-      "summary_preview": "date = '2025-03-29T04:05:47+08:00' draft = false title = 'fork出的子进程是否继承文件描述符表？' author = 'JekYUlll' lastmod = '2025-03-29T04:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  当通过 `fork()"
+      "summary_preview": "date = '2025-03-29T04:05:47+08:00' draft = false title = 'fork出的子进程是否继承文件描述符表？' author = 'JekYUlll' lastmod = '2025-03-29T04:05:47+08:00' tags = ['process', 'file-descriptor'] categories = ['linux'] +"
     },
     {
       "filename": "2025-03-30 [linux] Linux 的CPU保护环，三环和零环.md",
@@ -977,8 +985,8 @@
       "title": "Linux 的CPU保护环，三环和零环",
       "date": "2025-03-30",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "security"
       ],
       "categories": [
         "linux"
@@ -990,7 +998,7 @@
         "三环和零环",
         "cpu"
       ],
-      "summary_preview": "date = '2025-03-30T04:05:47+08:00' draft = false title = 'Linux 的CPU保护环，三环和零环' author = 'JekYUlll' lastmod = '2025-03-30T04:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  Linux系统中的“三环"
+      "summary_preview": "date = '2025-03-30T04:05:47+08:00' draft = false title = 'Linux 的CPU保护环，三环和零环' author = 'JekYUlll' lastmod = '2025-03-30T04:05:47+08:00' tags = ['process', 'security'] categories = ['linux'] +++  Linu"
     },
     {
       "filename": "2025-04-17 [web] 304 Not Modified 是怎么检测的？.md",
@@ -998,10 +1006,11 @@
       "title": "304 Not Modified 是怎么检测的？",
       "date": "2025-04-17",
       "tags": [
-        "web"
+        "http",
+        "cache"
       ],
       "categories": [
-        "web"
+        "backend"
       ],
       "file_category": "web",
       "keywords": [
@@ -1010,7 +1019,7 @@
         "modified",
         "是怎么检测的？"
       ],
-      "summary_preview": "date = '2025-04-17T04:05:47+08:00' draft = false title = '304 Not Modified 是怎么检测的？' author = 'JekYUlll' lastmod = '2025-04-17T04:05:47+08:00' tags = ['web'] categories = ['web'] +++  **最终判断逻辑由服务端完成**。"
+      "summary_preview": "date = '2025-04-17T04:05:47+08:00' draft = false title = '304 Not Modified 是怎么检测的？' author = 'JekYUlll' lastmod = '2025-04-17T04:05:47+08:00' tags = ['http', 'cache'] categories = ['backend'] +++  **最"
     },
     {
       "filename": "2025-04-21 [cpp] C++ 中的乐观锁和悲观锁.md",
@@ -1018,7 +1027,8 @@
       "title": "C++ 中的乐观锁和悲观锁",
       "date": "2025-04-21",
       "tags": [
-        "cpp"
+        "concurrency",
+        "lock"
       ],
       "categories": [
         "cpp"
@@ -1028,7 +1038,7 @@
         "c++",
         "中的乐观锁和悲观锁"
       ],
-      "summary_preview": "date = '2025-04-21T18:05:47+08:00' draft = false title = 'C++ 中的乐观锁和悲观锁' author = 'JekYUlll' lastmod = '2025-04-21T18:05:47+08:00' tags = ['cpp'] categories = ['cpp'] +++  > **悲观锁**（Pessimistic Lock）是"
+      "summary_preview": "date = '2025-04-21T18:05:47+08:00' draft = false title = 'C++ 中的乐观锁和悲观锁' author = 'JekYUlll' lastmod = '2025-04-21T18:05:47+08:00' tags = ['concurrency', 'lock'] categories = ['cpp'] +++  > **悲观锁**（Pe"
     },
     {
       "filename": "2025-04-23 [web] 判断http服务器断点续传.md",
@@ -1037,11 +1047,11 @@
       "date": "2025-04-23",
       "tags": [
         "go",
-        "web",
-        "backend"
+        "http",
+        "nginx"
       ],
       "categories": [
-        "web"
+        "backend"
       ],
       "file_category": "web",
       "keywords": [
@@ -1050,7 +1060,7 @@
         "go",
         "nginx"
       ],
-      "summary_preview": "date = '2025-04-23T12:05:47+08:00' draft = false title = '实现服务端断点续传：Go与Nginx' author = 'JekYUlll' lastmod = '2025-04-23T12:05:47+08:00' tags = ['go', 'web', 'backend'] categories = ['web'] +++  ### 一、"
+      "summary_preview": "date = '2025-04-23T12:05:47+08:00' draft = false title = '实现服务端断点续传：Go与Nginx' author = 'JekYUlll' lastmod = '2025-04-23T12:05:47+08:00' tags = ['go', 'http', 'nginx'] categories = ['backend'] +++  ###"
     },
     {
       "filename": "2025-04-25 [game] 【1】Blender学习日记-入门.md",
@@ -1058,17 +1068,18 @@
       "title": "【1】Blender学习日记-入门",
       "date": "2025-04-25",
       "tags": [
-        "game"
+        "blender",
+        "3d-modeling"
       ],
       "categories": [
-        "game"
+        "game-dev"
       ],
       "file_category": "game",
       "keywords": [
         "blender学习日记-入门",
         "blender"
       ],
-      "summary_preview": "date = '2025-04-25T06:05:47+08:00' draft = false title = '【1】Blender学习日记-入门' author = 'JekYUlll' lastmod = '2025-04-25T06:05:47+08:00' tags = ['game'] categories = ['game'] +++  半夜学一下blender。   <!-- 在"
+      "summary_preview": "date = '2025-04-25T06:05:47+08:00' draft = false title = '【1】Blender学习日记-入门' author = 'JekYUlll' lastmod = '2025-04-25T06:05:47+08:00' tags = ['blender', '3d-modeling'] categories = ['game-dev'] +++  "
     },
     {
       "filename": "2025-04-29 [linux] TODO 守护进程，setsid，Linux三个id，权限.md",
@@ -1076,8 +1087,8 @@
       "title": "TODO 守护进程，setsid，Linux三个id，权限",
       "date": "2025-04-29",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "daemon"
       ],
       "categories": [
         "linux"
@@ -1092,7 +1103,7 @@
         "linux",
         "id"
       ],
-      "summary_preview": "date = '2025-04-29T21:05:47+08:00' draft = false title = 'TODO 守护进程，setsid，Linux三个id，权限' author = 'JekYUlll' lastmod = '2025-04-29T21:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++   复"
+      "summary_preview": "date = '2025-04-29T21:05:47+08:00' draft = false title = 'TODO 守护进程，setsid，Linux三个id，权限' author = 'JekYUlll' lastmod = '2025-04-29T21:05:47+08:00' tags = ['process', 'daemon'] categories = ['linux'] +"
     },
     {
       "filename": "2025-04-29 [linux] tmux实现wezterm保存会话.md",
@@ -1100,7 +1111,8 @@
       "title": "在wezterm里使用tmux实现history restore 保存历史会话",
       "date": "2025-04-29",
       "tags": [
-        "linux"
+        "terminal",
+        "tmux"
       ],
       "categories": [
         "linux"
@@ -1114,7 +1126,7 @@
         "tmux",
         "history"
       ],
-      "summary_preview": "date = '2025-04-29T21:05:47+08:00' draft = false title = '在wezterm里使用tmux实现history restore 保存历史会话' author = 'JekYUlll' lastmod = '2025-04-29T21:05:47+08:00' tags = ['linux'] categories = ['linux'] +++"
+      "summary_preview": "date = '2025-04-29T21:05:47+08:00' draft = false title = '在wezterm里使用tmux实现history restore 保存历史会话' author = 'JekYUlll' lastmod = '2025-04-29T21:05:47+08:00' tags = ['terminal', 'tmux'] categories = ['"
     },
     {
       "filename": "2025-04-29 [linux] 守护进程.md",
@@ -1122,8 +1134,8 @@
       "title": "Linux 守护进程",
       "date": "2025-04-29",
       "tags": [
-        "linux",
-        "os"
+        "process",
+        "daemon"
       ],
       "categories": [
         "linux"
@@ -1133,7 +1145,7 @@
         "linux",
         "守护进程"
       ],
-      "summary_preview": "date = '2025-04-29T20:05:47+08:00' draft = false title = 'Linux 守护进程' author = 'JekYUlll' lastmod = '2025-04-29T20:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  复习：[【Linux】守护进程（ Daem"
+      "summary_preview": "date = '2025-04-29T20:05:47+08:00' draft = false title = 'Linux 守护进程' author = 'JekYUlll' lastmod = '2025-04-29T20:05:47+08:00' tags = ['process', 'daemon'] categories = ['linux'] +++  复习：[【Linux】守护进程"
     },
     {
       "filename": "2025-05-05 [redis] Redis Stream和MQ.md",
@@ -1145,7 +1157,7 @@
         "mq"
       ],
       "categories": [
-        "redis"
+        "database"
       ],
       "file_category": "redis",
       "keywords": [
@@ -1154,7 +1166,7 @@
         "stream",
         "mq"
       ],
-      "summary_preview": "date = '2025-05-05T21:05:47+08:00' draft = false title = 'Redis Stream和MQ' author = 'JekYUlll' lastmod = '2025-05-05T21:05:47+08:00' tags = ['redis', 'mq'] categories = ['redis'] +++  常见MQ的功能，有哪些是用Red"
+      "summary_preview": "date = '2025-05-05T21:05:47+08:00' draft = false title = 'Redis Stream和MQ' author = 'JekYUlll' lastmod = '2025-05-05T21:05:47+08:00' tags = ['redis', 'mq'] categories = ['database'] +++  常见MQ的功能，有哪些是用"
     },
     {
       "filename": "2025-05-08 [cpp]C语言通过getaddrinfo函数获取域名的IP地址.md",
@@ -1162,8 +1174,8 @@
       "title": "【仅源码】C语言通过getaddrinfo函数获取域名的IP地址",
       "date": "2025-05-08",
       "tags": [
-        "cpp",
-        "web"
+        "network",
+        "socket"
       ],
       "categories": [
         "cpp"
@@ -1175,7 +1187,7 @@
         "getaddrinfo",
         "ip"
       ],
-      "summary_preview": "date = '2025-05-08T18:05:47+08:00' draft = false title = '【仅源码】C语言通过getaddrinfo函数获取域名的IP地址' author = 'JekYUlll' lastmod = '2025-05-08T18:05:47+08:00' tags = ['cpp', 'web'] categories = ['cpp'] +++  ``"
+      "summary_preview": "date = '2025-05-08T18:05:47+08:00' draft = false title = '【仅源码】C语言通过getaddrinfo函数获取域名的IP地址' author = 'JekYUlll' lastmod = '2025-05-08T18:05:47+08:00' tags = ['network', 'socket'] categories = ['cpp'] "
     },
     {
       "filename": "2025-06-08 [linux] 容器化技术之 Linux namespace.md",
@@ -1183,8 +1195,8 @@
       "title": "容器化技术之 Linux namespace",
       "date": "2025-06-08",
       "tags": [
-        "linux",
-        "os"
+        "namespace",
+        "container"
       ],
       "categories": [
         "linux"
@@ -1195,7 +1207,7 @@
         "linux",
         "namespace"
       ],
-      "summary_preview": "date = '2025-06-08T20:05:47+08:00' draft = false title = '容器化技术之 Linux namespace' author = 'JekYUlll' lastmod = '2025-06-08T20:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  Linux nam"
+      "summary_preview": "date = '2025-06-08T20:05:47+08:00' draft = false title = '容器化技术之 Linux namespace' author = 'JekYUlll' lastmod = '2025-06-08T20:05:47+08:00' tags = ['namespace', 'container'] categories = ['linux'] +++"
     },
     {
       "filename": "2025-10-18 [normal] 实验室服务器使用教程.md",
@@ -1203,8 +1215,8 @@
       "title": "实验室服务器使用教程",
       "date": "2025-10-18",
       "tags": [
-        "linux",
-        "os"
+        "tutorial",
+        "server"
       ],
       "categories": [
         "linux"
@@ -1213,7 +1225,7 @@
       "keywords": [
         "实验室服务器使用教程"
       ],
-      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2025-10-18T21:05:47+08:00' tags = ['linux', 'os'] categories = ['linux'] +++  当前服务器ip:    ```bash 10.201"
+      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2025-10-18T21:05:47+08:00' tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器ip:    ```bash"
     },
     {
       "filename": "2026-05-23 [backend] IM应用开发的两个消息库：同步库与存储库.md",
@@ -1221,7 +1233,8 @@
       "title": "IM应用开发的两个消息库：同步库与存储库",
       "date": "2026-05-23",
       "tags": [
-        "backend"
+        "im",
+        "messaging"
       ],
       "categories": [
         "backend"
@@ -1232,7 +1245,7 @@
         "同步库与存储库",
         "im"
       ],
-      "summary_preview": "date = '2026-05-23T20:05:47+08:00' draft = false title = 'IM应用开发的两个消息库：同步库与存储库' author = 'JekYUlll' lastmod = '2026-05-23T20:05:47+08:00' tags = ['backend'] categories = ['backend'] +++  ## 引言  IM（Ins"
+      "summary_preview": "date = '2026-05-23T20:05:47+08:00' draft = false title = 'IM应用开发的两个消息库：同步库与存储库' author = 'JekYUlll' lastmod = '2026-05-23T20:05:47+08:00' tags = ['im', 'messaging'] categories = ['backend'] +++  ## 引言"
     },
     {
       "filename": "2026-05-24 [backend] Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战.md",
@@ -1240,8 +1253,8 @@
       "title": "Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战",
       "date": "2026-05-24",
       "tags": [
-        "backend",
-        "golang"
+        "go",
+        "data-structure"
       ],
       "categories": [
         "backend"
@@ -1257,7 +1270,7 @@
         "map",
         "实战"
       ],
-      "summary_preview": "date = '2026-05-24T15:19:41+08:00' draft = false title = 'Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战' author = 'JekYUlll' lastmod = '2026-05-24T15:19:41+08:00' tags = ['backend', 'golang'] categ"
+      "summary_preview": "date = '2026-05-24T15:19:41+08:00' draft = false title = 'Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战' author = 'JekYUlll' lastmod = '2026-05-24T15:19:41+08:00' tags = ['go', 'data-structure'] ca"
     },
     {
       "filename": "2026-05-24 [cpp] C++26 编译期反射（Reflection）来了：P2996 全解析.md",
@@ -1265,7 +1278,8 @@
       "title": "C++26 编译期反射（Reflection）来了：P2996 全解析",
       "date": "2026-05-24",
       "tags": [
-        "cpp"
+        "cpp26",
+        "reflection"
       ],
       "categories": [
         "cpp"
@@ -1280,7 +1294,7 @@
         "全解析",
         "26"
       ],
-      "summary_preview": "date = '2026-05-24T15:27:55+08:00' draft = false title = 'C++26 编译期反射（Reflection）来了：P2996 全解析' author = 'JekYUlll' lastmod = '2026-05-24T15:27:55+08:00' tags = ['cpp'] categories = ['cpp'] +++  ## 背景 "
+      "summary_preview": "date = '2026-05-24T15:27:55+08:00' draft = false title = 'C++26 编译期反射（Reflection）来了：P2996 全解析' author = 'JekYUlll' lastmod = '2026-05-24T15:27:55+08:00' tags = ['cpp26', 'reflection'] categories = ['c"
     },
     {
       "filename": "2026-05-24 [linux] io_uring 完全指南：从 ring buffer 到零系统调用 I",
@@ -1288,7 +1302,8 @@
       "title": "io_uring 完全指南：从 ring buffer 到零系统调用 I/O",
       "date": "2026-05-24",
       "tags": [
-        "linux"
+        "io-uring",
+        "async-io"
       ],
       "categories": [
         "linux"
@@ -1303,7 +1318,7 @@
         "io",
         "uring"
       ],
-      "summary_preview": "date = '2026-05-24T14:52:36+08:00' draft = false title = 'io_uring 完全指南：从 ring buffer 到零系统调用 I/O' author = 'JekYUlll' lastmod = '2026-05-24T14:52:36+08:00' tags = ['linux'] categories = ['linux'] +++ "
+      "summary_preview": "date = '2026-05-24T14:52:36+08:00' draft = false title = 'io_uring 完全指南：从 ring buffer 到零系统调用 I/O' author = 'JekYUlll' lastmod = '2026-05-24T14:52:36+08:00' tags = ['io-uring', 'async-io'] categories ="
     },
     {
       "filename": "2026-05-24 [system] AI Agent 开发框架三强争霸：MCP、A2A 与 OpenAI Agents SDK 深度对比.md",
@@ -1311,15 +1326,12 @@
       "title": "AI Agent 开发框架三强争霸：MCP、A2A 与 OpenAI Agents SDK 深度对比",
       "date": "2026-05-24",
       "tags": [
-        "Agent",
-        "框架",
-        "MCP",
-        "A2A",
-        "OpenAI",
-        "Agent SDK"
+        "ai-agent",
+        "mcp",
+        "a2a"
       ],
       "categories": [
-        "Agent/框架"
+        "infra"
       ],
       "file_category": "system",
       "keywords": [
@@ -1333,7 +1345,7 @@
         "sdk",
         "深度对比"
       ],
-      "summary_preview": "date = '2026-05-24T15:21:02+08:00' draft = false title = 'AI Agent 开发框架三强争霸：MCP、A2A 与 OpenAI Agents SDK 深度对比' author = 'JekYUlll' lastmod = '2026-05-24T15:21:02+08:00' tags = ['Agent', '框架', 'MCP', 'A"
+      "summary_preview": "date = '2026-05-24T15:21:02+08:00' draft = false title = 'AI Agent 开发框架三强争霸：MCP、A2A 与 OpenAI Agents SDK 深度对比' author = 'JekYUlll' lastmod = '2026-05-24T15:21:02+08:00' tags = ['ai-agent', 'mcp', 'a2a'"
     },
     {
       "filename": "2026-05-25 [cpp] C++26 反射：从模板元编程到编译期内省.md",
@@ -1341,7 +1353,8 @@
       "title": "C++26 反射：从模板元编程到编译期内省",
       "date": "2026-05-25",
       "tags": [
-        "cpp"
+        "cpp26",
+        "reflection"
       ],
       "categories": [
         "cpp"
@@ -1353,7 +1366,7 @@
         "从模板元编程到编译期内省",
         "26"
       ],
-      "summary_preview": "date = '2026-05-25T04:30:07+08:00' draft = false title = 'C++26 反射：从模板元编程到编译期内省' author = 'JekYUlll' lastmod = '2026-05-25T04:30:07+08:00' tags = ['cpp'] categories = ['cpp'] +++  C++ 模板元编程一直是\"工程师对机器\""
+      "summary_preview": "date = '2026-05-25T04:30:07+08:00' draft = false title = 'C++26 反射：从模板元编程到编译期内省' author = 'JekYUlll' lastmod = '2026-05-25T04:30:07+08:00' tags = ['cpp26', 'reflection'] categories = ['cpp'] +++  C++ "
     },
     {
       "filename": "2026-05-25 [linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I O.md",
@@ -1361,7 +1374,8 @@
       "title": "[linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I/O",
       "date": "2026-05-25",
       "tags": [
-        "linux"
+        "io-uring",
+        "async-io"
       ],
       "categories": [
         "linux"
@@ -1375,7 +1389,7 @@
         "io",
         "uring"
       ],
-      "summary_preview": "date = '2026-05-25T23:48:54+08:00' draft = false title = '[linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I/O' author = 'JekYUlll' lastmod = '2026-05-25T23:48:54+08:00' tags = ['linux'] categories = ['linux'] "
+      "summary_preview": "date = '2026-05-25T23:48:54+08:00' draft = false title = '[linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I/O' author = 'JekYUlll' lastmod = '2026-05-25T23:48:54+08:00' tags = ['io-uring', 'async-io'] categori"
     },
     {
       "filename": "2026-05-25 [linux] io_uring 实战：Linux 异步 I",
@@ -1383,7 +1397,8 @@
       "title": "[linux] io_uring 实战：Linux 异步 I/O 的终极答案",
       "date": "2026-05-25",
       "tags": [
-        "linux"
+        "io-uring",
+        "async-io"
       ],
       "categories": [
         "linux"
@@ -1399,7 +1414,7 @@
         "io",
         "uring"
       ],
-      "summary_preview": "date = '2026-05-25T10:01:05+08:00' draft = false title = '[linux] io_uring 实战：Linux 异步 I/O 的终极答案' author = 'JekYUlll' lastmod = '2026-05-25T10:01:05+08:00' tags = ['linux'] categories = ['linux'] +++ "
+      "summary_preview": "date = '2026-05-25T10:01:05+08:00' draft = false title = '[linux] io_uring 实战：Linux 异步 I/O 的终极答案' author = 'JekYUlll' lastmod = '2026-05-25T10:01:05+08:00' tags = ['io-uring', 'async-io'] categories ="
     },
     {
       "filename": "2026-05-25 [system] Speculative Decoding：大模型推理加速的新范式.md",
@@ -1407,10 +1422,11 @@
       "title": "Speculative Decoding：大模型推理加速的新范式",
       "date": "2026-05-25",
       "tags": [
-        "system"
+        "llm-inference",
+        "speculative-decoding"
       ],
       "categories": [
-        "system"
+        "infra"
       ],
       "file_category": "system",
       "keywords": [
@@ -1418,7 +1434,7 @@
         "decoding",
         "大模型推理加速的新范式"
       ],
-      "summary_preview": "date = '2026-05-25T23:54:00+08:00' draft = false title = 'Speculative Decoding：大模型推理加速的新范式' author = 'JekYUlll' lastmod = '2026-05-25T23:54:00+08:00' tags = ['system'] categories = ['system'] +++  ## "
+      "summary_preview": "date = '2026-05-25T23:54:00+08:00' draft = false title = 'Speculative Decoding：大模型推理加速的新范式' author = 'JekYUlll' lastmod = '2026-05-25T23:54:00+08:00' tags = ['llm-inference', 'speculative-decoding'] c"
     },
     {
       "filename": "2026-05-26 [backend] Web Search 技术漫谈：ddgs _ SearXNG _ Firecrawl 与搜索架构.md",
@@ -1426,7 +1442,8 @@
       "title": "Web Search 技术漫谈：ddgs / SearXNG / Firecrawl 与搜索架构",
       "date": "2026-05-26",
       "tags": [
-        "backend"
+        "search-engine",
+        "web-crawler"
       ],
       "categories": [
         "backend"
@@ -1441,7 +1458,7 @@
         "firecrawl",
         "与搜索架构"
       ],
-      "summary_preview": "date = '2026-05-26T01:11:41+08:00' draft = false title = 'Web Search 技术漫谈：ddgs / SearXNG / Firecrawl 与搜索架构' author = 'JekYUlll' lastmod = '2026-05-26T01:11:41+08:00' tags = ['backend'] categories = ['"
+      "summary_preview": "date = '2026-05-26T01:11:41+08:00' draft = false title = 'Web Search 技术漫谈：ddgs / SearXNG / Firecrawl 与搜索架构' author = 'JekYUlll' lastmod = '2026-05-26T01:11:41+08:00' tags = ['search-engine', 'web-craw"
     },
     {
       "filename": "2026-05-26 [cpp] C++26 时代的 AI 应答：当 C++ 开始为机器学习铺路.md",
@@ -1449,7 +1466,9 @@
       "title": "C++26 时代的 AI 应答：当 C++ 开始为机器学习铺路",
       "date": "2026-05-26",
       "tags": [
-        "cpp"
+        "cpp26",
+        "ai",
+        "machine-learning"
       ],
       "categories": [
         "cpp"
@@ -1464,7 +1483,7 @@
         "开始为机器学习铺路",
         "26"
       ],
-      "summary_preview": "date = '2026-05-26T06:54:44+08:00' draft = false title = 'C++26 时代的 AI 应答：当 C++ 开始为机器学习铺路' author = 'JekYUlll' lastmod = '2026-05-26T06:54:44+08:00' tags = ['cpp'] categories = ['cpp'] +++  每次 AI 编程工具"
+      "summary_preview": "date = '2026-05-26T06:54:44+08:00' draft = false title = 'C++26 时代的 AI 应答：当 C++ 开始为机器学习铺路' author = 'JekYUlll' lastmod = '2026-05-26T06:54:44+08:00' tags = ['cpp26', 'ai', 'machine-learning'] categori"
     },
     {
       "filename": "2026-05-26 [linux] Linux memfd 秘闻：内存文件描述符的秘密区域.md",
@@ -1472,7 +1491,8 @@
       "title": "Linux memfd 秘闻：内存文件描述符的秘密区域",
       "date": "2026-05-26",
       "tags": [
-        "linux"
+        "memfd",
+        "memory"
       ],
       "categories": [
         "linux"
@@ -1484,7 +1504,7 @@
         "秘闻",
         "内存文件描述符的秘密区域"
       ],
-      "summary_preview": "date = '2026-05-26T01:07:21+08:00' draft = false title = 'Linux memfd 秘闻：内存文件描述符的秘密区域' author = 'JekYUlll' lastmod = '2026-05-26T01:07:21+08:00' tags = ['linux'] categories = ['linux'] +++  ## 背景  在 L"
+      "summary_preview": "date = '2026-05-26T01:07:21+08:00' draft = false title = 'Linux memfd 秘闻：内存文件描述符的秘密区域' author = 'JekYUlll' lastmod = '2026-05-26T01:07:21+08:00' tags = ['memfd', 'memory'] categories = ['linux'] +++  "
     },
     {
       "filename": "2026-05-26 [linux] eBPF 可观测性：在内核里跑代码改变了什么.md",
@@ -1492,7 +1512,8 @@
       "title": "eBPF 可观测性：在内核里跑代码改变了什么",
       "date": "2026-05-26",
       "tags": [
-        "linux"
+        "ebpf",
+        "observability"
       ],
       "categories": [
         "linux"
@@ -1503,7 +1524,7 @@
         "可观测性",
         "在内核里跑代码改变了什么"
       ],
-      "summary_preview": "date = '2026-05-26T10:00:44+08:00' draft = false title = 'eBPF 可观测性：在内核里跑代码改变了什么' author = 'JekYUlll' lastmod = '2026-05-26T10:00:44+08:00' tags = ['linux'] categories = ['linux'] +++  ## 背景  Linux 内核"
+      "summary_preview": "date = '2026-05-26T10:00:44+08:00' draft = false title = 'eBPF 可观测性：在内核里跑代码改变了什么' author = 'JekYUlll' lastmod = '2026-05-26T10:00:44+08:00' tags = ['ebpf', 'observability'] categories = ['linux'] +++ "
     },
     {
       "filename": "2026-05-27 [backend] IM项目中发送2min内可以撤回怎么实现.md",
@@ -1511,7 +1532,8 @@
       "title": "IM项目中，\"发送2min内可以撤回\"怎么实现？",
       "date": "2026-05-27",
       "tags": [
-        "backend"
+        "im",
+        "messaging"
       ],
       "categories": [
         "backend"
@@ -1523,7 +1545,7 @@
         "im",
         "2min"
       ],
-      "summary_preview": "date = '2026-05-27T12:55:10+08:00' draft = false title = 'IM项目中，\"发送2min内可以撤回\"怎么实现？' author = 'JekYUlll' lastmod = '2026-05-27T12:55:10+08:00' tags = ['backend'] categories = ['backend'] +++  ## 背景  消息"
+      "summary_preview": "date = '2026-05-27T12:55:10+08:00' draft = false title = 'IM项目中，\"发送2min内可以撤回\"怎么实现？' author = 'JekYUlll' lastmod = '2026-05-27T12:55:10+08:00' tags = ['im', 'messaging'] categories = ['backend'] +++  #"
     },
     {
       "filename": "2026-05-27 [system] vLLM PagedAttention：大模型推理的显存管理革命.md",
@@ -1531,10 +1553,12 @@
       "title": "vLLM PagedAttention：大模型推理的显存管理革命",
       "date": "2026-05-27",
       "tags": [
-        "system"
+        "vllm",
+        "pagedattention",
+        "llm-inference"
       ],
       "categories": [
-        "system"
+        "infra"
       ],
       "file_category": "system",
       "keywords": [
@@ -1542,7 +1566,302 @@
         "pagedattention",
         "大模型推理的显存管理革命"
       ],
-      "summary_preview": "date = '2026-05-27T10:04:19+08:00' draft = false title = 'vLLM PagedAttention：大模型推理的显存管理革命' author = 'JekYUlll' lastmod = '2026-05-27T10:04:19+08:00' tags = ['system'] categories = ['system'] +++  ## "
+      "summary_preview": "date = '2026-05-27T10:04:19+08:00' draft = false title = 'vLLM PagedAttention：大模型推理的显存管理革命' author = 'JekYUlll' lastmod = '2026-05-27T10:04:19+08:00' tags = ['vllm', 'pagedattention', 'llm-inference']"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（一）：整体架构总览.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（一）：整体架构总览",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "architecture",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "整体架构总览"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（一）：整体架构总览' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'architecture', 'c'] +++  去年生产环境一个诡异的 TIME_W"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（七）：Upstream 与负载均衡.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（七）：Upstream 与负载均衡",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "upstream",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "upstream",
+        "与负载均衡"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（七）：Upstream 与负载均衡' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'upstream', 'c'] +++  Nginx 反向代理的核心是"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（三）：事件驱动核心.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（三）：事件驱动核心",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "event-loop",
+        "epoll",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "事件驱动核心"
+      ],
+      "summary_preview": "date = '2026-05-29T17:40:09+08:00' draft = false title = 'Nginx 源码解析（三）：事件驱动核心' author = 'JekYUlll' lastmod = '2026-05-29T17:40:09+08:00' tags = ['nginx-source', 'nginx', 'event-loop', 'epoll', 'c'] c"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（九）：缓冲区与零拷贝.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（九）：缓冲区与零拷贝",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "i-o",
+        "buffer",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "缓冲区与零拷贝"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（九）：缓冲区与零拷贝' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'i-o', 'buffer', 'c'] +++  响应 1000 并发静态文件请求"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（二）：进程模型与生命周期.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（二）：进程模型与生命周期",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "process-model",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "进程模型与生命周期"
+      ],
+      "summary_preview": "date = '2026-05-29T17:40:09+08:00' draft = false title = 'Nginx 源码解析（二）：进程模型与生命周期' author = 'JekYUlll' lastmod = '2026-05-29T17:40:09+08:00' tags = ['nginx-source', 'nginx', 'process-model', 'c'] cate"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（五）：配置解析系统.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（五）：配置解析系统",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "config",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "配置解析系统"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（五）：配置解析系统' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'config', 'c'] +++  Nginx 的配置系统不是简单的 INI 解析，"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（八）：连接管理.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（八）：连接管理",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "connection",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "连接管理"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（八）：连接管理' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'connection', 'c'] +++  前几篇文章我们聊了事件驱动和内存池，这次来看"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（六）：HTTP 模块与请求处理.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（六）：HTTP 模块与请求处理",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "http",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "http",
+        "模块与请求处理"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（六）：HTTP 模块与请求处理' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'http', 'c'] +++  前五篇我们从整体架构走到事件驱动和配置系"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（十一）：线程池与异步 IO.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（十一）：线程池与异步 IO",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "thread-pool",
+        "async-io",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "十一",
+        "线程池与异步",
+        "io"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（十一）：线程池与异步 IO' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'thread-pool', 'async-io', 'c'] +++  Ngi"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（十二）：模块系统与动态加载",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "module-system",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "十二",
+        "模块系统与动态加载"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-29T17:40:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'module-system', 'c'] +++  系列开篇就说过，Nginx"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（十）：定时器系统.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（十）：定时器系统",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "timer",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "定时器系统"
+      ],
+      "summary_preview": "title = 'Nginx 源码解析（十）：定时器系统' date = '2026-05-29T17:40:19+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'timer', 'c'] +++  前面我们分析了 Nginx 事件循环的核心骨架，，`"
+    },
+    {
+      "filename": "2026-05-29 [infra] Nginx 源码解析（四）：内存管理.md",
+      "inner_file": "",
+      "title": "Nginx 源码解析（四）：内存管理",
+      "date": "2026-05-29",
+      "tags": [
+        "nginx-source",
+        "nginx",
+        "memory-management",
+        "c"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "nginx",
+        "源码解析",
+        "内存管理"
+      ],
+      "summary_preview": "date = '2026-05-29T17:40:09+08:00' draft = false title = 'Nginx 源码解析（四）：内存管理' author = 'JekYUlll' lastmod = '2026-05-29T17:40:09+08:00' tags = ['nginx-source', 'nginx', 'memory-management', 'c'] categ"
+    },
+    {
+      "filename": "2026-05-29 [linux] Linux Landlock LSM：无特权沙箱的原理与实战.md",
+      "inner_file": "",
+      "title": "Linux Landlock LSM：无特权沙箱的原理与实战",
+      "date": "2026-05-29",
+      "tags": [
+        "landlock",
+        "security",
+        "lsm",
+        "sandbox"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "linux",
+        "landlock",
+        "lsm",
+        "无特权沙箱的原理与实战"
+      ],
+      "summary_preview": "date = '2026-05-29T10:00:49+08:00' draft = false title = 'Linux Landlock LSM：无特权沙箱的原理与实战' author = 'JekYUlll' lastmod = '2026-05-29T10:00:49+08:00' tags = ['landlock', 'security', 'lsm', 'sandbox'] ca"
     }
   ]
 }
