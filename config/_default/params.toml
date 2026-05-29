@@ -22,7 +22,8 @@ defaultBackgroundImage = "/img/default-bg.jpg"
   showScrollToTop = true
 
 [homepage]
-  layout = "profile"
+  layout = "background"
+  homepageImage = "img/bg-home.jpg"
   showRecent = true
   showRecentItems = 12
   showMoreLink = true
