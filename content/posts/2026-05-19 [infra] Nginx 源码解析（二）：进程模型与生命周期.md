@@ -1,10 +1,10 @@
 +++
-date = '2026-05-28T12:00:00+08:00'
-weight = 2
+date = '2026-05-19T12:00:00+08:00'
+weight = 11
 draft = false
 title = 'Nginx 源码解析（二）：进程模型与生命周期'
 author = 'JekYUlll'
-lastmod = '2026-05-28T12:00:00+08:00'
+lastmod = '2026-05-19T12:00:00+08:00'
 tags = ['nginx-source', 'nginx', 'process-model', 'c']
 categories = ['infra']
 +++

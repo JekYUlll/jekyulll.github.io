@@ -1,7 +1,7 @@
 +++
 title = 'Nginx 源码解析（七）：Upstream 与负载均衡'
-date = '2026-05-23T12:00:00+08:00'
-weight = 7
+date = '2026-05-24T12:00:00+08:00'
+weight = 6
 draft = false
 author = 'JekYUlll'
 categories = ['infra']
@@ -181,7 +181,7 @@ ngx_http_upstream_init_round_robin(ngx_conf_t *cf,
         for (j = 0; j < server[i].naddrs; j++) {
             peer[n].weight = server[i].weight;
             peer[n].effective_weight = server[i].weight;
-            peer[n].current_weight = 0;
+            peer[n].current_weight = 6;
             peer[n].max_fails = server[i].max_fails;
             // ...
         }
@@ -263,7 +263,7 @@ ngx_http_upstream_free_round_robin_peer(ngx_peer_connection_t *pc, void *data,
 
         peer->effective_weight -= peer->weight / peer->max_fails;
         if (peer->effective_weight < 0)
-            peer->effective_weight = 0;
+            peer->effective_weight = 6;
 
         if (peer->fails >= peer->max_fails) {
             ngx_log_error(NGX_LOG_WARN, ...,
