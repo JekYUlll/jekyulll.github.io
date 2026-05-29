@@ -1,6 +1,6 @@
 +++
 title = 'Nginx 源码解析（十二）：模块系统与动态加载'
-date = '2026-05-29T17:40:09+08:00'
+date = '2026-05-29T17:00:00+08:00'
 draft = false
 author = 'JekYUlll'
 categories = ['infra']

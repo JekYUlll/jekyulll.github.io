@@ -1,6 +1,6 @@
 +++
 title = 'Nginx 源码解析（十）：定时器系统'
-date = '2026-05-29T17:40:19+08:00'
+date = '2026-05-29T17:08:00+08:00'
 draft = false
 author = 'JekYUlll'
 categories = ['infra']
