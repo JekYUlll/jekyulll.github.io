@@ -1,6 +1,7 @@
 +++
 title = 'Nginx 源码解析（七）：Upstream 与负载均衡'
 date = '2026-05-24T12:00:00+08:00'
+lastmod = '2026-05-24T12:00:00+08:00'
 weight = 6
 draft = false
 author = 'JekYUlll'

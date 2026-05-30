@@ -38,7 +38,7 @@ googleAnalytics = "G-Q6473FXND4"
 
 [frontmatter]
   date = [':date', ':filename', ':default']
-  lastmod = [':fileModTime', ':default']
+  lastmod = [':default']
 
 [related]
   includeNewer = false

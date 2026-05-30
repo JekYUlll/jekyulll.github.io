@@ -1,6 +1,7 @@
 +++
 title = 'Nginx 源码解析（十）：定时器系统'
 date = '2026-05-27T12:00:00+08:00'
+lastmod = '2026-05-27T12:00:00+08:00'
 weight = 3
 draft = false
 author = 'JekYUlll'
