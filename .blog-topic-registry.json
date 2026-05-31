@@ -1225,7 +1225,7 @@
       "keywords": [
         "实验室服务器使用教程"
       ],
-      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2025-10-18T21:05:47+08:00' tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器ip:    ```bash"
+      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2025-10-18T21:05:47+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器ip"
     },
     {
       "filename": "2026-05-18 [infra] Nginx 源码解析（一）：整体架构总览.md",
@@ -1247,7 +1247,7 @@
         "源码解析",
         "整体架构总览"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（一）：整体架构总览' date = '2026-05-18T12:00:00+08:00' weight = 12 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'architecture', 'c'] +++  去年生产环境"
+      "summary_preview": "title = 'Nginx 源码解析（一）：整体架构总览' date = '2026-05-18T12:00:00+08:00' lastmod = '2026-05-18T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'archi"
     },
     {
       "filename": "2026-05-19 [infra] Nginx 源码解析（二）：进程模型与生命周期.md",
@@ -1269,7 +1269,7 @@
         "源码解析",
         "进程模型与生命周期"
       ],
-      "summary_preview": "date = '2026-05-19T12:00:00+08:00' weight = 11 draft = false title = 'Nginx 源码解析（二）：进程模型与生命周期' author = 'JekYUlll' lastmod = '2026-05-19T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'process-model"
+      "summary_preview": "date = '2026-05-19T12:00:00+08:00' draft = false title = 'Nginx 源码解析（二）：进程模型与生命周期' author = 'JekYUlll' lastmod = '2026-05-19T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'process-model', 'c'] cate"
     },
     {
       "filename": "2026-05-20 [infra] Nginx 源码解析（三）：事件驱动核心.md",
@@ -1292,7 +1292,7 @@
         "源码解析",
         "事件驱动核心"
       ],
-      "summary_preview": "date = '2026-05-20T12:00:00+08:00' weight = 10 draft = false title = 'Nginx 源码解析（三）：事件驱动核心' author = 'JekYUlll' lastmod = '2026-05-20T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'event-loop', 'ep"
+      "summary_preview": "date = '2026-05-20T12:00:00+08:00' draft = false title = 'Nginx 源码解析（三）：事件驱动核心' author = 'JekYUlll' lastmod = '2026-05-20T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'event-loop', 'epoll', 'c'] c"
     },
     {
       "filename": "2026-05-21 [infra] Nginx 源码解析（四）：内存管理.md",
@@ -1314,7 +1314,7 @@
         "源码解析",
         "内存管理"
       ],
-      "summary_preview": "date = '2026-05-21T12:00:00+08:00' weight = 9 draft = false title = 'Nginx 源码解析（四）：内存管理' author = 'JekYUlll' lastmod = '2026-05-21T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'memory-management',"
+      "summary_preview": "date = '2026-05-21T12:00:00+08:00' draft = false title = 'Nginx 源码解析（四）：内存管理' author = 'JekYUlll' lastmod = '2026-05-21T12:00:00+08:00' tags = ['nginx-source', 'nginx', 'memory-management', 'c'] categ"
     },
     {
       "filename": "2026-05-22 [infra] Nginx 源码解析（五）：配置解析系统.md",
@@ -1336,7 +1336,7 @@
         "源码解析",
         "配置解析系统"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（五）：配置解析系统' date = '2026-05-22T12:00:00+08:00' weight = 8 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'config', 'c'] +++  Nginx 的配置系统不是"
+      "summary_preview": "title = 'Nginx 源码解析（五）：配置解析系统' date = '2026-05-22T12:00:00+08:00' lastmod = '2026-05-22T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'confi"
     },
     {
       "filename": "2026-05-23 [backend] IM应用开发的两个消息库：同步库与存储库.md",
@@ -1379,7 +1379,7 @@
         "http",
         "模块与请求处理"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（六）：HTTP 模块与请求处理' date = '2026-05-23T12:00:00+08:00' weight = 7 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'http', 'c'] +++  前五篇我们从整体架"
+      "summary_preview": "title = 'Nginx 源码解析（六）：HTTP 模块与请求处理' date = '2026-05-23T12:00:00+08:00' lastmod = '2026-05-23T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', "
     },
     {
       "filename": "2026-05-24 [backend] Go 生态新动向：Range-over-Func 迭代器与 Swiss Table Map 实战.md",
@@ -1451,7 +1451,7 @@
         "upstream",
         "与负载均衡"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（七）：Upstream 与负载均衡' date = '2026-05-24T12:00:00+08:00' weight = 6 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'upstream', 'c'] +++  Ngi"
+      "summary_preview": "title = 'Nginx 源码解析（七）：Upstream 与负载均衡' date = '2026-05-24T12:00:00+08:00' lastmod = '2026-05-24T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx'"
     },
     {
       "filename": "2026-05-24 [linux] io_uring 完全指南：从 ring buffer 到零系统调用 I",
@@ -1545,7 +1545,7 @@
         "源码解析",
         "连接管理"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（八）：连接管理' date = '2026-05-25T12:00:00+08:00' weight = 5 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'connection', 'c'] +++  前几篇文章我们聊了事件"
+      "summary_preview": "title = 'Nginx 源码解析（八）：连接管理' date = '2026-05-25T12:00:00+08:00' lastmod = '2026-05-25T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'connect"
     },
     {
       "filename": "2026-05-25 [linux] io_uring 完全指南：从共享环形缓冲区到零系统调用异步 I O.md",
@@ -1685,7 +1685,7 @@
         "源码解析",
         "缓冲区与零拷贝"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（九）：缓冲区与零拷贝' date = '2026-05-26T12:00:00+08:00' weight = 4 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'i-o', 'buffer', 'c'] +++  响应 10"
+      "summary_preview": "title = 'Nginx 源码解析（九）：缓冲区与零拷贝' date = '2026-05-26T12:00:00+08:00' lastmod = '2026-05-26T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'i-o'"
     },
     {
       "filename": "2026-05-26 [linux] Linux memfd 秘闻：内存文件描述符的秘密区域.md",
@@ -1769,7 +1769,7 @@
         "源码解析",
         "定时器系统"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（十）：定时器系统' date = '2026-05-27T12:00:00+08:00' weight = 3 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'timer', 'c'] +++  前面我们分析了 Nginx 事"
+      "summary_preview": "title = 'Nginx 源码解析（十）：定时器系统' date = '2026-05-27T12:00:00+08:00' lastmod = '2026-05-27T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'timer'"
     },
     {
       "filename": "2026-05-27 [system] vLLM PagedAttention：大模型推理的显存管理革命.md",
@@ -1815,7 +1815,7 @@
         "线程池与异步",
         "io"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（十一）：线程池与异步 IO' date = '2026-05-28T12:00:00+08:00' weight = 2 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'thread-pool', 'async-io', 'c"
+      "summary_preview": "title = 'Nginx 源码解析（十一）：线程池与异步 IO' date = '2026-05-28T12:00:00+08:00' lastmod = '2026-05-28T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 't"
     },
     {
       "filename": "2026-05-29 [infra] Nginx 源码解析（十二）：模块系统与动态加载.md",
@@ -1838,7 +1838,7 @@
         "十二",
         "模块系统与动态加载"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-29T12:00:00+08:00' weight = 1 draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'module-system', 'c'] +++  系列"
+      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-29T12:00:00+08:00' lastmod = '2026-05-29T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'm"
     },
     {
       "filename": "2026-05-29 [linux] Linux Landlock LSM：无特权沙箱的原理与实战.md",
@@ -1862,6 +1862,52 @@
         "无特权沙箱的原理与实战"
       ],
       "summary_preview": "date = '2026-05-29T10:00:49+08:00' draft = false title = 'Linux Landlock LSM：无特权沙箱的原理与实战' author = 'JekYUlll' lastmod = '2026-05-29T10:00:49+08:00' tags = ['landlock', 'security', 'lsm', 'sandbox'] ca"
+    },
+    {
+      "filename": "2026-05-30 [cpp] C++26 Contracts P2900 函数契约编程与编译期断言.md",
+      "inner_file": "",
+      "title": "C++26 Contracts (P2900)：函数契约编程与编译期断言",
+      "date": "2026-05-30",
+      "tags": [
+        "c++26",
+        "contracts",
+        "design-by-contract"
+      ],
+      "categories": [
+        "cpp"
+      ],
+      "file_category": "cpp",
+      "keywords": [
+        "c++26",
+        "contracts",
+        "p2900",
+        "函数契约编程与编译期断言",
+        "26"
+      ],
+      "summary_preview": "date = '2026-05-30T10:06:33+08:00' draft = false title = 'C++26 Contracts (P2900)：函数契约编程与编译期断言' author = 'JekYUlll' lastmod = '2026-05-30T10:06:33+08:00' tags = ['c++26', 'contracts', 'design-by-contr"
+    },
+    {
+      "filename": "2026-05-31 [infra] Rust Tokio 异步运行时：零成本抽象的代价与收益.md",
+      "inner_file": "",
+      "title": "Rust Tokio 异步运行时：零成本抽象的代价与收益",
+      "date": "2026-05-31",
+      "tags": [
+        "rust",
+        "tokio",
+        "async-runtime",
+        "work-stealing"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "rust",
+        "tokio",
+        "异步运行时",
+        "零成本抽象的代价与收益"
+      ],
+      "summary_preview": "date = '2026-05-31T10:05:51+08:00' draft = false title = 'Rust Tokio 异步运行时：零成本抽象的代价与收益' author = 'JekYUlll' lastmod = '2026-05-31T10:05:51+08:00' tags = ['rust', 'tokio', 'async-runtime', 'work-steali"
     }
   ]
 }
