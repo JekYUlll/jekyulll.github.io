@@ -1,6 +1,5 @@
 +++
 date = '2026-05-20T12:00:00+08:00'
-weight = 10
 draft = false
 title = 'Nginx 源码解析（三）：事件驱动核心'
 author = 'JekYUlll'

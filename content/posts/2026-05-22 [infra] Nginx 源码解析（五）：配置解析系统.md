@@ -2,7 +2,6 @@
 title = 'Nginx 源码解析（五）：配置解析系统'
 date = '2026-05-22T12:00:00+08:00'
 lastmod = '2026-05-22T12:00:00+08:00'
-weight = 8
 draft = false
 author = 'JekYUlll'
 categories = ['infra']

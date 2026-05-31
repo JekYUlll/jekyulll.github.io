@@ -2,7 +2,6 @@
 title = 'Nginx 源码解析（六）：HTTP 模块与请求处理'
 date = '2026-05-23T12:00:00+08:00'
 lastmod = '2026-05-23T12:00:00+08:00'
-weight = 7
 draft = false
 author = 'JekYUlll'
 categories = ['infra']
