@@ -1908,6 +1908,31 @@
         "零成本抽象的代价与收益"
       ],
       "summary_preview": "date = '2026-05-31T10:05:51+08:00' draft = false title = 'Rust Tokio 异步运行时：零成本抽象的代价与收益' author = 'JekYUlll' lastmod = '2026-05-31T10:05:51+08:00' tags = ['rust', 'tokio', 'async-runtime', 'work-steali"
+    },
+    {
+      "filename": "2026-06-01 [cpp] C++26 模式匹配 P2688 match 表达式.md",
+      "inner_file": "",
+      "title": "C++26 模式匹配：不用再写 std::visit 了",
+      "date": "2026-06-01",
+      "tags": [
+        "pattern-matching",
+        "P2688",
+        "variant",
+        "match"
+      ],
+      "categories": [
+        "cpp"
+      ],
+      "file_category": "cpp",
+      "keywords": [
+        "c++26",
+        "模式匹配",
+        "不用再写",
+        "std",
+        "visit",
+        "26"
+      ],
+      "summary_preview": "date = '2026-06-01T10:10:12+08:00' draft = false title = 'C++26 模式匹配：不用再写 std::visit 了' author = 'JekYUlll' lastmod = '2026-06-01T10:10:12+08:00' tags = ['pattern-matching', 'P2688', 'variant', 'match"
     }
   ]
 }
