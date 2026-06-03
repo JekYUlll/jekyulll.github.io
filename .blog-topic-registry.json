@@ -1225,7 +1225,7 @@
       "keywords": [
         "实验室服务器使用教程"
       ],
-      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2025-10-18T21:05:47+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器ip"
+      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2026-06-01T13:30:00+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器 I"
     },
     {
       "filename": "2026-05-18 [infra] Nginx 源码解析（一）：整体架构总览.md",
@@ -1933,6 +1933,56 @@
         "26"
       ],
       "summary_preview": "date = '2026-06-01T10:10:12+08:00' draft = false title = 'C++26 模式匹配：不用再写 std::visit 了' author = 'JekYUlll' lastmod = '2026-06-01T10:10:12+08:00' tags = ['pattern-matching', 'P2688', 'variant', 'match"
+    },
+    {
+      "filename": "2026-06-02 [cpp] C++26 std execution：Senders Receivers 异步模型.md",
+      "inner_file": "",
+      "title": "C++26 std::execution：Senders & Receivers 异步模型",
+      "date": "2026-06-02",
+      "tags": [
+        "execution",
+        "senders",
+        "async",
+        "concurrency"
+      ],
+      "categories": [
+        "cpp"
+      ],
+      "file_category": "cpp",
+      "keywords": [
+        "c++26",
+        "std",
+        "execution",
+        "senders",
+        "receivers",
+        "异步模型",
+        "26"
+      ],
+      "summary_preview": "date = '2026-06-02T10:06:38+08:00' draft = false title = 'C++26 std::execution：Senders & Receivers 异步模型' author = 'JekYUlll' lastmod = '2026-06-02T10:06:38+08:00' tags = ['execution', 'senders', 'asyn"
+    },
+    {
+      "filename": "2026-06-03 [linux] SPDK 实战：用户态 NVMe 驱动与高性能存储.md",
+      "inner_file": "",
+      "title": "SPDK 实战：用户态 NVMe 驱动与高性能存储",
+      "date": "2026-06-03",
+      "tags": [
+        "spdk",
+        "nvme",
+        "storage",
+        "user-space"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "spdk",
+        "实战",
+        "用户态",
+        "nvme",
+        "驱动与高性能存储"
+      ],
+      "summary_preview": "date = '2026-06-03T10:10:56+08:00' draft = false title = 'SPDK 实战：用户态 NVMe 驱动与高性能存储' author = 'JekYUlll' lastmod = '2026-06-03T10:10:56+08:00' tags = ['spdk', 'nvme', 'storage', 'user-space'] categori"
     }
   ]
 }
