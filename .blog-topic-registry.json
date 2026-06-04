@@ -1225,7 +1225,7 @@
       "keywords": [
         "实验室服务器使用教程"
       ],
-      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2026-06-01T13:30:00+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器 I"
+      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2026-06-04T13:30:00+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器 I"
     },
     {
       "filename": "2026-05-18 [infra] Nginx 源码解析（一）：整体架构总览.md",
@@ -1983,6 +1983,27 @@
         "驱动与高性能存储"
       ],
       "summary_preview": "date = '2026-06-03T10:10:56+08:00' draft = false title = 'SPDK 实战：用户态 NVMe 驱动与高性能存储' author = 'JekYUlll' lastmod = '2026-06-03T10:10:56+08:00' tags = ['spdk', 'nvme', 'storage', 'user-space'] categori"
+    },
+    {
+      "filename": "2026-06-04 [linux] pidfd 进程文件描述符.md",
+      "inner_file": "",
+      "title": "pidfd：用文件描述符管理进程的新范式",
+      "date": "2026-06-04",
+      "tags": [
+        "pidfd",
+        "process-management",
+        "clone3",
+        "waitid"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "pidfd",
+        "用文件描述符管理进程的新范式"
+      ],
+      "summary_preview": "date = '2026-06-04T10:05:14+08:00' draft = false title = 'pidfd：用文件描述符管理进程的新范式' author = 'JekYUlll' lastmod = '2026-06-04T10:05:14+08:00' tags = ['pidfd', 'process-management', 'clone3', 'waitid'] cat"
     }
   ]
 }
