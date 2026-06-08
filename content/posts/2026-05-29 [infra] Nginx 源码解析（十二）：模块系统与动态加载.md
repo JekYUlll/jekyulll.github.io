@@ -1,16 +1,16 @@
 +++
 title = 'Nginx 源码解析（十二）：模块系统与动态加载'
 date = '2026-05-29T12:00:00+08:00'
-lastmod = '2026-05-29T12:00:00+08:00'
+lastmod = '2026-06-08T21:16:09+08:00'
 draft = false
 author = 'JekYUlll'
 categories = ['infra']
 tags = ['nginx-source', 'nginx', 'module-system', 'c']
 +++
 
-系列开篇就说过，Nginx 的所有功能都是模块提供的。前面的文章你看到了 HTTP 模块、Event 模块、Upstream 模块在各自领域的工作方式，现在是时候把视角拉回到模块系统本身，，看看 Nginx 的模块到底长什么样，静态模块怎么初始化，动态模块又是如何通过 `dlopen` 加载进来的。
+系列开篇就说过，Nginx 的所有功能都是模块提供的。前面的文章你看到了 HTTP 模块、Event 模块、Upstream 模块在各自领域的工作方式，这一篇把视角收回到模块系统本身：模块长什么样，静态模块怎么初始化，动态模块怎样通过 `dlopen` 加载。
 
-这篇文章会深入 `ngx_module_t` 的每一个字段，拆解 `ngx_modules.c` 的生成逻辑、`ngx_count_modules()` 的索引分配、`ngx_load_module()` 的动态加载路径，以及模块 `commands` 数组如何驱动配置文件解析器。
+重点看四件事：`ngx_module_t` 字段、`ngx_modules.c` 生成逻辑、`ngx_count_modules()` 的索引分配、`ngx_load_module()` 的加载路径，以及 `commands` 数组怎样驱动配置解析器。
 
 <!--more-->
 
@@ -56,9 +56,9 @@ struct ngx_module_s {
 };
 ```
 
-看起来字段很多，但核心就三块：**元数据**（ctx_index/index/name/version/signature/type）、**配置接口**（ctx/commands）、**生命周期回调**（7 个 init/exit 函数）。
+字段不少，但可以分成三块：元数据（ctx_index/index/name/version/signature/type）、配置接口（ctx/commands）、生命周期回调（7 个 init/exit 函数）。
 
-`NGX_MODULE_V1` 宏为前 6 个字段提供默认值，，index 和 ctx_index 初始化为 `NGX_MODULE_UNSET_INDEX`（即 `(ngx_uint_t)-1`），version 设为 `nginx_version`，signature 设为 `NGX_MODULE_SIGNATURE`。后面 7 个回调函数 `NULL`，8 个 spare_hook `0`，由 `NGX_MODULE_V1_PADDING` 补齐。看实际模块的声明就简洁多了：
+`NGX_MODULE_V1` 宏为前 6 个字段提供默认值，index 和 ctx_index 初始化为 `NGX_MODULE_UNSET_INDEX`（即 `(ngx_uint_t)-1`），version 设为 `nginx_version`，signature 设为 `NGX_MODULE_SIGNATURE`。后面 7 个回调函数 `NULL`，8 个 spare_hook `0`，由 `NGX_MODULE_V1_PADDING` 补齐。看实际模块的声明就简洁多了：
 
 ```c
 ngx_module_t  ngx_core_module = {
@@ -79,7 +79,7 @@ ngx_module_t  ngx_core_module = {
 
 ## 模块类型：五大分类
 
-`type` 字段决定了模块归属的子系统。每个类型的值是用 ASCII 字符拼出来的整数，，方便调试时从内存里直接读出类型名：
+`type` 字段决定了模块归属的子系统。每个类型的值是用 ASCII 字符拼出来的整数，方便调试时从内存里直接读出类型名：
 
 ```c
 #define NGX_CORE_MODULE      0x45524F43  /* "CORE" */
@@ -94,7 +94,7 @@ ngx_module_t  ngx_core_module = {
 - NGX_HTTP_MODULE：HTTP 处理模块，数量最多（200+），涵盖 proxy、fastcgi、headers、gzip 等。
 - NGX_MAIL_MODULE / NGX_STREAM_MODULE：邮件代理和四层 TCP/UDP 代理模块。
 
-`ctx` 指针的具体类型随 `type` 变化，，`NGX_CORE_MODULE` 时是 `ngx_core_module_t`（包含 `create_conf` 和 `init_conf` 函数指针），`NGX_HTTP_MODULE` 时是 `ngx_http_module_t`（包含 8 个钩子：create_main_conf、create_srv_conf、create_loc_conf 等）。
+`ctx` 指针的具体类型随 `type` 变化，`NGX_CORE_MODULE` 时是 `ngx_core_module_t`（包含 `create_conf` 和 `init_conf` 函数指针），`NGX_HTTP_MODULE` 时是 `ngx_http_module_t`（包含 8 个钩子：create_main_conf、create_srv_conf、create_loc_conf 等）。
 
 ## ngx_modules：全局模块数组
 
@@ -161,9 +161,9 @@ ngx_int_t ngx_cycle_modules(ngx_cycle_t *cycle) {
 
 这是很多初读 Nginx 源码的人容易混淆的地方：
 
-- **`index`**：模块在全局 `cycle->modules[]` 数组中的位置。在 `ngx_preinit_modules()` 中被赋值为数组下标 i。对动态模块来说，由 `ngx_add_module()` 调用 `ngx_module_index()` 分配。这个索引用于访问 `cycle->conf_ctx[index]` 获取模块的配置结构体指针。
+- `index`：模块在全局 `cycle->modules[]` 数组中的位置。在 `ngx_preinit_modules()` 中被赋值为数组下标 i。对动态模块来说，由 `ngx_add_module()` 调用 `ngx_module_index()` 分配。这个索引用于访问 `cycle->conf_ctx[index]` 获取模块的配置结构体指针。
 
-- **`ctx_index`**：模块在同一类型模块内的序号。比如所有类型为 `NGX_HTTP_MODULE` 的模块，ctx_index 分别是 0、1、2……由 `ngx_count_modules()` 分配。这个索引用于 HTTP 模块的 phase handlers 数组查找。
+- `ctx_index`：模块在同一类型模块内的序号。比如所有类型为 `NGX_HTTP_MODULE` 的模块，ctx_index 分别是 0、1、2……由 `ngx_count_modules()` 分配。这个索引用于 HTTP 模块的 phase handlers 数组查找。
 
 `ngx_count_modules()` 的逻辑值得一看：
 
@@ -178,7 +178,7 @@ ngx_int_t ngx_count_modules(ngx_cycle_t *cycle, ngx_uint_t type) {
 }
 ```
 
-这里有个精妙的设计：`cycle->modules_used = 1`。一旦模块被计数标记为 used，后续的 `load_module` 指令就会被拒绝（`ngx_load_module()` 中首先检查 `cf->cycle->modules_used`）。确保在配置解析期间动态加载的模块必须在任何 `ngx_count_modules()` 调用之前完成。
+这里的关键是：`cycle->modules_used = 1`。一旦模块被计数标记为 used，后续的 `load_module` 指令就会被拒绝（`ngx_load_module()` 中首先检查 `cf->cycle->modules_used`）。确保在配置解析期间动态加载的模块必须在任何 `ngx_count_modules()` 调用之前完成。
 
 ## ngx_init_modules()：模块初始化
 
@@ -198,9 +198,9 @@ ngx_int_t ngx_init_modules(ngx_cycle_t *cycle) {
 }
 ```
 
-这个调用序列发生在 `ngx_init_cycle()` 内部，在配置解析完成、监听 socket 创建之后。`init_module` 回调通常用于初始化与配置相关的全局状态，，比如 ngx_http_module 的 init_module 会初始化 HTTP 的 phase handlers。`init_process` 则在每个 worker 进程 fork 后调用，用于初始化进程级资源（如连接池、定时器）。
+这个调用序列发生在 `ngx_init_cycle()` 内部，在配置解析完成、监听 socket 创建之后。`init_module` 回调通常用于初始化与配置相关的全局状态，比如 ngx_http_module 的 init_module 会初始化 HTTP 的 phase handlers。`init_process` 则在每个 worker 进程 fork 后调用，用于初始化进程级资源（如连接池、定时器）。
 
-`init_master` 在主进程中调用，`exit_master` / `exit_process` 则对应退出清理。整个模块生命周期环环相扣。
+`init_master` 在主进程中调用，`exit_master` / `exit_process` 则对应退出清理。这些回调把 master、module、worker 的生命周期串起来。
 
 ## 动态模块加载：ngx_load_module()
 
@@ -250,9 +250,9 @@ static char *ngx_load_module(ngx_conf_t *cf, ngx_command_t *cmd, void *conf) {
 }
 ```
 
-流程三步走：
+流程分三步：
 
-1. dlopen：使用 `RTLD_NOW | RTLD_GLOBAL` 标志加载 .so。`RTLD_NOW` 表示立即解析所有未定义符号，有链接错误马上报出来而不是推到运行时。**`RTLD_GLOBAL`** 是关键，，它把 .so 中的符号提升到全局符号表，后续加载的其它 .so 也能看到。但这也是双刃剑（见下文符号冲突）。
+1. dlopen：使用 `RTLD_NOW | RTLD_GLOBAL` 标志加载 .so。`RTLD_NOW` 表示立即解析所有未定义符号，有链接错误马上报出来而不是推到运行时。`RTLD_GLOBAL` 是关键，它把 .so 中的符号提升到全局符号表，后续加载的其它 .so 也能看到。代价是符号冲突风险（见下文）。
 
 2. dlsym 提取模块符号：从 .so 中查找 `ngx_modules`、`ngx_module_names`、`ngx_module_order` 三个全局符号。注意这里的 `ngx_modules` 是 .so 内部定义的数组，不是主程序的静态数组。
 
@@ -288,7 +288,7 @@ if (ngx_strcmp(module->signature, NGX_MODULE_SIGNATURE) != 0) {
 }
 ```
 
-版本检查确保模块是为相同主版本编译的。签名检查则细粒度得多，，`NGX_MODULE_SIGNATURE` 是一个在编译时通过宏拼接的字符串，包含 35 个标志位：指针大小（4/8）、原子类型大小、time_t 大小、kqueue/epoll/inet6/linux 特性的启用状态、PCRE/SSL/GZIP 支持等。任意差异都会导致签名不匹配。这避免了把一个在 `--with-pcre` 下编译的模块加载到没有 PCRE 的主程序中。
+版本检查确保模块是为相同主版本编译的。签名检查则细粒度得多，`NGX_MODULE_SIGNATURE` 是一个在编译时通过宏拼接的字符串，包含 35 个标志位：指针大小（4/8）、原子类型大小、time_t 大小、kqueue/epoll/inet6/linux 特性的启用状态、PCRE/SSL/GZIP 支持等。任意差异都会导致签名不匹配。这避免了把一个在 `--with-pcre` 下编译的模块加载到没有 PCRE 的主程序中。
 
 ### 符号冲突风险与隔离
 
@@ -300,7 +300,7 @@ Nginx 的缓解策略很有限：
 - 模块作者应尽量使用 `static` 限定内部符号，导出符号最好加上模块特定的前缀。
 - `ngx_module_order` 允许配置模块加载顺序，间接缓解部分依赖问题。
 
-本质上 Nginx 并没有实现真正的符号隔离，，这是 C 语言动态链接的固有局限。如果你需要完全的模块隔离，可以考虑 `RTLD_LOCAL` 配合手动导出，但 Nginx 选择了 `RTLD_GLOBAL` 以简化模块间符号共享。
+说到底，Nginx 没有实现真正的符号隔离，这是 C 语言动态链接的固有局限。如果你需要完全的模块隔离，可以考虑 `RTLD_LOCAL` 配合手动导出，但 Nginx 选择了 `RTLD_GLOBAL` 以简化模块间符号共享。
 
 ## commands 数组：配置驱动的引擎
 
@@ -321,37 +321,37 @@ struct ngx_command_s {
 
 `ngx_core_module` 的 `ngx_core_commands` 包含指令如 `daemon`、`worker_processes`、`pid`、`load_module` 等。加载动态模块的 `load_module` 本身就是一条指令，由 `ngx_core_commands` 配置并指向 `ngx_load_module`。
 
-这种设计让 Nginx 的配置解析极度模块化，，新增一个功能只需要写一个新的 `ngx_module_t` 变量，填充 commands 数组和对应的 set 函数，配置解析器完全不需要修改。
+这种设计让 Nginx 的配置解析极度模块化，新增一个功能只需要写一个新的 `ngx_module_t` 变量，填充 commands 数组和对应的 set 函数，配置解析器完全不需要修改。
 
-## 系列总结
+## 系列收尾
 
-至此，这个 Nginx 源码解析系列全部 12 篇完成了。回顾整个系列的脉络：
+这个 Nginx 源码解析系列到这里收尾。12 篇文章大致覆盖了这些点：
 
-1. **整体架构总览**，，代码树结构、核心类型系统、模块体系、启动流程、整体数据流。所有后续分析的基础全景图。
+1. 整体架构总览，代码树结构、基础类型系统、模块体系、启动流程、整体数据流。所有后续分析的基础全景图。
 
-2. **进程模型与生命周期**，，Master-Worker 进程模型、`ngx_master_process_cycle` / `ngx_worker_process_cycle`、信号处理、平滑升级（USR2 + WINCH）和热加载。
+2. 进程模型与生命周期，Master-Worker 进程模型、`ngx_master_process_cycle` / `ngx_worker_process_cycle`、信号处理、平滑升级（USR2 + WINCH）和热加载。
 
-3. **事件驱动核心**，—`ngx_process_events_and_timers()` 主循环、epoll 封装、定时器红黑树、事件驱动模型如何支撑百万并发。
+3. 事件驱动：`ngx_process_events_and_timers()` 主循环、epoll 封装、定时器红黑树、事件驱动模型如何支撑百万并发。
 
-4. 内存管理，，`ngx_pool_t` 内存池（`ngx_create_pool` / `ngx_palloc` / `ngx_destroy_pool`）、大内存块管理、小内存块的 pool 分配链和释放机制。
+4. 内存管理，`ngx_pool_t` 内存池（`ngx_create_pool` / `ngx_palloc` / `ngx_destroy_pool`）、大内存块管理、小内存块的 pool 分配链和释放机制。
 
-5. 配置解析系统，，`ngx_conf_parse()` 的词法/语法分析、指令分派、配置上下文栈、Nginx 指令三层作用域（main/srv/loc）。
+5. 配置解析系统，`ngx_conf_parse()` 的词法/语法分析、指令分派、配置上下文栈、Nginx 指令三层作用域（main/srv/loc）。
 
-6. **HTTP 模块与请求处理**，—11 个 HTTP 处理阶段、phase handlers 的注册与调用顺序、request 结构体生命管理周期。
+6. HTTP 模块与请求处理：11 个 HTTP 处理阶段、phase handlers 的注册与调用顺序、request 结构体生命管理周期。
 
-7. Upstream 与负载均衡，，upstream 的 server 选择、健康检查、`ngx_http_upstream_init` 的上下游数据流、失败重试策略、`peer.get()` 接口抽象。
+7. Upstream 与负载均衡，upstream 的 server 选择、健康检查、`ngx_http_upstream_init` 的上下游数据流、失败重试策略、`peer.get()` 接口抽象。
 
-8. 连接管理，，`ngx_connection_t` 的设计、预分配连接池、`cycle->files[]` 的 fd->connection 映射、客户端连接和 upstream 连接的连接生命周期。
+8. 连接管理，`ngx_connection_t` 的设计、预分配连接池、`cycle->files[]` 的 fd->connection 映射、客户端连接和 upstream 连接的连接生命周期。
 
-9. 事件模块与定时器，，`ngx_event_actions_t` 接口层（add/del/enable/disable）、`ngx_event_timer.c` 的红黑树实现、定时器事件分发、`ngx_usec` 时间缓存。
+9. 事件模块与定时器，`ngx_event_actions_t` 接口层（add/del/enable/disable）、`ngx_event_timer.c` 的红黑树实现、定时器事件分发、`ngx_usec` 时间缓存。
 
-10. 共享内存与锁，，slab allocator 的分区与 page 管理、`ngx_shmtx_t` 自旋锁实现、accept 互斥锁与惊群解决。
+10. 共享内存与锁，slab allocator 的分区与 page 管理、`ngx_shmtx_t` 自旋锁实现、accept 互斥锁与惊群解决。
 
-11. 配置解析进阶与变量系统，，变量索引、`ngx_http_variable_t` 的 get/set 回调、变量哈希表的构建、SSI 变量、`$arg_XXX` 动态变量实现。
+11. 配置解析进阶与变量系统，变量索引、`ngx_http_variable_t` 的 get/set 回调、变量哈希表的构建、SSI 变量、`$arg_XXX` 动态变量实现。
 
-12. **模块系统与动态加载**，—`ngx_module_t` 完整结构、`ngx_modules` 全局数组、`ngx_count_modules()` 和 `ngx_init_modules()` 的初始流程、`dlopen`/`dlsym` 动态加载、版本签名检查、符号冲突风险。
+12. 模块系统与动态加载：`ngx_module_t` 完整结构、`ngx_modules` 全局数组、`ngx_count_modules()` 和 `ngx_init_modules()` 的初始流程、`dlopen`/`dlsym` 动态加载、版本签名检查、符号冲突风险。
 
-从第一篇文章俯瞰全景，到后面每篇文章深入一个子系统的实现细节，再到最后一篇收束回模块系统这个架构核心，—读完这 12 篇，你应该能清晰地回答 Nginx 最本质的问题：一个 18 万行 C 代码的 Web 服务器，是如何在极简的抽象下实现极致性能与极致灵活性的。
+从第一篇文章俯瞰全景，到后面每篇文章深入一个子系统的实现细节，再到最后一篇收束回模块系统这个架构中心：读完这 12 篇，你应该能清晰地回答 Nginx 最本质的问题：一个 18 万行 C 代码的 Web 服务器，是如何在极简的抽象下实现高性能和足够的扩展性的。
 
 ## 参考
 

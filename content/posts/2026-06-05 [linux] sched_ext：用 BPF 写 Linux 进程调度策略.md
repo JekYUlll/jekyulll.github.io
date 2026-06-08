@@ -3,54 +3,54 @@ date = '2026-06-05T10:31:49+08:00'
 draft = false
 title = 'sched_ext：用 BPF 写 Linux 进程调度策略'
 author = 'JekYUlll'
-lastmod = '2026-06-05T10:31:49+08:00'
+lastmod = '2026-06-08T21:23:42+08:00'
 tags = ['sched-ext', 'bpf', 'scheduler', 'linux-kernel']
 categories = ['linux']
 +++
 
 ## 背景
 
-Linux 内核的进程调度器，二十年来只有两个选择：CFS（完全公平调度）和实时调度类。你想改调度策略？要么重编译内核，要么打 out-of-tree 补丁。两种方式对生产环境都太重了：改一次调度参数就要重启机器，谁能忍？
+Linux 内核的进程调度器，二十年来主要就是 CFS（完全公平调度）和实时调度类。想改调度策略？要么重编译内核，要么打 out-of-tree 补丁。两种方式对生产环境都太重：改一次调度参数就要重启机器，谁能忍？
 
-游戏玩家想要更低的输入延迟，数据库管理员想要 NUMA 感知的任务放置，云厂商想让后台任务别打扰前台容器。需求千差万别，靠一个通用调度器覆盖所有人没可能。
+游戏玩家想要更低输入延迟，数据库管理员想要 NUMA 感知的任务放置，云厂商想让后台任务别影响前台容器。需求差得很远，靠一个通用调度器覆盖所有场景并不现实。
 
-Linux 6.12 给了答案：**sched_ext**（extensible scheduler class）。它把调度策略写成了 BPF 程序，注入、热替换、出错了自动回退到 CFS，全程不用重启。
+Linux 6.12 给出了一条新路：sched_ext（extensible scheduler class）。调度策略可以写成 BPF 程序，支持注入、热替换，出错后自动回退到 CFS，全程不用重启。
 
-## 核心原理
+## 原理
 
-sched_ext 不是一个新调度器。它是一个**可编程的调度框架**。思路很简单：内核在调度决策的每个关键点（选 CPU、入队、派发）预留钩子，你的 BPF 程序实现这些钩子的逻辑。
+sched_ext 不是一个新调度器，而是一个可编程调度框架。内核在调度决策的关键点预留钩子，比如选 CPU、入队、派发；你的 BPF 程序实现这些钩子的逻辑。
 
 ### 调度生命周期
 
 一个任务从醒来到被 CPU 执行，经过三个钩子：
 
-1. **`select_cpu()`**：任务唤醒时，选一个目标 CPU。返回优化提示，不强制绑定。
-2. **`enqueue()`**：把任务放进调度队列。这里决定任务优先级和排队位置。
-3. **`dispatch()`**：CPU 空闲时调用，从调度队列取下一个任务投入运行。
+1. `select_cpu()`：任务唤醒时，选一个目标 CPU。返回优化提示，不强制绑定。
+2. `enqueue()`：把任务放进调度队列。这里决定任务优先级和排队位置。
+3. `dispatch()`：CPU 空闲时调用，从调度队列取下一个任务投入运行。
 
-BPF 调度器不需要实现全部钩子，只实现你关心的那几个。`ops.name` 是唯一的强制字段，其余的都可以留空。
+BPF 调度器不需要实现全部钩子，只实现关心的几个就行。`ops.name` 是唯一的强制字段，其余可以留空。
 
-### DSQ：核心抽象
+### DSQ：调度队列
 
-调度队列在 sched_ext 里叫做 DSQ（Dispatch Queue）。三种：
+调度队列在 sched_ext 里叫 DSQ（Dispatch Queue）。三种：
 
 - `SCX_DSQ_LOCAL`：每 CPU 一个本地队列，任务放这里只被本 CPU 消费。
 - `SCX_DSQ_GLOBAL`：全局 FIFO 队列，任何 CPU 缺任务了就从这取。
 - 自定义 DSQ：通过 `scx_bpf_create_dsq()` 创建，可以绑 NUMA 节点，支持优先级排序（`scx_bpf_dsq_insert_vtime`）。
 
-DSQ 的设计让 BPF 调度器用最少的代码表达丰富的调度意图。想搞全局公平排队？全部往 GLOBAL 塞。想 per-CPU 亲和？直接用 LOCAL。想分层调度？自定义 DSQ + 优先级键。
+DSQ 让 BPF 调度器用较少代码表达调度意图。想做全局公平排队？全部往 GLOBAL 塞。想要 per-CPU 亲和？直接用 LOCAL。想做分层调度？自定义 DSQ + 优先级键。
 
 ### 容错机制
 
-sched_ext 的容错做得最到位。BPF 程序出 bug 不会拖垮系统：
+sched_ext 的容错做得很实用。BPF 程序出 bug 不会拖垮系统：
 
 - BPF verifier 在加载时做静态安全检查，非法内存访问直接拒绝。
 - 运行时如果调度器卡住（超过阈值时间没调度），内核自动切回 CFS。
 - 按 `SysRq-S` 手动回退，恢复所有任务到 CFS 调度类。
 
-这意味着你可以在生产环境先加载一个实验性调度器，出问题内核兜底。
+这意味着你可以先在生产环境加载一个实验性调度器，出问题还有内核兜底。当然，别把这当成不用测试的理由。
 
-## 代码实战
+## 写一个最小调度器
 
 下面是一个最简调度器：全局 FIFO 队列 + 动态时间片。来自 Johannes Bechberger 的 [minimal-scheduler](https://github.com/parttimenerd/minimal-scheduler) 项目。
 
@@ -130,11 +130,11 @@ cat /sys/kernel/sched_ext/root/ops   # → minimal_scheduler
 sudo rm /sys/fs/bpf/sched_ext/sched_ops
 ```
 
-整个流程 5 条命令，从编译到运行不超过 30 秒。和重编译内核比起来，效率差了三个数量级。
+整个流程 5 条命令，从编译到运行不超过 30 秒。和重编译内核比，效率差距很大。
 
-## 生态现状
+## 项目和调度器
 
-sched_ext 自 6.12 合入主线后，社区围绕着 `tools/sched_ext` 和 GitHub 上的 [sched-ext/scx](https://github.com/sched-ext/scx) 项目快速成长。目前可用的调度器：
+sched_ext 自 6.12 合入主线后，社区围绕 `tools/sched_ext` 和 GitHub 上的 [sched-ext/scx](https://github.com/sched-ext/scx) 项目做了不少调度器：
 
 | 调度器 | 定位 | 核心思路 |
 |--------|------|----------|
@@ -145,11 +145,11 @@ sched_ext 自 6.12 合入主线后，社区围绕着 `tools/sched_ext` 和 GitHu
 | `scx_rusty` | 缓存亲和 | 按 L3 cache 拓扑分组任务 |
 | `scx_nest` | 异构 CPU | 高频核跑前台，低频核跑后台 |
 
-CachyOS（基于 Arch 的性能优化发行版）已经将 sched_ext 集成进默认内核，提供一键切换调度器的 GUI 工具。以前你只能在 Phoronix 评测里看这些调度器的对比数据，现在点点鼠标就能实测。
+CachyOS（基于 Arch 的性能优化发行版）已经将 sched_ext 集成进默认内核，提供一键切换调度器的 GUI 工具。以前你只能在 Phoronix 评测里看这些调度器的对比数据，现在可以自己实测。
 
-从架构演进看，`scx_rustland` 的混合模式最值得关注。纯 BPF 调度器受限于 BPF verifier 的指令数上限（100 万条）和禁止循环的约束，复杂算法（遗传调度、ML 驱动的预测）写不了。Rust 用户态 + BPF 内核态的架构破了这个限制：用户态做重计算，BPF 做快速派发。
+我更看好 `scx_rustland` 这种混合模式。纯 BPF 调度器受限于 BPF verifier 的指令数上限（100 万条）和循环约束，复杂算法（遗传调度、ML 驱动的预测）不好写。Rust 用户态 + BPF 内核态的架构绕开了这个限制：用户态做重计算，BPF 做快速派发。
 
-## 今日可执行动作
+## 可以马上试的三件事
 
 1. 跑一个最简调度器：clone `minimal-scheduler`，在 VM 或测试机上加载，`dmesg` 看内核日志确认 "BPF scheduler enabled"。
 2. 用 scx_lavd 打游戏：如果你用 Arch/CachyOS，`paru -S scx-scheds`，然后 `sudo scx_lavd` 启动，开一局 CS2 感受输入延迟变化。
