@@ -23,7 +23,7 @@ defaultBackgroundImage = "img/bg-article.png"
 
 [homepage]
   layout = "background"
-  homepageImage = "img/bg-home-e8w3er.jpg"
+  homepageImage = "img/bg-home-dark-20260608.png"
   showRecent = true
   showRecentItems = 12
   showMoreLink = true
