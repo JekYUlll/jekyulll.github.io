@@ -1,6 +1,20 @@
-# *.log
-_others/
+# Local notes and generated logs
+CHANGELOG.md
+*.log
 
-# 使用Github Actions
+# Hugo generated output and cache
 public/
+resources/_gen/
+.hugo_build.lock
+hugo_stats.json
+
+# Local development artifacts
+node_modules/
+.cache/
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+_others/
 content/backup/
