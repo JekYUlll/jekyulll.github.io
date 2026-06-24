@@ -1225,7 +1225,7 @@
       "keywords": [
         "实验室服务器使用教程"
       ],
-      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2026-06-04T23:57:00+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器 I"
+      "summary_preview": "date = '2025-10-18T21:05:47+08:00' draft = false title = '实验室服务器使用教程' author = '张祝玙' lastmod = '2026-06-08T10:13:23+08:00' weight = -1 tags = ['tutorial', 'server'] categories = ['linux'] +++  当前服务器 I"
     },
     {
       "filename": "2026-05-18 [infra] Nginx 源码解析（一）：整体架构总览.md",
@@ -1838,7 +1838,7 @@
         "十二",
         "模块系统与动态加载"
       ],
-      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-29T12:00:00+08:00' lastmod = '2026-05-29T12:00:00+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'm"
+      "summary_preview": "title = 'Nginx 源码解析（十二）：模块系统与动态加载' date = '2026-05-29T12:00:00+08:00' lastmod = '2026-06-08T21:16:09+08:00' draft = false author = 'JekYUlll' categories = ['infra'] tags = ['nginx-source', 'nginx', 'm"
     },
     {
       "filename": "2026-05-29 [linux] Linux Landlock LSM：无特权沙箱的原理与实战.md",
@@ -1861,7 +1861,7 @@
         "lsm",
         "无特权沙箱的原理与实战"
       ],
-      "summary_preview": "date = '2026-05-29T10:00:49+08:00' draft = false title = 'Linux Landlock LSM：无特权沙箱的原理与实战' author = 'JekYUlll' lastmod = '2026-05-29T10:00:49+08:00' tags = ['landlock', 'security', 'lsm', 'sandbox'] ca"
+      "summary_preview": "date = '2026-05-29T10:00:49+08:00' draft = false title = 'Linux Landlock LSM：无特权沙箱的原理与实战' author = 'JekYUlll' lastmod = '2026-06-08T21:16:09+08:00' tags = ['landlock', 'security', 'lsm', 'sandbox'] ca"
     },
     {
       "filename": "2026-05-30 [cpp] C++26 Contracts P2900 函数契约编程与编译期断言.md",
@@ -1884,7 +1884,7 @@
         "函数契约编程与编译期断言",
         "26"
       ],
-      "summary_preview": "date = '2026-05-30T10:06:33+08:00' draft = false title = 'C++26 Contracts (P2900)：函数契约编程与编译期断言' author = 'JekYUlll' lastmod = '2026-05-30T10:06:33+08:00' tags = ['c++26', 'contracts', 'design-by-contr"
+      "summary_preview": "date = '2026-05-30T10:06:33+08:00' draft = false title = 'C++26 Contracts (P2900)：函数契约编程与编译期断言' author = 'JekYUlll' lastmod = '2026-06-08T21:16:09+08:00' tags = ['c++26', 'contracts', 'design-by-contr"
     },
     {
       "filename": "2026-05-31 [infra] Rust Tokio 异步运行时：零成本抽象的代价与收益.md",
@@ -1907,7 +1907,7 @@
         "异步运行时",
         "零成本抽象的代价与收益"
       ],
-      "summary_preview": "date = '2026-05-31T10:05:51+08:00' draft = false title = 'Rust Tokio 异步运行时：零成本抽象的代价与收益' author = 'JekYUlll' lastmod = '2026-05-31T10:05:51+08:00' tags = ['rust', 'tokio', 'async-runtime', 'work-steali"
+      "summary_preview": "date = '2026-05-31T10:05:51+08:00' draft = false title = 'Rust Tokio 异步运行时：零成本抽象的代价与收益' author = 'JekYUlll' lastmod = '2026-06-08T21:23:42+08:00' tags = ['rust', 'tokio', 'async-runtime', 'work-steali"
     },
     {
       "filename": "2026-06-01 [cpp] C++26 模式匹配 P2688 match 表达式.md",
@@ -1932,7 +1932,7 @@
         "visit",
         "26"
       ],
-      "summary_preview": "date = '2026-06-01T10:10:12+08:00' draft = false title = 'C++26 模式匹配：不用再写 std::visit 了' author = 'JekYUlll' lastmod = '2026-06-01T10:10:12+08:00' tags = ['pattern-matching', 'P2688', 'variant', 'match"
+      "summary_preview": "date = '2026-06-01T10:10:12+08:00' draft = false title = 'C++26 模式匹配：不用再写 std::visit 了' author = 'JekYUlll' lastmod = '2026-06-08T21:23:42+08:00' tags = ['pattern-matching', 'P2688', 'variant', 'match"
     },
     {
       "filename": "2026-06-02 [cpp] C++26 std execution：Senders Receivers 异步模型.md",
@@ -1958,7 +1958,7 @@
         "异步模型",
         "26"
       ],
-      "summary_preview": "date = '2026-06-02T10:06:38+08:00' draft = false title = 'C++26 std::execution：Senders & Receivers 异步模型' author = 'JekYUlll' lastmod = '2026-06-02T10:06:38+08:00' tags = ['execution', 'senders', 'asyn"
+      "summary_preview": "date = '2026-06-02T10:06:38+08:00' draft = false title = 'C++26 std::execution：Senders & Receivers 异步模型' author = 'JekYUlll' lastmod = '2026-06-08T21:23:42+08:00' tags = ['execution', 'senders', 'asyn"
     },
     {
       "filename": "2026-06-03 [linux] SPDK 实战：用户态 NVMe 驱动与高性能存储.md",
@@ -1982,7 +1982,7 @@
         "nvme",
         "驱动与高性能存储"
       ],
-      "summary_preview": "date = '2026-06-03T10:10:56+08:00' draft = false title = 'SPDK 实战：用户态 NVMe 驱动与高性能存储' author = 'JekYUlll' lastmod = '2026-06-03T10:10:56+08:00' tags = ['spdk', 'nvme', 'storage', 'user-space'] categori"
+      "summary_preview": "date = '2026-06-03T10:10:56+08:00' draft = false title = 'SPDK 实战：用户态 NVMe 驱动与高性能存储' author = 'JekYUlll' lastmod = '2026-06-08T21:23:42+08:00' tags = ['spdk', 'nvme', 'storage', 'user-space'] categori"
     },
     {
       "filename": "2026-06-04 [linux] pidfd 进程文件描述符.md",
@@ -2003,7 +2003,7 @@
         "pidfd",
         "用文件描述符管理进程的新范式"
       ],
-      "summary_preview": "date = '2026-06-04T10:05:14+08:00' draft = false title = 'pidfd：用文件描述符管理进程的新范式' author = 'JekYUlll' lastmod = '2026-06-04T10:05:14+08:00' tags = ['pidfd', 'process-management', 'clone3', 'waitid'] cat"
+      "summary_preview": "date = '2026-06-04T10:05:14+08:00' draft = false title = 'pidfd：用文件描述符管理进程的新范式' author = 'JekYUlll' lastmod = '2026-06-08T21:23:42+08:00' tags = ['pidfd', 'process-management', 'clone3', 'waitid'] cat"
     },
     {
       "filename": "2026-06-05 [linux] sched_ext：用 BPF 写 Linux 进程调度策略.md",
@@ -2028,7 +2028,7 @@
         "sched",
         "ext"
       ],
-      "summary_preview": "date = '2026-06-05T10:31:49+08:00' draft = false title = 'sched_ext：用 BPF 写 Linux 进程调度策略' author = 'JekYUlll' lastmod = '2026-06-05T10:31:49+08:00' tags = ['sched-ext', 'bpf', 'scheduler', 'linux-kern"
+      "summary_preview": "date = '2026-06-05T10:31:49+08:00' draft = false title = 'sched_ext：用 BPF 写 Linux 进程调度策略' author = 'JekYUlll' lastmod = '2026-06-08T21:23:42+08:00' tags = ['sched-ext', 'bpf', 'scheduler', 'linux-kern"
     },
     {
       "filename": "2026-06-06 [infra] AI VTuber Neuro-sama 的背后技术与演进历程.md",
@@ -2051,7 +2051,7 @@
         "neuro-sama",
         "的背后技术与演进历程"
       ],
-      "summary_preview": "date = '2026-06-06T15:10:59+08:00' draft = false title = 'AI VTuber Neuro-sama 的背后技术与演进历程' author = 'JekYUlll' lastmod = '2026-06-06T15:10:59+08:00' tags = ['ai-vtuber', 'llm', 'tts', 'autonomous-agen"
+      "summary_preview": "date = '2026-06-06T15:10:59+08:00' draft = false title = 'AI VTuber Neuro-sama 的背后技术与演进历程' author = 'JekYUlll' lastmod = '2026-06-08T21:16:03+08:00' tags = ['ai-vtuber', 'llm', 'tts', 'autonomous-agen"
     },
     {
       "filename": "2026-06-06 [linux] fanotify：Linux 文件系统事件监控的正确打开方式.md",
@@ -2073,7 +2073,7 @@
         "linux",
         "文件系统事件监控的正确打开方式"
       ],
-      "summary_preview": "date = '2026-06-06T10:09:24+08:00' draft = false title = 'fanotify：Linux 文件系统事件监控的正确打开方式' author = 'JekYUlll' lastmod = '2026-06-06T10:09:24+08:00' tags = ['fanotify', 'filesystem', 'security', 'monit"
+      "summary_preview": "date = '2026-06-06T10:09:24+08:00' draft = false title = 'fanotify：Linux 文件系统事件监控的正确打开方式' author = 'JekYUlll' lastmod = '2026-06-08T21:16:03+08:00' tags = ['fanotify', 'filesystem', 'security', 'monit"
     },
     {
       "filename": "2026-06-07 [linux] RDMA 与 RoCE：远程直接内存访问实战.md",
@@ -2095,7 +2095,7 @@
         "roce",
         "远程直接内存访问实战"
       ],
-      "summary_preview": "date = '2026-06-07T10:15:28+08:00' draft = false title = 'RDMA 与 RoCE：远程直接内存访问实战' author = 'JekYUlll' lastmod = '2026-06-07T10:15:28+08:00' tags = ['rdma', 'roce', 'infiniband', 'kernel-bypass'] categ"
+      "summary_preview": "date = '2026-06-07T10:15:28+08:00' draft = false title = 'RDMA 与 RoCE：远程直接内存访问实战' author = 'JekYUlll' lastmod = '2026-06-08T21:16:03+08:00' tags = ['rdma', 'roce', 'infiniband', 'kernel-bypass'] categ"
     },
     {
       "filename": "2026-06-08 [linux] futex_waitv：一次等待多个 futex 的 Linux 同步原语.md",
@@ -2120,7 +2120,7 @@
         "同步原语",
         "waitv"
       ],
-      "summary_preview": "date = '2026-06-08T10:09:15+08:00' draft = false title = 'futex_waitv：一次等待多个 futex 的 Linux 同步原语' author = 'JekYUlll' lastmod = '2026-06-08T10:09:15+08:00' tags = ['futex', 'futex-waitv', 'synchronizat"
+      "summary_preview": "date = '2026-06-08T10:09:15+08:00' draft = false title = 'futex_waitv：一次等待多个 futex 的 Linux 同步原语' author = 'JekYUlll' lastmod = '2026-06-08T21:16:03+08:00' tags = ['futex', 'futex-waitv', 'synchronizat"
     }
   ]
 }
