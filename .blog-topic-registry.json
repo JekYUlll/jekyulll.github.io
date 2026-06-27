@@ -2144,6 +2144,27 @@
         "xdp"
       ],
       "summary_preview": "date = '2026-06-26T11:14:50+08:00' draft = false title = 'AF_XDP：绕过内核网络栈的数据包收发' author = 'JekYUlll' lastmod = '2026-06-26T11:14:50+08:00' tags = ['af-xdp', 'xdp', 'zero-copy', 'networking'] categories"
+    },
+    {
+      "filename": "2026-06-27 [linux] DAMON：Linux 内存热点观测和主动回收.md",
+      "inner_file": "",
+      "title": "DAMON：Linux 内存热点观测和主动回收",
+      "date": "2026-06-27",
+      "tags": [
+        "damon",
+        "memory-management",
+        "reclaim"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "damon",
+        "linux",
+        "内存热点观测和主动回收"
+      ],
+      "summary_preview": "date = '2026-06-27T19:09:54+08:00' draft = false title = 'DAMON：Linux 内存热点观测和主动回收' author = 'JekYUlll' lastmod = '2026-06-27T19:09:54+08:00' tags = ['damon', 'memory-management', 'reclaim'] categories"
     }
   ]
 }
