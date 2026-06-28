@@ -2165,6 +2165,29 @@
         "内存热点观测和主动回收"
       ],
       "summary_preview": "date = '2026-06-27T19:09:54+08:00' draft = false title = 'DAMON：Linux 内存热点观测和主动回收' author = 'JekYUlll' lastmod = '2026-06-27T19:09:54+08:00' tags = ['damon', 'memory-management', 'reclaim'] categories"
+    },
+    {
+      "filename": "2026-06-28 [database] pgvector HNSW：PostgreSQL 里的向量索引不是魔法.md",
+      "inner_file": "",
+      "title": "pgvector HNSW：PostgreSQL 里的向量索引不是魔法",
+      "date": "2026-06-28",
+      "tags": [
+        "pgvector",
+        "hnsw",
+        "postgresql",
+        "vector-search"
+      ],
+      "categories": [
+        "database"
+      ],
+      "file_category": "database",
+      "keywords": [
+        "pgvector",
+        "hnsw",
+        "postgresql",
+        "里的向量索引不是魔法"
+      ],
+      "summary_preview": "date = '2026-06-28T10:21:51+08:00' draft = false title = 'pgvector HNSW：PostgreSQL 里的向量索引不是魔法' author = 'JekYUlll' lastmod = '2026-06-28T10:21:51+08:00' tags = ['pgvector', 'hnsw', 'postgresql', 'vect"
     }
   ]
 }
