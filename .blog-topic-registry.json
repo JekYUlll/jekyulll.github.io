@@ -2188,6 +2188,28 @@
         "里的向量索引不是魔法"
       ],
       "summary_preview": "date = '2026-06-28T10:21:51+08:00' draft = false title = 'pgvector HNSW：PostgreSQL 里的向量索引不是魔法' author = 'JekYUlll' lastmod = '2026-06-28T10:21:51+08:00' tags = ['pgvector', 'hnsw', 'postgresql', 'vect"
+    },
+    {
+      "filename": "2026-06-29 [linux] cachestat：用系统调用观察 Linux 页缓存命中.md",
+      "inner_file": "",
+      "title": "cachestat：用系统调用观察 Linux 页缓存命中",
+      "date": "2026-06-29",
+      "tags": [
+        "cachestat",
+        "page-cache",
+        "linux-kernel"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "cachestat",
+        "用系统调用观察",
+        "linux",
+        "页缓存命中"
+      ],
+      "summary_preview": "date = '2026-06-29T19:20:38+08:00' draft = false title = 'cachestat：用系统调用观察 Linux 页缓存命中' author = 'JekYUlll' lastmod = '2026-06-29T19:20:38+08:00' tags = ['cachestat', 'page-cache', 'linux-kernel'] ca"
     }
   ]
 }
