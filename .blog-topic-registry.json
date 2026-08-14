@@ -2210,6 +2210,27 @@
         "页缓存命中"
       ],
       "summary_preview": "date = '2026-06-29T19:20:38+08:00' draft = false title = 'cachestat：用系统调用观察 Linux 页缓存命中' author = 'JekYUlll' lastmod = '2026-06-29T19:20:38+08:00' tags = ['cachestat', 'page-cache', 'linux-kernel'] ca"
+    },
+    {
+      "filename": "2026-08-14 [linux] mseal：给 Linux 虚拟内存加一道不可逆的封条.md",
+      "inner_file": "",
+      "title": "mseal：给 Linux 虚拟内存加一道不可逆的封条",
+      "date": "2026-08-14",
+      "tags": [
+        "mseal",
+        "virtual-memory",
+        "hardening"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "mseal",
+        "linux",
+        "虚拟内存加一道不可逆的封条"
+      ],
+      "summary_preview": "date = '2026-08-14T10:07:53+08:00' draft = false title = 'mseal：给 Linux 虚拟内存加一道不可逆的封条' author = 'JekYUlll' lastmod = '2026-08-14T10:07:53+08:00' tags = ['mseal', 'virtual-memory', 'hardening'] categor"
     }
   ]
 }
