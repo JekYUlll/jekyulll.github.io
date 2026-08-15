@@ -2231,6 +2231,30 @@
         "虚拟内存加一道不可逆的封条"
       ],
       "summary_preview": "date = '2026-08-14T10:07:53+08:00' draft = false title = 'mseal：给 Linux 虚拟内存加一道不可逆的封条' author = 'JekYUlll' lastmod = '2026-08-14T10:07:53+08:00' tags = ['mseal', 'virtual-memory', 'hardening'] categor"
+    },
+    {
+      "filename": "2026-08-15 [linux] statmount 与 listmount：不用再解析 proc self mountinfo 了.md",
+      "inner_file": "",
+      "title": "statmount 与 listmount：不用再解析 /proc/self/mountinfo 了",
+      "date": "2026-08-15",
+      "tags": [
+        "statmount",
+        "listmount",
+        "mount-namespace"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "statmount",
+        "listmount",
+        "不用再解析",
+        "proc",
+        "self",
+        "mountinfo"
+      ],
+      "summary_preview": "date = '2026-08-15T10:00:46+08:00' draft = false title = 'statmount 与 listmount：不用再解析 /proc/self/mountinfo 了' author = 'JekYUlll' lastmod = '2026-08-15T10:00:46+08:00' tags = ['statmount', 'listmount'"
     }
   ]
 }
