@@ -2255,6 +2255,30 @@
         "mountinfo"
       ],
       "summary_preview": "date = '2026-08-15T10:00:46+08:00' draft = false title = 'statmount 与 listmount：不用再解析 /proc/self/mountinfo 了' author = 'JekYUlll' lastmod = '2026-08-15T10:00:46+08:00' tags = ['statmount', 'listmount'"
+    },
+    {
+      "filename": "2026-08-16 [linux] PAGEMAP_SCAN：一次 ioctl 找出进程里真正变脏的页.md",
+      "inner_file": "",
+      "title": "PAGEMAP_SCAN：一次 ioctl 找出进程里真正变脏的页",
+      "date": "2026-08-16",
+      "tags": [
+        "pagemap",
+        "userfaultfd",
+        "memory-tracking"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "pagemap_scan",
+        "一次",
+        "ioctl",
+        "找出进程里真正变脏的页",
+        "pagemap",
+        "scan"
+      ],
+      "summary_preview": "date = '2026-08-16T10:10:10+08:00' draft = false title = 'PAGEMAP_SCAN：一次 ioctl 找出进程里真正变脏的页' author = 'JekYUlll' lastmod = '2026-08-16T10:10:10+08:00' tags = ['pagemap', 'userfaultfd', 'memory-trackin"
     }
   ]
 }
