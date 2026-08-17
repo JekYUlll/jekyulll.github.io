@@ -2279,6 +2279,31 @@
         "scan"
       ],
       "summary_preview": "date = '2026-08-16T10:10:10+08:00' draft = false title = 'PAGEMAP_SCAN：一次 ioctl 找出进程里真正变脏的页' author = 'JekYUlll' lastmod = '2026-08-16T10:10:10+08:00' tags = ['pagemap', 'userfaultfd', 'memory-trackin"
+    },
+    {
+      "filename": "2026-08-17 [backend] Green Tea GC：Go 1.26 为什么改成按页扫描小对象.md",
+      "inner_file": "",
+      "title": "Green Tea GC：Go 1.26 为什么改成按页扫描小对象",
+      "date": "2026-08-17",
+      "tags": [
+        "golang",
+        "garbage-collection",
+        "runtime"
+      ],
+      "categories": [
+        "backend"
+      ],
+      "file_category": "backend",
+      "keywords": [
+        "green",
+        "tea",
+        "gc",
+        "go",
+        "1.26",
+        "为什么改成按页扫描小对象",
+        "26"
+      ],
+      "summary_preview": "date = '2026-08-17T10:05:28+08:00' draft = false title = 'Green Tea GC：Go 1.26 为什么改成按页扫描小对象' author = 'JekYUlll' lastmod = '2026-08-17T10:05:28+08:00' tags = ['golang', 'garbage-collection', 'runtime'"
     }
   ]
 }
