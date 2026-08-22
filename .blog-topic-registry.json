@@ -2304,6 +2304,27 @@
         "26"
       ],
       "summary_preview": "date = '2026-08-17T10:05:28+08:00' draft = false title = 'Green Tea GC：Go 1.26 为什么改成按页扫描小对象' author = 'JekYUlll' lastmod = '2026-08-17T10:05:28+08:00' tags = ['golang', 'garbage-collection', 'runtime'"
+    },
+    {
+      "filename": "2026-08-22 [linux] ublk：把 Linux 块设备驱动搬到用户态.md",
+      "inner_file": "",
+      "title": "ublk：把 Linux 块设备驱动搬到用户态",
+      "date": "2026-08-22",
+      "tags": [
+        "ublk",
+        "io-uring",
+        "block-device"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "ublk",
+        "linux",
+        "块设备驱动搬到用户态"
+      ],
+      "summary_preview": "date = '2026-08-22T10:00:59+08:00' draft = false title = 'ublk：把 Linux 块设备驱动搬到用户态' author = 'JekYUlll' lastmod = '2026-08-22T10:00:59+08:00' tags = ['ublk', 'io-uring', 'block-device'] categories = ['"
     }
   ]
 }
