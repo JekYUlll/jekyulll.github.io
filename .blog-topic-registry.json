@@ -2325,6 +2325,29 @@
         "块设备驱动搬到用户态"
       ],
       "summary_preview": "date = '2026-08-22T10:00:59+08:00' draft = false title = 'ublk：把 Linux 块设备驱动搬到用户态' author = 'JekYUlll' lastmod = '2026-08-22T10:00:59+08:00' tags = ['ublk', 'io-uring', 'block-device'] categories = ['"
+    },
+    {
+      "filename": "2026-08-23 [linux] PR_SET_MDWE：把可执行权限变成单向门.md",
+      "inner_file": "",
+      "title": "PR_SET_MDWE：把可执行权限变成单向门",
+      "date": "2026-08-23",
+      "tags": [
+        "mdwe",
+        "w-x",
+        "memory-protection"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "pr_set_mdwe",
+        "把可执行权限变成单向门",
+        "pr",
+        "set",
+        "mdwe"
+      ],
+      "summary_preview": "date = '2026-08-23T10:07:06+08:00' draft = false title = 'PR_SET_MDWE：把可执行权限变成单向门' author = 'JekYUlll' lastmod = '2026-08-23T10:07:06+08:00' tags = ['mdwe', 'w-x', 'memory-protection'] categories = ['"
     }
   ]
 }
