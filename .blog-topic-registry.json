@@ -2348,6 +2348,33 @@
         "mdwe"
       ],
       "summary_preview": "date = '2026-08-23T10:07:06+08:00' draft = false title = 'PR_SET_MDWE：把可执行权限变成单向门' author = 'JekYUlll' lastmod = '2026-08-23T10:07:06+08:00' tags = ['mdwe', 'w-x', 'memory-protection'] categories = ['"
+    },
+    {
+      "filename": "2026-08-24 [backend] Go 1.25 的容器感知 GOMAXPROCS：CPU quota 为什么会影响尾延迟.md",
+      "inner_file": "",
+      "title": "Go 1.25 的容器感知 GOMAXPROCS：CPU quota 为什么会影响尾延迟",
+      "date": "2026-08-24",
+      "tags": [
+        "go-runtime",
+        "gomaxprocs",
+        "cgroup",
+        "kubernetes"
+      ],
+      "categories": [
+        "backend"
+      ],
+      "file_category": "backend",
+      "keywords": [
+        "go",
+        "1.25",
+        "的容器感知",
+        "gomaxprocs",
+        "cpu",
+        "quota",
+        "为什么会影响尾延迟",
+        "25"
+      ],
+      "summary_preview": "date = '2026-08-24T10:00:35+08:00' draft = false title = 'Go 1.25 的容器感知 GOMAXPROCS：CPU quota 为什么会影响尾延迟' author = 'JekYUlll' lastmod = '2026-08-24T10:00:35+08:00' tags = ['go-runtime', 'gomaxprocs', 'c"
     }
   ]
 }
