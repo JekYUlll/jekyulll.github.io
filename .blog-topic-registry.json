@@ -2375,6 +2375,32 @@
         "25"
       ],
       "summary_preview": "date = '2026-08-24T10:00:35+08:00' draft = false title = 'Go 1.25 的容器感知 GOMAXPROCS：CPU quota 为什么会影响尾延迟' author = 'JekYUlll' lastmod = '2026-08-24T10:00:35+08:00' tags = ['go-runtime', 'gomaxprocs', 'c"
+    },
+    {
+      "filename": "2026-08-25 [linux] MADV_GUARD_INSTALL：不用新建 VMA 的 Linux 内存护栏.md",
+      "inner_file": "",
+      "title": "MADV_GUARD_INSTALL：不用新建 VMA 的 Linux 内存护栏",
+      "date": "2026-08-25",
+      "tags": [
+        "madvise",
+        "virtual-memory",
+        "guard-region"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "madv_guard_install",
+        "不用新建",
+        "vma",
+        "linux",
+        "内存护栏",
+        "madv",
+        "guard",
+        "install"
+      ],
+      "summary_preview": "date = '2026-08-25T10:00:45+08:00' draft = false title = 'MADV_GUARD_INSTALL：不用新建 VMA 的 Linux 内存护栏' author = 'JekYUlll' lastmod = '2026-08-25T10:00:45+08:00' tags = ['madvise', 'virtual-memory', 'guar"
     }
   ]
 }
