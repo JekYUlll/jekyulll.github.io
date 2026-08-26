@@ -2401,6 +2401,30 @@
         "install"
       ],
       "summary_preview": "date = '2026-08-25T10:00:45+08:00' draft = false title = 'MADV_GUARD_INSTALL：不用新建 VMA 的 Linux 内存护栏' author = 'JekYUlll' lastmod = '2026-08-25T10:00:45+08:00' tags = ['madvise', 'virtual-memory', 'guar"
+    },
+    {
+      "filename": "2026-08-26 [linux] EEVDF 调度器：CFS 退役后 Linux 怎么给进程排期.md",
+      "inner_file": "",
+      "title": "EEVDF 调度器：CFS 退役后 Linux 怎么给进程排期",
+      "date": "2026-08-26",
+      "tags": [
+        "eevdf",
+        "scheduler",
+        "linux-kernel"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "eevdf",
+        "调度器",
+        "cfs",
+        "退役后",
+        "linux",
+        "怎么给进程排期"
+      ],
+      "summary_preview": "date = '2026-08-26T10:03:55+08:00' draft = false title = 'EEVDF 调度器：CFS 退役后 Linux 怎么给进程排期' author = 'JekYUlll' lastmod = '2026-08-26T10:03:55+08:00' tags = ['eevdf', 'scheduler', 'linux-kernel'] categ"
     }
   ]
 }
