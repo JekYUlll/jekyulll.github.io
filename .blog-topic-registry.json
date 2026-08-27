@@ -2425,6 +2425,28 @@
         "怎么给进程排期"
       ],
       "summary_preview": "date = '2026-08-26T10:03:55+08:00' draft = false title = 'EEVDF 调度器：CFS 退役后 Linux 怎么给进程排期' author = 'JekYUlll' lastmod = '2026-08-26T10:03:55+08:00' tags = ['eevdf', 'scheduler', 'linux-kernel'] categ"
+    },
+    {
+      "filename": "2026-08-27 [linux] vDSO getrandom：用户态绕过系统调用取随机数.md",
+      "inner_file": "",
+      "title": "vDSO getrandom：用户态绕过系统调用取随机数",
+      "date": "2026-08-27",
+      "tags": [
+        "getrandom",
+        "vdso",
+        "random",
+        "syscall"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "vdso",
+        "getrandom",
+        "用户态绕过系统调用取随机数"
+      ],
+      "summary_preview": "date = '2026-08-27T10:25:04+08:00' draft = false title = 'vDSO getrandom：用户态绕过系统调用取随机数' author = 'JekYUlll' lastmod = '2026-08-27T10:25:04+08:00' tags = ['getrandom', 'vdso', 'random', 'syscall'] cate"
     }
   ]
 }
