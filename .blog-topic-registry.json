@@ -2447,6 +2447,28 @@
         "用户态绕过系统调用取随机数"
       ],
       "summary_preview": "date = '2026-08-27T10:25:04+08:00' draft = false title = 'vDSO getrandom：用户态绕过系统调用取随机数' author = 'JekYUlll' lastmod = '2026-08-27T10:25:04+08:00' tags = ['getrandom', 'vdso', 'random', 'syscall'] cate"
+    },
+    {
+      "filename": "2026-08-28 [linux] MGLRU：Linux 页回收的世代更替.md",
+      "inner_file": "",
+      "title": "MGLRU：Linux 页回收的世代更替",
+      "date": "2026-08-28",
+      "tags": [
+        "mglru",
+        "page-reclaim",
+        "memory-management",
+        "mm"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "mglru",
+        "linux",
+        "页回收的世代更替"
+      ],
+      "summary_preview": "date = '2026-08-28T10:14:27+08:00' draft = false title = 'MGLRU：Linux 页回收的世代更替' author = 'JekYUlll' lastmod = '2026-08-28T10:14:27+08:00' tags = ['mglru', 'page-reclaim', 'memory-management', 'mm'] ca"
     }
   ]
 }
