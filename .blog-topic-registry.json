@@ -2469,6 +2469,27 @@
         "页回收的世代更替"
       ],
       "summary_preview": "date = '2026-08-28T10:14:27+08:00' draft = false title = 'MGLRU：Linux 页回收的世代更替' author = 'JekYUlll' lastmod = '2026-08-28T10:14:27+08:00' tags = ['mglru', 'page-reclaim', 'memory-management', 'mm'] ca"
+    },
+    {
+      "filename": "2026-08-29 [database] DuckDB 列式执行引擎：分析查询为什么快.md",
+      "inner_file": "",
+      "title": "DuckDB 列式执行引擎：分析查询为什么快",
+      "date": "2026-08-29",
+      "tags": [
+        "duckdb",
+        "columnar-storage",
+        "vectorized-execution"
+      ],
+      "categories": [
+        "database"
+      ],
+      "file_category": "database",
+      "keywords": [
+        "duckdb",
+        "列式执行引擎",
+        "分析查询为什么快"
+      ],
+      "summary_preview": "date = '2026-08-29T10:12:28+08:00' draft = false title = 'DuckDB 列式执行引擎：分析查询为什么快' author = 'JekYUlll' lastmod = '2026-08-29T10:12:28+08:00' tags = ['duckdb', 'columnar-storage', 'vectorized-execution'"
     }
   ]
 }
