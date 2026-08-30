@@ -2490,6 +2490,30 @@
         "分析查询为什么快"
       ],
       "summary_preview": "date = '2026-08-29T10:12:28+08:00' draft = false title = 'DuckDB 列式执行引擎：分析查询为什么快' author = 'JekYUlll' lastmod = '2026-08-29T10:12:28+08:00' tags = ['duckdb', 'columnar-storage', 'vectorized-execution'"
+    },
+    {
+      "filename": "2026-08-30 [cpp] std::expected：C++23 错误处理的新写法.md",
+      "inner_file": "",
+      "title": "std::expected：C++23 错误处理的新写法",
+      "date": "2026-08-30",
+      "tags": [
+        "cpp23",
+        "expected",
+        "error-handling",
+        "monadic"
+      ],
+      "categories": [
+        "cpp"
+      ],
+      "file_category": "cpp",
+      "keywords": [
+        "std",
+        "expected",
+        "c++23",
+        "错误处理的新写法",
+        "23"
+      ],
+      "summary_preview": "date = '2026-08-30T10:10:16+08:00' draft = false title = 'std::expected：C++23 错误处理的新写法' author = 'JekYUlll' lastmod = '2026-08-30T10:10:16+08:00' tags = ['cpp23', 'expected', 'error-handling', 'monadi"
     }
   ]
 }
