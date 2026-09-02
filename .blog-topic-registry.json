@@ -2514,6 +2514,29 @@
         "23"
       ],
       "summary_preview": "date = '2026-08-30T10:10:16+08:00' draft = false title = 'std::expected：C++23 错误处理的新写法' author = 'JekYUlll' lastmod = '2026-08-30T10:10:16+08:00' tags = ['cpp23', 'expected', 'error-handling', 'monadi"
+    },
+    {
+      "filename": "2026-09-02 [database] SQLite JSONB：二进制 JSON 格式的存储与查询.md",
+      "inner_file": "",
+      "title": "SQLite JSONB：二进制 JSON 格式的存储与查询",
+      "date": "2026-09-02",
+      "tags": [
+        "sqlite",
+        "jsonb",
+        "json"
+      ],
+      "categories": [
+        "database"
+      ],
+      "file_category": "database",
+      "keywords": [
+        "sqlite",
+        "jsonb",
+        "二进制",
+        "json",
+        "格式的存储与查询"
+      ],
+      "summary_preview": "date = '2026-09-02T10:07:59+08:00' draft = false title = 'SQLite JSONB：二进制 JSON 格式的存储与查询' author = 'JekYUlll' lastmod = '2026-09-02T10:07:59+08:00' tags = ['sqlite', 'jsonb', 'json'] categories = ['da"
     }
   ]
 }
