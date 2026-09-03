@@ -2537,6 +2537,29 @@
         "格式的存储与查询"
       ],
       "summary_preview": "date = '2026-09-02T10:07:59+08:00' draft = false title = 'SQLite JSONB：二进制 JSON 格式的存储与查询' author = 'JekYUlll' lastmod = '2026-09-02T10:07:59+08:00' tags = ['sqlite', 'jsonb', 'json'] categories = ['da"
+    },
+    {
+      "filename": "2026-09-03 [linux] mTHP：匿名内存的大页不再只有 2MB 一档.md",
+      "inner_file": "",
+      "title": "mTHP：匿名内存的大页不再只有 2MB 一档",
+      "date": "2026-09-03",
+      "tags": [
+        "mthp",
+        "transparent-huge-pages",
+        "memory-management",
+        "kernel"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "mthp",
+        "匿名内存的大页不再只有",
+        "2mb",
+        "一档"
+      ],
+      "summary_preview": "date = '2026-09-03T10:12:30+08:00' draft = false title = 'mTHP：匿名内存的大页不再只有 2MB 一档' author = 'JekYUlll' lastmod = '2026-09-03T10:12:30+08:00' tags = ['mthp', 'transparent-huge-pages', 'memory-managemen"
     }
   ]
 }
