@@ -2560,6 +2560,30 @@
         "一档"
       ],
       "summary_preview": "date = '2026-09-03T10:12:30+08:00' draft = false title = 'mTHP：匿名内存的大页不再只有 2MB 一档' author = 'JekYUlll' lastmod = '2026-09-03T10:12:30+08:00' tags = ['mthp', 'transparent-huge-pages', 'memory-managemen"
+    },
+    {
+      "filename": "2026-09-06 [linux] x86 Shadow Stack：CET 在硬件层挡住 ROP.md",
+      "inner_file": "",
+      "title": "x86 Shadow Stack：CET 在硬件层挡住 ROP",
+      "date": "2026-09-06",
+      "tags": [
+        "cet",
+        "shadow-stack",
+        "rop"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "x86",
+        "shadow",
+        "stack",
+        "cet",
+        "在硬件层挡住",
+        "rop"
+      ],
+      "summary_preview": "date = '2026-09-06T10:10:04+08:00' draft = false title = 'x86 Shadow Stack：CET 在硬件层挡住 ROP' author = 'JekYUlll' lastmod = '2026-09-06T10:10:04+08:00' tags = ['cet', 'shadow-stack', 'rop'] categories = "
     }
   ]
 }
