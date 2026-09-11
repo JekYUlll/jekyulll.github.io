@@ -2584,6 +2584,32 @@
         "rop"
       ],
       "summary_preview": "date = '2026-09-06T10:10:04+08:00' draft = false title = 'x86 Shadow Stack：CET 在硬件层挡住 ROP' author = 'JekYUlll' lastmod = '2026-09-06T10:10:04+08:00' tags = ['cet', 'shadow-stack', 'rop'] categories = "
+    },
+    {
+      "filename": "2026-09-11 [backend] encoding json v2：Go 1.27 把 JSON 拆成两层.md",
+      "inner_file": "",
+      "title": "encoding/json/v2：Go 1.27 把 JSON 拆成两层",
+      "date": "2026-09-11",
+      "tags": [
+        "go",
+        "json",
+        "jsontext"
+      ],
+      "categories": [
+        "backend"
+      ],
+      "file_category": "backend",
+      "keywords": [
+        "encoding",
+        "json",
+        "v2",
+        "go",
+        "1.27",
+        "json",
+        "拆成两层",
+        "27"
+      ],
+      "summary_preview": "date = '2026-09-11T10:09:22+08:00' draft = false title = 'encoding/json/v2：Go 1.27 把 JSON 拆成两层' author = 'JekYUlll' lastmod = '2026-09-11T10:09:22+08:00' tags = ['go', 'json', 'jsontext'] categories ="
     }
   ]
 }
