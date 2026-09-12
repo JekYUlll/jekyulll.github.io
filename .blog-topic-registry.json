@@ -2212,29 +2212,6 @@
       "summary_preview": "date = '2026-06-29T19:20:38+08:00' draft = false title = 'cachestat：用系统调用观察 Linux 页缓存命中' author = 'JekYUlll' lastmod = '2026-06-29T19:20:38+08:00' tags = ['cachestat', 'page-cache', 'linux-kernel'] ca"
     },
     {
-      "filename": "2026-06-30 [linux] mseal：把内存映射焊死的 Linux 加固 syscall.md",
-      "inner_file": "",
-      "title": "mseal：把内存映射焊死的 Linux 加固 syscall",
-      "date": "2026-06-30",
-      "tags": [
-        "mseal",
-        "memory-protection",
-        "linux-security"
-      ],
-      "categories": [
-        "linux"
-      ],
-      "file_category": "linux",
-      "keywords": [
-        "mseal",
-        "把内存映射焊死的",
-        "linux",
-        "加固",
-        "syscall"
-      ],
-      "summary_preview": "date = '2026-06-30T22:01:25+08:00' draft = false title = 'mseal：把内存映射焊死的 Linux 加固 syscall' author = 'JekYUlll' lastmod = '2026-06-30T22:01:25+08:00' tags = ['mseal', 'memory-protection', 'linux-securi"
-    },
-    {
       "filename": "2026-08-14 [linux] mseal：给 Linux 虚拟内存加一道不可逆的封条.md",
       "inner_file": "",
       "title": "mseal：给 Linux 虚拟内存加一道不可逆的封条",
@@ -2655,6 +2632,29 @@
         "agent"
       ],
       "summary_preview": "date = '2026-09-11T21:56:49+08:00' draft = false title = '用 Temporal 构建持久化 AI Agent' author = 'JekYUlll' lastmod = '2026-09-11T21:56:49+08:00' tags = ['temporal', 'durable-execution', 'ai-agent'] cate"
+    },
+    {
+      "filename": "2026-09-12 [linux] UFFDIO_MOVE：userfaultfd 的零拷贝页迁移.md",
+      "inner_file": "",
+      "title": "UFFDIO_MOVE：userfaultfd 的零拷贝页迁移",
+      "date": "2026-09-12",
+      "tags": [
+        "userfaultfd",
+        "memory-management",
+        "kernel"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "uffdio_move",
+        "userfaultfd",
+        "的零拷贝页迁移",
+        "uffdio",
+        "move"
+      ],
+      "summary_preview": "date = '2026-09-12T10:08:42+08:00' draft = false title = 'UFFDIO_MOVE：userfaultfd 的零拷贝页迁移' author = 'JekYUlll' lastmod = '2026-09-12T10:08:42+08:00' tags = ['userfaultfd', 'memory-management', 'kernel"
     }
   ]
 }
