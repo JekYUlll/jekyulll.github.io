@@ -2655,6 +2655,30 @@
         "move"
       ],
       "summary_preview": "date = '2026-09-12T10:08:42+08:00' draft = false title = 'UFFDIO_MOVE：userfaultfd 的零拷贝页迁移' author = 'JekYUlll' lastmod = '2026-09-12T10:08:42+08:00' tags = ['userfaultfd', 'memory-management', 'kernel"
+    },
+    {
+      "filename": "2026-09-13 [backend] testing synctest：假时钟怎么写不 flaky 的并发测试.md",
+      "inner_file": "",
+      "title": "testing/synctest：假时钟怎么写不 flaky 的并发测试",
+      "date": "2026-09-13",
+      "tags": [
+        "go",
+        "concurrency",
+        "testing",
+        "synctest"
+      ],
+      "categories": [
+        "backend"
+      ],
+      "file_category": "backend",
+      "keywords": [
+        "testing",
+        "synctest",
+        "假时钟怎么写不",
+        "flaky",
+        "的并发测试"
+      ],
+      "summary_preview": "date = '2026-09-13T10:05:18+08:00' draft = false title = 'testing/synctest：假时钟怎么写不 flaky 的并发测试' author = 'JekYUlll' lastmod = '2026-09-13T10:05:18+08:00' tags = ['go', 'concurrency', 'testing', 'synct"
     }
   ]
 }
