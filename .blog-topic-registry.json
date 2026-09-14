@@ -2679,6 +2679,27 @@
         "的并发测试"
       ],
       "summary_preview": "date = '2026-09-13T10:05:18+08:00' draft = false title = 'testing/synctest：假时钟怎么写不 flaky 的并发测试' author = 'JekYUlll' lastmod = '2026-09-13T10:05:18+08:00' tags = ['go', 'concurrency', 'testing', 'synct"
+    },
+    {
+      "filename": "2026-09-14 [cpp] std::simd：可移植向量化终于有了标准写法.md",
+      "inner_file": "",
+      "title": "std::simd：可移植向量化终于有了标准写法",
+      "date": "2026-09-14",
+      "tags": [
+        "simd",
+        "cpp26",
+        "vectorization"
+      ],
+      "categories": [
+        "cpp"
+      ],
+      "file_category": "cpp",
+      "keywords": [
+        "std",
+        "simd",
+        "可移植向量化终于有了标准写法"
+      ],
+      "summary_preview": "date = '2026-09-14T10:10:26+08:00' draft = false title = 'std::simd：可移植向量化终于有了标准写法' author = 'JekYUlll' lastmod = '2026-09-14T10:10:26+08:00' tags = ['simd', 'cpp26', 'vectorization'] categories = ['c"
     }
   ]
 }
