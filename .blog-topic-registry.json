@@ -2700,6 +2700,30 @@
         "可移植向量化终于有了标准写法"
       ],
       "summary_preview": "date = '2026-09-14T10:10:26+08:00' draft = false title = 'std::simd：可移植向量化终于有了标准写法' author = 'JekYUlll' lastmod = '2026-09-14T10:10:26+08:00' tags = ['simd', 'cpp26', 'vectorization'] categories = ['c"
+    },
+    {
+      "filename": "2026-09-15 [linux] ntsync：Linux 内核里的 Windows 同步原语.md",
+      "inner_file": "",
+      "title": "ntsync：Linux 内核里的 Windows 同步原语",
+      "date": "2026-09-15",
+      "tags": [
+        "ntsync",
+        "wine",
+        "kernel",
+        "synchronization"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "ntsync",
+        "linux",
+        "内核里的",
+        "windows",
+        "同步原语"
+      ],
+      "summary_preview": "date = '2026-09-15T10:05:32+08:00' draft = false title = 'ntsync：Linux 内核里的 Windows 同步原语' author = 'JekYUlll' lastmod = '2026-09-15T10:05:32+08:00' tags = ['ntsync', 'wine', 'kernel', 'synchronization"
     }
   ]
 }
