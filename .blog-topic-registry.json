@@ -2724,6 +2724,29 @@
         "同步原语"
       ],
       "summary_preview": "date = '2026-09-15T10:05:32+08:00' draft = false title = 'ntsync：Linux 内核里的 Windows 同步原语' author = 'JekYUlll' lastmod = '2026-09-15T10:05:32+08:00' tags = ['ntsync', 'wine', 'kernel', 'synchronization"
+    },
+    {
+      "filename": "2026-09-17 [infra] MCP 无状态化：2026-07-28 修订删掉了握手和会话.md",
+      "inner_file": "",
+      "title": "MCP 无状态化：2026-07-28 修订删掉了握手和会话",
+      "date": "2026-09-17",
+      "tags": [
+        "mcp",
+        "stateless",
+        "streamable-http",
+        "mrtr"
+      ],
+      "categories": [
+        "infra"
+      ],
+      "file_category": "infra",
+      "keywords": [
+        "mcp",
+        "无状态化",
+        "2026-07-28",
+        "修订删掉了握手和会话"
+      ],
+      "summary_preview": "date = '2026-09-17T10:12:22+08:00' draft = false title = 'MCP 无状态化：2026-07-28 修订删掉了握手和会话' author = 'JekYUlll' lastmod = '2026-09-17T10:12:22+08:00' tags = ['mcp', 'stateless', 'streamable-http', 'mrtr"
     }
   ]
 }
