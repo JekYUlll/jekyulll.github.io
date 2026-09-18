@@ -2747,6 +2747,29 @@
         "修订删掉了握手和会话"
       ],
       "summary_preview": "date = '2026-09-17T10:12:22+08:00' draft = false title = 'MCP 无状态化：2026-07-28 修订删掉了握手和会话' author = 'JekYUlll' lastmod = '2026-09-17T10:12:22+08:00' tags = ['mcp', 'stateless', 'streamable-http', 'mrtr"
+    },
+    {
+      "filename": "2026-09-18 [linux] MPTCP：把一条 TCP 连接铺在多条路径上.md",
+      "inner_file": "",
+      "title": "MPTCP：把一条 TCP 连接铺在多条路径上",
+      "date": "2026-09-18",
+      "tags": [
+        "mptcp",
+        "tcp",
+        "kernel",
+        "networking"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "mptcp",
+        "把一条",
+        "tcp",
+        "连接铺在多条路径上"
+      ],
+      "summary_preview": "date = '2026-09-18T10:15:05+08:00' draft = false title = 'MPTCP：把一条 TCP 连接铺在多条路径上' author = 'JekYUlll' lastmod = '2026-09-18T10:15:05+08:00' tags = ['mptcp', 'tcp', 'kernel', 'networking'] categories "
     }
   ]
 }
