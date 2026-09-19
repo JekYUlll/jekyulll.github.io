@@ -2770,6 +2770,31 @@
         "连接铺在多条路径上"
       ],
       "summary_preview": "date = '2026-09-18T10:15:05+08:00' draft = false title = 'MPTCP：把一条 TCP 连接铺在多条路径上' author = 'JekYUlll' lastmod = '2026-09-18T10:15:05+08:00' tags = ['mptcp', 'tcp', 'kernel', 'networking'] categories "
+    },
+    {
+      "filename": "2026-09-19 [linux] SECCOMP_RET_USER_NOTIF：把系统调用外包给用户态监督进程.md",
+      "inner_file": "",
+      "title": "SECCOMP_RET_USER_NOTIF：把系统调用外包给用户态监督进程",
+      "date": "2026-09-19",
+      "tags": [
+        "seccomp",
+        "syscall",
+        "container",
+        "sandbox"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "seccomp_ret_user_notif",
+        "把系统调用外包给用户态监督进程",
+        "seccomp",
+        "ret",
+        "user",
+        "notif"
+      ],
+      "summary_preview": "date = '2026-09-19T10:12:39+08:00' draft = false title = 'SECCOMP_RET_USER_NOTIF：把系统调用外包给用户态监督进程' author = 'JekYUlll' lastmod = '2026-09-19T10:12:39+08:00' tags = ['seccomp', 'syscall', 'container', '"
     }
   ]
 }
