@@ -2212,6 +2212,29 @@
       "summary_preview": "date = '2026-06-29T19:20:38+08:00' draft = false title = 'cachestat：用系统调用观察 Linux 页缓存命中' author = 'JekYUlll' lastmod = '2026-06-29T19:20:38+08:00' tags = ['cachestat', 'page-cache', 'linux-kernel'] ca"
     },
     {
+      "filename": "2026-06-30 [linux] mseal：把内存映射焊死的 Linux 加固 syscall.md",
+      "inner_file": "",
+      "title": "mseal：把内存映射焊死的 Linux 加固 syscall",
+      "date": "2026-06-30",
+      "tags": [
+        "mseal",
+        "memory-protection",
+        "linux-security"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "mseal",
+        "把内存映射焊死的",
+        "linux",
+        "加固",
+        "syscall"
+      ],
+      "summary_preview": "date = '2026-06-30T22:01:25+08:00' draft = false title = 'mseal：把内存映射焊死的 Linux 加固 syscall' author = 'JekYUlll' lastmod = '2026-06-30T22:01:25+08:00' tags = ['mseal', 'memory-protection', 'linux-securi"
+    },
+    {
       "filename": "2026-08-14 [linux] mseal：给 Linux 虚拟内存加一道不可逆的封条.md",
       "inner_file": "",
       "title": "mseal：给 Linux 虚拟内存加一道不可逆的封条",
@@ -2795,6 +2818,30 @@
         "notif"
       ],
       "summary_preview": "date = '2026-09-19T10:12:39+08:00' draft = false title = 'SECCOMP_RET_USER_NOTIF：把系统调用外包给用户态监督进程' author = 'JekYUlll' lastmod = '2026-09-19T10:12:39+08:00' tags = ['seccomp', 'syscall', 'container', '"
+    },
+    {
+      "filename": "2026-10-31 [linux] rm -rf 之后日志里到底还剩什么.md",
+      "inner_file": "",
+      "title": "rm -rf 之后，日志里到底还剩什么",
+      "date": "2026-10-31",
+      "tags": [
+        "auditd",
+        "filesystem",
+        "forensics",
+        "ext4"
+      ],
+      "categories": [
+        "linux"
+      ],
+      "file_category": "linux",
+      "keywords": [
+        "rm",
+        "-rf",
+        "之后",
+        "日志里到底还剩什么",
+        "rf"
+      ],
+      "summary_preview": "date = '2026-10-31T19:16:24+08:00' draft = false title = 'rm -rf 之后，日志里到底还剩什么' author = 'JekYUlll' lastmod = '2026-10-31T19:16:24+08:00' tags = ['auditd', 'filesystem', 'forensics', 'ext4'] categories"
     }
   ]
 }
